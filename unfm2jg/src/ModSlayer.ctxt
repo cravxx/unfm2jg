@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=modtrackinfo
+comment0.target=void\ beattrack(ModTrackInfo)
+comment1.params=modtrackinfo\ ai\ i\ j
+comment1.target=void\ mixtrack_16_mono(ModTrackInfo,\ int[],\ int,\ int)
+comment2.params=mod1\ i\ j\ k
+comment2.target=ModSlayer(Mod,\ int,\ int,\ int)
+comment3.params=
+comment3.target=void\ make_vol_table8()
+comment4.params=
+comment4.target=byte[]\ turnbytesNorm()
+comment5.params=
+comment5.target=void\ updatetracks()
+comment6.params=modtrackinfo\ abyte0\ i
+comment6.target=int\ get_track(ModTrackInfo,\ byte[],\ int)
+comment7.params=flag
+comment7.target=void\ startplaying(boolean)
+comment8.params=ai\ abyte0\ i\ j
+comment8.target=void\ intToBytes16(int[],\ byte[],\ int,\ int)
+comment9.params=
+comment9.target=byte[]\ turnbytesUlaw()
+numComments=10

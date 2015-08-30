@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ loadprojf()
+comment1.params=i\ j
+comment1.target=int\ ys(int,\ int)
+comment2.params=medium\ trackers\ ai\ ai1\ ai2\ i\ ai3\ flag\ j\ k\ l\ i1\ j1\ k1\ l1\ flag1\ i2
+comment2.target=Plane(Medium,\ Trackers,\ int[],\ int[],\ int[],\ int,\ int[],\ boolean,\ int,\ int,\ int,\ int,\ int,\ int,\ int,\ boolean,\ int)
+comment3.params=rd\ i\ j\ k\ l\ i1\ j1\ k1\ l1\ flag\ i2
+comment3.target=void\ d(java.awt.Graphics2D,\ int,\ int,\ int,\ int,\ int,\ int,\ int,\ int,\ boolean,\ int)
+comment4.params=ai\ ai1\ i\ j\ k\ l
+comment4.target=void\ rot(int[],\ int[],\ int,\ int,\ int,\ int)
+comment5.params=i\ j
+comment5.target=int\ xs(int,\ int)
+comment6.params=rd\ i\ j\ k\ l\ i1\ j1\ k1
+comment6.target=void\ s(java.awt.Graphics2D,\ int,\ int,\ int,\ int,\ int,\ int,\ int)
+comment7.params=i\ j
+comment7.target=int\ spy(int,\ int)
+numComments=8

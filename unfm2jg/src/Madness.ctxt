@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=i\ j\ k\ l
+comment0.target=int\ py(int,\ int,\ int,\ int)
+comment1.params=i\ f\ conto
+comment1.target=void\ regy(int,\ float,\ ContO)
+comment10.params=control\ conto\ trackers\ checkpoints
+comment10.target=void\ drive(Control,\ ContO,\ Trackers,\ CheckPoints)
+comment2.params=medium\ record\ xtgraphics\ i
+comment2.target=Madness(Medium,\ Record,\ xtGraphics,\ int)
+comment3.params=f\ f1\ f2\ f3\ f4\ f5
+comment3.target=int\ rpy(float,\ float,\ float,\ float,\ float,\ float)
+comment4.params=i\ f\ conto
+comment4.target=void\ regz(int,\ float,\ ContO)
+comment5.params=af\ af1\ i\ j\ k\ l
+comment5.target=void\ rot(float[],\ float[],\ int,\ int,\ int,\ int)
+comment6.params=conto\ madness\ conto1
+comment6.target=void\ colide(ContO,\ Madness,\ ContO)
+comment7.params=conto
+comment7.target=void\ distruct(ContO)
+comment8.params=i\ conto\ checkpoints
+comment8.target=void\ reseto(int,\ ContO,\ CheckPoints)
+comment9.params=i\ f\ conto
+comment9.target=void\ regx(int,\ float,\ ContO)
+numComments=11

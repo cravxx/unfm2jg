@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=madness\ conto\ checkpoints\ trackers
+comment0.target=void\ preform(Madness,\ ContO,\ CheckPoints,\ Trackers)
+comment1.params=checkpoints\ i
+comment1.target=void\ reset(CheckPoints,\ int)
+comment2.params=medium
+comment2.target=Control(Medium)
+comment3.params=
+comment3.target=void\ falseo()
+comment4.params=i\ j\ k\ l
+comment4.target=int\ pys(int,\ int,\ int,\ int)
+comment5.params=i\ j\ k\ l
+comment5.target=int\ py(int,\ int,\ int,\ int)
+numComments=6
