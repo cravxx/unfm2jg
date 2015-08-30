@@ -59,7 +59,7 @@ public class GameSparker extends Applet
     }
     
 
-    @SuppressWarnings("deprecation")
+    //@SuppressWarnings("deprecation")
 	public void stop()
     {
         if(exwist && gamer != null)
@@ -263,7 +263,7 @@ public class GameSparker extends Applet
         return false;
     }
 
-    @SuppressWarnings("deprecation")
+    //@SuppressWarnings("deprecation")
 	public void loadstage(ContO aconto[], ContO aconto1[], Medium medium, Trackers trackers, CheckPoints checkpoints, xtGraphics xtgraphics, Madness amadness[], 
             Record record)
     {
@@ -614,7 +614,7 @@ public class GameSparker extends Applet
     {
     
     }
-    @SuppressWarnings("deprecation")
+    //@SuppressWarnings("deprecation")
 	public void run()
     {
         rd.setColor(new Color(0, 0, 0));

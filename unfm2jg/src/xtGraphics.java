@@ -278,8 +278,10 @@ public class xtGraphics extends Panel
     float blackn;
     float blacknados;         
     
-    public void filterImage(Image img, int type)
+    public Image filterImage(Image img, int type)
     {
+    	Image ret_img = null;
+    	
         BufferedImage buff_img = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);    
         Graphics2D rd_sep = buff_img.createGraphics();
         rd_sep.drawImage(img, 0, 0, null);
@@ -289,7 +291,8 @@ public class xtGraphics extends Panel
             BufferedImage gray = new BufferedImage(buff_img.getWidth(), buff_img.getHeight(), BufferedImage.TYPE_INT_ARGB);
             ColorConvertOp op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
             op.filter(buff_img, gray);
-            rd.drawImage(gray, 0, 0, null);
+            //rd.drawImage(gray, 0, 0, null);
+            ret_img = gray;
         }
         if(type == 1)   { ///////// sepia tone
             BufferedImage sepia = new BufferedImage(buff_img.getWidth(), buff_img.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -329,7 +332,8 @@ public class xtGraphics extends Panel
                     sepia.setRGB(x, y, color.getRGB());        
                 }
             }        
-            rd.drawImage(sepia, 0, 0, null);                                                
+            //rd.drawImage(sepia, 0, 0, null); 
+            ret_img = sepia;
         }                                        
         if(type == 2)   { /////////// inverts colors
             BufferedImage invert = new BufferedImage(buff_img.getWidth(), buff_img.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -369,7 +373,8 @@ public class xtGraphics extends Panel
                     invert.setRGB(x, y, color.getRGB());        
                 }
             }        
-            rd.drawImage(invert, 0, 0, null);
+            //rd.drawImage(invert, 0, 0, null);
+            ret_img = invert;
         }
         if(type == 3)   { /////// alternate invert 
             BufferedImage altinvert = new BufferedImage(buff_img.getWidth(), buff_img.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -409,7 +414,8 @@ public class xtGraphics extends Panel
                     altinvert.setRGB(x, y, color.getRGB());        
                 }
             }        
-            rd.drawImage(altinvert, 0, 0, null);
+            //rd.drawImage(altinvert, 0, 0, null);
+            ret_img = altinvert;
         }
         if(type == 4)   { /////// washout type filter
             BufferedImage washout = new BufferedImage(buff_img.getWidth(), buff_img.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -451,8 +457,10 @@ public class xtGraphics extends Panel
                     washout.setRGB(x, y, color.getRGB());        
                 }
             }        
-            rd.drawImage(washout, 0, 0, null);
+            //rd.drawImage(washout, 0, 0, null);
+            ret_img = washout;
         }
+        return ret_img;
     }    
     
     int colors[] = {25, 50, 100};   
@@ -1717,7 +1725,7 @@ public class xtGraphics extends Panel
         catch(InterruptedException _ex) { }
     }
 
-    @SuppressWarnings("deprecation")
+    //@SuppressWarnings("deprecation")
 	public void stoploading()
     {
         loading();
@@ -1817,7 +1825,7 @@ public class xtGraphics extends Panel
         m.flex = 0;
     }
 
-    @SuppressWarnings("deprecation")
+    //@SuppressWarnings("deprecation")
 	public void loadmusic(int i, int j)
     {
         hipnoload(i, false);
@@ -5173,7 +5181,7 @@ public class xtGraphics extends Panel
         rd.fillRect(0, 110, 670, 59);
         if(pin != 0)
         {
-            rd.drawImage(radicalplay, radpx + (int)(8D * Math.random() - 4D), 110, null);
+            rd.drawImage(filterImage(radicalplay, 3), radpx + (int)(8D * Math.random() - 4D), 110, null);
         } else
         {
             rd.drawImage(radicalplay, 147, 110, null);
