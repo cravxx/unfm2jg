@@ -50,8 +50,7 @@ public class Mod
     {
         return datainputstream.readShort() & 0xffff;
     }
-
-    @SuppressWarnings("deprecation")
+    
 	static final String readText(DataInputStream datainputstream, int i)
         throws IOException
     {

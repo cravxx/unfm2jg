@@ -204,8 +204,7 @@ public class ContO
         }
         return ((j - m.focus_point) * (m.cy - i)) / j + i;
     }
-
-    @SuppressWarnings("deprecation")
+    
 	public ContO(byte abyte0[], Medium medium, Trackers trackers)
     {
         npl = 0;
