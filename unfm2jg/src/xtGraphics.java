@@ -4528,22 +4528,21 @@ public class xtGraphics extends Panel
         app = applet;
         rd = graphics2d;
         MediaTracker mediatracker = new MediaTracker(app);
-        String path = "data/";
-        hello = app.getImage(app.getCodeBase(), path + "hello.gif");
+        hello = Toolkit.getDefaultToolkit().getImage(xtGraphics.class.getResource("hello.gif"));
         mediatracker.addImage(hello, 0);
         try
         {
             mediatracker.waitForID(0);
         }
         catch(Exception _ex) { }
-        sign = app.getImage(app.getCodeBase(), path + "sign.gif");
+        sign = Toolkit.getDefaultToolkit().getImage(xtGraphics.class.getResource("sign.gif"));
         mediatracker.addImage(sign, 0);
         try
         {
             mediatracker.waitForID(0);
         }
         catch(Exception _ex) { }
-        loadbar = app.getImage(app.getCodeBase(), path + "loadbar.gif");
+        loadbar = Toolkit.getDefaultToolkit().getImage(xtGraphics.class.getResource("loadbar.gif"));
         mediatracker.addImage(loadbar, 0);
         try
         {
