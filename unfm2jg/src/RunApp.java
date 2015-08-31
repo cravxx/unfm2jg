@@ -35,7 +35,7 @@ public class RunApp extends Panel {
     }
 
     static void startup() {
-        frame = new Frame("My Need for Madness 2 Mod");//Change this to the name of your preference
+        frame = new Frame("NFM2");//Change this to the name of your preference
         frame.setBackground(new Color(0, 0, 0));
         frame.setIgnoreRepaint(true);
         frame.setIconImages(getIcons());
