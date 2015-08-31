@@ -4,6 +4,8 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class RunApp extends Panel {
+	
+	static final long serialVersionUID = 666L;
 
     static Frame frame;
     static GameSparker applet;
@@ -14,7 +16,7 @@ public class RunApp extends Panel {
     */
     public static ArrayList<Image> getIcons() {
         if (icons == null) {
-            icons = new ArrayList();
+            icons = new ArrayList<Image>();
             int[] resols = {16, 32, 48};
             for (int res : resols) {
                 icons.add(Toolkit.getDefaultToolkit().createImage("data/ico_" + res + ".png"));

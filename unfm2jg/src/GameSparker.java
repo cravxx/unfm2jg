@@ -1653,7 +1653,7 @@ public class GameSparker extends Applet
     
     private void loadData(){
         try{
-            properties=new HashMap();
+            properties=new HashMap<String, Integer>();
             File localFile=new File("data/user.data");
             if(localFile.exists()){
                 BufferedReader in=new BufferedReader(new FileReader(localFile));
