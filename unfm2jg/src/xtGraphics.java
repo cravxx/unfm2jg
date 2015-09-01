@@ -510,7 +510,7 @@ public class xtGraphics extends Panel
 			if (j1 < 0) {
 				j1 = 0;
 			}
-			Color color2 = new Color(l, i1, j1, 150); ///last is alpha
+			Color color2 = new Color(l, i1, j1, 50); ///last is alpha
 			ai[k] = color2.getRGB();
 		}
 		Image image1 = createImage(new MemoryImageSource(j, i, ai, 0, j));
