@@ -743,6 +743,9 @@ public class GameSparker extends Applet
             if(xtgraphics.fase == 8)
             {
                 xtgraphics.credits(u[0]);
+                if(xtgraphics.flipo == 102){
+                	rd.drawImage(xtgraphics.credsnap(offImage), 0, 0,null);
+                }
                 xtgraphics.ctachm(xm, ym, mouses, u[0]);
                 if(xtgraphics.flipo <= 100)
                     catchlink(0);
