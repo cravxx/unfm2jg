@@ -289,14 +289,9 @@ public class GameSparker extends Applet
         medium.lightson = false;
         medium.ground = 250;
         view = 0;
-        int i = 0;
-        int j = 100;
-        int k = 0;
-        int l = 100;
+        int var_equals_0 = 0;
+        int var_equals_100 = 100;
         //////////////
-        int i98_ = 100;
-        int i99_ = 0;
-        int i100_ = 100;
         if(!trackers.tracksReady)
             TracksSetup(trackers);
         String s1 = "";
@@ -470,7 +465,7 @@ public class GameSparker extends Applet
                 {
                     int j2 = getint("maxr", s1, 0);
                     int j3 = getint("maxr", s1, 1);
-                    i = j3;
+                    var_equals_0 = j3;
                     int j4 = getint("maxr", s1, 2);
                     for(int j5 = 0; j5 < j2; j5++)
                     {
@@ -493,7 +488,7 @@ public class GameSparker extends Applet
                 {
                     int k2 = getint("maxl", s1, 0);
                     int k3 = getint("maxl", s1, 1);
-                    j = k3;
+                    var_equals_100 = k3;
                     int k4 = getint("maxl", s1, 2);
                     for(int k5 = 0; k5 < k2; k5++)
                     {
@@ -517,7 +512,7 @@ public class GameSparker extends Applet
                 {
                     int l2 = getint("maxt", s1, 0);
                     int l3 = getint("maxt", s1, 1);
-                    k = l3;
+                    var_equals_0 = l3;
                     int l4 = getint("maxt", s1, 2);
                     for(int l5 = 0; l5 < l2; l5++)
                     {
@@ -540,7 +535,7 @@ public class GameSparker extends Applet
                 {
                     int i3 = getint("maxb", s1, 0);
                     int i4 = getint("maxb", s1, 1);
-                    l = i4;
+                    var_equals_100 = i4;
                     int i5 = getint("maxb", s1, 2);
                     for(int i6 = 0; i6 < i3; i6++)
                     {
@@ -561,9 +556,9 @@ public class GameSparker extends Applet
                 }
             }
             datainputstream.close();
-            medium.newpolys(j, i - j, l, k - l, trackers, notb);
-            medium.newmountains(i98_, i, i100_, i99_);
-            medium.newclouds(j, i, l, k);
+            medium.newpolys(var_equals_100, var_equals_0 - var_equals_100, var_equals_100, var_equals_0 - var_equals_100, trackers, notb);
+            medium.newmountains(var_equals_100, var_equals_0, var_equals_100, var_equals_0);
+            medium.newclouds(var_equals_100, var_equals_0, var_equals_100, var_equals_0);
             medium.newstars();
         }
         catch(Exception exception)
