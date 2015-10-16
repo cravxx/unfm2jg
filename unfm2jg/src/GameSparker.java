@@ -394,8 +394,6 @@ public class GameSparker extends Applet
                             checkpoints.typ[checkpoints.n] = -3;
                         if(s1.indexOf(")ph") != -1)
                             checkpoints.typ[checkpoints.n] = -4;
-                        if(s1.indexOf("out") != -1)
-                            System.out.println("out: " + checkpoints.n);
                         checkpoints.n++;
                         notb = nob + 1;
                     }
