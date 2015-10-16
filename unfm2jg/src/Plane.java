@@ -1150,7 +1150,7 @@ public class Plane
                         k14 = (k14 * m.fogd + m.cfade[2]) / (m.fogd + 1);
                     }
                 } while(++l15 < 8);
-            }
+            }            
             rd.setColor(new Color(l11, j13, k14));
             rd.fillPolygon(ai14, ai15, n);
             if(m.trk && gr == -10)
@@ -1194,8 +1194,10 @@ public class Plane
                             k14 = 0;
                         }
                     }
+                    rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
                     rd.setColor(new Color(l11, j13, k14));
                     rd.drawPolygon(ai14, ai15, n);
+                    rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_OFF);
                 } else
                 {
                     if(flx == 2)

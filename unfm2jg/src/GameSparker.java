@@ -153,10 +153,49 @@ public class GameSparker extends Applet
 		}
 		return i;
 	}
+	
+	private void cropit(final Graphics2D graphics2d, final int i, final int i_98_) {
+		if (i != 0 || i_98_ != 0) {
+			graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
+			graphics2d.setColor(new Color(0, 0, 0));
+		}
+		if (i != 0){
+			if (i < 0){
+				graphics2d.fillRect(apx + i, apy - (int) (25.0F), Math.abs(i), (int) (400.0F));
+			}else{
+				graphics2d.fillRect(apx + (int) (670.0F), apy - (int) (25.0F), i, (int) (400.0F));
+			}
+		}
+		if (i_98_ != 0){
+			if (i_98_ < 0){
+				graphics2d.fillRect(apx - (int) (25.0F), apy + i_98_, (int) (720.0F), Math.abs(i_98_));
+			}else{
+				graphics2d.fillRect(apx - (int) (25.0F), apy + (int) (450.0F), (int) (720.0F), i_98_);
+			}
+		}
+
+	}
+
 
     public void paint(Graphics g)
     {
-        g.drawImage(offImage, 0, 0, this);
+    	final Graphics2D graphics2d = (Graphics2D) g;
+    	
+    	int i = 0;
+		int i_97_ = 0;
+		if (shaka > 10) {
+			i = (int) ((shaka * 2 * Math.random() - shaka));
+			i_97_ = (int) ((shaka * 2 * Math.random() - shaka));
+			shaka -= 5;
+		}
+		apx = (int) (getWidth() / 2 - 335.0F);
+		apy = (int) (getHeight() / 2 - 200.0F);
+		
+    	
+    	graphics2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		graphics2d.drawImage(offImage, apx + i, apy + i_97_, this);
+
+		cropit(graphics2d, i, i_97_);
     }
 
     public GameSparker()
@@ -619,6 +658,22 @@ public class GameSparker extends Applet
     {
     
     }
+    
+    public void intialize_moto(Madness amadness[], Medium medium){
+    	if(amadness[0].shakedam > 0){
+        	shaka = amadness[0].shakedam / 20;
+        	amadness[0].shakedam = 0;
+        	if (shaka > 25){
+				shaka = 25;
+			}	
+        	shaka--;
+        }
+        mvect = 65 + Math.abs(lmxz - medium.xz) / 5 * 100;
+		if (mvect > 90)
+			mvect = 90;
+		lmxz = medium.xz;
+    }
+    
     //@SuppressWarnings("deprecation")
 	public void run()
     {
@@ -839,6 +894,7 @@ public class GameSparker extends Applet
             }
             if(xtgraphics.fase == 1)
             {
+            	rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
                 xtgraphics.trackbg(false);
                 medium.aroundtrack(checkpoints);
                 int i3 = 0;
@@ -882,6 +938,7 @@ public class GameSparker extends Applet
 
                 }
 
+                rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 xtgraphics.ctachm(xm, ym, mouses, u[0]);
                 if(mouses == 2)
                     mouses = 0;
@@ -1046,6 +1103,7 @@ public class GameSparker extends Applet
                     {
                         medium.follow(aconto1[0], amadness[0].cxz, u[0].lookback);
                         xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
+                        intialize_moto(amadness, medium);
                     }
                     if(view == 1)
                     {
@@ -1582,10 +1640,11 @@ public class GameSparker extends Applet
     	if(getAppletContext() instanceof DesktopContext) loadData();
         offImage = createImage(670, 400);
         if (offImage != null)
-            {
+        {
             sg = offImage.getGraphics();
             rd = ((Graphics2D)sg);            
             rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             rd.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
             rd.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         }
@@ -1701,4 +1760,10 @@ public class GameSparker extends Applet
     int nob;
     int notb;
     int view;
+    ///moto vars
+    private int shaka = 0;
+    private int apx = 0;
+	private int apy = 0;
+	private int mvect = 0;
+	private int lmxz = 0;
 }

@@ -32,6 +32,8 @@ public class Madness
                 byte1 = -1;
             if(k > 330 || k < 30)
                 byte1 = 1;
+            if (byte0 * byte1 == 0)
+				shakedam = (int) ((Math.abs(f) + shakedam) / 2.0F);
             if(im == 0 || colidim)
                 xt.crash(f, byte1 * byte0);
             if(byte1 * byte0 == 0 || mtouch)
@@ -198,6 +200,7 @@ public class Madness
         rpd = record;
         xt = xtgraphics;
         im = i;
+        shakedam = 0;
     }
 
     public int rpy(float f, float f1, float f2, float f3, float f4, float f5)
@@ -215,6 +218,7 @@ public class Madness
                 f -= 100F;
             if(f < -100F)
                 f += 100F;
+            shakedam = (int) ((Math.abs(f) + shakedam) / 2.0F);
             if(im == 0 || colidim)
                 xt.crash(f, 0);
             for(int j = 0; j < conto.npl; j++)
@@ -520,6 +524,7 @@ public class Madness
                 f -= 100F;
             if(f < -100F)
                 f += 100F;
+            shakedam = (int) ((Math.abs(f) + shakedam) / 2.0F);
             if(im == 0 || colidim)
                 xt.crash(f, 0);
             for(int j = 0; j < conto.npl; j++)
@@ -2128,4 +2133,6 @@ public class Madness
     boolean nofocus;
     int rpdcatch;
     boolean colidim;
+    ///moto vars
+	int shakedam;
 }
