@@ -1,4 +1,4 @@
-package nfm;
+
 import java.awt.*;
 
 public class Plane

@@ -1,4 +1,4 @@
-package nfm;
+
 import java.applet.AppletContext;
 import java.applet.AppletStub;
 import java.net.MalformedURLException;

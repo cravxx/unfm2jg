@@ -5,4 +5,3 @@
  * @author Kaffeinated
  *
  */
-package nfm;

@@ -1,4 +1,4 @@
-package nfm;
+
 import java.applet.Applet;
 import java.io.*;
 import java.net.URL;

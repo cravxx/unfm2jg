@@ -1,4 +1,4 @@
-package nfm;
+
 import java.io.*;
 
 public class Mod
