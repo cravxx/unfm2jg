@@ -211,6 +211,37 @@ public class GameSparker extends Applet
         notb = 0;
         view = 0;
     }
+    
+    
+    /**
+     * @param input - name of model you want id of
+     * @return The id. If you spelled it wrong, it returns -1, so you have that to look forward to.
+     */
+    private int getModel(String input){
+		
+		String[][] allModels = new String[][] { car_models, track_models/*, extra_models*/ }; ///need to have all the model arrays here
+		
+		int model_id = 0;
+		
+		for (int i = 0; i < allModels.length; i++) {
+			for (int j = 0; j < allModels[i].length; j++) {
+				if(input == allModels[i][j]){
+					int what_do_i_add = 0;
+					if(i == 1){
+						what_do_i_add = car_models.length;					
+					}
+					if(i == 2){
+						what_do_i_add = car_models.length + track_models.length;					
+					}				
+					model_id = j + what_do_i_add;	
+					System.out.println("found model " + model_id + " matching string \"" + input + "\"");					
+					return model_id;		
+				}
+			}
+	    }		
+		System.out.println("no results for getModel | check you're speling and grammer");
+		return -1;
+	}
 
     private void loadbase(final ContO conto[], Medium medium, Trackers trackers, xtGraphics xtgraphics) {			
 		xtgraphics.dnload += 6;
@@ -251,7 +282,7 @@ public class GameSparker extends Applet
 
 				xtgraphics.dnload++;
 			}
-
+			System.out.println((car_models.length+track_models.length));
 			zipinputstream.close();
 		} catch (Exception exception) {
 			System.out.println("Error Reading Models: " + exception);
@@ -298,7 +329,8 @@ public class GameSparker extends Applet
     {
         if(gamer == null)
             gamer = new Thread(this);
-        gamer.start();
+        if (gamer.getState() == Thread.State.NEW)
+        	gamer.start();
     }
 
     public boolean mouseDown(Event event, int i, int j)
@@ -328,6 +360,7 @@ public class GameSparker extends Applet
         medium.ground = 250;
         view = 0;
         
+        final int wall_id = getModel("thewall");
         int r_wall = 0;
 		int l_wall = 100;
 		int t_wall = 0;
@@ -510,7 +543,7 @@ public class GameSparker extends Applet
                     int j4 = getint("maxr", s1, 2);
                     for(int j5 = 0; j5 < j2; j5++)
                     {
-                        aconto[nob] = new ContO(aconto1[45], j3, medium.ground - aconto1[45].grat, j5 * 4800 + j4, 0);
+                        aconto[nob] = new ContO(aconto1[wall_id], j3, medium.ground - aconto1[wall_id].grat, j5 * 4800 + j4, 0);
                         nob++;
                     }
 
@@ -533,7 +566,7 @@ public class GameSparker extends Applet
                     int k4 = getint("maxl", s1, 2);
                     for(int k5 = 0; k5 < k2; k5++)
                     {
-                        aconto[nob] = new ContO(aconto1[45], k3, medium.ground - aconto1[45].grat, k5 * 4800 + k4, 0);
+                        aconto[nob] = new ContO(aconto1[wall_id], k3, medium.ground - aconto1[wall_id].grat, k5 * 4800 + k4, 0);
                         nob++;
                     }
 
@@ -557,7 +590,7 @@ public class GameSparker extends Applet
                     int l4 = getint("maxt", s1, 2);
                     for(int l5 = 0; l5 < l2; l5++)
                     {
-                        aconto[nob] = new ContO(aconto1[45], l5 * 4800 + l4, medium.ground - aconto1[45].grat, l3, 90);
+                        aconto[nob] = new ContO(aconto1[wall_id], l5 * 4800 + l4, medium.ground - aconto1[wall_id].grat, l3, 90);
                         nob++;
                     }
 
@@ -580,7 +613,7 @@ public class GameSparker extends Applet
                     int i5 = getint("maxb", s1, 2);
                     for(int i6 = 0; i6 < i3; i6++)
                     {
-                        aconto[nob] = new ContO(aconto1[45], i6 * 4800 + i5, medium.ground - aconto1[45].grat, i4, 90);
+                        aconto[nob] = new ContO(aconto1[wall_id], i6 * 4800 + i5, medium.ground - aconto1[wall_id].grat, i4, 90);
                         nob++;
                     }
 
@@ -690,7 +723,7 @@ public class GameSparker extends Applet
         xtGraphics xtgraphics = new xtGraphics(medium, rd, this);
         xtgraphics.loaddata(k);
         Record record = new Record(medium);
-        ContO aconto[] = new ContO[61];
+        ContO aconto[] = new ContO[car_models.length + track_models.length /*+ extra_models.length*/]; // be sure all your arrays get in here
         loadbase(aconto, medium, trackers, xtgraphics);
         ContO aconto1[] = new ContO[3000];
         Madness amadness[] = new Madness[7];
