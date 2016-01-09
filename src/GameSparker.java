@@ -282,7 +282,7 @@ public class GameSparker extends Applet
 
 				xtgraphics.dnload++;
 			}
-			System.out.println((car_models.length+track_models.length));
+			System.out.println((car_models.length+track_models.length+extra_models.length)); ///be sure to add your added arrays here
 			zipinputstream.close();
 		} catch (Exception exception) {
 			System.out.println("Error Reading Models: " + exception);
@@ -1775,16 +1775,16 @@ public class GameSparker extends Applet
         }
     }
     
-    String car_models[] = { "2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide",
+    final String car_models[] = { "2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide",
 			"koolkat", "drifter", "policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster" };
 
-	String track_models[] = { "road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn",
+	final String track_models[] = { "road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn",
 			"nroad", "nturn", "roblend", "noblend", "rnblend", "roadend", "offroadend", "hpground", "ramp30",
 			"cramp35", "dramp15", "dhilo15", "slide10", "takeoff", "sramp22", "offbump", "offramp", "sofframp",
 			"halfpipe", "spikes", "rail", "thewall", "checkpoint", "fixpoint", "offcheckpoint", "sideoff",
 			"bsideoff", "uprise", "riseroad", "sroad", "soffroad" };
 
-	String extra_models[] = {  };
+	final String extra_models[] = {  };
 
     CheckPoints cp; 
     Graphics2D rd;
