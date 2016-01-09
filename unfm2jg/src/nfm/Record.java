@@ -1,3 +1,4 @@
+package nfm;
 import java.awt.Color;
 
 public class Record

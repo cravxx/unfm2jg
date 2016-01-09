@@ -1,3 +1,4 @@
+package nfm;
 
 public final class UlawUtils
 {
