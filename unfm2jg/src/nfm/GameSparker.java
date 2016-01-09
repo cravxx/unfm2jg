@@ -219,7 +219,7 @@ public class GameSparker extends Applet
      */
     private int getModel(String input){
 		
-		String[][] allModels = new String[][] { car_models, track_models/*, extra_models*/ }; ///need to have all the model arrays here
+		String[][] allModels = new String[][] { car_models, track_models, extra_models }; ///need to have all the model arrays here
 		
 		int model_id = 0;
 		
@@ -253,7 +253,7 @@ public class GameSparker extends Applet
 			for (; zipentry != null; zipentry = zipinputstream.getNextEntry()) {
 				int models_count = 0;
 				final int car_count = car_models.length;
-				//final int track_count = track_models.length;
+				final int track_count = track_models.length;
 				//final int extra_count = extra_models.length;
 
 				for (int car = 0; car < car_models.length; car++)
@@ -264,9 +264,9 @@ public class GameSparker extends Applet
 					if (zipentry.getName().startsWith(track_models[track]))
 						models_count = track + car_count;
 
-				/*for (int extra = 0; extra < extra_models.length; extra++)
+				for (int extra = 0; extra < extra_models.length; extra++)
 					if (zipentry.getName().startsWith(extra_models[extra]))
-						models_count = extra + track_count + car_count;*/
+						models_count = extra + track_count + car_count;
 
 				int entire_size = (int) zipentry.getSize();
 				final byte[] model_data = new byte[entire_size];
@@ -723,7 +723,7 @@ public class GameSparker extends Applet
         xtGraphics xtgraphics = new xtGraphics(medium, rd, this);
         xtgraphics.loaddata(k);
         Record record = new Record(medium);
-        ContO aconto[] = new ContO[car_models.length + track_models.length /*+ extra_models.length*/]; // be sure all your arrays get in here
+        ContO aconto[] = new ContO[car_models.length + track_models.length + extra_models.length]; // be sure all your arrays get in here
         loadbase(aconto, medium, trackers, xtgraphics);
         ContO aconto1[] = new ContO[3000];
         Madness amadness[] = new Madness[7];
@@ -1784,7 +1784,7 @@ public class GameSparker extends Applet
 			"halfpipe", "spikes", "rail", "thewall", "checkpoint", "fixpoint", "offcheckpoint", "sideoff",
 			"bsideoff", "uprise", "riseroad", "sroad", "soffroad" };
 
-	//String extra_models[] = { "ufo" };
+	String extra_models[] = {  };
 
     CheckPoints cp; 
     Graphics2D rd;
