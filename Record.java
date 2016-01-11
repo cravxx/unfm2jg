@@ -131,14 +131,14 @@ public class Record {
 							conto.p[l].ctmag = f1;
 						}
 						if (!conto.p[l].nocol && !conto.p[l].glass) {
-							if (conto.p[l].bfase > 20 && (double) conto.p[l].hsb[1] > 0.20000000000000001D) {
+							if (conto.p[l].bfase > 20 && conto.p[l].hsb[1] > 0.20000000000000001D) {
 								conto.p[l].hsb[1] = 0.2F;
 							}
 							if (conto.p[l].bfase > 30) {
-								if ((double) conto.p[l].hsb[2] < 0.5D) {
+								if (conto.p[l].hsb[2] < 0.5D) {
 									conto.p[l].hsb[2] = 0.5F;
 								}
-								if ((double) conto.p[l].hsb[1] > 0.10000000000000001D) {
+								if (conto.p[l].hsb[1] > 0.10000000000000001D) {
 									conto.p[l].hsb[1] = 0.1F;
 								}
 							}
@@ -146,7 +146,7 @@ public class Record {
 								conto.p[l].hsb[1] = 0.05F;
 							}
 							if (conto.p[l].bfase > 50) {
-								if ((double) conto.p[l].hsb[2] > 0.80000000000000004D) {
+								if (conto.p[l].hsb[2] > 0.80000000000000004D) {
 									conto.p[l].hsb[2] = 0.8F;
 								}
 								conto.p[l].hsb[0] = 0.075F;
@@ -163,7 +163,7 @@ public class Record {
 							conto.p[l].c[2] = color.getBlue();
 						}
 						if (conto.p[l].glass) {
-							conto.p[l].gr += Math.abs((double) f1 * 1.5D);
+							conto.p[l].gr += Math.abs(f1 * 1.5D);
 						}
 					}
 				}
@@ -183,7 +183,7 @@ public class Record {
 									|| conto.p[l1].oy[i2] < madness.flipy[madness.cn] + squash[0][madness.im])
 									&& squash[0][madness.im] < madness.msquash[madness.cn]) {
 								conto.p[l1].oy[i2] += f2;
-								i1 = (int) ((float) i1 + f2);
+								i1 = (int) (i1 + f2);
 								j1++;
 							}
 						}
@@ -460,14 +460,14 @@ public class Record {
 						conto.p[j].ctmag = f1;
 					}
 					if (!conto.p[j].nocol && !conto.p[j].glass) {
-						if (conto.p[j].bfase > 20 && (double) conto.p[j].hsb[1] > 0.20000000000000001D) {
+						if (conto.p[j].bfase > 20 && conto.p[j].hsb[1] > 0.20000000000000001D) {
 							conto.p[j].hsb[1] = 0.2F;
 						}
 						if (conto.p[j].bfase > 30) {
-							if ((double) conto.p[j].hsb[2] < 0.5D) {
+							if (conto.p[j].hsb[2] < 0.5D) {
 								conto.p[j].hsb[2] = 0.5F;
 							}
-							if ((double) conto.p[j].hsb[1] > 0.10000000000000001D) {
+							if (conto.p[j].hsb[1] > 0.10000000000000001D) {
 								conto.p[j].hsb[1] = 0.1F;
 							}
 						}
@@ -475,7 +475,7 @@ public class Record {
 							conto.p[j].hsb[1] = 0.05F;
 						}
 						if (conto.p[j].bfase > 50) {
-							if ((double) conto.p[j].hsb[2] > 0.80000000000000004D) {
+							if (conto.p[j].hsb[2] > 0.80000000000000004D) {
 								conto.p[j].hsb[2] = 0.8F;
 							}
 							conto.p[j].hsb[0] = 0.075F;
@@ -492,7 +492,7 @@ public class Record {
 						conto.p[j].c[2] = color.getBlue();
 					}
 					if (conto.p[j].glass) {
-						conto.p[j].gr += Math.abs((double) f1 * 1.5D);
+						conto.p[j].gr += Math.abs(f1 * 1.5D);
 					}
 				}
 			}
@@ -796,14 +796,14 @@ public class Record {
 						conto.p[j].ctmag = f1;
 					}
 					if (!conto.p[j].nocol && !conto.p[j].glass) {
-						if (conto.p[j].bfase > 20 && (double) conto.p[j].hsb[1] > 0.20000000000000001D) {
+						if (conto.p[j].bfase > 20 && conto.p[j].hsb[1] > 0.20000000000000001D) {
 							conto.p[j].hsb[1] = 0.2F;
 						}
 						if (conto.p[j].bfase > 30) {
-							if ((double) conto.p[j].hsb[2] < 0.5D) {
+							if (conto.p[j].hsb[2] < 0.5D) {
 								conto.p[j].hsb[2] = 0.5F;
 							}
-							if ((double) conto.p[j].hsb[1] > 0.10000000000000001D) {
+							if (conto.p[j].hsb[1] > 0.10000000000000001D) {
 								conto.p[j].hsb[1] = 0.1F;
 							}
 						}
@@ -811,7 +811,7 @@ public class Record {
 							conto.p[j].hsb[1] = 0.05F;
 						}
 						if (conto.p[j].bfase > 50) {
-							if ((double) conto.p[j].hsb[2] > 0.80000000000000004D) {
+							if (conto.p[j].hsb[2] > 0.80000000000000004D) {
 								conto.p[j].hsb[2] = 0.8F;
 							}
 							conto.p[j].hsb[0] = 0.075F;
@@ -828,7 +828,7 @@ public class Record {
 						conto.p[j].c[2] = color.getBlue();
 					}
 					if (conto.p[j].glass) {
-						conto.p[j].gr += Math.abs((double) f1 * 1.5D);
+						conto.p[j].gr += Math.abs(f1 * 1.5D);
 					}
 				}
 			}

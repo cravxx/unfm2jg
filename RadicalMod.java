@@ -155,13 +155,13 @@ public class RadicalMod {
 				suny = false;
 			}
 			if (suny) {
-				j = (int) (((float) j / 8000F) * 2.0F * (float) l);
+				j = (int) ((j / 8000F) * 2.0F * l);
 			}
 			if (!suny) {
 				if (!flag1) {
-					i = (int) ((double) i * 1.5D);
+					i = (int) (i * 1.5D);
 				} else {
-					i = (int) ((double) i * 2.2000000000000002D);
+					i = (int) (i * 2.2000000000000002D);
 				}
 			}
 			Mod mod = new Mod(new ByteArrayInputStream(modf));

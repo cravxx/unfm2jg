@@ -73,12 +73,12 @@ public class ContO {
 					if (t.skd[k1] == 0) {
 						k = stg[i] * stg[i] * stg[i] + 2;
 					}
-					l = (int) (((double) t.c[k1][0] * 0.87D * (double) k + (double) (m.cfade[0] * 2)
-							+ (double) m.csky[0]) / (double) (3 + k));
-					i1 = (int) (((double) t.c[k1][1] * 0.87D * (double) k + (double) (m.cfade[0] * 2)
-							+ (double) m.csky[1]) / (double) (3 + k));
-					j1 = (int) (((double) t.c[k1][2] * 0.87D * (double) k + (double) (m.cfade[0] * 2)
-							+ (double) m.csky[2]) / (double) (3 + k));
+					l = (int) ((t.c[k1][0] * 0.87D * k + m.cfade[0] * 2
+							+ m.csky[0]) / (3 + k));
+					i1 = (int) ((t.c[k1][1] * 0.87D * k + m.cfade[0] * 2
+							+ m.csky[1]) / (3 + k));
+					j1 = (int) ((t.c[k1][2] * 0.87D * k + m.cfade[0] * 2
+							+ m.csky[2]) / (3 + k));
 				}
 			}
 
@@ -86,11 +86,11 @@ public class ContO {
 				sy[i] = 250;
 			}
 			int l1 = m.cx
-					+ (int) ((float) (sx[i] - m.x - m.cx) * m.cos(m.xz) - (float) (sz[i] - m.z - m.cz) * m.sin(m.xz));
+					+ (int) ((sx[i] - m.x - m.cx) * m.cos(m.xz) - (sz[i] - m.z - m.cz) * m.sin(m.xz));
 			int i2 = m.cz
-					+ (int) ((float) (sx[i] - m.x - m.cx) * m.sin(m.xz) + (float) (sz[i] - m.z - m.cz) * m.cos(m.xz));
-			int j2 = m.cy + (int) ((float) (sy[i] - m.y - m.cy) * m.cos(m.zy) - (float) (i2 - m.cz) * m.sin(m.zy));
-			i2 = m.cz + (int) ((float) (sy[i] - m.y - m.cy) * m.sin(m.zy) + (float) (i2 - m.cz) * m.cos(m.zy));
+					+ (int) ((sx[i] - m.x - m.cx) * m.sin(m.xz) + (sz[i] - m.z - m.cz) * m.cos(m.xz));
+			int j2 = m.cy + (int) ((sy[i] - m.y - m.cy) * m.cos(m.zy) - (i2 - m.cz) * m.sin(m.zy));
+			i2 = m.cz + (int) ((sy[i] - m.y - m.cy) * m.sin(m.zy) + (i2 - m.cz) * m.cos(m.zy));
 			int k2 = (int) Math.sqrt((m.cy - j2) * (m.cy - j2) + (m.cx - l1) * (m.cx - l1) + i2 * i2);
 			int l2 = 0;
 			do {
@@ -105,46 +105,46 @@ public class ContO {
 			} else {
 				sy[i] -= 23F + 7F * smag[i];
 			}
-			sx[i] += (float) scx[i] / ((float) (stg[i] + 1) * smag[i]);
-			sz[i] += (float) scz[i] / ((float) (stg[i] + 1) * smag[i]);
+			sx[i] += scx[i] / ((stg[i] + 1) * smag[i]);
+			sz[i] += scz[i] / ((stg[i] + 1) * smag[i]);
 			int ai[] = new int[8];
 			int ai1[] = new int[8];
 			int i3 = stg[i] - 3;
-			ai[0] = xs((int) ((float) l1 - (18F + m.random() * 18F + (float) (i3 * 6)) * smag[i]), i2);
+			ai[0] = xs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[0] = ys(
-					(int) ((double) j2 - (7.5D + (double) m.random() * 7.5D + (double) i3 * 2.5D) * (double) smag[i]),
+					(int) (j2 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
 			if (ai1[0] < 45 && m.flex != 0) {
 				m.flex = 0;
 			}
-			ai[1] = xs((int) ((float) l1 - (18F + m.random() * 18F + (float) (i3 * 6)) * smag[i]), i2);
+			ai[1] = xs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[1] = ys(
-					(int) ((double) j2 + (7.5D + (double) m.random() * 7.5D + (double) i3 * 2.5D) * (double) smag[i]),
+					(int) (j2 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
 			ai[2] = xs(
-					(int) ((double) l1 - (7.5D + (double) m.random() * 7.5D + (double) i3 * 2.5D) * (double) smag[i]),
+					(int) (l1 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[2] = ys((int) ((float) j2 + (18F + m.random() * 18F + (float) (i3 * 6)) * smag[i]), i2);
+			ai1[2] = ys((int) (j2 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai[3] = xs(
-					(int) ((double) l1 + (7.5D + (double) m.random() * 7.5D + (double) i3 * 2.5D) * (double) smag[i]),
+					(int) (l1 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[3] = ys((int) ((float) j2 + (18F + m.random() * 18F + (float) (i3 * 6)) * smag[i]), i2);
-			ai[4] = xs((int) ((float) l1 + (18F + m.random() * 18F + (float) (i3 * 6)) * smag[i]), i2);
+			ai1[3] = ys((int) (j2 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai[4] = xs((int) (l1 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[4] = ys(
-					(int) ((double) j2 + (7.5D + (double) m.random() * 7.5D + (double) i3 * 2.5D) * (double) smag[i]),
+					(int) (j2 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai[5] = xs((int) ((float) l1 + (18F + m.random() * 18F + (float) (i3 * 6)) * smag[i]), i2);
+			ai[5] = xs((int) (l1 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[5] = ys(
-					(int) ((double) j2 - (7.5D + (double) m.random() * 7.5D + (double) i3 * 2.5D) * (double) smag[i]),
+					(int) (j2 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
 			ai[6] = xs(
-					(int) ((double) l1 + (7.5D + (double) m.random() * 7.5D + (double) i3 * 2.5D) * (double) smag[i]),
+					(int) (l1 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[6] = ys((int) ((float) j2 - (18F + m.random() * 18F + (float) (i3 * 6)) * smag[i]), i2);
+			ai1[6] = ys((int) (j2 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai[7] = xs(
-					(int) ((double) l1 - (7.5D + (double) m.random() * 7.5D + (double) i3 * 2.5D) * (double) smag[i]),
+					(int) (l1 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[7] = ys((int) ((float) j2 - (18F + m.random() * 18F + (float) (i3 * 6)) * smag[i]), i2);
+			ai1[7] = ys((int) (j2 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			boolean flag = true;
 			int j3 = 0;
 			int k3 = 0;
@@ -299,9 +299,9 @@ public class ContO {
 						byte0 = 1;
 					}
 					if (s1.startsWith("p")) {
-						ai[i] = (int) (((float) getvalue("p", s1, 0) * f * f1) * nfmm_scale[0]);
-						ai1[i] = (int) (((float) getvalue("p", s1, 1) * f) * nfmm_scale[1]);
-						ai2[i] = (int) (((float) getvalue("p", s1, 2) * f) * nfmm_scale[2]);
+						ai[i] = (int) ((getvalue("p", s1, 0) * f * f1) * nfmm_scale[0]);
+						ai1[i] = (int) ((getvalue("p", s1, 1) * f) * nfmm_scale[1]);
+						ai2[i] = (int) ((getvalue("p", s1, 2) * f) * nfmm_scale[2]);
 						int j1 = (int) Math.sqrt(ai[i] * ai[i] + ai1[i] * ai1[i] + ai2[i] * ai2[i]);
 						if (j1 > maxR) {
 							maxR = j1;
@@ -319,13 +319,13 @@ public class ContO {
 							getvalue("rims", s1, 3), getvalue("rims", s1, 4));
 				}
 				if (s1.startsWith("w")) {
-					keyx[j] = (int) ((float) getvalue("w", s1, 0) * f * nfmm_scale[0]);
-					keyz[j] = (int) ((float) getvalue("w", s1, 2) * f * nfmm_scale[2]);
+					keyx[j] = (int) (getvalue("w", s1, 0) * f * nfmm_scale[0]);
+					keyz[j] = (int) (getvalue("w", s1, 2) * f * nfmm_scale[2]);
 					j++;
-					wheels.make(m, t, p, npl, (int) ((float) getvalue("w", s1, 0) * f * f1 * nfmm_scale[0]),
-							(int) ((float) getvalue("w", s1, 1) * f * nfmm_scale[1]),
-							(int) ((float) getvalue("w", s1, 2) * f * nfmm_scale[2]), getvalue("w", s1, 3),
-							(int) ((float) getvalue("w", s1, 4) * f * f1), (int) ((int) getvalue("w", s1, 5) * f), i1);
+					wheels.make(m, t, p, npl, (int) (getvalue("w", s1, 0) * f * f1 * nfmm_scale[0]),
+							(int) (getvalue("w", s1, 1) * f * nfmm_scale[1]),
+							(int) (getvalue("w", s1, 2) * f * nfmm_scale[2]), getvalue("w", s1, 3),
+							(int) (getvalue("w", s1, 4) * f * f1), (int) (getvalue("w", s1, 5) * f), i1);
 					npl += 15;
 				}
 				if (s1.startsWith("tracks")) {
@@ -373,22 +373,22 @@ public class ContO {
 						tzy[tnt] = getvalue("zy", s1, 0);
 					}
 					if (s1.startsWith("radx")) {
-						tradx[tnt] = (int) ((float) getvalue("radx", s1, 0) * f);
+						tradx[tnt] = (int) (getvalue("radx", s1, 0) * f);
 					}
 					if (s1.startsWith("rady")) {
-						trady[tnt] = (int) ((float) getvalue("rady", s1, 0) * f);
+						trady[tnt] = (int) (getvalue("rady", s1, 0) * f);
 					}
 					if (s1.startsWith("radz")) {
-						tradz[tnt] = (int) ((float) getvalue("radz", s1, 0) * f);
+						tradz[tnt] = (int) (getvalue("radz", s1, 0) * f);
 					}
 					if (s1.startsWith("ty")) {
-						ty[tnt] = (int) ((float) getvalue("ty", s1, 0) * f);
+						ty[tnt] = (int) (getvalue("ty", s1, 0) * f);
 					}
 					if (s1.startsWith("tx")) {
-						tx[tnt] = (int) ((float) getvalue("tx", s1, 0) * f);
+						tx[tnt] = (int) (getvalue("tx", s1, 0) * f);
 					}
 					if (s1.startsWith("tz")) {
-						tz[tnt] = (int) ((float) getvalue("tz", s1, 0) * f);
+						tz[tnt] = (int) (getvalue("tz", s1, 0) * f);
 					}
 					if (s1.startsWith("skid")) {
 						skd[tnt] = getvalue("skid", s1, 0);
@@ -423,28 +423,28 @@ public class ContO {
 					flag3 = false;
 				}
 				if (s1.startsWith("grounded")) {
-					grounded = (float) getvalue("grounded", s1, 0) / 100F;
+					grounded = getvalue("grounded", s1, 0) / 100F;
 				}
 				if (s1.startsWith("div")) {
-					f = (float) getvalue("div", s1, 0) / 10F;
+					f = getvalue("div", s1, 0) / 10F;
 				}
 				if (s1.startsWith("idiv")) {
-					f = (float) getvalue("idiv", s1, 0) / 100F;
+					f = getvalue("idiv", s1, 0) / 100F;
 				}
 				if (s1.startsWith("iwid")) {
-					f1 = (float) getvalue("iwid", s1, 0) / 100F;
+					f1 = getvalue("iwid", s1, 0) / 100F;
 				}
 				if (s1.startsWith("gwgr")) {
 					i1 = getvalue("gwgr", s1, 0);
 				}
 				if (s1.startsWith("ScaleX")) {
-					nfmm_scale[0] = (float) getvalue("ScaleX", s1, 0) / 100F;
+					nfmm_scale[0] = getvalue("ScaleX", s1, 0) / 100F;
 				}
 				if (s1.startsWith("ScaleY")) {
-					nfmm_scale[1] = (float) getvalue("ScaleY", s1, 0) / 100F;
+					nfmm_scale[1] = getvalue("ScaleY", s1, 0) / 100F;
 				}
 				if (s1.startsWith("ScaleZ")) {
-					nfmm_scale[2] = (float) getvalue("ScaleZ", s1, 0) / 100F;
+					nfmm_scale[2] = getvalue("ScaleZ", s1, 0) / 100F;
 				}
 			}
 			datainputstream.close();
@@ -529,12 +529,12 @@ public class ContO {
 
 		if (conto.tnt != 0) {
 			for (int k1 = 0; k1 < conto.tnt; k1++) {
-				t.xy[t.nt] = (int) ((float) conto.txy[k1] * m.cos(l) - (float) conto.tzy[k1] * m.sin(l));
-				t.zy[t.nt] = (int) ((float) conto.tzy[k1] * m.cos(l) + (float) conto.txy[k1] * m.sin(l));
+				t.xy[t.nt] = (int) (conto.txy[k1] * m.cos(l) - conto.tzy[k1] * m.sin(l));
+				t.zy[t.nt] = (int) (conto.tzy[k1] * m.cos(l) + conto.txy[k1] * m.sin(l));
 				int i2 = 0;
 				do {
-					t.c[t.nt][i2] = (int) ((float) conto.tc[k1][i2]
-							+ (float) conto.tc[k1][i2] * ((float) m.snap[i2] / 100F));
+					t.c[t.nt][i2] = (int) (conto.tc[k1][i2]
+							+ conto.tc[k1][i2] * (m.snap[i2] / 100F));
 					if (t.c[t.nt][i2] > 255) {
 						t.c[t.nt][i2] = 255;
 					}
@@ -542,8 +542,8 @@ public class ContO {
 						t.c[t.nt][i2] = 0;
 					}
 				} while (++i2 < 3);
-				t.x[t.nt] = (int) (((float) x + (float) conto.tx[k1] * m.cos(l)) - (float) conto.tz[k1] * m.sin(l));
-				t.z[t.nt] = (int) ((float) z + (float) conto.tz[k1] * m.cos(l) + (float) conto.tx[k1] * m.sin(l));
+				t.x[t.nt] = (int) ((x + conto.tx[k1] * m.cos(l)) - conto.tz[k1] * m.sin(l));
+				t.z[t.nt] = (int) (z + conto.tz[k1] * m.cos(l) + conto.tx[k1] * m.sin(l));
 				t.y[t.nt] = y + conto.ty[k1];
 				t.skd[t.nt] = conto.skd[k1];
 				t.dam[t.nt] = conto.dam[k1];
@@ -553,9 +553,9 @@ public class ContO {
 					i2 = 0;
 				}
 				t.radx[t.nt] = (int) Math
-						.abs((float) conto.tradx[k1] * m.cos(i2) + (float) conto.tradz[k1] * m.sin(i2));
+						.abs(conto.tradx[k1] * m.cos(i2) + conto.tradz[k1] * m.sin(i2));
 				t.radz[t.nt] = (int) Math
-						.abs((float) conto.tradx[k1] * m.sin(i2) + (float) conto.tradz[k1] * m.cos(i2));
+						.abs(conto.tradx[k1] * m.sin(i2) + conto.tradz[k1] * m.cos(i2));
 				t.rady[t.nt] = conto.trady[k1];
 				t.nt++;
 			}
@@ -573,9 +573,9 @@ public class ContO {
 		if (dist != 0) {
 			dist = 0;
 		}
-		int i = m.cx + (int) ((float) (x - m.x - m.cx) * m.cos(m.xz) - (float) (z - m.z - m.cz) * m.sin(m.xz));
-		int j = m.cz + (int) ((float) (x - m.x - m.cx) * m.sin(m.xz) + (float) (z - m.z - m.cz) * m.cos(m.xz));
-		int k = m.cz + (int) ((float) (y - m.y - m.cy) * m.sin(m.zy) + (float) (j - m.cz) * m.cos(m.zy));
+		int i = m.cx + (int) ((x - m.x - m.cx) * m.cos(m.xz) - (z - m.z - m.cz) * m.sin(m.xz));
+		int j = m.cz + (int) ((x - m.x - m.cx) * m.sin(m.xz) + (z - m.z - m.cz) * m.cos(m.xz));
+		int k = m.cz + (int) ((y - m.y - m.cy) * m.sin(m.zy) + (j - m.cz) * m.cos(m.zy));
 		int l = xs(i + maxR, k) - xs(i - maxR, k);
 		if (xs(i + maxR * 2, k) > 0 && xs(i - maxR * 2, k) < m.w && k > -maxR && (k < m.fade[disline] + maxR || m.trk)
 				&& (l > disp || m.trk)) {
@@ -600,10 +600,10 @@ public class ContO {
 							}
 
 						} else {
-							int j2 = m.cy + (int) ((float) (m.ground - m.cy) * m.cos(m.zy)
-									- (float) (j - m.cz) * m.sin(m.zy));
-							int k2 = m.cz + (int) ((float) (m.ground - m.cy) * m.sin(m.zy)
-									+ (float) (j - m.cz) * m.cos(m.zy));
+							int j2 = m.cy + (int) ((m.ground - m.cy) * m.cos(m.zy)
+									- (j - m.cz) * m.sin(m.zy));
+							int k2 = m.cz + (int) ((m.ground - m.cy) * m.sin(m.zy)
+									+ (j - m.cz) * m.cos(m.zy));
 							if (ys(j2 + maxR, k2) > 0 && ys(j2 - maxR, k2) < m.h) {
 								for (int l2 = 0; l2 < npl; l2++) {
 									p[l2].s(rd, x - m.x, y - m.y, z - m.z, xz, xy, zy, 1);
@@ -611,7 +611,7 @@ public class ContO {
 
 							}
 						}
-						m.addsp(x - m.x, z - m.z, (int) ((double) maxR * 0.80000000000000004D));
+						m.addsp(x - m.x, z - m.z, (int) (maxR * 0.80000000000000004D));
 						rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 					} else {
 						lowshadow(rd, k);
@@ -622,7 +622,7 @@ public class ContO {
 					}
 				}
 			}
-			int j1 = m.cy + (int) ((float) (y - m.y - m.cy) * m.cos(m.zy) - (float) (j - m.cz) * m.sin(m.zy));
+			int j1 = m.cy + (int) ((y - m.y - m.cy) * m.cos(m.zy) - (j - m.cz) * m.sin(m.zy));
 			if (ys(j1 + maxR, k) > 0 && ys(j1 - maxR, k) < m.h) {
 				if (elec) {
 					electrify(rd);
@@ -671,7 +671,7 @@ public class ContO {
 				}
 
 				dist = (int) (Math.sqrt((int) Math.sqrt(((m.x + m.cx) - x) * ((m.x + m.cx) - x) + (m.z - z) * (m.z - z)
-						+ ((m.y + m.cy) - y) * ((m.y + m.cy) - y))) * (double) grounded);
+						+ ((m.y + m.cy) - y) * ((m.y + m.cy) - y))) * grounded);
 			}
 		}
 		if (dist == 0) {
@@ -697,8 +697,8 @@ public class ContO {
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
 				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((float) (j1 - i) * m.cos(k) - (float) (k1 - j) * m.sin(k));
-				ai1[i1] = j + (int) ((float) (j1 - i) * m.sin(k) + (float) (k1 - j) * m.cos(k));
+				ai[i1] = i + (int) ((j1 - i) * m.cos(k) - (k1 - j) * m.sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * m.sin(k) + (k1 - j) * m.cos(k));
 			}
 
 		}
@@ -761,18 +761,18 @@ public class ContO {
 		if (j > 90) {
 			byte0 = -1;
 		}
-		ai[0] = (int) (((double) keyx[0] * 1.2D + (double) x) - (double) m.x);
-		ai2[0] = (int) (((double) ((keyz[0] + 30) * byte0) * 1.2D + (double) z) - (double) m.z);
-		ai[1] = (int) (((double) keyx[1] * 1.2D + (double) x) - (double) m.x);
-		ai2[1] = (int) (((double) ((keyz[1] + 30) * byte0) * 1.2D + (double) z) - (double) m.z);
-		ai[2] = (int) (((double) keyx[3] * 1.2D + (double) x) - (double) m.x);
-		ai2[2] = (int) (((double) ((keyz[3] - 30) * byte0) * 1.2D + (double) z) - (double) m.z);
-		ai[3] = (int) (((double) keyx[2] * 1.2D + (double) x) - (double) m.x);
-		ai2[3] = (int) (((double) ((keyz[2] - 30) * byte0) * 1.2D + (double) z) - (double) m.z);
+		ai[0] = (int) ((keyx[0] * 1.2D + x) - m.x);
+		ai2[0] = (int) (((keyz[0] + 30) * byte0 * 1.2D + z) - m.z);
+		ai[1] = (int) ((keyx[1] * 1.2D + x) - m.x);
+		ai2[1] = (int) (((keyz[1] + 30) * byte0 * 1.2D + z) - m.z);
+		ai[2] = (int) ((keyx[3] * 1.2D + x) - m.x);
+		ai2[2] = (int) (((keyz[3] - 30) * byte0 * 1.2D + z) - m.z);
+		ai[3] = (int) ((keyx[2] * 1.2D + x) - m.x);
+		ai2[3] = (int) (((keyz[2] - 30) * byte0 * 1.2D + z) - m.z);
 		rot(ai, ai2, x - m.x, z - m.z, xz, 4);
-		int k = (int) ((double) (float) m.cgrnd[0] / 1.5D);
-		int l = (int) ((double) (float) m.cgrnd[1] / 1.5D);
-		int i1 = (int) ((double) (float) m.cgrnd[2] / 1.5D);
+		int k = (int) (m.cgrnd[0] / 1.5D);
+		int l = (int) (m.cgrnd[1] / 1.5D);
+		int i1 = (int) (m.cgrnd[2] / 1.5D);
 		int j1 = 0;
 		do {
 			ai1[j1] = m.ground;
@@ -794,17 +794,17 @@ public class ContO {
 			do {
 				ai1[j2] = t.y[k1] - m.y;
 				if (t.zy[k1] != 0) {
-					ai1[j2] += ((float) (ai2[j2] - (t.z[k1] - m.z - t.radz[k1])) * m.sin(t.zy[k1]))
-							/ m.sin(90 - t.zy[k1]) - ((float) t.radz[k1] * m.sin(t.zy[k1])) / m.sin(90 - t.zy[k1]);
+					ai1[j2] += ((ai2[j2] - (t.z[k1] - m.z - t.radz[k1])) * m.sin(t.zy[k1]))
+							/ m.sin(90 - t.zy[k1]) - (t.radz[k1] * m.sin(t.zy[k1])) / m.sin(90 - t.zy[k1]);
 				}
 				if (t.xy[k1] != 0) {
-					ai1[j2] += ((float) (ai[j2] - (t.x[k1] - m.x - t.radx[k1])) * m.sin(t.xy[k1]))
-							/ m.sin(90 - t.xy[k1]) - ((float) t.radx[k1] * m.sin(t.xy[k1])) / m.sin(90 - t.xy[k1]);
+					ai1[j2] += ((ai[j2] - (t.x[k1] - m.x - t.radx[k1])) * m.sin(t.xy[k1]))
+							/ m.sin(90 - t.xy[k1]) - (t.radx[k1] * m.sin(t.xy[k1])) / m.sin(90 - t.xy[k1]);
 				}
 			} while (++j2 < 4);
-			k = (int) ((double) (float) t.c[k1][0] / 1.5D);
-			l = (int) ((double) (float) t.c[k1][1] / 1.5D);
-			i1 = (int) ((double) (float) t.c[k1][2] / 1.5D);
+			k = (int) (t.c[k1][0] / 1.5D);
+			l = (int) (t.c[k1][1] / 1.5D);
+			i1 = (int) (t.c[k1][2] / 1.5D);
 			break;
 		}
 
@@ -857,21 +857,21 @@ public class ContO {
 				p[i].hsb[2] = 0.8F;
 				p[i].hsb[1] = 0.8F;
 				Color color = Color.getHSBColor(p[i].hsb[0], p[i].hsb[1], p[i].hsb[2]);
-				int l = (int) ((float) color.getRed() + (float) color.getRed() * ((float) m.snap[0] / 100F));
+				int l = (int) (color.getRed() + color.getRed() * (m.snap[0] / 100F));
 				if (l > 255) {
 					l = 255;
 				}
 				if (l < 0) {
 					l = 0;
 				}
-				int i1 = (int) ((float) color.getGreen() + (float) color.getGreen() * ((float) m.snap[1] / 100F));
+				int i1 = (int) (color.getGreen() + color.getGreen() * (m.snap[1] / 100F));
 				if (i1 > 255) {
 					i1 = 255;
 				}
 				if (i1 < 0) {
 					i1 = 0;
 				}
-				int k1 = (int) ((float) color.getBlue() + (float) color.getBlue() * ((float) m.snap[2] / 100F));
+				int k1 = (int) (color.getBlue() + color.getBlue() * (m.snap[2] / 100F));
 				if (k1 > 255) {
 					k1 = 255;
 				}
@@ -935,42 +935,42 @@ public class ContO {
 			if (l1 < i2) {
 				l1 = i2;
 			}
-			j2 = m.cx + (int) ((float) (x - m.x - m.cx) * m.cos(m.xz) - (float) (z - m.z - m.cz) * m.sin(m.xz));
-			int l2 = m.cz + (int) ((float) (x - m.x - m.cx) * m.sin(m.xz) + (float) (z - m.z - m.cz) * m.cos(m.xz));
-			int i3 = m.cy + (int) ((float) (y - m.y - m.cy) * m.cos(m.zy) - (float) (l2 - m.cz) * m.sin(m.zy));
-			l2 = m.cz + (int) ((float) (y - m.y - m.cy) * m.sin(m.zy) + (float) (l2 - m.cz) * m.cos(m.zy));
-			ai[0] = xs((int) ((double) j2 - (double) j1 / 0.80000000000000004D
-					- (double) m.random() * ((double) j1 / 2.3999999999999999D)), l2);
-			ai1[0] = ys((int) ((double) i3 - (double) l1 / 1.9199999999999999D
-					- (double) m.random() * ((double) l1 / 5.6699999999999999D)), l2);
-			ai[1] = xs((int) ((double) j2 - (double) j1 / 0.80000000000000004D
-					- (double) m.random() * ((double) j1 / 2.3999999999999999D)), l2);
-			ai1[1] = ys((int) ((double) i3 + (double) l1 / 1.9199999999999999D
-					+ (double) m.random() * ((double) l1 / 5.6699999999999999D)), l2);
-			ai[2] = xs((int) ((double) j2 - (double) j1 / 1.9199999999999999D
-					- (double) m.random() * ((double) j1 / 5.6699999999999999D)), l2);
-			ai1[2] = ys((int) ((double) i3 + (double) l1 / 0.80000000000000004D
-					+ (double) m.random() * ((double) l1 / 2.3999999999999999D)), l2);
-			ai[3] = xs((int) ((double) j2 + (double) j1 / 1.9199999999999999D
-					+ (double) m.random() * ((double) j1 / 5.6699999999999999D)), l2);
-			ai1[3] = ys((int) ((double) i3 + (double) l1 / 0.80000000000000004D
-					+ (double) m.random() * ((double) l1 / 2.3999999999999999D)), l2);
-			ai[4] = xs((int) ((double) j2 + (double) j1 / 0.80000000000000004D
-					+ (double) m.random() * ((double) j1 / 2.3999999999999999D)), l2);
-			ai1[4] = ys((int) ((double) i3 + (double) l1 / 1.9199999999999999D
-					+ (double) m.random() * ((double) l1 / 5.6699999999999999D)), l2);
-			ai[5] = xs((int) ((double) j2 + (double) j1 / 0.80000000000000004D
-					+ (double) m.random() * ((double) j1 / 2.3999999999999999D)), l2);
-			ai1[5] = ys((int) ((double) i3 - (double) l1 / 1.9199999999999999D
-					- (double) m.random() * ((double) l1 / 5.6699999999999999D)), l2);
-			ai[6] = xs((int) ((double) j2 + (double) j1 / 1.9199999999999999D
-					+ (double) m.random() * ((double) j1 / 5.6699999999999999D)), l2);
-			ai1[6] = ys((int) ((double) i3 - (double) l1 / 0.80000000000000004D
-					- (double) m.random() * ((double) l1 / 2.3999999999999999D)), l2);
-			ai[7] = xs((int) ((double) j2 - (double) j1 / 1.9199999999999999D
-					- (double) m.random() * ((double) j1 / 5.6699999999999999D)), l2);
-			ai1[7] = ys((int) ((double) i3 - (double) l1 / 0.80000000000000004D
-					- (double) m.random() * ((double) l1 / 2.3999999999999999D)), l2);
+			j2 = m.cx + (int) ((x - m.x - m.cx) * m.cos(m.xz) - (z - m.z - m.cz) * m.sin(m.xz));
+			int l2 = m.cz + (int) ((x - m.x - m.cx) * m.sin(m.xz) + (z - m.z - m.cz) * m.cos(m.xz));
+			int i3 = m.cy + (int) ((y - m.y - m.cy) * m.cos(m.zy) - (l2 - m.cz) * m.sin(m.zy));
+			l2 = m.cz + (int) ((y - m.y - m.cy) * m.sin(m.zy) + (l2 - m.cz) * m.cos(m.zy));
+			ai[0] = xs((int) (j2 - j1 / 0.80000000000000004D
+					- m.random() * (j1 / 2.3999999999999999D)), l2);
+			ai1[0] = ys((int) (i3 - l1 / 1.9199999999999999D
+					- m.random() * (l1 / 5.6699999999999999D)), l2);
+			ai[1] = xs((int) (j2 - j1 / 0.80000000000000004D
+					- m.random() * (j1 / 2.3999999999999999D)), l2);
+			ai1[1] = ys((int) (i3 + l1 / 1.9199999999999999D
+					+ m.random() * (l1 / 5.6699999999999999D)), l2);
+			ai[2] = xs((int) (j2 - j1 / 1.9199999999999999D
+					- m.random() * (j1 / 5.6699999999999999D)), l2);
+			ai1[2] = ys((int) (i3 + l1 / 0.80000000000000004D
+					+ m.random() * (l1 / 2.3999999999999999D)), l2);
+			ai[3] = xs((int) (j2 + j1 / 1.9199999999999999D
+					+ m.random() * (j1 / 5.6699999999999999D)), l2);
+			ai1[3] = ys((int) (i3 + l1 / 0.80000000000000004D
+					+ m.random() * (l1 / 2.3999999999999999D)), l2);
+			ai[4] = xs((int) (j2 + j1 / 0.80000000000000004D
+					+ m.random() * (j1 / 2.3999999999999999D)), l2);
+			ai1[4] = ys((int) (i3 + l1 / 1.9199999999999999D
+					+ m.random() * (l1 / 5.6699999999999999D)), l2);
+			ai[5] = xs((int) (j2 + j1 / 0.80000000000000004D
+					+ m.random() * (j1 / 2.3999999999999999D)), l2);
+			ai1[5] = ys((int) (i3 - l1 / 1.9199999999999999D
+					- m.random() * (l1 / 5.6699999999999999D)), l2);
+			ai[6] = xs((int) (j2 + j1 / 1.9199999999999999D
+					+ m.random() * (j1 / 5.6699999999999999D)), l2);
+			ai1[6] = ys((int) (i3 - l1 / 0.80000000000000004D
+					- m.random() * (l1 / 2.3999999999999999D)), l2);
+			ai[7] = xs((int) (j2 - j1 / 1.9199999999999999D
+					- m.random() * (j1 / 5.6699999999999999D)), l2);
+			ai1[7] = ys((int) (i3 - l1 / 0.80000000000000004D
+					- m.random() * (l1 / 2.3999999999999999D)), l2);
 			if (fcnt == 3) {
 				rot(ai, ai1, xs(j2, l2), ys(i3, l2), 22, 8);
 			}
@@ -986,21 +986,21 @@ public class ContO {
 			if (fcnt == 7) {
 				rot(ai, ai1, xs(j2, l2), ys(i3, l2), -22, 8);
 			}
-			int j3 = (int) (191F + 191F * ((float) m.snap[0] / 350F));
+			int j3 = (int) (191F + 191F * (m.snap[0] / 350F));
 			if (j3 > 255) {
 				j3 = 255;
 			}
 			if (j3 < 0) {
 				j3 = 0;
 			}
-			int k3 = (int) (232F + 232F * ((float) m.snap[1] / 350F));
+			int k3 = (int) (232F + 232F * (m.snap[1] / 350F));
 			if (k3 > 255) {
 				k3 = 255;
 			}
 			if (k3 < 0) {
 				k3 = 0;
 			}
-			int l3 = (int) (255F + 255F * ((float) m.snap[2] / 350F));
+			int l3 = (int) (255F + 255F * (m.snap[2] / 350F));
 			if (l3 > 255) {
 				l3 = 255;
 			}
@@ -1009,45 +1009,45 @@ public class ContO {
 			}
 			rd.setColor(new Color(j3, k3, l3));
 			rd.fillPolygon(ai, ai1, 8);
-			ai[0] = xs((int) ((float) (j2 - j1) - m.random() * (float) (j1 / 4)), l2);
-			ai1[0] = ys((int) ((double) i3 - (double) l1 / 2.3999999999999999D
-					- (double) m.random() * ((double) l1 / 9.5999999999999996D)), l2);
-			ai[1] = xs((int) ((float) (j2 - j1) - m.random() * (float) (j1 / 4)), l2);
-			ai1[1] = ys((int) ((double) i3 + (double) l1 / 2.3999999999999999D
-					+ (double) m.random() * ((double) l1 / 9.5999999999999996D)), l2);
-			ai[2] = xs((int) ((double) j2 - (double) j1 / 2.3999999999999999D
-					- (double) m.random() * ((double) j1 / 9.5999999999999996D)), l2);
-			ai1[2] = ys((int) ((float) (i3 + l1) + m.random() * (float) (l1 / 4)), l2);
-			ai[3] = xs((int) ((double) j2 + (double) j1 / 2.3999999999999999D
-					+ (double) m.random() * ((double) j1 / 9.5999999999999996D)), l2);
-			ai1[3] = ys((int) ((float) (i3 + l1) + m.random() * (float) (l1 / 4)), l2);
-			ai[4] = xs((int) ((float) (j2 + j1) + m.random() * (float) (j1 / 4)), l2);
-			ai1[4] = ys((int) ((double) i3 + (double) l1 / 2.3999999999999999D
-					+ (double) m.random() * ((double) l1 / 9.5999999999999996D)), l2);
-			ai[5] = xs((int) ((float) (j2 + j1) + m.random() * (float) (j1 / 4)), l2);
-			ai1[5] = ys((int) ((double) i3 - (double) l1 / 2.3999999999999999D
-					- (double) m.random() * ((double) l1 / 9.5999999999999996D)), l2);
-			ai[6] = xs((int) ((double) j2 + (double) j1 / 2.3999999999999999D
-					+ (double) m.random() * ((double) j1 / 9.5999999999999996D)), l2);
-			ai1[6] = ys((int) ((float) (i3 - l1) - m.random() * (float) (l1 / 4)), l2);
-			ai[7] = xs((int) ((double) j2 - (double) j1 / 2.3999999999999999D
-					- (double) m.random() * ((double) j1 / 9.5999999999999996D)), l2);
-			ai1[7] = ys((int) ((float) (i3 - l1) - m.random() * (float) (l1 / 4)), l2);
-			j3 = (int) (213F + 213F * ((float) m.snap[0] / 350F));
+			ai[0] = xs((int) (j2 - j1 - m.random() * (j1 / 4)), l2);
+			ai1[0] = ys((int) (i3 - l1 / 2.3999999999999999D
+					- m.random() * (l1 / 9.5999999999999996D)), l2);
+			ai[1] = xs((int) (j2 - j1 - m.random() * (j1 / 4)), l2);
+			ai1[1] = ys((int) (i3 + l1 / 2.3999999999999999D
+					+ m.random() * (l1 / 9.5999999999999996D)), l2);
+			ai[2] = xs((int) (j2 - j1 / 2.3999999999999999D
+					- m.random() * (j1 / 9.5999999999999996D)), l2);
+			ai1[2] = ys((int) (i3 + l1 + m.random() * (l1 / 4)), l2);
+			ai[3] = xs((int) (j2 + j1 / 2.3999999999999999D
+					+ m.random() * (j1 / 9.5999999999999996D)), l2);
+			ai1[3] = ys((int) (i3 + l1 + m.random() * (l1 / 4)), l2);
+			ai[4] = xs((int) (j2 + j1 + m.random() * (j1 / 4)), l2);
+			ai1[4] = ys((int) (i3 + l1 / 2.3999999999999999D
+					+ m.random() * (l1 / 9.5999999999999996D)), l2);
+			ai[5] = xs((int) (j2 + j1 + m.random() * (j1 / 4)), l2);
+			ai1[5] = ys((int) (i3 - l1 / 2.3999999999999999D
+					- m.random() * (l1 / 9.5999999999999996D)), l2);
+			ai[6] = xs((int) (j2 + j1 / 2.3999999999999999D
+					+ m.random() * (j1 / 9.5999999999999996D)), l2);
+			ai1[6] = ys((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
+			ai[7] = xs((int) (j2 - j1 / 2.3999999999999999D
+					- m.random() * (j1 / 9.5999999999999996D)), l2);
+			ai1[7] = ys((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
+			j3 = (int) (213F + 213F * (m.snap[0] / 350F));
 			if (j3 > 255) {
 				j3 = 255;
 			}
 			if (j3 < 0) {
 				j3 = 0;
 			}
-			k3 = (int) (239F + 239F * ((float) m.snap[1] / 350F));
+			k3 = (int) (239F + 239F * (m.snap[1] / 350F));
 			if (k3 > 255) {
 				k3 = 255;
 			}
 			if (k3 < 0) {
 				k3 = 0;
 			}
-			l3 = (int) (255F + 255F * ((float) m.snap[2] / 350F));
+			l3 = (int) (255F + 255F * (m.snap[2] / 350F));
 			if (l3 > 255) {
 				l3 = 255;
 			}
@@ -1073,8 +1073,8 @@ public class ContO {
 				edr[i] = (int) (380F - m.random() * 760F);
 				elc[i] = 1;
 			}
-			int j = (int) ((float) edl[i] + (190F - m.random() * 380F));
-			int k = (int) ((float) edr[i] + (190F - m.random() * 380F));
+			int j = (int) (edl[i] + (190F - m.random() * 380F));
+			int k = (int) (edr[i] + (190F - m.random() * 380F));
 			int l = (int) (m.random() * 126F);
 			int i1 = (int) (m.random() * 126F);
 			int ai[] = new int[8];
@@ -1133,21 +1133,21 @@ public class ContO {
 				flag = false;
 			}
 			if (flag) {
-				int l2 = (int) (160F + 160F * ((float) m.snap[0] / 500F));
+				int l2 = (int) (160F + 160F * (m.snap[0] / 500F));
 				if (l2 > 255) {
 					l2 = 255;
 				}
 				if (l2 < 0) {
 					l2 = 0;
 				}
-				int j3 = (int) (238F + 238F * ((float) m.snap[1] / 500F));
+				int j3 = (int) (238F + 238F * (m.snap[1] / 500F));
 				if (j3 > 255) {
 					j3 = 255;
 				}
 				if (j3 < 0) {
 					j3 = 0;
 				}
-				int l3 = (int) (255F + 255F * ((float) m.snap[2] / 500F));
+				int l3 = (int) (255F + 255F * (m.snap[2] / 500F));
 				if (l3 > 255) {
 					l3 = 255;
 				}
@@ -1164,21 +1164,21 @@ public class ContO {
 				rd.setColor(new Color(l2, j3, l3));
 				rd.fillPolygon(ai3, ai4, 8);
 				if (ai2[0] < 4000) {
-					int i3 = (int) (150F + 150F * ((float) m.snap[0] / 500F));
+					int i3 = (int) (150F + 150F * (m.snap[0] / 500F));
 					if (i3 > 255) {
 						i3 = 255;
 					}
 					if (i3 < 0) {
 						i3 = 0;
 					}
-					int k3 = (int) (227F + 227F * ((float) m.snap[1] / 500F));
+					int k3 = (int) (227F + 227F * (m.snap[1] / 500F));
 					if (k3 > 255) {
 						k3 = 255;
 					}
 					if (k3 < 0) {
 						k3 = 0;
 					}
-					int i4 = (int) (255F + 255F * ((float) m.snap[2] / 500F));
+					int i4 = (int) (255F + 255F * (m.snap[2] / 500F));
 					if (i4 > 255) {
 						i4 = 255;
 					}
@@ -1189,7 +1189,7 @@ public class ContO {
 					rd.drawPolygon(ai3, ai4, 8);
 				}
 			}
-			if ((float) elc[i] > m.random() * 60F) {
+			if (elc[i] > m.random() * 60F) {
 				elc[i] = 0;
 			} else {
 				elc[i]++;

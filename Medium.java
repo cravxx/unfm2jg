@@ -3,7 +3,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.Random;
 
-public class Medium /////// This entire class was re-edited by Chaotic for full NFMM Graphics (excluding sparks and extra dust)
+/**
+ * Medium manages most of the graphics you see during games, such as clouds, ground, and dust.
+ * This class was edited and re-edited again by Chaotic for (mostly) full NFMM Graphics (excluding sparks and extra dust).
+ * @author Kaffeinated, Chaotic, Omar Wally
+ */
+public class Medium
 {
 	int nmt = 0;
 	int[] mrd = null;
@@ -174,7 +179,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		if (trn == 3) {
 			trn = 0;
 		}
-		return (float) rand[trn] / 10F;
+		return rand[trn] / 10F;
 	}
 
 	public void newpolys(int i, int j, int k, int l, Trackers trackers, int i1) {
@@ -183,9 +188,9 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		ncl = l / 1200 + 9;
 		sgpx = i - 4800;
 		sgpz = k - 4800;
-		ogpx = (int[][]) null;
-		ogpz = (int[][]) null;
-		pvr = (float[][]) null;
+		ogpx = null;
+		ogpz = null;
+		pvr = null;
 		cgpx = null;
 		cgpz = null;
 		pmx = null;
@@ -208,7 +213,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				}
 				if (trackers.radx[j2] < trackers.radz[j2] && Math.abs(cgpz[l1] - trackers.z[j2]) < trackers.radz[j2]) {
 					for (; Math.abs(cgpx[l1] - trackers.x[j2]) < trackers.radx[j2]; cgpx[l1] += random1.nextDouble()
-							* (double) trackers.radx[j2] * 2D - (double) trackers.radx[j2]) {
+							* trackers.radx[j2] * 2D - trackers.radx[j2]) {
 					}
 				}
 				if (trackers.radz[j2] >= trackers.radx[j2]
@@ -216,7 +221,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 					continue;
 				}
 				for (; Math.abs(cgpz[l1] - trackers.z[j2]) < trackers.radz[j2]; cgpz[l1] += random1.nextDouble()
-						* (double) trackers.radz[j2] * 2D - (double) trackers.radz[j2]) {
+						* trackers.radz[j2] * 2D - trackers.radz[j2]) {
 				}
 			}
 
@@ -229,20 +234,20 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		for (int i2 = 0; i2 < nrw * ncl; i2++) {
 			float f = (float) (0.29999999999999999D + 1.6000000000000001D * random1.nextDouble());
 			ogpx[i2][0] = 0;
-			ogpz[i2][0] = (int) ((100D + random1.nextDouble() * 760D) * (double) f);
-			ogpx[i2][1] = (int) ((100D + random1.nextDouble() * 760D) * 0.70709999999999995D * (double) f);
+			ogpz[i2][0] = (int) ((100D + random1.nextDouble() * 760D) * f);
+			ogpx[i2][1] = (int) ((100D + random1.nextDouble() * 760D) * 0.70709999999999995D * f);
 			ogpz[i2][1] = ogpx[i2][1];
-			ogpx[i2][2] = (int) ((100D + random1.nextDouble() * 760D) * (double) f);
+			ogpx[i2][2] = (int) ((100D + random1.nextDouble() * 760D) * f);
 			ogpz[i2][2] = 0;
-			ogpx[i2][3] = (int) ((100D + random1.nextDouble() * 760D) * 0.70709999999999995D * (double) f);
+			ogpx[i2][3] = (int) ((100D + random1.nextDouble() * 760D) * 0.70709999999999995D * f);
 			ogpz[i2][3] = -ogpx[i2][3];
 			ogpx[i2][4] = 0;
-			ogpz[i2][4] = -(int) ((100D + random1.nextDouble() * 760D) * (double) f);
-			ogpx[i2][5] = -(int) ((100D + random1.nextDouble() * 760D) * 0.70709999999999995D * (double) f);
+			ogpz[i2][4] = -(int) ((100D + random1.nextDouble() * 760D) * f);
+			ogpx[i2][5] = -(int) ((100D + random1.nextDouble() * 760D) * 0.70709999999999995D * f);
 			ogpz[i2][5] = ogpx[i2][5];
-			ogpx[i2][6] = -(int) ((100D + random1.nextDouble() * 760D) * (double) f);
+			ogpx[i2][6] = -(int) ((100D + random1.nextDouble() * 760D) * f);
 			ogpz[i2][6] = 0;
-			ogpx[i2][7] = -(int) ((100D + random1.nextDouble() * 760D) * 0.70709999999999995D * (double) f);
+			ogpx[i2][7] = -(int) ((100D + random1.nextDouble() * 760D) * 0.70709999999999995D * f);
 			ogpz[i2][7] = -ogpx[i2][7];
 			for (int k2 = 0; k2 < 8; k2++) {
 				int l2 = k2 - 1;
@@ -256,8 +261,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				ogpx[i2][k2] = ((ogpx[i2][l2] + ogpx[i2][i3]) / 2 + ogpx[i2][k2]) / 2;
 				ogpz[i2][k2] = ((ogpz[i2][l2] + ogpz[i2][i3]) / 2 + ogpz[i2][k2]) / 2;
 				pvr[i2][k2] = (float) (1.1000000000000001D + random1.nextDouble() * 0.80000000000000004D);
-				int j3 = (int) Math.sqrt((int) ((float) (ogpx[i2][k2] * ogpx[i2][k2]) * pvr[i2][k2] * pvr[i2][k2]
-						+ (float) (ogpz[i2][k2] * ogpz[i2][k2]) * pvr[i2][k2] * pvr[i2][k2]));
+				int j3 = (int) Math.sqrt((int) (ogpx[i2][k2] * ogpx[i2][k2] * pvr[i2][k2] * pvr[i2][k2]
+						+ ogpz[i2][k2] * ogpz[i2][k2] * pvr[i2][k2] * pvr[i2][k2]));
 				if (j3 > pmx[i2]) {
 					pmx[i2] = j3;
 				}
@@ -305,9 +310,9 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				if (resdown >= 2 && i2 % 2 != 0) {
 					continue;
 				}
-				int k2 = cx + (int) ((float) (cgpx[i2] - x - cx) * cos(xz) - (float) (cgpz[i2] - z - cz) * sin(xz));
-				int l2 = cz + (int) ((float) (cgpx[i2] - x - cx) * sin(xz) + (float) (cgpz[i2] - z - cz) * cos(xz));
-				int i3 = cz + (int) ((float) (250 - y - cy) * sin(zy) + (float) (l2 - cz) * cos(zy));
+				int k2 = cx + (int) ((cgpx[i2] - x - cx) * cos(xz) - (cgpz[i2] - z - cz) * sin(xz));
+				int l2 = cz + (int) ((cgpx[i2] - x - cx) * sin(xz) + (cgpz[i2] - z - cz) * cos(xz));
+				int i3 = cz + (int) ((250 - y - cy) * sin(zy) + (l2 - cz) * cos(zy));
 				if (xs(k2 + pmx[i2], i3) <= 0 || xs(k2 - pmx[i2], i3) >= w || i3 <= -pmx[i2] || i3 >= fade[2]) {
 					continue;
 				}
@@ -316,8 +321,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				int ai6[] = new int[8];
 				int ai8[] = new int[8];
 				for (int l3 = 0; l3 < 8; l3++) {
-					ai4[l3] = (int) (((float) ogpx[i2][l3] * pvr[i2][l3] + (float) cgpx[i2]) - (float) x);
-					ai6[l3] = (int) (((float) ogpz[i2][l3] * pvr[i2][l3] + (float) cgpz[i2]) - (float) z);
+					ai4[l3] = (int) ((ogpx[i2][l3] * pvr[i2][l3] + cgpx[i2]) - x);
+					ai6[l3] = (int) ((ogpz[i2][l3] * pvr[i2][l3] + cgpz[i2]) - z);
 					ai8[l3] = ground;
 				}
 
@@ -353,9 +358,9 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				if (!flag1) {
 					continue;
 				}
-				int i7 = (int) (((float) cpol[0] * pcv[i2] + (float) cgrnd[0]) / 2.0F);
-				int j7 = (int) (((float) cpol[1] * pcv[i2] + (float) cgrnd[1]) / 2.0F);
-				int k7 = (int) (((float) cpol[2] * pcv[i2] + (float) cgrnd[2]) / 2.0F);
+				int i7 = (int) ((cpol[0] * pcv[i2] + cgrnd[0]) / 2.0F);
+				int j7 = (int) ((cpol[1] * pcv[i2] + cgrnd[1]) / 2.0F);
+				int k7 = (int) ((cpol[2] * pcv[i2] + cgrnd[2]) / 2.0F);
 				if (i3 - pmx[i2] > fade[0]) {
 					i7 = (i7 * 7 + cfade[0]) / 8;
 					j7 = (j7 * 7 + cfade[1]) / 8;
@@ -419,9 +424,9 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				if (!flag) {
 					continue;
 				}
-				int l5 = (int) ((float) cpol[0] * pcv[j2]);
-				int j6 = (int) ((float) cpol[1] * pcv[j2]);
-				int k6 = (int) ((float) cpol[2] * pcv[j2]);
+				int l5 = (int) (cpol[0] * pcv[j2]);
+				int j6 = (int) (cpol[1] * pcv[j2]);
+				int k6 = (int) (cpol[2] * pcv[j2]);
 				if (ai[j1 - i][l1 - k] - pmx[j2] > fade[0]) {
 					l5 = (l5 * 7 + cfade[0]) / 8;
 					j6 = (j6 * 7 + cfade[1]) / 8;
@@ -527,30 +532,30 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		gofo = (float) (0.33000001311302185D + Math.random() * 1.3400000000000001D);
 		int i = 0;
 		do {
-			tcos[i] = (float) Math.cos((double) i * 0.017453292519943295D);
+			tcos[i] = (float) Math.cos(i * 0.017453292519943295D);
 		} while (++i < 360);
 		i = 0;
 		do {
-			tsin[i] = (float) Math.sin((double) i * 0.017453292519943295D);
+			tsin[i] = (float) Math.sin(i * 0.017453292519943295D);
 		} while (++i < 360);
 	}
 
 	public void setfade(int i, int j, int k) {
-		cfade[0] = (int) ((float) i + (float) i * ((float) snap[0] / 100F));
+		cfade[0] = (int) (i + i * (snap[0] / 100F));
 		if (cfade[0] > 255) {
 			cfade[0] = 255;
 		}
 		if (cfade[0] < 0) {
 			cfade[0] = 0;
 		}
-		cfade[1] = (int) ((float) j + (float) j * ((float) snap[1] / 100F));
+		cfade[1] = (int) (j + j * (snap[1] / 100F));
 		if (cfade[1] > 255) {
 			cfade[1] = 255;
 		}
 		if (cfade[1] < 0) {
 			cfade[1] = 0;
 		}
-		cfade[2] = (int) ((float) k + (float) k * ((float) snap[2] / 100F));
+		cfade[2] = (int) (k + k * (snap[2] / 100F));
 		if (cfade[2] > 255) {
 			cfade[2] = 255;
 		}
@@ -563,10 +568,10 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		clx = null;
 		clz = null;
 		cmx = null;
-		clax = (int[][][]) null;
-		clay = (int[][][]) null;
-		claz = (int[][][]) null;
-		clc = (int[][][][]) null;
+		clax = null;
+		clay = null;
+		claz = null;
+		clc = null;
 		i = i / 20 - 10000;
 		j = j / 20 + 10000;
 		k = k / 20 - 10000;
@@ -580,57 +585,57 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		claz = new int[noc][3][12];
 		clc = new int[noc][2][6][3];
 		for (int i1 = 0; i1 < noc; i1++) {
-			clx[i1] = (int) ((double) i + (double) (j - i) * Math.random());
-			clz[i1] = (int) ((double) k + (double) (l - k) * Math.random());
+			clx[i1] = (int) (i + (j - i) * Math.random());
+			clz[i1] = (int) (k + (l - k) * Math.random());
 			float f = (float) (0.25D + Math.random() * 1.25D);
-			float f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][0] = (int) ((double) f1 * 0.3826D);
-			claz[i1][0][0] = (int) ((double) f1 * 0.92379999999999995D);
-			clay[i1][0][0] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][1] = (int) ((double) f1 * 0.70709999999999995D);
-			claz[i1][0][1] = (int) ((double) f1 * 0.70709999999999995D);
-			clay[i1][0][1] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][2] = (int) ((double) f1 * 0.92379999999999995D);
-			claz[i1][0][2] = (int) ((double) f1 * 0.3826D);
-			clay[i1][0][2] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][3] = (int) ((double) f1 * 0.92379999999999995D);
-			claz[i1][0][3] = -(int) ((double) f1 * 0.3826D);
-			clay[i1][0][3] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][4] = (int) ((double) f1 * 0.70709999999999995D);
-			claz[i1][0][4] = -(int) ((double) f1 * 0.70709999999999995D);
-			clay[i1][0][4] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][5] = (int) ((double) f1 * 0.3826D);
-			claz[i1][0][5] = -(int) ((double) f1 * 0.92379999999999995D);
-			clay[i1][0][5] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][6] = -(int) ((double) f1 * 0.3826D);
-			claz[i1][0][6] = -(int) ((double) f1 * 0.92379999999999995D);
-			clay[i1][0][6] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][7] = -(int) ((double) f1 * 0.70709999999999995D);
-			claz[i1][0][7] = -(int) ((double) f1 * 0.70709999999999995D);
-			clay[i1][0][7] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][8] = -(int) ((double) f1 * 0.92379999999999995D);
-			claz[i1][0][8] = -(int) ((double) f1 * 0.3826D);
-			clay[i1][0][8] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][9] = -(int) ((double) f1 * 0.92379999999999995D);
-			claz[i1][0][9] = (int) ((double) f1 * 0.3826D);
-			clay[i1][0][9] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][10] = -(int) ((double) f1 * 0.70709999999999995D);
-			claz[i1][0][10] = (int) ((double) f1 * 0.70709999999999995D);
-			clay[i1][0][10] = (int) ((25D - Math.random() * 50D) * (double) f);
-			f1 = (float) ((200D + Math.random() * 700D) * (double) f);
-			clax[i1][0][11] = -(int) ((double) f1 * 0.3826D);
-			claz[i1][0][11] = (int) ((double) f1 * 0.92379999999999995D);
-			clay[i1][0][11] = (int) ((25D - Math.random() * 50D) * (double) f);
+			float f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][0] = (int) (f1 * 0.3826D);
+			claz[i1][0][0] = (int) (f1 * 0.92379999999999995D);
+			clay[i1][0][0] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][1] = (int) (f1 * 0.70709999999999995D);
+			claz[i1][0][1] = (int) (f1 * 0.70709999999999995D);
+			clay[i1][0][1] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][2] = (int) (f1 * 0.92379999999999995D);
+			claz[i1][0][2] = (int) (f1 * 0.3826D);
+			clay[i1][0][2] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][3] = (int) (f1 * 0.92379999999999995D);
+			claz[i1][0][3] = -(int) (f1 * 0.3826D);
+			clay[i1][0][3] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][4] = (int) (f1 * 0.70709999999999995D);
+			claz[i1][0][4] = -(int) (f1 * 0.70709999999999995D);
+			clay[i1][0][4] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][5] = (int) (f1 * 0.3826D);
+			claz[i1][0][5] = -(int) (f1 * 0.92379999999999995D);
+			clay[i1][0][5] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][6] = -(int) (f1 * 0.3826D);
+			claz[i1][0][6] = -(int) (f1 * 0.92379999999999995D);
+			clay[i1][0][6] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][7] = -(int) (f1 * 0.70709999999999995D);
+			claz[i1][0][7] = -(int) (f1 * 0.70709999999999995D);
+			clay[i1][0][7] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][8] = -(int) (f1 * 0.92379999999999995D);
+			claz[i1][0][8] = -(int) (f1 * 0.3826D);
+			clay[i1][0][8] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][9] = -(int) (f1 * 0.92379999999999995D);
+			claz[i1][0][9] = (int) (f1 * 0.3826D);
+			clay[i1][0][9] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][10] = -(int) (f1 * 0.70709999999999995D);
+			claz[i1][0][10] = (int) (f1 * 0.70709999999999995D);
+			clay[i1][0][10] = (int) ((25D - Math.random() * 50D) * f);
+			f1 = (float) ((200D + Math.random() * 700D) * f);
+			clax[i1][0][11] = -(int) (f1 * 0.3826D);
+			claz[i1][0][11] = (int) (f1 * 0.92379999999999995D);
+			clay[i1][0][11] = (int) ((25D - Math.random() * 50D) * f);
 			for (int j1 = 0; j1 < 12; j1++) {
 				int j2 = j1 - 1;
 				if (j2 == -1) {
@@ -647,13 +652,13 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 
 			for (int k1 = 0; k1 < 12; k1++) {
 				float f2 = (float) (1.2D + 0.59999999999999998D * Math.random());
-				clax[i1][1][k1] = (int) ((float) clax[i1][0][k1] * f2);
-				claz[i1][1][k1] = (int) ((float) claz[i1][0][k1] * f2);
-				clay[i1][1][k1] = (int) ((double) clay[i1][0][k1] - 100D * Math.random());
+				clax[i1][1][k1] = (int) (clax[i1][0][k1] * f2);
+				claz[i1][1][k1] = (int) (claz[i1][0][k1] * f2);
+				clay[i1][1][k1] = (int) (clay[i1][0][k1] - 100D * Math.random());
 				f2 = (float) (1.1000000000000001D + 0.29999999999999999D * Math.random());
-				clax[i1][2][k1] = (int) ((float) clax[i1][1][k1] * f2);
-				claz[i1][2][k1] = (int) ((float) claz[i1][1][k1] * f2);
-				clay[i1][2][k1] = (int) ((double) clay[i1][1][k1] - 240D * Math.random());
+				clax[i1][2][k1] = (int) (clax[i1][1][k1] * f2);
+				claz[i1][2][k1] = (int) (claz[i1][1][k1] * f2);
+				clay[i1][2][k1] = (int) (clay[i1][1][k1] - 240D * Math.random());
 			}
 
 			cmx[i1] = 0;
@@ -678,15 +683,15 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				double d1 = Math.random();
 				double d2 = Math.random();
 				for (int k3 = 0; k3 < 3; k3++) {
-					float f3 = (float) clds[k3] * 1.05F - (float) clds[k3];
-					clc[i1][0][i2][k3] = (int) ((double) clds[k3] + (double) f3 * d1);
+					float f3 = clds[k3] * 1.05F - clds[k3];
+					clc[i1][0][i2][k3] = (int) (clds[k3] + f3 * d1);
 					if (clc[i1][0][i2][k3] > 255) {
 						clc[i1][0][i2][k3] = 255;
 					}
 					if (clc[i1][0][i2][k3] < 0) {
 						clc[i1][0][i2][k3] = 0;
 					}
-					clc[i1][1][i2][k3] = (int) ((double) ((float) clds[k3] * 1.05F) + (double) f3 * d2);
+					clc[i1][1][i2][k3] = (int) (clds[k3] * 1.05F + f3 * d2);
 					if (clc[i1][1][i2][k3] > 255) {
 						clc[i1][1][i2][k3] = 255;
 					}
@@ -703,9 +708,9 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 
 	public void drawclouds(Graphics2D graphics2d) {
 		for (int i = 0; i < noc; i++) {
-			int j = cx + (int) ((float) (clx[i] - x / 20 - cx) * cos(xz) - (float) (clz[i] - z / 20 - cz) * sin(xz));
-			int k = cz + (int) ((float) (clx[i] - x / 20 - cx) * sin(xz) + (float) (clz[i] - z / 20 - cz) * cos(xz));
-			int l = cz + (int) ((float) (cldd[4] - y / 20 - cy) * sin(zy) + (float) (k - cz) * cos(zy));
+			int j = cx + (int) ((clx[i] - x / 20 - cx) * cos(xz) - (clz[i] - z / 20 - cz) * sin(xz));
+			int k = cz + (int) ((clx[i] - x / 20 - cx) * sin(xz) + (clz[i] - z / 20 - cz) * cos(xz));
+			int l = cz + (int) ((cldd[4] - y / 20 - cy) * sin(zy) + (k - cz) * cos(zy));
 			int i1 = xs(j + cmx[i], l);
 			int j1 = xs(j - cmx[i], l);
 			if (i1 <= 0 || j1 >= w || l <= -cmx[i] || i1 - j1 <= 20) {
@@ -978,7 +983,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 	}
 
 	public void newmountains(int i, int i_167_, int i_168_, int i_169_) {
-		Random random = new Random((long) mgen);
+		Random random = new Random(mgen);
 		nmt = (int) (20.0 + 10.0 * random.nextDouble());
 		int i_170_ = (i + i_167_) / 60;
 		int i_171_ = (i_168_ + i_169_) / 60;
@@ -1006,12 +1011,12 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			if (random.nextDouble() > random.nextDouble()) {
 				f = (float) (0.2 + random.nextDouble() * 0.35);
 				f_176_ = (float) (0.2 + random.nextDouble() * 0.35);
-				nmv[i_174_] = (int) ((double) f * (24.0 + 16.0 * random.nextDouble()));
+				nmv[i_174_] = (int) (f * (24.0 + 16.0 * random.nextDouble()));
 				i_175_ = (int) (85.0 + 10.0 * random.nextDouble());
 			} else {
 				f = (float) (0.3 + random.nextDouble() * 1.1);
 				f_176_ = (float) (0.2 + random.nextDouble() * 0.35);
-				nmv[i_174_] = (int) ((double) f * (12.0 + 8.0 * random.nextDouble()));
+				nmv[i_174_] = (int) (f * (12.0 + 8.0 * random.nextDouble()));
 				i_175_ = (int) (104.0 - 10.0 * random.nextDouble());
 			}
 			mtx[i_174_] = new int[nmv[i_174_] * 2];
@@ -1019,33 +1024,33 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			mtz[i_174_] = new int[nmv[i_174_] * 2];
 			mtc[i_174_] = new int[nmv[i_174_]][3];
 			for (int i_178_ = 0; i_178_ < nmv[i_174_]; i_178_++) {
-				mtx[i_174_][i_178_] = (int) (((double) (i_178_ * 500) + (random.nextDouble() * 800.0 - 400.0)
-						- (double) (250 * (nmv[i_174_] - 1))) * (double) f);
-				mtx[i_174_][i_178_ + nmv[i_174_]] = (int) (((double) (i_178_ * 500)
-						+ (random.nextDouble() * 800.0 - 400.0) - (double) (250 * (nmv[i_174_] - 1))) * (double) f);
-				mtx[i_174_][nmv[i_174_]] = (int) ((double) mtx[i_174_][0]
-						- (100.0 + random.nextDouble() * 600.0) * (double) f);
-				mtx[i_174_][nmv[i_174_] * 2 - 1] = (int) ((double) mtx[i_174_][nmv[i_174_] - 1]
-						+ (100.0 + random.nextDouble() * 600.0) * (double) f);
+				mtx[i_174_][i_178_] = (int) ((i_178_ * 500 + (random.nextDouble() * 800.0 - 400.0)
+						- 250 * (nmv[i_174_] - 1)) * f);
+				mtx[i_174_][i_178_ + nmv[i_174_]] = (int) ((i_178_ * 500
+						+ (random.nextDouble() * 800.0 - 400.0) - 250 * (nmv[i_174_] - 1)) * f);
+				mtx[i_174_][nmv[i_174_]] = (int) (mtx[i_174_][0]
+						- (100.0 + random.nextDouble() * 600.0) * f);
+				mtx[i_174_][nmv[i_174_] * 2 - 1] = (int) (mtx[i_174_][nmv[i_174_] - 1]
+						+ (100.0 + random.nextDouble() * 600.0) * f);
 				if (i_178_ == 0 || i_178_ == nmv[i_174_] - 1)
-					mty[i_174_][i_178_] = (int) ((-400.0 - 1200.0 * random.nextDouble()) * (double) f_176_
-							+ (double) ground);
+					mty[i_174_][i_178_] = (int) ((-400.0 - 1200.0 * random.nextDouble()) * f_176_
+							+ ground);
 				if (i_178_ == 1 || i_178_ == nmv[i_174_] - 2)
-					mty[i_174_][i_178_] = (int) ((-1000.0 - 1450.0 * random.nextDouble()) * (double) f_176_
-							+ (double) ground);
+					mty[i_174_][i_178_] = (int) ((-1000.0 - 1450.0 * random.nextDouble()) * f_176_
+							+ ground);
 				if (i_178_ > 1 && i_178_ < nmv[i_174_] - 2)
-					mty[i_174_][i_178_] = (int) ((-1600.0 - 1700.0 * random.nextDouble()) * (double) f_176_
-							+ (double) ground);
+					mty[i_174_][i_178_] = (int) ((-1600.0 - 1700.0 * random.nextDouble()) * f_176_
+							+ ground);
 				mty[i_174_][i_178_ + nmv[i_174_]] = ground - 70;
 				mtz[i_174_][i_178_] = i_171_ + i_172_ + is[i_174_];
 				mtz[i_174_][i_178_ + nmv[i_174_]] = i_171_ + i_172_ + is[i_174_];
 				float f_179_ = (float) (0.5 + random.nextDouble() * 0.5);
-				mtc[i_174_][i_178_][0] = (int) (170.0F * f_179_ + 170.0F * f_179_ * ((float) snap[0] / 100.0F));
+				mtc[i_174_][i_178_][0] = (int) (170.0F * f_179_ + 170.0F * f_179_ * (snap[0] / 100.0F));
 				if (mtc[i_174_][i_178_][0] > 255)
 					mtc[i_174_][i_178_][0] = 255;
 				if (mtc[i_174_][i_178_][0] < 0)
 					mtc[i_174_][i_178_][0] = 0;
-				mtc[i_174_][i_178_][1] = (int) ((float) i_175_ * f_179_ + 85.0F * f_179_ * ((float) snap[1] / 100.0F));
+				mtc[i_174_][i_178_][1] = (int) (i_175_ * f_179_ + 85.0F * f_179_ * (snap[1] / 100.0F));
 				if (mtc[i_174_][i_178_][1] > 255)
 					mtc[i_174_][i_178_][1] = 255;
 				if (mtc[i_174_][i_178_][1] < 1)
@@ -1074,18 +1079,18 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 	public void drawmountains(Graphics2D rd) {
 		for (int i = 0; i < nmt; i++) {
 			int i_185_ = mrd[i];
-			int i_186_ = cx + (int) ((float) (mtx[i_185_][0] - x / 30 - cx) * cos(xz)
-					- (float) (mtz[i_185_][0] - z / 30 - cz) * sin(xz));
-			int i_187_ = cz + (int) ((float) (mtx[i_185_][0] - x / 30 - cx) * sin(xz)
-					+ (float) (mtz[i_185_][0] - z / 30 - cz) * cos(xz));
+			int i_186_ = cx + (int) ((mtx[i_185_][0] - x / 30 - cx) * cos(xz)
+					- (mtz[i_185_][0] - z / 30 - cz) * sin(xz));
+			int i_187_ = cz + (int) ((mtx[i_185_][0] - x / 30 - cx) * sin(xz)
+					+ (mtz[i_185_][0] - z / 30 - cz) * cos(xz));
 			int i_188_ = cz
-					+ (int) ((float) (mty[i_185_][0] - y / 30 - cy) * sin(zy) + (float) (i_187_ - cz) * cos(zy));
-			int i_189_ = cx + (int) ((float) (mtx[i_185_][nmv[i_185_] - 1] - x / 30 - cx) * cos(xz)
-					- (float) (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * sin(xz));
-			int i_190_ = cz + (int) ((float) (mtx[i_185_][nmv[i_185_] - 1] - x / 30 - cx) * sin(xz)
-					+ (float) (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * cos(xz));
-			int i_191_ = cz + (int) ((float) (mty[i_185_][nmv[i_185_] - 1] - y / 30 - cy) * sin(zy)
-					+ (float) (i_190_ - cz) * cos(zy));
+					+ (int) ((mty[i_185_][0] - y / 30 - cy) * sin(zy) + (i_187_ - cz) * cos(zy));
+			int i_189_ = cx + (int) ((mtx[i_185_][nmv[i_185_] - 1] - x / 30 - cx) * cos(xz)
+					- (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * sin(xz));
+			int i_190_ = cz + (int) ((mtx[i_185_][nmv[i_185_] - 1] - x / 30 - cx) * sin(xz)
+					+ (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * cos(xz));
+			int i_191_ = cz + (int) ((mty[i_185_][nmv[i_185_] - 1] - y / 30 - cy) * sin(zy)
+					+ (i_190_ - cz) * cos(zy));
 			if (xs(i_189_, i_191_) > 0 && xs(i_186_, i_188_) < w) {
 				int[] is = new int[nmv[i_185_] * 2];
 				int[] is_192_ = new int[nmv[i_185_] * 2];
@@ -1095,8 +1100,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 					is_192_[i_194_] = mty[i_185_][i_194_] - y / 30;
 					is_193_[i_194_] = mtz[i_185_][i_194_] - z / 30;
 				}
-				int i_195_ = (int) Math.sqrt((double) (is[nmv[i_185_] / 4] * is[nmv[i_185_] / 4]
-						+ is_193_[nmv[i_185_] / 4] * is_193_[nmv[i_185_] / 4]));
+				int i_195_ = (int) Math.sqrt(is[nmv[i_185_] / 4] * is[nmv[i_185_] / 4]
+						+ is_193_[nmv[i_185_] / 4] * is_193_[nmv[i_185_] / 4]);
 				rot(is, is_193_, cx, cz, xz, nmv[i_185_] * 2);
 				rot(is_192_, is_193_, cy, cz, zy, nmv[i_185_] * 2);
 				int[] is_196_ = new int[4];
@@ -1128,17 +1133,17 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 					if (i_205_ == 4 || i_203_ == 4 || i_204_ == 4 || i_206_ == 4)
 						bool_201_ = false;
 					if (bool_201_) {
-						float f = (float) i_195_ / 2500.0F + (8000.0F - (float) fade[0]) / 1000.0F - 2.0F
-								- ((float) Math.abs(y) - 250.0F) / 5000.0F;
+						float f = i_195_ / 2500.0F + (8000.0F - fade[0]) / 1000.0F - 2.0F
+								- (Math.abs(y) - 250.0F) / 5000.0F;
 						if (f > 0.0F && f < 10.0F) {
-							if ((double) f < 3.5)
+							if (f < 3.5)
 								f = 3.5F;
-							int i_209_ = (int) (((float) (mtc[i_185_][i_202_][0] + cgrnd[0]) + (float) csky[0] * f
-									+ (float) cfade[0] * f) / (2.0F + f * 2.0F));
-							int i_210_ = (int) (((float) (mtc[i_185_][i_202_][1] + cgrnd[1]) + (float) csky[1] * f
-									+ (float) cfade[1] * f) / (2.0F + f * 2.0F));
-							int i_211_ = (int) (((float) (mtc[i_185_][i_202_][2] + cgrnd[2]) + (float) csky[2] * f
-									+ (float) cfade[2] * f) / (2.0F + f * 2.0F));
+							int i_209_ = (int) ((mtc[i_185_][i_202_][0] + cgrnd[0] + csky[0] * f
+									+ cfade[0] * f) / (2.0F + f * 2.0F));
+							int i_210_ = (int) ((mtc[i_185_][i_202_][1] + cgrnd[1] + csky[1] * f
+									+ cfade[1] * f) / (2.0F + f * 2.0F));
+							int i_211_ = (int) ((mtc[i_185_][i_202_][2] + cgrnd[2] + csky[2] * f
+									+ cfade[2] * f) / (2.0F + f * 2.0F));
 							rd.setColor(new Color(i_209_, i_210_, i_211_)); // Mountain Color, should make this editable in the stage code
 							rd.fillPolygon(is_196_, is_197_, 4);
 						}
@@ -1151,7 +1156,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 	public void newstars() {
 		stx = null;
 		stz = null;
-		stc = (int[][][]) null;
+		stc = null;
 		bst = null;
 		twn = null;
 		nst = 0;
@@ -1208,10 +1213,10 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 
 	public void drawstars(Graphics2D graphics2d) {
 		for (int i = 0; i < nst; i++) {
-			int j = cx + (int) ((float) stx[i] * cos(xz) - (float) stz[i] * sin(xz));
-			int k = cz + (int) ((float) stx[i] * sin(xz) + (float) stz[i] * cos(xz));
-			int l = cy + (int) (-200F * cos(zy) - (float) k * sin(zy));
-			int i1 = cz + (int) (-200F * sin(zy) + (float) k * cos(zy));
+			int j = cx + (int) (stx[i] * cos(xz) - stz[i] * sin(xz));
+			int k = cz + (int) (stx[i] * sin(xz) + stz[i] * cos(xz));
+			int l = cy + (int) (-200F * cos(zy) - k * sin(zy));
+			int i1 = cz + (int) (-200F * sin(zy) + k * cos(zy));
 			j = xs(j, i1);
 			l = ys(l, i1);
 			if (j - 1 <= iw || j + 3 >= w || l - 1 <= ih || l + 3 >= h) {
@@ -1295,8 +1300,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			int j2 = fade[l1];
 			int l2 = ground;
 			if (zy != 0) {
-				l2 = cy + (int) ((float) (ground - cy) * cos(zy) - (float) (fade[l1] - cz) * sin(zy));
-				j2 = cz + (int) ((float) (ground - cy) * sin(zy) + (float) (fade[l1] - cz) * cos(zy));
+				l2 = cy + (int) ((ground - cy) * cos(zy) - (fade[l1] - cz) * sin(zy));
+				j2 = cz + (int) ((ground - cy) * sin(zy) + (fade[l1] - cz) * cos(zy));
 			}
 			ai[0] = iw;
 			ai1[0] = ys(l2, j2);
@@ -1345,21 +1350,21 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			} else {
 				lightn = (int) (16F * random());
 			}
-			csky[0] = (int) ((float) lilo + (float) lilo * ((float) snap[0] / 100F));
+			csky[0] = (int) (lilo + lilo * (snap[0] / 100F));
 			if (csky[0] > 255) {
 				csky[0] = 255;
 			}
 			if (csky[0] < 0) {
 				csky[0] = 0;
 			}
-			csky[1] = (int) ((float) lilo + (float) lilo * ((float) snap[1] / 100F));
+			csky[1] = (int) (lilo + lilo * (snap[1] / 100F));
 			if (csky[1] > 255) {
 				csky[1] = 255;
 			}
 			if (csky[1] < 0) {
 				csky[1] = 0;
 			}
-			csky[2] = (int) ((float) lilo + (float) lilo * ((float) snap[2] / 100F));
+			csky[2] = (int) (lilo + lilo * (snap[2] / 100F));
 			if (csky[2] > 255) {
 				csky[2] = 255;
 			}
@@ -1373,16 +1378,16 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		int i2 = i;
 		int k2 = j;
 		int i3 = k;
-		int j3 = cy + (int) ((float) (skyline - 700 - cy) * cos(zy) - (float) (7000 - cz) * sin(zy));
-		int k3 = cz + (int) ((float) (skyline - 700 - cy) * sin(zy) + (float) (7000 - cz) * cos(zy));
+		int j3 = cy + (int) ((skyline - 700 - cy) * cos(zy) - (7000 - cz) * sin(zy));
+		int k3 = cz + (int) ((skyline - 700 - cy) * sin(zy) + (7000 - cz) * cos(zy));
 		j3 = ys(j3, k3);
 		int l3 = ih;
 		for (int i4 = 0; i4 < 16; i4++) {
 			int k4 = fade[i4];
 			int i5 = skyline;
 			if (zy != 0) {
-				i5 = cy + (int) ((float) (skyline - cy) * cos(zy) - (float) (fade[i4] - cz) * sin(zy));
-				k4 = cz + (int) ((float) (skyline - cy) * sin(zy) + (float) (fade[i4] - cz) * cos(zy));
+				i5 = cy + (int) ((skyline - cy) * cos(zy) - (fade[i4] - cz) * sin(zy));
+				k4 = cz + (int) ((skyline - cy) * sin(zy) + (fade[i4] - cz) * cos(zy));
 			}
 			ai[0] = iw;
 			ai1[0] = ys(i5, k4);
@@ -1424,16 +1429,16 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		ai[3] = w;
 		ai1[3] = l3;
 		if (ai1[0] < h && ai1[1] > ih) {
-			float f = ((float) Math.abs(y) - 250F) / (float) (fade[0] * 2);
+			float f = (Math.abs(y) - 250F) / (fade[0] * 2);
 			if (f < 0.0F) {
 				f = 0.0F;
 			}
 			if (f > 1.0F) {
 				f = 1.0F;
 			}
-			i = (int) (((float) i * (1.0F - f) + (float) l * (1.0F + f)) / 2.0F);
-			j = (int) (((float) j * (1.0F - f) + (float) i1 * (1.0F + f)) / 2.0F);
-			k = (int) (((float) k * (1.0F - f) + (float) j1 * (1.0F + f)) / 2.0F);
+			i = (int) ((i * (1.0F - f) + l * (1.0F + f)) / 2.0F);
+			j = (int) ((j * (1.0F - f) + i1 * (1.0F + f)) / 2.0F);
+			k = (int) ((k * (1.0F - f) + j1 * (1.0F + f)) / 2.0F);
 			graphics2d.setColor(new Color(i, j, k));
 			graphics2d.fillPolygon(ai, ai1, 4);
 		}
@@ -1442,8 +1447,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				int l4 = 7000;
 				int j5 = skyline - 700 - j4 * 70;
 				if (zy != 0 && j4 != 19) {
-					j5 = cy + (int) ((float) (skyline - 700 - j4 * 70 - cy) * cos(zy) - (float) (7000 - cz) * sin(zy));
-					l4 = cz + (int) ((float) (skyline - 700 - j4 * 70 - cy) * sin(zy) + (float) (7000 - cz) * cos(zy));
+					j5 = cy + (int) ((skyline - 700 - j4 * 70 - cy) * cos(zy) - (7000 - cz) * sin(zy));
+					l4 = cz + (int) ((skyline - 700 - j4 * 70 - cy) * sin(zy) + (7000 - cz) * cos(zy));
 				}
 				ai[0] = iw;
 				if (j4 != 19) {
@@ -1464,9 +1469,9 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				ai[3] = w;
 				ai1[3] = ai1[0];
 				j3 = ai1[0];
-				i2 = (int) ((double) i2 * 0.99099999999999999D);
-				k2 = (int) ((double) k2 * 0.99099999999999999D);
-				i3 = (int) ((double) i3 * 0.998D);
+				i2 = (int) (i2 * 0.99099999999999999D);
+				k2 = (int) (k2 * 0.99099999999999999D);
+				i3 = (int) (i3 * 0.998D);
 				if (ai1[1] > ih && ai1[0] < h) {
 					graphics2d.setColor(new Color(i2, k2, i3));
 					graphics2d.fillPolygon(ai, ai1, 4);
@@ -1496,25 +1501,25 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			flex = 0;
 		}
 		if (td) {
-			y = (int) ((float) (conto.y - 300) - 1100F * random());
-			x = conto.x + (int) ((float) ((conto.x + 400) - conto.x) * cos(i)
-					- (float) ((conto.z + 5000) - conto.z) * sin(i));
-			z = conto.z + (int) ((float) ((conto.x + 400) - conto.x) * sin(i)
-					+ (float) ((conto.z + 5000) - conto.z) * cos(i));
+			y = (int) (conto.y - 300 - 1100F * random());
+			x = conto.x + (int) (((conto.x + 400) - conto.x) * cos(i)
+					- ((conto.z + 5000) - conto.z) * sin(i));
+			z = conto.z + (int) (((conto.x + 400) - conto.x) * sin(i)
+					+ ((conto.z + 5000) - conto.z) * cos(i));
 			td = false;
 		}
 		char c = '\0';
 		if (conto.x - x - cx > 0) {
 			c = '\264';
 		}
-		int j = -(int) ((double) (90 + c)
+		int j = -(int) (90 + c
 				+ Math.atan((double) (conto.z - z) / (double) (conto.x - x - cx)) / 0.017453292519943295D);
 		c = '\0';
 		if (conto.y - y - cy < 0) {
 			c = '\uFF4C';
 		}
 		int k = (int) Math.sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx));
-		int l = (int) ((double) (90 + c) - Math.atan((double) k / (double) (conto.y - y - cy)) / 0.017453292519943295D);
+		int l = (int) (90 + c - Math.atan((double) k / (double) (conto.y - y - cy)) / 0.017453292519943295D);
 		xz += (j - xz) / trns;
 		if (trns != 1) {
 			trns--;
@@ -1531,8 +1536,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
 				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((float) (j1 - i) * cos(k) - (float) (k1 - j) * sin(k));
-				ai1[i1] = j + (int) ((float) (j1 - i) * sin(k) + (float) (k1 - j) * cos(k));
+				ai[i1] = i + (int) ((j1 - i) * cos(k) - (k1 - j) * sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * sin(k) + (k1 - j) * cos(k));
 			}
 
 		}
@@ -1574,8 +1579,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		if (y > 10) {
 			vert = false;
 		}
-		x = conto.x + (int) ((float) (conto.x - i - conto.x) * cos(vxz));
-		z = conto.z + (int) ((float) (conto.x - i - conto.x) * sin(vxz));
+		x = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
+		z = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
 		if (!flag) {
 			vxz += 2;
 		} else {
@@ -1590,7 +1595,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			c = '\uFF4C';
 		}
 		int k = (int) Math.sqrt(((conto.z - z) + cz) * ((conto.z - z) + cz) + (conto.x - x - cx) * (conto.x - x - cx));
-		int l = (int) ((double) (90 + c) - Math.atan((double) k / (double) (conto.y - j - cy)) / 0.017453292519943295D);
+		int l = (int) (90 + c - Math.atan((double) k / (double) (conto.y - j - cy)) / 0.017453292519943295D);
 		xz = -vxz + 90;
 		if (flag) {
 			l -= 15;
@@ -1610,7 +1615,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 
 	public void adjstfade(float f) {
 		if (f < 15F) {
-			fade[0] = (int) ((float) origfade - 1000F * (15F - f));
+			fade[0] = (int) (origfade - 1000F * (15F - f));
 			if (fade[0] < 3000) {
 				fade[0] = 3000;
 			}
@@ -1644,8 +1649,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			if (hit == 45000) {
 				fo = 1.0F;
 				zy = 67;
-				atrx = ((long) checkpoints.x[0] - trx) / 116L;
-				atrz = ((long) checkpoints.z[0] - trz) / 116L;
+				atrx = (checkpoints.x[0] - trx) / 116L;
+				atrz = (checkpoints.z[0] - trz) / 116L;
 				focus_point = 400;
 			}
 			hit -= fallen;
@@ -1665,7 +1670,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			vxz += 3;
 		} else {
 			focus_point = (int) (400F * fo);
-			if ((double) Math.abs(fo - gofo) > 0.0050000000000000001D) {
+			if (Math.abs(fo - gofo) > 0.0050000000000000001D) {
 				if (fo < gofo) {
 					fo += 0.005F;
 				} else {
@@ -1675,8 +1680,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 				gofo = (float) (0.34999999403953552D + Math.random() * 1.3D);
 			}
 			vxz++;
-			trx -= (trx - (long) checkpoints.x[ptr]) / 10L;
-			trz -= (trz - (long) checkpoints.z[ptr]) / 10L;
+			trx -= (trx - checkpoints.x[ptr]) / 10L;
+			trz -= (trz - checkpoints.z[ptr]) / 10L;
 			if (ptcnt == 7) {
 				ptr++;
 				if (ptr == checkpoints.n) {
@@ -1692,8 +1697,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			vxz -= 360;
 		}
 		xz = -vxz - 90;
-		Math.sqrt(((trz - (long) z) + (long) cz) * ((trz - (long) z) + (long) cz)
-				+ (trx - (long) x - (long) cx) * (trx - (long) x - (long) cx));
+		Math.sqrt(((trz - z) + cz) * ((trz - z) + cz)
+				+ (trx - x - cx) * (trx - x - cx));
 		if (cpflik) {
 			cpflik = false;
 		} else {
@@ -1707,7 +1712,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		osky[2] = k;
 		for (int l = 0; l < 3; l++) {
 			clds[l] = (osky[l] * cldd[3] + cldd[l]) / (cldd[3] + 1);
-			clds[l] = (int) ((float) clds[l] + (float) clds[l] * ((float) snap[l] / 100F));
+			clds[l] = (int) (clds[l] + clds[l] * (snap[l] / 100F));
 			if (clds[l] > 255) {
 				clds[l] = 255;
 			}
@@ -1716,21 +1721,21 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			}
 		}
 
-		csky[0] = (int) ((float) i + (float) i * ((float) snap[0] / 100F));
+		csky[0] = (int) (i + i * (snap[0] / 100F));
 		if (csky[0] > 255) {
 			csky[0] = 255;
 		}
 		if (csky[0] < 0) {
 			csky[0] = 0;
 		}
-		csky[1] = (int) ((float) j + (float) j * ((float) snap[1] / 100F));
+		csky[1] = (int) (j + j * (snap[1] / 100F));
 		if (csky[1] > 255) {
 			csky[1] = 255;
 		}
 		if (csky[1] < 0) {
 			csky[1] = 0;
 		}
-		csky[2] = (int) ((float) k + (float) k * ((float) snap[2] / 100F));
+		csky[2] = (int) (k + k * (snap[2] / 100F));
 		if (csky[2] > 255) {
 			csky[2] = 255;
 		}
@@ -1739,7 +1744,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		}
 		float af[] = new float[3];
 		Color.RGBtoHSB(csky[0], csky[1], csky[2], af);
-		if ((double) af[2] < 0.59999999999999998D) {
+		if (af[2] < 0.59999999999999998D) {
 			darksky = true;
 		} else {
 			darksky = false;
@@ -1766,7 +1771,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		cldd[4] = i1;
 		for (int j1 = 0; j1 < 3; j1++) {
 			clds[j1] = (osky[j1] * cldd[3] + cldd[j1]) / (cldd[3] + 1);
-			clds[j1] = (int) ((float) clds[j1] + (float) clds[j1] * ((float) snap[j1] / 100F));
+			clds[j1] = (int) (clds[j1] + clds[j1] * (snap[j1] / 100F));
 			if (clds[j1] > 255) {
 				clds[j1] = 255;
 			}
@@ -1782,7 +1787,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		ogrnd[2] = k;
 		for (int l = 0; l < 3; l++) {
 			cpol[l] = (ogrnd[l] * texture[3] + texture[l]) / (1 + texture[3]);
-			cpol[l] = (int) ((float) cpol[l] + (float) cpol[l] * ((float) snap[l] / 100F));
+			cpol[l] = (int) (cpol[l] + cpol[l] * (snap[l] / 100F));
 			if (cpol[l] > 255) {
 				cpol[l] = 255;
 			}
@@ -1791,21 +1796,21 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			}
 		}
 
-		cgrnd[0] = (int) ((float) i + (float) i * ((float) snap[0] / 100F));
+		cgrnd[0] = (int) (i + i * (snap[0] / 100F));
 		if (cgrnd[0] > 255) {
 			cgrnd[0] = 255;
 		}
 		if (cgrnd[0] < 0) {
 			cgrnd[0] = 0;
 		}
-		cgrnd[1] = (int) ((float) j + (float) j * ((float) snap[1] / 100F));
+		cgrnd[1] = (int) (j + j * (snap[1] / 100F));
 		if (cgrnd[1] > 255) {
 			cgrnd[1] = 255;
 		}
 		if (cgrnd[1] < 0) {
 			cgrnd[1] = 0;
 		}
-		cgrnd[2] = (int) ((float) k + (float) k * ((float) snap[2] / 100F));
+		cgrnd[2] = (int) (k + k * (snap[2] / 100F));
 		if (cgrnd[2] > 255) {
 			cgrnd[2] = 255;
 		}
@@ -1813,7 +1818,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			cgrnd[2] = 0;
 		}
 		for (int i1 = 0; i1 < 3; i1++) {
-			crgrnd[i1] = (int) (((double) cpol[i1] * 0.98999999999999999D + (double) cgrnd[i1]) / 2D);
+			crgrnd[i1] = (int) ((cpol[i1] * 0.98999999999999999D + cgrnd[i1]) / 2D);
 		}
 
 	}
@@ -1832,21 +1837,21 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		i = (ogrnd[0] * l + i) / (1 + l);
 		j = (ogrnd[1] * l + j) / (1 + l);
 		k = (ogrnd[2] * l + k) / (1 + l);
-		cpol[0] = (int) ((float) i + (float) i * ((float) snap[0] / 100F));
+		cpol[0] = (int) (i + i * (snap[0] / 100F));
 		if (cpol[0] > 255) {
 			cpol[0] = 255;
 		}
 		if (cpol[0] < 0) {
 			cpol[0] = 0;
 		}
-		cpol[1] = (int) ((float) j + (float) j * ((float) snap[1] / 100F));
+		cpol[1] = (int) (j + j * (snap[1] / 100F));
 		if (cpol[1] > 255) {
 			cpol[1] = 255;
 		}
 		if (cpol[1] < 0) {
 			cpol[1] = 0;
 		}
-		cpol[2] = (int) ((float) k + (float) k * ((float) snap[2] / 100F));
+		cpol[2] = (int) (k + k * (snap[2] / 100F));
 		if (cpol[2] > 255) {
 			cpol[2] = 255;
 		}
@@ -1854,27 +1859,27 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			cpol[2] = 0;
 		}
 		for (int i1 = 0; i1 < 3; i1++) {
-			crgrnd[i1] = (int) (((double) cpol[i1] * 0.98999999999999999D + (double) cgrnd[i1]) / 2D);
+			crgrnd[i1] = (int) ((cpol[i1] * 0.98999999999999999D + cgrnd[i1]) / 2D);
 		}
 
 	}
 
 	public void setpolys(int i, int j, int k) {
-		cpol[0] = (int) ((float) i + (float) i * ((float) snap[0] / 100F));
+		cpol[0] = (int) (i + i * (snap[0] / 100F));
 		if (cpol[0] > 255) {
 			cpol[0] = 255;
 		}
 		if (cpol[0] < 0) {
 			cpol[0] = 0;
 		}
-		cpol[1] = (int) ((float) j + (float) j * ((float) snap[1] / 100F));
+		cpol[1] = (int) (j + j * (snap[1] / 100F));
 		if (cpol[1] > 255) {
 			cpol[1] = 255;
 		}
 		if (cpol[1] < 0) {
 			cpol[1] = 0;
 		}
-		cpol[2] = (int) ((float) k + (float) k * ((float) snap[2] / 100F));
+		cpol[2] = (int) (k + k * (snap[2] / 100F));
 		if (cpol[2] > 255) {
 			cpol[2] = 255;
 		}
@@ -1882,7 +1887,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			cpol[2] = 0;
 		}
 		for (int l = 0; l < 3; l++) {
-			crgrnd[l] = (int) (((double) cpol[l] * 0.98999999999999999D + (double) cgrnd[l]) / 2D);
+			crgrnd[l] = (int) ((cpol[l] * 0.98999999999999999D + cgrnd[l]) / 2D);
 		}
 
 	}
@@ -1931,8 +1936,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		}
 		i += bcxz;
 		xz = -i;
-		x = (conto.x - cx) + (int) ((float) (-(conto.z - 800 - conto.z)) * sin(i));
-		z = (conto.z - cz) + (int) ((float) (conto.z - 800 - conto.z) * cos(i));
+		x = (conto.x - cx) + (int) ((-(conto.z - 800 - conto.z)) * sin(i));
+		z = (conto.z - cz) + (int) ((conto.z - 800 - conto.z) * cos(i));
 		y = conto.y - 250 - cy;
 		if (trns != 1) {
 			trns = 1;
@@ -1959,8 +1964,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			i = 1000;
 		}
 		int j = conto.y - adv;
-		int k = conto.x + (int) ((float) (conto.x - i - conto.x) * cos(vxz));
-		int l = conto.z + (int) ((float) (conto.x - i - conto.x) * sin(vxz));
+		int k = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
+		int l = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
 		int i1 = 0;
 		if (Math.abs(j - y) > fvect) {
 			if (y < j) {
@@ -2004,7 +2009,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		if (conto.x - x - cx > 0) {
 			c = '\264';
 		}
-		int k1 = -(int) ((double) (90 + c)
+		int k1 = -(int) (90 + c
 				+ Math.atan((double) (conto.z - z) / (double) (conto.x - x - cx)) / 0.017453292519943295D);
 		int l1 = y;
 		c = '\0';
@@ -2017,7 +2022,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		int i2 = (int) Math.sqrt(((conto.z - z) + cz) * ((conto.z - z) + cz) + (conto.x - x - cx) * (conto.x - x - cx));
 		int j2 = 25;
 		if (i2 != 0) {
-			j2 = (int) ((double) (90 + c)
+			j2 = (int) (90 + c
 					- Math.atan((double) i2 / (double) (conto.y - l1 - cy)) / 0.017453292519943295D);
 		}
 		for (; j1 < 0; j1 += 360) {
@@ -2088,8 +2093,8 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 		if (y > 10) {
 			vert = false;
 		}
-		x = j + (int) ((float) (j - i1 - j) * cos(vxz));
-		z = l + (int) ((float) (j - i1 - j) * sin(vxz));
+		x = j + (int) ((j - i1 - j) * cos(vxz));
+		z = l + (int) ((j - i1 - j) * sin(vxz));
 		vxz += 2;
 		char c = '\0';
 		int j1 = y;
@@ -2100,7 +2105,7 @@ public class Medium /////// This entire class was re-edited by Chaotic for full 
 			c = '\uFF4C';
 		}
 		int k1 = (int) Math.sqrt(((l - z) + cz) * ((l - z) + cz) + (j - x - cx) * (j - x - cx));
-		int l1 = (int) ((double) (90 + c) - Math.atan((double) k1 / (double) (k - j1 - cy)) / 0.017453292519943295D);
+		int l1 = (int) (90 + c - Math.atan((double) k1 / (double) (k - j1 - cy)) / 0.017453292519943295D);
 		xz = -vxz + 90;
 		zy += (l1 - zy) / 10;
 		if (trns != 5) {

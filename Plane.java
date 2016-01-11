@@ -159,7 +159,7 @@ public class Plane {
 		if (!flag) {
 			j3 = 0;
 			do {
-				c[j3] = (int) ((float) ai3[j3] + (float) ai3[j3] * ((float) m.snap[j3] / 100F));
+				c[j3] = (int) (ai3[j3] + ai3[j3] * (m.snap[j3] / 100F));
 				if (c[j3] > 255) {
 					c[j3] = 255;
 				}
@@ -179,22 +179,22 @@ public class Plane {
 		glass = flag;
 		Color.RGBtoHSB(c[0], c[1], c[2], hsb);
 		if (!nocol && !glass) {
-			if (bfase > 20 && (double) hsb[1] > 0.25D) {
+			if (bfase > 20 && hsb[1] > 0.25D) {
 				hsb[1] = 0.25F;
 			}
-			if (bfase > 25 && (double) hsb[2] > 0.69999999999999996D) {
+			if (bfase > 25 && hsb[2] > 0.69999999999999996D) {
 				hsb[2] = 0.7F;
 			}
-			if (bfase > 30 && (double) hsb[1] > 0.14999999999999999D) {
+			if (bfase > 30 && hsb[1] > 0.14999999999999999D) {
 				hsb[1] = 0.15F;
 			}
-			if (bfase > 35 && (double) hsb[2] > 0.59999999999999998D) {
+			if (bfase > 35 && hsb[2] > 0.59999999999999998D) {
 				hsb[2] = 0.6F;
 			}
 			if (bfase > 40) {
 				hsb[0] = 0.075F;
 			}
-			if (bfase > 50 && (double) hsb[2] > 0.5D) {
+			if (bfase > 50 && hsb[2] > 0.5D) {
 				hsb[2] = 0.5F;
 			}
 			if (bfase > 60) {
@@ -248,11 +248,11 @@ public class Plane {
 
 			}
 		} else {
-			if (embos <= 11 && (double) m.random() > 0.5D && !glass) {
+			if (embos <= 11 && m.random() > 0.5D && !glass) {
 				for (int l2 = 0; l2 < n; l2++) {
-					ai[l2] = (int) ((float) (ox[l2] + i) + (15F - m.random() * 30F));
-					ai2[l2] = (int) ((float) (oy[l2] + j) + (15F - m.random() * 30F));
-					ai1[l2] = (int) ((float) (oz[l2] + k) + (15F - m.random() * 30F));
+					ai[l2] = (int) (ox[l2] + i + (15F - m.random() * 30F));
+					ai2[l2] = (int) (oy[l2] + j + (15F - m.random() * 30F));
+					ai1[l2] = (int) (oz[l2] + k + (15F - m.random() * 30F));
 				}
 
 				rot(ai, ai2, i, j, i1, n);
@@ -282,21 +282,21 @@ public class Plane {
 			if (embos > 7 && embos <= 9)/////// /// explode outward a little + white flame a bit bigger than previous + polys start to darken
 			{
 				f = 1.0F + m.random() / 3F;
-				if ((double) hsb[2] > 0.69999999999999996D) {
+				if (hsb[2] > 0.69999999999999996D) {
 					hsb[2] = 0.7F;
 				}
 			}
 			if (embos > 9 && embos <= 10)/////// /// explode outward a little + white flame a bit bigger than previous + maor darkening
 			{
 				f = 1.0F + m.random() / 2.0F;
-				if ((double) hsb[2] > 0.59999999999999998D) {
+				if (hsb[2] > 0.59999999999999998D) {
 					hsb[2] = 0.6F;
 				}
 			}
 			if (embos > 10 && embos <= 12)/////// /// explode outward a little + white flame a bit bigger than previous + more darkkkk liek coffee beans
 			{
 				f = 1.0F + m.random() / 1.0F;
-				if ((double) hsb[2] > 0.5D) {
+				if (hsb[2] > 0.5D) {
 					hsb[2] = 0.5F;
 				}
 			}
@@ -313,8 +313,8 @@ public class Plane {
 			}
 			if (embos == 16)//// flames
 			{
-				pa = (int) (m.random() * (float) n);
-				for (pb = (int) (m.random() * (float) n); pa == pb; pb = (int) (m.random() * (float) n)) {
+				pa = (int) (m.random() * n);
+				for (pb = (int) (m.random() * n); pa == pb; pb = (int) (m.random() * n)) {
 				}
 			}
 			if (embos >= 16) ///// flames as well
@@ -357,12 +357,12 @@ public class Plane {
 						ai1[1] += 30;
 					}
 				}
-				int i7 = (int) ((double) (Math.abs(ai[0] - ai[1]) / 3) * (0.5D - (double) m.random()));
-				int l7 = (int) ((double) (Math.abs(ai1[0] - ai1[1]) / 3) * (0.5D - (double) m.random()));
+				int i7 = (int) (Math.abs(ai[0] - ai[1]) / 3 * (0.5D - m.random()));
+				int l7 = (int) (Math.abs(ai1[0] - ai1[1]) / 3 * (0.5D - m.random()));
 				ai[2] = (ai[0] + ai[1]) / 2 + i7;
 				ai1[2] = (ai1[0] + ai1[1]) / 2 + l7;
-				int i8 = (int) (((double) (Math.abs(ai[0] - ai[1]) + Math.abs(ai1[0] - ai1[1])) / 1.5D)
-						* ((double) (m.random() / 2.0F) + 0.5D));
+				int i8 = (int) (((Math.abs(ai[0] - ai[1]) + Math.abs(ai1[0] - ai1[1])) / 1.5D)
+						* (m.random() / 2.0F + 0.5D));
 				ai2[2] = (ai2[0] + ai2[1]) / 2 - byte0 * byte1 * i8;
 				rot(ai, ai2, i, j, i1, 3);
 				rot(ai2, ai1, j, k, j1, 3);
@@ -375,7 +375,7 @@ public class Plane {
 					ai13[k8] = ys(ai2[k8], ai1[k8]);
 				} while (++k8 < 3);
 				// Flame color. Outer Flame Red Value
-				k8 = (int) (255F + 255F * ((float) m.snap[0] / 400F));
+				k8 = (int) (255F + 255F * (m.snap[0] / 400F));
 				if (k8 > 255) {
 					k8 = 255;
 				}
@@ -383,7 +383,7 @@ public class Plane {
 					k8 = 0;
 				}
 				// Flame color. Outer Flame Green Value
-				int i9 = (int) (169F + 169F * ((float) m.snap[1] / 300F));
+				int i9 = (int) (169F + 169F * (m.snap[1] / 300F));
 				if (i9 > 255) {
 					i9 = 255;
 				}
@@ -391,7 +391,7 @@ public class Plane {
 					i9 = 0;
 				}
 				// Flame color. Outer Flame Blue Value
-				int k9 = (int) (89F + 89F * ((float) m.snap[2] / 200F));
+				int k9 = (int) (89F + 89F * (m.snap[2] / 200F));
 				if (k9 > 255) {
 					k9 = 255;
 				}
@@ -422,7 +422,7 @@ public class Plane {
 				}
 				ai[2] = (ai[0] + ai[1]) / 2 + i7;
 				ai1[2] = (ai1[0] + ai1[1]) / 2 + l7;
-				i8 = (int) ((double) i8 * 0.80000000000000004D);
+				i8 = (int) (i8 * 0.80000000000000004D);
 				ai2[2] = (ai2[0] + ai2[1]) / 2 - byte0 * byte1 * i8;
 				rot(ai, ai2, i, j, i1, 3);
 				rot(ai2, ai1, j, k, j1, 3);
@@ -435,7 +435,7 @@ public class Plane {
 					ai13[i10] = ys(ai2[i10], ai1[i10]);
 				} while (++i10 < 3);
 				// Flame color. Inner Flame Red Value
-				k8 = (int) (255F + 255F * ((float) m.snap[0] / 400F));
+				k8 = (int) (255F + 255F * (m.snap[0] / 400F));
 				if (k8 > 255) {
 					k8 = 255;
 				}
@@ -443,7 +443,7 @@ public class Plane {
 					k8 = 0;
 				}
 				// Flame color. Inner Flame Green Value
-				i9 = (int) (207F + 207F * ((float) m.snap[1] / 300F));
+				i9 = (int) (207F + 207F * (m.snap[1] / 300F));
 				if (i9 > 255) {
 					i9 = 255;
 				}
@@ -451,7 +451,7 @@ public class Plane {
 					i9 = 0;
 				}
 				// Flame color. Inner Flame Blue Value
-				k9 = (int) (136F + 136F * ((float) m.snap[2] / 200F));
+				k9 = (int) (136F + 136F * (m.snap[2] / 200F));
 				if (k9 > 255) {
 					k9 = 255;
 				}
@@ -463,17 +463,17 @@ public class Plane {
 			}
 			for (int k3 = 0; k3 < n; k3++) {
 				if (typ == 1) {
-					ai[k3] = (int) ((float) ox[k3] * f + (float) i);
+					ai[k3] = (int) (ox[k3] * f + i);
 				} else {
 					ai[k3] = ox[k3] + i;
 				}
 				if (typ == 2) {
-					ai2[k3] = (int) ((float) oy[k3] * f + (float) j);
+					ai2[k3] = (int) (oy[k3] * f + j);
 				} else {
 					ai2[k3] = oy[k3] + j;
 				}
 				if (typ == 3) {
-					ai1[k3] = (int) ((float) oz[k3] * f + (float) k);
+					ai1[k3] = (int) (oz[k3] * f + k);
 				} else {
 					ai1[k3] = oz[k3] + k;
 				}
@@ -491,7 +491,7 @@ public class Plane {
 		if (wx != 0) {
 			rot(ai, ai1, wx + i, wz + k, k1, n);
 		}
-		if (chip == 1 && ((double) m.random() > 0.59999999999999998D || bfase == 0)) {
+		if (chip == 1 && (m.random() > 0.59999999999999998D || bfase == 0)) {
 			chip = 0;
 			if (bfase == 0 && nocol) {
 				bfase = 1;
@@ -502,7 +502,7 @@ public class Plane {
 				cxz = l;
 				cxy = i1;
 				czy = j1;
-				int i3 = (int) (m.random() * (float) n);
+				int i3 = (int) (m.random() * n);
 				cox[0] = ox[i3];
 				coz[0] = oz[i3];
 				coy[0] = oy[i3];
@@ -512,12 +512,12 @@ public class Plane {
 				if (ctmag < -3F) {
 					ctmag = -3F;
 				}
-				cox[1] = (int) ((float) cox[0] + ctmag * (10F - m.random() * 20F));
-				cox[2] = (int) ((float) cox[0] + ctmag * (10F - m.random() * 20F));
-				coy[1] = (int) ((float) coy[0] + ctmag * (10F - m.random() * 20F));
-				coy[2] = (int) ((float) coy[0] + ctmag * (10F - m.random() * 20F));
-				coz[1] = (int) ((float) coz[0] + ctmag * (10F - m.random() * 20F));
-				coz[2] = (int) ((float) coz[0] + ctmag * (10F - m.random() * 20F));
+				cox[1] = (int) (cox[0] + ctmag * (10F - m.random() * 20F));
+				cox[2] = (int) (cox[0] + ctmag * (10F - m.random() * 20F));
+				coy[1] = (int) (coy[0] + ctmag * (10F - m.random() * 20F));
+				coy[2] = (int) (coy[0] + ctmag * (10F - m.random() * 20F));
+				coz[1] = (int) (coz[0] + ctmag * (10F - m.random() * 20F));
+				coz[2] = (int) (coz[0] + ctmag * (10F - m.random() * 20F));
 				dx = 0;
 				dy = 0;
 				dz = 0;
@@ -837,26 +837,26 @@ public class Plane {
 			if (gr == -16 && av > 1500) {
 				flag2 = false;
 			}
-			if (flx != 0 && (double) m.random() > 0.29999999999999999D) {
+			if (flx != 0 && m.random() > 0.29999999999999999D) {
 				flag2 = false;
 			}
 		}
 		if (flag2) {
-			float f1 = (float) ((double) (projf / deltaf) + 0.29999999999999999D);
+			float f1 = (float) (projf / deltaf + 0.29999999999999999D);
 			if (flag) {
 				boolean flag3 = false;
 				if (f1 > 1.0F) {
-					if ((double) f1 >= 1.27D) {
+					if (f1 >= 1.27D) {
 						flag3 = true;
 					}
 					f1 = 1.0F;
 				}
 				if (flag3) {
-					f1 = (float) ((double) f1 * 0.89000000000000001D);
+					f1 = (float) (f1 * 0.89000000000000001D);
 				} else {
-					f1 = (float) ((double) f1 * 0.85999999999999999D);
+					f1 = (float) (f1 * 0.85999999999999999D);
 				}
-				if ((double) f1 < 0.37D) {
+				if (f1 < 0.37D) {
 					f1 = 0.37F;
 				}
 				if (gr == -9) {
@@ -898,7 +898,7 @@ public class Plane {
 				if (f1 > 1.0F) {
 					f1 = 1.0F;
 				}
-				if ((double) f1 < 0.59999999999999998D || flag1) {
+				if (f1 < 0.59999999999999998D || flag1) {
 					f1 = 0.6F;
 				}
 			}
@@ -990,14 +990,14 @@ public class Plane {
 					}
 					if (flx == 1) {
 						l11 = 0;
-						j13 = (int) (223F + 223F * ((float) m.snap[1] / 100F));
+						j13 = (int) (223F + 223F * (m.snap[1] / 100F));
 						if (j13 > 255) {
 							j13 = 255;
 						}
 						if (j13 < 0) {
 							j13 = 0;
 						}
-						k14 = (int) (255F + 255F * ((float) m.snap[2] / 100F));
+						k14 = (int) (255F + 255F * (m.snap[2] / 100F));
 						if (k14 > 255) {
 							k14 = 255;
 						}
@@ -1010,14 +1010,14 @@ public class Plane {
 					}
 					if (flx == 3) {
 						l11 = 0;
-						j13 = (int) (255F + 255F * ((float) m.snap[1] / 100F));
+						j13 = (int) (255F + 255F * (m.snap[1] / 100F));
 						if (j13 > 255) {
 							j13 = 255;
 						}
 						if (j13 < 0) {
 							j13 = 0;
 						}
-						k14 = (int) (223F + 223F * ((float) m.snap[2] / 100F));
+						k14 = (int) (223F + 223F * (m.snap[2] / 100F));
 						if (k14 > 255) {
 							k14 = 255;
 						}
@@ -1049,28 +1049,28 @@ public class Plane {
 					int l14 = c[2];
 					if (i2 == -1) {
 						if (m.nochekflk && !m.lastcheck) {
-							i12 = (int) ((double) i12 * 1.25D);
+							i12 = (int) (i12 * 1.25D);
 							if (i12 > 255) {
 								i12 = 255;
 							}
-							k13 = (int) ((double) k13 * 1.25D);
+							k13 = (int) (k13 * 1.25D);
 							if (k13 > 255) {
 								k13 = 255;
 							}
-							l14 = (int) ((double) l14 * 1.25D);
+							l14 = (int) (l14 * 1.25D);
 							if (l14 > 255) {
 								l14 = 255;
 							}
 						} else if (m.cpflik) {
-							i12 = (int) ((double) i12 * 1.5D);
+							i12 = (int) (i12 * 1.5D);
 							if (i12 > 255) {
 								i12 = 255;
 							}
-							k13 = (int) ((double) k13 * 1.5D);
+							k13 = (int) (k13 * 1.5D);
 							if (k13 > 255) {
 								k13 = 255;
 							}
-							l14 = (int) ((double) l14 * 1.5D);
+							l14 = (int) (l14 * 1.5D);
 							if (l14 > 255) {
 								l14 = 255;
 							}
@@ -1146,8 +1146,8 @@ public class Plane {
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
 				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((float) (j1 - i) * m.cos(k) - (float) (k1 - j) * m.sin(k));
-				ai1[i1] = j + (int) ((float) (j1 - i) * m.sin(k) + (float) (k1 - j) * m.cos(k));
+				ai[i1] = i + (int) ((j1 - i) * m.cos(k) - (k1 - j) * m.sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * m.sin(k) + (k1 - j) * m.cos(k));
 			}
 
 		}
@@ -1173,9 +1173,9 @@ public class Plane {
 		rot(ai, ai2, i, j, i1, n);
 		rot(ai2, ai1, j, k, j1, n);
 		rot(ai, ai1, i, k, l, n);
-		int i2 = (int) ((double) (float) m.cgrnd[0] / 1.5D);
-		int j2 = (int) ((double) (float) m.cgrnd[1] / 1.5D);
-		int k2 = (int) ((double) (float) m.cgrnd[2] / 1.5D);
+		int i2 = (int) (m.cgrnd[0] / 1.5D);
+		int j2 = (int) (m.cgrnd[1] / 1.5D);
+		int k2 = (int) (m.cgrnd[2] / 1.5D);
 		for (int l2 = 0; l2 < n; l2++) {
 			ai2[l2] = m.ground;
 		}
@@ -1233,18 +1233,18 @@ public class Plane {
 				for (int j8 = 0; j8 < n; j8++) {
 					ai2[j8] = t.y[l6] - m.y;
 					if (t.zy[l6] != 0) {
-						ai2[j8] += ((float) (ai1[j8] - (t.z[l6] - m.z - t.radz[l6])) * m.sin(t.zy[l6]))
-								/ m.sin(90 - t.zy[l6]) - ((float) t.radz[l6] * m.sin(t.zy[l6])) / m.sin(90 - t.zy[l6]);
+						ai2[j8] += ((ai1[j8] - (t.z[l6] - m.z - t.radz[l6])) * m.sin(t.zy[l6]))
+								/ m.sin(90 - t.zy[l6]) - (t.radz[l6] * m.sin(t.zy[l6])) / m.sin(90 - t.zy[l6]);
 					}
 					if (t.xy[l6] != 0) {
-						ai2[j8] += ((float) (ai[j8] - (t.x[l6] - m.x - t.radx[l6])) * m.sin(t.xy[l6]))
-								/ m.sin(90 - t.xy[l6]) - ((float) t.radx[l6] * m.sin(t.xy[l6])) / m.sin(90 - t.xy[l6]);
+						ai2[j8] += ((ai[j8] - (t.x[l6] - m.x - t.radx[l6])) * m.sin(t.xy[l6]))
+								/ m.sin(90 - t.xy[l6]) - (t.radx[l6] * m.sin(t.xy[l6])) / m.sin(90 - t.xy[l6]);
 					}
 				}
 
-				i2 = (int) ((double) (float) t.c[l6][0] / 1.5D);
-				j2 = (int) ((double) (float) t.c[l6][1] / 1.5D);
-				k2 = (int) ((double) (float) t.c[l6][2] / 1.5D);
+				i2 = (int) (t.c[l6][0] / 1.5D);
+				j2 = (int) (t.c[l6][1] / 1.5D);
+				k2 = (int) (t.c[l6][2] / 1.5D);
 				break;
 			}
 

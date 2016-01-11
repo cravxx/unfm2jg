@@ -478,7 +478,7 @@ public class ModSlayer {
 		if (mod.s3m) {
 			for (int j = 0; j < mod.insts.length; j++) {
 				ModInstrument modinstrument = mod.insts[j];
-				modinstrument.finetune_rate = (int) (428L * (long) modinstrument.finetune_value << 8) / mixspeed;
+				modinstrument.finetune_rate = (int) (428L * modinstrument.finetune_value << 8) / mixspeed;
 				modinstrument.period_low_limit = 14;
 				modinstrument.period_high_limit = 1712;
 			}
@@ -487,7 +487,7 @@ public class ModSlayer {
 			for (int k = 0; k < mod.insts.length; k++) {
 				ModInstrument modinstrument1 = mod.insts[k];
 				modinstrument1.finetune_rate = (int) (0x14b080000000L
-						/ (long) (mixspeed * (1536 - modinstrument1.finetune_value)));
+						/ (mixspeed * (1536 - modinstrument1.finetune_value)));
 				modinstrument1.period_low_limit = 113;
 				modinstrument1.period_high_limit = 856;
 			}

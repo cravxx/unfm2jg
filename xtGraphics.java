@@ -491,21 +491,21 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 		for (int k = 0; k < j * i; k++) {
 			Color color = new Color(ai[k]);
-			int l = (int) ((float) color.getRed() * ((float) colors[0] / 100F));
+			int l = (int) (color.getRed() * (colors[0] / 100F));
 			if (l > 225) {
 				l = 225;
 			}
 			if (l < 0) {
 				l = 0;
 			}
-			int i1 = (int) ((float) color.getGreen() * ((float) colors[1] / 100F));
+			int i1 = (int) (color.getGreen() * (colors[1] / 100F));
 			if (i1 > 225) {
 				i1 = 225;
 			}
 			if (i1 < 0) {
 				i1 = 0;
 			}
-			int j1 = (int) ((float) color.getBlue() * ((float) colors[2] / 100F));
+			int j1 = (int) (color.getBlue() * (colors[2] / 100F));
 			if (j1 > 225) {
 				j1 = 225;
 			}
@@ -866,11 +866,11 @@ public class xtGraphics extends Panel implements Runnable {
 				l2 = color.getBlue();
 				j1 = l2;
 			} else {
-				j2 = (int) (((float) color.getRed() + (float) l * 0.38F * (float) i) / (1.0F + 0.38F * (float) i));
+				j2 = (int) ((color.getRed() + l * 0.38F * i) / (1.0F + 0.38F * i));
 				l = j2;
-				k2 = (int) (((float) color.getGreen() + (float) i1 * 0.38F * (float) i) / (1.0F + 0.38F * (float) i));
+				k2 = (int) ((color.getGreen() + i1 * 0.38F * i) / (1.0F + 0.38F * i));
 				i1 = k2;
-				l2 = (int) (((float) color.getBlue() + (float) j1 * 0.38F * (float) i) / (1.0F + 0.38F * (float) i));
+				l2 = (int) ((color.getBlue() + j1 * 0.38F * i) / (1.0F + 0.38F * i));
 				j1 = l2;
 			}
 			if (++k == 670) {
@@ -927,7 +927,7 @@ public class xtGraphics extends Panel implements Runnable {
 			if (checkpoints.x[i] - checkpoints.opx[0] >= 0) {
 				c2 = '\264';
 			}
-			k = (int) ((double) (90 + c2) + Math.atan(
+			k = (int) (90 + c2 + Math.atan(
 					(double) (checkpoints.z[i] - checkpoints.opz[0]) / (double) (checkpoints.x[i] - checkpoints.opx[0]))
 					/ 0.017453292519943295D);
 		} else {
@@ -950,7 +950,7 @@ public class xtGraphics extends Panel implements Runnable {
 			if (checkpoints.opx[l] - checkpoints.opx[0] >= 0) {
 				l2 = 180;
 			}
-			k = (int) ((double) (90 + l2) + Math.atan((double) (checkpoints.opz[l] - checkpoints.opz[0])
+			k = (int) (90 + l2 + Math.atan((double) (checkpoints.opz[l] - checkpoints.opz[0])
 					/ (double) (checkpoints.opx[l] - checkpoints.opx[0])) / 0.017453292519943295D);
 			drawcs(13, "[                                ]", 76, 67, 240, 0);
 			drawcs(13, names[sc[l]], 0, 0, 0, 0);
@@ -1005,14 +1005,14 @@ public class xtGraphics extends Panel implements Runnable {
 					ai[i1] = xs(ai[i1], ai2[i1]);
 					ai1[i1] = ys(ai1[i1], ai2[i1]);
 				} while (++i1 < 7);
-				i1 = (int) (190F + 190F * ((float) m.snap[0] / 100F));
+				i1 = (int) (190F + 190F * (m.snap[0] / 100F));
 				if (i1 > 255) {
 					i1 = 255;
 				}
 				if (i1 < 0) {
 					i1 = 0;
 				}
-				int l1 = (int) (255F + 255F * ((float) m.snap[1] / 100F));
+				int l1 = (int) (255F + 255F * (m.snap[1] / 100F));
 				if (l1 > 255) {
 					l1 = 255;
 				}
@@ -1027,7 +1027,7 @@ public class xtGraphics extends Panel implements Runnable {
 						j2 = (j2 * k + m.csky[2] * (45 - k)) / 45;
 					}
 					if (k >= 90) {
-						int i3 = (int) (255F + 255F * ((float) m.snap[0] / 100F));
+						int i3 = (int) (255F + 255F * (m.snap[0] / 100F));
 						if (i3 > 255) {
 							i3 = 255;
 						}
@@ -1040,7 +1040,7 @@ public class xtGraphics extends Panel implements Runnable {
 						}
 					}
 				} else if (flk) {
-					i1 = (int) (255F + 255F * ((float) m.snap[0] / 100F));
+					i1 = (int) (255F + 255F * (m.snap[0] / 100F));
 					if (i1 > 255) {
 						i1 = 255;
 					}
@@ -1049,14 +1049,14 @@ public class xtGraphics extends Panel implements Runnable {
 					}
 					flk = false;
 				} else {
-					i1 = (int) (255F + 255F * ((float) m.snap[0] / 100F));
+					i1 = (int) (255F + 255F * (m.snap[0] / 100F));
 					if (i1 > 255) {
 						i1 = 255;
 					}
 					if (i1 < 0) {
 						i1 = 0;
 					}
-					l1 = (int) (220F + 220F * ((float) m.snap[1] / 100F));
+					l1 = (int) (220F + 220F * (m.snap[1] / 100F));
 					if (l1 > 255) {
 						l1 = 255;
 					}
@@ -1067,14 +1067,14 @@ public class xtGraphics extends Panel implements Runnable {
 				}
 				rd.setColor(new Color(i1, l1, j2));
 				rd.fillPolygon(ai, ai1, 7);
-				i1 = (int) (115F + 115F * ((float) m.snap[0] / 100F));
+				i1 = (int) (115F + 115F * (m.snap[0] / 100F));
 				if (i1 > 255) {
 					i1 = 255;
 				}
 				if (i1 < 0) {
 					i1 = 0;
 				}
-				l1 = (int) (170F + 170F * ((float) m.snap[1] / 100F));
+				l1 = (int) (170F + 170F * (m.snap[1] / 100F));
 				if (l1 > 255) {
 					l1 = 255;
 				}
@@ -1089,7 +1089,7 @@ public class xtGraphics extends Panel implements Runnable {
 						j2 = (j2 * k + m.csky[2] * (45 - k)) / 45;
 					}
 				} else if (flk) {
-					i1 = (int) (255F + 255F * ((float) m.snap[0] / 100F));
+					i1 = (int) (255F + 255F * (m.snap[0] / 100F));
 					if (i1 > 255) {
 						i1 = 255;
 					}
@@ -1107,21 +1107,21 @@ public class xtGraphics extends Panel implements Runnable {
 				ai[j1] = xs(ai[j1], ai2[j1]);
 				ai1[j1] = ys(ai1[j1], ai2[j1]);
 			} while (++j1 < 7);
-			j1 = (int) (159F + 159F * ((float) m.snap[0] / 100F));
+			j1 = (int) (159F + 159F * (m.snap[0] / 100F));
 			if (j1 > 255) {
 				j1 = 255;
 			}
 			if (j1 < 0) {
 				j1 = 0;
 			}
-			int i2 = (int) (207F + 207F * ((float) m.snap[1] / 100F));
+			int i2 = (int) (207F + 207F * (m.snap[1] / 100F));
 			if (i2 > 255) {
 				i2 = 255;
 			}
 			if (i2 < 0) {
 				i2 = 0;
 			}
-			int k2 = (int) (255F + 255F * ((float) m.snap[2] / 100F));
+			int k2 = (int) (255F + 255F * (m.snap[2] / 100F));
 			if (k2 > 255) {
 				k2 = 255;
 			}
@@ -1130,21 +1130,21 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 			rd.setColor(new Color(j1, i2, k2));
 			rd.fillPolygon(ai, ai1, 7);
-			j1 = (int) (120F + 120F * ((float) m.snap[0] / 100F));
+			j1 = (int) (120F + 120F * (m.snap[0] / 100F));
 			if (j1 > 255) {
 				j1 = 255;
 			}
 			if (j1 < 0) {
 				j1 = 0;
 			}
-			i2 = (int) (114F + 114F * ((float) m.snap[1] / 100F));
+			i2 = (int) (114F + 114F * (m.snap[1] / 100F));
 			if (i2 > 255) {
 				i2 = 255;
 			}
 			if (i2 < 0) {
 				i2 = 0;
 			}
-			k2 = (int) (255F + 255F * ((float) m.snap[2] / 100F));
+			k2 = (int) (255F + 255F * (m.snap[2] / 100F));
 			if (k2 > 255) {
 				k2 = 255;
 			}
@@ -1208,8 +1208,8 @@ public class xtGraphics extends Panel implements Runnable {
 					if (!flag1) {
 						if (madness.power != 98F) {
 							if (Math.abs(madness.speed) > 0.0F
-									&& Math.abs(madness.speed) <= (float) madness.swits[madness.cn][0]) {
-								int j = (int) ((3F * Math.abs(madness.speed)) / (float) madness.swits[madness.cn][0]);
+									&& Math.abs(madness.speed) <= madness.swits[madness.cn][0]) {
+								int j = (int) ((3F * Math.abs(madness.speed)) / madness.swits[madness.cn][0]);
 								if (j == 2) {
 									if (pwait == 0) {
 										j = 0;
@@ -1221,10 +1221,10 @@ public class xtGraphics extends Panel implements Runnable {
 								}
 								sparkeng(j);
 							}
-							if (Math.abs(madness.speed) > (float) madness.swits[madness.cn][0]
-									&& Math.abs(madness.speed) <= (float) madness.swits[madness.cn][1]) {
-								int k = (int) ((3F * (Math.abs(madness.speed) - (float) madness.swits[madness.cn][0]))
-										/ (float) (madness.swits[madness.cn][1] - madness.swits[madness.cn][0]));
+							if (Math.abs(madness.speed) > madness.swits[madness.cn][0]
+									&& Math.abs(madness.speed) <= madness.swits[madness.cn][1]) {
+								int k = (int) ((3F * (Math.abs(madness.speed) - madness.swits[madness.cn][0]))
+										/ (madness.swits[madness.cn][1] - madness.swits[madness.cn][0]));
 								if (k == 2) {
 									if (pwait == 0) {
 										k = 0;
@@ -1236,16 +1236,16 @@ public class xtGraphics extends Panel implements Runnable {
 								}
 								sparkeng(k);
 							}
-							if (Math.abs(madness.speed) > (float) madness.swits[madness.cn][1]
-									&& Math.abs(madness.speed) <= (float) madness.swits[madness.cn][2]) {
-								int l = (int) ((3F * (Math.abs(madness.speed) - (float) madness.swits[madness.cn][1]))
-										/ (float) (madness.swits[madness.cn][2] - madness.swits[madness.cn][1]));
+							if (Math.abs(madness.speed) > madness.swits[madness.cn][1]
+									&& Math.abs(madness.speed) <= madness.swits[madness.cn][2]) {
+								int l = (int) ((3F * (Math.abs(madness.speed) - madness.swits[madness.cn][1]))
+										/ (madness.swits[madness.cn][2] - madness.swits[madness.cn][1]));
 								sparkeng(l);
 							}
 						} else {
 							byte byte0 = 2;
 							if (pwait == 0) {
-								if (Math.abs(madness.speed) > (float) madness.swits[madness.cn][1]) {
+								if (Math.abs(madness.speed) > madness.swits[madness.cn][1]) {
 									byte0 = 3;
 								}
 							} else {
@@ -1272,7 +1272,7 @@ public class xtGraphics extends Panel implements Runnable {
 				aird = false;
 			} else {
 				pwait = 15;
-				if (!madness.mtouch && !grrd && (double) m.random() > 0.40000000000000002D) {
+				if (!madness.mtouch && !grrd && m.random() > 0.40000000000000002D) {
 					air[(int) (m.random() * 4F)].loop();
 					stopcnt = 5;
 					grrd = true;
@@ -1522,8 +1522,8 @@ public class xtGraphics extends Panel implements Runnable {
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
 				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((float) (j1 - i) * m.cos(k) - (float) (k1 - j) * m.sin(k));
-				ai1[i1] = j + (int) ((float) (j1 - i) * m.sin(k) + (float) (k1 - j) * m.cos(k));
+				ai[i1] = i + (int) ((j1 - i) * m.cos(k) - (k1 - j) * m.sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * m.sin(k) + (k1 - j) * m.cos(k));
 			}
 
 		}
@@ -2752,7 +2752,7 @@ public class xtGraphics extends Panel implements Runnable {
 						}
 						rd.setColor(new Color(236, 226, 202));
 						float f = (float) Math.random();
-						if ((double) f < 0.69999999999999996D) {
+						if (f < 0.69999999999999996D) {
 							rd.drawRect(160, 150, 349, 126);
 						} else {
 							rd.fillRect(160, 150, 350, 127);
@@ -2776,7 +2776,7 @@ public class xtGraphics extends Panel implements Runnable {
 						aconto[byte0].zy = 0;
 						aconto[byte0].wzy -= 10;
 						aconto[byte0].d(rd);
-						if ((double) f < 0.10000000000000001D) {
+						if (f < 0.10000000000000001D) {
 							rd.setColor(new Color(236, 226, 202));
 							int j = 0;
 							do {
@@ -2980,7 +2980,7 @@ public class xtGraphics extends Panel implements Runnable {
 				k = 1;
 				do {
 					while (!aflag[k]) {
-						sc[k] = (int) (Math.random() * (double) (7 + (i + 1) / 2));
+						sc[k] = (int) (Math.random() * (7 + (i + 1) / 2));
 						aflag[k] = true;
 						int l = 0;
 						do {
@@ -2988,7 +2988,7 @@ public class xtGraphics extends Panel implements Runnable {
 								aflag[k] = false;
 							}
 						} while (++l < 7);
-						if (Math.random() < (double) proba[sc[k]]) {
+						if (Math.random() < proba[sc[k]]) {
 							aflag[k] = false;
 						}
 						if (i == 10) {
@@ -3122,7 +3122,7 @@ public class xtGraphics extends Panel implements Runnable {
 						if (i3 == 17) {
 							i3 = 16;
 						}
-						sc[k2] = (int) (Math.random() * (double) (8 + (i3 + 1) / 2));
+						sc[k2] = (int) (Math.random() * (8 + (i3 + 1) / 2));
 						aflag[k2] = true;
 						float f = 0;
 						int g = 0;
@@ -3133,15 +3133,15 @@ public class xtGraphics extends Panel implements Runnable {
 						} while (++f < 7);
 						f = proba[sc[k2]];
 						if (i - sc[k2] > 4 && i != 17) {
-							f += (float) (i - sc[k2] - 4) / 10F;
-							if ((double) f > 0.90000000000000002D) {
+							f += (i - sc[k2] - 4) / 10F;
+							if (f > 0.90000000000000002D) {
 								f = 0.9F;
 							}
 						}
-						if (i == 16 && sc[k2] <= 8 && (double) f < 0.90000000000000002D) {
+						if (i == 16 && sc[k2] <= 8 && f < 0.90000000000000002D) {
 							f = 0.9F;
 						}
-						if (Math.random() < (double) f) {
+						if (Math.random() < f) {
 							aflag[k2] = false;
 						}
 						if (i != 11 && i != 12 && k2 != 1 && k2 != 2 && sc[k2] == 13 && aflag[k2]) {
@@ -3193,21 +3193,21 @@ public class xtGraphics extends Panel implements Runnable {
 
 	public void drawcs(int i, String s, int j, int k, int l, int i1) {
 		if (i1 != 3 && i1 != 4) {
-			j = (int) ((float) j + (float) j * ((float) m.snap[0] / 100F));
+			j = (int) (j + j * (m.snap[0] / 100F));
 			if (j > 255) {
 				j = 255;
 			}
 			if (j < 0) {
 				j = 0;
 			}
-			k = (int) ((float) k + (float) k * ((float) m.snap[1] / 100F));
+			k = (int) (k + k * (m.snap[1] / 100F));
 			if (k > 255) {
 				k = 255;
 			}
 			if (k < 0) {
 				k = 0;
 			}
-			l = (int) ((float) l + (float) l * ((float) m.snap[2] / 100F));
+			l = (int) (l + l * (m.snap[2] / 100F));
 			if (l > 255) {
 				l = 255;
 			}
@@ -3216,21 +3216,21 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 		}
 		if (i1 == 4) {
-			j = (int) ((float) j - (float) j * ((float) m.snap[0] / 100F));
+			j = (int) (j - j * (m.snap[0] / 100F));
 			if (j > 255) {
 				j = 255;
 			}
 			if (j < 0) {
 				j = 0;
 			}
-			k = (int) ((float) k - (float) k * ((float) m.snap[1] / 100F));
+			k = (int) (k - k * (m.snap[1] / 100F));
 			if (k > 255) {
 				k = 255;
 			}
 			if (k < 0) {
 				k = 0;
 			}
-			l = (int) ((float) l - (float) l * ((float) m.snap[2] / 100F));
+			l = (int) (l - l * (m.snap[2] / 100F));
 			if (l > 255) {
 				l = 255;
 			}
@@ -3382,21 +3382,21 @@ public class xtGraphics extends Panel implements Runnable {
 		for (int k = 0; k < j * i; k++) {
 			if (ai[k] != 0xffc0c0c0 && ai[k] != ai[j * i - 1]) {
 				Color color = new Color(ai[k]);
-				int l = (int) ((float) color.getRed() + (float) color.getRed() * ((float) m.snap[0] / 100F));
+				int l = (int) (color.getRed() + color.getRed() * (m.snap[0] / 100F));
 				if (l > 225) {
 					l = 225;
 				}
 				if (l < 0) {
 					l = 0;
 				}
-				int i1 = (int) ((float) color.getGreen() + (float) color.getGreen() * ((float) m.snap[1] / 100F));
+				int i1 = (int) (color.getGreen() + color.getGreen() * (m.snap[1] / 100F));
 				if (i1 > 225) {
 					i1 = 225;
 				}
 				if (i1 < 0) {
 					i1 = 0;
 				}
-				int j1 = (int) ((float) color.getBlue() + (float) color.getBlue() * ((float) m.snap[2] / 100F));
+				int j1 = (int) (color.getBlue() + color.getBlue() * (m.snap[2] / 100F));
 				if (j1 > 225) {
 					j1 = 225;
 				}
@@ -3478,7 +3478,7 @@ public class xtGraphics extends Panel implements Runnable {
 		int i1 = 244;
 		int j1 = 11;
 		if (k > 33) {
-			i1 = (int) (244F - 233F * ((float) (k - 33) / 65F));
+			i1 = (int) (244F - 233F * ((k - 33) / 65F));
 		}
 		if (k > 70) {
 			if (dmcnt < 10) {
@@ -3490,25 +3490,25 @@ public class xtGraphics extends Panel implements Runnable {
 				}
 			}
 			dmcnt++;
-			if ((double) dmcnt > 167D - (double) k * 1.5D) {
+			if (dmcnt > 167D - k * 1.5D) {
 				dmcnt = 0;
 			}
 		}
-		l = (int) ((float) l + (float) l * ((float) m.snap[0] / 100F));
+		l = (int) (l + l * (m.snap[0] / 100F));
 		if (l > 255) {
 			l = 255;
 		}
 		if (l < 0) {
 			l = 0;
 		}
-		i1 = (int) ((float) i1 + (float) i1 * ((float) m.snap[1] / 100F));
+		i1 = (int) (i1 + i1 * (m.snap[1] / 100F));
 		if (i1 > 255) {
 			i1 = 255;
 		}
 		if (i1 < 0) {
 			i1 = 0;
 		}
-		j1 = (int) ((float) j1 + (float) j1 * ((float) m.snap[2] / 100F));
+		j1 = (int) (j1 + j1 * (m.snap[2] / 100F));
 		if (j1 > 255) {
 			j1 = 255;
 		}
@@ -3529,28 +3529,28 @@ public class xtGraphics extends Panel implements Runnable {
 		if (f == 98F) {
 			l = 64;
 		}
-		i1 = (int) (190D + (double) f * 0.37D);
+		i1 = (int) (190D + f * 0.37D);
 		j1 = 244;
 		if (auscnt < 45 && aflk) {
 			l = 128;
 			i1 = 244;
 			j1 = 244;
 		}
-		l = (int) ((float) l + (float) l * ((float) m.snap[0] / 100F));
+		l = (int) (l + l * (m.snap[0] / 100F));
 		if (l > 255) {
 			l = 255;
 		}
 		if (l < 0) {
 			l = 0;
 		}
-		i1 = (int) ((float) i1 + (float) i1 * ((float) m.snap[1] / 100F));
+		i1 = (int) (i1 + i1 * (m.snap[1] / 100F));
 		if (i1 > 255) {
 			i1 = 255;
 		}
 		if (i1 < 0) {
 			i1 = 0;
 		}
-		j1 = (int) ((float) j1 + (float) j1 * ((float) m.snap[2] / 100F));
+		j1 = (int) (j1 + j1 * (m.snap[2] / 100F));
 		if (j1 > 255) {
 			j1 = 255;
 		}
@@ -3608,17 +3608,17 @@ public class xtGraphics extends Panel implements Runnable {
 		drawcs(333, "Loading game, please wait.", 0, 0, 0, 3);
 		rd.setColor(new Color(255, 255, 255));
 		rd.fillRect(230, 373, 210, 17);
-		shload += (((float) dnload + 10F) - shload) / 100F;
-		if (shload > (float) kbload) {
+		shload += ((dnload + 10F) - shload) / 100F;
+		if (shload > kbload) {
 			shload = kbload;
 		}
 		if (dnload == kbload) {
 			shload = kbload;
 		}
-		drawcs(385, "" + (int) (((26F + (shload / (float) kbload) * 200F) / 226F) * 100F) + " % loaded    |    "
+		drawcs(385, "" + (int) (((26F + (shload / kbload) * 200F) / 226F) * 100F) + " % loaded    |    "
 				+ (kbload - (int) shload) + " KB remaining", 32, 64, 128, 3);
 		rd.setColor(new Color(32, 64, 128));
-		rd.fillRect(222, 346, 26 + (int) ((shload / (float) kbload) * 200F), 10);
+		rd.fillRect(222, 346, 26 + (int) ((shload / kbload) * 200F), 10);
 	}
 
 	public xtGraphics(Medium medium, Graphics2D graphics2d, Applet applet) {
@@ -3798,8 +3798,8 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 		if (movly <= 10) {
 			if (movly == 10 || movly == 8 || movly == 6 || movly == 4 || movly == 2) {
-				gxdu = (int) ((double) (xdu + 200) - 400D * Math.random());
-				gydu = (int) ((double) (ydu + 200) - 400D * Math.random());
+				gxdu = (int) (xdu + 200 - 400D * Math.random());
+				gydu = (int) (ydu + 200 - 400D * Math.random());
 				if (movly == 2) {
 					gxdu = 272;
 					gydu = 2;
@@ -4025,7 +4025,7 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 		} else {
 			flyr = flyrdest;
-			flyrdest = (int) (((float) flyr + m.random() * 160F) - 80F);
+			flyrdest = (int) ((flyr + m.random() * 160F) - 80F);
 		}
 		if (flyr > 160) {
 			flyr = 160;
@@ -4034,7 +4034,7 @@ public class xtGraphics extends Panel implements Runnable {
 			flatrstart++;
 			flatr = flatrstart * 3;
 			flyr = (int) (m.random() * 160F - 80F);
-			flyrdest = (int) (((float) flyr + m.random() * 160F) - 80F);
+			flyrdest = (int) ((flyr + m.random() * 160F) - 80F);
 			flang = 1;
 			flangados = (int) (m.random() * 6F + 2.0F);
 			blackn = 0.0F;
@@ -4046,16 +4046,16 @@ public class xtGraphics extends Panel implements Runnable {
 			do {
 				if (smokey[i + j * 466] != smokey[0]) {
 					float f = pys(i, 233, j, flyr);
-					int k = (int) (((float) (i - 233) / f) * (float) flatr);
-					int l = (int) (((float) (j - flyr) / f) * (float) flatr);
+					int k = (int) (((i - 233) / f) * flatr);
+					int l = (int) (((j - flyr) / f) * flatr);
 					int i1 = i + k + 100 + (j + l + 110) * 670;
 					if (i + k + 100 < 670 && i + k + 100 > 0 && j + l + 110 < 400 && j + l + 110 > 0 && i1 < 0x416e0
 							&& i1 >= 0) {
 						Color color = new Color(flexpix[i1]);
 						Color color1 = new Color(smokey[i + j * 466]);
-						float f1 = (255F - (float) color1.getRed()) / 255F;
-						int j1 = (int) (((float) color.getRed() * ((float) flang * f1)
-								+ (float) color1.getRed() * (1.0F - f1)) / ((float) flang * f1 + (1.0F - f1) + blackn));
+						float f1 = (255F - color1.getRed()) / 255F;
+						int j1 = (int) ((color.getRed() * (flang * f1)
+								+ color1.getRed() * (1.0F - f1)) / (flang * f1 + (1.0F - f1) + blackn));
 						if (j1 > 255) {
 							j1 = 255;
 						}
@@ -4473,8 +4473,8 @@ public class xtGraphics extends Panel implements Runnable {
 					rd.drawString("Endurance:", 408, 348);
 					rd.drawImage(statb, 471, 342, null);
 					rd.setColor(new Color(0, 0, 0));
-					float f = (float) (madness.swits[sc[0]][2] - 220) / 90F;
-					if ((double) f < 0.20000000000000001D) {
+					float f = (madness.swits[sc[0]][2] - 220) / 90F;
+					if (f < 0.20000000000000001D) {
 						f = 0.2F;
 					}
 					rd.fillRect((int) (97F + 156F * f), 312, (int) (156F * (1.0F - f) + 1.0F), 7);
@@ -4486,7 +4486,7 @@ public class xtGraphics extends Panel implements Runnable {
 					rd.fillRect((int) (97F + 156F * f), 327, (int) (156F * (1.0F - f) + 1.0F), 7);
 					f = dishandle[sc[0]];
 					rd.fillRect((int) (97F + 156F * f), 342, (int) (156F * (1.0F - f) + 1.0F), 7);
-					f = ((float) madness.airc[sc[0]] * madness.airs[sc[0]] * madness.bounce[sc[0]] + 28F) / 139F;
+					f = (madness.airc[sc[0]] * madness.airs[sc[0]] * madness.bounce[sc[0]] + 28F) / 139F;
 					if (f > 1.0F) {
 						f = 1.0F;
 					}
@@ -4788,6 +4788,7 @@ public class xtGraphics extends Panel implements Runnable {
 		} while (++i < 6);
 	}
 
+	@Override
 	public void run() {
 		while (runtyp != 0) {
 			if (runtyp >= 1 && runtyp <= 17) {
@@ -4825,21 +4826,21 @@ public class xtGraphics extends Panel implements Runnable {
 	}
 
 	public void hipnoload(int i, boolean flag) {
-		int j = (int) (230F - 230F * ((float) m.snap[0] / (100F * hipno[i - 1])));
+		int j = (int) (230F - 230F * (m.snap[0] / (100F * hipno[i - 1])));
 		if (j > 255) {
 			j = 255;
 		}
 		if (j < 0) {
 			j = 0;
 		}
-		int l = (int) (230F - 230F * ((float) m.snap[1] / (100F * hipno[i - 1])));
+		int l = (int) (230F - 230F * (m.snap[1] / (100F * hipno[i - 1])));
 		if (l > 255) {
 			l = 255;
 		}
 		if (l < 0) {
 			l = 0;
 		}
-		int j1 = (int) (230F - 230F * ((float) m.snap[2] / (100F * hipno[i - 1])));
+		int j1 = (int) (230F - 230F * (m.snap[2] / (100F * hipno[i - 1])));
 		if (j1 > 255) {
 			j1 = 255;
 		}
@@ -4879,21 +4880,21 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 			rd.drawImage(dude[duds], 30, 10, null);
 			rd.drawImage(flaot, 127, 42, null);
-			int k = (int) (80F - 80F * ((float) m.snap[0] / (50F * hipno[i - 1])));
+			int k = (int) (80F - 80F * (m.snap[0] / (50F * hipno[i - 1])));
 			if (k > 255) {
 				k = 255;
 			}
 			if (k < 0) {
 				k = 0;
 			}
-			int i1 = (int) (80F - 80F * ((float) m.snap[1] / (50F * hipno[i - 1])));
+			int i1 = (int) (80F - 80F * (m.snap[1] / (50F * hipno[i - 1])));
 			if (i1 > 255) {
 				i1 = 255;
 			}
 			if (i1 < 0) {
 				i1 = 0;
 			}
-			int k1 = (int) (80F - 80F * ((float) m.snap[2] / (50F * hipno[i - 1])));
+			int k1 = (int) (80F - 80F * (m.snap[2] / (50F * hipno[i - 1])));
 			if (k1 > 255) {
 				k1 = 255;
 			}
@@ -4999,21 +5000,21 @@ public class xtGraphics extends Panel implements Runnable {
 				int l1 = 0;
 				int i2 = 0;
 				if (j == 1 && ai[j1] == i1) {
-					k1 = (int) (237F - 237F * ((float) m.snap[0] / (150F * hipno[i - 1])));
+					k1 = (int) (237F - 237F * (m.snap[0] / (150F * hipno[i - 1])));
 					if (k1 > 255) {
 						k1 = 255;
 					}
 					if (k1 < 0) {
 						k1 = 0;
 					}
-					l1 = (int) (237F - 237F * ((float) m.snap[1] / (150F * hipno[i - 1])));
+					l1 = (int) (237F - 237F * (m.snap[1] / (150F * hipno[i - 1])));
 					if (l1 > 255) {
 						l1 = 255;
 					}
 					if (l1 < 0) {
 						l1 = 0;
 					}
-					i2 = (int) (237F - 237F * ((float) m.snap[2] / (150F * hipno[i - 1])));
+					i2 = (int) (237F - 237F * (m.snap[2] / (150F * hipno[i - 1])));
 					if (i2 > 255) {
 						i2 = 255;
 					}
@@ -5026,24 +5027,24 @@ public class xtGraphics extends Panel implements Runnable {
 						i2 = 250;
 					}
 				} else {
-					k1 = (int) ((float) color.getRed()
-							- (float) color.getRed() * ((float) m.snap[0] / (50F * hipno[i - 1])));
+					k1 = (int) (color.getRed()
+							- color.getRed() * (m.snap[0] / (50F * hipno[i - 1])));
 					if (k1 > 255) {
 						k1 = 255;
 					}
 					if (k1 < 0) {
 						k1 = 0;
 					}
-					l1 = (int) ((float) color.getGreen()
-							- (float) color.getGreen() * ((float) m.snap[1] / (50F * hipno[i - 1])));
+					l1 = (int) (color.getGreen()
+							- color.getGreen() * (m.snap[1] / (50F * hipno[i - 1])));
 					if (l1 > 255) {
 						l1 = 255;
 					}
 					if (l1 < 0) {
 						l1 = 0;
 					}
-					i2 = (int) ((float) color.getBlue()
-							- (float) color.getBlue() * ((float) m.snap[2] / (50F * hipno[i - 1])));
+					i2 = (int) (color.getBlue()
+							- color.getBlue() * (m.snap[2] / (50F * hipno[i - 1])));
 					if (i2 > 255) {
 						i2 = 255;
 					}
@@ -5078,7 +5079,7 @@ public class xtGraphics extends Panel implements Runnable {
 	public void carsbginflex() {
 		flatr = 0;
 		flyr = (int) (m.random() * 160F - 80F);
-		flyrdest = (int) (((float) flyr + m.random() * 160F) - 80F);
+		flyrdest = (int) ((flyr + m.random() * 160F) - 80F);
 		flang = 1;
 		flangados = (int) (m.random() * 6F + 2.0F);
 		blackn = 0.0F;

@@ -7,6 +7,7 @@ public class SuperStream extends ByteArrayInputStream {
 		super(abyte0);
 	}
 
+	@Override
 	public int read() {
 		int i = super.read();
 		if (i == -1) {
@@ -16,6 +17,7 @@ public class SuperStream extends ByteArrayInputStream {
 		return i;
 	}
 
+	@Override
 	public int read(byte abyte0[], int i, int j) {
 		int k;
 		for (k = 0; k < j;) {

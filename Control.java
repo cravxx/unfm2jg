@@ -114,9 +114,9 @@ public class Control {
 					if (checkpoints.stage == 4) {
 						f = 0.5F;
 					}
-					upwait = (int) ((float) ((checkpoints.pos[0] - checkpoints.pos[madness.im])
+					upwait = (int) ((checkpoints.pos[0] - checkpoints.pos[madness.im])
 							* (checkpoints.pos[0] - checkpoints.pos[madness.im])
-							* (checkpoints.pos[0] - checkpoints.pos[madness.im])) * f);
+							* (checkpoints.pos[0] - checkpoints.pos[madness.im]) * f);
 					if (upwait > 80) {
 						upwait = 80;
 					}
@@ -234,7 +234,7 @@ public class Control {
 					} else {
 						cntrn--;
 					}
-					saftey = (int) ((double) ((98F - madness.power) / 2.0F) * ((double) (m.random() / 2.0F) + 0.5D));
+					saftey = (int) ((98F - madness.power) / 2.0F * (m.random() / 2.0F + 0.5D));
 					if (saftey > 20) {
 						saftey = 20;
 					}
@@ -248,7 +248,7 @@ public class Control {
 					if (checkpoints.stage == 4) {
 						f = 0.4F;
 					}
-					mustland = f + (float) ((double) (m.random() / 2.0F) - 0.25D);
+					mustland = f + (float) (m.random() / 2.0F - 0.25D);
 					f = 1.0F;
 					if (checkpoints.stage == 1) {
 						f = 5F;
@@ -306,7 +306,7 @@ public class Control {
 						mustland = 0.0F;
 						saftey = 10;
 						if ((madness.pcleared == 15 || madness.pcleared == 51)
-								&& ((double) m.random() > 0.40000000000000002D || trfix != 0)) {
+								&& (m.random() > 0.40000000000000002D || trfix != 0)) {
 							stuntf = 7;
 						}
 						if (madness.pcleared == 42) {
@@ -321,20 +321,20 @@ public class Control {
 					if (madness.power < 60F) {
 						trickprf = -1F;
 					}
-					if (checkpoints.stage == 3 && madness.im == 6 && (double) trickprf > 0.69999999999999996D) {
+					if (checkpoints.stage == 3 && madness.im == 6 && trickprf > 0.69999999999999996D) {
 						trickprf = 0.7F;
 					}
-					if (checkpoints.stage == 6 && (double) trickprf > 0.29999999999999999D) {
+					if (checkpoints.stage == 6 && trickprf > 0.29999999999999999D) {
 						trickprf = 0.3F;
 					}
-					if (checkpoints.stage == 8 && (double) trickprf > 0.20000000000000001D) {
+					if (checkpoints.stage == 8 && trickprf > 0.20000000000000001D) {
 						trickprf = 0.2F;
 					}
 					if (checkpoints.stage == 9) {
-						if ((double) trickprf > 0.5D) {
+						if (trickprf > 0.5D) {
 							trickprf = 0.5F;
 						}
-						if ((madness.im == 6 || madness.im == 5) && (double) trickprf > 0.29999999999999999D) {
+						if ((madness.im == 6 || madness.im == 5) && trickprf > 0.29999999999999999D) {
 							trickprf = 0.3F;
 						}
 					}
@@ -345,10 +345,10 @@ public class Control {
 						trickprf = -1F;
 						stuntf = 5;
 					}
-					if (checkpoints.stage == 13 && (double) trickprf > 0.40000000000000002D) {
+					if (checkpoints.stage == 13 && trickprf > 0.40000000000000002D) {
 						trickprf = 0.4F;
 					}
-					if (checkpoints.stage == 14 && (double) trickprf > 0.5D) {
+					if (checkpoints.stage == 14 && trickprf > 0.5D) {
 						trickprf = 0.5F;
 					}
 					if (checkpoints.stage == 17) {
@@ -370,7 +370,7 @@ public class Control {
 					} else {
 						perfection = true;
 					}
-					if ((100F * (float) madness.hitmag) / (float) madness.maxmag[madness.cn] > 60F) {
+					if ((100F * madness.hitmag) / madness.maxmag[madness.cn] > 60F) {
 						perfection = true;
 					}
 					if (checkpoints.stage == 6 || checkpoints.stage == 8 || checkpoints.stage == 9
@@ -464,7 +464,7 @@ public class Control {
 									c4 = '\264';
 								}
 								int i8;
-								for (i8 = (int) ((double) (90 + c4) + Math
+								for (i8 = (int) (90 + c4 + Math
 										.atan((double) (checkpoints.opz[i4] - conto.z)
 												/ (double) (checkpoints.opx[i4] - conto.x))
 										/ 0.017453292519943295D); i8 < 0; i8 += 360) {
@@ -547,14 +547,14 @@ public class Control {
 									i9 = 50 + 70 * Math.abs(checkpoints.clear[i4] - madness.clear);
 								}
 								if (k8 < i9 && py(conto.x / 100, checkpoints.opx[i4] / 100, conto.z / 100,
-										checkpoints.opz[i4] / 100) < l8 && afta && madness.power > (float) j2) {
+										checkpoints.opz[i4] / 100) < l8 && afta && madness.power > j2) {
 									float f1 = 35 - Math.abs(checkpoints.clear[i4] - madness.clear) * 10;
 									if (f1 < 1.0F) {
 										f1 = 1.0F;
 									}
-									float f2 = (float) ((checkpoints.pos[madness.im] + 1) * (5 - checkpoints.pos[i4]))
+									float f2 = (checkpoints.pos[madness.im] + 1) * (5 - checkpoints.pos[i4])
 											/ f1;
-									if (checkpoints.stage != 17 && (double) f2 > 0.69999999999999996D) {
+									if (checkpoints.stage != 17 && f2 > 0.69999999999999996D) {
 										f2 = 0.7F;
 									}
 									if (i4 != 0 && checkpoints.pos[0] < checkpoints.pos[madness.im]) {
@@ -574,7 +574,7 @@ public class Control {
 										f2 = 0.0F;
 									}
 									if (checkpoints.stage == 7 && madness.im == 6 && i4 == 0) {
-										f2 = (float) ((double) f2 * 1.5D);
+										f2 = (float) (f2 * 1.5D);
 									}
 									if (checkpoints.stage == 8) {
 										if (madness.cn == 11 || madness.cn == 13 && bulistc) {
@@ -585,7 +585,7 @@ public class Control {
 									}
 									if (checkpoints.stage == 9) {
 										if (i4 != 0) {
-											f2 = (float) ((double) f2 * 0.5D);
+											f2 = (float) (f2 * 0.5D);
 										}
 										if (madness.pcleared != 13 && madness.pcleared != 33 && !flag3) {
 											f2 *= 0.5F;
@@ -613,7 +613,7 @@ public class Control {
 									}
 									if (checkpoints.stage == 15) {
 										if (checkpoints.pos[madness.im] == 0) {
-											f2 = (float) ((double) f2 * 0.5D);
+											f2 = (float) (f2 * 0.5D);
 										}
 										if (checkpoints.pos[0] < checkpoints.pos[madness.im]) {
 											f2 *= 2.0F;
@@ -629,7 +629,7 @@ public class Control {
 												f2 *= 2.0F;
 											}
 										} else {
-											f2 = (float) ((double) f2 * 0.5D);
+											f2 = (float) (f2 * 0.5D);
 										}
 										if (madness.cn == 13 && i4 == 0) {
 											f2 = 1.0F;
@@ -724,8 +724,8 @@ public class Control {
 								if (flag1 && k8 > 100
 										&& py(conto.x / 100, checkpoints.opx[i4] / 100, conto.z / 100,
 												checkpoints.opz[i4] / 100) < 300
-										&& (double) m.random() > 0.59999999999999998D
-												- (double) ((float) checkpoints.pos[madness.im] / 10F)) {
+										&& m.random() > 0.59999999999999998D
+												- checkpoints.pos[madness.im] / 10F) {
 									clrnce = 0;
 									acuracy = 0;
 								}
@@ -746,7 +746,7 @@ public class Control {
 						if (checkpoints.stage == 16) {
 							j1 = 40;
 						}
-						if ((100F * (float) madness.hitmag) / (float) madness.maxmag[madness.cn] > (float) j1) {
+						if ((100F * madness.hitmag) / madness.maxmag[madness.cn] > j1) {
 							trfix = 1;
 						}
 						if (!flag2) {
@@ -764,7 +764,7 @@ public class Control {
 									&& madness.cn != 10 && madness.cn != 12) {
 								k2 = 50;
 							}
-							if ((100F * (float) madness.hitmag) / (float) madness.maxmag[madness.cn] > (float) k2) {
+							if ((100F * madness.hitmag) / madness.maxmag[madness.cn] > k2) {
 								trfix = 2;
 							}
 						}
@@ -861,7 +861,7 @@ public class Control {
 					if (checkpoints.stage == 16) {
 						k1 = 20;
 					}
-					if (!bulistc || trfix == 2 || trfix == 3 || trfix == 4 || madness.power < (float) k1) {
+					if (!bulistc || trfix == 2 || trfix == 3 || trfix == 4 || madness.power < k1) {
 						if (rampp == 1 && checkpoints.typ[i] <= 0) {
 							int l2 = i + 1;
 							if (l2 == checkpoints.n) {
@@ -1103,7 +1103,7 @@ public class Control {
 									c3 = '\264';
 								}
 								int k7;
-								for (k7 = (int) ((double) (90 + c3) + Math
+								for (k7 = (int) (90 + c3 + Math
 										.atan((double) (checkpoints.opz[0] - conto.z)
 												/ (double) (checkpoints.opx[0] - conto.x))
 										/ 0.017453292519943295D); k7 < 0; k7 += 360) {
@@ -1273,7 +1273,7 @@ public class Control {
 							if (madness.cn == 13) {
 								if (!gowait) {
 									if (checkpoints.clear[0] == 1) {
-										if ((double) m.random() > 0.5D) {
+										if (m.random() > 0.5D) {
 											wtx = -14000;
 											wtz = 48000;
 											frx = -5600;
@@ -1378,7 +1378,7 @@ public class Control {
 									for (int k6 = 0; k6 < checkpoints.n; k6++) {
 										if (checkpoints.typ[k6] == -4 && (py(conto.x / 100, checkpoints.x[k6] / 100,
 												conto.z / 100, checkpoints.z[k6] / 100) < l4
-												&& (double) m.random() > 0.59999999999999998D || l4 == -10)) {
+												&& m.random() > 0.59999999999999998D || l4 == -10)) {
 											l4 = py(conto.x / 100, checkpoints.x[k6] / 100, conto.z / 100,
 													checkpoints.z[k6] / 100);
 											oupnt = k6;
@@ -1465,7 +1465,7 @@ public class Control {
 							if (checkpoints.x[i] - conto.x >= 0) {
 								c1 = '\264';
 							}
-							pan = (int) ((double) (90 + c1) + Math
+							pan = (int) (90 + c1 + Math
 									.atan((double) (checkpoints.z[i] - conto.z) / (double) (checkpoints.x[i] - conto.x))
 									/ 0.017453292519943295D);
 						} else {
@@ -1473,26 +1473,26 @@ public class Control {
 							if (wtx - conto.x >= 0) {
 								c2 = '\264';
 							}
-							pan = (int) ((double) (90 + c2)
+							pan = (int) (90 + c2
 									+ Math.atan((double) (wtz - conto.z) / (double) (wtx - conto.x))
 											/ 0.017453292519943295D);
 						}
 						turncnt = 0;
-						randtcnt = (int) ((float) acuracy * m.random());
+						randtcnt = (int) (acuracy * m.random());
 					} else {
 						turncnt++;
 					}
 				} else {
 					up = true;
 					char c = '\0';
-					int l1 = (int) (((float) pys(conto.x, checkpoints.opx[acr], conto.z, checkpoints.opz[acr]) / 2.0F)
+					int l1 = (int) ((pys(conto.x, checkpoints.opx[acr], conto.z, checkpoints.opz[acr]) / 2.0F)
 							* aim);
-					int l3 = (int) ((float) checkpoints.opx[acr] - (float) l1 * m.sin(checkpoints.omxz[acr]));
-					int k5 = (int) ((float) checkpoints.opz[acr] + (float) l1 * m.cos(checkpoints.omxz[acr]));
+					int l3 = (int) (checkpoints.opx[acr] - l1 * m.sin(checkpoints.omxz[acr]));
+					int k5 = (int) (checkpoints.opz[acr] + l1 * m.cos(checkpoints.omxz[acr]));
 					if (l3 - conto.x >= 0) {
 						c = '\264';
 					}
-					pan = (int) ((double) (90 + c)
+					pan = (int) (90 + c
 							+ Math.atan((double) (k5 - conto.z) / (double) (l3 - conto.x)) / 0.017453292519943295D);
 					attack--;
 					if (attack <= 0) {
@@ -1539,7 +1539,7 @@ public class Control {
 								right = true;
 								lastl = false;
 							}
-							if (Math.abs(j - pan) > 50 && madness.speed > (float) madness.swits[madness.cn][0]
+							if (Math.abs(j - pan) > 50 && madness.speed > madness.swits[madness.cn][0]
 									&& turntyp != 0) {
 								if (turntyp == 1) {
 									down = true;
@@ -1560,7 +1560,7 @@ public class Control {
 							left = true;
 							lastl = true;
 						}
-						if (Math.abs(j - pan) < 310 && madness.speed > (float) madness.swits[madness.cn][0]
+						if (Math.abs(j - pan) < 310 && madness.speed > madness.swits[madness.cn][0]
 								&& turntyp != 0) {
 							if (turntyp == 1) {
 								down = true;
@@ -1616,12 +1616,12 @@ public class Control {
 			} else {
 				if (trickfase == 0) {
 					int k = (int) (((madness.scy[0] + madness.scy[1] + madness.scy[2] + madness.scy[3])
-							* (float) (conto.y - 300)) / 4000F);
+							* (conto.y - 300)) / 4000F);
 					int i2 = 3;
 					if (checkpoints.stage == 15) {
 						i2 = 10;
 					}
-					if (k > 7 && (m.random() > trickprf / (float) i2 || stuntf == 4 || stuntf == 3 || stuntf == 5
+					if (k > 7 && (m.random() > trickprf / i2 || stuntf == 4 || stuntf == 3 || stuntf == 5
 							|| stuntf == 6 || checkpoints.stage == 16)) {
 						oxy = madness.pxy;
 						ozy = madness.pzy;
@@ -1659,7 +1659,7 @@ public class Control {
 								apunch = 20;
 								oupnt = 70;
 							}
-							if ((double) m.random() > 0.84999999999999998D && stuntf != 4 && stuntf != 3 && stuntf != 6
+							if (m.random() > 0.84999999999999998D && stuntf != 4 && stuntf != 3 && stuntf != 6
 									&& checkpoints.stage != 16) {
 								udswt = true;
 							}
@@ -1670,7 +1670,7 @@ public class Control {
 									lrdirect = 1;
 								}
 								lrstart = (int) (30F * m.random());
-								if ((double) m.random() > 0.75D) {
+								if (m.random() > 0.75D) {
 									lrswt = true;
 								}
 							}
@@ -1681,7 +1681,7 @@ public class Control {
 								lrdirect = 1;
 							}
 							lrstart = (int) (10F * m.random() * trickprf);
-							if ((double) m.random() > 0.75D && checkpoints.stage != 16) {
+							if (m.random() > 0.75D && checkpoints.stage != 16) {
 								lrswt = true;
 							}
 							if (m.random() > trickprf + 0.3F) {
@@ -1691,7 +1691,7 @@ public class Control {
 									uddirect = 1;
 								}
 								udstart = (int) (30F * m.random());
-								if ((double) m.random() > 0.84999999999999998D) {
+								if (m.random() > 0.84999999999999998D) {
 									udswt = true;
 								}
 							}
@@ -1791,7 +1791,7 @@ public class Control {
 						}
 					}
 					if (((madness.scy[0] + madness.scy[1] + madness.scy[2] + madness.scy[3]) * 100F)
-							/ (float) (conto.y - 300) < (float) (-saftey)) {
+							/ (conto.y - 300) < (-saftey)) {
 						onceu = false;
 						onced = false;
 						oncel = false;

@@ -27,6 +27,7 @@ public class Mod {
 		return numpatterns;
 	}
 
+	@Override
 	public String toString() {
 		return name + " (" + numtracks + " tracks, " + numpatterns + " patterns, " + insts.length + " samples)";
 	}
