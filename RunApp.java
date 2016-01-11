@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -28,7 +27,7 @@ public class RunApp extends Panel {
 
     public static void main(String[] strings) {
         System.runFinalizersOnExit(true);
-        System.out.println("Nfm2-Mod Console");//Change this to the messgae of your preference
+        System.out.println("UNFM2 Console");//Change this to the messgae of your preference
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ex) {
@@ -38,7 +37,7 @@ public class RunApp extends Panel {
     }
 
     static void startup() {
-        frame = new Frame("NFM2");//Change this to the name of your preference
+        frame = new Frame("UNFM2");//Change this to the name of your preference
         frame.setBackground(new Color(0, 0, 0));
         frame.setIgnoreRepaint(true);
         frame.setIconImages(getIcons());
