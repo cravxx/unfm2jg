@@ -1,2 +1,2 @@
 language: java
-install: ant init-eclipse-compiler
+install: ant build-project
