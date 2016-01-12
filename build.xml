@@ -52,13 +52,8 @@
             <classpath refid="unfm2jg.classpath"/>
         </java>
     </target>
-    <target name="RunApp (6)">
-        <java classname="RunApp" failonerror="true" fork="yes">
-            <classpath refid="unfm2jg.classpath"/>
-        </java>
-    </target>
     <target name="RunApp">
-        <java classname="nfm.RunApp" failonerror="true" fork="yes">
+        <java classname="RunApp" failonerror="true" fork="yes">
             <classpath refid="unfm2jg.classpath"/>
         </java>
     </target>
