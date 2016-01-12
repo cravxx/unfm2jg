@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -xv
 if [ "$TRAVIS_REPO_SLUG" == "HulaSamsquanch/unfm2jg" ] && [ "$TRAVIS_JDK_VERSION" == "oraclejdk7" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
 
   echo -e "Publishing javadoc...\n"

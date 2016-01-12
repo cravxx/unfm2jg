@@ -5,4 +5,4 @@ env:
 
 
 install: ant -v build-project
-script: sh -v update_docs.sh
+script: sh update_docs.sh
