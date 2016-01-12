@@ -1,2 +1,2 @@
 language: java
-install: ant RunApp
+install: ant init-eclipse-compiler
