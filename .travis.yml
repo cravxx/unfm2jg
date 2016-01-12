@@ -1,2 +1,2 @@
 language: java
-ant build RunApp(6)
+install: ant build
