@@ -18,7 +18,7 @@ public class Medium
 	int[][] mtz = null;
 	int[][][] mtc = null;
 	int mgen;
-	int focus_point;
+	static int focus_point;
 	int ground;
 	int skyline;
 	int fade[] = {
@@ -68,9 +68,9 @@ public class Medium
 	int flex;
 	boolean trk;
 	boolean crs;
-	int cx;
-	int cy;
-	int cz;
+	static int cx;
+	static int cy;
+	static int cz;
 	int xz;
 	int zy;
 	int x;
@@ -98,8 +98,6 @@ public class Medium
 	int sgpz;
 	int nrw;
 	int ncl;
-	float tcos[];
-	float tsin[];
 	int lastmaf;
 	int checkpoint;
 	boolean lastcheck;
@@ -313,7 +311,7 @@ public class Medium
 				int k2 = cx + (int) ((cgpx[i2] - x - cx) * RadicalMath.cos(xz) - (cgpz[i2] - z - cz) * RadicalMath.sin(xz));
 				int l2 = cz + (int) ((cgpx[i2] - x - cx) * RadicalMath.sin(xz) + (cgpz[i2] - z - cz) * RadicalMath.cos(xz));
 				int i3 = cz + (int) ((250 - y - cy) * RadicalMath.sin(zy) + (l2 - cz) * RadicalMath.cos(zy));
-				if (xs(k2 + pmx[i2], i3) <= 0 || xs(k2 - pmx[i2], i3) >= w || i3 <= -pmx[i2] || i3 >= fade[2]) {
+				if (Utility.xs(k2 + pmx[i2], i3) <= 0 || Utility.xs(k2 - pmx[i2], i3) >= w || i3 <= -pmx[i2] || i3 >= fade[2]) {
 					continue;
 				}
 				ai[i1 - i][k1 - k] = i3;
@@ -336,8 +334,8 @@ public class Medium
 				int i6 = 0;
 				boolean flag1 = true;
 				for (int l6 = 0; l6 < 8; l6++) {
-					ai9[l6] = xs(ai4[l6], ai6[l6]);
-					ai10[l6] = ys(ai8[l6], ai6[l6]);
+					ai9[l6] = Utility.xs(ai4[l6], ai6[l6]);
+					ai10[l6] = Utility.ys(ai8[l6], ai6[l6], 1);
 					if (ai10[l6] < 0 || ai6[l6] < 10) {
 						k4++;
 					}
@@ -402,8 +400,8 @@ public class Medium
 				int l4 = 0;
 				boolean flag = true;
 				for (int k5 = 0; k5 < 8; k5++) {
-					ai5[k5] = xs(ai1[k5], ai2[k5]);
-					ai7[k5] = ys(ai3[k5], ai2[k5]);
+					ai5[k5] = Utility.xs(ai1[k5], ai2[k5]);
+					ai7[k5] = Utility.ys(ai3[k5], ai2[k5], 1);
 					if (ai7[k5] < 0 || ai2[k5] < 10) {
 						k3++;
 					}
@@ -440,17 +438,8 @@ public class Medium
 				graphics2d.setColor(new Color(l5, j6, k6));
 				graphics2d.fillPolygon(ai5, ai7, 8);
 			}
-
 		}
-
-	}
-
-	public int ys(int i, int j) {
-		if (j < 10) {
-			j = 10;
-		}
-		return ((j - focus_point) * (cy - i)) / j + i;
-	}
+	}	
 
 	public Medium() {
 		focus_point = 400;
@@ -499,8 +488,6 @@ public class Medium
 		sgpz = 0;
 		nrw = 0;
 		ncl = 0;
-		tcos = new float[360];
-		tsin = new float[360];
 		lastmaf = 0;
 		checkpoint = -1;
 		lastcheck = false;
@@ -521,15 +508,7 @@ public class Medium
 		atrz = 0L;
 		fallen = 0;
 		fo = 1.0F;
-		gofo = (float) (0.33000001311302185D + Math.random() * 1.3400000000000001D);
-		int i = 0;
-		do {
-			tcos[i] = (float) Math.cos(i * 0.017453292519943295D);
-		} while (++i < 360);
-		i = 0;
-		do {
-			tsin[i] = (float) Math.sin(i * 0.017453292519943295D);
-		} while (++i < 360);
+		gofo = (float) (0.33000001311302185D + Math.random() * 1.3400000000000001D);		
 	}
 
 	public void setfade(int i, int j, int k) {
@@ -703,8 +682,8 @@ public class Medium
 			int j = cx + (int) ((clx[i] - x / 20 - cx) * RadicalMath.cos(xz) - (clz[i] - z / 20 - cz) * RadicalMath.sin(xz));
 			int k = cz + (int) ((clx[i] - x / 20 - cx) * RadicalMath.sin(xz) + (clz[i] - z / 20 - cz) * RadicalMath.cos(xz));
 			int l = cz + (int) ((cldd[4] - y / 20 - cy) * RadicalMath.sin(zy) + (k - cz) * RadicalMath.cos(zy));
-			int i1 = xs(j + cmx[i], l);
-			int j1 = xs(j - cmx[i], l);
+			int i1 = Utility.xs(j + cmx[i], l);
+			int j1 = Utility.xs(j - cmx[i], l);
 			if (i1 <= 0 || j1 >= w || l <= -cmx[i] || i1 - j1 <= 20) {
 				continue;
 			}
@@ -777,8 +756,8 @@ public class Medium
 						i6 = k3;
 						byte0 = 2;
 					}
-					ai3[l4] = xs(ai[byte0][i6], ai2[byte0][i6]);
-					ai4[l4] = ys(ai1[byte0][i6], ai2[byte0][i6]);
+					ai3[l4] = Utility.xs(ai[byte0][i6], ai2[byte0][i6]);
+					ai4[l4] = Utility.ys(ai1[byte0][i6], ai2[byte0][i6], 1);
 					l2 += ai[byte0][i6];
 					k2 += ai1[byte0][i6];
 					i3 += ai2[byte0][i6];
@@ -869,8 +848,8 @@ public class Medium
 						k6 = l3;
 						k7 = 1;
 					}
-					ai3[j5] = xs(ai[k7][k6], ai2[k7][k6]);
-					ai4[j5] = ys(ai1[k7][k6], ai2[k7][k6]);
+					ai3[j5] = Utility.xs(ai[k7][k6], ai2[k7][k6]);
+					ai4[j5] = Utility.ys(ai1[k7][k6], ai2[k7][k6], 1);
 					l2 += ai[k7][k6];
 					k2 += ai1[k7][k6];
 					i3 += ai2[k7][k6];
@@ -925,8 +904,8 @@ public class Medium
 			l2 = 0;
 			i3 = 0;
 			for (int i4 = 0; i4 < 12; i4++) {
-				ai3[i4] = xs(ai[0][i4], ai2[0][i4]);
-				ai4[i4] = ys(ai1[0][i4], ai2[0][i4]);
+				ai3[i4] = Utility.xs(ai[0][i4], ai2[0][i4]);
+				ai4[i4] = Utility.ys(ai1[0][i4], ai2[0][i4], 1);
 				l2 += ai[0][i4];
 				k2 += ai1[0][i4];
 				i3 += ai2[0][i4];
@@ -1083,7 +1062,7 @@ public class Medium
 					+ (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * RadicalMath.cos(xz));
 			int i_191_ = cz + (int) ((mty[i_185_][nmv[i_185_] - 1] - y / 30 - cy) * RadicalMath.sin(zy)
 					+ (i_190_ - cz) * RadicalMath.cos(zy));
-			if (xs(i_189_, i_191_) > 0 && xs(i_186_, i_188_) < w) {
+			if (Utility.xs(i_189_, i_191_) > 0 && Utility.xs(i_186_, i_188_) < w) {
 				int[] is = new int[nmv[i_185_] * 2];
 				int[] is_192_ = new int[nmv[i_185_] * 2];
 				int[] is_193_ = new int[nmv[i_185_] * 2];
@@ -1111,8 +1090,8 @@ public class Medium
 							i_208_ = i_202_ + nmv[i_185_] + 1;
 						if (i_207_ == 3)
 							i_208_ = i_202_ + nmv[i_185_];
-						is_196_[i_207_] = xs(is[i_208_], is_193_[i_208_]);
-						is_197_[i_207_] = ys(is_192_[i_208_], is_193_[i_208_]);
+						is_196_[i_207_] = Utility.xs(is[i_208_], is_193_[i_208_]);
+						is_197_[i_207_] = Utility.ys(is_192_[i_208_], is_193_[i_208_], 1);
 						if (is_197_[i_207_] < 0 || is_193_[i_208_] < 10)
 							i_203_++;
 						if (is_197_[i_207_] > h || is_193_[i_208_] < 10)
@@ -1209,8 +1188,8 @@ public class Medium
 			int k = cz + (int) (stx[i] * RadicalMath.sin(xz) + stz[i] * RadicalMath.cos(xz));
 			int l = cy + (int) (-200F * RadicalMath.cos(zy) - k * RadicalMath.sin(zy));
 			int i1 = cz + (int) (-200F * RadicalMath.sin(zy) + k * RadicalMath.cos(zy));
-			j = xs(j, i1);
-			l = ys(l, i1);
+			j = Utility.xs(j, i1);
+			l = Utility.ys(l, i1, 1);
 			if (j - 1 <= iw || j + 3 >= w || l - 1 <= ih || l + 3 >= h) {
 				continue;
 			}
@@ -1296,7 +1275,7 @@ public class Medium
 				j2 = cz + (int) ((ground - cy) * RadicalMath.sin(zy) + (fade[l1] - cz) * RadicalMath.cos(zy));
 			}
 			ai[0] = iw;
-			ai1[0] = ys(l2, j2);
+			ai1[0] = Utility.ys(l2, j2, 1);
 			if (ai1[0] < ih) {
 				ai1[0] = ih;
 			}
@@ -1372,7 +1351,7 @@ public class Medium
 		int i3 = k;
 		int j3 = cy + (int) ((skyline - 700 - cy) * RadicalMath.cos(zy) - (7000 - cz) * RadicalMath.sin(zy));
 		int k3 = cz + (int) ((skyline - 700 - cy) * RadicalMath.sin(zy) + (7000 - cz) * RadicalMath.cos(zy));
-		j3 = ys(j3, k3);
+		j3 = Utility.ys(j3, k3, 1);
 		int l3 = ih;
 		for (int i4 = 0; i4 < 16; i4++) {
 			int k4 = fade[i4];
@@ -1382,7 +1361,7 @@ public class Medium
 				k4 = cz + (int) ((skyline - cy) * RadicalMath.sin(zy) + (fade[i4] - cz) * RadicalMath.cos(zy));
 			}
 			ai[0] = iw;
-			ai1[0] = ys(i5, k4);
+			ai1[0] = Utility.ys(i5, k4, 1);
 			if (ai1[0] > h) {
 				ai1[0] = h;
 			}
@@ -1444,7 +1423,7 @@ public class Medium
 				}
 				ai[0] = iw;
 				if (j4 != 19) {
-					ai1[0] = ys(j5, l4);
+					ai1[0] = Utility.ys(j5, l4, 1);
 					if (ai1[0] > h) {
 						ai1[0] = h;
 					}
@@ -1597,14 +1576,7 @@ public class Medium
 			trns = 5;
 		}
 	}
-
-	public int xs(int i, int j) {
-		if (j < cz) {
-			j = cz;
-		}
-		return ((j - focus_point) * (cx - i)) / j + i;
-	}
-
+	
 	public void adjstfade(float f) {
 		if (f < 15F) {
 			fade[0] = (int) (origfade - 1000F * (15F - f));

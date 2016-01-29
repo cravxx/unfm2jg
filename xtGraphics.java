@@ -1406,7 +1406,7 @@ public class xtGraphics extends Panel implements Runnable {
 		if (j < 50) {
 			j = 50;
 		}
-		return ((j - m.focus_point) * (m.cy - i)) / j + i;
+		return ((j - Medium.focus_point) * (Medium.cy - i)) / j + i;
 	}
 
 	public void replyn() {
@@ -3320,7 +3320,7 @@ public class xtGraphics extends Panel implements Runnable {
 			asay = "Stage " + checkpoints.stage + ":  " + checkpoints.name + " ";
 			dudo = 150;
 			m.trk = false;
-			m.focus_point = 400;
+			Medium.focus_point = 400;
 			fase = 5;
 			control.handb = false;
 			control.enter = false;
@@ -4324,7 +4324,7 @@ public class xtGraphics extends Panel implements Runnable {
 		if (j < 50) {
 			j = 50;
 		}
-		return ((j - m.focus_point) * (m.cx - i)) / j + i;
+		return ((j - Medium.focus_point) * (Medium.cx - i)) / j + i;
 	}
 
 	public void cantreply() {

@@ -61,13 +61,6 @@ public class Plane {
 		projf = projf / 3F;
 	}
 
-	public int ys(int i, int j) {
-		if (j < m.cz) {
-			j = m.cz;
-		}
-		return ((j - m.focus_point) * (m.cy - i)) / j + i;
-	}
-
 	public Plane(Medium medium, Trackers trackers, int ai[], int ai1[], int ai2[], int i, int ai3[], boolean flag,
 			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2) {
 		c = new int[3];
@@ -258,13 +251,13 @@ public class Plane {
 				rot(ai, ai2, i, j, i1, n);
 				rot(ai2, ai1, j, k, j1, n);
 				rot(ai, ai1, i, k, l, n);
-				rot(ai, ai1, m.cx, m.cz, m.xz, n);
-				rot(ai2, ai1, m.cy, m.cz, m.zy, n);
+				rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
+				rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
 				int ai3[] = new int[n];
 				int ai5[] = new int[n];
 				for (int i4 = 0; i4 < n; i4++) {
-					ai3[i4] = xs(ai[i4], ai1[i4]);
-					ai5[i4] = ys(ai2[i4], ai1[i4]);
+					ai3[i4] = Utility.xs(ai[i4], ai1[i4]);
+					ai5[i4] = Utility.ys(ai2[i4], ai1[i4], 0);
 				}
 
 				rd.setColor(new Color(230, 230, 230));
@@ -279,7 +272,7 @@ public class Plane {
 			{
 				f = 1.0F + m.random() / 4F;
 			}
-			if (embos > 7 && embos <= 9)/////// /// explode outward a little + white flame a bit bigger than previous + polys start to darken
+			if (embos > 7 && embos <= 9)/////// /// explode outward a little + white flame a bit bigger than previous + polUtility.ys start to darken
 			{
 				f = 1.0F + m.random() / 3F;
 				if (hsb[2] > 0.69999999999999996D) {
@@ -300,13 +293,13 @@ public class Plane {
 					hsb[2] = 0.5F;
 				}
 			}
-			if (embos == 12)/////// polys explode outward
+			if (embos == 12)/////// polUtility.ys explode outward
 			{
 				chip = 1;
 				ctmag = 2.0F;
 				bfase = -7;
 			}
-			if (embos == 13)/////// dark polys
+			if (embos == 13)/////// dark polUtility.ys
 			{
 				hsb[1] = 0.2F;
 				hsb[2] = 0.4F;
@@ -367,12 +360,12 @@ public class Plane {
 				rot(ai, ai2, i, j, i1, 3);
 				rot(ai2, ai1, j, k, j1, 3);
 				rot(ai, ai1, i, k, l, 3);
-				rot(ai, ai1, m.cx, m.cz, m.xz, 3);
-				rot(ai2, ai1, m.cy, m.cz, m.zy, 3);
+				rot(ai, ai1, Medium.cx, Medium.cz, m.xz, 3);
+				rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, 3);
 				int k8 = 0;
 				do {
-					ai12[k8] = xs(ai[k8], ai1[k8]);
-					ai13[k8] = ys(ai2[k8], ai1[k8]);
+					ai12[k8] = Utility.xs(ai[k8], ai1[k8]);
+					ai13[k8] = Utility.ys(ai2[k8], ai1[k8], 0);
 				} while (++k8 < 3);
 				// Flame color. Outer Flame Red Value
 				k8 = (int) (255F + 255F * (m.snap[0] / 400F));
@@ -427,12 +420,12 @@ public class Plane {
 				rot(ai, ai2, i, j, i1, 3);
 				rot(ai2, ai1, j, k, j1, 3);
 				rot(ai, ai1, i, k, l, 3);
-				rot(ai, ai1, m.cx, m.cz, m.xz, 3);
-				rot(ai2, ai1, m.cy, m.cz, m.zy, 3);
+				rot(ai, ai1, Medium.cx, Medium.cz, m.xz, 3);
+				rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, 3);
 				int i10 = 0;
 				do {
-					ai12[i10] = xs(ai[i10], ai1[i10]);
-					ai13[i10] = ys(ai2[i10], ai1[i10]);
+					ai12[i10] = Utility.xs(ai[i10], ai1[i10]);
+					ai13[i10] = Utility.ys(ai2[i10], ai1[i10], 0);
 				} while (++i10 < 3);
 				// Flame color. Inner Flame Red Value
 				k8 = (int) (255F + 255F * (m.snap[0] / 400F));
@@ -557,14 +550,14 @@ public class Plane {
 			if (ai8[0] > m.ground) {
 				chip = 19;
 			}
-			rot(ai4, ai6, m.cx, m.cz, m.xz, 3);
-			rot(ai8, ai6, m.cy, m.cz, m.zy, 3);
+			rot(ai4, ai6, Medium.cx, Medium.cz, m.xz, 3);
+			rot(ai8, ai6, Medium.cy, Medium.cz, m.zy, 3);
 			int ai10[] = new int[3];
 			int ai11[] = new int[3];
 			int l5 = 0;
 			do {
-				ai10[l5] = xs(ai4[l5], ai6[l5]);
-				ai11[l5] = ys(ai8[l5], ai6[l5]);
+				ai10[l5] = Utility.xs(ai4[l5], ai6[l5]);
+				ai11[l5] = Utility.ys(ai8[l5], ai6[l5], 0);
 				if (ai11[l5] < 45 && m.flex != 0) {
 					m.flex = 0;
 				}
@@ -607,14 +600,14 @@ public class Plane {
 			} while (++j3 < 3);
 			projf = projf / 3F;
 		}
-		rot(ai, ai1, m.cx, m.cz, m.xz, n);
+		rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
 		boolean flag1 = false;
 		int ai7[] = new int[n];
 		int ai9[] = new int[n];
 		int l4 = 500;
 		for (int j5 = 0; j5 < n; j5++) {
-			ai7[j5] = xs(ai[j5], ai1[j5]);
-			ai9[j5] = ys(ai2[j5], ai1[j5]);
+			ai7[j5] = Utility.xs(ai[j5], ai1[j5]);
+			ai9[j5] = Utility.ys(ai2[j5], ai1[j5], 0);
 		}
 
 		int k5 = 0;
@@ -635,22 +628,22 @@ public class Plane {
 			k5 = i6;
 			i6 = k6;
 		}
-		if (spy(ai[k5], ai1[k5]) > spy(ai[i6], ai1[i6])) {
+		if (Utility.spy(ai[k5], ai1[k5]) > Utility.spy(ai[i6], ai1[i6])) {
 			flag1 = true;
 			int l6 = 0;
 			for (int k7 = 0; k7 < n; k7++) {
-				if (ai1[k7] < 50 && ai2[k7] > m.cy) {
+				if (ai1[k7] < 50 && ai2[k7] > Medium.cy) {
 					flag1 = false;
 				} else if (ai2[k7] == ai2[0]) {
 					l6++;
 				}
 			}
 
-			if (l6 == n && ai2[0] > m.cy) {
+			if (l6 == n && ai2[0] > Medium.cy) {
 				flag1 = false;
 			}
 		}
-		rot(ai2, ai1, m.cy, m.cz, m.zy, n);
+		rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
 		boolean flag2 = true;
 		int ai14[] = new int[n];
 		int ai15[] = new int[n];
@@ -660,8 +653,8 @@ public class Plane {
 		int l9 = 0;
 		int j10 = 0;
 		for (int k10 = 0; k10 < n; k10++) {
-			ai14[k10] = xs(ai[k10], ai1[k10]);
-			ai15[k10] = ys(ai2[k10], ai1[k10]);
+			ai14[k10] = Utility.xs(ai[k10], ai1[k10]);
+			ai15[k10] = Utility.ys(ai2[k10], ai1[k10], 0);
 			if (ai15[k10] < 0 || ai1[k10] < 10) {
 				j8++;
 			}
@@ -815,7 +808,7 @@ public class Plane {
 			int j18 = (k16 + l16) / 2;
 			int l18 = (i17 + j17) / 2;
 			av = (int) Math
-					.sqrt((m.cy - l17) * (m.cy - l17) + (m.cx - j18) * (m.cx - j18) + l18 * l18 + i13 * i13 * i13);
+					.sqrt((Medium.cy - l17) * (Medium.cy - l17) + (Medium.cx - j18) * (Medium.cx - j18) + l18 * l18 + i13 * i13 * i13);
 			if (!m.trk && (av > m.fade[disline] || av == 0)) {
 				flag2 = false;
 			}
@@ -1153,13 +1146,6 @@ public class Plane {
 		}
 	}
 
-	public int xs(int i, int j) {
-		if (j < m.cz) {
-			j = m.cz;
-		}
-		return ((j - m.focus_point) * (m.cx - i)) / j + i;
-	}
-
 	public void s(Graphics2D rd, int i, int j, int k, int l, int i1, int j1, int k1) {
 		int ai[] = new int[n];
 		int ai1[] = new int[n];
@@ -1268,15 +1254,15 @@ public class Plane {
 
 		}
 		if (flag) {
-			rot(ai, ai1, m.cx, m.cz, m.xz, n);
-			rot(ai2, ai1, m.cy, m.cz, m.zy, n);
+			rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
+			rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
 			int j4 = 0;
 			int k5 = 0;
 			int j6 = 0;
 			int i7 = 0;
 			for (int l7 = 0; l7 < n; l7++) {
-				ai3[l7] = xs(ai[l7], ai1[l7]);
-				ai4[l7] = ys(ai2[l7], ai1[l7]);
+				ai3[l7] = Utility.xs(ai[l7], ai1[l7]);
+				ai4[l7] = Utility.ys(ai2[l7], ai1[l7], 0);
 				if (ai4[l7] < 0 || ai1[l7] < 10) {
 					j4++;
 				}
@@ -1307,9 +1293,5 @@ public class Plane {
 			rd.setColor(new Color(i2, j2, k2));
 			rd.fillPolygon(ai3, ai4, n);
 		}
-	}
-
-	public int spy(int i, int j) {
-		return (int) Math.sqrt((i - m.cx) * (i - m.cx) + j * j);
-	}
+	}	
 }

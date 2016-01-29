@@ -43,5 +43,4 @@ public class RadicalMath {
         }
         return tsin[i];
     }
-
 }

@@ -85,13 +85,13 @@ public class ContO {
 			if (sy[i] > 250) {
 				sy[i] = 250;
 			}
-			int l1 = m.cx
-					+ (int) ((sx[i] - m.x - m.cx) * RadicalMath.cos(m.xz) - (sz[i] - m.z - m.cz) * RadicalMath.sin(m.xz));
-			int i2 = m.cz
-					+ (int) ((sx[i] - m.x - m.cx) * RadicalMath.sin(m.xz) + (sz[i] - m.z - m.cz) * RadicalMath.cos(m.xz));
-			int j2 = m.cy + (int) ((sy[i] - m.y - m.cy) * RadicalMath.cos(m.zy) - (i2 - m.cz) * RadicalMath.sin(m.zy));
-			i2 = m.cz + (int) ((sy[i] - m.y - m.cy) * RadicalMath.sin(m.zy) + (i2 - m.cz) * RadicalMath.cos(m.zy));
-			int k2 = (int) Math.sqrt((m.cy - j2) * (m.cy - j2) + (m.cx - l1) * (m.cx - l1) + i2 * i2);
+			int l1 = Medium.cx
+					+ (int) ((sx[i] - m.x - Medium.cx) * RadicalMath.cos(m.xz) - (sz[i] - m.z - Medium.cz) * RadicalMath.sin(m.xz));
+			int i2 = Medium.cz
+					+ (int) ((sx[i] - m.x - Medium.cx) * RadicalMath.sin(m.xz) + (sz[i] - m.z - Medium.cz) * RadicalMath.cos(m.xz));
+			int j2 = Medium.cy + (int) ((sy[i] - m.y - Medium.cy) * RadicalMath.cos(m.zy) - (i2 - Medium.cz) * RadicalMath.sin(m.zy));
+			i2 = Medium.cz + (int) ((sy[i] - m.y - Medium.cy) * RadicalMath.sin(m.zy) + (i2 - Medium.cz) * RadicalMath.cos(m.zy));
+			int k2 = (int) Math.sqrt((Medium.cy - j2) * (Medium.cy - j2) + (Medium.cx - l1) * (Medium.cx - l1) + i2 * i2);
 			int l2 = 0;
 			do {
 				if (k2 > m.fade[l2]) {
@@ -110,41 +110,41 @@ public class ContO {
 			int ai[] = new int[8];
 			int ai1[] = new int[8];
 			int i3 = stg[i] - 3;
-			ai[0] = xs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
-			ai1[0] = ys(
+			ai[0] = Utility.cXs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[0] = Utility.cYs(
 					(int) (j2 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
 			if (ai1[0] < 45 && m.flex != 0) {
 				m.flex = 0;
 			}
-			ai[1] = xs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
-			ai1[1] = ys(
+			ai[1] = Utility.cXs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[1] = Utility.cYs(
 					(int) (j2 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai[2] = xs(
+			ai[2] = Utility.cXs(
 					(int) (l1 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[2] = ys((int) (j2 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
-			ai[3] = xs(
+			ai1[2] = Utility.cYs((int) (j2 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai[3] = Utility.cXs(
 					(int) (l1 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[3] = ys((int) (j2 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
-			ai[4] = xs((int) (l1 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
-			ai1[4] = ys(
+			ai1[3] = Utility.cYs((int) (j2 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai[4] = Utility.cXs((int) (l1 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[4] = Utility.cYs(
 					(int) (j2 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai[5] = xs((int) (l1 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
-			ai1[5] = ys(
+			ai[5] = Utility.cXs((int) (l1 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[5] = Utility.cYs(
 					(int) (j2 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai[6] = xs(
+			ai[6] = Utility.cXs(
 					(int) (l1 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[6] = ys((int) (j2 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
-			ai[7] = xs(
+			ai1[6] = Utility.cYs((int) (j2 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai[7] = Utility.cXs(
 					(int) (l1 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[7] = ys((int) (j2 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[7] = Utility.cYs((int) (j2 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			boolean flag = true;
 			int j3 = 0;
 			int k3 = 0;
@@ -189,13 +189,6 @@ public class ContO {
 		} else if (dov[i] == 0) {
 			dov[i] = 1;
 		}
-	}
-
-	public int ys(int i, int j) {
-		if (j < 50) {
-			j = 50;
-		}
-		return ((j - m.focus_point) * (m.cy - i)) / j + i;
 	}
 
 	public ContO(byte abyte0[], Medium medium, Trackers trackers) {
@@ -275,16 +268,16 @@ public class ContO {
 				}
 				if (flag) {
 					if (s1.startsWith("gr")) {
-						k = getvalue("gr", s1, 0);
+						k = Utility.getint("gr", s1, 0);
 					}
 					if (s1.startsWith("fs")) {
-						l = getvalue("fs", s1, 0);
+						l = Utility.getint("fs", s1, 0);
 					}
 					if (s1.startsWith("c")) {
 						flag2 = false;
-						ai3[0] = getvalue("c", s1, 0);
-						ai3[1] = getvalue("c", s1, 1);
-						ai3[2] = getvalue("c", s1, 2);
+						ai3[0] = Utility.getint("c", s1, 0);
+						ai3[1] = Utility.getint("c", s1, 1);
+						ai3[2] = Utility.getint("c", s1, 2);
 					}
 					if (s1.startsWith("glass")) {
 						flag2 = true;
@@ -299,9 +292,9 @@ public class ContO {
 						byte0 = 1;
 					}
 					if (s1.startsWith("p")) {
-						ai[i] = (int) ((getvalue("p", s1, 0) * f * f1) * nfmm_scale[0]);
-						ai1[i] = (int) ((getvalue("p", s1, 1) * f) * nfmm_scale[1]);
-						ai2[i] = (int) ((getvalue("p", s1, 2) * f) * nfmm_scale[2]);
+						ai[i] = (int) ((Utility.getint("p", s1, 0) * f * f1) * nfmm_scale[0]);
+						ai1[i] = (int) ((Utility.getint("p", s1, 1) * f) * nfmm_scale[1]);
+						ai2[i] = (int) ((Utility.getint("p", s1, 2) * f) * nfmm_scale[2]);
 						int j1 = (int) Math.sqrt(ai[i] * ai[i] + ai1[i] * ai1[i] + ai2[i] * ai2[i]);
 						if (j1 > maxR) {
 							maxR = j1;
@@ -315,21 +308,21 @@ public class ContO {
 					flag = false;
 				}
 				if (s1.startsWith("rims")) {
-					wheels.setrims(getvalue("rims", s1, 0), getvalue("rims", s1, 1), getvalue("rims", s1, 2),
-							getvalue("rims", s1, 3), getvalue("rims", s1, 4));
+					wheels.setrims(Utility.getint("rims", s1, 0), Utility.getint("rims", s1, 1), Utility.getint("rims", s1, 2),
+							Utility.getint("rims", s1, 3), Utility.getint("rims", s1, 4));
 				}
 				if (s1.startsWith("w")) {
-					keyx[j] = (int) (getvalue("w", s1, 0) * f * nfmm_scale[0]);
-					keyz[j] = (int) (getvalue("w", s1, 2) * f * nfmm_scale[2]);
+					keyx[j] = (int) (Utility.getint("w", s1, 0) * f * nfmm_scale[0]);
+					keyz[j] = (int) (Utility.getint("w", s1, 2) * f * nfmm_scale[2]);
 					j++;
-					wheels.make(m, t, p, npl, (int) (getvalue("w", s1, 0) * f * f1 * nfmm_scale[0]),
-							(int) (getvalue("w", s1, 1) * f * nfmm_scale[1]),
-							(int) (getvalue("w", s1, 2) * f * nfmm_scale[2]), getvalue("w", s1, 3),
-							(int) (getvalue("w", s1, 4) * f * f1), (int) (getvalue("w", s1, 5) * f), i1);
+					wheels.make(m, t, p, npl, (int) (Utility.getint("w", s1, 0) * f * f1 * nfmm_scale[0]),
+							(int) (Utility.getint("w", s1, 1) * f * nfmm_scale[1]),
+							(int) (Utility.getint("w", s1, 2) * f * nfmm_scale[2]), Utility.getint("w", s1, 3),
+							(int) (Utility.getint("w", s1, 4) * f * f1), (int) (Utility.getint("w", s1, 5) * f), i1);
 					npl += 15;
 				}
 				if (s1.startsWith("tracks")) {
-					int k1 = getvalue("tracks", s1, 0);
+					int k1 = Utility.getint("tracks", s1, 0);
 					txy = new int[k1];
 					tzy = new int[k1];
 					tc = new int[k1][3];
@@ -362,36 +355,36 @@ public class ContO {
 				}
 				if (flag1) {
 					if (s1.startsWith("c")) {
-						tc[tnt][0] = getvalue("c", s1, 0);
-						tc[tnt][1] = getvalue("c", s1, 1);
-						tc[tnt][2] = getvalue("c", s1, 2);
+						tc[tnt][0] = Utility.getint("c", s1, 0);
+						tc[tnt][1] = Utility.getint("c", s1, 1);
+						tc[tnt][2] = Utility.getint("c", s1, 2);
 					}
 					if (s1.startsWith("xy")) {
-						txy[tnt] = getvalue("xy", s1, 0);
+						txy[tnt] = Utility.getint("xy", s1, 0);
 					}
 					if (s1.startsWith("zy")) {
-						tzy[tnt] = getvalue("zy", s1, 0);
+						tzy[tnt] = Utility.getint("zy", s1, 0);
 					}
 					if (s1.startsWith("radx")) {
-						tradx[tnt] = (int) (getvalue("radx", s1, 0) * f);
+						tradx[tnt] = (int) (Utility.getint("radx", s1, 0) * f);
 					}
 					if (s1.startsWith("rady")) {
-						trady[tnt] = (int) (getvalue("rady", s1, 0) * f);
+						trady[tnt] = (int) (Utility.getint("rady", s1, 0) * f);
 					}
 					if (s1.startsWith("radz")) {
-						tradz[tnt] = (int) (getvalue("radz", s1, 0) * f);
+						tradz[tnt] = (int) (Utility.getint("radz", s1, 0) * f);
 					}
 					if (s1.startsWith("ty")) {
-						ty[tnt] = (int) (getvalue("ty", s1, 0) * f);
+						ty[tnt] = (int) (Utility.getint("ty", s1, 0) * f);
 					}
 					if (s1.startsWith("tx")) {
-						tx[tnt] = (int) (getvalue("tx", s1, 0) * f);
+						tx[tnt] = (int) (Utility.getint("tx", s1, 0) * f);
 					}
 					if (s1.startsWith("tz")) {
-						tz[tnt] = (int) (getvalue("tz", s1, 0) * f);
+						tz[tnt] = (int) (Utility.getint("tz", s1, 0) * f);
 					}
 					if (s1.startsWith("skid")) {
-						skd[tnt] = getvalue("skid", s1, 0);
+						skd[tnt] = Utility.getint("skid", s1, 0);
 					}
 					if (s1.startsWith("dam")) {
 						dam[tnt] = 3;
@@ -405,10 +398,10 @@ public class ContO {
 					tnt++;
 				}
 				if (s1.startsWith("disp")) {
-					disp = getvalue("disp", s1, 0);
+					disp = Utility.getint("disp", s1, 0);
 				}
 				if (s1.startsWith("disline")) {
-					disline = getvalue("disline", s1, 0);
+					disline = Utility.getint("disline", s1, 0);
 				}
 				if (s1.startsWith("shadow")) {
 					shadow = true;
@@ -423,28 +416,28 @@ public class ContO {
 					flag3 = false;
 				}
 				if (s1.startsWith("grounded")) {
-					grounded = getvalue("grounded", s1, 0) / 100F;
+					grounded = Utility.getint("grounded", s1, 0) / 100F;
 				}
 				if (s1.startsWith("div")) {
-					f = getvalue("div", s1, 0) / 10F;
+					f = Utility.getint("div", s1, 0) / 10F;
 				}
 				if (s1.startsWith("idiv")) {
-					f = getvalue("idiv", s1, 0) / 100F;
+					f = Utility.getint("idiv", s1, 0) / 100F;
 				}
 				if (s1.startsWith("iwid")) {
-					f1 = getvalue("iwid", s1, 0) / 100F;
+					f1 = Utility.getint("iwid", s1, 0) / 100F;
 				}
 				if (s1.startsWith("gwgr")) {
-					i1 = getvalue("gwgr", s1, 0);
+					i1 = Utility.getint("gwgr", s1, 0);
 				}
 				if (s1.startsWith("ScaleX")) {
-					nfmm_scale[0] = getvalue("ScaleX", s1, 0) / 100F;
+					nfmm_scale[0] = Utility.getint("ScaleX", s1, 0) / 100F;
 				}
 				if (s1.startsWith("ScaleY")) {
-					nfmm_scale[1] = getvalue("ScaleY", s1, 0) / 100F;
+					nfmm_scale[1] = Utility.getint("ScaleY", s1, 0) / 100F;
 				}
 				if (s1.startsWith("ScaleZ")) {
-					nfmm_scale[2] = getvalue("ScaleZ", s1, 0) / 100F;
+					nfmm_scale[2] = Utility.getint("ScaleZ", s1, 0) / 100F;
 				}
 			}
 			datainputstream.close();
@@ -573,11 +566,11 @@ public class ContO {
 		if (dist != 0) {
 			dist = 0;
 		}
-		int i = m.cx + (int) ((x - m.x - m.cx) * RadicalMath.cos(m.xz) - (z - m.z - m.cz) * RadicalMath.sin(m.xz));
-		int j = m.cz + (int) ((x - m.x - m.cx) * RadicalMath.sin(m.xz) + (z - m.z - m.cz) * RadicalMath.cos(m.xz));
-		int k = m.cz + (int) ((y - m.y - m.cy) * RadicalMath.sin(m.zy) + (j - m.cz) * RadicalMath.cos(m.zy));
-		int l = xs(i + maxR, k) - xs(i - maxR, k);
-		if (xs(i + maxR * 2, k) > 0 && xs(i - maxR * 2, k) < m.w && k > -maxR && (k < m.fade[disline] + maxR || m.trk)
+		int i = Medium.cx + (int) ((x - m.x - Medium.cx) * RadicalMath.cos(m.xz) - (z - m.z - Medium.cz) * RadicalMath.sin(m.xz));
+		int j = Medium.cz + (int) ((x - m.x - Medium.cx) * RadicalMath.sin(m.xz) + (z - m.z - Medium.cz) * RadicalMath.cos(m.xz));
+		int k = Medium.cz + (int) ((y - m.y - Medium.cy) * RadicalMath.sin(m.zy) + (j - Medium.cz) * RadicalMath.cos(m.zy));
+		int l = Utility.cXs(i + maxR, k) - Utility.cXs(i - maxR, k);
+		if (Utility.cXs(i + maxR * 2, k) > 0 && Utility.cXs(i - maxR * 2, k) < m.w && k > -maxR && (k < m.fade[disline] + maxR || m.trk)
 				&& (l > disp || m.trk)) {
 			if (shadow) {
 				if (!m.crs) {
@@ -600,11 +593,11 @@ public class ContO {
 							}
 
 						} else {
-							int j2 = m.cy + (int) ((m.ground - m.cy) * RadicalMath.cos(m.zy)
-									- (j - m.cz) * RadicalMath.sin(m.zy));
-							int k2 = m.cz + (int) ((m.ground - m.cy) * RadicalMath.sin(m.zy)
-									+ (j - m.cz) * RadicalMath.cos(m.zy));
-							if (ys(j2 + maxR, k2) > 0 && ys(j2 - maxR, k2) < m.h) {
+							int j2 = Medium.cy + (int) ((m.ground - Medium.cy) * RadicalMath.cos(m.zy)
+									- (j - Medium.cz) * RadicalMath.sin(m.zy));
+							int k2 = Medium.cz + (int) ((m.ground - Medium.cy) * RadicalMath.sin(m.zy)
+									+ (j - Medium.cz) * RadicalMath.cos(m.zy));
+							if (Utility.cYs(j2 + maxR, k2) > 0 && Utility.cYs(j2 - maxR, k2) < m.h) {
 								for (int l2 = 0; l2 < npl; l2++) {
 									p[l2].s(rd, x - m.x, y - m.y, z - m.z, xz, xy, zy, 1);
 								}
@@ -622,8 +615,8 @@ public class ContO {
 					}
 				}
 			}
-			int j1 = m.cy + (int) ((y - m.y - m.cy) * RadicalMath.cos(m.zy) - (j - m.cz) * RadicalMath.sin(m.zy));
-			if (ys(j1 + maxR, k) > 0 && ys(j1 - maxR, k) < m.h) {
+			int j1 = Medium.cy + (int) ((y - m.y - Medium.cy) * RadicalMath.cos(m.zy) - (j - Medium.cz) * RadicalMath.sin(m.zy));
+			if (Utility.cYs(j1 + maxR, k) > 0 && Utility.cYs(j1 - maxR, k) < m.h) {
 				if (elec) {
 					electrify(rd);
 				}
@@ -670,8 +663,8 @@ public class ContO {
 					}
 				}
 
-				dist = (int) (Math.sqrt((int) Math.sqrt(((m.x + m.cx) - x) * ((m.x + m.cx) - x) + (m.z - z) * (m.z - z)
-						+ ((m.y + m.cy) - y) * ((m.y + m.cy) - y))) * grounded);
+				dist = (int) (Math.sqrt((int) Math.sqrt(((m.x + Medium.cx) - x) * ((m.x + Medium.cx) - x) + (m.z - z) * (m.z - z)
+						+ ((m.y + Medium.cy) - y) * ((m.y + Medium.cy) - y))) * grounded);
 			}
 		}
 		if (dist == 0) {
@@ -723,30 +716,6 @@ public class ContO {
 			scz[i] = (int) f4;
 			fulls[i] = flag;
 		}
-	}
-
-	public int getvalue(String s, String s1, int i) {
-		int k = 0;
-		String s3 = "";
-		for (int j = s.length() + 1; j < s1.length(); j++) {
-			String s2 = "" + s1.charAt(j);
-			if (s2.equals(",") || s2.equals(")")) {
-				k++;
-				j++;
-			}
-			if (k == i) {
-				s3 += s1.charAt(j);
-			}
-		}
-
-		return Integer.valueOf(s3).intValue();
-	}
-
-	public int xs(int i, int j) {
-		if (j < 50) {
-			j = 50;
-		}
-		return ((j - m.focus_point) * (m.cx - i)) / j + i;
 	}
 
 	public void lowshadow(Graphics2D rd, int i) {
@@ -808,8 +777,8 @@ public class ContO {
 			break;
 		}
 
-		rot(ai, ai2, m.cx, m.cz, m.xz, 4);
-		rot(ai1, ai2, m.cy, m.cz, m.zy, 4);
+		rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 4);
+		rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 4);
 		boolean flag = true;
 		int i2 = 0;
 		int k2 = 0;
@@ -817,8 +786,8 @@ public class ContO {
 		int i3 = 0;
 		int j3 = 0;
 		do {
-			ai[j3] = xs(ai[j3], ai2[j3]);
-			ai1[j3] = ys(ai1[j3], ai2[j3]);
+			ai[j3] = Utility.cXs(ai[j3], ai2[j3]);
+			ai1[j3] = Utility.cYs(ai1[j3], ai2[j3]);
 			if (ai1[j3] < 0 || ai2[j3] < 10) {
 				i2++;
 			}
@@ -908,8 +877,8 @@ public class ContO {
 			rot(ai, ai1, x - m.x, y - m.y, xy, 4);
 			rot(ai1, ai2, y - m.y, z - m.y, zy, 4);
 			rot(ai, ai2, x - m.x, z - m.z, xz, 4);
-			rot(ai, ai2, m.cx, m.cz, m.xz, 4);
-			rot(ai1, ai2, m.cy, m.cz, m.zy, 4);
+			rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 4);
+			rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 4);
 			j1 = 0;
 			int l1 = 0;
 			int i2 = 0;
@@ -923,8 +892,8 @@ public class ContO {
 					if (Math.abs(ai1[j2] - ai1[k2]) > l1) {
 						l1 = Math.abs(ai1[j2] - ai1[k2]);
 					}
-					if (py(ai[j2], ai[k2], ai1[j2], ai1[k2]) > i2) {
-						i2 = py(ai[j2], ai[k2], ai1[j2], ai1[k2]);
+					if (Utility.py(ai[j2], ai[k2], ai1[j2], ai1[k2]) > i2) {
+						i2 = Utility.py(ai[j2], ai[k2], ai1[j2], ai1[k2]);
 					}
 				} while (++k2 < 4);
 			} while (++j2 < 4);
@@ -935,56 +904,56 @@ public class ContO {
 			if (l1 < i2) {
 				l1 = i2;
 			}
-			j2 = m.cx + (int) ((x - m.x - m.cx) * RadicalMath.cos(m.xz) - (z - m.z - m.cz) * RadicalMath.sin(m.xz));
-			int l2 = m.cz + (int) ((x - m.x - m.cx) * RadicalMath.sin(m.xz) + (z - m.z - m.cz) * RadicalMath.cos(m.xz));
-			int i3 = m.cy + (int) ((y - m.y - m.cy) * RadicalMath.cos(m.zy) - (l2 - m.cz) * RadicalMath.sin(m.zy));
-			l2 = m.cz + (int) ((y - m.y - m.cy) * RadicalMath.sin(m.zy) + (l2 - m.cz) * RadicalMath.cos(m.zy));
-			ai[0] = xs((int) (j2 - j1 / 0.80000000000000004D
+			j2 = Medium.cx + (int) ((x - m.x - Medium.cx) * RadicalMath.cos(m.xz) - (z - m.z - Medium.cz) * RadicalMath.sin(m.xz));
+			int l2 = Medium.cz + (int) ((x - m.x - Medium.cx) * RadicalMath.sin(m.xz) + (z - m.z - Medium.cz) * RadicalMath.cos(m.xz));
+			int i3 = Medium.cy + (int) ((y - m.y - Medium.cy) * RadicalMath.cos(m.zy) - (l2 - Medium.cz) * RadicalMath.sin(m.zy));
+			l2 = Medium.cz + (int) ((y - m.y - Medium.cy) * RadicalMath.sin(m.zy) + (l2 - Medium.cz) * RadicalMath.cos(m.zy));
+			ai[0] = Utility.cXs((int) (j2 - j1 / 0.80000000000000004D
 					- m.random() * (j1 / 2.3999999999999999D)), l2);
-			ai1[0] = ys((int) (i3 - l1 / 1.9199999999999999D
+			ai1[0] = Utility.cYs((int) (i3 - l1 / 1.9199999999999999D
 					- m.random() * (l1 / 5.6699999999999999D)), l2);
-			ai[1] = xs((int) (j2 - j1 / 0.80000000000000004D
+			ai[1] = Utility.cXs((int) (j2 - j1 / 0.80000000000000004D
 					- m.random() * (j1 / 2.3999999999999999D)), l2);
-			ai1[1] = ys((int) (i3 + l1 / 1.9199999999999999D
+			ai1[1] = Utility.cYs((int) (i3 + l1 / 1.9199999999999999D
 					+ m.random() * (l1 / 5.6699999999999999D)), l2);
-			ai[2] = xs((int) (j2 - j1 / 1.9199999999999999D
+			ai[2] = Utility.cXs((int) (j2 - j1 / 1.9199999999999999D
 					- m.random() * (j1 / 5.6699999999999999D)), l2);
-			ai1[2] = ys((int) (i3 + l1 / 0.80000000000000004D
+			ai1[2] = Utility.cYs((int) (i3 + l1 / 0.80000000000000004D
 					+ m.random() * (l1 / 2.3999999999999999D)), l2);
-			ai[3] = xs((int) (j2 + j1 / 1.9199999999999999D
+			ai[3] = Utility.cXs((int) (j2 + j1 / 1.9199999999999999D
 					+ m.random() * (j1 / 5.6699999999999999D)), l2);
-			ai1[3] = ys((int) (i3 + l1 / 0.80000000000000004D
+			ai1[3] = Utility.cYs((int) (i3 + l1 / 0.80000000000000004D
 					+ m.random() * (l1 / 2.3999999999999999D)), l2);
-			ai[4] = xs((int) (j2 + j1 / 0.80000000000000004D
+			ai[4] = Utility.cXs((int) (j2 + j1 / 0.80000000000000004D
 					+ m.random() * (j1 / 2.3999999999999999D)), l2);
-			ai1[4] = ys((int) (i3 + l1 / 1.9199999999999999D
+			ai1[4] = Utility.cYs((int) (i3 + l1 / 1.9199999999999999D
 					+ m.random() * (l1 / 5.6699999999999999D)), l2);
-			ai[5] = xs((int) (j2 + j1 / 0.80000000000000004D
+			ai[5] = Utility.cXs((int) (j2 + j1 / 0.80000000000000004D
 					+ m.random() * (j1 / 2.3999999999999999D)), l2);
-			ai1[5] = ys((int) (i3 - l1 / 1.9199999999999999D
+			ai1[5] = Utility.cYs((int) (i3 - l1 / 1.9199999999999999D
 					- m.random() * (l1 / 5.6699999999999999D)), l2);
-			ai[6] = xs((int) (j2 + j1 / 1.9199999999999999D
+			ai[6] = Utility.cXs((int) (j2 + j1 / 1.9199999999999999D
 					+ m.random() * (j1 / 5.6699999999999999D)), l2);
-			ai1[6] = ys((int) (i3 - l1 / 0.80000000000000004D
+			ai1[6] = Utility.cYs((int) (i3 - l1 / 0.80000000000000004D
 					- m.random() * (l1 / 2.3999999999999999D)), l2);
-			ai[7] = xs((int) (j2 - j1 / 1.9199999999999999D
+			ai[7] = Utility.cXs((int) (j2 - j1 / 1.9199999999999999D
 					- m.random() * (j1 / 5.6699999999999999D)), l2);
-			ai1[7] = ys((int) (i3 - l1 / 0.80000000000000004D
+			ai1[7] = Utility.cYs((int) (i3 - l1 / 0.80000000000000004D
 					- m.random() * (l1 / 2.3999999999999999D)), l2);
 			if (fcnt == 3) {
-				rot(ai, ai1, xs(j2, l2), ys(i3, l2), 22, 8);
+				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 22, 8);
 			}
 			if (fcnt == 4) {
-				rot(ai, ai1, xs(j2, l2), ys(i3, l2), 22, 8);
+				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 22, 8);
 			}
 			if (fcnt == 5) {
-				rot(ai, ai1, xs(j2, l2), ys(i3, l2), 0, 8);
+				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 0, 8);
 			}
 			if (fcnt == 6) {
-				rot(ai, ai1, xs(j2, l2), ys(i3, l2), -22, 8);
+				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), -22, 8);
 			}
 			if (fcnt == 7) {
-				rot(ai, ai1, xs(j2, l2), ys(i3, l2), -22, 8);
+				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), -22, 8);
 			}
 			int j3 = (int) (191F + 191F * (m.snap[0] / 350F));
 			if (j3 > 255) {
@@ -1009,30 +978,30 @@ public class ContO {
 			}
 			rd.setColor(new Color(j3, k3, l3));
 			rd.fillPolygon(ai, ai1, 8);
-			ai[0] = xs((int) (j2 - j1 - m.random() * (j1 / 4)), l2);
-			ai1[0] = ys((int) (i3 - l1 / 2.3999999999999999D
+			ai[0] = Utility.cXs((int) (j2 - j1 - m.random() * (j1 / 4)), l2);
+			ai1[0] = Utility.cYs((int) (i3 - l1 / 2.3999999999999999D
 					- m.random() * (l1 / 9.5999999999999996D)), l2);
-			ai[1] = xs((int) (j2 - j1 - m.random() * (j1 / 4)), l2);
-			ai1[1] = ys((int) (i3 + l1 / 2.3999999999999999D
+			ai[1] = Utility.cXs((int) (j2 - j1 - m.random() * (j1 / 4)), l2);
+			ai1[1] = Utility.cYs((int) (i3 + l1 / 2.3999999999999999D
 					+ m.random() * (l1 / 9.5999999999999996D)), l2);
-			ai[2] = xs((int) (j2 - j1 / 2.3999999999999999D
+			ai[2] = Utility.cXs((int) (j2 - j1 / 2.3999999999999999D
 					- m.random() * (j1 / 9.5999999999999996D)), l2);
-			ai1[2] = ys((int) (i3 + l1 + m.random() * (l1 / 4)), l2);
-			ai[3] = xs((int) (j2 + j1 / 2.3999999999999999D
+			ai1[2] = Utility.cYs((int) (i3 + l1 + m.random() * (l1 / 4)), l2);
+			ai[3] = Utility.cXs((int) (j2 + j1 / 2.3999999999999999D
 					+ m.random() * (j1 / 9.5999999999999996D)), l2);
-			ai1[3] = ys((int) (i3 + l1 + m.random() * (l1 / 4)), l2);
-			ai[4] = xs((int) (j2 + j1 + m.random() * (j1 / 4)), l2);
-			ai1[4] = ys((int) (i3 + l1 / 2.3999999999999999D
+			ai1[3] = Utility.cYs((int) (i3 + l1 + m.random() * (l1 / 4)), l2);
+			ai[4] = Utility.cXs((int) (j2 + j1 + m.random() * (j1 / 4)), l2);
+			ai1[4] = Utility.cYs((int) (i3 + l1 / 2.3999999999999999D
 					+ m.random() * (l1 / 9.5999999999999996D)), l2);
-			ai[5] = xs((int) (j2 + j1 + m.random() * (j1 / 4)), l2);
-			ai1[5] = ys((int) (i3 - l1 / 2.3999999999999999D
+			ai[5] = Utility.cXs((int) (j2 + j1 + m.random() * (j1 / 4)), l2);
+			ai1[5] = Utility.cYs((int) (i3 - l1 / 2.3999999999999999D
 					- m.random() * (l1 / 9.5999999999999996D)), l2);
-			ai[6] = xs((int) (j2 + j1 / 2.3999999999999999D
+			ai[6] = Utility.cXs((int) (j2 + j1 / 2.3999999999999999D
 					+ m.random() * (j1 / 9.5999999999999996D)), l2);
-			ai1[6] = ys((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
-			ai[7] = xs((int) (j2 - j1 / 2.3999999999999999D
+			ai1[6] = Utility.cYs((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
+			ai[7] = Utility.cXs((int) (j2 - j1 / 2.3999999999999999D
 					- m.random() * (j1 / 9.5999999999999996D)), l2);
-			ai1[7] = ys((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
+			ai1[7] = Utility.cYs((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
 			j3 = (int) (213F + 213F * (m.snap[0] / 350F));
 			if (j3 > 255) {
 				j3 = 255;
@@ -1103,8 +1072,8 @@ public class ContO {
 			if (roted) {
 				rot(ai, ai2, x - m.x, z - m.z, 90, 8);
 			}
-			rot(ai, ai2, m.cx, m.cz, m.xz, 8);
-			rot(ai1, ai2, m.cy, m.cz, m.zy, 8);
+			rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 8);
+			rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 8);
 			boolean flag = true;
 			int k1 = 0;
 			int l1 = 0;
@@ -1114,8 +1083,8 @@ public class ContO {
 			int ai4[] = new int[8];
 			int k2 = 0;
 			do {
-				ai3[k2] = xs(ai[k2], ai2[k2]);
-				ai4[k2] = ys(ai1[k2], ai2[k2]);
+				ai3[k2] = Utility.cXs(ai[k2], ai2[k2]);
+				ai4[k2] = Utility.cYs(ai1[k2], ai2[k2]);
 				if (ai4[k2] < 0 || ai2[k2] < 10) {
 					k1++;
 				}
@@ -1200,9 +1169,5 @@ public class ContO {
 		} else {
 			zy += 11;
 		}
-	}
-
-	public int py(int i, int j, int k, int l) {
-		return (i - j) * (i - j) + (k - l) * (k - l);
 	}
 }
