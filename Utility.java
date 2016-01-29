@@ -1,3 +1,9 @@
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+
 /**
  * Contains often used functions
  * @author Rafa, Kaffeinated, Omar Wally
@@ -137,6 +143,11 @@ public class Utility {
             }
         }
         return part;
+    }
+    
+    public static BufferedImage webGet(String string) throws IOException{
+    	System.out.println("load " + string);    	
+    	return ImageIO.read(new URL(string));
     }
         
     public static int spy(int i, int j) {
