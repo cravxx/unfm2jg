@@ -86,11 +86,11 @@ public class ContO {
 				sy[i] = 250;
 			}
 			int l1 = m.cx
-					+ (int) ((sx[i] - m.x - m.cx) * m.cos(m.xz) - (sz[i] - m.z - m.cz) * m.sin(m.xz));
+					+ (int) ((sx[i] - m.x - m.cx) * RadicalMath.cos(m.xz) - (sz[i] - m.z - m.cz) * RadicalMath.sin(m.xz));
 			int i2 = m.cz
-					+ (int) ((sx[i] - m.x - m.cx) * m.sin(m.xz) + (sz[i] - m.z - m.cz) * m.cos(m.xz));
-			int j2 = m.cy + (int) ((sy[i] - m.y - m.cy) * m.cos(m.zy) - (i2 - m.cz) * m.sin(m.zy));
-			i2 = m.cz + (int) ((sy[i] - m.y - m.cy) * m.sin(m.zy) + (i2 - m.cz) * m.cos(m.zy));
+					+ (int) ((sx[i] - m.x - m.cx) * RadicalMath.sin(m.xz) + (sz[i] - m.z - m.cz) * RadicalMath.cos(m.xz));
+			int j2 = m.cy + (int) ((sy[i] - m.y - m.cy) * RadicalMath.cos(m.zy) - (i2 - m.cz) * RadicalMath.sin(m.zy));
+			i2 = m.cz + (int) ((sy[i] - m.y - m.cy) * RadicalMath.sin(m.zy) + (i2 - m.cz) * RadicalMath.cos(m.zy));
 			int k2 = (int) Math.sqrt((m.cy - j2) * (m.cy - j2) + (m.cx - l1) * (m.cx - l1) + i2 * i2);
 			int l2 = 0;
 			do {
@@ -529,8 +529,8 @@ public class ContO {
 
 		if (conto.tnt != 0) {
 			for (int k1 = 0; k1 < conto.tnt; k1++) {
-				t.xy[t.nt] = (int) (conto.txy[k1] * m.cos(l) - conto.tzy[k1] * m.sin(l));
-				t.zy[t.nt] = (int) (conto.tzy[k1] * m.cos(l) + conto.txy[k1] * m.sin(l));
+				t.xy[t.nt] = (int) (conto.txy[k1] * RadicalMath.cos(l) - conto.tzy[k1] * RadicalMath.sin(l));
+				t.zy[t.nt] = (int) (conto.tzy[k1] * RadicalMath.cos(l) + conto.txy[k1] * RadicalMath.sin(l));
 				int i2 = 0;
 				do {
 					t.c[t.nt][i2] = (int) (conto.tc[k1][i2]
@@ -542,8 +542,8 @@ public class ContO {
 						t.c[t.nt][i2] = 0;
 					}
 				} while (++i2 < 3);
-				t.x[t.nt] = (int) ((x + conto.tx[k1] * m.cos(l)) - conto.tz[k1] * m.sin(l));
-				t.z[t.nt] = (int) (z + conto.tz[k1] * m.cos(l) + conto.tx[k1] * m.sin(l));
+				t.x[t.nt] = (int) ((x + conto.tx[k1] * RadicalMath.cos(l)) - conto.tz[k1] * RadicalMath.sin(l));
+				t.z[t.nt] = (int) (z + conto.tz[k1] * RadicalMath.cos(l) + conto.tx[k1] * RadicalMath.sin(l));
 				t.y[t.nt] = y + conto.ty[k1];
 				t.skd[t.nt] = conto.skd[k1];
 				t.dam[t.nt] = conto.dam[k1];
@@ -553,9 +553,9 @@ public class ContO {
 					i2 = 0;
 				}
 				t.radx[t.nt] = (int) Math
-						.abs(conto.tradx[k1] * m.cos(i2) + conto.tradz[k1] * m.sin(i2));
+						.abs(conto.tradx[k1] * RadicalMath.cos(i2) + conto.tradz[k1] * RadicalMath.sin(i2));
 				t.radz[t.nt] = (int) Math
-						.abs(conto.tradx[k1] * m.sin(i2) + conto.tradz[k1] * m.cos(i2));
+						.abs(conto.tradx[k1] * RadicalMath.sin(i2) + conto.tradz[k1] * RadicalMath.cos(i2));
 				t.rady[t.nt] = conto.trady[k1];
 				t.nt++;
 			}
@@ -573,9 +573,9 @@ public class ContO {
 		if (dist != 0) {
 			dist = 0;
 		}
-		int i = m.cx + (int) ((x - m.x - m.cx) * m.cos(m.xz) - (z - m.z - m.cz) * m.sin(m.xz));
-		int j = m.cz + (int) ((x - m.x - m.cx) * m.sin(m.xz) + (z - m.z - m.cz) * m.cos(m.xz));
-		int k = m.cz + (int) ((y - m.y - m.cy) * m.sin(m.zy) + (j - m.cz) * m.cos(m.zy));
+		int i = m.cx + (int) ((x - m.x - m.cx) * RadicalMath.cos(m.xz) - (z - m.z - m.cz) * RadicalMath.sin(m.xz));
+		int j = m.cz + (int) ((x - m.x - m.cx) * RadicalMath.sin(m.xz) + (z - m.z - m.cz) * RadicalMath.cos(m.xz));
+		int k = m.cz + (int) ((y - m.y - m.cy) * RadicalMath.sin(m.zy) + (j - m.cz) * RadicalMath.cos(m.zy));
 		int l = xs(i + maxR, k) - xs(i - maxR, k);
 		if (xs(i + maxR * 2, k) > 0 && xs(i - maxR * 2, k) < m.w && k > -maxR && (k < m.fade[disline] + maxR || m.trk)
 				&& (l > disp || m.trk)) {
@@ -600,10 +600,10 @@ public class ContO {
 							}
 
 						} else {
-							int j2 = m.cy + (int) ((m.ground - m.cy) * m.cos(m.zy)
-									- (j - m.cz) * m.sin(m.zy));
-							int k2 = m.cz + (int) ((m.ground - m.cy) * m.sin(m.zy)
-									+ (j - m.cz) * m.cos(m.zy));
+							int j2 = m.cy + (int) ((m.ground - m.cy) * RadicalMath.cos(m.zy)
+									- (j - m.cz) * RadicalMath.sin(m.zy));
+							int k2 = m.cz + (int) ((m.ground - m.cy) * RadicalMath.sin(m.zy)
+									+ (j - m.cz) * RadicalMath.cos(m.zy));
 							if (ys(j2 + maxR, k2) > 0 && ys(j2 - maxR, k2) < m.h) {
 								for (int l2 = 0; l2 < npl; l2++) {
 									p[l2].s(rd, x - m.x, y - m.y, z - m.z, xz, xy, zy, 1);
@@ -622,7 +622,7 @@ public class ContO {
 					}
 				}
 			}
-			int j1 = m.cy + (int) ((y - m.y - m.cy) * m.cos(m.zy) - (j - m.cz) * m.sin(m.zy));
+			int j1 = m.cy + (int) ((y - m.y - m.cy) * RadicalMath.cos(m.zy) - (j - m.cz) * RadicalMath.sin(m.zy));
 			if (ys(j1 + maxR, k) > 0 && ys(j1 - maxR, k) < m.h) {
 				if (elec) {
 					electrify(rd);
@@ -697,8 +697,8 @@ public class ContO {
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
 				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((j1 - i) * m.cos(k) - (k1 - j) * m.sin(k));
-				ai1[i1] = j + (int) ((j1 - i) * m.sin(k) + (k1 - j) * m.cos(k));
+				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
 			}
 
 		}
@@ -794,12 +794,12 @@ public class ContO {
 			do {
 				ai1[j2] = t.y[k1] - m.y;
 				if (t.zy[k1] != 0) {
-					ai1[j2] += ((ai2[j2] - (t.z[k1] - m.z - t.radz[k1])) * m.sin(t.zy[k1]))
-							/ m.sin(90 - t.zy[k1]) - (t.radz[k1] * m.sin(t.zy[k1])) / m.sin(90 - t.zy[k1]);
+					ai1[j2] += ((ai2[j2] - (t.z[k1] - m.z - t.radz[k1])) * RadicalMath.sin(t.zy[k1]))
+							/ RadicalMath.sin(90 - t.zy[k1]) - (t.radz[k1] * RadicalMath.sin(t.zy[k1])) / RadicalMath.sin(90 - t.zy[k1]);
 				}
 				if (t.xy[k1] != 0) {
-					ai1[j2] += ((ai[j2] - (t.x[k1] - m.x - t.radx[k1])) * m.sin(t.xy[k1]))
-							/ m.sin(90 - t.xy[k1]) - (t.radx[k1] * m.sin(t.xy[k1])) / m.sin(90 - t.xy[k1]);
+					ai1[j2] += ((ai[j2] - (t.x[k1] - m.x - t.radx[k1])) * RadicalMath.sin(t.xy[k1]))
+							/ RadicalMath.sin(90 - t.xy[k1]) - (t.radx[k1] * RadicalMath.sin(t.xy[k1])) / RadicalMath.sin(90 - t.xy[k1]);
 				}
 			} while (++j2 < 4);
 			k = (int) (t.c[k1][0] / 1.5D);
@@ -935,10 +935,10 @@ public class ContO {
 			if (l1 < i2) {
 				l1 = i2;
 			}
-			j2 = m.cx + (int) ((x - m.x - m.cx) * m.cos(m.xz) - (z - m.z - m.cz) * m.sin(m.xz));
-			int l2 = m.cz + (int) ((x - m.x - m.cx) * m.sin(m.xz) + (z - m.z - m.cz) * m.cos(m.xz));
-			int i3 = m.cy + (int) ((y - m.y - m.cy) * m.cos(m.zy) - (l2 - m.cz) * m.sin(m.zy));
-			l2 = m.cz + (int) ((y - m.y - m.cy) * m.sin(m.zy) + (l2 - m.cz) * m.cos(m.zy));
+			j2 = m.cx + (int) ((x - m.x - m.cx) * RadicalMath.cos(m.xz) - (z - m.z - m.cz) * RadicalMath.sin(m.xz));
+			int l2 = m.cz + (int) ((x - m.x - m.cx) * RadicalMath.sin(m.xz) + (z - m.z - m.cz) * RadicalMath.cos(m.xz));
+			int i3 = m.cy + (int) ((y - m.y - m.cy) * RadicalMath.cos(m.zy) - (l2 - m.cz) * RadicalMath.sin(m.zy));
+			l2 = m.cz + (int) ((y - m.y - m.cy) * RadicalMath.sin(m.zy) + (l2 - m.cz) * RadicalMath.cos(m.zy));
 			ai[0] = xs((int) (j2 - j1 / 0.80000000000000004D
 					- m.random() * (j1 / 2.3999999999999999D)), l2);
 			ai1[0] = ys((int) (i3 - l1 / 1.9199999999999999D

@@ -120,8 +120,8 @@ public class Record {
 						if (conto.p[l].wz == 0 && py(conto.keyx[i], conto.p[l].ox[k1], conto.keyz[i],
 								conto.p[l].oz[k1]) < madness.clrad[madness.cn]) {
 							f1 = (f / 20F) * m.random();
-							conto.p[l].oz[k1] += f1 * m.sin(j);
-							conto.p[l].ox[k1] -= f1 * m.sin(k);
+							conto.p[l].oz[k1] += f1 * RadicalMath.sin(j);
+							conto.p[l].ox[k1] -= f1 * RadicalMath.sin(k);
 						}
 					}
 
@@ -449,8 +449,8 @@ public class Record {
 					if (conto.p[j].wz == 0 && py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
-						conto.p[j].oz[k] += f1 * m.cos(conto.xz) * m.cos(conto.zy);
-						conto.p[j].ox[k] += f1 * m.sin(conto.xz) * m.cos(conto.xy);
+						conto.p[j].oz[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.zy);
+						conto.p[j].ox[k] += f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.xy);
 					}
 				}
 
@@ -785,8 +785,8 @@ public class Record {
 					if (conto.p[j].wz == 0 && py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
-						conto.p[j].oz[k] -= f1 * m.sin(conto.xz) * m.cos(conto.zy);
-						conto.p[j].ox[k] += f1 * m.cos(conto.xz) * m.cos(conto.xy);
+						conto.p[j].oz[k] -= f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.zy);
+						conto.p[j].ox[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.xy);
 					}
 				}
 

@@ -1522,8 +1522,8 @@ public class xtGraphics extends Panel implements Runnable {
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
 				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((j1 - i) * m.cos(k) - (k1 - j) * m.sin(k));
-				ai1[i1] = j + (int) ((j1 - i) * m.sin(k) + (k1 - j) * m.cos(k));
+				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
 			}
 
 		}

@@ -1146,8 +1146,8 @@ public class Plane {
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
 				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((j1 - i) * m.cos(k) - (k1 - j) * m.sin(k));
-				ai1[i1] = j + (int) ((j1 - i) * m.sin(k) + (k1 - j) * m.cos(k));
+				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
 			}
 
 		}
@@ -1233,12 +1233,12 @@ public class Plane {
 				for (int j8 = 0; j8 < n; j8++) {
 					ai2[j8] = t.y[l6] - m.y;
 					if (t.zy[l6] != 0) {
-						ai2[j8] += ((ai1[j8] - (t.z[l6] - m.z - t.radz[l6])) * m.sin(t.zy[l6]))
-								/ m.sin(90 - t.zy[l6]) - (t.radz[l6] * m.sin(t.zy[l6])) / m.sin(90 - t.zy[l6]);
+						ai2[j8] += ((ai1[j8] - (t.z[l6] - m.z - t.radz[l6])) * RadicalMath.sin(t.zy[l6]))
+								/ RadicalMath.sin(90 - t.zy[l6]) - (t.radz[l6] * RadicalMath.sin(t.zy[l6])) / RadicalMath.sin(90 - t.zy[l6]);
 					}
 					if (t.xy[l6] != 0) {
-						ai2[j8] += ((ai[j8] - (t.x[l6] - m.x - t.radx[l6])) * m.sin(t.xy[l6]))
-								/ m.sin(90 - t.xy[l6]) - (t.radx[l6] * m.sin(t.xy[l6])) / m.sin(90 - t.xy[l6]);
+						ai2[j8] += ((ai[j8] - (t.x[l6] - m.x - t.radx[l6])) * RadicalMath.sin(t.xy[l6]))
+								/ RadicalMath.sin(90 - t.xy[l6]) - (t.radx[l6] * RadicalMath.sin(t.xy[l6])) / RadicalMath.sin(90 - t.xy[l6]);
 					}
 				}
 

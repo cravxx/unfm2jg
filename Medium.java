@@ -310,9 +310,9 @@ public class Medium
 				if (resdown >= 2 && i2 % 2 != 0) {
 					continue;
 				}
-				int k2 = cx + (int) ((cgpx[i2] - x - cx) * cos(xz) - (cgpz[i2] - z - cz) * sin(xz));
-				int l2 = cz + (int) ((cgpx[i2] - x - cx) * sin(xz) + (cgpz[i2] - z - cz) * cos(xz));
-				int i3 = cz + (int) ((250 - y - cy) * sin(zy) + (l2 - cz) * cos(zy));
+				int k2 = cx + (int) ((cgpx[i2] - x - cx) * RadicalMath.cos(xz) - (cgpz[i2] - z - cz) * RadicalMath.sin(xz));
+				int l2 = cz + (int) ((cgpx[i2] - x - cx) * RadicalMath.sin(xz) + (cgpz[i2] - z - cz) * RadicalMath.cos(xz));
+				int i3 = cz + (int) ((250 - y - cy) * RadicalMath.sin(zy) + (l2 - cz) * RadicalMath.cos(zy));
 				if (xs(k2 + pmx[i2], i3) <= 0 || xs(k2 - pmx[i2], i3) >= w || i3 <= -pmx[i2] || i3 >= fade[2]) {
 					continue;
 				}
@@ -450,14 +450,6 @@ public class Medium
 			j = 10;
 		}
 		return ((j - focus_point) * (cy - i)) / j + i;
-	}
-
-	public float sin(int i) {
-		for (; i >= 360; i -= 360) {
-		}
-		for (; i < 0; i += 360) {
-		}
-		return tsin[i];
 	}
 
 	public Medium() {
@@ -708,9 +700,9 @@ public class Medium
 
 	public void drawclouds(Graphics2D graphics2d) {
 		for (int i = 0; i < noc; i++) {
-			int j = cx + (int) ((clx[i] - x / 20 - cx) * cos(xz) - (clz[i] - z / 20 - cz) * sin(xz));
-			int k = cz + (int) ((clx[i] - x / 20 - cx) * sin(xz) + (clz[i] - z / 20 - cz) * cos(xz));
-			int l = cz + (int) ((cldd[4] - y / 20 - cy) * sin(zy) + (k - cz) * cos(zy));
+			int j = cx + (int) ((clx[i] - x / 20 - cx) * RadicalMath.cos(xz) - (clz[i] - z / 20 - cz) * RadicalMath.sin(xz));
+			int k = cz + (int) ((clx[i] - x / 20 - cx) * RadicalMath.sin(xz) + (clz[i] - z / 20 - cz) * RadicalMath.cos(xz));
+			int l = cz + (int) ((cldd[4] - y / 20 - cy) * RadicalMath.sin(zy) + (k - cz) * RadicalMath.cos(zy));
 			int i1 = xs(j + cmx[i], l);
 			int j1 = xs(j - cmx[i], l);
 			if (i1 <= 0 || j1 >= w || l <= -cmx[i] || i1 - j1 <= 20) {
@@ -1079,18 +1071,18 @@ public class Medium
 	public void drawmountains(Graphics2D rd) {
 		for (int i = 0; i < nmt; i++) {
 			int i_185_ = mrd[i];
-			int i_186_ = cx + (int) ((mtx[i_185_][0] - x / 30 - cx) * cos(xz)
-					- (mtz[i_185_][0] - z / 30 - cz) * sin(xz));
-			int i_187_ = cz + (int) ((mtx[i_185_][0] - x / 30 - cx) * sin(xz)
-					+ (mtz[i_185_][0] - z / 30 - cz) * cos(xz));
+			int i_186_ = cx + (int) ((mtx[i_185_][0] - x / 30 - cx) * RadicalMath.cos(xz)
+					- (mtz[i_185_][0] - z / 30 - cz) * RadicalMath.sin(xz));
+			int i_187_ = cz + (int) ((mtx[i_185_][0] - x / 30 - cx) * RadicalMath.sin(xz)
+					+ (mtz[i_185_][0] - z / 30 - cz) * RadicalMath.cos(xz));
 			int i_188_ = cz
-					+ (int) ((mty[i_185_][0] - y / 30 - cy) * sin(zy) + (i_187_ - cz) * cos(zy));
-			int i_189_ = cx + (int) ((mtx[i_185_][nmv[i_185_] - 1] - x / 30 - cx) * cos(xz)
-					- (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * sin(xz));
-			int i_190_ = cz + (int) ((mtx[i_185_][nmv[i_185_] - 1] - x / 30 - cx) * sin(xz)
-					+ (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * cos(xz));
-			int i_191_ = cz + (int) ((mty[i_185_][nmv[i_185_] - 1] - y / 30 - cy) * sin(zy)
-					+ (i_190_ - cz) * cos(zy));
+					+ (int) ((mty[i_185_][0] - y / 30 - cy) * RadicalMath.sin(zy) + (i_187_ - cz) * RadicalMath.cos(zy));
+			int i_189_ = cx + (int) ((mtx[i_185_][nmv[i_185_] - 1] - x / 30 - cx) * RadicalMath.cos(xz)
+					- (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * RadicalMath.sin(xz));
+			int i_190_ = cz + (int) ((mtx[i_185_][nmv[i_185_] - 1] - x / 30 - cx) * RadicalMath.sin(xz)
+					+ (mtz[i_185_][nmv[i_185_] - 1] - z / 30 - cz) * RadicalMath.cos(xz));
+			int i_191_ = cz + (int) ((mty[i_185_][nmv[i_185_] - 1] - y / 30 - cy) * RadicalMath.sin(zy)
+					+ (i_190_ - cz) * RadicalMath.cos(zy));
 			if (xs(i_189_, i_191_) > 0 && xs(i_186_, i_188_) < w) {
 				int[] is = new int[nmv[i_185_] * 2];
 				int[] is_192_ = new int[nmv[i_185_] * 2];
@@ -1213,10 +1205,10 @@ public class Medium
 
 	public void drawstars(Graphics2D graphics2d) {
 		for (int i = 0; i < nst; i++) {
-			int j = cx + (int) (stx[i] * cos(xz) - stz[i] * sin(xz));
-			int k = cz + (int) (stx[i] * sin(xz) + stz[i] * cos(xz));
-			int l = cy + (int) (-200F * cos(zy) - k * sin(zy));
-			int i1 = cz + (int) (-200F * sin(zy) + k * cos(zy));
+			int j = cx + (int) (stx[i] * RadicalMath.cos(xz) - stz[i] * RadicalMath.sin(xz));
+			int k = cz + (int) (stx[i] * RadicalMath.sin(xz) + stz[i] * RadicalMath.cos(xz));
+			int l = cy + (int) (-200F * RadicalMath.cos(zy) - k * RadicalMath.sin(zy));
+			int i1 = cz + (int) (-200F * RadicalMath.sin(zy) + k * RadicalMath.cos(zy));
 			j = xs(j, i1);
 			l = ys(l, i1);
 			if (j - 1 <= iw || j + 3 >= w || l - 1 <= ih || l + 3 >= h) {
@@ -1300,8 +1292,8 @@ public class Medium
 			int j2 = fade[l1];
 			int l2 = ground;
 			if (zy != 0) {
-				l2 = cy + (int) ((ground - cy) * cos(zy) - (fade[l1] - cz) * sin(zy));
-				j2 = cz + (int) ((ground - cy) * sin(zy) + (fade[l1] - cz) * cos(zy));
+				l2 = cy + (int) ((ground - cy) * RadicalMath.cos(zy) - (fade[l1] - cz) * RadicalMath.sin(zy));
+				j2 = cz + (int) ((ground - cy) * RadicalMath.sin(zy) + (fade[l1] - cz) * RadicalMath.cos(zy));
 			}
 			ai[0] = iw;
 			ai1[0] = ys(l2, j2);
@@ -1378,16 +1370,16 @@ public class Medium
 		int i2 = i;
 		int k2 = j;
 		int i3 = k;
-		int j3 = cy + (int) ((skyline - 700 - cy) * cos(zy) - (7000 - cz) * sin(zy));
-		int k3 = cz + (int) ((skyline - 700 - cy) * sin(zy) + (7000 - cz) * cos(zy));
+		int j3 = cy + (int) ((skyline - 700 - cy) * RadicalMath.cos(zy) - (7000 - cz) * RadicalMath.sin(zy));
+		int k3 = cz + (int) ((skyline - 700 - cy) * RadicalMath.sin(zy) + (7000 - cz) * RadicalMath.cos(zy));
 		j3 = ys(j3, k3);
 		int l3 = ih;
 		for (int i4 = 0; i4 < 16; i4++) {
 			int k4 = fade[i4];
 			int i5 = skyline;
 			if (zy != 0) {
-				i5 = cy + (int) ((skyline - cy) * cos(zy) - (fade[i4] - cz) * sin(zy));
-				k4 = cz + (int) ((skyline - cy) * sin(zy) + (fade[i4] - cz) * cos(zy));
+				i5 = cy + (int) ((skyline - cy) * RadicalMath.cos(zy) - (fade[i4] - cz) * RadicalMath.sin(zy));
+				k4 = cz + (int) ((skyline - cy) * RadicalMath.sin(zy) + (fade[i4] - cz) * RadicalMath.cos(zy));
 			}
 			ai[0] = iw;
 			ai1[0] = ys(i5, k4);
@@ -1447,8 +1439,8 @@ public class Medium
 				int l4 = 7000;
 				int j5 = skyline - 700 - j4 * 70;
 				if (zy != 0 && j4 != 19) {
-					j5 = cy + (int) ((skyline - 700 - j4 * 70 - cy) * cos(zy) - (7000 - cz) * sin(zy));
-					l4 = cz + (int) ((skyline - 700 - j4 * 70 - cy) * sin(zy) + (7000 - cz) * cos(zy));
+					j5 = cy + (int) ((skyline - 700 - j4 * 70 - cy) * RadicalMath.cos(zy) - (7000 - cz) * RadicalMath.sin(zy));
+					l4 = cz + (int) ((skyline - 700 - j4 * 70 - cy) * RadicalMath.sin(zy) + (7000 - cz) * RadicalMath.cos(zy));
 				}
 				ai[0] = iw;
 				if (j4 != 19) {
@@ -1502,10 +1494,10 @@ public class Medium
 		}
 		if (td) {
 			y = (int) (conto.y - 300 - 1100F * random());
-			x = conto.x + (int) (((conto.x + 400) - conto.x) * cos(i)
-					- ((conto.z + 5000) - conto.z) * sin(i));
-			z = conto.z + (int) (((conto.x + 400) - conto.x) * sin(i)
-					+ ((conto.z + 5000) - conto.z) * cos(i));
+			x = conto.x + (int) (((conto.x + 400) - conto.x) * RadicalMath.cos(i)
+					- ((conto.z + 5000) - conto.z) * RadicalMath.sin(i));
+			z = conto.z + (int) (((conto.x + 400) - conto.x) * RadicalMath.sin(i)
+					+ ((conto.z + 5000) - conto.z) * RadicalMath.cos(i));
 			td = false;
 		}
 		char c = '\0';
@@ -1536,8 +1528,8 @@ public class Medium
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
 				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((j1 - i) * cos(k) - (k1 - j) * sin(k));
-				ai1[i1] = j + (int) ((j1 - i) * sin(k) + (k1 - j) * cos(k));
+				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
 			}
 
 		}
@@ -1579,8 +1571,8 @@ public class Medium
 		if (y > 10) {
 			vert = false;
 		}
-		x = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
-		z = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
+		x = conto.x + (int) ((conto.x - i - conto.x) * RadicalMath.cos(vxz));
+		z = conto.z + (int) ((conto.x - i - conto.x) * RadicalMath.sin(vxz));
 		if (!flag) {
 			vxz += 2;
 		} else {
@@ -1643,8 +1635,8 @@ public class Medium
 			flex = 0;
 		}
 		y = -hit;
-		x = cx + (int) trx + (int) (17000F * cos(vxz));
-		z = (int) trz + (int) (17000F * sin(vxz));
+		x = cx + (int) trx + (int) (17000F * RadicalMath.cos(vxz));
+		z = (int) trz + (int) (17000F * RadicalMath.sin(vxz));
 		if (hit > 5000) {
 			if (hit == 45000) {
 				fo = 1.0F;
@@ -1936,8 +1928,8 @@ public class Medium
 		}
 		i += bcxz;
 		xz = -i;
-		x = (conto.x - cx) + (int) ((-(conto.z - 800 - conto.z)) * sin(i));
-		z = (conto.z - cz) + (int) ((conto.z - 800 - conto.z) * cos(i));
+		x = (conto.x - cx) + (int) ((-(conto.z - 800 - conto.z)) * RadicalMath.sin(i));
+		z = (conto.z - cz) + (int) ((conto.z - 800 - conto.z) * RadicalMath.cos(i));
 		y = conto.y - 250 - cy;
 		if (trns != 1) {
 			trns = 1;
@@ -1964,8 +1956,8 @@ public class Medium
 			i = 1000;
 		}
 		int j = conto.y - adv;
-		int k = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
-		int l = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
+		int k = conto.x + (int) ((conto.x - i - conto.x) * RadicalMath.cos(vxz));
+		int l = conto.z + (int) ((conto.x - i - conto.x) * RadicalMath.sin(vxz));
 		int i1 = 0;
 		if (Math.abs(j - y) > fvect) {
 			if (y < j) {
@@ -2093,8 +2085,8 @@ public class Medium
 		if (y > 10) {
 			vert = false;
 		}
-		x = j + (int) ((j - i1 - j) * cos(vxz));
-		z = l + (int) ((j - i1 - j) * sin(vxz));
+		x = j + (int) ((j - i1 - j) * RadicalMath.cos(vxz));
+		z = l + (int) ((j - i1 - j) * RadicalMath.sin(vxz));
 		vxz += 2;
 		char c = '\0';
 		int j1 = y;
@@ -2111,13 +2103,5 @@ public class Medium
 		if (trns != 5) {
 			trns = 5;
 		}
-	}
-
-	public float cos(int i) {
-		for (; i >= 360; i -= 360) {
-		}
-		for (; i < 0; i += 360) {
-		}
-		return tcos[i];
 	}
 }

@@ -1487,8 +1487,8 @@ public class Control {
 					char c = '\0';
 					int l1 = (int) ((pys(conto.x, checkpoints.opx[acr], conto.z, checkpoints.opz[acr]) / 2.0F)
 							* aim);
-					int l3 = (int) (checkpoints.opx[acr] - l1 * m.sin(checkpoints.omxz[acr]));
-					int k5 = (int) (checkpoints.opz[acr] + l1 * m.cos(checkpoints.omxz[acr]));
+					int l3 = (int) (checkpoints.opx[acr] - l1 * RadicalMath.sin(checkpoints.omxz[acr]));
+					int k5 = (int) (checkpoints.opz[acr] + l1 * RadicalMath.cos(checkpoints.omxz[acr]));
 					if (l3 - conto.x >= 0) {
 						c = '\264';
 					}
