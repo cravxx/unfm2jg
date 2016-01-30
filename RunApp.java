@@ -57,7 +57,7 @@ public class RunApp extends Panel {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent windowevent) {
-				exitsequance();
+				exitSequence();
 			}
 		});
 		applet.setPreferredSize(new java.awt.Dimension(670, 400 + Settings.menubarHeight));// The resolution of your game goes here
@@ -71,7 +71,7 @@ public class RunApp extends Panel {
 		applet.start();
 	}
 
-	public static void exitsequance() {
+	public static void exitSequence() {
 		applet.stop();
 		frame.removeAll();
 		try {

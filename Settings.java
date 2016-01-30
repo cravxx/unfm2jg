@@ -53,10 +53,8 @@ public class Settings extends Applet{
 			public void actionPerformed(ActionEvent arg0) {
 				if(!ConsoleFrame.frameVisible){
 					ConsoleFrame.showUNFM2Console();
-					System.out.println("debugWindow enabled");
 				}else{
 					ConsoleFrame.hideUNFM2Console();
-					System.out.println("debugWindow disabled");
 				}				
 			}
 		});	
