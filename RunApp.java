@@ -10,6 +10,8 @@ public class RunApp extends Panel {
 	static Frame frame;
 	static GameSparker applet;
 	static Settings settings;
+	static ConsoleFrame cFrame;
+	static Utility utility;
 	public static ArrayList<Image> icons;
 
 	/**
@@ -45,8 +47,12 @@ public class RunApp extends Panel {
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setIgnoreRepaint(true);
 		frame.setIconImages(getIcons());
+		
 		applet = new GameSparker();
 		settings = new Settings();
+		cFrame = new ConsoleFrame();
+		utility = new Utility();
+		
 		applet.setStub(new DesktopStub());
 		frame.addWindowListener(new WindowAdapter() {
 			@Override

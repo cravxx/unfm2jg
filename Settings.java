@@ -30,28 +30,34 @@ public class Settings extends Applet{
 	
 	public static boolean quickhide = false;
 	static MenuBar menubar = new MenuBar();
-    static Menu menu = new Menu("File");
-    static Menu submenu1 = new Menu("Open");
-    static MenuItem item1 = new MenuItem("File");
-    static MenuItem item2 = new MenuItem("URL");
-    static Menu submenu2 = new Menu("Save As");
-    static MenuItem item3 = new MenuItem("text");
-    static MenuItem item4 = new MenuItem("html");
+    static Menu debug = new Menu("Debug");
+    //static Menu submenu1 = new Menu("Open");
+    static MenuItem debugWindow = new MenuItem("Show Window");
+    //static MenuItem item2 = new MenuItem("URL");
+    //static Menu submenu2 = new Menu("Save As");
+    //static MenuItem item3 = new MenuItem("text");
+    //static MenuItem item4 = new MenuItem("html");
 	
     static Component c = null;          
     
     public Settings(){
-    	submenu1.add(item1);
-	    submenu1.add(item2);
-	    menu.add(submenu1);
-	    submenu2.add(item3);
-	    submenu2.add(item4);
-	    menu.add(submenu2);
-	    menubar.add(menu);
+    	//submenu1.add(item1);
+	    //submenu1.add(item2);
+	    debug.add(debugWindow);
+	    //submenu2.add(item3);
+	    //submenu2.add(item4);
+	    //menu.add(submenu2);
+	    menubar.add(debug);
 		
-		item1.addActionListener(new ActionListener() {
+		debugWindow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("done");
+				if(!ConsoleFrame.frameVisible){
+					ConsoleFrame.showUNFM2Console();
+					System.out.println("debugWindow enabled");
+				}else{
+					ConsoleFrame.hideUNFM2Console();
+					System.out.println("debugWindow disabled");
+				}				
 			}
 		});	
     }

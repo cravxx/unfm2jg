@@ -12,7 +12,6 @@ import javax.imageio.ImageIO;
  *
  */
 public class Utility {
-	
 	static Medium medium;
 	
 	static Timer printTimer = new Timer();
@@ -21,6 +20,9 @@ public class Utility {
 	static Date date = new Date();
 	static long startTime;
 	
+	public Utility() {
+		medium = new Medium();
+	}	
     
     /**
      * Gets a value from a string in format:
