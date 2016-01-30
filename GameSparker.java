@@ -11,6 +11,10 @@ import java.util.Map;
 import java.util.Iterator;
 
 import netscape.javascript.JSObject;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * GameSparker brings everything together. 
@@ -961,6 +965,7 @@ public class GameSparker extends Applet implements Runnable {
 				}
 			}
 			if (xtgraphics.fase == 0) {
+				Settings.hideMenu(this);
 				int k3 = 0;
 				do {
 					if (amadness[k3].newcar) {
@@ -1496,7 +1501,7 @@ public class GameSparker extends Applet implements Runnable {
 			} catch (InterruptedException _ex) {
 			}
 		} while (true);
-	}
+	}	
 
 	@Override
 	public void init() {
@@ -1511,6 +1516,7 @@ public class GameSparker extends Applet implements Runnable {
 			rd.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 			rd.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 		}
+		Settings.showMenu(this);
 	}
 
 	public void savecookie(String string, String string_107_) {

@@ -9,6 +9,7 @@ public class RunApp extends Panel {
 
 	static Frame frame;
 	static GameSparker applet;
+	static Settings settings;
 	public static ArrayList<Image> icons;
 
 	/**
@@ -45,6 +46,7 @@ public class RunApp extends Panel {
 		frame.setIgnoreRepaint(true);
 		frame.setIconImages(getIcons());
 		applet = new GameSparker();
+		settings = new Settings();
 		applet.setStub(new DesktopStub());
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
@@ -52,7 +54,7 @@ public class RunApp extends Panel {
 				exitsequance();
 			}
 		});
-		applet.setPreferredSize(new java.awt.Dimension(670, 400));// The resolution of your game goes here
+		applet.setPreferredSize(new java.awt.Dimension(670, 400 + Settings.menubarHeight));// The resolution of your game goes here
 		frame.add("Center", applet);
 		frame.setResizable(false);// If you plan to make you game support changes in resolution, you can comment out this line.
 		frame.pack();
