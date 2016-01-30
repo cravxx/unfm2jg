@@ -172,6 +172,7 @@ public class GameSparker extends Applet implements Runnable {
 		nob = 0;
 		notb = 0;
 		view = 0;
+		splashScreenState = true;
 	}
 
 	/**
@@ -747,7 +748,7 @@ public class GameSparker extends Applet implements Runnable {
 				}
 			}
 			if (xtgraphics.fase == 9)
-				if (i2 < 71) {
+				if (i2 < 71 && splashScreenState) {
 					xtgraphics.rad(i2, 1);
 					catchlink(0);
 					if (mouses == 2)
@@ -786,6 +787,7 @@ public class GameSparker extends Applet implements Runnable {
 					mouses = 2;
 			}
 			if (xtgraphics.fase == 10) {
+				Settings.showMenu(this);
 				xtgraphics.maini(u[0]);
 				xtgraphics.ctachm(xm, ym, mouses, u[0]);
 				if (mouses == 2)
@@ -1615,6 +1617,8 @@ public class GameSparker extends Applet implements Runnable {
 	};
 
 	final String extra_models[] = {};
+	
+	static boolean splashScreenState;
 
 	CheckPoints cp;
 	Graphics2D rd;

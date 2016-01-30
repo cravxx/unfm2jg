@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
 
 public class RunApp extends Panel {
 
@@ -50,7 +51,14 @@ public class RunApp extends Panel {
 		
 		applet = new GameSparker();
 		settings = new Settings();
-		cFrame = new ConsoleFrame();
+		Executors.newSingleThreadExecutor().execute(new Runnable() {
+		    @Override 
+		    public void run() {
+		    	cFrame = new ConsoleFrame();
+		    	System.out.println("Console thread started...");
+		    }
+		});
+		
 		utility = new Utility();
 		
 		applet.setStub(new DesktopStub());

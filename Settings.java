@@ -31,8 +31,10 @@ public class Settings extends Applet{
 	public static boolean quickhide = false;
 	static MenuBar menubar = new MenuBar();
     static Menu debug = new Menu("Debug");
+    static Menu other = new Menu("Other");
     //static Menu submenu1 = new Menu("Open");
     static MenuItem debugWindow = new MenuItem("Show Window");
+    static MenuItem stateSplash = new MenuItem("Toggle Splash");
     //static MenuItem item2 = new MenuItem("URL");
     //static Menu submenu2 = new Menu("Save As");
     //static MenuItem item3 = new MenuItem("text");
@@ -44,10 +46,12 @@ public class Settings extends Applet{
     	//submenu1.add(item1);
 	    //submenu1.add(item2);
 	    debug.add(debugWindow);
+	    other.add(stateSplash);
 	    //submenu2.add(item3);
 	    //submenu2.add(item4);
 	    //menu.add(submenu2);
 	    menubar.add(debug);
+	    menubar.add(other);
 		
 		debugWindow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -56,6 +60,12 @@ public class Settings extends Applet{
 				}else{
 					ConsoleFrame.hideUNFM2Console();
 				}				
+			}
+		});	
+		stateSplash.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GameSparker.splashScreenState = !GameSparker.splashScreenState;
+				System.out.println("Splash set to " + GameSparker.splashScreenState);
 			}
 		});	
     }
