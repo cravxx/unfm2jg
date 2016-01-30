@@ -1618,7 +1618,7 @@ public class GameSparker extends Applet implements Runnable {
 
 	final String extra_models[] = {};
 	
-	static boolean splashScreenState;
+	public static boolean splashScreenState;
 
 	CheckPoints cp;
 	Graphics2D rd;
