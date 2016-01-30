@@ -1257,6 +1257,10 @@ public class Medium
 		if (y > 0) {
 			y = 0;
 		}
+		
+		float t_cos = RadicalMath.cos(zy);
+		float t_sin = RadicalMath.sin(zy);
+		
 		ground = 250 - y;
 		int ai[] = new int[4];
 		int ai1[] = new int[4];
@@ -1271,8 +1275,8 @@ public class Medium
 			int j2 = fade[l1];
 			int l2 = ground;
 			if (zy != 0) {
-				l2 = cy + (int) ((ground - cy) * RadicalMath.cos(zy) - (fade[l1] - cz) * RadicalMath.sin(zy));
-				j2 = cz + (int) ((ground - cy) * RadicalMath.sin(zy) + (fade[l1] - cz) * RadicalMath.cos(zy));
+				l2 = cy + (int) ((ground - cy) * t_cos - (fade[l1] - cz) * t_sin);
+				j2 = cz + (int) ((ground - cy) * t_sin + (fade[l1] - cz) * t_cos);
 			}
 			ai[0] = iw;
 			ai1[0] = Utility.ys(l2, j2, 1);
@@ -1349,16 +1353,16 @@ public class Medium
 		int i2 = i;
 		int k2 = j;
 		int i3 = k;
-		int j3 = cy + (int) ((skyline - 700 - cy) * RadicalMath.cos(zy) - (7000 - cz) * RadicalMath.sin(zy));
-		int k3 = cz + (int) ((skyline - 700 - cy) * RadicalMath.sin(zy) + (7000 - cz) * RadicalMath.cos(zy));
+		int j3 = cy + (int) ((skyline - 700 - cy) * t_cos - (7000 - cz) * t_sin);
+		int k3 = cz + (int) ((skyline - 700 - cy) * t_sin + (7000 - cz) * t_cos);
 		j3 = Utility.ys(j3, k3, 1);
 		int l3 = ih;
 		for (int i4 = 0; i4 < 16; i4++) {
 			int k4 = fade[i4];
 			int i5 = skyline;
 			if (zy != 0) {
-				i5 = cy + (int) ((skyline - cy) * RadicalMath.cos(zy) - (fade[i4] - cz) * RadicalMath.sin(zy));
-				k4 = cz + (int) ((skyline - cy) * RadicalMath.sin(zy) + (fade[i4] - cz) * RadicalMath.cos(zy));
+				i5 = cy + (int) ((skyline - cy) * t_cos - (fade[i4] - cz) * t_sin);
+				k4 = cz + (int) ((skyline - cy) * t_sin + (fade[i4] - cz) * t_cos);
 			}
 			ai[0] = iw;
 			ai1[0] = Utility.ys(i5, k4, 1);
@@ -1418,8 +1422,8 @@ public class Medium
 				int l4 = 7000;
 				int j5 = skyline - 700 - j4 * 70;
 				if (zy != 0 && j4 != 19) {
-					j5 = cy + (int) ((skyline - 700 - j4 * 70 - cy) * RadicalMath.cos(zy) - (7000 - cz) * RadicalMath.sin(zy));
-					l4 = cz + (int) ((skyline - 700 - j4 * 70 - cy) * RadicalMath.sin(zy) + (7000 - cz) * RadicalMath.cos(zy));
+					j5 = cy + (int) ((skyline - 700 - j4 * 70 - cy) * t_cos - (7000 - cz) * t_sin);
+					l4 = cz + (int) ((skyline - 700 - j4 * 70 - cy) * t_sin + (7000 - cz) * t_cos);
 				}
 				ai[0] = iw;
 				if (j4 != 19) {
