@@ -1673,6 +1673,7 @@ public class xtGraphics extends Panel implements Runnable {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		MediaTracker mediatracker = new MediaTracker(app);
 		dnload += 12;
+		int howManyImages = 0;
 		try {
 			URL url = new URL(app.getCodeBase(), "data/images.radq");
 			DataInputStream datainputstream = new DataInputStream(url.openStream());
@@ -1920,11 +1921,12 @@ public class xtGraphics extends Panel implements Runnable {
 				if (s.equals("nfmcom.gif")) {
 					nfmcom = loadimage(abyte0, mediatracker, toolkit);
 				}
+				howManyImages++;
 				dnload += 3;
-			}
-
+			}			
 			datainputstream.close();
 			zipinputstream.close();
+			System.out.println("Loaded " + howManyImages + " images!");
 		} catch (Exception exception) {
 			System.out.println("Error Loading Images: " + exception);
 		}
@@ -3775,7 +3777,6 @@ public class xtGraphics extends Panel implements Runnable {
 	}
 
 	public void maini(Control control) {
-		Utility.timedPrint("wew", 1);
 		if (lastload >= 0 && loadedt[lastload]) {
 			stracks[lastload].unloadMod();
 		}
@@ -3797,9 +3798,8 @@ public class xtGraphics extends Panel implements Runnable {
 		} else {
 			rd.drawImage(logomadbg, 67, 143, null);
 		}
-		//rd.drawImage(dude[0], xdu, ydu, null);
-		//rd.drawImage(logocars, 12, 28, null);
-		rd.drawImage(aimLogo, -10, -40, null);
+		rd.drawImage(dude[0], xdu, ydu, null);
+		rd.drawImage(logocars, 12, 28, null);
 		if (flipo > flkat) {
 			rd.drawImage(logomadnes, 99 + (int) (4D - Math.random() * 8D), 148 + (int) (4D - Math.random() * 8D), null);
 		} else {
@@ -4108,7 +4108,7 @@ public class xtGraphics extends Panel implements Runnable {
 		runner = new Thread(this);
 		runner.start();
 		loadimages();
-		loadnetworkimages();
+		//loadnetworkimages();
 		cars = new RadicalMod("music/cars.radq", app);
 		dnload += 27;
 		int j = 0;

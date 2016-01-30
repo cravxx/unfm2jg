@@ -155,7 +155,7 @@ public class Utility {
     }
     
     public static BufferedImage webGet(String string) throws IOException{
-    	System.out.println("load " + string);    	
+    	System.out.println("Loaded " + string);    	
     	return ImageIO.read(new URL(string));
     }
         
