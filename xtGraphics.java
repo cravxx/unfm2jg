@@ -1669,6 +1669,7 @@ public class xtGraphics extends Panel implements Runnable {
 	 * @author Omar Wally
 	 */
 	public void loadimages() {
+		Utility.startTimer();
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		MediaTracker mediatracker = new MediaTracker(app);
 		dnload += 12;
@@ -1928,6 +1929,7 @@ public class xtGraphics extends Panel implements Runnable {
 			System.out.println("Error Loading Images: " + exception);
 		}
 		System.gc();
+		Utility.stopTimer();
 	}
 	
 	/**Loads images from the web
@@ -1935,6 +1937,7 @@ public class xtGraphics extends Panel implements Runnable {
 	 * @author Kaffeinated
 	 */
 	public void loadnetworkimages() {
+		Utility.startTimer();
 		dnload += 12;
 		try {
 			aimLogo = Utility.webGet("http://i59.servimg.com/u/f59/14/03/33/42/logo10.png"); ///aim games logo
@@ -1946,6 +1949,7 @@ public class xtGraphics extends Panel implements Runnable {
 			System.out.println("Error Loading Network Images: " + exception);
 		}
 		System.gc();
+		Utility.stopTimer();
 	}
 
 	public void pausedgame(int i, Control control, Record record) {
@@ -3771,6 +3775,7 @@ public class xtGraphics extends Panel implements Runnable {
 	}
 
 	public void maini(Control control) {
+		Utility.timedPrint("wew", 1);
 		if (lastload >= 0 && loadedt[lastload]) {
 			stracks[lastload].unloadMod();
 		}

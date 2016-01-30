@@ -1,7 +1,9 @@
 import java.awt.image.BufferedImage;
+import java.util.Date;
 import java.io.IOException;
 import java.net.URL;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.imageio.ImageIO;
 
 /**
@@ -10,6 +12,13 @@ import javax.imageio.ImageIO;
  *
  */
 public class Utility {
+	
+	static Timer printTimer = new Timer();
+	static Thread timedPrinter = null;
+	
+	static Date date = new Date();
+	static long startTime;
+	
     
     /**
      * Gets a value from a string in format:
@@ -192,5 +201,38 @@ public class Utility {
 			}
 
 		}
-	}
+	}    
+    
+    public static void timedPrint(String output, int seconds){    
+    	//System.out.println("what");
+    	if(timedPrinter == null){
+    		timedPrinter = new Thread()
+    	    {
+    	        public void run() {
+
+    	        	printTimer.schedule(new TimerTask(){
+    	                @Override
+    	                public void run() {
+    	                	System.out.println(output);
+
+    	                }
+    	            }, 0, seconds * 1000);    	            
+    	        }
+    	    };
+    	    timedPrinter.start();
+    	}else{}
+    }
+    
+    public static void startTimer(){
+    	System.out.println("Timer started!");    	
+    	startTime = System.nanoTime();	
+    }
+    
+    public static void stopTimer(){
+    	long endTime = System.nanoTime();
+    	long finalTime = (endTime - startTime) / 1000000;
+    	startTime = 0;
+    	
+    	System.out.println("Timer ended at " + finalTime + " ms");    	
+    }
 }
