@@ -3334,7 +3334,7 @@ public class xtGraphics extends Panel implements Runnable {
 			asay = "Stage " + checkpoints.stage + ":  " + checkpoints.name + " ";
 			dudo = 150;
 			m.trk = false;
-			Medium.focus_point = 400;
+			m.focus_point = 400;
 			fase = 5;
 			control.handb = false;
 			control.enter = false;

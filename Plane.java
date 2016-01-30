@@ -251,8 +251,8 @@ public class Plane {
 				Utility.rot(ai, ai2, i, j, i1, n);
 				Utility.rot(ai2, ai1, j, k, j1, n);
 				Utility.rot(ai, ai1, i, k, l, n);
-				Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
-				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
+				Utility.rot(ai, ai1, m.cx, m.cz, m.xz, n);
+				Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, n);
 				int ai3[] = new int[n];
 				int ai5[] = new int[n];
 				for (int i4 = 0; i4 < n; i4++) {
@@ -360,8 +360,8 @@ public class Plane {
 				Utility.rot(ai, ai2, i, j, i1, 3);
 				Utility.rot(ai2, ai1, j, k, j1, 3);
 				Utility.rot(ai, ai1, i, k, l, 3);
-				Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, 3);
-				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, 3);
+				Utility.rot(ai, ai1, m.cx, m.cz, m.xz, 3);
+				Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, 3);
 				int k8 = 0;
 				do {
 					ai12[k8] = Utility.xs(ai[k8], ai1[k8]);
@@ -420,8 +420,8 @@ public class Plane {
 				Utility.rot(ai, ai2, i, j, i1, 3);
 				Utility.rot(ai2, ai1, j, k, j1, 3);
 				Utility.rot(ai, ai1, i, k, l, 3);
-				Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, 3);
-				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, 3);
+				Utility.rot(ai, ai1, m.cx, m.cz, m.xz, 3);
+				Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, 3);
 				int i10 = 0;
 				do {
 					ai12[i10] = Utility.xs(ai[i10], ai1[i10]);
@@ -550,8 +550,8 @@ public class Plane {
 			if (ai8[0] > m.ground) {
 				chip = 19;
 			}
-			Utility.rot(ai4, ai6, Medium.cx, Medium.cz, m.xz, 3);
-			Utility.rot(ai8, ai6, Medium.cy, Medium.cz, m.zy, 3);
+			Utility.rot(ai4, ai6, m.cx, m.cz, m.xz, 3);
+			Utility.rot(ai8, ai6, m.cy, m.cz, m.zy, 3);
 			int ai10[] = new int[3];
 			int ai11[] = new int[3];
 			int l5 = 0;
@@ -600,7 +600,7 @@ public class Plane {
 			} while (++j3 < 3);
 			projf = projf / 3F;
 		}
-		Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
+		Utility.rot(ai, ai1, m.cx, m.cz, m.xz, n);
 		boolean flag1 = false;
 		int ai7[] = new int[n];
 		int ai9[] = new int[n];
@@ -632,18 +632,18 @@ public class Plane {
 			flag1 = true;
 			int l6 = 0;
 			for (int k7 = 0; k7 < n; k7++) {
-				if (ai1[k7] < 50 && ai2[k7] > Medium.cy) {
+				if (ai1[k7] < 50 && ai2[k7] > m.cy) {
 					flag1 = false;
 				} else if (ai2[k7] == ai2[0]) {
 					l6++;
 				}
 			}
 
-			if (l6 == n && ai2[0] > Medium.cy) {
+			if (l6 == n && ai2[0] > m.cy) {
 				flag1 = false;
 			}
 		}
-		Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
+		Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, n);
 		boolean flag2 = true;
 		int ai14[] = new int[n];
 		int ai15[] = new int[n];
@@ -808,7 +808,7 @@ public class Plane {
 			int j18 = (k16 + l16) / 2;
 			int l18 = (i17 + j17) / 2;
 			av = (int) Math
-					.sqrt((Medium.cy - l17) * (Medium.cy - l17) + (Medium.cx - j18) * (Medium.cx - j18) + l18 * l18 + i13 * i13 * i13);
+					.sqrt((m.cy - l17) * (m.cy - l17) + (m.cx - j18) * (m.cx - j18) + l18 * l18 + i13 * i13 * i13);
 			if (!m.trk && (av > m.fade[disline] || av == 0)) {
 				flag2 = false;
 			}
@@ -1244,8 +1244,8 @@ public class Plane {
 
 		}
 		if (flag) {
-			Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
-			Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
+			Utility.rot(ai, ai1, m.cx, m.cz, m.xz, n);
+			Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, n);
 			int j4 = 0;
 			int k5 = 0;
 			int j6 = 0;

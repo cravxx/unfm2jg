@@ -85,13 +85,13 @@ public class ContO {
 			if (sy[i] > 250) {
 				sy[i] = 250;
 			}
-			int l1 = Medium.cx
-					+ (int) ((sx[i] - m.x - Medium.cx) * RadicalMath.cos(m.xz) - (sz[i] - m.z - Medium.cz) * RadicalMath.sin(m.xz));
-			int i2 = Medium.cz
-					+ (int) ((sx[i] - m.x - Medium.cx) * RadicalMath.sin(m.xz) + (sz[i] - m.z - Medium.cz) * RadicalMath.cos(m.xz));
-			int j2 = Medium.cy + (int) ((sy[i] - m.y - Medium.cy) * RadicalMath.cos(m.zy) - (i2 - Medium.cz) * RadicalMath.sin(m.zy));
-			i2 = Medium.cz + (int) ((sy[i] - m.y - Medium.cy) * RadicalMath.sin(m.zy) + (i2 - Medium.cz) * RadicalMath.cos(m.zy));
-			int k2 = (int) Math.sqrt((Medium.cy - j2) * (Medium.cy - j2) + (Medium.cx - l1) * (Medium.cx - l1) + i2 * i2);
+			int l1 = m.cx
+					+ (int) ((sx[i] - m.x - m.cx) * RadicalMath.cos(m.xz) - (sz[i] - m.z - m.cz) * RadicalMath.sin(m.xz));
+			int i2 = m.cz
+					+ (int) ((sx[i] - m.x - m.cx) * RadicalMath.sin(m.xz) + (sz[i] - m.z - m.cz) * RadicalMath.cos(m.xz));
+			int j2 = m.cy + (int) ((sy[i] - m.y - m.cy) * RadicalMath.cos(m.zy) - (i2 - m.cz) * RadicalMath.sin(m.zy));
+			i2 = m.cz + (int) ((sy[i] - m.y - m.cy) * RadicalMath.sin(m.zy) + (i2 - m.cz) * RadicalMath.cos(m.zy));
+			int k2 = (int) Math.sqrt((m.cy - j2) * (m.cy - j2) + (m.cx - l1) * (m.cx - l1) + i2 * i2);
 			int l2 = 0;
 			do {
 				if (k2 > m.fade[l2]) {
@@ -566,9 +566,9 @@ public class ContO {
 		if (dist != 0) {
 			dist = 0;
 		}
-		int i = Medium.cx + (int) ((x - m.x - Medium.cx) * RadicalMath.cos(m.xz) - (z - m.z - Medium.cz) * RadicalMath.sin(m.xz));
-		int j = Medium.cz + (int) ((x - m.x - Medium.cx) * RadicalMath.sin(m.xz) + (z - m.z - Medium.cz) * RadicalMath.cos(m.xz));
-		int k = Medium.cz + (int) ((y - m.y - Medium.cy) * RadicalMath.sin(m.zy) + (j - Medium.cz) * RadicalMath.cos(m.zy));
+		int i = m.cx + (int) ((x - m.x - m.cx) * RadicalMath.cos(m.xz) - (z - m.z - m.cz) * RadicalMath.sin(m.xz));
+		int j = m.cz + (int) ((x - m.x - m.cx) * RadicalMath.sin(m.xz) + (z - m.z - m.cz) * RadicalMath.cos(m.xz));
+		int k = m.cz + (int) ((y - m.y - m.cy) * RadicalMath.sin(m.zy) + (j - m.cz) * RadicalMath.cos(m.zy));
 		int l = Utility.cXs(i + maxR, k) - Utility.cXs(i - maxR, k);
 		if (Utility.cXs(i + maxR * 2, k) > 0 && Utility.cXs(i - maxR * 2, k) < m.w && k > -maxR && (k < m.fade[disline] + maxR || m.trk)
 				&& (l > disp || m.trk)) {
@@ -593,10 +593,10 @@ public class ContO {
 							}
 
 						} else {
-							int j2 = Medium.cy + (int) ((m.ground - Medium.cy) * RadicalMath.cos(m.zy)
-									- (j - Medium.cz) * RadicalMath.sin(m.zy));
-							int k2 = Medium.cz + (int) ((m.ground - Medium.cy) * RadicalMath.sin(m.zy)
-									+ (j - Medium.cz) * RadicalMath.cos(m.zy));
+							int j2 = m.cy + (int) ((m.ground - m.cy) * RadicalMath.cos(m.zy)
+									- (j - m.cz) * RadicalMath.sin(m.zy));
+							int k2 = m.cz + (int) ((m.ground - m.cy) * RadicalMath.sin(m.zy)
+									+ (j - m.cz) * RadicalMath.cos(m.zy));
 							if (Utility.cYs(j2 + maxR, k2) > 0 && Utility.cYs(j2 - maxR, k2) < m.h) {
 								for (int l2 = 0; l2 < npl; l2++) {
 									p[l2].s(rd, x - m.x, y - m.y, z - m.z, xz, xy, zy, 1);
@@ -615,7 +615,7 @@ public class ContO {
 					}
 				}
 			}
-			int j1 = Medium.cy + (int) ((y - m.y - Medium.cy) * RadicalMath.cos(m.zy) - (j - Medium.cz) * RadicalMath.sin(m.zy));
+			int j1 = m.cy + (int) ((y - m.y - m.cy) * RadicalMath.cos(m.zy) - (j - m.cz) * RadicalMath.sin(m.zy));
 			if (Utility.cYs(j1 + maxR, k) > 0 && Utility.cYs(j1 - maxR, k) < m.h) {
 				if (elec) {
 					electrify(rd);
@@ -663,8 +663,8 @@ public class ContO {
 					}
 				}
 
-				dist = (int) (Math.sqrt((int) Math.sqrt(((m.x + Medium.cx) - x) * ((m.x + Medium.cx) - x) + (m.z - z) * (m.z - z)
-						+ ((m.y + Medium.cy) - y) * ((m.y + Medium.cy) - y))) * grounded);
+				dist = (int) (Math.sqrt((int) Math.sqrt(((m.x + m.cx) - x) * ((m.x + m.cx) - x) + (m.z - z) * (m.z - z)
+						+ ((m.y + m.cy) - y) * ((m.y + m.cy) - y))) * grounded);
 			}
 		}
 		if (dist == 0) {
@@ -761,8 +761,8 @@ public class ContO {
 			break;
 		}
 
-		Utility.rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 4);
-		Utility.rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 4);
+		Utility.rot(ai, ai2, m.cx, m.cz, m.xz, 4);
+		Utility.rot(ai1, ai2, m.cy, m.cz, m.zy, 4);
 		boolean flag = true;
 		int i2 = 0;
 		int k2 = 0;
@@ -861,8 +861,8 @@ public class ContO {
 			Utility.rot(ai, ai1, x - m.x, y - m.y, xy, 4);
 			Utility.rot(ai1, ai2, y - m.y, z - m.y, zy, 4);
 			Utility.rot(ai, ai2, x - m.x, z - m.z, xz, 4);
-			Utility.rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 4);
-			Utility.rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 4);
+			Utility.rot(ai, ai2, m.cx, m.cz, m.xz, 4);
+			Utility.rot(ai1, ai2, m.cy, m.cz, m.zy, 4);
 			j1 = 0;
 			int l1 = 0;
 			int i2 = 0;
@@ -888,10 +888,10 @@ public class ContO {
 			if (l1 < i2) {
 				l1 = i2;
 			}
-			j2 = Medium.cx + (int) ((x - m.x - Medium.cx) * RadicalMath.cos(m.xz) - (z - m.z - Medium.cz) * RadicalMath.sin(m.xz));
-			int l2 = Medium.cz + (int) ((x - m.x - Medium.cx) * RadicalMath.sin(m.xz) + (z - m.z - Medium.cz) * RadicalMath.cos(m.xz));
-			int i3 = Medium.cy + (int) ((y - m.y - Medium.cy) * RadicalMath.cos(m.zy) - (l2 - Medium.cz) * RadicalMath.sin(m.zy));
-			l2 = Medium.cz + (int) ((y - m.y - Medium.cy) * RadicalMath.sin(m.zy) + (l2 - Medium.cz) * RadicalMath.cos(m.zy));
+			j2 = m.cx + (int) ((x - m.x - m.cx) * RadicalMath.cos(m.xz) - (z - m.z - m.cz) * RadicalMath.sin(m.xz));
+			int l2 = m.cz + (int) ((x - m.x - m.cx) * RadicalMath.sin(m.xz) + (z - m.z - m.cz) * RadicalMath.cos(m.xz));
+			int i3 = m.cy + (int) ((y - m.y - m.cy) * RadicalMath.cos(m.zy) - (l2 - m.cz) * RadicalMath.sin(m.zy));
+			l2 = m.cz + (int) ((y - m.y - m.cy) * RadicalMath.sin(m.zy) + (l2 - m.cz) * RadicalMath.cos(m.zy));
 			ai[0] = Utility.cXs((int) (j2 - j1 / 0.80000000000000004D
 					- m.random() * (j1 / 2.3999999999999999D)), l2);
 			ai1[0] = Utility.cYs((int) (i3 - l1 / 1.9199999999999999D
@@ -1056,8 +1056,8 @@ public class ContO {
 			if (roted) {
 				Utility.rot(ai, ai2, x - m.x, z - m.z, 90, 8);
 			}
-			Utility.rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 8);
-			Utility.rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 8);
+			Utility.rot(ai, ai2, m.cx, m.cz, m.xz, 8);
+			Utility.rot(ai1, ai2, m.cy, m.cz, m.zy, 8);
 			boolean flag = true;
 			int k1 = 0;
 			int l1 = 0;

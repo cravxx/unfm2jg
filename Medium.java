@@ -18,7 +18,7 @@ public class Medium
 	int[][] mtz = null;
 	int[][][] mtc = null;
 	int mgen;
-	static int focus_point;
+	int focus_point;
 	int ground;
 	int skyline;
 	int fade[] = {
@@ -68,9 +68,9 @@ public class Medium
 	int flex;
 	boolean trk;
 	boolean crs;
-	static int cx;
-	static int cy;
-	static int cz;
+	int cx;
+	int cy;
+	int cz;
 	int xz;
 	int zy;
 	int x;
