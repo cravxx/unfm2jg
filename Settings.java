@@ -18,13 +18,16 @@ public class Settings extends Applet{
 	 */
 	private static final long serialVersionUID = -3096969581463346958L;
 	/**
-	 * no good way to get it automagically
-	 */
-	public final static int menubarHeight = 21;
-	/**
 	 * change this is false to hide the bar
 	 */
 	final static boolean showMenubar = true; 
+	/**
+	 * no good way to get it automagically...
+	 * 21 if showmenubar is true
+	 * 0 if it's false
+	 */
+	public final static int menubarHeight = (showMenubar) ? 21:0;
+	
 	public static boolean quickhide = false;
 	static MenuBar menubar = new MenuBar();
     static Menu menu = new Menu("File");
