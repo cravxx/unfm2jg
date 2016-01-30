@@ -11,11 +11,7 @@ public class Madness {
 	 * @author Kaffeinated
 	 */
 	float speeddec = 2.0F;
-
-	public int py(int i, int j, int k, int l) {
-		return (i - j) * (i - j) + (k - l) * (k - l);
-	}
-
+	
 	public void regy(int i, float f, ContO conto) {
 		f *= dammult[cn];
 		if (f > 100F) {
@@ -50,7 +46,7 @@ public class Madness {
 					float f1 = 0.0F;
 					for (int k1 = 0; k1 < conto.p[l].n; k1++)
 						if (conto.p[l].wz == 0
-								&& py(conto.keyx[i], conto.p[l].ox[k1], conto.keyz[i], conto.p[l].oz[k1]) < clrad[cn]) {
+								&& Utility.py(conto.keyx[i], conto.p[l].ox[k1], conto.keyz[i], conto.p[l].oz[k1]) < clrad[cn]) {
 							f1 = (f / 20F) * m.random();
 							conto.p[l].oz[k1] += f1 * RadicalMath.sin(j);
 							conto.p[l].ox[k1] -= f1 * RadicalMath.sin(k);
@@ -198,11 +194,7 @@ public class Madness {
 		xt = xtgraphics;
 		im = i;
 		shakedam = 0;
-	}
-
-	public int rpy(float f, float f1, float f2, float f3, float f4, float f5) {
-		return (int) ((f - f1) * (f - f1) + (f2 - f3) * (f2 - f3) + (f4 - f5) * (f4 - f5));
-	}
+	}	
 
 	public void regz(int i, float f, ContO conto) {
 		f *= dammult[cn];
@@ -219,7 +211,7 @@ public class Madness {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++)
 					if (conto.p[j].wz == 0
-							&& py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i], conto.p[j].oz[k]) < clrad[cn]) {
+							&& Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i], conto.p[j].oz[k]) < clrad[cn]) {
 						f1 = (f / 20F) * m.random();
 						conto.p[j].oz[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.zy);
 						conto.p[j].ox[k] += f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.xy);
@@ -301,7 +293,7 @@ public class Madness {
 		rot(af3, af4, conto1.x, conto1.y, conto1.xy, 4);
 		rot(af4, af5, conto1.y, conto1.z, conto1.zy, 4);
 		rot(af3, af5, conto1.x, conto1.z, conto1.xz, 4);
-		if (rpy(conto.x, conto1.x, conto.y, conto1.y, conto.z,
+		if (Utility.rpy(conto.x, conto1.x, conto.y, conto1.y, conto.z,
 				conto1.z) < (conto.maxR * conto.maxR + conto1.maxR * conto1.maxR) * 1.5D) {
 			if (!caught[madness.im] && (speed != 0.0F || madness.speed != 0.0F)) {
 				if (Math.abs(power * speed * moment[cn]) != Math
@@ -333,7 +325,7 @@ public class Madness {
 			do {
 				int l = 0;
 				do
-					if (rpy(af[k], af3[l], af1[k], af4[l], af2[k], af5[l]) < (j + 7000)
+					if (Utility.rpy(af[k], af3[l], af1[k], af4[l], af2[k], af5[l]) < (j + 7000)
 							* (comprad[madness.cn] + comprad[cn])) {
 						if (Math.abs(scx[k] * moment[cn]) > Math.abs(madness.scx[l] * madness.moment[madness.cn])) {
 							float f = madness.scx[l] * revpush[cn];
@@ -514,7 +506,7 @@ public class Madness {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++)
 					if (conto.p[j].wz == 0
-							&& py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i], conto.p[j].oz[k]) < clrad[cn]) {
+							&& Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i], conto.p[j].oz[k]) < clrad[cn]) {
 						f1 = (f / 20F) * m.random();
 						conto.p[j].oz[k] -= f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.zy);
 						conto.p[j].ox[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.xy);
@@ -1545,10 +1537,10 @@ public class Madness {
 					}
 				}
 			}
-			if (py(conto.x / 100, checkpoints.x[j10] / 100, conto.z / 100, checkpoints.z[j10] / 100) * j < k9
+			if (Utility.py(conto.x / 100, checkpoints.x[j10] / 100, conto.z / 100, checkpoints.z[j10] / 100) * j < k9
 					|| k9 == 0) {
 				j9 = j10;
-				k9 = py(conto.x / 100, checkpoints.x[j10] / 100, conto.z / 100, checkpoints.z[j10] / 100) * j;
+				k9 = Utility.py(conto.x / 100, checkpoints.x[j10] / 100, conto.z / 100, checkpoints.z[j10] / 100) * j;
 			}
 		}
 
@@ -1591,13 +1583,13 @@ public class Madness {
 			j9 = focus;
 			if (im == 0) {
 				if (missedcp == 0 && mtouch && Math.sqrt(
-						py(conto.x / 10, checkpoints.x[focus] / 10, conto.z / 10, checkpoints.z[focus] / 10)) > 800D)
+						Utility.py(conto.x / 10, checkpoints.x[focus] / 10, conto.z / 10, checkpoints.z[focus] / 10)) > 800D)
 					missedcp = 1;
 				if (missedcp == -2 && Math.sqrt(
-						py(conto.x / 10, checkpoints.x[focus] / 10, conto.z / 10, checkpoints.z[focus] / 10)) < 400D)
+						Utility.py(conto.x / 10, checkpoints.x[focus] / 10, conto.z / 10, checkpoints.z[focus] / 10)) < 400D)
 					missedcp = 0;
 				if (missedcp != 0 && mtouch && Math.sqrt(
-						py(conto.x / 10, checkpoints.x[focus] / 10, conto.z / 10, checkpoints.z[focus] / 10)) < 250D)
+						Utility.py(conto.x / 10, checkpoints.x[focus] / 10, conto.z / 10, checkpoints.z[focus] / 10)) < 250D)
 					missedcp = 68;
 			} else {
 				missedcp = 1;
@@ -1612,7 +1604,7 @@ public class Madness {
 		point = j9;
 		for (int k10 = 0; k10 < checkpoints.fn; k10++)
 			if (!checkpoints.roted[k10]) {
-				if (Math.abs(conto.z - checkpoints.fz[k10]) < 200 && py(conto.x / 100, checkpoints.fx[k10] / 100,
+				if (Math.abs(conto.z - checkpoints.fz[k10]) < 200 && Utility.py(conto.x / 100, checkpoints.fx[k10] / 100,
 						conto.y / 100, checkpoints.fy[k10] / 100) < 30) {
 					if (conto.dist == 0) {
 						conto.fcnt = 8;
@@ -1624,7 +1616,7 @@ public class Madness {
 					rpd.fix[im] = 300;
 				}
 			} else if (Math.abs(conto.x - checkpoints.fx[k10]) < 200
-					&& py(conto.z / 100, checkpoints.fz[k10] / 100, conto.y / 100, checkpoints.fy[k10] / 100) < 30) {
+					&& Utility.py(conto.z / 100, checkpoints.fz[k10] / 100, conto.y / 100, checkpoints.fy[k10] / 100) < 30) {
 				if (conto.dist == 0) {
 					conto.fcnt = 8;
 				} else {

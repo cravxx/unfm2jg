@@ -154,6 +154,14 @@ public class Utility {
 		return (int) Math.sqrt((i - Medium.cx) * (i - Medium.cx) + j * j);
 	}
     
+    public static float pys(int i, int j, int k, int l) {
+		return (float) Math.sqrt((i - j) * (i - j) + (k - l) * (k - l));
+	}
+    
+    public static int rpy(float f, float f1, float f2, float f3, float f4, float f5) {
+		return (int) ((f - f1) * (f - f1) + (f2 - f3) * (f2 - f3) + (f4 - f5) * (f4 - f5));
+	}
+    
     public static int py(int i, int j, int k, int l) {
 		return (i - j) * (i - j) + (k - l) * (k - l);
 	}
