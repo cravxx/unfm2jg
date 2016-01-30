@@ -161,7 +161,7 @@ public class Utility {
     public static int rpy(float f, float f1, float f2, float f3, float f4, float f5) {
 		return (int) ((f - f1) * (f - f1) + (f2 - f3) * (f2 - f3) + (f4 - f5) * (f4 - f5));
 	}
-    
+        
     public static int py(int i, int j, int k, int l) {
 		return (i - j) * (i - j) + (k - l) * (k - l);
 	}
@@ -169,4 +169,28 @@ public class Utility {
     public static int distance(final int x1, final int y1, final int x2, final int y2) {
         return (int) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
+    
+    public static void rot(float af[], float af1[], int i, int j, int k, int l) {
+		if (k != 0) {
+			for (int i1 = 0; i1 < l; i1++) {
+				float f = af[i1];
+				float f1 = af1[i1];
+				af[i1] = i + ((f - i) * RadicalMath.cos(k) - (f1 - j) * RadicalMath.sin(k));
+				af1[i1] = j + ((f - i) * RadicalMath.sin(k) + (f1 - j) * RadicalMath.cos(k));
+			}
+
+		}
+	}
+    
+    public static void rot(int ai[], int ai1[], int i, int j, int k, int l) {
+		if (k != 0) {
+			for (int i1 = 0; i1 < l; i1++) {
+				int j1 = ai[i1];
+				int k1 = ai1[i1];
+				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
+				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
+			}
+
+		}
+	}
 }

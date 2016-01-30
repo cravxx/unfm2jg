@@ -4,13 +4,9 @@ import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
-import javax.imageio.ImageIO;
-
 import java.awt.Graphics2D;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
@@ -1013,7 +1009,7 @@ public class xtGraphics extends Panel implements Runnable {
 				}
 			}
 		}
-		rot(ai, ai2, c, c1, ana, 7);
+		Utility.rot(ai, ai2, c, c1, ana, 7);
 		k = Math.abs(ana);
 		if (!flag) {
 			if (k > 7 || j > 0 || j == -2 || cntan != 0) {
@@ -1526,19 +1522,7 @@ public class xtGraphics extends Panel implements Runnable {
 		drawcs(14, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
 		drawcs(395, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
 	}
-
-	public void rot(int ai[], int ai1[], int i, int j, int k, int l) {
-		if (k != 0) {
-			for (int i1 = 0; i1 < l; i1++) {
-				int j1 = ai[i1];
-				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
-				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
-			}
-
-		}
-	}
-
+	
 	public boolean overon(int i, int j, int k, int l, int i1, int j1) {
 		return i1 > i && i1 < i + k && j1 > j && j1 < j + l;
 	}

@@ -248,11 +248,11 @@ public class Plane {
 					ai1[l2] = (int) (oz[l2] + k + (15F - m.random() * 30F));
 				}
 
-				rot(ai, ai2, i, j, i1, n);
-				rot(ai2, ai1, j, k, j1, n);
-				rot(ai, ai1, i, k, l, n);
-				rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
-				rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
+				Utility.rot(ai, ai2, i, j, i1, n);
+				Utility.rot(ai2, ai1, j, k, j1, n);
+				Utility.rot(ai, ai1, i, k, l, n);
+				Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
+				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
 				int ai3[] = new int[n];
 				int ai5[] = new int[n];
 				for (int i4 = 0; i4 < n; i4++) {
@@ -357,11 +357,11 @@ public class Plane {
 				int i8 = (int) (((Math.abs(ai[0] - ai[1]) + Math.abs(ai1[0] - ai1[1])) / 1.5D)
 						* (m.random() / 2.0F + 0.5D));
 				ai2[2] = (ai2[0] + ai2[1]) / 2 - byte0 * byte1 * i8;
-				rot(ai, ai2, i, j, i1, 3);
-				rot(ai2, ai1, j, k, j1, 3);
-				rot(ai, ai1, i, k, l, 3);
-				rot(ai, ai1, Medium.cx, Medium.cz, m.xz, 3);
-				rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, 3);
+				Utility.rot(ai, ai2, i, j, i1, 3);
+				Utility.rot(ai2, ai1, j, k, j1, 3);
+				Utility.rot(ai, ai1, i, k, l, 3);
+				Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, 3);
+				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, 3);
 				int k8 = 0;
 				do {
 					ai12[k8] = Utility.xs(ai[k8], ai1[k8]);
@@ -417,11 +417,11 @@ public class Plane {
 				ai1[2] = (ai1[0] + ai1[1]) / 2 + l7;
 				i8 = (int) (i8 * 0.80000000000000004D);
 				ai2[2] = (ai2[0] + ai2[1]) / 2 - byte0 * byte1 * i8;
-				rot(ai, ai2, i, j, i1, 3);
-				rot(ai2, ai1, j, k, j1, 3);
-				rot(ai, ai1, i, k, l, 3);
-				rot(ai, ai1, Medium.cx, Medium.cz, m.xz, 3);
-				rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, 3);
+				Utility.rot(ai, ai2, i, j, i1, 3);
+				Utility.rot(ai2, ai1, j, k, j1, 3);
+				Utility.rot(ai, ai1, i, k, l, 3);
+				Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, 3);
+				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, 3);
 				int i10 = 0;
 				do {
 					ai12[i10] = Utility.xs(ai[i10], ai1[i10]);
@@ -479,10 +479,10 @@ public class Plane {
 			}
 		}
 		if (wz != 0) {
-			rot(ai2, ai1, wy + j, wz + k, l1, n);
+			Utility.rot(ai2, ai1, wy + j, wz + k, l1, n);
 		}
 		if (wx != 0) {
-			rot(ai, ai1, wx + i, wz + k, k1, n);
+			Utility.rot(ai, ai1, wx + i, wz + k, k1, n);
 		}
 		if (chip == 1 && (m.random() > 0.59999999999999998D || bfase == 0)) {
 			chip = 0;
@@ -534,9 +534,9 @@ public class Plane {
 				ai8[k4] = coy[k4] + j;
 				ai6[k4] = coz[k4] + k;
 			} while (++k4 < 3);
-			rot(ai4, ai8, i, j, cxy, 3);
-			rot(ai8, ai6, j, k, czy, 3);
-			rot(ai4, ai6, i, k, cxz, 3);
+			Utility.rot(ai4, ai8, i, j, cxy, 3);
+			Utility.rot(ai8, ai6, j, k, czy, 3);
+			Utility.rot(ai4, ai6, i, k, cxz, 3);
 			k4 = 0;
 			do {
 				ai4[k4] += dx;
@@ -550,8 +550,8 @@ public class Plane {
 			if (ai8[0] > m.ground) {
 				chip = 19;
 			}
-			rot(ai4, ai6, Medium.cx, Medium.cz, m.xz, 3);
-			rot(ai8, ai6, Medium.cy, Medium.cz, m.zy, 3);
+			Utility.rot(ai4, ai6, Medium.cx, Medium.cz, m.xz, 3);
+			Utility.rot(ai8, ai6, Medium.cy, Medium.cz, m.zy, 3);
 			int ai10[] = new int[3];
 			int ai11[] = new int[3];
 			int l5 = 0;
@@ -582,9 +582,9 @@ public class Plane {
 				chip = 0;
 			}
 		}
-		rot(ai, ai2, i, j, i1, n);
-		rot(ai2, ai1, j, k, j1, n);
-		rot(ai, ai1, i, k, l, n);
+		Utility.rot(ai, ai2, i, j, i1, n);
+		Utility.rot(ai2, ai1, j, k, j1, n);
+		Utility.rot(ai, ai1, i, k, l, n);
 		if (i1 != 0 || j1 != 0 || l != 0) {
 			projf = 1.0F;
 			int j3 = 0;
@@ -600,7 +600,7 @@ public class Plane {
 			} while (++j3 < 3);
 			projf = projf / 3F;
 		}
-		rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
+		Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
 		boolean flag1 = false;
 		int ai7[] = new int[n];
 		int ai9[] = new int[n];
@@ -643,7 +643,7 @@ public class Plane {
 				flag1 = false;
 			}
 		}
-		rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
+		Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
 		boolean flag2 = true;
 		int ai14[] = new int[n];
 		int ai15[] = new int[n];
@@ -1134,17 +1134,7 @@ public class Plane {
 		}
 	}
 
-	public void rot(int ai[], int ai1[], int i, int j, int k, int l) {
-		if (k != 0) {
-			for (int i1 = 0; i1 < l; i1++) {
-				int j1 = ai[i1];
-				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
-				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
-			}
-
-		}
-	}
+	
 
 	public void s(Graphics2D rd, int i, int j, int k, int l, int i1, int j1, int k1) {
 		int ai[] = new int[n];
@@ -1156,9 +1146,9 @@ public class Plane {
 			ai1[l1] = oz[l1] + k;
 		}
 
-		rot(ai, ai2, i, j, i1, n);
-		rot(ai2, ai1, j, k, j1, n);
-		rot(ai, ai1, i, k, l, n);
+		Utility.rot(ai, ai2, i, j, i1, n);
+		Utility.rot(ai2, ai1, j, k, j1, n);
+		Utility.rot(ai, ai1, i, k, l, n);
 		int i2 = (int) (m.cgrnd[0] / 1.5D);
 		int j2 = (int) (m.cgrnd[1] / 1.5D);
 		int k2 = (int) (m.cgrnd[2] / 1.5D);
@@ -1254,8 +1244,8 @@ public class Plane {
 
 		}
 		if (flag) {
-			rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
-			rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
+			Utility.rot(ai, ai1, Medium.cx, Medium.cz, m.xz, n);
+			Utility.rot(ai2, ai1, Medium.cy, Medium.cz, m.zy, n);
 			int j4 = 0;
 			int k5 = 0;
 			int j6 = 0;

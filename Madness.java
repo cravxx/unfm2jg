@@ -251,19 +251,7 @@ public class Madness {
 			}
 
 		}
-	}
-
-	public void rot(float af[], float af1[], int i, int j, int k, int l) {
-		if (k != 0) {
-			for (int i1 = 0; i1 < l; i1++) {
-				float f = af[i1];
-				float f1 = af1[i1];
-				af[i1] = i + ((f - i) * RadicalMath.cos(k) - (f1 - j) * RadicalMath.sin(k));
-				af1[i1] = j + ((f - i) * RadicalMath.sin(k) + (f1 - j) * RadicalMath.cos(k));
-			}
-
-		}
-	}
+	}	
 
 	public void colide(ContO conto, Madness madness, ContO conto1) {
 		float af[] = new float[4];
@@ -287,12 +275,12 @@ public class Madness {
 				af4[i] = conto1.y + conto1.grat;
 			af5[i] = conto1.z + conto1.keyz[i];
 		} while (++i < 4);
-		rot(af, af1, conto.x, conto.y, conto.xy, 4);
-		rot(af1, af2, conto.y, conto.z, conto.zy, 4);
-		rot(af, af2, conto.x, conto.z, conto.xz, 4);
-		rot(af3, af4, conto1.x, conto1.y, conto1.xy, 4);
-		rot(af4, af5, conto1.y, conto1.z, conto1.zy, 4);
-		rot(af3, af5, conto1.x, conto1.z, conto1.xz, 4);
+		Utility.rot(af, af1, conto.x, conto.y, conto.xy, 4);
+		Utility.rot(af1, af2, conto.y, conto.z, conto.zy, 4);
+		Utility.rot(af, af2, conto.x, conto.z, conto.xz, 4);
+		Utility.rot(af3, af4, conto1.x, conto1.y, conto1.xy, 4);
+		Utility.rot(af4, af5, conto1.y, conto1.z, conto1.zy, 4);
+		Utility.rot(af3, af5, conto1.x, conto1.z, conto1.xz, 4);
 		if (Utility.rpy(conto.x, conto1.x, conto.y, conto1.y, conto.z,
 				conto1.z) < (conto.maxR * conto.maxR + conto1.maxR * conto1.maxR) * 1.5D) {
 			if (!caught[madness.im] && (speed != 0.0F || madness.speed != 0.0F)) {
@@ -861,9 +849,9 @@ public class Madness {
 			af1[l2] = conto.z + conto.keyz[l2];
 			scy[l2] += 7F;
 		} while (++l2 < 4);
-		rot(af, af2, conto.x, conto.y, pxy, 4);
-		rot(af2, af1, conto.y, conto.z, pzy, 4);
-		rot(af, af1, conto.x, conto.z, conto.xz, 4);
+		Utility.rot(af, af2, conto.x, conto.y, pxy, 4);
+		Utility.rot(af2, af1, conto.y, conto.z, pzy, 4);
+		Utility.rot(af, af1, conto.x, conto.z, conto.xz, 4);
 		boolean flag4 = false;
 		int i3 = (int) ((scx[0] + scx[1] + scx[2] + scx[3]) / 4F);
 		int j3 = (int) ((scz[0] + scz[1] + scz[2] + scz[3]) / 4F);

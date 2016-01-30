@@ -516,7 +516,7 @@ public class ContO {
 		zy = 0;
 		for (int j1 = 0; j1 < npl; j1++) {
 			p[j1].master = conto.p[j1].master;
-			p[j1].rot(p[j1].ox, p[j1].oz, 0, 0, l, p[j1].n);
+			Utility.rot(p[j1].ox, p[j1].oz, 0, 0, l, p[j1].n);
 			p[j1].loadprojf();
 		}
 
@@ -681,22 +681,6 @@ public class ContO {
 		}
 	}
 
-	public int getpy(int i, int j, int k) {
-		return ((i - x) / 10) * ((i - x) / 10) + ((j - y) / 10) * ((j - y) / 10) + ((k - z) / 10) * ((k - z) / 10);
-	}
-
-	public void rot(int ai[], int ai1[], int i, int j, int k, int l) {
-		if (k != 0) {
-			for (int i1 = 0; i1 < l; i1++) {
-				int j1 = ai[i1];
-				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
-				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
-			}
-
-		}
-	}
-
 	public void dust(int i, float f, float f1, float f2, float f3, float f4, float f5, boolean flag, int j) {
 		boolean flag1 = false;
 		if (j > 5 && (i == 0 || i == 2)) {
@@ -738,7 +722,7 @@ public class ContO {
 		ai2[2] = (int) (((keyz[3] - 30) * byte0 * 1.2D + z) - m.z);
 		ai[3] = (int) ((keyx[2] * 1.2D + x) - m.x);
 		ai2[3] = (int) (((keyz[2] - 30) * byte0 * 1.2D + z) - m.z);
-		rot(ai, ai2, x - m.x, z - m.z, xz, 4);
+		Utility.rot(ai, ai2, x - m.x, z - m.z, xz, 4);
 		int k = (int) (m.cgrnd[0] / 1.5D);
 		int l = (int) (m.cgrnd[1] / 1.5D);
 		int i1 = (int) (m.cgrnd[2] / 1.5D);
@@ -777,8 +761,8 @@ public class ContO {
 			break;
 		}
 
-		rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 4);
-		rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 4);
+		Utility.rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 4);
+		Utility.rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 4);
 		boolean flag = true;
 		int i2 = 0;
 		int k2 = 0;
@@ -874,11 +858,11 @@ public class ContO {
 				ai1[j1] = (grat + y) - m.y;
 				ai2[j1] = (keyz[j1] + z) - m.z;
 			} while (++j1 < 4);
-			rot(ai, ai1, x - m.x, y - m.y, xy, 4);
-			rot(ai1, ai2, y - m.y, z - m.y, zy, 4);
-			rot(ai, ai2, x - m.x, z - m.z, xz, 4);
-			rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 4);
-			rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 4);
+			Utility.rot(ai, ai1, x - m.x, y - m.y, xy, 4);
+			Utility.rot(ai1, ai2, y - m.y, z - m.y, zy, 4);
+			Utility.rot(ai, ai2, x - m.x, z - m.z, xz, 4);
+			Utility.rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 4);
+			Utility.rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 4);
 			j1 = 0;
 			int l1 = 0;
 			int i2 = 0;
@@ -941,19 +925,19 @@ public class ContO {
 			ai1[7] = Utility.cYs((int) (i3 - l1 / 0.80000000000000004D
 					- m.random() * (l1 / 2.3999999999999999D)), l2);
 			if (fcnt == 3) {
-				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 22, 8);
+				Utility.rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 22, 8);
 			}
 			if (fcnt == 4) {
-				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 22, 8);
+				Utility.rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 22, 8);
 			}
 			if (fcnt == 5) {
-				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 0, 8);
+				Utility.rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 0, 8);
 			}
 			if (fcnt == 6) {
-				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), -22, 8);
+				Utility.rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), -22, 8);
 			}
 			if (fcnt == 7) {
-				rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), -22, 8);
+				Utility.rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), -22, 8);
 			}
 			int j3 = (int) (191F + 191F * (m.snap[0] / 350F));
 			if (j3 > 255) {
@@ -1070,10 +1054,10 @@ public class ContO {
 			ai[7] = x - m.x - 504;
 			ai1[7] = (y - m.y - edl[i]) + 5 + (int) (m.random() * 5F);
 			if (roted) {
-				rot(ai, ai2, x - m.x, z - m.z, 90, 8);
+				Utility.rot(ai, ai2, x - m.x, z - m.z, 90, 8);
 			}
-			rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 8);
-			rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 8);
+			Utility.rot(ai, ai2, Medium.cx, Medium.cz, m.xz, 8);
+			Utility.rot(ai1, ai2, Medium.cy, Medium.cz, m.zy, 8);
 			boolean flag = true;
 			int k1 = 0;
 			int l1 = 0;

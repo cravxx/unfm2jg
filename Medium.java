@@ -324,8 +324,8 @@ public class Medium
 					ai8[l3] = ground;
 				}
 
-				rot(ai4, ai6, cx, cz, xz, 8);
-				rot(ai8, ai6, cy, cz, zy, 8);
+				Utility.rot(ai4, ai6, cx, cz, xz, 8);
+				Utility.rot(ai8, ai6, cy, cz, zy, 8);
 				int ai9[] = new int[8];
 				int ai10[] = new int[8];
 				int k4 = 0;
@@ -390,8 +390,8 @@ public class Medium
 					ai3[j3] = ground;
 				}
 
-				rot(ai1, ai2, cx, cz, xz, 8);
-				rot(ai3, ai2, cy, cz, zy, 8);
+				Utility.rot(ai1, ai2, cx, cz, xz, 8);
+				Utility.rot(ai3, ai2, cy, cz, zy, 8);
 				int ai5[] = new int[8];
 				int ai7[] = new int[8];
 				int k3 = 0;
@@ -707,8 +707,8 @@ public class Medium
 					ai1[j3][k4] = (clay[i][j3][k4] + cldd[4]) - y / 20;
 				}
 
-				rot(ai[j3], ai2[j3], cx, cz, xz, 12);
-				rot(ai1[j3], ai2[j3], cy, cz, zy, 12);
+				Utility.rot(ai[j3], ai2[j3], cx, cz, xz, 12);
+				Utility.rot(ai1[j3], ai2[j3], cy, cz, zy, 12);
 			}
 
 			for (int k3 = 0; k3 < 12; k3 += 2) {
@@ -1033,7 +1033,7 @@ public class Medium
 				int i_182_ = i_180_ + 1;
 				mty[i_174_][i_180_] = ((mty[i_174_][i_181_] + mty[i_174_][i_182_]) / 2 + mty[i_174_][i_180_]) / 2;
 			}
-			rot(mtx[i_174_], mtz[i_174_], i_170_, i_171_, i_177_, nmv[i_174_] * 2);
+			Utility.rot(mtx[i_174_], mtz[i_174_], i_170_, i_171_, i_177_, nmv[i_174_] * 2);
 			is_173_[i_174_] = 0;
 		}
 		for (int i_183_ = 0; i_183_ < nmt; i_183_++) {
@@ -1073,8 +1073,8 @@ public class Medium
 				}
 				int i_195_ = (int) Math.sqrt(is[nmv[i_185_] / 4] * is[nmv[i_185_] / 4]
 						+ is_193_[nmv[i_185_] / 4] * is_193_[nmv[i_185_] / 4]);
-				rot(is, is_193_, cx, cz, xz, nmv[i_185_] * 2);
-				rot(is_192_, is_193_, cy, cz, zy, nmv[i_185_] * 2);
+				Utility.rot(is, is_193_, cx, cz, xz, nmv[i_185_] * 2);
+				Utility.rot(is_192_, is_193_, cy, cz, zy, nmv[i_185_] * 2);
 				int[] is_196_ = new int[4];
 				int[] is_197_ = new int[4];
 				boolean bool_201_ = true;
@@ -1501,19 +1501,7 @@ public class Medium
 			td = true;
 		}
 	}
-
-	public void rot(int ai[], int ai1[], int i, int j, int k, int l) {
-		if (k != 0) {
-			for (int i1 = 0; i1 < l; i1++) {
-				int j1 = ai[i1];
-				int k1 = ai1[i1];
-				ai[i1] = i + (int) ((j1 - i) * RadicalMath.cos(k) - (k1 - j) * RadicalMath.sin(k));
-				ai1[i1] = j + (int) ((j1 - i) * RadicalMath.sin(k) + (k1 - j) * RadicalMath.cos(k));
-			}
-
-		}
-	}
-
+	
 	public void setsnap(int i, int j, int k) {
 		snap[0] = i;
 		snap[1] = j;
