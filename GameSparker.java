@@ -172,7 +172,6 @@ public class GameSparker extends Applet implements Runnable {
 		nob = 0;
 		notb = 0;
 		view = 0;
-		splashScreenState = true;
 	}
 
 	/**
@@ -1618,7 +1617,10 @@ public class GameSparker extends Applet implements Runnable {
 
 	final String extra_models[] = {};
 	
-	public static boolean splashScreenState;
+	/**
+	 * false to disable splash
+	 */
+	public static boolean splashScreenState = true;
 
 	CheckPoints cp;
 	Graphics2D rd;
