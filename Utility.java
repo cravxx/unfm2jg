@@ -205,7 +205,7 @@ public class Utility {
 		}
 	}    
     
-    public static void timedPrint(String output, int seconds){    
+    public static void timedPrint(final String output, final int seconds){    
     	//System.out.println("what");
     	if(timedPrinter == null){
     		timedPrinter = new Thread()
