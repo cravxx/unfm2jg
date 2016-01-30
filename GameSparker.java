@@ -9,12 +9,7 @@ import java.util.zip.ZipInputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
-
 import netscape.javascript.JSObject;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 /**
  * GameSparker brings everything together. 

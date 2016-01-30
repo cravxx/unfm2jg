@@ -56,7 +56,7 @@ public class Settings extends Applet{
 		});	
     }
     
-    public static void initialize(Component instIn){
+    private static void initialize(Component instIn){
     	while (instIn != null && !(c instanceof Frame)) {
             c = instIn.getParent();
 	    }	    
