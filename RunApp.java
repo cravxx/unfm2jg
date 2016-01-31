@@ -14,6 +14,10 @@ public class RunApp extends Panel {
 	static ConsoleFrame cFrame;
 	static Utility utility;
 	public static ArrayList<Image> icons;
+	
+	private static GraphicsDevice vc;
+    static boolean fullscreen = false;
+
 
 	/**
 	 * Fetches icons of 16, 32 and 48 pixels from the 'data' folder.
@@ -42,6 +46,23 @@ public class RunApp extends Panel {
 		}
 		startup();
 	}
+	
+	static void gofullscreen() {        
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        vc = env.getDefaultScreenDevice();               
+        fullscreen = true;
+        frame.dispose();
+        frame = new Frame("Fullscreen Need for Madness");
+        frame.setBackground(new Color(0, 0, 0));
+        frame.setUndecorated(true);
+        frame.setResizable(false);
+        frame.setExtendedState(6);
+        frame.setIgnoreRepaint(true);
+        frame.add("Center", applet);
+        frame.setVisible(true);
+        vc.setFullScreenWindow(frame);
+        applet.requestFocus();
+    }
 
 	static void startup() {
 		frame = new Frame("UNFM2");// Change this to the name of your preference
@@ -77,6 +98,7 @@ public class RunApp extends Panel {
 		frame.setVisible(true);
 		applet.init();
 		applet.start();
+		gofullscreen();
 	}
 
 	public static void exitSequence() {
