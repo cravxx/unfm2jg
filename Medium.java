@@ -1460,6 +1460,7 @@ public class Medium
 			drawclouds(graphics2d);
 		}
 		groundpolys(graphics2d);
+		//road(graphics2d);
 		if (noelec != 0) {
 			noelec--;
 		}
@@ -1469,6 +1470,28 @@ public class Medium
 			cpflik = true;
 			elecr = random() * 15F - 6F;
 		}
+	}
+	
+	public void road(Graphics2D graphics2d){
+		int x_[] = {0,0,0,1000,1000,1000};
+		int y_[] = {ground,ground,ground,ground,ground,ground};
+		int z_[] = {0,500,1000,1000,500,0};
+		
+		int n = 6;
+		
+		Utility.rot(x_, z_, cx, cz, xz, n);
+		Utility.rot(y_, z_, cy, cz, zy, n);
+		
+		int ai14[] = new int[n];
+		int ai15[] = new int[n];
+		for (int k10 = 0; k10 < n; k10++) {
+			ai14[k10] = Utility.xs(x_[k10], z_[k10]);
+			ai15[k10] = Utility.ys(y_[k10], z_[k10], 1);			
+		}
+		
+		System.out.println(ai14[0] + " " + ai15[0]);
+		graphics2d.setColor(new Color(0, 0, 0));
+		graphics2d.fillPolygon(ai14, ai15, 6);		
 	}
 
 	public void watch(ContO conto, int i) {
