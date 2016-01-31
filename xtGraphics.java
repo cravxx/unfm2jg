@@ -276,7 +276,7 @@ public class xtGraphics extends Panel implements Runnable {
 	int flangados;
 	float blackn;
 	float blacknados;
-
+	
 	/**Filter images
 	 * @param img Image to filter
 	 * @param type Integer of what filter to apply

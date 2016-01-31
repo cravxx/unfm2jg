@@ -3,9 +3,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class RunApp extends Panel {
-
+	
 	static final long serialVersionUID = 666L;
 
 	static Frame frame;
@@ -17,7 +21,7 @@ public class RunApp extends Panel {
 	
 	private static GraphicsDevice vc;
     static boolean fullscreen = false;
-
+    static JButton btnNewButton = new JButton("New button");
 
 	/**
 	 * Fetches icons of 16, 32 and 48 pixels from the 'data' folder.
@@ -45,23 +49,35 @@ public class RunApp extends Panel {
 			System.out.println("Could not setup System Look&Feel: " + ex.toString());
 		}
 		startup();
-	}
+	}		
 	
 	static void gofullscreen() {        
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         vc = env.getDefaultScreenDevice();               
         fullscreen = true;
         frame.dispose();
-        frame = new Frame("Fullscreen Need for Madness");
-        frame.setBackground(new Color(0, 0, 0));
+        frame = new Frame("UNFM2JG Fullscreen");
+              
+        //frame.setBackground(new Color(0, 0, 0));
         frame.setUndecorated(true);
         frame.setResizable(false);
         frame.setExtendedState(6);
         frame.setIgnoreRepaint(true);
-        frame.add("Center", applet);
-        frame.setVisible(true);
+        
+        //add(btnNewButton);
+        btnNewButton.setVerticalAlignment(SwingConstants.TOP);
+        btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {				
+				startup();
+			}
+		});
+        frame.add("Center", applet);  
+        frame.add(btnNewButton);                
+		      
+        frame.setVisible(true);        
         vc.setFullScreenWindow(frame);
         applet.requestFocus();
+        System.out.println("UNFM2JG Fullscreen started...");
     }
 
 	static void startup() {
