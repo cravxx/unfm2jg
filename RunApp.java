@@ -98,7 +98,6 @@ public class RunApp extends Panel {
 		frame.setVisible(true);
 		applet.init();
 		applet.start();
-		gofullscreen();
 	}
 
 	public static void exitSequence() {
