@@ -101,23 +101,18 @@ public class GameSparker extends Applet implements Runnable {
 	}
 	
 	public int readcookie(String string) {
-		int i = -1;
-		try {// This block works when you applet is running under a web browser
-			JSObject jsobject = JSObject.getWindow(this);
-			jsobject.eval("scook=GetCookie('" + string + "');");
-			i = Integer.valueOf(String.valueOf(jsobject.getMember("scook"))).intValue();
-		} catch (NoClassDefFoundError err) {// This block works when your Applet is running inside a desktop Frame
-			if (properties == null)
-				return 17;
-			if (properties.containsKey(string)) {
-				i = properties.get(string);
-			} else {
-				i = -1;
-			}
-		} catch (Exception localException) {
-			return 17;
-		}
-		return i;
+		try {
+			BufferedReader saveFile = new BufferedReader(new FileReader(cookieDir + string + ".dat"));
+
+			String saveLine = saveFile.readLine();
+			saveFile.close();
+			System.out.println("Successfully loaded cookie " + string + " with value " + Integer.parseInt(saveLine));
+			return Integer.parseInt(saveLine);
+		} catch (IOException ioexception) {
+			//System.out.println(ioexception.toString());
+			System.out.println(string + ".dat probably doesn't exist");
+			return -1;
+		}		
 	}
 
 	private void cropit(final Graphics2D graphics2d, final int i, final int i_98_) {
@@ -700,22 +695,26 @@ public class GameSparker extends Applet implements Runnable {
 		float f = 35F;
 		int i1 = 80;
 		l = readcookie("unlocked");
-		if (l >= 1 && l <= 17) {
-			xtgraphics.unlocked = 1;
+		if (l >= 1 && l <= 17) {			
+			xtgraphics.unlocked = l; /// note that this is an L
 			if (xtgraphics.unlocked != 17)
 				checkpoints.stage = xtgraphics.unlocked;
 			else
 				checkpoints.stage = (int) (Math.random() * 17D) + 1;
 			xtgraphics.opselect = 0;
 		}
+		System.out.println(l);
 		l = readcookie("usercar");
+		System.out.println(l);
 		if (l >= 0 && l <= 15)
 			xtgraphics.sc[0] = l;
 		l = readcookie("gameprfact");
+		System.out.println(l);
 		if (l != -1) {
 			f = readcookie("gameprfact");
 			i1 = 1;
 		}
+		
 		boolean flag = false;
 		xtgraphics.stoploading();
 		System.gc();
@@ -1515,14 +1514,18 @@ public class GameSparker extends Applet implements Runnable {
 		Settings.showMenu(this);
 	}
 
-	public void savecookie(String string, String string_107_) {
+	public void savecookie(String filename, String num) {
 		try {
-			JSObject jsobject = JSObject.getWindow(this);
-			jsobject.eval("SetCookie('" + string + "','" + string_107_ + "');");
-		} catch (NoClassDefFoundError err) {
-			if (properties != null)
-				properties.put(string, Integer.parseInt(string_107_));
-		} catch (Exception exception) {
+			FileWriter saveFile = new FileWriter(cookieDir + filename + ".dat");
+			// Write the data to the file.
+			saveFile.write(num);
+			saveFile.write("\n");
+			// All done, close the FileWriter.
+			saveFile.close();
+			System.out.println("Successfully saved game (" + filename + ")");
+		} catch (IOException fileNoAccess) {
+			System.out.println(filename + ".dat couldn't be accessed...");
+			//fileNoAccess.printStackTrace();
 		}
 	}
 
@@ -1621,6 +1624,8 @@ public class GameSparker extends Applet implements Runnable {
 	 * false to disable splash
 	 */
 	public static boolean splashScreenState = true;
+	
+	public static final String cookieDir = "data/cookies/";
 
 	CheckPoints cp;
 	Graphics2D rd;

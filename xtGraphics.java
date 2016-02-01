@@ -3923,6 +3923,7 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.drawImage(opti, 241, 250, null);
 		if (control.enter || control.handb) {
 			if (opselect == 0) {
+				System.out.println(unlocked);
 				if (unlocked == 1 && oldfase == 0) {
 					oldfase = -9;
 					fase = 11;
