@@ -1,7 +1,12 @@
 
 import java.applet.Applet;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.*;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.Date;
 import java.util.zip.ZipEntry;
@@ -693,7 +698,7 @@ public class GameSparker extends Applet implements Runnable {
 		} while (++l < 7);
 		l = 0;
 		float f = 35F;
-		int i1 = 80;
+		int i1 = 80;		
 		l = readcookie("unlocked");
 		if (l >= 1 && l <= 17) {			
 			xtgraphics.unlocked = l; /// note that this is an L
@@ -714,6 +719,44 @@ public class GameSparker extends Applet implements Runnable {
 			f = readcookie("gameprfact");
 			i1 = 1;
 		}
+		ConsoleFrame.textField.addKeyListener(new KeyListener(){
+		    @Override
+		    public void keyPressed(KeyEvent e){
+		        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+		        	System.err.println(ConsoleFrame.textField.getText()); //probably shouldn't use system.err but it's a quick way 
+		        	try {
+						handleConsoleCommands(ConsoleFrame.textField.getText());
+					} catch (NoSuchFieldException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (SecurityException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IllegalArgumentException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IllegalAccessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		        	///clear
+		        	ConsoleFrame.textField.setText("");
+		        }
+		    }
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		
 		boolean flag = false;
 		xtgraphics.stoploading();
@@ -1497,6 +1540,34 @@ public class GameSparker extends Applet implements Runnable {
 			}
 		} while (true);
 	}	
+
+	public void handleConsoleCommands(String text)
+			throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {		
+		String command = text.substring(0, text.indexOf("("));
+
+		// System.out.println(command);
+		switch (command) {
+		case "set": {
+			Field f = this.getClass().getField(Utility.getstring("set", text, 0));
+
+			if (f.getType() == boolean.class) {
+				String trimmedStr = Utility.getstring("set", text, 1).trim();
+				boolean boolVal = (trimmedStr.equals("true")) ? true : false;
+				
+				Field[] s = this.getClass().getDeclaredFields();
+				for (int i = 0; i < s.length; i++) {
+					if (f.getName() == s[i].getName()) {
+						s[i].set(this, boolVal);
+						System.out.println(s[i].getName() + " has been set to " + boolVal);
+					}
+
+				}
+			}
+		}
+
+		}
+
+	}
 
 	@Override
 	public void init() {

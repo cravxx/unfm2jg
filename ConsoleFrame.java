@@ -12,6 +12,17 @@ import javax.swing.JTextPane;
 import javax.swing.text.JTextComponent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JTextField;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Panel;
+import java.awt.TextField;
+import javax.swing.JLabel;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class ConsoleFrame extends JFrame{
 	/**
@@ -24,16 +35,13 @@ public class ConsoleFrame extends JFrame{
 	static Thread consoleThread;
 	
 	static JFrame frame;
-	static JPanel panel;
 	static JTextComponent consoleHere;
     static JScrollPane scrolly;
     static MessageConsole console;
+    public static TextField textField;
+    private JLabel lblNewLabel;
     
-	public ConsoleFrame() {		
-		panel = new JPanel();
-		consoleHere = new JTextPane();
-		scrolly = new JScrollPane(consoleHere);
-		console = new MessageConsole(consoleHere);
+	public ConsoleFrame() {
 		////
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tk.getScreenSize();
@@ -41,11 +49,39 @@ public class ConsoleFrame extends JFrame{
 		
 	    frame = new JFrame("UNFM2 Console");
 	    
-	    frame.setSize(((screenSize.width / 2) - 335) - 10, screenSize.height - scnMax.bottom);	       
-	    panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-        frame.getContentPane().add(panel);
+	    frame.setSize(((screenSize.width / 2) - 335) - 10, screenSize.height - scnMax.bottom);
+        GridBagLayout gridBagLayout = new GridBagLayout();
+        gridBagLayout.columnWidths = new int[]{279, 0};
+        gridBagLayout.rowHeights = new int[]{13, 697, 0, 0, 0, 10, 0};
+        gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        frame.getContentPane().setLayout(gridBagLayout);
+        consoleHere = new JTextPane();
+        scrolly = new JScrollPane(consoleHere);
+        console = new MessageConsole(consoleHere);
+        GridBagConstraints gbc_scrolly = new GridBagConstraints();
+        gbc_scrolly.fill = GridBagConstraints.BOTH;
+        gbc_scrolly.insets = new Insets(0, 0, 5, 0);
+        gbc_scrolly.gridx = 0;
+        gbc_scrolly.gridy = 1;
+        frame.getContentPane().add(scrolly, gbc_scrolly);
         
-        frame.getContentPane().add(scrolly);
+        lblNewLabel = new JLabel("command box");
+        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+        gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+        gbc_lblNewLabel.gridx = 0;
+        gbc_lblNewLabel.gridy = 2;
+        frame.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
+        
+        textField = new TextField();
+        GridBagConstraints gbc_textField = new GridBagConstraints();
+        gbc_textField.fill = GridBagConstraints.BOTH;
+        gbc_textField.insets = new Insets(0, 0, 5, 0);
+        gbc_textField.gridx = 0;
+        gbc_textField.gridy = 3;
+        frame.getContentPane().add(textField, gbc_textField);
         console.redirectOut();
         console.redirectErr(Color.RED, null);
         

@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 public class RunApp extends Panel {
+	public RunApp() {
+	}
 	
 	static final long serialVersionUID = 666L;
 
