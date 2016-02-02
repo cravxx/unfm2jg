@@ -227,6 +227,13 @@ public class Utility {
     	}else{}
     }
     
+    public static void endTimedPrint(){
+    	printTimer.cancel();  // Terminates this timer, discarding any currently scheduled tasks.
+    	printTimer = new Timer();
+    	timedPrinter.interrupt();
+    	timedPrinter = null;
+    }
+    
     public static void startTimer(){
     	System.out.println("Timer started!");    	
     	startTime = System.nanoTime();	

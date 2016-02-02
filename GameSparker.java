@@ -1563,7 +1563,24 @@ public class GameSparker extends Applet implements Runnable {
 
 				}
 			}
+			break;
 		}
+		case "track":{
+			Field f = this.getClass().getDeclaredField(Utility.getstring("track", text, 0));
+			Field[] s = this.getClass().getDeclaredFields();
+			int fieldID = 0;
+			for (int i = 0; i < s.length; i++) {
+				if (f.getName() == s[i].getName()) 
+					fieldID = i;				
+			}
+			
+			Utility.timedPrint(s[fieldID].get(this).toString(), 1);
+			break;			
+		}
+		case "untrack":{
+			Utility.endTimedPrint();
+		}
+			
 
 		}
 
@@ -1697,6 +1714,8 @@ public class GameSparker extends Applet implements Runnable {
 	public static boolean splashScreenState = true;
 	
 	public static final String cookieDir = "data/cookies/";
+	
+	public static boolean t = false;
 
 	CheckPoints cp;
 	Graphics2D rd;
