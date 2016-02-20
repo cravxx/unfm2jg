@@ -86,7 +86,11 @@ public class RunApp extends Panel {
 		frame = new Frame("UNFM2");// Change this to the name of your preference
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setIgnoreRepaint(true);
-		frame.setIconImages(getIcons());
+		frame.setIconImages(getIcons());		
+		/**
+         * load some fonts
+         */
+        new FontHandler();
 		
 		applet = new GameSparker();
 		settings = new Settings();

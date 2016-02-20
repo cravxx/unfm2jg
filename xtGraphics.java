@@ -22,7 +22,7 @@ public class xtGraphics extends Panel implements Runnable {
 	
 	Graphics2D rd;
 	Medium m;
-	FontMetrics ftm;
+	//FontMetrics ftm;
 	ImageObserver ob;
 	Applet app;
 	int fase;
@@ -552,14 +552,14 @@ public class xtGraphics extends Panel implements Runnable {
 		pnext = 0;
 		trackbg(false);
 		rd.setFont(new Font("SansSerif", 1, 13));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(110, "This stage will be unlocked when stage " + unlocked + " is complete!", 177, 177, 177, 3);
 		int i = 0;
 		do {
 			rd.drawImage(pgate, 212 + i * 30, 190, null);
 		} while (++i < 9);
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		if (aflk) {
 			drawcs(160, "[ Stage " + (unlocked + 1) + " Locked ]", 255, 128, 0, 3);
 			aflk = false;
@@ -571,7 +571,7 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.drawImage(br, 0, 0, null);
 		rd.drawImage(back[pback], 305, 320, null);
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(396, "You can also use Keyboard Arrows and Enter to navigate.", 82, 90, 0, 3);
 		lockcnt--;
 		if (lockcnt == 0 || control.enter || control.handb || control.left) {
@@ -589,12 +589,12 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.setColor(new Color(120, 120, 120));
 		rd.drawRoundRect(200, 150, 270, 52, 20, 40);
 		rd.setFont(new Font("SansSerif", 1, 13));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(180, "Loading Stage " + i + ", please wait...", 0, 0, 0, 3);
 		rd.drawImage(select, 273, 45, null);
 		rd.drawImage(br, 0, 0, null);
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(396, "You can also use Keyboard Arrows and Enter to navigate.", 82, 90, 0, 3);
 		app.repaint();
 		if (lastload != -22) {
@@ -789,14 +789,14 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 		if (flipo == 1) {
 			rd.setFont(new Font("SansSerif", 1, 13));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			drawcs(20, "Main Game Controls", 0, 0, 0, 3);
 			rd.drawString("Drive your car using the Arrow Keys:", 60, 55);
 			rd.drawString("On the GROUND Spacebar is for Handbrake", 60, 76);
 			rd.drawImage(space, 106, 90, null);
 			rd.drawImage(arrows, 440, 58, null);
 			rd.setFont(new Font("SansSerif", 1, 11));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			rd.drawString("Accelerate", 450, 54);
 			rd.drawString("Brake/Reverse", 441, 132);
 			rd.drawString("Turn left", 389, 110);
@@ -805,14 +805,14 @@ public class xtGraphics extends Panel implements Runnable {
 			drawcs(150, "--------------------------------------------------------------------------------"
 					+ "--------------------------------------------------------------------", 0, 0, 0, 3);
 			rd.setFont(new Font("SansSerif", 1, 13));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			rd.drawString("To perform stunts:", 60, 175);
 			rd.drawString("In the AIR press combo Spacebar + Arrow Keys :", 60, 195);
 			rd.drawImage(space, 120, 220, null);
 			rd.drawImage(plus, 340, 223, null);
 			rd.drawImage(arrows, 426, 188, null);
 			rd.setFont(new Font("SansSerif", 1, 11));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			rd.setColor(new Color(0, 0, 0));
 			rd.drawString("Forward Loop", 427, 184);
 			rd.drawString("Backward Loop", 425, 262);
@@ -838,7 +838,7 @@ public class xtGraphics extends Panel implements Runnable {
 				flipo = 0;
 				fase = oldfase;
 				rd.setFont(new Font("SansSerif", 1, 11));
-				ftm = rd.getFontMetrics();
+				FontHandler.fMetrics = rd.getFontMetrics();
 			}
 			control.enter = false;
 			control.right = false;
@@ -912,8 +912,16 @@ public class xtGraphics extends Panel implements Runnable {
 		int ai[] = new int[7];
 		int ai1[] = new int[7];
 		int ai2[] = new int[7];
+		/**
+		 * x resolution divided by two converted to hex
+		 * http://www.binaryhexconverter.com/decimal-to-hex-converter
+		 */
 		char c = '\u014F';
 		byte byte0 = -90;
+		/**
+		 * x resolution plus 30 converted to hex?
+		 * http://www.binaryhexconverter.com/decimal-to-hex-converter
+		 */
 		char c1 = '\u02BC';
 		int k = 0;
 		do {
@@ -1518,7 +1526,7 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.setColor(new Color(0, 0, 0));
 		rd.drawRect(22, 22, 626, 356);
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(14, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
 		drawcs(395, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
 	}
@@ -2072,24 +2080,24 @@ public class xtGraphics extends Panel implements Runnable {
 			} while (++i < 2);
 			rd.drawImage(mdness, 218, 7, null);
 			rd.setFont(new Font("SansSerif", 1, 13));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			drawcs(65, "At Radicalplay.com", 0, 0, 0, 3);
 			drawcs(100, "Cartoon 3D Engine, Game Programming, 3D Models, Graphics and Sound Effects", 0, 0, 0, 3);
 			drawcs(120, "Everything By Omar Waly", 70, 70, 70, 3);
 			rd.setFont(new Font("SansSerif", 1, 13));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			drawcs(180, "Thanks for Game Testing", 0, 0, 0, 3);
 			rd.setFont(new Font("SansSerif", 1, 11));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			drawcs(200, "Soufy H Abutaleb, Sherif Abouzeid,", 90, 90, 90, 3);
 			drawcs(215, "Kareem Mansour, Youssef Wahby,", 90, 90, 90, 3);
 			drawcs(230, "Taymour Farid, Mahmoud Waly", 90, 90, 90, 3);
 			drawcs(245, "and Mahmoud Ezzeldin (Turbo)", 90, 90, 90, 3);
 			rd.setFont(new Font("SansSerif", 1, 13));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			drawcs(340, "Music was obtained from the ModArchive.org", 0, 0, 0, 3);
 			rd.setFont(new Font("SansSerif", 1, 11));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			drawcs(360, "All tracks where remixed to fit game by Omar Waly", 90, 90, 90, 3);
 			drawcs(380, "For more details about the music: http://www.radicalplay.com/madcars/music.html", 90, 90, 90,
 					3);
@@ -2104,13 +2112,13 @@ public class xtGraphics extends Panel implements Runnable {
 				}
 			} while (++i < 2);
 			rd.setFont(new Font("SansSerif", 1, 13));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			//////////////////////////////////////////////////////////////////////
 			drawcs(100, "These files have been edited and enhanced by Kaffeinated", 0, 0, 0, 3);
 
 			drawcs(180, "Thanks for help and suggestions goes to", 0, 0, 0, 3);
 			rd.setFont(new Font("SansSerif", 1, 11));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			drawcs(200, "Chaotic for help with NFMM graphics", 90, 90, 90, 3);
 			drawcs(215, "DragShot for his opponent status and desktop hack", 90, 90, 90, 3);
 			drawcs(230, "Ten Graves, Phyrexian, and Hyde233 for bug fixes", 90, 90, 90, 3);
@@ -2756,7 +2764,7 @@ public class xtGraphics extends Panel implements Runnable {
 				}
 				if (checkpoints.stage != 17) {
 					rd.setFont(new Font("SansSerif", 1, 13));
-					ftm = rd.getFontMetrics();
+					FontHandler.fMetrics = rd.getFontMetrics();
 					if (aflk) {
 						drawcs(120 + pin, "Stage " + (checkpoints.stage + 1) + " is now unlocked!", 176, 196, 0, 3);
 					} else {
@@ -2813,7 +2821,7 @@ public class xtGraphics extends Panel implements Runnable {
 						pin = 180;
 					}
 					rd.setFont(new Font("SansSerif", 1, 11));
-					ftm = rd.getFontMetrics();
+					FontHandler.fMetrics = rd.getFontMetrics();
 					drawcs(140 + pin, "GAME SAVED", 230, 167, 0, 3);
 					if (pin == 60) {
 						pin = 30;
@@ -2822,7 +2830,7 @@ public class xtGraphics extends Panel implements Runnable {
 					}
 				} else {
 					rd.setFont(new Font("SansSerif", 1, 13));
-					ftm = rd.getFontMetrics();
+					FontHandler.fMetrics = rd.getFontMetrics();
 					if (aflk) {
 						drawcs(90, "Woohoooo you finished the game!!!", 144, 167, 255, 3);
 					} else {
@@ -2856,7 +2864,7 @@ public class xtGraphics extends Panel implements Runnable {
 					}
 					if (radpx == 147) {
 						rd.setFont(new Font("SansSerif", 1, 11));
-						ftm = rd.getFontMetrics();
+						FontHandler.fMetrics = rd.getFontMetrics();
 						if (aflk) {
 							drawcs(259, "A Game by Radicalplay.com", 144, 167, 255, 3);
 						} else {
@@ -3258,7 +3266,7 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 		if (i1 == 1) {
 			rd.setColor(new Color(0, 0, 0));
-			rd.drawString(s, (335 - ftm.stringWidth(s) / 2) + 1, i + 1);
+			rd.drawString(s, (335 - FontHandler.fMetrics.stringWidth(s) / 2) + 1, i + 1);
 		}
 		if (i1 == 2) {
 			j = (j * 2 + m.csky[0] * 1) / 3;
@@ -3284,7 +3292,7 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 		}
 		rd.setColor(new Color(j, k, l));
-		rd.drawString(s, 335 - ftm.stringWidth(s) / 2, i);
+		rd.drawString(s, 335 - FontHandler.fMetrics.stringWidth(s) / 2, i);
 	}	
 
 	public void trackbg(boolean flag) {
@@ -3319,7 +3327,7 @@ public class xtGraphics extends Panel implements Runnable {
 			rd.drawImage(next[pnext], 560, 110, null);
 		}
 		rd.setFont(new Font("SansSerif", 1, 13));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		if (checkpoints.stage != 17) {
 			drawcs(80, "Stage " + checkpoints.stage + "  >", 255, 255, 255, 3);
 		} else {
@@ -3328,7 +3336,7 @@ public class xtGraphics extends Panel implements Runnable {
 		drawcs(100, "| " + checkpoints.name + " |", 210, 210, 210, 3);
 		rd.drawImage(contin[pcontin], 290, 325, null);
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(396, "You can also use Keyboard Arrows and Enter to navigate.", 82, 90, 0, 3);
 		if (control.handb || control.enter) {
 			asay = "Stage " + checkpoints.stage + ":  " + checkpoints.name + " ";
@@ -3618,7 +3626,7 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.drawRoundRect(185, 315, 300, 80, 30, 70);
 		rd.drawImage(loadbar, 216, 340, this);
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(333, "Loading game, please wait.", 0, 0, 0, 3);
 		rd.setColor(new Color(255, 255, 255));
 		rd.fillRect(230, 373, 210, 17);
@@ -4278,11 +4286,11 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 		if (radpx == 147) {
 			rd.setFont(new Font("SansSerif", 1, 11));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			drawcs(160 + (int) (5F * m.random()), "Radicalplay.com", 112, 120, 143, 3);
 		}
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		if (aflk) {
 			drawcs(190, "And we are never going to find the new unless we get a little crazy...", 112, 120, 143, 3);
 			aflk = false;
@@ -4398,7 +4406,7 @@ public class xtGraphics extends Panel implements Runnable {
 		aconto[sc[0]].d(rd);
 		if (flipo == 0) {
 			rd.setFont(new Font("SansSerif", 1, 13));
-			ftm = rd.getFontMetrics();
+			FontHandler.fMetrics = rd.getFontMetrics();
 			byte byte0 = 0;
 			if (flatrstart < 6) {
 				byte0 = 2;
@@ -4467,7 +4475,7 @@ public class xtGraphics extends Panel implements Runnable {
 			} else {
 				if (flatrstart == 6) {
 					rd.setFont(new Font("SansSerif", 1, 11));
-					ftm = rd.getFontMetrics();
+					FontHandler.fMetrics = rd.getFontMetrics();
 					rd.setColor(new Color(181, 120, 40));
 					rd.drawString("Top Speed:", 33, 318);
 					rd.drawImage(statb, 97, 312, null);
@@ -4548,7 +4556,7 @@ public class xtGraphics extends Panel implements Runnable {
 			flipo--;
 		}
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(396, "You can also use Keyboard Arrows and Enter to navigate.", 82, 90, 0, 3);
 		if (control.right) {
 			control.right = false;
@@ -4818,14 +4826,14 @@ public class xtGraphics extends Panel implements Runnable {
 		trackbg(false);
 		rd.drawImage(select, 273, 45, null);
 		rd.setFont(new Font("SansSerif", 1, 13));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(140, "Error Loading Stage " + i, 200, 0, 0, 3);
 		drawcs(170, "Your internet connection may have been lost...", 177, 177, 177, 3);
 		drawcs(220, "Press Enter to try again.", 177, 177, 177, 3);
 		rd.drawImage(contin[pcontin], 290, 325, null);
 		rd.drawImage(br, 0, 0, null);
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(396, "You can also use Keyboard Arrows and Enter to navigate.", 82, 90, 0, 3);
 		if (control.handb || control.enter) {
 			fase = 2;
@@ -4864,7 +4872,7 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.setColor(new Color(j, l, j1));
 		rd.fillRect(0, 0, 670, 400);
 		rd.setFont(new Font("SansSerif", 1, 13));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(25, asay, 0, 0, 0, 3);
 		byte byte0 = -90;
 		if (i == unlocked && (i == 1 || i == 2 || i == 3 || i == 4 || i == 7 || i == 8 || i == 9 || i == 10 || i == 12
@@ -4972,7 +4980,7 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 		rd.drawImage(loadingmusic, 224, 180 + byte0, null);
 		rd.setFont(new Font("SansSerif", 1, 11));
-		ftm = rd.getFontMetrics();
+		FontHandler.fMetrics = rd.getFontMetrics();
 		if (!flag) {
 			drawcs(315 + byte0, "" + sndsize[i - 1] + " KB", 0, 0, 0, 3);
 			drawcs(350 + byte0, " Please Wait...", 0, 0, 0, 3);
