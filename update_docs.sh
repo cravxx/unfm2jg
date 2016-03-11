@@ -1,10 +1,8 @@
 #!/bin/bash
 
-test=$(git branch | grep "*")
-branch=${"test":2}
+branchname=$(git describe --contains --all HEAD)
 
-
-if ["$branch" = "master"] ;then
+if ["$branchname" = "master"] ;then
     echo $branch
     echo "Publishing javadoc...\n"
 
