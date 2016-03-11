@@ -100,13 +100,18 @@ public class GameSparker extends Applet implements Runnable {
 		return false;
 	}
 	
+	/**
+	 * attempts to read a cookie
+	 * @param string
+	 * @return
+	 */
 	public int readcookie(String string) {
 		try {
 			BufferedReader saveFile = new BufferedReader(new FileReader(cookieDir + string + ".dat"));
 
 			String saveLine = saveFile.readLine();
 			saveFile.close();
-			System.out.println("Successfully loaded cookie " + string + " with value " + Integer.parseInt(saveLine));
+			System.out.println("Successfully read cookie " + string + " with value " + Integer.parseInt(saveLine));
 			return Integer.parseInt(saveLine);
 		} catch (IOException ioexception) {
 			//System.out.println(ioexception.toString());
@@ -245,11 +250,9 @@ public class GameSparker extends Applet implements Runnable {
 					unknown_2 = zipinputstream.read(model_data, unknown_1, entire_size);
 					unknown_1 += unknown_2;
 				}
-				System.out.println("contos: " + models_count + " / name: " + zipentry.getName());
 				conto[models_count] = new ContO(model_data, medium, trackers);
-
 				xtgraphics.dnload++;
-			}
+			}			
 			System.out.println((car_models.length + track_models.length + extra_models.length)); /// be sure to add your added arrays here
 			zipinputstream.close();
 		} catch (Exception exception) {
@@ -712,15 +715,12 @@ public class GameSparker extends Applet implements Runnable {
 				checkpoints.stage = (int) (Math.random() * 17D) + 1;
 			xtgraphics.opselect = 0;
 		}
-		System.out.println(l);
 		l = readcookie("usercar");
-		System.out.println(l);
 		if (l >= 0 && l <= 15)
 			xtgraphics.sc[0] = l;
 		l = readcookie("gameprfact");
-		System.out.println(l);
 		if (l != -1) {
-			f = readcookie("gameprfact");
+			f = l;
 			i1 = 1;
 		}				
 		
