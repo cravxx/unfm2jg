@@ -11,4 +11,4 @@ script:
  - javac *.java -Xlint:deprecation
  
 after_success: 
- - sh update_docs.sh
+ - bash update_docs.sh
