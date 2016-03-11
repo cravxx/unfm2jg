@@ -16,8 +16,6 @@ public class RunApp extends Panel {
 
 	static Frame frame;
 	static GameSparker applet;
-	static Settings settings;
-	static ConsoleFrame cFrame;
 	static Utility utility;
 	public static ArrayList<Image> icons;
 	
@@ -93,14 +91,6 @@ public class RunApp extends Panel {
         new FontHandler();
 		
 		applet = new GameSparker();
-		settings = new Settings();
-		Executors.newSingleThreadExecutor().execute(new Runnable() {
-		    @Override 
-		    public void run() {
-		    	cFrame = new ConsoleFrame();
-		    	System.out.println("Console thread started...");
-		    }
-		});
 		
 		utility = new Utility();
 		
@@ -111,7 +101,7 @@ public class RunApp extends Panel {
 				exitSequence();
 			}
 		});
-		applet.setPreferredSize(new java.awt.Dimension(670, 400 + Settings.menubarHeight));// The resolution of your game goes here
+		applet.setPreferredSize(new java.awt.Dimension(670, 400));// The resolution of your game goes here
 		frame.add("Center", applet);
 		frame.setResizable(false);// If you plan to make you game support changes in resolution, you can comment out this line.
 		frame.pack();

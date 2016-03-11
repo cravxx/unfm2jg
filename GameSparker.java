@@ -718,46 +718,7 @@ public class GameSparker extends Applet implements Runnable {
 		if (l != -1) {
 			f = readcookie("gameprfact");
 			i1 = 1;
-		}
-		ConsoleFrame.textField.addKeyListener(new KeyListener(){
-		    @Override
-		    public void keyPressed(KeyEvent e){
-		        if(e.getKeyCode() == KeyEvent.VK_ENTER){
-		        	System.err.println(ConsoleFrame.textField.getText()); //probably shouldn't use system.err but it's a quick way 
-		        	try {
-						handleConsoleCommands(ConsoleFrame.textField.getText());
-					} catch (NoSuchFieldException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (SecurityException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IllegalArgumentException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IllegalAccessException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-		        	///clear
-		        	ConsoleFrame.textField.setText("");
-		        }
-		    }
-
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		
+		}						
 		boolean flag = false;
 		xtgraphics.stoploading();
 		System.gc();
@@ -828,7 +789,6 @@ public class GameSparker extends Applet implements Runnable {
 					mouses = 2;
 			}
 			if (xtgraphics.fase == 10) {
-				Settings.showMenu(this);
 				xtgraphics.maini(u[0]);
 				xtgraphics.ctachm(xm, ym, mouses, u[0]);
 				if (mouses == 2)
@@ -1003,7 +963,6 @@ public class GameSparker extends Applet implements Runnable {
 				}
 			}
 			if (xtgraphics.fase == 0) {
-				Settings.hideMenu(this);
 				int k3 = 0;
 				do {
 					if (amadness[k3].newcar) {
@@ -1599,7 +1558,6 @@ public class GameSparker extends Applet implements Runnable {
 			rd.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 			rd.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 		}
-		Settings.showMenu(this);
 	}
 
 	public void savecookie(String filename, String num) {
