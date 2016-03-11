@@ -12,7 +12,14 @@ import java.io.IOException;
  *
  */
 public class FontHandler {
+	
+	/**
+	 * global replacement for ftm
+	 */
 	static FontMetrics fMetrics;
+	/**
+	 * path used to look for fonts
+	 */
 	final String fontPath = "data/fonts/";
 
 	public FontHandler() {
@@ -25,7 +32,7 @@ public class FontHandler {
 		try {			
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getClassLoader().getResource(fontPath + "OpenSans-Bold.ttf").getFile())));
 			
-			/**
+			/*
 			 * how to do it
 			 * 0. place ttf, otf, whatever, inside your data/fonts folder
 			 * 1. place font name
@@ -41,8 +48,8 @@ public class FontHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/**
-		 * print out all the fonts that are usable by java
+		/*
+		 * print out all the fonts that are usable by java in your environment
 		 */
 		/*Font[] fonts = ge.getAllFonts();
 		for (int i = 0; i < fonts.length; i++) {
