@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 if ["$branch" = "master"] ;then
     echo "Publishing javadoc...\n"
 
@@ -20,7 +20,7 @@ if ["$branch" = "master"] ;then
     git push -fq origin gh-pages > /dev/null
 
     echo "Published Javadoc to gh-pages.\n"
-fi else
+else
     echo "Not on master, not updating.\n"
 fi
 
