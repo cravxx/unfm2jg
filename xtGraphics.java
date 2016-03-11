@@ -1023,8 +1023,10 @@ public class xtGraphics extends Panel implements Runnable {
 					/ (double) (checkpoints.opx[l] - checkpoints.opx[0])) / 0.017453292519943295D);
 			drawcs(13, "[                                ]", 76, 67, 240, 0);
 			drawcs(13, names[sc[l]], 0, 0, 0, 0);
-
-			drawOver(names[sc[l]], conto[l]);
+			/*
+			 * example use of drawOver
+			 */
+			//drawOver(names[sc[l]], conto[l]);
 		}
 		for (k += m.xz; k < 0; k += 360) {
 		}
