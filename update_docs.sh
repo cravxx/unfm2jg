@@ -1,8 +1,11 @@
 #!/bin/bash
 
+test=$(git branch | grep "*")
+branch=${test:2}
 
-branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+
 if ["$branch" = "master"] ;then
+    echo $branch
     echo "Publishing javadoc...\n"
 
     cp -R doc $HOME/javadoc-latest
@@ -21,6 +24,7 @@ if ["$branch" = "master"] ;then
 
     echo "Published Javadoc to gh-pages.\n"
 else
+    echo $branch
     echo "Not on master, not updating.\n"
 fi
 
