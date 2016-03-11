@@ -3,7 +3,6 @@ import java.util.Date;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Timer;
-import java.util.TimerTask;
 import javax.imageio.ImageIO;
 
 /**
@@ -205,33 +204,18 @@ public class Utility {
 			}
 
 		}
-	}    
+	}       
     
-    public static void timedPrint(final String output, final int seconds){    
-    	//System.out.println("what");
-    	if(timedPrinter == null){
-    		timedPrinter = new Thread()
-    	    {
-    	        public void run() {
-
-    	        	printTimer.schedule(new TimerTask(){
-    	                @Override
-    	                public void run() {
-    	                	System.out.println(output);
-
-    	                }
-    	            }, 0, seconds * 1000);    	            
-    	        }
-    	    };
-    	    timedPrinter.start();
-    	}else{}
-    }
-    
-    public static void endTimedPrint(){
-    	printTimer.cancel();  // Terminates this timer, discarding any currently scheduled tasks.
-    	printTimer = new Timer();
-    	timedPrinter.interrupt();
-    	timedPrinter = null;
+    public static int[] rotSingle(int poly1, int poly2, final int center1, final int center2, final int angle, final float sin_ang, final float cos_ang) {
+        if (angle != 0) {
+            final int j1 = poly1;
+            final int k1 = poly2;
+            poly1 = center1 + (int) ((j1 - center1) * cos_ang - (k1 - center2) * sin_ang);
+            poly2 = center2 + (int) ((j1 - center1) * sin_ang + (k1 - center2) * cos_ang);
+        }
+        return new int[] {
+                poly1, poly2
+        };
     }
     
     public static void startTimer(){

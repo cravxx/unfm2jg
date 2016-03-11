@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=i
+comment0.target=float\ cos(int)
+comment1.params=i
+comment1.target=float\ sin(int)
+numComments=2

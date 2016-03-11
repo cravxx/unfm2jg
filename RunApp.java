@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -84,15 +83,9 @@ public class RunApp extends Panel {
 		frame = new Frame("UNFM2");// Change this to the name of your preference
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setIgnoreRepaint(true);
-		frame.setIconImages(getIcons());		
-		/**
-         * load some fonts
-         */
-        new FontHandler();
+		frame.setIconImages(getIcons());			
 		
-		applet = new GameSparker();
-		
-		utility = new Utility();
+		applet = new GameSparker();			
 		
 		applet.setStub(new DesktopStub());
 		frame.addWindowListener(new WindowAdapter() {

@@ -1,0 +1,51 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Utility()
+comment1.params=string\ source\ i
+comment1.target=int\ getvalue(java.lang.String,\ java.lang.String,\ int)
+comment1.text=\r\n\ Gets\ a\ value\ from\ a\ string\ in\ format\:\r\n\ string(value1,value2,value3...)\r\n\r\n\r\n\ @param\ string\ The\ variable\ name\ (e.g\:\ foo(bar)\ \=\ foo)\r\n\ @param\ source\ The\ string\ (single\ line)\ to\ get\ the\ value\ from\r\n\ @param\ i\ The\ position\ of\ the\ value\ (starting\ from\ 0)\r\n\ @return\ An\ integer\ containing\ the\ value\r\n
+comment10.params=i\ j\ k\ l
+comment10.target=float\ pys(int,\ int,\ int,\ int)
+comment11.params=f\ f1\ f2\ f3\ f4\ f5
+comment11.target=int\ rpy(float,\ float,\ float,\ float,\ float,\ float)
+comment12.params=i\ j\ k\ l
+comment12.target=int\ py(int,\ int,\ int,\ int)
+comment13.params=x1\ y1\ x2\ y2
+comment13.target=int\ distance(int,\ int,\ int,\ int)
+comment14.params=af\ af1\ i\ j\ k\ l
+comment14.target=void\ rot(float[],\ float[],\ int,\ int,\ int,\ int)
+comment15.params=ai\ ai1\ i\ j\ k\ l
+comment15.target=void\ rot(int[],\ int[],\ int,\ int,\ int,\ int)
+comment16.params=output\ seconds
+comment16.target=void\ timedPrint(java.lang.String,\ int)
+comment17.params=
+comment17.target=void\ run()
+comment18.params=
+comment18.target=void\ run()
+comment19.params=
+comment19.target=void\ endTimedPrint()
+comment2.params=i\ j
+comment2.target=int\ xs(int,\ int)
+comment2.text=\r\n\ Turns\ a\ 3D\ XY\ coordinate\ into\ a\ 2D\ X\ perspective\ coordinate.\r\n\r\n\ @param\ i\r\n\ \ \ \ \ \ \ \ \ \ \ \ The\ 3D\ X\ point\r\n\ @param\ j\r\n\ \ \ \ \ \ \ \ \ \ \ \ The\ 3D\ Y\ point\r\n\ @return\ The\ 2D\ X\ coordinate.\r\n
+comment20.params=
+comment20.target=void\ startTimer()
+comment21.params=
+comment21.target=void\ stopTimer()
+comment3.params=i\ j
+comment3.target=int\ cXs(int,\ int)
+comment4.params=i\ j\ m
+comment4.target=int\ ys(int,\ int,\ int)
+comment4.text=\r\n\ Turns\ a\ 3D\ ZY\ coordinate\ into\ a\ 2D\ Y\ perspective\ coordinate.\r\n\r\n\ @param\ i\r\n\ \ \ \ \ \ \ \ \ \ \ \ The\ 3D\ Z\ point\r\n\ @param\ j\r\n\ \ \ \ \ \ \ \ \ \ \ \ The\ 3D\ Y\ point\r\n\ @param\ m\r\n\ \t\t\t\ \ There\ are\ two\ different\ ys()\ methods\ within\ NFM2,\ this\ integer\ is\ used\ to\ unify\ them\ while\ providing\ a\ way\ to\ distinguish\ between\ them.\ \r\n\ \t\t\t\ \ 0\ is\ for\ using\ Medium.cz\ (normal)\r\n\ \t\t\t\ \ 1\ is\ for\ using\ 10\ (only\ found\ in\ Medium)\r\n\ @return\ The\ 2D\ Y\ coordinate.\r\n
+comment5.params=i\ j
+comment5.target=int\ cYs(int,\ int)
+comment6.params=string\ source\ i
+comment6.target=int\ getint(java.lang.String,\ java.lang.String,\ int)
+comment6.text=\r\n\ Gets\ an\ integer\ from\ a\ string\ in\ format\:\r\n\ string(int1,int2,int3...)\r\n\r\n\r\n\ @param\ string\ The\ beginning\ of\ the\ string\ (e.g\:\ foo(0,0,1)\ \=\ foo)\r\n\ @param\ source\ The\ string\ (single\ line)\ to\ get\ the\ value\ from\r\n\ @param\ i\ The\ position\ of\ the\ value\ (starting\ from\ 0)\r\n\ @return\ An\ integer\ containing\ the\ value\r\n
+comment7.params=string\ source\ i
+comment7.target=java.lang.String\ getstring(java.lang.String,\ java.lang.String,\ int)
+comment7.text=\r\n\ Gets\ a\ substring,\ nicely\r\n\r\n\r\n\ @param\ string\ The\ beginning\ of\ the\ string\ (e.g\:\ foo(0,0,1)\ \=\ foo)\r\n\ @param\ source\ The\ string\ (single\ line)\ to\ get\ the\ value\ from\r\n\ @param\ i\ The\ position\ of\ the\ string\ (starting\ from\ 0)\r\n\ @return\ A\ string\r\n
+comment8.params=string
+comment8.target=java.awt.image.BufferedImage\ webGet(java.lang.String)
+comment9.params=i\ j
+comment9.target=int\ spy(int,\ int)
+numComments=22

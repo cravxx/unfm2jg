@@ -559,9 +559,36 @@ public class xtGraphics extends Panel implements Runnable {
 		return neg;
 	}
 
+	/**
+	 * drawcs for images
+	 * @param img
+	 * @param y
+	 * @author Kaffeinated
+	 */
 	public void paintcs(Image img, int y) {
 		rd.drawImage(img, (img.getWidth(null) / 2) - 670, y, null);
-	}
+	}		
+    
+	/**
+	 * draw text over conto
+	 * @param text
+	 * @param contos
+	 * @author Rafa, Kaffeinated
+	 */
+    public void drawOver(String text, ContO contos) {
+		int x = m.cx + (int) ((contos.x - m.x - m.cx));
+		int y = m.cy + (int) ((contos.y - m.y - m.cy));
+		int z = m.cz + (int) ((contos.z - m.z - m.cz));
+
+		x = Utility.rotSingle(x, z, m.cx, m.cz, m.xz, RadicalMath.sin(m.xz), RadicalMath.cos(m.xz))[0];
+		y = Utility.rotSingle(y, z, m.cy, m.cz, m.zy, RadicalMath.sin(m.zy), RadicalMath.cos(m.zy))[0];
+		z = Utility.rotSingle(y, z, m.cy, m.cz, m.zy, RadicalMath.sin(m.zy), RadicalMath.cos(m.zy))[1];
+
+		final int xScreenCoor = Utility.xs(x, z);
+		final int yScreenCoor = Utility.cYs(y, z);
+
+		rd.drawString("" + text, xScreenCoor, yScreenCoor);	
+    }
 
 	public boolean over(Image image, int i, int j, int k, int l) {
 		int i1 = image.getHeight(ob);
@@ -996,6 +1023,8 @@ public class xtGraphics extends Panel implements Runnable {
 					/ (double) (checkpoints.opx[l] - checkpoints.opx[0])) / 0.017453292519943295D);
 			drawcs(13, "[                                ]", 76, 67, 240, 0);
 			drawcs(13, names[sc[l]], 0, 0, 0, 0);
+
+			drawOver(names[sc[l]], conto[l]);
 		}
 		for (k += m.xz; k < 0; k += 360) {
 		}

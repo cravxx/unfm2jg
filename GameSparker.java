@@ -2,7 +2,6 @@
 import java.applet.Applet;
 import java.awt.*;
 import java.io.*;
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.Date;
 import java.util.zip.ZipEntry;
@@ -13,7 +12,7 @@ import java.util.Iterator;
 
 /**
  * GameSparker brings everything together. 
- * @author Kaffeinated, Omar Wally
+ * @author Kaffeinated, Omar Waly
  *
  */
 public class GameSparker extends Applet implements Runnable {
@@ -22,6 +21,7 @@ public class GameSparker extends Applet implements Runnable {
 	 */
 	static final long serialVersionUID = 420L;
 	HashMap<String, Integer> properties;
+	static Utility utility;
 
 	/**
 	 * <a href="http://www.expandinghead.net/keycode.html">http://www.expandinghead.net/keycode.html</a>
@@ -208,7 +208,7 @@ public class GameSparker extends Applet implements Runnable {
 	 * @param medium medium instance
 	 * @param trackers trackers instance
 	 * @param xtgraphics xtgraphics instance
-	 * @author Kaffeinated, Omar Wally
+	 * @author Kaffeinated, Omar Waly
 	 * 
 	 */
 	private void loadbase(final ContO conto[], Medium medium, Trackers trackers, xtGraphics xtgraphics) {
@@ -324,7 +324,7 @@ public class GameSparker extends Applet implements Runnable {
 	 * @param xtgraphics 	xtgraphics instance
 	 * @param amadness 		madness instance
 	 * @param record 		record instance
-	 * @author Kaffeinated, Omar Wally
+	 * @author Kaffeinated, Omar Waly
 	 * 
 	 */
 	public void loadstage(ContO aconto[], ContO aconto1[], Medium medium, Trackers trackers, CheckPoints checkpoints,
@@ -649,7 +649,7 @@ public class GameSparker extends Applet implements Runnable {
 		System.gc();
 	}
 
-	public void intialize_moto(Madness amadness[], Medium medium) {
+	public void intializeMoto(Madness amadness[], Medium medium) {
 		if (amadness[0].shakedam > 0) {
 			shaka = amadness[0].shakedam / 20;
 			amadness[0].shakedam = 0;
@@ -661,7 +661,7 @@ public class GameSparker extends Applet implements Runnable {
 		mvect = 65 + Math.abs(lmxz - medium.xz) / 5 * 100;
 		if (mvect > 90)
 			mvect = 90;
-		lmxz = medium.xz;
+		lmxz = medium.xz;		
 	}
 
 	@Override
@@ -728,9 +728,9 @@ public class GameSparker extends Applet implements Runnable {
 		int k2 = 0;
 		boolean flag2 = false;
 		exwist = false;
-		do {
+		do {			
 			Date date1 = new Date();
-			long l4 = date1.getTime();
+			long l4 = date1.getTime();			
 			if (xtgraphics.fase == 111) {
 				if (mouses == 1)
 					i2 = 800;
@@ -1045,7 +1045,7 @@ public class GameSparker extends Applet implements Runnable {
 					if (view == 0) {
 						medium.follow(aconto1[0], amadness[0].cxz, u[0].lookback);
 						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
-						intialize_moto(amadness, medium);
+						intializeMoto(amadness, medium);
 					}
 					if (view == 1) {
 						medium.around(aconto1[0], false);
@@ -1493,57 +1493,20 @@ public class GameSparker extends Applet implements Runnable {
 			} catch (InterruptedException _ex) {
 			}
 		} while (true);
-	}	
-
-	public void handleConsoleCommands(String text)
-			throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {		
-		String command = text.substring(0, text.indexOf("("));
-
-		// System.out.println(command);
-		switch (command) {
-		case "set": {
-			Field f = this.getClass().getField(Utility.getstring("set", text, 0));
-
-			if (f.getType() == boolean.class) {
-				String trimmedStr = Utility.getstring("set", text, 1).trim();
-				boolean boolVal = (trimmedStr.equals("true")) ? true : false;
-				
-				Field[] s = this.getClass().getDeclaredFields();
-				for (int i = 0; i < s.length; i++) {
-					if (f.getName() == s[i].getName()) {
-						s[i].set(this, boolVal);
-						System.out.println(s[i].getName() + " has been set to " + boolVal);
-					}
-
-				}
-			}
-			break;
-		}
-		case "track":{
-			Field f = this.getClass().getDeclaredField(Utility.getstring("track", text, 0));
-			Field[] s = this.getClass().getDeclaredFields();
-			int fieldID = 0;
-			for (int i = 0; i < s.length; i++) {
-				if (f.getName() == s[i].getName()) 
-					fieldID = i;				
-			}
-			
-			Utility.timedPrint(s[fieldID].get(this).toString(), 1);
-			break;			
-		}
-		case "untrack":{
-			Utility.endTimedPrint();
-		}
-			
-
-		}
-
 	}
 
 	@Override
 	public void init() {
 		if (getAppletContext() instanceof DesktopContext)
 			loadData();
+		
+		/**
+         * load some fonts
+         */
+        new FontHandler();
+        
+        utility = new Utility();
+        
 		offImage = createImage(670, 400);
 		if (offImage != null) {
 			sg = offImage.getGraphics();
