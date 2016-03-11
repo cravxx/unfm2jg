@@ -1,10 +1,6 @@
 
 import java.applet.Applet;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -14,7 +10,6 @@ import java.util.zip.ZipInputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
-import netscape.javascript.JSObject;
 
 /**
  * GameSparker brings everything together. 
