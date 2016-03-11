@@ -6,7 +6,7 @@ import java.util.Timer;
 import javax.imageio.ImageIO;
 
 /**
- * Contains often used functions
+ * Contains often used functions, and some new ones
  * @author Rafa, Kaffeinated, Omar Wally
  *
  */
