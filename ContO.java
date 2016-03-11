@@ -1,7 +1,11 @@
-
 import java.awt.*;
 import java.io.*;
 
+/**
+ * models
+ * @author Omar Waly, Kaffeinated
+ *
+ */
 public class ContO {
 	Medium m;
 	Trackers t;
