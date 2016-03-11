@@ -2,7 +2,7 @@
 
 branchname=$(git describe --contains --all HEAD)
 
-if [["$branchname" == "master"]] ;then
+if [[ $branchname == "master" ]] ;then
     echo $branch
     echo "Publishing javadoc...\n"
 
