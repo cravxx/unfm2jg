@@ -1,7 +1,7 @@
 #!/bin/bash
 
 test=$(git branch | grep "*")
-branch=${test:2}
+branch=${"test":2}
 
 
 if ["$branch" = "master"] ;then
