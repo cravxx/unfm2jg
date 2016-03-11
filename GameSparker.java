@@ -347,8 +347,7 @@ public class GameSparker extends Applet implements Runnable {
 		int l_wall = 100;
 		int t_wall = 0;
 		int b_wall = 100;
-
-		//////////////
+		
 		String s1 = "";
 		try {
 			DataInputStream datainputstream;
@@ -360,7 +359,6 @@ public class GameSparker extends Applet implements Runnable {
 				s1 = "" + s.trim();
 				if (s1.startsWith("mountains"))
 					medium.mgen = Utility.getint("mountains", s1, 0);
-				////////////////
 				if (s1.startsWith("snap"))
 					medium.setsnap(Utility.getint("snap", s1, 0), Utility.getint("snap", s1, 1), Utility.getint("snap", s1, 2));
 				if (s1.startsWith("sky")) {
@@ -649,6 +647,11 @@ public class GameSparker extends Applet implements Runnable {
 		System.gc();
 	}
 
+	/**
+	 * motion
+	 * @param amadness
+	 * @param medium
+	 */
 	public void intializeMoto(Madness amadness[], Medium medium) {
 		if (amadness[0].shakedam > 0) {
 			shaka = amadness[0].shakedam / 20;
@@ -694,9 +697,15 @@ public class GameSparker extends Applet implements Runnable {
 		l = 0;
 		float f = 35F;
 		int i1 = 80;		
+		/**
+		 * this bit in here reads cookies and set values
+		 */		
 		l = readcookie("unlocked");
-		if (l >= 1 && l <= 17) {			
-			xtgraphics.unlocked = l; /// note that this is an L
+		if (l >= 1 && l <= 17) {		
+			/*
+			 * Note: that is an L
+			 */
+			xtgraphics.unlocked = l;
 			if (xtgraphics.unlocked != 17)
 				checkpoints.stage = xtgraphics.unlocked;
 			else
@@ -713,7 +722,8 @@ public class GameSparker extends Applet implements Runnable {
 		if (l != -1) {
 			f = readcookie("gameprfact");
 			i1 = 1;
-		}						
+		}				
+		
 		boolean flag = false;
 		xtgraphics.stoploading();
 		System.gc();
@@ -898,7 +908,7 @@ public class GameSparker extends Applet implements Runnable {
 							aconto1[ai[j11]].d(rd);
 
 				}
-
+				
 				rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 				xtgraphics.ctachm(xm, ym, mouses, u[0]);
 				if (mouses == 2)
@@ -1500,11 +1510,14 @@ public class GameSparker extends Applet implements Runnable {
 		if (getAppletContext() instanceof DesktopContext)
 			loadData();
 		
-		/**
+		/*
          * load some fonts
          */
         new FontHandler();
         
+        /*
+         * new utility instance
+         */
         utility = new Utility();
         
 		offImage = createImage(670, 400);
