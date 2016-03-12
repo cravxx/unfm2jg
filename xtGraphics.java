@@ -561,8 +561,8 @@ public class xtGraphics extends Panel implements Runnable {
 
 	/**
 	 * drawcs for images
-	 * @param img
-	 * @param y
+	 * @param img image to draw
+	 * @param y y value
 	 * @author Kaffeinated
 	 */
 	public void paintcs(Image img, int y) {
@@ -571,9 +571,10 @@ public class xtGraphics extends Panel implements Runnable {
     
 	/**
 	 * draw text over conto
-	 * @param text
-	 * @param contos
-	 * @author Rafa, Kaffeinated
+	 * @param text text to draw
+	 * @param contos conto to overlay
+	 * @author Rafa
+	 * @author Kaffeinated
 	 */
     public void drawOver(String text, ContO contos) {
 		int x = m.cx + (int) ((contos.x - m.x - m.cx));
@@ -3401,7 +3402,7 @@ public class xtGraphics extends Panel implements Runnable {
 			stages.stop();
 			stages.unloadMod();
 		}
-		if (control.right && checkpoints.stage != 17) {
+		if (control.right && checkpoints.stage < 17) {
 			if (checkpoints.stage != unlocked) {
 				checkpoints.stage++;
 				fase = 2;
@@ -3412,7 +3413,7 @@ public class xtGraphics extends Panel implements Runnable {
 				control.right = false;
 			}
 		}
-		if (control.left && checkpoints.stage != 1) {
+		if (control.left && checkpoints.stage > 1) {
 			checkpoints.stage--;
 			fase = 2;
 			control.left = false;
@@ -4874,14 +4875,20 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 	}
 
-	public void loadingfailed(int i, Control control) {
+	public void loadingfailed(CheckPoints checkpoints, Control control, String error) {
 		trackbg(false);
-		rd.drawImage(select, 273, 45, null);
+		rd.drawImage(select, 273, 45, null);	
+		if (checkpoints.stage != 1) {
+			rd.drawImage(back[pback], 50, 110, null);
+		}
+		if (checkpoints.stage != 17) {
+			rd.drawImage(next[pnext], 560, 110, null);
+		}
 		rd.setFont(new Font("SansSerif", 1, 13));
 		FontHandler.fMetrics = rd.getFontMetrics();
-		drawcs(140, "Error Loading Stage " + i, 200, 0, 0, 3);
-		drawcs(170, "Your internet connection may have been lost...", 177, 177, 177, 3);
-		drawcs(220, "Press Enter to try again.", 177, 177, 177, 3);
+		drawcs(140, "Error Loading Stage " + checkpoints.stage, 200, 0, 0, 3);
+		drawcs(170, error, 177, 177, 177, 3);
+		drawcs(220, "Check console for more info.", 177, 177, 177, 3);
 		rd.drawImage(contin[pcontin], 290, 325, null);
 		rd.drawImage(br, 0, 0, null);
 		rd.setFont(new Font("SansSerif", 1, 11));
@@ -4891,6 +4898,22 @@ public class xtGraphics extends Panel implements Runnable {
 			fase = 2;
 			control.handb = false;
 			control.enter = false;
+		}
+		if(control.right && checkpoints.stage < 17) {
+			if (checkpoints.stage != unlocked) {
+				checkpoints.stage++;
+				fase = 2;
+				control.right = false;
+			} else {
+				fase = 4;
+				lockcnt = 100;
+				control.right = false;
+			}
+		}
+		if(control.left && checkpoints.stage > 1) {
+			checkpoints.stage--;
+			fase = 2;			
+			control.left = false;
 		}
 	}
 

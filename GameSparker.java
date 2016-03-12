@@ -10,8 +10,6 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Iterator;
 
 /**
  * GameSparker brings everything together. 
@@ -75,8 +73,6 @@ public class GameSparker extends Applet implements Runnable {
 
 	@Override
 	public void stop() {
-		if (getAppletContext() instanceof DesktopContext)
-			saveData();
 		if (exwist && gamer != null) {
 			System.gc();
 			gamer.stop();
@@ -102,71 +98,75 @@ public class GameSparker extends Applet implements Runnable {
 			lostfcs = false;
 		return false;
 	}
-	
+
 	public void savecookie(String filename, String num) {
-		try {			
+		try {
 			/**
-			 * since I want full control over the filenames, we'll create a normal file in the temporary file directory		
+			 * since I want full control over the filenames, we'll create a normal file in the temporary file directory
 			 */
-			String tempDir = System.getProperty("java.io.tmpdir");			
-			File[] cookieFile = {new File(tempDir + filename + ".dat")};
+			String tempDir = System.getProperty("java.io.tmpdir");
+			File[] cookieFile = {
+					new File(tempDir + filename + ".dat")
+			};
 			FileWriter fw = new FileWriter(cookieFile[0].getAbsolutePath());
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(num + '\n');
 			bw.close();
-			
+
 			File cookieZip = new File(cookieDirZip);
 			if (!cookieZip.exists()) {
-				cookieZip.createNewFile();			
+				cookieZip.createNewFile();
 			}
-			
+
 			addFile(cookieZip, cookieFile, "");
-			
+
 			System.out.println("Successfully saved game (" + filename + ")");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public static String fromStream(InputStream in) throws IOException
-	{
-	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-	    StringBuilder out = new StringBuilder();
-	    String line;
-	    while ((line = reader.readLine()) != null) {
-	        out.append(line);
-	    }
-	    return out.toString();
-	}		
-	
+
+	public static String fromStream(InputStream in) throws IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		StringBuilder out = new StringBuilder();
+		String line;
+		while ((line = reader.readLine()) != null) {
+			out.append(line);
+		}
+		return out.toString();
+	}
+
 	/**
 	 * attempts to read a cookie
-	 * @param string
-	 * @return
+	 * 
+	 * @param string name to match
+	 * @return value
 	 */
 	public int readcookie(String string) {
 		try {
 			ZipFile zipFile = new ZipFile(cookieDirZip);
 			Enumeration<? extends ZipEntry> entries = zipFile.entries();
-			
-			int cookieValue = -1;
-			
-		    while(entries.hasMoreElements()){
-		        ZipEntry entry = entries.nextElement();
-		        if(entry.getName().contains(string)){
-		        	InputStream stream = zipFile.getInputStream(entry);
-		        	cookieValue = Integer.parseInt(fromStream(stream));
-		        }
-		    }
-		    zipFile.close();
 
-			System.out.println("Successfully read cookie " + string + " with value " + cookieValue);
-			return cookieValue;
+			String fromEntry = " ";
+
+			while (entries.hasMoreElements()) {
+				ZipEntry entry = entries.nextElement();
+				if (entry.getName().contains(string)) {
+					InputStream stream = zipFile.getInputStream(entry);
+					fromEntry = fromStream(stream);
+				}
+			}
+			zipFile.close();
+
+			System.out.println("Successfully read cookie " + string + " with value " + Integer.parseInt(fromEntry));
+			return Integer.parseInt(fromEntry);
 		} catch (IOException ioexception) {
-			//System.out.println(ioexception.toString());
+			// System.out.println(ioexception.toString());
 			System.out.println(string + ".dat probably doesn't exist");
 			return -1;
-		}		
+		} catch (NumberFormatException nfe) {
+			return -1;
+		}
 	}
 
 	private void cropit(final Graphics2D graphics2d, final int i, final int i_98_) {
@@ -650,6 +650,12 @@ public class GameSparker extends Applet implements Runnable {
 			medium.newclouds(l_wall, r_wall, b_wall, t_wall);
 			medium.newstars();
 		} catch (Exception exception) {
+			String exceptStr = exception.toString();
+			final int maxChar = 30;
+			
+			int maxLength = (exceptStr.length() < maxChar)?exceptStr.length():maxChar;
+			stageError = exception.toString().substring(0, maxLength) + "...";
+			
 			xtgraphics.fase = 3;
 			System.out.println("Error in stage " + checkpoints.stage);
 			System.out.println("" + exception);
@@ -701,8 +707,8 @@ public class GameSparker extends Applet implements Runnable {
 
 	/**
 	 * motion
-	 * @param amadness
-	 * @param medium
+	 * @param amadness madness 
+	 * @param medium medium
 	 */
 	public void intializeMoto(Madness amadness[], Medium medium) {
 		if (amadness[0].shakedam > 0) {
@@ -757,7 +763,7 @@ public class GameSparker extends Applet implements Runnable {
 			/*
 			 * Note: that is an L
 			 */
-			xtgraphics.unlocked = l;
+			xtgraphics.unlocked = 17;
 			if (xtgraphics.unlocked != 17)
 				checkpoints.stage = xtgraphics.unlocked;
 			else
@@ -907,7 +913,7 @@ public class GameSparker extends Applet implements Runnable {
 					mouses = 2;
 			}
 			if (xtgraphics.fase == 3) {
-				xtgraphics.loadingfailed(checkpoints.stage, u[0]);
+				xtgraphics.loadingfailed(checkpoints, u[0], stageError);
 				xtgraphics.ctachm(xm, ym, mouses, u[0]);
 				if (mouses == 2)
 					mouses = 0;
@@ -1555,10 +1561,7 @@ public class GameSparker extends Applet implements Runnable {
 	}
 
 	@Override
-	public void init() {
-		if (getAppletContext() instanceof DesktopContext)
-			loadData();
-		
+	public void init() {		
 		/*
          * load some fonts
          */
@@ -1663,44 +1666,6 @@ public class GameSparker extends Applet implements Runnable {
 		return false;
 	}
 
-	private void loadData() {
-		try {
-			properties = new HashMap<String, Integer>();
-			File localFile = new File("data/user.data");
-			if (localFile.exists()) {
-				BufferedReader in = new BufferedReader(new FileReader(localFile));
-				String str, key, value;
-				while ((str = in.readLine()) != null) {
-					key = str.substring(0, str.indexOf("("));
-					value = Utility.getstring(key, str, 0);
-					properties.put(key, Integer.parseInt(value));
-				}
-				in.close();
-			}
-			System.out.println("User data loaded.");
-		} catch (Exception ex) {
-			System.out.println("Error while loading user data: " + ex.toString());
-		}
-	}
-
-	private void saveData() {
-		try {
-			File localFile = new File("data/user.data");
-			if (!localFile.exists())
-				localFile.createNewFile();
-			PrintWriter out = new PrintWriter(localFile);
-			Iterator<Map.Entry<String, Integer>> iterator = properties.entrySet().iterator();
-			while (iterator.hasNext()) {
-				Map.Entry<String, Integer> entry = iterator.next();
-				out.println(entry.getKey() + "(" + entry.getValue() + ")");
-			}
-			out.close();
-			System.out.println("User data saved.");
-		} catch (Exception ex) {
-			System.out.println("Error while saving user data: " + ex.toString());
-		}
-	}
-
 	final String car_models[] = {
 			"2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
 			"policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
@@ -1721,11 +1686,10 @@ public class GameSparker extends Applet implements Runnable {
 	 */
 	public static boolean splashScreenState = true;
 	
-	public static final String cookieDir = "data/cookies/";
-	public static final String cookieDirZip = "data/cookies/cookies.zip";
-	public static final String cookieDirTempZip = "data/cookies/cookiesTemp.zip";
+	public static final String cookieDir = "data/";
+	public static final String cookieDirZip = "data/cookies.zip";
 	
-	public static boolean t = false;
+	private String stageError = "";
 
 	CheckPoints cp;
 	Graphics2D rd;
