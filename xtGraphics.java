@@ -1559,7 +1559,6 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 	}
 
-	// @SuppressWarnings("deprecation")
 	public void stoploading() {
 		loading();
 		app.repaint();
@@ -1632,7 +1631,6 @@ public class xtGraphics extends Panel implements Runnable {
 		m.flex = 0;
 	}
 
-	// @SuppressWarnings("deprecation")
 	public void loadmusic(int i, int j) {
 		hipnoload(i, false);
 		app.setCursor(new Cursor(3));
@@ -3681,8 +3679,6 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.setFont(new Font("SansSerif", 1, 11));
 		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(333, "Loading game, please wait.", 0, 0, 0, 3);
-		rd.setColor(new Color(255, 255, 255));
-		rd.fillRect(230, 373, 210, 17);
 		shload += ((dnload + 10F) - shload) / 100F;
 		if (shload > kbload) {
 			shload = kbload;
