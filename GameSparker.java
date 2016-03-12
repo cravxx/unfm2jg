@@ -4,8 +4,11 @@ import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
@@ -100,6 +103,42 @@ public class GameSparker extends Applet implements Runnable {
 		return false;
 	}
 	
+	public void savecookie(String filename, String num) {
+		try {			
+			/**
+			 * since I want full control over the filenames, we'll create a normal file in the temporary file directory		
+			 */
+			String tempDir = System.getProperty("java.io.tmpdir");			
+			File[] cookieFile = {new File(tempDir + filename + ".dat")};
+			FileWriter fw = new FileWriter(cookieFile[0].getAbsolutePath());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(num + '\n');
+			bw.close();
+			
+			File cookieZip = new File(cookieDirZip);
+			if (!cookieZip.exists()) {
+				cookieZip.createNewFile();			
+			}
+			
+			addFile(cookieZip, cookieFile, "");
+			
+			System.out.println("Successfully saved game (" + filename + ")");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static String fromStream(InputStream in) throws IOException
+	{
+	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+	    StringBuilder out = new StringBuilder();
+	    String line;
+	    while ((line = reader.readLine()) != null) {
+	        out.append(line);
+	    }
+	    return out.toString();
+	}		
+	
 	/**
 	 * attempts to read a cookie
 	 * @param string
@@ -107,12 +146,22 @@ public class GameSparker extends Applet implements Runnable {
 	 */
 	public int readcookie(String string) {
 		try {
-			BufferedReader saveFile = new BufferedReader(new FileReader(cookieDir + string + ".dat"));
+			ZipFile zipFile = new ZipFile(cookieDirZip);
+			Enumeration<? extends ZipEntry> entries = zipFile.entries();
+			
+			int cookieValue = -1;
+			
+		    while(entries.hasMoreElements()){
+		        ZipEntry entry = entries.nextElement();
+		        if(entry.getName().contains(string)){
+		        	InputStream stream = zipFile.getInputStream(entry);
+		        	cookieValue = Integer.parseInt(fromStream(stream));
+		        }
+		    }
+		    zipFile.close();
 
-			String saveLine = saveFile.readLine();
-			saveFile.close();
-			System.out.println("Successfully read cookie " + string + " with value " + Integer.parseInt(saveLine));
-			return Integer.parseInt(saveLine);
+			System.out.println("Successfully read cookie " + string + " with value " + cookieValue);
+			return cookieValue;
 		} catch (IOException ioexception) {
 			//System.out.println(ioexception.toString());
 			System.out.println(string + ".dat probably doesn't exist");
@@ -1531,20 +1580,50 @@ public class GameSparker extends Applet implements Runnable {
 		}
 	}
 
-	public void savecookie(String filename, String num) {
+	private void addFile(File source, File[] files, String path) {
 		try {
-			FileWriter saveFile = new FileWriter(cookieDir + filename + ".dat");
-			// Write the data to the file.
-			saveFile.write(num);
-			saveFile.write("\n");
-			// All done, close the FileWriter.
-			saveFile.close();
-			System.out.println("Successfully saved game (" + filename + ")");
-		} catch (IOException fileNoAccess) {
-			System.out.println(filename + ".dat couldn't be accessed...");
-			//fileNoAccess.printStackTrace();
+			File tmpZip = File.createTempFile(source.getName(), null);
+			tmpZip.delete();
+			if (!source.renameTo(tmpZip)) {
+				throw new Exception("Could not make temp file (" + source.getName() + ")");
+			}
+			byte[] buffer = new byte[4096];
+			ZipInputStream zin = new ZipInputStream(new FileInputStream(tmpZip));
+			ZipOutputStream out = new ZipOutputStream(new FileOutputStream(source));
+			for (int i = 0; i < files.length; i++) {
+				InputStream in = new FileInputStream(files[i]);
+				out.putNextEntry(new ZipEntry(path + files[i].getName()));
+				for (int read = in.read(buffer); read > -1; read = in.read(buffer)) {
+					out.write(buffer, 0, read);
+				}
+				out.closeEntry();
+				in.close();
+			}
+			for (ZipEntry ze = zin.getNextEntry(); ze != null; ze = zin.getNextEntry()) {
+				if (!zipEntryMatch(ze.getName(), files, path)) {
+					out.putNextEntry(ze);
+					for (int read = zin.read(buffer); read > -1; read = zin.read(buffer)) {
+						out.write(buffer, 0, read);
+					}
+					out.closeEntry();
+				}
+			}
+			out.close();
+			tmpZip.delete();
+			zin.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
+
+	private boolean zipEntryMatch(String zeName, File[] files, String path) {
+		for (int i = 0; i < files.length; i++) {
+			if ((path + files[i].getName()).equals(zeName)) {
+				return true;
+			}
+		}
+		return false;
+	}			
 
 	public void catchlink(int i) {
 		if (!lostfcs) {
@@ -1643,6 +1722,8 @@ public class GameSparker extends Applet implements Runnable {
 	public static boolean splashScreenState = true;
 	
 	public static final String cookieDir = "data/cookies/";
+	public static final String cookieDirZip = "data/cookies/cookies.zip";
+	public static final String cookieDirTempZip = "data/cookies/cookiesTemp.zip";
 	
 	public static boolean t = false;
 
