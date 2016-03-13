@@ -100,31 +100,37 @@ public class GameSparker extends Applet implements Runnable {
 	}
 
 	public void savecookie(String filename, String num) {
-		try {
-			/**
-			 * since I want full control over the filenames, we'll create a normal file in the temporary file directory
-			 */
-			String tempDir = System.getProperty("java.io.tmpdir");
-			File[] cookieFile = {
-					new File(tempDir + filename + ".dat")
-			};
-			FileWriter fw = new FileWriter(cookieFile[0].getAbsolutePath());
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(num + '\n');
-			bw.close();
+	      try {
+	         /**
+	          * since I want full control over the filenames, we'll create a normal file in the temporary file directory
+	          */
+	         try {
+	            File[] cookieFile = {
+	                  new File(cookieDirTemp + filename + ".dat")
+	            };
+	            FileWriter fw = new FileWriter(cookieFile[0].getAbsolutePath());
+	            BufferedWriter bw = new BufferedWriter(fw);
+	            bw.write(num + '\n');
+	            bw.close();
 
-			File cookieZip = new File(cookieDirZip);
-			if (!cookieZip.exists()) {
-				cookieZip.createNewFile();
-			}
+	            File cookieZip = new File(cookieDirZip);
+	            if (!cookieZip.exists()) {
+	               cookieZip.createNewFile();
+	            }
 
-			addFile(cookieZip, cookieFile, "");
+	            addFile(cookieZip, cookieFile, "");
+	            
+	            cookieFile[0].delete();
 
-			System.out.println("Successfully saved game (" + filename + ")");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	            System.out.println("Successfully saved game (" + filename + ")");
+	         } catch (SecurityException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	         }
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      }
+	   }
 
 	public static String fromStream(InputStream in) throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -1687,6 +1693,7 @@ public class GameSparker extends Applet implements Runnable {
 	public static boolean splashScreenState = true;
 	
 	public static final String cookieDir = "data/";
+	public static final String cookieDirTemp = "data/cookies/";
 	public static final String cookieDirZip = "data/cookies.zip";
 	
 	private String stageError = "";
