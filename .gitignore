@@ -1,13 +1,6 @@
 /bin/
 !madness.exe
 !madness64.exe
-/data/user.data
-/data/cookies/*
+/data/cookies.radq
 .*.sw*
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
 /bin/
