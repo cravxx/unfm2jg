@@ -100,48 +100,48 @@ public class GameSparker extends Applet implements Runnable {
 	}
 
 	public void savecookie(String filename, String num) {
-	      try {
-	         /**
-	          * since I want full control over the filenames, we'll create a normal file in the temporary file directory
-	          */
-	         try {
-	        	File cookieTempLocation = new File(cookieDirTemp);
-	        	
-	        	if(!cookieTempLocation.exists()){
-	        		cookieTempLocation.mkdirs();
-	        	}
-	        	
-	            File[] cookieFile = {
-	                  new File(cookieDirTemp + filename + ".dat")
-	            };
-	            
-	            if (!cookieFile[0].exists()) {
-		               cookieFile[0].createNewFile();
-		            }
-	            FileWriter fw = new FileWriter(cookieFile[0].getPath());
-	            BufferedWriter bw = new BufferedWriter(fw);
-	            bw.write(num + '\n');
-	            bw.close();
+		try {
+			/**
+			 * since I want full control over the filenames, we'll create a normal file in the temporary file directory
+			 */
+			try {
+				File cookieTempLocation = new File(cookieDirTemp);
 
-	            File cookieZip = new File(cookieDirZip);
-	            if (!cookieZip.exists()) {
-	               cookieZip.createNewFile();
-	            }
+				if (!cookieTempLocation.exists()) {
+					cookieTempLocation.mkdirs();
+				}
 
-	            addFile(cookieZip, cookieFile, "");
-	            
-	            cookieFile[0].delete();
-	            cookieTempLocation.delete();
+				File[] cookieFile = {
+						new File(cookieDirTemp + filename + ".dat")
+				};
 
-	            System.out.println("Successfully saved game (" + filename + ")");
-	         } catch (SecurityException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	         }
-	      } catch (IOException e) {
-	         e.printStackTrace();
-	      }
-	   }
+				if (!cookieFile[0].exists()) {
+					cookieFile[0].createNewFile();
+				}
+				FileWriter fw = new FileWriter(cookieFile[0].getPath());
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write(num + '\n');
+				bw.close();
+
+				File cookieZip = new File(cookieDirZip);
+				if (!cookieZip.exists()) {
+					cookieZip.createNewFile();
+				}
+
+				addFile(cookieZip, cookieFile, "");
+
+				cookieFile[0].delete();
+				cookieTempLocation.delete();
+
+				System.out.println("Successfully saved game (" + filename + ")");
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static String fromStream(InputStream in) throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -1702,10 +1702,10 @@ public class GameSparker extends Applet implements Runnable {
 	 * false to disable splash
 	 */
 	public static boolean splashScreenState = true;
-	
+
 	public static final String cookieDir = "data/";
 	public static final String cookieDirTemp = "data/cookies/";
-	public static final String cookieDirZip = "data/cookies.zip";
+	public static final String cookieDirZip = "data/cookies.radq";
 	
 	private String stageError = "";
 
