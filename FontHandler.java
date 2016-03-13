@@ -27,10 +27,10 @@ public class FontHandler {
 		System.out.println("Done loading fonts!");
 	}
 
-	public void loadFonts() {
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	public void loadFonts() {		
 		try {			
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getClassLoader().getResource(fontPath + "OpenSans-Bold.ttf").getFile())));
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontPath + "OpenSans-Bold.ttf")));
 			
 			/*
 			 * how to do it
@@ -41,23 +41,24 @@ public class FontHandler {
 			
 			//ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,  this.getClass().getResourceAsStream(fontPath + "font name")));
 			 
+			/*
+			 * print out all the fonts that are usable by java in your environment
+			 */
+			/*Font[] fonts = ge.getAllFonts();
+			for (int i = 0; i < fonts.length; i++) {
+				System.out.print(fonts[i].getFontName() + " : ");
+				System.out.print(fonts[i].getFamily() + " : ");
+				System.out.print(fonts[i].getName());
+				System.out.println();
+			}*/
+			
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		/*
-		 * print out all the fonts that are usable by java in your environment
-		 */
-		/*Font[] fonts = ge.getAllFonts();
-		for (int i = 0; i < fonts.length; i++) {
-			System.out.print(fonts[i].getFontName() + " : ");
-			System.out.print(fonts[i].getFamily() + " : ");
-			System.out.print(fonts[i].getName());
-			System.out.println();
-		}*/
+		}		
 	}
 
 }
