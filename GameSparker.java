@@ -105,10 +105,20 @@ public class GameSparker extends Applet implements Runnable {
 	          * since I want full control over the filenames, we'll create a normal file in the temporary file directory
 	          */
 	         try {
+	        	File cookieTempLocation = new File(cookieDirTemp);
+	        	
+	        	if(!cookieTempLocation.exists()){
+	        		cookieTempLocation.mkdirs();
+	        	}
+	        	
 	            File[] cookieFile = {
 	                  new File(cookieDirTemp + filename + ".dat")
 	            };
-	            FileWriter fw = new FileWriter(cookieFile[0].getAbsolutePath());
+	            
+	            if (!cookieFile[0].exists()) {
+		               cookieFile[0].createNewFile();
+		            }
+	            FileWriter fw = new FileWriter(cookieFile[0].getPath());
 	            BufferedWriter bw = new BufferedWriter(fw);
 	            bw.write(num + '\n');
 	            bw.close();
@@ -121,6 +131,7 @@ public class GameSparker extends Applet implements Runnable {
 	            addFile(cookieZip, cookieFile, "");
 	            
 	            cookieFile[0].delete();
+	            cookieTempLocation.delete();
 
 	            System.out.println("Successfully saved game (" + filename + ")");
 	         } catch (SecurityException e) {
