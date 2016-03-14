@@ -1,15 +1,15 @@
 
 public class Control {
-	boolean left;
-	boolean right;
-	boolean up;
-	boolean down;
-	boolean handb;
-	int lookback;
-	boolean enter;
-	boolean arrace;
-	boolean mutem;
-	boolean mutes;
+	public boolean left;
+	public boolean right;
+	public boolean up;
+	public boolean down;
+	public boolean handb;
+	public int lookback;
+	public boolean enter;
+	public boolean arrace;
+	public boolean mutem;
+	public boolean mutes;
 	private Medium m;
 	private int pan;
 	private int attack;
@@ -34,11 +34,11 @@ public class Control {
 	private boolean usebounce;
 	private float trickprf;
 	private int stuntf;
-	boolean zyinv;
+	public boolean zyinv;
 	private boolean lastl;
 	private boolean wlastl;
 	private int hold;
-	int wall;
+	public int wall;
 	private int lwall;
 	private int stcnt;
 	private int statusque;

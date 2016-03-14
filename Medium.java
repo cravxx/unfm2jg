@@ -17,11 +17,11 @@ public class Medium
 	private int[][] mty = null;
 	private int[][] mtz = null;
 	private int[][][] mtc = null;
-	int mgen;
-	int focus_point;
-	int ground;
+	public int mgen;
+	public int focus_point;
+	public int ground;
 	private int skyline;
-	int fade[] = {
+	public int fade[] = {
 			3000, 4500, 6000, 7500, 9000, 10500, 12000, 13500, 15000, 16500, 18000, 19500, 21000, 22500, 24000, 25500
 	};
 	private int cldd[] = {
@@ -33,13 +33,13 @@ public class Medium
 	private int osky[] = {
 			170, 220, 255
 	};
-	int csky[] = {
+	public int csky[] = {
 			170, 220, 255
 	};
 	private int ogrnd[] = {
 			205, 200, 200
 	};
-	int cgrnd[] = {
+	public int cgrnd[] = {
 			205, 200, 200
 	};
 	private int texture[] = {
@@ -51,42 +51,41 @@ public class Medium
 	private int crgrnd[] = {
 			205, 200, 200
 	};
-	int cfade[] = {
+	public int cfade[] = {
 			255, 220, 220
 	};
-	int snap[] = {
+	public int snap[] = {
 			0, 0, 0
 	};
-	int origfade;
-	int fogd;
-	//boolean loadnew;
-	boolean lightson;
+	public int origfade;
+	public int fogd;
+	public boolean lightson;
 	private int noelec;
-	int lightn;
+	public int lightn;
 	private boolean lton;
 	private int lilo;
-	int flex;
-	boolean trk;
-	boolean crs;
-	int cx;
-	int cy;
-	int cz;
-	int xz;
-	int zy;
-	int x;
-	int y;
-	int z;
-	int w;
-	int h;
-	int nsp;
-	int spx[];
-	int spz[];
-	int sprad[];
+	public int flex;
+	public boolean trk;
+	public boolean crs;
+	public int cx;
+	public int cy;
+	public int cz;
+	public int xz;
+	public int zy;
+	public int x;
+	public int y;
+	public int z;
+	public int w;
+	public int h;
+	public int nsp;
+	public int spx[];
+	public int spz[];
+	public int sprad[];
 	private boolean td;
 	private int bcxz;
-	int vxz;
-	int adv;
-	boolean vert;
+	public int vxz;
+	public int adv;
+	public boolean vert;
 	private int trns;
 	private int ogpx[][];
 	private int ogpz[][];
@@ -96,25 +95,25 @@ public class Medium
 	private int sgpz;
 	private int nrw;
 	private int ncl;
-	int lastmaf;
-	int checkpoint;
-	boolean lastcheck;
-	float elecr;
-	boolean cpflik;
-	boolean nochekflk;
+	public int lastmaf;
+	public int checkpoint;
+	public boolean lastcheck;
+	public float elecr;
+	public boolean cpflik;
+	public boolean nochekflk;
 	private int cntrn;
 	private boolean diup[];
 	private int rand[];
 	private int trn;
-	int hit;
-	int ptr;
-	int ptcnt;
-	int nrnd;
-	long trx;
-	long trz;
+	public int hit;
+	public int ptr;
+	public int ptcnt;
+	public int nrnd;
+	public long trx;
+	public long trz;
 	private long atrx;
 	private long atrz;
-	int fallen;
+	public int fallen;
 	private float fo;
 	private float gofo;
 	private float pvr[][];

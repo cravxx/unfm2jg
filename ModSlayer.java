@@ -3,27 +3,29 @@ import java.io.IOException;
 
 public class ModSlayer {
 
-	static final String VERSION = "1.0";
-	static final String COPYRIGHT = "";
-	static final int EFF_VOL_SLIDE = 1;
-	static final int EFF_PORT_DOWN = 2;
-	static final int EFF_PORT_UP = 4;
-	static final int EFF_VIBRATO = 8;
-	static final int EFF_ARPEGGIO = 16;
-	static final int EFF_PORT_TO = 32;
-	static final int EFF_TREMOLO = 64;
-	static final int EFF_RETRIG = 128;
-	static final int MIX_BUF_SIZE = 2048;
-	static final int DEF_TEMPO_NTSC = 6;
-	static final int DEF_TEMPO_PAL = 6;
-	static final int DEF_BPM_NTSC = 125;
-	static final int DEF_BPM_PAL = 145;
-	static final int MIDCRATE = 8448;
-	static final int MAX_SAMPLES = 100;
-	static final int MAX_TRACKS = 32;
-	static final int S3M_MAGIC1 = 4122;
-	static final int S3M_MAGIC2 = Mod.fourCC("SCRM");
-	static final int S3M_INSTR2 = Mod.fourCC("SCRS");
+	private Mod mod;
+	private ModTrackInfo tracks[];
+	public static final String VERSION = "1.0";
+	public static final String COPYRIGHT = "";
+	public static final int EFF_VOL_SLIDE = 1;
+	public static final int EFF_PORT_DOWN = 2;
+	public static final int EFF_PORT_UP = 4;
+	public static final int EFF_VIBRATO = 8;
+	public static final int EFF_ARPEGGIO = 16;
+	public static final int EFF_PORT_TO = 32;
+	public static final int EFF_TREMOLO = 64;
+	public static final int EFF_RETRIG = 128;
+	public static final int MIX_BUF_SIZE = 2048;
+	public static final int DEF_TEMPO_NTSC = 6;
+	public static final int DEF_TEMPO_PAL = 6;
+	public static final int DEF_BPM_NTSC = 125;
+	public static final int DEF_BPM_PAL = 145;
+	public static final int MIDCRATE = 8448;
+	public static final int MAX_SAMPLES = 100;
+	public static final int MAX_TRACKS = 32;
+	public static final int S3M_MAGIC1 = 4122;
+	public static final int S3M_MAGIC2 = Mod.fourCC("SCRM");
+	public static final int S3M_INSTR2 = Mod.fourCC("SCRS");
 	private static final int normal_vol_adj[] = {
 			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
 			29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
@@ -44,7 +46,7 @@ public class ModSlayer {
 			170, 160, 151, 143, 135, 127, 120, 113, 107, 101, 95, 90, 85, 80, 76, 71, 67, 64, 60, 57, 53, 50, 48, 45,
 			42, 40, 38, 36, 34, 32, 30, 28, 27, 25, 24, 22, 21, 20, 19, 18, 17, 16, 15, 14
 	};
-	static final int period_set_step[] = {
+	public static final int period_set_step[] = {
 			1664, 1570, 1482, 1399, 1321, 1247, 1177, 1110, 1048, 989, 934, 881, 832, 785, 741, 699, 660, 623, 588, 555,
 			524, 494, 466, 440, 416, 392, 370, 350, 330, 312, 294, 278, 262, 247, 233, 220, 208, 196, 185, 175, 165,
 			155, 147, 139, 131, 123, 116, 110, 104, 98, 92, 87, 82, 78, 73, 69, 65, 62, 58, 55, 51, 49, 46, 43, 41, 39,
@@ -54,8 +56,7 @@ public class ModSlayer {
 	private int def_bpm;
 	private byte vol_table[];
 	private int vol_adj[];
-	private int vol_shift;
-	private Mod mod;
+	private int vol_shift;	
 	private int order_pos;
 	private int tempo;
 	private int tempo_wait;
@@ -66,7 +67,6 @@ public class ModSlayer {
 	private int pattofs;
 	private byte patt[];
 	private int numtracks;
-	private ModTrackInfo tracks[];
 	private int mixspeed;
 	private boolean mod_done;
 	private boolean bit16;
@@ -75,10 +75,10 @@ public class ModSlayer {
 	private int gain;
 	private int nloops;
 	private boolean loud;
-	static final byte sunfmt[] = {
+	public static final byte sunfmt[] = {
 			46, 115, 110, 100, 0, 0, 0, 24, 127, 127, 127, 127, 0, 0, 0, 1, 0, 0, 31, 76, 0, 0, 0, 1, 0, 0, 0, 0
 	};
-	int oln;
+	public int oln;
 
 	private final void beattrack(ModTrackInfo modtrackinfo) {
 		if (modtrackinfo.period_low_limit == 0) {
@@ -144,7 +144,7 @@ public class ModSlayer {
 		}
 	}
 
-	private final void mixtrack_16_mono(ModTrackInfo modtrackinfo, int ai[], int i, int j) {
+	private final void mixtrack16Mono(ModTrackInfo modtrackinfo, int ai[], int i, int j) {
 		byte abyte0[] = modtrackinfo.samples;
 		int k = modtrackinfo.position;
 		int j1 = vol_adj[modtrackinfo.volume] * gain >> vol_shift + 8;
@@ -213,7 +213,7 @@ public class ModSlayer {
 		def_bpm = k;
 	}
 
-	private final void make_vol_table8() {
+	private final void makeVolTable8() {
 		vol_table = new byte[16640];
 		int i = 0;
 		do {
@@ -239,7 +239,7 @@ public class ModSlayer {
 			}
 			System.arraycopy(ai1, 0, ai, 0, bpm_samples);
 			for (int i = 0; i < numtracks; i++) {
-				mixtrack_16_mono(tracks[i], ai, 0, bpm_samples);
+				mixtrack16Mono(tracks[i], ai, 0, bpm_samples);
 			}
 
 			int i1 = bpm_samples;
@@ -501,7 +501,7 @@ public class ModSlayer {
 			vol_shift = 0;
 		}
 		if (!bit16) {
-			make_vol_table8();
+			makeVolTable8();
 		}
 	}
 
@@ -538,7 +538,7 @@ public class ModSlayer {
 			}
 			System.arraycopy(ai1, 0, ai, 0, bpm_samples);
 			for (int i = 0; i < numtracks; i++) {
-				mixtrack_16_mono(tracks[i], ai, 0, bpm_samples);
+				mixtrack16Mono(tracks[i], ai, 0, bpm_samples);
 			}
 
 			int l1 = bpm_samples;
