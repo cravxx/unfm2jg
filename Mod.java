@@ -4,15 +4,14 @@ import java.io.*;
 public class Mod {
 
 	private String name;
-	int numtracks;
-	//int track_shift;
+	public int numtracks;
 	private int numpatterns;
-	byte patterns[][];
-	ModInstrument insts[];
-	byte positions[];
-	int song_length_patterns;
+	public byte patterns[][];
+	public ModInstrument insts[];
+	public byte positions[];
+	public int song_length_patterns;
 	private int song_repeat_patterns;
-	boolean s3m;
+	public boolean s3m;
 	private static final int voice_mk;
 	private static final int voice_mk2;
 	private static final int voice_mk3;

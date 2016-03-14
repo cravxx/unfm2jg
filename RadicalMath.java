@@ -5,12 +5,12 @@
  */
 public class RadicalMath {
 
-    static float sin_m_zy;
-    static float cos_m_zy;
-    static float sin_m_xz;
-    static float cos_m_xz;
-    static float sin_m_xy;
-    static float cos_m_xy;
+	public static float sin_m_zy;
+	public static float cos_m_zy;
+	public static float sin_m_xz;
+	public static float cos_m_xz;
+	public static float sin_m_xy;
+	public static float cos_m_xy;
 
     static private float[] tcos = new float[360];
     static private float[] tsin = new float[360];

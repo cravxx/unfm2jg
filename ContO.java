@@ -10,25 +10,48 @@ public class ContO {
 	public Medium m;
 	public Trackers t;
 	public Plane p[];
-	public int npl;
-	public int x;
-	public int y;
-	public int z;
-	public int xz;
-	public int xy;
-	public int zy;
-	public int wxz;
-	public int wzy;
-	public int dist;
-	public int maxR;
-	public int disp;
-	public int disline;
-	public boolean shadow;
-	public boolean noline;
-	public float grounded;
-	public int grat;
-	public int keyx[];
-	public int keyz[];
+	public int npl = 0;
+	public int x = 0;
+	public int y = 0;
+	public int z = 0;
+	public int xz = 0;
+	public int xy = 0;
+	public int zy = 0;
+	public int wxz = 0;
+	public int wzy = 0;
+	public int dist = 0;
+	public int maxR = 0;
+	public int disp = 0;
+	/*
+	 * first set 7
+	 * seconds set 0
+	 */
+	public int disline = 7;
+	public boolean shadow = false;
+	public boolean noline = false;
+	public float grounded = 1.0F;
+	public int grat = 0;
+	public int keyx[] = new int[4];
+	public int keyz[] = new int[4];
+	public int sx[] = new int[4];
+	public int sy[] = new int[4];
+	public int sz[] = new int[4];
+	public int stg[] = new int[4];
+	public int dov[] = new int[4];
+	public float smag[] = new float[4];
+	public int scx[] = new int[4];
+	public int scz[] = new int[4];
+	public boolean fulls[] = new boolean[4];
+	public boolean elec = false;
+	public boolean roted = false;
+	public int edl[] = new int[4];
+	public int edr[] = new int[4];
+	public int elc[] = new int[4];
+	public boolean fix = false;
+	public int fcnt = 0;
+	public int checkpoint = 0;
+	public int tnt = 0;
+	
 	public int txy[];
 	public int tzy[];
 	public int tc[][];
@@ -41,24 +64,7 @@ public class ContO {
 	public int skd[];
 	public int dam[];
 	public boolean notwall[];
-	public int tnt;
-	public int sx[];
-	public int sy[];
-	public int sz[];
-	public int stg[];
-	public int dov[];
-	public float smag[];
-	public int scx[];
-	public int scz[];
-	public boolean fulls[];
-	public boolean elec;
-	public boolean roted;
-	public int edl[];
-	public int edr[];
-	public int elc[];
-	public boolean fix;
-	public int fcnt;
-	public int checkpoint;
+	
 
 	public void pdust(int i, Graphics2D rd, int j) {
 		if (j * dov[i] > 0) {
@@ -195,44 +201,8 @@ public class ContO {
 		}
 	}
 
-	public ContO(byte abyte0[], Medium medium, Trackers trackers) {
-		npl = 0;
-		x = 0;
-		y = 0;
-		z = 0;
-		xz = 0;
-		xy = 0;
-		zy = 0;
-		wxz = 0;
-		wzy = 0;
-		dist = 0;
-		maxR = 0;
-		disp = 0;
-		disline = 7;
-		shadow = false;
-		noline = false;
-		grounded = 1.0F;
-		grat = 0;
-		keyx = new int[4];
-		keyz = new int[4];
-		tnt = 0;
-		sx = new int[4];
-		sy = new int[4];
-		sz = new int[4];
-		stg = new int[4];
-		dov = new int[4];
-		smag = new float[4];
-		scx = new int[4];
-		scz = new int[4];
-		fulls = new boolean[4];
-		elec = false;
-		roted = false;
-		edl = new int[4];
-		edr = new int[4];
-		elc = new int[4];
-		fix = false;
-		fcnt = 0;
-		checkpoint = 0;
+	public ContO(byte abyte0[], Medium medium, Trackers trackers) {		
+		
 		m = medium;
 		t = trackers;
 		p = new Plane[270];
@@ -454,44 +424,7 @@ public class ContO {
 		grat = wheels.ground;
 	}
 
-	public ContO(ContO conto, int i, int j, int k, int l) {
-		npl = 0;
-		x = 0;
-		y = 0;
-		z = 0;
-		xz = 0;
-		xy = 0;
-		zy = 0;
-		wxz = 0;
-		wzy = 0;
-		dist = 0;
-		maxR = 0;
-		disp = 0;
-		disline = 7;
-		shadow = false;
-		noline = false;
-		grounded = 1.0F;
-		grat = 0;
-		keyx = new int[4];
-		keyz = new int[4];
-		tnt = 0;
-		sx = new int[4];
-		sy = new int[4];
-		sz = new int[4];
-		stg = new int[4];
-		dov = new int[4];
-		smag = new float[4];
-		scx = new int[4];
-		scz = new int[4];
-		fulls = new boolean[4];
-		elec = false;
-		roted = false;
-		edl = new int[4];
-		edr = new int[4];
-		elc = new int[4];
-		fix = false;
-		fcnt = 0;
-		checkpoint = 0;
+	public ContO(ContO conto, int i, int j, int k, int l) {					
 		m = conto.m;
 		t = conto.t;
 		npl = conto.npl;
@@ -515,9 +448,6 @@ public class ContO {
 		x = i;
 		y = j;
 		z = k;
-		xz = 0;
-		xy = 0;
-		zy = 0;
 		for (int j1 = 0; j1 < npl; j1++) {
 			p[j1].master = conto.p[j1].master;
 			Utility.rot(p[j1].ox, p[j1].oz, 0, 0, l, p[j1].n);

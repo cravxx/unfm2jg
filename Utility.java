@@ -9,9 +9,9 @@ import javax.imageio.ImageIO;
  *
  */
 public class Utility {
-	static Medium medium;
+	private static Medium medium;
 	
-	static long startTime;
+	private static long startTime;
 	
 	public Utility() {
 		medium = new Medium();

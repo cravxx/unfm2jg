@@ -13,7 +13,7 @@ public class RadicalMod {
 	private byte modf[];	
 	private boolean suny;
 	private boolean playing;
-	int loaded;
+	public int loaded;
 
 	public void stop() {
 		if (playing && loaded == 2) {

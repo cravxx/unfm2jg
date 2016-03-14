@@ -1,17 +1,15 @@
 
 class ModInstrument {
 
-	String name;
-	byte samples[];
-	int sample_length;
-	int finetune_rate;
-	int period_low_limit;
-	int period_high_limit;
-	int finetune_value;
-	int volume;
-	int repeat_point;
-	int repeat_length;
+	public String name;
+	public byte samples[];
+	public int sample_length;
+	public int finetune_rate;
+	public int period_low_limit;
+	public int period_high_limit;
+	public int finetune_value;
+	public int volume;
+	public int repeat_point;
+	public int repeat_length;
 
-	ModInstrument() {
-	}
 }

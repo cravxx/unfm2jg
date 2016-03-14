@@ -1,66 +1,46 @@
 
 public class CheckPoints {
 
-	int x[];
-	int z[];
-	int y[];
-	int typ[];
-	int pcs;
-	int nsp;
-	int n;
-	int fx[];
-	int fz[];
-	int fy[];
-	boolean roted[];
-	boolean special[];
-	int fn;
-	int stage;
-	int nlaps;
-	String name;
-	int pos[] = {
+	public int x[] = new int[140];
+	public int z[] = new int[140];
+	public int y[] = new int[140];
+	public int typ[] = new int[140];
+	public int pcs = 0;
+	public int nsp = 0;
+	public int n = 0;
+	public int fx[] = new int[5];
+	public int fz[] = new int[5];
+	public int fy[] = new int[5];
+	public boolean roted[] = new boolean[5];
+	public boolean special[] = new boolean[5];
+	public int fn = 0;
+	public int stage = 1;
+	public int nlaps = 0 ;
+	/**
+	 * stage name<br>
+	 * <b>hogan rewish</b> if none is found
+	 */
+	public String name = "hogan rewish";
+	public int pos[] = {
 			6, 6, 6, 6, 6, 6, 6
 	};
-	int clear[];
-	int dested[];
-	int wasted;
-	boolean haltall;
-	int pcleared;
-	int opx[];
-	int opz[];
-	int onscreen[];
-	int omxz[];
-	int catchfin;
-	private int postwo;
-
-	public CheckPoints() {
-		x = new int[140];
-		z = new int[140];
-		y = new int[140];
-		typ = new int[140];
-		pcs = 0;
-		nsp = 0;
-		n = 0;
-		fx = new int[5];
-		fz = new int[5];
-		fy = new int[5];
-		roted = new boolean[5];
-		special = new boolean[5];
-		fn = 0;
-		stage = 1;
-		nlaps = 0;
-		name = "hogan rewish";
-		clear = new int[7];
-		dested = new int[7];
-		wasted = 0;
-		haltall = false;
-		pcleared = 0;
-		opx = new int[7];
-		opz = new int[7];
-		onscreen = new int[7];
-		omxz = new int[7];
-		catchfin = 0;
-		postwo = 0;
-	}
+	/**
+	 * connected to number of cars
+	 */
+	public int clear[] = new int[7];
+	/**
+	 * connected to number of cars
+	 */
+	public int dested[] = new int[7];
+	public int wasted = 0;
+	public boolean haltall = false;
+	public int pcleared = 0;
+	public int opx[] = new int[7];
+	public int opz[] = new int[7];
+	public int onscreen[] = new int[7];
+	public int omxz[] = new int[7];
+	public int catchfin = 0;
+	private int postwo = 0;	
 
 	public void checkstat(Madness amadness[], ContO aconto[], Record record) {
 		if (!haltall) {

@@ -3,16 +3,17 @@ import java.awt.Color;
 
 public class Record {
 
-	private Medium m;
-	int caught;
-	boolean hcaught;
-	private boolean prepit;
 	ContO ocar[];
-	private int cntf;
+	ContO starcar[];
 	ContO car[][];
+	private Medium m;
+	public int caught;
+	public boolean hcaught;
+	private boolean prepit;	
+	private int cntf;	
 	private int squash[][];
-	int fix[];
-	int dest[];
+	public int fix[];
+	public int dest[];
 	private int x[][];
 	private int y[][];
 	private int z[][];
@@ -42,13 +43,12 @@ public class Record {
 	private int magz[][][];
 	private int checkpoint[];
 	private boolean lastcheck[];
-	int wasted;
-	int whenwasted;
-	int powered;
-	int closefinish;
-	ContO starcar[];
+	public int wasted;
+	public int whenwasted;
+	public int powered;
+	public int closefinish;
 	private int hsquash[];
-	int hfix[] = {
+	public int hfix[] = {
 			-1, -1, -1, -1, -1, -1, -1
 	};
 	private int hdest[] = {
@@ -83,7 +83,7 @@ public class Record {
 	private boolean hmtouch[][];
 	private int hcheckpoint[];
 	private boolean hlastcheck[];
-	int cntdest[];
+	public int cntdest[];
 	private int lastfr;
 
 	private void regy(int i, float f, boolean flag, ContO conto, Madness madness) {

@@ -20,14 +20,14 @@ public class GameSparker extends Applet implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -34048182014310663L;
-	static Utility utility;
+	public static Utility utility;
 	
-	final String car_models[] = {
+	public final String car_models[] = {
 			"2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
 			"policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
 	};
 
-	final String track_models[] = {
+	public final String track_models[] = {
 			"road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn", "nroad", "nturn",
 			"roblend", "noblend", "rnblend", "roadend", "offroadend", "hpground", "ramp30", "cramp35", "dramp15",
 			"dhilo15", "slide10", "takeoff", "sramp22", "offbump", "offramp", "sofframp", "halfpipe", "spikes", "rail",
@@ -35,7 +35,7 @@ public class GameSparker extends Applet implements Runnable {
 			"soffroad"
 	};
 
-	final String extra_models[] = {};
+	public final String extra_models[] = {};
 	
 	/**
 	 * false to disable splash
@@ -53,19 +53,19 @@ public class GameSparker extends Applet implements Runnable {
 	
 	private String stageError = "";
 
-	Graphics2D rd;
-	Graphics sg;
-	Image offImage;
-	Thread gamer;
-	Control u[];
-	int mouses;
-	int xm;
-	int ym;
-	boolean lostfcs;
-	boolean exwist;
-	int nob;
-	int notb;
-	int view;
+	public Graphics2D rd;
+	public Graphics sg;
+	public Image offImage;
+	public Thread gamer;
+	public Control u[];
+	public int mouses;
+	public int xm;
+	public int ym;
+	public boolean lostfcs;
+	public boolean exwist;
+	public int nob;
+	public int notb;
+	public int view;
 
 	/* variables for screen shake */
 	
@@ -313,12 +313,12 @@ public class GameSparker extends Applet implements Runnable {
 						what_do_i_add = car_models.length + track_models.length;
 					}
 					model_id = j + what_do_i_add;
-					System.out.println("found model " + model_id + " matching string \"" + input + "\"");
+					System.out.println("Found model " + model_id + " matching string \"" + input + "\"");
 					return model_id;
 				}
 			}
 		}
-		System.out.println("no results for getModel | check you're speling and grammer");
+		System.out.println("No results for getModel | check you're speling and grammer");
 		return -1;
 	}
 
@@ -367,8 +367,11 @@ public class GameSparker extends Applet implements Runnable {
 				}
 				conto[models_count] = new ContO(model_data, medium, trackers);
 				xtgraphics.dnload++;
-			}			
-			System.out.println((car_models.length + track_models.length + extra_models.length)); /// be sure to add your added arrays here
+			}
+			/*
+			 * be sure to add your added arrays here			
+			 */
+			System.out.println("Contos loaded: " + (car_models.length + track_models.length + extra_models.length));
 			zipinputstream.close();
 		} catch (Exception exception) {
 			System.out.println("Error Reading Models: " + exception);
@@ -811,7 +814,7 @@ public class GameSparker extends Applet implements Runnable {
 		Madness amadness[] = new Madness[7];
 		int l = 0;
 		do {
-			amadness[l] = new Madness(medium, record, xtgraphics, l);
+			amadness[l] = new Madness(medium, record, xtgraphics, l);			
 			u[l] = new Control(medium);
 		} while (++l < 7);
 		l = 0;
