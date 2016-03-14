@@ -145,7 +145,7 @@ public class Mod {
 		return modinstrument;
 	}
 
-	static final int fourCC(String s) {
+	public static final int fourCC(String s) {
 		return s.charAt(3) & 0xff | (s.charAt(2) & 0xff) << 8 | (s.charAt(1) & 0xff) << 16 | (s.charAt(0) & 0xff) << 24;
 	}
 

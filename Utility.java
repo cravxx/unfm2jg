@@ -9,14 +9,10 @@ import javax.imageio.ImageIO;
  *
  */
 public class Utility {
-	private static Medium medium;
+	private final static Medium medium = new Medium();
 	
 	private static long startTime;
-	
-	public Utility() {
-		medium = new Medium();
-	}	
-    
+	    
     /**
      * Gets a value from a string in format:
      * string(value1,value2,value3...)
@@ -86,6 +82,8 @@ public class Utility {
     		value = medium.cz;
     	case 1:
     		value = 10;
+    	default:
+    		break;
     	}    	
         if (j < value) {
             j = value;

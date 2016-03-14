@@ -297,7 +297,7 @@ public class Madness {
 	public int missedcp;
 	public int lastcolido;
 	public int point;
-	boolean nofocus;
+	public boolean nofocus;
 	private int rpdcatch;
 	private boolean colidim;
 	public int cn;

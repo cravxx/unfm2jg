@@ -41,7 +41,7 @@ public class RunApp extends Panel {
 		startup();
 	}
 
-	static void startup() {
+	public static void startup() {
 		frame = new Frame("UNFM2");// Change this to the name of your preference
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setIgnoreRepaint(true);

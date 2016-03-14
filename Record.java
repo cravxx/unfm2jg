@@ -3,9 +3,9 @@ import java.awt.Color;
 
 public class Record {
 
-	ContO ocar[];
-	ContO starcar[];
-	ContO car[][];
+	public ContO ocar[];
+	public ContO starcar[];
+	public ContO car[][];
 	private Medium m;
 	public int caught;
 	public boolean hcaught;

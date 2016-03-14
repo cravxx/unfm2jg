@@ -1749,235 +1749,235 @@ public class xtGraphics extends Panel implements Runnable {
 					j += k;
 				}
 
-				if (s.equals("kaff.jpg")) {
+				if ("kaff.jpg".equals(s)) {
 					kaff = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("cars.gif")) {
+				if ("cars.gif".equals(s)) {
 					carsbg = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("smokey.gif")) {
+				if ("smokey.gif".equals(s)) {
 					smokeypix(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("1.gif")) {
+				if ("1.gif".equals(s)) {
 					orank[0] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("gameh.gif")) {
+				if ("gameh.gif".equals(s)) {
 					ogameh = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("gameov.gif")) {
+				if ("gameov.gif".equals(s)) {
 					gameov = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("lap.gif")) {
+				if ("lap.gif".equals(s)) {
 					olap = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("paused.gif")) {
+				if ("paused.gif".equals(s)) {
 					paused = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("select.gif")) {
+				if ("select.gif".equals(s)) {
 					select = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("yourwasted.gif")) {
+				if ("yourwasted.gif".equals(s)) {
 					oyourwasted = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("youwastedem.gif")) {
+				if ("youwastedem.gif".equals(s)) {
 					oyouwastedem = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("d1.gif")) {
+				if ("d1.gif".equals(s)) {
 					dude[0] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("d2.gif")) {
+				if ("d2.gif".equals(s)) {
 					dude[1] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("d3.gif")) {
+				if ("d3.gif".equals(s)) {
 					dude[2] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("float.gif")) {
+				if ("float.gif".equals(s)) {
 					oflaot = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("1c.gif")) {
+				if ("1c.gif".equals(s)) {
 					ocntdn[1] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("2c.gif")) {
+				if ("2c.gif".equals(s)) {
 					ocntdn[2] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("3c.gif")) {
+				if ("3c.gif".equals(s)) {
 					ocntdn[3] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("2.gif")) {
+				if ("2.gif".equals(s)) {
 					orank[1] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("3.gif")) {
+				if ("3.gif".equals(s)) {
 					orank[2] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("4.gif")) {
+				if ("4.gif".equals(s)) {
 					orank[3] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("5.gif")) {
+				if ("5.gif".equals(s)) {
 					orank[4] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("6.gif")) {
+				if ("6.gif".equals(s)) {
 					orank[5] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("7.gif")) {
+				if ("7.gif".equals(s)) {
 					orank[6] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("bgmain.jpg")) {
+				if ("bgmain.jpg".equals(s)) {
 					bgmain = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("br.gif")) {
+				if ("br.gif".equals(s)) {
 					br = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("loadingmusic.gif")) {
+				if ("loadingmusic.gif".equals(s)) {
 					oloadingmusic = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("radicalplay.gif")) {
+				if ("radicalplay.gif".equals(s)) {
 					radicalplay = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("back.gif")) {
+				if ("back.gif".equals(s)) {
 					back[0] = loadimage(abyte0, mediatracker, toolkit);
 					back[1] = bressed(back[0]);
 				}
-				if (s.equals("continue2.gif")) {
+				if ("continue2.gif".equals(s)) {
 					contin[0] = loadimage(abyte0, mediatracker, toolkit);
 					contin[1] = bressed(contin[0]);
 				}
-				if (s.equals("next.gif")) {
+				if ("next.gif".equals(s)) {
 					next[0] = loadimage(abyte0, mediatracker, toolkit);
 					next[1] = bressed(next[0]);
 				}
-				if (s.equals("pgate.gif")) {
+				if ("pgate.gif".equals(s)) {
 					pgate = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("rpro.gif")) {
+				if ("rpro.gif".equals(s)) {
 					rpro = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("selectcar.gif")) {
+				if ("selectcar.gif".equals(s)) {
 					selectcar = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("track1.jpg")) {
+				if ("track1.jpg".equals(s)) {
 					trackbg[0][0] = loadimage(abyte0, mediatracker, toolkit);
 					trackbg[1][0] = dodgen(trackbg[0][0]);
 				}
-				if (s.equals("track2.jpg")) {
+				if ("track2.jpg".equals(s)) {
 					trackbg[0][1] = loadimage(abyte0, mediatracker, toolkit);
 					trackbg[1][1] = dodgen(trackbg[0][1]);
 				}
-				if (s.equals("youlost.gif")) {
+				if ("youlost.gif".equals(s)) {
 					oyoulost = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("youwon.gif")) {
+				if ("youwon.gif".equals(s)) {
 					oyouwon = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("0c.gif")) {
+				if ("0c.gif".equals(s)) {
 					ocntdn[0] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("damage.gif")) {
+				if ("damage.gif".equals(s)) {
 					odmg = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("power.gif")) {
+				if ("power.gif".equals(s)) {
 					opwr = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("position.gif")) {
+				if ("position.gif".equals(s)) {
 					opos = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("wasted.gif")) {
+				if ("wasted.gif".equals(s)) {
 					owas = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("start1.gif")) {
+				if ("start1.gif".equals(s)) {
 					ostar[0] = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("start2.gif")) {
+				if ("start2.gif".equals(s)) {
 					ostar[1] = loadimage(abyte0, mediatracker, toolkit);
 					star[2] = pressed(ostar[1]);
 				}
-				if (s.equals("congrad.gif")) {
+				if ("congrad.gif".equals(s)) {
 					congrd = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("statb.gif")) {
+				if ("statb.gif".equals(s)) {
 					statb = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("statbo.gif")) {
+				if ("statbo.gif".equals(s)) {
 					statbo = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("madness.gif")) {
+				if ("madness.gif".equals(s)) {
 					mdness = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("fixhoop.gif")) {
+				if ("fixhoop.gif".equals(s)) {
 					fixhoop = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("arrow.gif")) {
+				if ("arrow.gif".equals(s)) {
 					sarrow = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("stunts.gif")) {
+				if ("stunts.gif".equals(s)) {
 					stunts = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("racing.gif")) {
+				if ("racing.gif".equals(s)) {
 					racing = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("wasting.gif")) {
+				if ("wasting.gif".equals(s)) {
 					wasting = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("plus.gif")) {
+				if ("plus.gif".equals(s)) {
 					plus = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("space.gif")) {
+				if ("space.gif".equals(s)) {
 					space = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("arrows.gif")) {
+				if ("arrows.gif".equals(s)) {
 					arrows = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("chil.gif")) {
+				if ("chil.gif".equals(s)) {
 					chil = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("ory.gif")) {
+				if ("ory.gif".equals(s)) {
 					ory = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("kz.gif")) {
+				if ("kz.gif".equals(s)) {
 					kz = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("kx.gif")) {
+				if ("kx.gif".equals(s)) {
 					kx = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("kv.gif")) {
+				if ("kv.gif".equals(s)) {
 					kv = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("kp.gif")) {
+				if ("kp.gif".equals(s)) {
 					kp = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("km.gif")) {
+				if ("km.gif".equals(s)) {
 					km = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("kn.gif")) {
+				if ("kn.gif".equals(s)) {
 					kn = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("kenter.gif")) {
+				if ("kenter.gif".equals(s)) {
 					kenter = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("nfm.gif")) {
+				if ("nfm.gif".equals(s)) {
 					nfm = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("options.gif")) {
+				if ("options.gif".equals(s)) {
 					opti = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("opback.gif")) {
+				if ("opback.gif".equals(s)) {
 					opback = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("logocars.gif")) {
+				if ("logocars.gif".equals(s)) {
 					logocars = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("logomadmess.gif")) {
+				if ("logomadmess.gif".equals(s)) {
 					logomadnes = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("logomadbg.gif")) {
+				if ("logomadbg.gif".equals(s)) {
 					logomadbg = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("byrd.gif")) {
+				if ("byrd.gif".equals(s)) {
 					byrd = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("nfmcoms.gif")) {
+				if ("nfmcoms.gif".equals(s)) {
 					nfmcoms = loadimage(abyte0, mediatracker, toolkit);
 				}
-				if (s.equals("nfmcom.gif")) {
+				if ("nfmcom.gif".equals(s)) {
 					nfmcom = loadimage(abyte0, mediatracker, toolkit);
 				}
 				howManyImages++;
