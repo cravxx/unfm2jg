@@ -4,11 +4,11 @@ import javax.sound.sampled.*;
 
 public class SuperClip implements Runnable {
 
-	int skiprate;
-	Thread cliper;
-	int stoped;
-	SourceDataLine source;
-	ByteArrayInputStream stream;
+	private int skiprate;
+	private Thread cliper;
+	public int stoped;
+	private SourceDataLine source;
+	private ByteArrayInputStream stream;
 
 	public SuperClip(byte abyte0[], int i, int j) {
 		skiprate = 0;
