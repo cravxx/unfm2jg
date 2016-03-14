@@ -1,10 +1,6 @@
 
 public class Trackers {
-
-	String sequ[] = {
-			"Access Denied !", "This game will not run under this http:/ loaction:",
-			"Please contact radicalplay.com for details."
-	};
+	
 	int x[];
 	int y[];
 	int z[];
@@ -13,7 +9,6 @@ public class Trackers {
 	int skd[];
 	int dam[];
 	boolean notwall[];
-	boolean tracksReady;
 	int c[][];
 	int radx[];
 	int radz[];
@@ -29,7 +24,6 @@ public class Trackers {
 		skd = new int[870];
 		dam = new int[870];
 		notwall = new boolean[870];
-		tracksReady = false;
 		c = new int[870][3];
 		radx = new int[870];
 		radz = new int[870];

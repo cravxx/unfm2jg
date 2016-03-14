@@ -1,13 +1,14 @@
 
 public class Wheels {
 
-	int ground;
-	int mast;
-	int rc[] = {
+	public int ground;
+
+	private int mast;
+	private int rc[] = {
 			120, 120, 120
 	};
-	float size;
-	float depth;
+	private float size;
+	private float depth;
 
 	public Wheels() {
 		size = 2.0F;

@@ -20,7 +20,6 @@ class ModTrackInfo {
 	int oldsampofs;
 	int arp[];
 	int arpindex;
-	int oldperiod;
 	int vol_slide;
 	int port_inc;
 	int port_up;
@@ -35,7 +34,6 @@ class ModTrackInfo {
 	int period_high_limit;
 
 	ModTrackInfo() {
-		oldperiod = 1;
 		arp = new int[3];
 	}
 }

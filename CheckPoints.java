@@ -95,7 +95,7 @@ public class CheckPoints {
 							}
 						}
 
-						if (py(aconto[i].x / 100, x[j1] / 100, aconto[i].z / 100, z[j1] / 100) > py(aconto[l].x / 100,
+						if (Utility.py(aconto[i].x / 100, x[j1] / 100, aconto[i].z / 100, z[j1] / 100) > Utility.py(aconto[l].x / 100,
 								x[j1] / 100, aconto[l].z / 100, z[j1] / 100)) {
 							pos[i]++;
 						} else {
@@ -116,11 +116,11 @@ public class CheckPoints {
 									postwo = i1;
 								}
 							} while (++i1 < 7);
-							if (py(opx[0] / 100, opx[postwo] / 100, opz[0] / 100, opz[postwo] / 100) < 14000
+							if (Utility.py(opx[0] / 100, opx[postwo] / 100, opz[0] / 100, opz[postwo] / 100) < 14000
 									&& clear[0] - clear[postwo] == 1) {
 								catchfin = 30;
 							}
-						} else if (pos[0] == 1 && py(opx[0] / 100, opx[j] / 100, opz[0] / 100, opz[j] / 100) < 14000
+						} else if (pos[0] == 1 && Utility.py(opx[0] / 100, opx[j] / 100, opz[0] / 100, opz[j] / 100) < 14000
 								&& clear[j] - clear[0] == 1) {
 							catchfin = 30;
 							postwo = j;
@@ -143,9 +143,5 @@ public class CheckPoints {
 				record.closefinish = pos[0] + 1;
 			}
 		}
-	}
-
-	public int py(int i, int j, int k, int l) {
-		return (i - j) * (i - j) + (k - l) * (k - l);
 	}
 }

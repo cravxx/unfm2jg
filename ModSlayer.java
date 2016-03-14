@@ -24,21 +24,21 @@ public class ModSlayer {
 	static final int S3M_MAGIC1 = 4122;
 	static final int S3M_MAGIC2 = Mod.fourCC("SCRM");
 	static final int S3M_INSTR2 = Mod.fourCC("SCRS");
-	static final int normal_vol_adj[] = {
+	private static final int normal_vol_adj[] = {
 			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
 			29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
 			56, 57, 58, 59, 60, 61, 62, 63, 63
 	};
-	static final int loud_vol_adj[] = {
+	private static final int loud_vol_adj[] = {
 			0, 0, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42,
 			44, 46, 47, 48, 49, 50, 51, 52, 53, 53, 54, 55, 55, 56, 56, 57, 57, 58, 58, 59, 59, 60, 60, 61, 61, 61, 62,
 			62, 62, 63, 63, 63, 63, 63, 63
 	};
-	static final int sintable[] = {
+	private static final int sintable[] = {
 			0, 25, 50, 74, 98, 120, 142, 162, 180, 197, 212, 225, 236, 244, 250, 254, 255, 254, 250, 244, 236, 225, 212,
 			197, 180, 162, 142, 120, 98, 74, 50, 25
 	};
-	static final int period_set[] = {
+	private static final int period_set[] = {
 			1712, 1616, 1525, 1440, 1359, 1283, 1211, 1143, 1078, 1018, 961, 907, 856, 808, 763, 720, 679, 641, 605,
 			571, 539, 509, 480, 453, 428, 404, 381, 360, 340, 321, 303, 286, 270, 254, 240, 227, 214, 202, 191, 180,
 			170, 160, 151, 143, 135, 127, 120, 113, 107, 101, 95, 90, 85, 80, 76, 71, 67, 64, 60, 57, 53, 50, 48, 45,
@@ -144,7 +144,7 @@ public class ModSlayer {
 		}
 	}
 
-	final void mixtrack_16_mono(ModTrackInfo modtrackinfo, int ai[], int i, int j) {
+	private final void mixtrack_16_mono(ModTrackInfo modtrackinfo, int ai[], int i, int j) {
 		byte abyte0[] = modtrackinfo.samples;
 		int k = modtrackinfo.position;
 		int j1 = vol_adj[modtrackinfo.volume] * gain >> vol_shift + 8;

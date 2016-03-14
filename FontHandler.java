@@ -27,7 +27,7 @@ public class FontHandler {
 		System.out.println("Done loading fonts!");
 	}
 
-	public void loadFonts() {		
+	private void loadFonts() {		
 		try {			
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontPath + "OpenSans-Bold.ttf")));
