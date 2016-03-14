@@ -34,7 +34,7 @@ public class Mod {
 
 	public Mod(InputStream inputstream) {
 		try {
-			LoadMod(inputstream);
+			loadMod(inputstream);
 		} catch (Exception exception) {
 			System.out.println("Error loading up a Mod: " + exception);
 		}
@@ -74,7 +74,7 @@ public class Mod {
 		numpatterns++;
 	}
 
-	public void LoadMod(InputStream inputstream) throws IOException {
+	public void loadMod(InputStream inputstream) throws IOException {
 		DataInputStream datainputstream = new DataInputStream(inputstream);
 		byte byte0 = 15;
 		numtracks = 4;
@@ -146,7 +146,7 @@ public class Mod {
 		return modinstrument;
 	}
 
-	static final int FOURCC(String s) {
+	static final int fourCC(String s) {
 		return s.charAt(3) & 0xff | (s.charAt(2) & 0xff) << 8 | (s.charAt(1) & 0xff) << 16 | (s.charAt(0) & 0xff) << 24;
 	}
 
@@ -173,14 +173,14 @@ public class Mod {
 	}
 
 	static {
-		voice_mk = FOURCC("M.K.");
-		voice_mk2 = FOURCC("M!K!");
-		voice_mk3 = FOURCC("M&K!");
-		voice_flt4 = FOURCC("FLT4");
-		voice_flt8 = FOURCC("FLT8");
-		voice_28ch = FOURCC("28CH");
-		voice_8chn = FOURCC("8CHN");
-		voice_6chn = FOURCC("6CHN");
+		voice_mk = fourCC("M.K.");
+		voice_mk2 = fourCC("M!K!");
+		voice_mk3 = fourCC("M&K!");
+		voice_flt4 = fourCC("FLT4");
+		voice_flt8 = fourCC("FLT8");
+		voice_28ch = fourCC("28CH");
+		voice_8chn = fourCC("8CHN");
+		voice_6chn = fourCC("6CHN");
 		voice_31_list = (new int[] {
 				voice_mk, voice_mk2, voice_mk3, voice_flt4, voice_flt8, voice_8chn, voice_6chn, voice_28ch
 		});

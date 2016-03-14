@@ -113,6 +113,7 @@ public class DesktopContext implements AppletContext, Runnable {
 	 */
 	@Override
 	public void showStatus(String status) {
+		/* empty */
 	}
 
 	/**

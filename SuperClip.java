@@ -23,9 +23,9 @@ public class SuperClip implements Runnable {
 	public void run() {
 		boolean flag = false;
 		try {
-			javax.sound.sampled.DataLine.Info info = new javax.sound.sampled.DataLine.Info(
-					javax.sound.sampled.SourceDataLine.class,
-					new AudioFormat(javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED, -1F, 16, 2, 4, -1F, true));
+			DataLine.Info info = new DataLine.Info(
+					SourceDataLine.class,
+					new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, -1F, 16, 2, 4, -1F, true));
 			source = (SourceDataLine) AudioSystem.getLine(info);
 			source.open(new AudioFormat(skiprate, 16, 1, false, false));
 			source.start();
