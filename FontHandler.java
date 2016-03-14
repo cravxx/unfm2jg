@@ -16,11 +16,11 @@ public class FontHandler {
 	/**
 	 * global replacement for ftm
 	 */
-	static FontMetrics fMetrics;
+	public static FontMetrics fMetrics;
 	/**
 	 * path used to look for fonts
 	 */
-	final String fontPath = "data/fonts/";
+	private final String fontPath = "data/fonts/";
 
 	public FontHandler() {
 		loadFonts();

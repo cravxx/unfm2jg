@@ -8,11 +8,11 @@ import sun.audio.AudioPlayer;
 
 public class RadicalMod {
 
-	byte modf[];
-	SuperStream stream;
-	SuperClip sClip;
-	boolean suny;
-	boolean playing;
+	private SuperStream stream;
+	private SuperClip sClip;
+	private byte modf[];	
+	private boolean suny;
+	private boolean playing;
 	int loaded;
 
 	public void stop() {

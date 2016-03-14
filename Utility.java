@@ -1,8 +1,6 @@
 import java.awt.image.BufferedImage;
-import java.util.Date;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Timer;
 import javax.imageio.ImageIO;
 
 /**
@@ -13,10 +11,6 @@ import javax.imageio.ImageIO;
 public class Utility {
 	static Medium medium;
 	
-	static Timer printTimer = new Timer();
-	static Thread timedPrinter = null;
-	
-	static Date date = new Date();
 	static long startTime;
 	
 	public Utility() {

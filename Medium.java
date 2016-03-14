@@ -84,12 +84,10 @@ public class Medium
 	int sprad[];
 	private boolean td;
 	private int bcxz;
-	private boolean bt;
 	int vxz;
 	int adv;
 	boolean vert;
 	private int trns;
-	private int dispolys;
 	private int ogpx[][];
 	private int ogpz[][];
 	private int cgpx[];
@@ -138,10 +136,7 @@ public class Medium
 	private int stc[][][];
 	private boolean bst[];
 	private int twn[];
-	private int rescnt;
-	private boolean resi;
 	private int ih;
-	private boolean darksky;
 	private int fvect;
 
 	public float random() {
@@ -451,7 +446,6 @@ public class Medium
 		origfade = 3000;
 		fogd = 3;
 		lightson = false;
-		darksky = false;
 		lightn = -1;
 		lilo = 217;
 		flex = 0;
@@ -474,12 +468,10 @@ public class Medium
 		sprad = new int[7];
 		td = false;
 		bcxz = 0;
-		bt = false;
 		vxz = 180;
 		adv = 500;
 		vert = false;
 		trns = 1;
-		dispolys = 0;
 		ogpx = new int[9500][8];
 		ogpz = new int[9500][8];
 		cgpx = new int[9500];
@@ -1472,28 +1464,6 @@ public class Medium
 		}
 	}
 	
-	public void road(Graphics2D graphics2d){
-		int x_[] = {0,0,0,1000,1000,1000};
-		int y_[] = {ground,ground,ground,ground,ground,ground};
-		int z_[] = {0,500,1000,1000,500,0};
-		
-		int n = 6;
-		
-		Utility.rot(x_, z_, cx, cz, xz, n);
-		Utility.rot(y_, z_, cy, cz, zy, n);
-		
-		int ai14[] = new int[n];
-		int ai15[] = new int[n];
-		for (int k10 = 0; k10 < n; k10++) {
-			ai14[k10] = Utility.xs(x_[k10], z_[k10]);
-			ai15[k10] = Utility.ys(y_[k10], z_[k10], 1);			
-		}
-		
-		System.out.println(ai14[0] + " " + ai15[0]);
-		graphics2d.setColor(new Color(0, 0, 0));
-		graphics2d.fillPolygon(ai14, ai15, 6);		
-	}
-
 	public void watch(ContO conto, int i) {
 		if (flex != 0) {
 			flex = 0;
@@ -1723,11 +1693,6 @@ public class Medium
 		}
 		float af[] = new float[3];
 		Color.RGBtoHSB(csky[0], csky[1], csky[2], af);
-		if (af[2] < 0.59999999999999998D) {
-			darksky = true;
-		} else {
-			darksky = false;
-		}
 	}
 
 	public void setclouds(int i, int j, int k, int l, int i1) {

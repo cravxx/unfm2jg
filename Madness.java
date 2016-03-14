@@ -7,9 +7,9 @@ import java.awt.Color;
  */
 public class Madness {
 	
-	Medium m;
-	Record rpd;
-	xtGraphics xt;
+	private Medium m;
+	private Record rpd;
+	private xtGraphics xt;
 	
 	/**
 	 * The Acceleration stat
@@ -17,7 +17,7 @@ public class Madness {
 	 * Second and third value meaning how much speed it gains while the car is moving
 	 * @author Omar Waly
 	 */
-	float acelf[][] = {
+	public float acelf[][] = {
 			{
 					11F, 5F, 3F
 			}, {
@@ -57,7 +57,7 @@ public class Madness {
 	 * Take the values as if each one was a gear from a gearbox. 1st to 2nd, 2nd to 3rd, dependent on power obtained
 	 * @author Omar Waly
 	 */
-	int swits[][] = {
+	public int swits[][] = {
 			{
 					50, 180, 280
 			}, {
@@ -97,7 +97,7 @@ public class Madness {
 	 * Basically, the braking power. Any negative value, would make you shoot forward instead of backward
 	 * @author Omar Waly
 	 */
-	int handb[] = {
+	public int handb[] = {
 			7, 10, 7, 15, 12, 8, 9, 10, 5, 7, 8, 10, 8, 12, 7, 7
 	};
 	/**
@@ -105,7 +105,7 @@ public class Madness {
 	 * If the value is too much, your car will just rotate rapidly and you can't control it.
 	 * @author Omar Waly
 	 */
-	float airs[] = {
+	public float airs[] = {
 			1.0F, 1.2F, 0.95F, 1.0F, 2.2F, 1.0F, 0.9F, 0.8F, 1.0F, 0.9F, 1.15F, 0.8F, 1.0F, 0.3F, 1.3F, 1.0F
 	};
 	/**
@@ -115,84 +115,84 @@ public class Madness {
 	 * value will be used to display how much Aerial Control a car has.
 	 * @author Omar Waly
 	 */
-	int airc[] = {
+	public int airc[] = {
 			70, 30, 40, 40, 30, 50, 40, 90, 40, 50, 75, 10, 50, 0, 100, 60
 	};
 	/**
 	 * Turning responsiveness
 	 * @author Omar Waly
 	 */
-	int turn[] = {
+	public int turn[] = {
 			6, 9, 5, 7, 8, 7, 5, 5, 9, 7, 7, 4, 6, 5, 7, 6
 	};
 	/**
 	 * Grip of the car to the ground
 	 * @author Omar Waly
 	 */
-	float grip[] = {
+	public float grip[] = {
 			20F, 27F, 18F, 22F, 19F, 20F, 25F, 20F, 16F, 24F, 22.5F, 25F, 30F, 27F, 25F, 27F
 	};
 	/**
 	 * How much your car bounces after landing stunts
 	 * @author Omar Waly
 	 */
-	float bounce[] = {
+	public float bounce[] = {
 			1.2F, 1.05F, 1.3F, 1.15F, 1.3F, 1.2F, 1.15F, 1.1F, 1.2F, 1.1F, 1.15F, 0.8F, 1.05F, 0.8F, 1.1F, 1.15F
 	};
 	/**
 	 * Tolerance towards track pieces
 	 * @author Omar Waly
 	 */
-	float simag[] = {
+	public float simag[] = {
 			0.9F, 0.85F, 1.05F, 0.9F, 0.85F, 0.9F, 1.05F, 0.9F, 1.0F, 1.05F, 0.9F, 1.1F, 0.9F, 1.3F, 0.9F, 1.15F
 	};
 	/**
 	 * Car strength
 	 * @author Omar Waly
 	 */
-	float moment[] = {
+	public float moment[] = {
 			1.2F, 0.75F, 1.4F, 1.0F, 0.85F, 1.25F, 1.4F, 1.3F, 1.2F, 1.45F, 1.375F, 2.0F, 1.2F, 3F, 1.5F, 2.0F
 	};
 	/**
 	 * Tolerance towards other cars
 	 * @author Omar Waly
 	 */
-	float comprad[] = {
+	public float comprad[] = {
 			0.5F, 0.4F, 0.8F, 0.5F, 0.3F, 0.5F, 0.5F, 0.5F, 0.5F, 0.8F, 0.5F, 1.0F, 0.5F, 0.6F, 0.5F, 0.8F
 	};
 	/**
 	 * How much a car can push another car while wasting
 	 * @author Omar Waly
 	 */
-	int push[] = {
+	public int push[] = {
 			2, 2, 3, 3, 2, 2, 2, 4, 2, 2, 2, 4, 2, 2, 2, 2
 	};
 	/**
 	 * The amount of "reverse push" or recoil the car will get from others
 	 * @author Omar Waly
 	 */
-	int revpush[] = {
+	public int revpush[] = {
 			2, 3, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 1
 	};
 	/**
 	 * How much a car can lift another car while wasting
 	 * @author Omar Waly
 	 */
-	int lift[] = {
+	public int lift[] = {
 			0, 30, 0, 20, 0, 30, 0, 0, 20, 0, 0, 0, 10, 0, 30, 0
 	};
 	/**
 	 * The amount of "reverse lift" or recoil the car will get from others
 	 * @author Omar Waly
 	 */
-	int revlift[] = {
+	public int revlift[] = {
 			0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32
 	};
 	/**
 	 * The variable for power loss, higher means longer power duration. Value in Hexadecimal.
 	 * @author Omar Waly
 	 */
-	int powerloss[] = {
+	public int powerloss[] = {
 			0x2625a0, 0x2625a0, 0x3567e0, 0x2625a0, 0x3d0900, 0x2625a0, 0x30d400, 0x30d400, 0x29f630, 0x53ec60,
 			0x29f630, 0x44aa20, 0x3567e0, 0xfed260, 0x2dc6c0, 0x53ec60
 	};
@@ -200,14 +200,14 @@ public class Madness {
 	 * Y value of cars when flipped over during a bad landing
 	 * @author Omar Waly
 	 */
-	int flipy[] = {
+	public int flipy[] = {
 			-50, -60, -92, -44, -60, -57, -54, -60, -77, -57, -82, -85, -28, -100, -63, -127
 	};
 	/**
 	 * How badly a car can get smashed during wasting
 	 * @author Omar Waly
 	 */
-	int msquash[] = {
+	public int msquash[] = {
 			7, 4, 7, 2, 8, 4, 6, 4, 3, 8, 4, 10, 3, 20, 3, 8
 	};
 	/**
@@ -221,7 +221,7 @@ public class Madness {
 	 * will be indestructible..."
 	 * @author Omar Waly
 	 */
-	int clrad[] = {
+	public int clrad[] = {
 			3300, 1700, 4700, 3000, 2000, 4500, 3500, 5000, 10000, 15000, 4000, 7000, 10000, 30000, 5500, 5000
 	};
 	/**
@@ -229,14 +229,14 @@ public class Madness {
 	 * "The amount of damage based on the hit that should effect the points in clrad around the point of collision..."
 	 * @author Omar Waly
 	 */
-	private float dammult[] = {
+	public float dammult[] = {
 			0.8F, 1.17F, 0.55F, 1.0F, 0.6F, 0.7F, 0.72F, 0.8F, 0.6F, 0.46F, 0.67F, 0.5F, 0.61F, 0.176F, 0.36F, 0.46F
 	};
 	/**
 	 * The amount of Damage that a car can take before it is considered as "wasted".
 	 * @author Omar Waly
 	 */
-	int maxmag[] = {
+	public int maxmag[] = {
 			6000, 4200, 7200, 6000, 6000, 9100, 14000, 12000, 12000, 9700, 13000, 10700, 13000, 30000, 5800, 18000
 	};
 	private boolean dominate[];
@@ -289,7 +289,6 @@ public class Madness {
 	int cntdest;
 	boolean dest;
 	boolean newcar;
-	private int pan;
 	int pcleared;
 	int clear;
 	int nlaps;
@@ -479,7 +478,6 @@ public class Madness {
 		cntdest = 0;
 		dest = false;
 		newcar = false;
-		pan = 0;
 		pcleared = 0;
 		clear = 0;
 		nlaps = 0;
@@ -758,7 +756,6 @@ public class Madness {
 		trcnt = 0;
 		capcnt = 0;
 		tilt = 0.0F;
-		pan = 0;
 		pcleared = checkpoints.pcs;
 		clear = 0;
 		nlaps = 0;

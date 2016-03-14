@@ -50,37 +50,37 @@ public class ModSlayer {
 			155, 147, 139, 131, 123, 116, 110, 104, 98, 92, 87, 82, 78, 73, 69, 65, 62, 58, 55, 51, 49, 46, 43, 41, 39,
 			37, 35, 33, 31, 29, 27, 26, 24, 23, 21, 20, 19, 18, 17, 16, 15, 14, 14
 	};
-	int def_tempo;
-	int def_bpm;
-	byte vol_table[];
-	int vol_adj[];
-	int vol_shift;
-	Mod mod;
-	int order_pos;
-	int tempo;
-	int tempo_wait;
-	int bpm;
-	int row;
-	int break_row;
-	int bpm_samples;
-	int pattofs;
-	byte patt[];
-	int numtracks;
-	ModTrackInfo tracks[];
-	int mixspeed;
-	boolean mod_done;
-	public boolean bit16;
-	public int samplingrate;
-	public int oversample;
-	public int gain;
-	public int nloops;
-	public boolean loud;
+	private int def_tempo;
+	private int def_bpm;
+	private byte vol_table[];
+	private int vol_adj[];
+	private int vol_shift;
+	private Mod mod;
+	private int order_pos;
+	private int tempo;
+	private int tempo_wait;
+	private int bpm;
+	private int row;
+	private int break_row;
+	private int bpm_samples;
+	private int pattofs;
+	private byte patt[];
+	private int numtracks;
+	private ModTrackInfo tracks[];
+	private int mixspeed;
+	private boolean mod_done;
+	private boolean bit16;
+	private int samplingrate;
+	private int oversample;
+	private int gain;
+	private int nloops;
+	private boolean loud;
 	static final byte sunfmt[] = {
 			46, 115, 110, 100, 0, 0, 0, 24, 127, 127, 127, 127, 0, 0, 0, 1, 0, 0, 31, 76, 0, 0, 0, 1, 0, 0, 0, 0
 	};
 	int oln;
 
-	final void beattrack(ModTrackInfo modtrackinfo) {
+	private final void beattrack(ModTrackInfo modtrackinfo) {
 		if (modtrackinfo.period_low_limit == 0) {
 			modtrackinfo.period_low_limit = 1;
 		}
@@ -213,7 +213,7 @@ public class ModSlayer {
 		def_bpm = k;
 	}
 
-	final void make_vol_table8() {
+	private final void make_vol_table8() {
 		vol_table = new byte[16640];
 		int i = 0;
 		do {
@@ -273,7 +273,7 @@ public class ModSlayer {
 		return abyte0;
 	}
 
-	final void updatetracks() {
+	private final void updatetracks() {
 		tempo_wait = tempo;
 		if (row >= 64) {
 			if (order_pos >= mod.song_length_patterns) {
@@ -295,12 +295,12 @@ public class ModSlayer {
 		}
 		row++;
 		for (int i = 0; i < numtracks; i++) {
-			pattofs = get_track(tracks[i], patt, pattofs);
+			pattofs = getTrack(tracks[i], patt, pattofs);
 		}
 
 	}
 
-	final int get_track(ModTrackInfo modtrackinfo, byte abyte0[], int i) {
+	private final int getTrack(ModTrackInfo modtrackinfo, byte abyte0[], int i) {
 		int j = abyte0[i] & 0xf0;
 		int k = (abyte0[i++] & 0xf) << 8;
 		k |= abyte0[i++] & 0xff;
@@ -460,7 +460,7 @@ public class ModSlayer {
 		return i;
 	}
 
-	final void startplaying(boolean flag) {
+	private final void startplaying(boolean flag) {
 		vol_adj = flag ? loud_vol_adj : normal_vol_adj;
 		mixspeed = samplingrate * oversample;
 		order_pos = 0;
@@ -505,7 +505,7 @@ public class ModSlayer {
 		}
 	}
 
-	public static void intToBytes16(int ai[], byte abyte0[], int i, int j) {
+	private static void intToBytes16(int ai[], byte abyte0[], int i, int j) {
 		int k = j;
 		for (int l = 0; l < i; l++) {
 			if (ai[l] < -32767) {

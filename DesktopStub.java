@@ -11,7 +11,7 @@ import java.net.URL;
  */
 public class DesktopStub implements AppletStub {
 
-	AppletContext context = new DesktopContext();
+	private AppletContext context = new DesktopContext();
 
 	@Override
 	/**

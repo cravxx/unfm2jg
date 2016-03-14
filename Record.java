@@ -3,90 +3,90 @@ import java.awt.Color;
 
 public class Record {
 
-	Medium m;
+	private Medium m;
 	int caught;
 	boolean hcaught;
-	boolean prepit;
+	private boolean prepit;
 	ContO ocar[];
-	int cntf;
+	private int cntf;
 	ContO car[][];
-	int squash[][];
+	private int squash[][];
 	int fix[];
 	int dest[];
-	int x[][];
-	int y[][];
-	int z[][];
-	int xy[][];
-	int zy[][];
-	int xz[][];
-	int wxz[][];
-	int wzy[][];
-	int ns[][];
-	int sspark[][][];
-	int sx[][][];
-	int sy[][][];
-	int sz[][][];
-	float smag[][][];
-	int scx[][][];
-	int scz[][][];
-	boolean fulls[][][];
-	int nry[][];
-	int ry[][][];
-	int magy[][][];
-	boolean mtouch[][];
-	int nrx[][];
-	int rx[][][];
-	int magx[][][];
-	int nrz[][];
-	int rz[][][];
-	int magz[][][];
-	int checkpoint[];
-	boolean lastcheck[];
+	private int x[][];
+	private int y[][];
+	private int z[][];
+	private int xy[][];
+	private int zy[][];
+	private int xz[][];
+	private int wxz[][];
+	private int wzy[][];
+	private int ns[][];
+	private int sspark[][][];
+	private int sx[][][];
+	private int sy[][][];
+	private int sz[][][];
+	private float smag[][][];
+	private int scx[][][];
+	private int scz[][][];
+	private boolean fulls[][][];
+	private int nry[][];
+	private int ry[][][];
+	private int magy[][][];
+	private boolean mtouch[][];
+	private int nrx[][];
+	private int rx[][][];
+	private int magx[][][];
+	private int nrz[][];
+	private int rz[][][];
+	private int magz[][][];
+	private int checkpoint[];
+	private boolean lastcheck[];
 	int wasted;
 	int whenwasted;
 	int powered;
 	int closefinish;
 	ContO starcar[];
-	int hsquash[];
+	private int hsquash[];
 	int hfix[] = {
 			-1, -1, -1, -1, -1, -1, -1
 	};
-	int hdest[] = {
+	private int hdest[] = {
 			-1, -1, -1, -1, -1, -1, -1
 	};
-	int hx[][];
-	int hy[][];
-	int hz[][];
-	int hxy[][];
-	int hzy[][];
-	int hxz[][];
-	int hwxz[][];
-	int hwzy[][];
-	int hns[][];
-	int hsspark[][][];
-	int hsx[][][];
-	int hsy[][][];
-	int hsz[][][];
-	float hsmag[][][];
-	int hscx[][][];
-	int hscz[][][];
-	boolean hfulls[][][];
-	int hnry[][];
-	int hry[][][];
-	int hmagy[][][];
-	int hnrx[][];
-	int hrx[][][];
-	int hmagx[][][];
-	int hnrz[][];
-	int hrz[][][];
-	int hmagz[][][];
-	boolean hmtouch[][];
-	int hcheckpoint[];
-	boolean hlastcheck[];
+	private int hx[][];
+	private int hy[][];
+	private int hz[][];
+	private int hxy[][];
+	private int hzy[][];
+	private int hxz[][];
+	private int hwxz[][];
+	private int hwzy[][];
+	private int hns[][];
+	private int hsspark[][][];
+	private int hsx[][][];
+	private int hsy[][][];
+	private int hsz[][][];
+	private float hsmag[][][];
+	private int hscx[][][];
+	private int hscz[][][];
+	private boolean hfulls[][][];
+	private int hnry[][];
+	private int hry[][][];
+	private int hmagy[][][];
+	private int hnrx[][];
+	private int hrx[][][];
+	private int hmagx[][][];
+	private int hnrz[][];
+	private int hrz[][][];
+	private int hmagz[][][];
+	private boolean hmtouch[][];
+	private int hcheckpoint[];
+	private boolean hlastcheck[];
 	int cntdest[];
-	int lastfr;
+	private int lastfr;
 
-	public void regy(int i, float f, boolean flag, ContO conto, Madness madness) {
+	private void regy(int i, float f, boolean flag, ContO conto, Madness madness) {
 		if (f > 100F) {
 			f -= 100F;
 			byte byte0 = 0;
@@ -117,7 +117,7 @@ public class Record {
 				for (int l = 0; l < conto.npl; l++) {
 					float f1 = 0.0F;
 					for (int k1 = 0; k1 < conto.p[l].n; k1++) {
-						if (conto.p[l].wz == 0 && py(conto.keyx[i], conto.p[l].ox[k1], conto.keyz[i],
+						if (conto.p[l].wz == 0 && Utility.py(conto.keyx[i], conto.p[l].ox[k1], conto.keyz[i],
 								conto.p[l].oz[k1]) < madness.clrad[madness.cn]) {
 							f1 = (f / 20F) * m.random();
 							conto.p[l].oz[k1] += f1 * RadicalMath.sin(j);
@@ -409,7 +409,7 @@ public class Record {
 		lastfr = j;
 	}
 
-	public void chipz(int i, float f, ContO conto, Madness madness) {
+	private void chipz(int i, float f, ContO conto, Madness madness) {
 		if (Math.abs(f) > 100F) {
 			if (f > 100F) {
 				f -= 100F;
@@ -420,7 +420,7 @@ public class Record {
 			for (int j = 0; j < conto.npl; j++) {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++) {
-					if (conto.p[j].wz == 0 && py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
+					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
 					}
@@ -435,7 +435,7 @@ public class Record {
 		}
 	}
 
-	public void regz(int i, float f, ContO conto, Madness madness) {
+	private void regz(int i, float f, ContO conto, Madness madness) {
 		if (Math.abs(f) > 100F) {
 			if (f > 100F) {
 				f -= 100F;
@@ -446,7 +446,7 @@ public class Record {
 			for (int j = 0; j < conto.npl; j++) {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++) {
-					if (conto.p[j].wz == 0 && py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
+					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
 						conto.p[j].oz[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.zy);
@@ -745,7 +745,7 @@ public class Record {
 		}
 	}
 
-	public void chipx(int i, float f, ContO conto, Madness madness) {
+	private void chipx(int i, float f, ContO conto, Madness madness) {
 		if (Math.abs(f) > 100F) {
 			if (f > 100F) {
 				f -= 100F;
@@ -756,7 +756,7 @@ public class Record {
 			for (int j = 0; j < conto.npl; j++) {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++) {
-					if (conto.p[j].wz == 0 && py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
+					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
 					}
@@ -771,7 +771,7 @@ public class Record {
 		}
 	}
 
-	public void regx(int i, float f, ContO conto, Madness madness) {
+	private void regx(int i, float f, ContO conto, Madness madness) {
 		if (Math.abs(f) > 100F) {
 			if (f > 100F) {
 				f -= 100F;
@@ -782,7 +782,7 @@ public class Record {
 			for (int j = 0; j < conto.npl; j++) {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++) {
-					if (conto.p[j].wz == 0 && py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
+					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
 						conto.p[j].oz[k] -= f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.zy);
@@ -843,9 +843,5 @@ public class Record {
 		if (nrz[j][i] == 7) {
 			nrz[j][i] = 0;
 		}
-	}
-
-	public int py(int i, int j, int k, int l) {
-		return (i - j) * (i - j) + (k - l) * (k - l);
 	}
 }

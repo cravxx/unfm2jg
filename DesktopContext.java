@@ -17,8 +17,8 @@ import java.util.*;
  * @author DragShot
  */
 public class DesktopContext implements AppletContext, Runnable {
-	List<DesktopSoundClip> clips = Collections.synchronizedList(new LinkedList<DesktopSoundClip>());
-	Thread clipper;
+	private List<DesktopSoundClip> clips = Collections.synchronizedList(new LinkedList<DesktopSoundClip>());
+	private Thread clipper;
 
 	/**
 	 * Small procedure to close the unused audio lines.

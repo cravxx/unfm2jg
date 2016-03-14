@@ -30,7 +30,7 @@ public class CheckPoints {
 	int onscreen[];
 	int omxz[];
 	int catchfin;
-	int postwo;
+	private int postwo;
 
 	public CheckPoints() {
 		x = new int[140];

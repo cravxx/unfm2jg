@@ -2,8 +2,8 @@
 import java.awt.*;
 
 public class Plane {
-	Medium m;
-	Trackers t;
+	private Medium m;
+	private Trackers t;
 	int ox[];
 	int oy[];
 	int oz[];
@@ -14,36 +14,36 @@ public class Plane {
 	boolean glass;
 	int gr;
 	int fs;
-	int disline;
+	private int disline;
 	boolean road;
 	int light;
 	int master;
 	int wx;
 	int wz;
 	int wy;
-	float deltaf;
-	float projf;
+	private float deltaf;
+	private float projf;
 	int av;
 	int bfase;
 	boolean nocol;
 	int chip;
 	float ctmag;
-	int cxz;
-	int cxy;
-	int czy;
-	int cox[];
-	int coz[];
-	int coy[];
-	int dx;
-	int dy;
-	int dz;
-	int vx;
-	int vy;
-	int vz;
+	private int cxz;
+	private int cxy;
+	private int czy;
+	private int cox[];
+	private int coz[];
+	private int coy[];
+	private int dx;
+	private int dy;
+	private int dz;
+	private int vx;
+	private int vy;
+	private int vz;
 	int embos;
-	int typ;
-	int pa;
-	int pb;
+	private int typ;
+	private int pa;
+	private int pb;
 	int flx;
 
 	public void loadprojf() {

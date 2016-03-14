@@ -2212,7 +2212,7 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 	}	
 
-	public void stat(Madness madness[], CheckPoints checkpoints, Control control, ContO conto[], boolean flag) {
+	public void stat(Madness madness[], CheckPoints checkpoints, Control control, ContO conto[], boolean flag) {		
 		if (holdit) {
 			holdcnt++;
 			if (m.flex != 0) {
