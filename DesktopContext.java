@@ -42,7 +42,8 @@ public class DesktopContext implements AppletContext, Runnable {
 	public AudioClip getAudioClip(URL url) {
 		try {
 			InputStream in = url.openStream();
-			int size = in.available(), read = 0;
+			int size = in.available();
+			int read = 0;
 			byte[] buffer = new byte[size];
 			while (size > 0) {
 				read = in.read(buffer, 0, size);

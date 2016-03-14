@@ -3,14 +3,316 @@ import java.awt.Color;
 
 /**
  * Madness is where the stats, collisions, locations of the cars, and more, are handled. 
- * @author Kaffeinated, Omar Wally
+ * @author Kaffeinated, Omar Waly
  */
 public class Madness {
+	
+	Medium m;
+	Record rpd;
+	xtGraphics xt;
+	
+	/**
+	 * The Acceleration stat
+	 * first value being how fast the car can move from rest (not moving). 
+	 * Second and third value meaning how much speed it gains while the car is moving
+	 * @author Omar Waly
+	 */
+	float acelf[][] = {
+			{
+					11F, 5F, 3F
+			}, {
+					14F, 7F, 5F
+			}, {
+					10F, 5F, 3.5F
+			}, {
+					11F, 6F, 3.5F
+			}, {
+					10F, 5F, 3.5F
+			}, {
+					12F, 6F, 3F
+			}, {
+					7F, 9F, 4F
+			}, {
+					11F, 5F, 3F
+			}, {
+					12F, 7F, 4F
+			}, {
+					12F, 7F, 3.5F
+			}, {
+					11.5F, 6.5F, 3.5F
+			}, {
+					9F, 5F, 3F
+			}, {
+					13F, 7F, 4.5F
+			}, {
+					7.5F, 3.5F, 3F
+			}, {
+					11F, 7.5F, 4F
+			}, {
+					12F, 6F, 3.5F
+			}
+	};
+	/**
+	 * The Top Speed stat
+	 * Take the values as if each one was a gear from a gearbox. 1st to 2nd, 2nd to 3rd, dependent on power obtained
+	 * @author Omar Waly
+	 */
+	int swits[][] = {
+			{
+					50, 180, 280
+			}, {
+					100, 200, 310
+			}, {
+					60, 180, 275
+			}, {
+					70, 190, 295
+			}, {
+					70, 170, 275
+			}, {
+					60, 200, 290
+			}, {
+					60, 170, 280
+			}, {
+					60, 180, 280
+			}, {
+					90, 210, 295
+			}, {
+					90, 190, 276
+			}, {
+					70, 200, 295
+			}, {
+					50, 160, 270
+			}, {
+					90, 200, 305
+			}, {
+					50, 130, 210
+			}, {
+					80, 200, 300
+			}, {
+					70, 210, 290
+			}
+	};
+	/**
+	 * Handbrake power
+	 * Basically, the braking power. Any negative value, would make you shoot forward instead of backward
+	 * @author Omar Waly
+	 */
+	int handb[] = {
+			7, 10, 7, 15, 12, 8, 9, 10, 5, 7, 8, 10, 8, 12, 7, 7
+	};
+	/**
+	 * Aerial rotation
+	 * If the value is too much, your car will just rotate rapidly and you can't control it.
+	 * @author Omar Waly
+	 */
+	float airs[] = {
+			1.0F, 1.2F, 0.95F, 1.0F, 2.2F, 1.0F, 0.9F, 0.8F, 1.0F, 0.9F, 1.15F, 0.8F, 1.0F, 0.3F, 1.3F, 1.0F
+	};
+	/**
+	 * Aerial control
+	 * This controls how high or low you'll go if you do flips, or how far you'll go if you do rollspins. 
+	 * This also effects the statbar of Aerial Control, but if this value is noticeably low, then the airs 
+	 * value will be used to display how much Aerial Control a car has.
+	 * @author Omar Waly
+	 */
+	int airc[] = {
+			70, 30, 40, 40, 30, 50, 40, 90, 40, 50, 75, 10, 50, 0, 100, 60
+	};
+	/**
+	 * Turning responsiveness
+	 * @author Omar Waly
+	 */
+	int turn[] = {
+			6, 9, 5, 7, 8, 7, 5, 5, 9, 7, 7, 4, 6, 5, 7, 6
+	};
+	/**
+	 * Grip of the car to the ground
+	 * @author Omar Waly
+	 */
+	float grip[] = {
+			20F, 27F, 18F, 22F, 19F, 20F, 25F, 20F, 16F, 24F, 22.5F, 25F, 30F, 27F, 25F, 27F
+	};
+	/**
+	 * How much your car bounces after landing stunts
+	 * @author Omar Waly
+	 */
+	float bounce[] = {
+			1.2F, 1.05F, 1.3F, 1.15F, 1.3F, 1.2F, 1.15F, 1.1F, 1.2F, 1.1F, 1.15F, 0.8F, 1.05F, 0.8F, 1.1F, 1.15F
+	};
+	/**
+	 * Tolerance towards track pieces
+	 * @author Omar Waly
+	 */
+	float simag[] = {
+			0.9F, 0.85F, 1.05F, 0.9F, 0.85F, 0.9F, 1.05F, 0.9F, 1.0F, 1.05F, 0.9F, 1.1F, 0.9F, 1.3F, 0.9F, 1.15F
+	};
+	/**
+	 * Car strength
+	 * @author Omar Waly
+	 */
+	float moment[] = {
+			1.2F, 0.75F, 1.4F, 1.0F, 0.85F, 1.25F, 1.4F, 1.3F, 1.2F, 1.45F, 1.375F, 2.0F, 1.2F, 3F, 1.5F, 2.0F
+	};
+	/**
+	 * Tolerance towards other cars
+	 * @author Omar Waly
+	 */
+	float comprad[] = {
+			0.5F, 0.4F, 0.8F, 0.5F, 0.3F, 0.5F, 0.5F, 0.5F, 0.5F, 0.8F, 0.5F, 1.0F, 0.5F, 0.6F, 0.5F, 0.8F
+	};
+	/**
+	 * How much a car can push another car while wasting
+	 * @author Omar Waly
+	 */
+	int push[] = {
+			2, 2, 3, 3, 2, 2, 2, 4, 2, 2, 2, 4, 2, 2, 2, 2
+	};
+	/**
+	 * The amount of "reverse push" or recoil the car will get from others
+	 * @author Omar Waly
+	 */
+	int revpush[] = {
+			2, 3, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 1
+	};
+	/**
+	 * How much a car can lift another car while wasting
+	 * @author Omar Waly
+	 */
+	int lift[] = {
+			0, 30, 0, 20, 0, 30, 0, 0, 20, 0, 0, 0, 10, 0, 30, 0
+	};
+	/**
+	 * The amount of "reverse lift" or recoil the car will get from others
+	 * @author Omar Waly
+	 */
+	int revlift[] = {
+			0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32
+	};
+	/**
+	 * The variable for power loss, higher means longer power duration. Value in Hexadecimal.
+	 * @author Omar Waly
+	 */
+	int powerloss[] = {
+			0x2625a0, 0x2625a0, 0x3567e0, 0x2625a0, 0x3d0900, 0x2625a0, 0x30d400, 0x30d400, 0x29f630, 0x53ec60,
+			0x29f630, 0x44aa20, 0x3567e0, 0xfed260, 0x2dc6c0, 0x53ec60
+	};
+	/**
+	 * Y value of cars when flipped over during a bad landing
+	 * @author Omar Waly
+	 */
+	int flipy[] = {
+			-50, -60, -92, -44, -60, -57, -54, -60, -77, -57, -82, -85, -28, -100, -63, -127
+	};
+	/**
+	 * How badly a car can get smashed during wasting
+	 * @author Omar Waly
+	 */
+	int msquash[] = {
+			7, 4, 7, 2, 8, 4, 6, 4, 3, 8, 4, 10, 3, 20, 3, 8
+	};
+	/**
+	 * Collision radius
+	 * 
+	 * "Clrad is the radius around each point that gets collided..
+	 * So if you have a car with so much points, you need the clrad 
+	 * to be low or it will get damaged very fast as so many points 
+	 * will get effected...If a car has low points you need the clrad 
+	 * to be bigger so the damage reaches other points or else the car 
+	 * will be indestructible..."
+	 * @author Omar Waly
+	 */
+	int clrad[] = {
+			3300, 1700, 4700, 3000, 2000, 4500, 3500, 5000, 10000, 15000, 4000, 7000, 10000, 30000, 5500, 5000
+	};
+	/**
+	 * Damage Multiplier 
+	 * "The amount of damage based on the hit that should effect the points in clrad around the point of collision..."
+	 * @author Omar Waly
+	 */
+	float dammult[] = {
+			0.8F, 1.17F, 0.55F, 1.0F, 0.6F, 0.7F, 0.72F, 0.8F, 0.6F, 0.46F, 0.67F, 0.5F, 0.61F, 0.176F, 0.36F, 0.46F
+	};
+	/**
+	 * The amount of Damage that a car can take before it is considered as "wasted".
+	 * @author Omar Waly
+	 */
+	int maxmag[] = {
+			6000, 4200, 7200, 6000, 6000, 9100, 14000, 12000, 12000, 9700, 13000, 10700, 13000, 30000, 5800, 18000
+	};
+	boolean dominate[];
+	boolean caught[];
+	int pzy;
+	int pxy;
+	float speed;
+	float forca;
+	float scy[];
+	float scz[];
+	float scx[];
+	boolean mtouch;
+	boolean wtouch;
+	int cntouch;
+	boolean capsized;
+	int txz;
+	int fxz;
+	int pmlt;
+	int nmlt;
+	int dcnt;
+	int skid;
+	boolean pushed;
+	boolean gtouch;
+	boolean pl;
+	boolean pr;
+	boolean pd;
+	boolean pu;
+	int loop;
+	float ucomp;
+	float dcomp;
+	float lcomp;
+	float rcomp;
+	int lxz;
+	int travxy;
+	int travzy;
+	int travxz;
+	int trcnt;
+	int capcnt;
+	int srfcnt;
+	boolean rtab;
+	boolean ftab;
+	boolean btab;
+	boolean surfer;
+	float powerup;
+	int xtpower;
+	float tilt;
+	int squash;
+	int nbsq;
+	int hitmag;
+	int cntdest;
+	boolean dest;
+	boolean newcar;
+	int pan;
+	int pcleared;
+	int clear;
+	int nlaps;
+	int focus;
+	float power;
+	int missedcp;
+	int lastcolido;
+	int point;
+	boolean nofocus;
+	int rpdcatch;
+	boolean colidim;
+	int cn;
+	int im;
+	int mxz;
+	int cxz;
+	/* variable for screen shake */
+	int shakedam;
+	
 	/**
 	 * universal rate that speed decreases when it exceeds swits[0][2], that is, top speed
 	 * @author Kaffeinated
 	 */
-	float speeddec = 2.0F;
+	float speeddec = 2.0F;			
 	
 	public void regy(int i, float f, ContO conto) {
 		f *= dammult[cn];
@@ -1763,304 +2065,4 @@ public class Madness {
 			}
 		}
 	}
-
-	Medium m;
-	Record rpd;
-	xtGraphics xt;
-	int cn;
-	int im;
-	int mxz;
-	int cxz;
-	/**
-	 * The Acceleration stat
-	 * first value being how fast the car can move from rest (not moving). 
-	 * Second and third value meaning how much speed it gains while the car is moving
-	 * @author Omar Wally
-	 */
-	float acelf[][] = {
-			{
-					11F, 5F, 3F
-			}, {
-					14F, 7F, 5F
-			}, {
-					10F, 5F, 3.5F
-			}, {
-					11F, 6F, 3.5F
-			}, {
-					10F, 5F, 3.5F
-			}, {
-					12F, 6F, 3F
-			}, {
-					7F, 9F, 4F
-			}, {
-					11F, 5F, 3F
-			}, {
-					12F, 7F, 4F
-			}, {
-					12F, 7F, 3.5F
-			}, {
-					11.5F, 6.5F, 3.5F
-			}, {
-					9F, 5F, 3F
-			}, {
-					13F, 7F, 4.5F
-			}, {
-					7.5F, 3.5F, 3F
-			}, {
-					11F, 7.5F, 4F
-			}, {
-					12F, 6F, 3.5F
-			}
-	};
-	/**
-	 * The Top Speed stat
-	 * Take the values as if each one was a gear from a gearbox. 1st to 2nd, 2nd to 3rd, dependent on power obtained
-	 * @author Omar Wally
-	 */
-	int swits[][] = {
-			{
-					50, 180, 280
-			}, {
-					100, 200, 310
-			}, {
-					60, 180, 275
-			}, {
-					70, 190, 295
-			}, {
-					70, 170, 275
-			}, {
-					60, 200, 290
-			}, {
-					60, 170, 280
-			}, {
-					60, 180, 280
-			}, {
-					90, 210, 295
-			}, {
-					90, 190, 276
-			}, {
-					70, 200, 295
-			}, {
-					50, 160, 270
-			}, {
-					90, 200, 305
-			}, {
-					50, 130, 210
-			}, {
-					80, 200, 300
-			}, {
-					70, 210, 290
-			}
-	};
-	/**
-	 * Handbrake power
-	 * Basically, the braking power. Any negative value, would make you shoot forward instead of backward
-	 * @author Omar Wally
-	 */
-	int handb[] = {
-			7, 10, 7, 15, 12, 8, 9, 10, 5, 7, 8, 10, 8, 12, 7, 7
-	};
-	/**
-	 * Aerial rotation
-	 * If the value is too much, your car will just rotate rapidly and you can't control it.
-	 * @author Omar Wally
-	 */
-	float airs[] = {
-			1.0F, 1.2F, 0.95F, 1.0F, 2.2F, 1.0F, 0.9F, 0.8F, 1.0F, 0.9F, 1.15F, 0.8F, 1.0F, 0.3F, 1.3F, 1.0F
-	};
-	/**
-	 * Aerial control
-	 * This controls how high or low you'll go if you do flips, or how far you'll go if you do rollspins. 
-	 * This also effects the statbar of Aerial Control, but if this value is noticeably low, then the airs 
-	 * value will be used to display how much Aerial Control a car has.
-	 * @author Omar Wally
-	 */
-	int airc[] = {
-			70, 30, 40, 40, 30, 50, 40, 90, 40, 50, 75, 10, 50, 0, 100, 60
-	};
-	/**
-	 * Turning responsiveness
-	 * @author Omar Wally
-	 */
-	int turn[] = {
-			6, 9, 5, 7, 8, 7, 5, 5, 9, 7, 7, 4, 6, 5, 7, 6
-	};
-	/**
-	 * Grip of the car to the ground
-	 * @author Omar Wally
-	 */
-	float grip[] = {
-			20F, 27F, 18F, 22F, 19F, 20F, 25F, 20F, 16F, 24F, 22.5F, 25F, 30F, 27F, 25F, 27F
-	};
-	/**
-	 * How much your car bounces after landing stunts
-	 * @author Omar Wally
-	 */
-	float bounce[] = {
-			1.2F, 1.05F, 1.3F, 1.15F, 1.3F, 1.2F, 1.15F, 1.1F, 1.2F, 1.1F, 1.15F, 0.8F, 1.05F, 0.8F, 1.1F, 1.15F
-	};
-	/**
-	 * Tolerance towards track pieces
-	 * @author Omar Wally
-	 */
-	float simag[] = {
-			0.9F, 0.85F, 1.05F, 0.9F, 0.85F, 0.9F, 1.05F, 0.9F, 1.0F, 1.05F, 0.9F, 1.1F, 0.9F, 1.3F, 0.9F, 1.15F
-	};
-	/**
-	 * Car strength
-	 * @author Omar Wally
-	 */
-	float moment[] = {
-			1.2F, 0.75F, 1.4F, 1.0F, 0.85F, 1.25F, 1.4F, 1.3F, 1.2F, 1.45F, 1.375F, 2.0F, 1.2F, 3F, 1.5F, 2.0F
-	};
-	/**
-	 * Tolerance towards other cars
-	 * @author Omar Wally
-	 */
-	float comprad[] = {
-			0.5F, 0.4F, 0.8F, 0.5F, 0.3F, 0.5F, 0.5F, 0.5F, 0.5F, 0.8F, 0.5F, 1.0F, 0.5F, 0.6F, 0.5F, 0.8F
-	};
-	/**
-	 * How much a car can push another car while wasting
-	 * @author Omar Wally
-	 */
-	int push[] = {
-			2, 2, 3, 3, 2, 2, 2, 4, 2, 2, 2, 4, 2, 2, 2, 2
-	};
-	/**
-	 * The amount of "reverse push" or recoil the car will get from others
-	 * @author Omar Wally
-	 */
-	int revpush[] = {
-			2, 3, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 1
-	};
-	/**
-	 * How much a car can lift another car while wasting
-	 * @author Omar Wally
-	 */
-	int lift[] = {
-			0, 30, 0, 20, 0, 30, 0, 0, 20, 0, 0, 0, 10, 0, 30, 0
-	};
-	/**
-	 * The amount of "reverse lift" or recoil the car will get from others
-	 * @author Omar Wally
-	 */
-	int revlift[] = {
-			0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32
-	};
-	/**
-	 * The variable for power loss, higher means longer power duration. Value in Hexadecimal.
-	 * @author Omar Wally
-	 */
-	int powerloss[] = {
-			0x2625a0, 0x2625a0, 0x3567e0, 0x2625a0, 0x3d0900, 0x2625a0, 0x30d400, 0x30d400, 0x29f630, 0x53ec60,
-			0x29f630, 0x44aa20, 0x3567e0, 0xfed260, 0x2dc6c0, 0x53ec60
-	};
-	/**
-	 * Y value of cars when flipped over during a bad landing
-	 * @author Omar Wally
-	 */
-	int flipy[] = {
-			-50, -60, -92, -44, -60, -57, -54, -60, -77, -57, -82, -85, -28, -100, -63, -127
-	};
-	/**
-	 * How badly a car can get smashed during wasting
-	 * @author Omar Wally
-	 */
-	int msquash[] = {
-			7, 4, 7, 2, 8, 4, 6, 4, 3, 8, 4, 10, 3, 20, 3, 8
-	};
-	/**
-	 * Collision radius
-	 * 
-	 * "Clrad is the radius around each point that gets collided..
-	 * So if you have a car with so much points, you need the clrad 
-	 * to be low or it will get damaged very fast as so many points 
-	 * will get effected...If a car has low points you need the clrad 
-	 * to be bigger so the damage reaches other points or else the car 
-	 * will be indestructible..."
-	 * @author Omar Wally
-	 */
-	int clrad[] = {
-			3300, 1700, 4700, 3000, 2000, 4500, 3500, 5000, 10000, 15000, 4000, 7000, 10000, 30000, 5500, 5000
-	};
-	/**
-	 * Damage Multiplier 
-	 * "The amount of damage based on the hit that should effect the points in clrad around the point of collision..."
-	 * @author Omar Wally
-	 */
-	float dammult[] = {
-			0.8F, 1.17F, 0.55F, 1.0F, 0.6F, 0.7F, 0.72F, 0.8F, 0.6F, 0.46F, 0.67F, 0.5F, 0.61F, 0.176F, 0.36F, 0.46F
-	};
-	/**
-	 * The amount of Damage that a car can take before it is considered as "wasted".
-	 * @author Omar Wally
-	 */
-	int maxmag[] = {
-			6000, 4200, 7200, 6000, 6000, 9100, 14000, 12000, 12000, 9700, 13000, 10700, 13000, 30000, 5800, 18000
-	};
-	boolean dominate[];
-	boolean caught[];
-	int pzy;
-	int pxy;
-	float speed;
-	float forca;
-	float scy[];
-	float scz[];
-	float scx[];
-	boolean mtouch;
-	boolean wtouch;
-	int cntouch;
-	boolean capsized;
-	int txz;
-	int fxz;
-	int pmlt;
-	int nmlt;
-	int dcnt;
-	int skid;
-	boolean pushed;
-	boolean gtouch;
-	boolean pl;
-	boolean pr;
-	boolean pd;
-	boolean pu;
-	int loop;
-	float ucomp;
-	float dcomp;
-	float lcomp;
-	float rcomp;
-	int lxz;
-	int travxy;
-	int travzy;
-	int travxz;
-	int trcnt;
-	int capcnt;
-	int srfcnt;
-	boolean rtab;
-	boolean ftab;
-	boolean btab;
-	boolean surfer;
-	float powerup;
-	int xtpower;
-	float tilt;
-	int squash;
-	int nbsq;
-	int hitmag;
-	int cntdest;
-	boolean dest;
-	boolean newcar;
-	int pan;
-	int pcleared;
-	int clear;
-	int nlaps;
-	int focus;
-	float power;
-	int missedcp;
-	int lastcolido;
-	int point;
-	boolean nofocus;
-	int rpdcatch;
-	boolean colidim;
-	/// moto vars
-	int shakedam;
 }

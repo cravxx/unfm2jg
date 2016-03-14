@@ -66,5 +66,6 @@ public class DesktopStub implements AppletStub {
 	 * @inheritdoc
 	 */
 	public void appletResize(int width, int height) {
+		/* empty */
 	}
 }

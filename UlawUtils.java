@@ -363,9 +363,6 @@ public final class UlawUtils {
 			125, 126
 	};
 
-	public UlawUtils() {
-	}
-
 	public static final byte linear2ulawclip(int i) {
 		if (i < -32767) {
 			i = -32767;

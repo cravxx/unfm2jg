@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-public class RunApp extends Panel {
-	public RunApp() {
-	}
+public class RunApp extends Panel {		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8590687589434803725L;
 	
-	static final long serialVersionUID = 666L;
-
 	static Frame frame;
 	static GameSparker applet;
 	static Utility utility;
