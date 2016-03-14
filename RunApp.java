@@ -13,14 +13,9 @@ public class RunApp extends Panel {
 	 */
 	private static final long serialVersionUID = -8590687589434803725L;
 	
-	static Frame frame;
-	static GameSparker applet;
-	static Utility utility;
+	private static Frame frame;
+	private static GameSparker applet;
 	public static ArrayList<Image> icons;
-	
-	private static GraphicsDevice vc;
-    static boolean fullscreen = false;
-    static JButton btnNewButton = new JButton("New button");
 
 	/**
 	 * Fetches icons of 16, 32 and 48 pixels from the 'data' folder.
@@ -48,36 +43,7 @@ public class RunApp extends Panel {
 			System.out.println("Could not setup System Look&Feel: " + ex.toString());
 		}
 		startup();
-	}		
-	
-	static void gofullscreen() {        
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        vc = env.getDefaultScreenDevice();               
-        fullscreen = true;
-        frame.dispose();
-        frame = new Frame("UNFM2JG Fullscreen");
-              
-        //frame.setBackground(new Color(0, 0, 0));
-        frame.setUndecorated(true);
-        frame.setResizable(false);
-        frame.setExtendedState(6);
-        frame.setIgnoreRepaint(true);
-        
-        //add(btnNewButton);
-        btnNewButton.setVerticalAlignment(SwingConstants.TOP);
-        btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {				
-				startup();
-			}
-		});
-        frame.add("Center", applet);  
-        frame.add(btnNewButton);                
-		      
-        frame.setVisible(true);        
-        vc.setFullScreenWindow(frame);
-        applet.requestFocus();
-        System.out.println("UNFM2JG Fullscreen started...");
-    }
+	}
 
 	static void startup() {
 		frame = new Frame("UNFM2");// Change this to the name of your preference
