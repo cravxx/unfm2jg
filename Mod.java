@@ -3,25 +3,25 @@ import java.io.*;
 
 public class Mod {
 
-	String name;
+	private String name;
 	int numtracks;
-	int track_shift;
-	int numpatterns;
+	//int track_shift;
+	private int numpatterns;
 	byte patterns[][];
 	ModInstrument insts[];
 	byte positions[];
 	int song_length_patterns;
-	int song_repeat_patterns;
+	private int song_repeat_patterns;
 	boolean s3m;
-	static final int voice_mk;
-	static final int voice_mk2;
-	static final int voice_mk3;
-	static final int voice_flt4;
-	static final int voice_flt8;
-	static final int voice_28ch;
-	static final int voice_8chn;
-	static final int voice_6chn;
-	static final int voice_31_list[];
+	private static final int voice_mk;
+	private static final int voice_mk2;
+	private static final int voice_mk3;
+	private static final int voice_flt4;
+	private static final int voice_flt8;
+	private static final int voice_28ch;
+	private static final int voice_8chn;
+	private static final int voice_6chn;
+	private static final int voice_31_list[];
 
 	public int getNumPatterns() {
 		return numpatterns;
@@ -40,11 +40,11 @@ public class Mod {
 		}
 	}
 
-	static final int readu16(DataInputStream datainputstream) throws IOException {
+	private static final int readu16(DataInputStream datainputstream) throws IOException {
 		return datainputstream.readShort() & 0xffff;
 	}
 
-	static final String readText(DataInputStream datainputstream, int i) throws IOException {
+	private static final String readText(DataInputStream datainputstream, int i) throws IOException {
 		byte abyte0[] = new byte[i];
 		datainputstream.readFully(abyte0, 0, i);
 		for (int j = i - 1; j >= 0; j--) {
@@ -56,7 +56,7 @@ public class Mod {
 		return "";
 	}
 
-	void readSequence(DataInputStream datainputstream) throws IOException {
+	private void readSequence(DataInputStream datainputstream) throws IOException {
 		positions = new byte[128];
 		song_length_patterns = readu8(datainputstream);
 		song_repeat_patterns = readu8(datainputstream);
@@ -74,7 +74,7 @@ public class Mod {
 		numpatterns++;
 	}
 
-	public void loadMod(InputStream inputstream) throws IOException {
+	private void loadMod(InputStream inputstream) throws IOException {
 		DataInputStream datainputstream = new DataInputStream(inputstream);
 		byte byte0 = 15;
 		numtracks = 4;
@@ -120,7 +120,7 @@ public class Mod {
 		inputstream.close();
 	}
 
-	static void readSampleData(DataInputStream datainputstream, ModInstrument modinstrument) throws IOException {
+	private static void readSampleData(DataInputStream datainputstream, ModInstrument modinstrument) throws IOException {
 		datainputstream.readFully(modinstrument.samples, 0, modinstrument.sample_length);
 		if (modinstrument.repeat_length > 3) {
 			System.arraycopy(modinstrument.samples, modinstrument.repeat_point, modinstrument.samples,
@@ -128,7 +128,7 @@ public class Mod {
 		}
 	}
 
-	static ModInstrument readInstrument(DataInputStream datainputstream) throws IOException {
+	private static ModInstrument readInstrument(DataInputStream datainputstream) throws IOException {
 		ModInstrument modinstrument = new ModInstrument();
 		modinstrument.name = readText(datainputstream, 22);
 		modinstrument.sample_length = readu16(datainputstream) << 1;
@@ -158,7 +158,7 @@ public class Mod {
 		return name;
 	}
 
-	void readPatterns(DataInputStream datainputstream) throws IOException {
+	private void readPatterns(DataInputStream datainputstream) throws IOException {
 		int i = numtracks * 4 * 64;
 		patterns = new byte[numpatterns][];
 		for (int j = 0; j < numpatterns; j++) {
@@ -168,7 +168,7 @@ public class Mod {
 
 	}
 
-	static final int readu8(DataInputStream datainputstream) throws IOException {
+	private static final int readu8(DataInputStream datainputstream) throws IOException {
 		return datainputstream.readByte() & 0xff;
 	}
 

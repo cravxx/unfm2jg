@@ -10,73 +10,73 @@ public class Control {
 	boolean arrace;
 	boolean mutem;
 	boolean mutes;
-	Medium m;
-	int pan;
-	int attack;
-	int acr;
-	boolean afta;
-	int fpnt[];
-	int trfix;
-	boolean forget;
-	boolean bulistc;
-	int runbul;
-	int acuracy;
-	int upwait;
-	boolean agressed;
-	float skiplev;
-	int clrnce;
-	int rampp;
-	int turntyp;
-	float aim;
-	int saftey;
-	boolean perfection;
-	float mustland;
-	boolean usebounce;
-	float trickprf;
-	int stuntf;
+	private Medium m;
+	private int pan;
+	private int attack;
+	private int acr;
+	private boolean afta;
+	private int fpnt[];
+	private int trfix;
+	private boolean forget;
+	private boolean bulistc;
+	private int runbul;
+	private int acuracy;
+	private int upwait;
+	private boolean agressed;
+	private float skiplev;
+	private int clrnce;
+	private int rampp;
+	private int turntyp;
+	private float aim;
+	private int saftey;
+	private boolean perfection;
+	private float mustland;
+	private boolean usebounce;
+	private float trickprf;
+	private int stuntf;
 	boolean zyinv;
-	boolean lastl;
-	boolean wlastl;
-	int hold;
+	private boolean lastl;
+	private boolean wlastl;
+	private int hold;
 	int wall;
-	int lwall;
-	int stcnt;
-	int statusque;
-	int turncnt;
-	int randtcnt;
-	int upcnt;
-	int trickfase;
-	int swat;
-	boolean udcomp;
-	boolean lrcomp;
-	boolean udbare;
-	boolean lrbare;
-	boolean onceu;
-	boolean onced;
-	boolean oncel;
-	boolean oncer;
-	int lrdirect;
-	int uddirect;
-	int lrstart;
-	int udstart;
-	int oxy;
-	int ozy;
-	int flycnt;
-	boolean lrswt;
-	boolean udswt;
-	boolean gowait;
-	int actwait;
-	int cntrn;
-	int revstart;
-	int oupnt;
-	int wtz;
-	int wtx;
-	int frx;
-	int frz;
-	int frad;
-	int apunch;
-	boolean exitattack;
-	int avoidnlev;
+	private int lwall;
+	private int stcnt;
+	private int statusque;
+	private int turncnt;
+	private int randtcnt;
+	private int upcnt;
+	private int trickfase;
+	private int swat;
+	private boolean udcomp;
+	private boolean lrcomp;
+	private boolean udbare;
+	private boolean lrbare;
+	private boolean onceu;
+	private boolean onced;
+	private boolean oncel;
+	private boolean oncer;
+	private int lrdirect;
+	private int uddirect;
+	private int lrstart;
+	private int udstart;
+	private int oxy;
+	private int ozy;
+	private int flycnt;
+	private boolean lrswt;
+	private boolean udswt;
+	private boolean gowait;
+	private int actwait;
+	private int cntrn;
+	private int revstart;
+	private int oupnt;
+	private int wtz;
+	private int wtx;
+	private int frx;
+	private int frz;
+	private int frad;
+	private int apunch;
+	private boolean exitattack;
+	private int avoidnlev;
 
 	public void preform(Madness madness, ContO conto, CheckPoints checkpoints, Trackers trackers) {
 		left = false;
@@ -546,7 +546,7 @@ public class Control {
 										|| madness.cn == 14)) {
 									i9 = 50 + 70 * Math.abs(checkpoints.clear[i4] - madness.clear);
 								}
-								if (k8 < i9 && py(conto.x / 100, checkpoints.opx[i4] / 100, conto.z / 100,
+								if (k8 < i9 && Utility.py(conto.x / 100, checkpoints.opx[i4] / 100, conto.z / 100,
 										checkpoints.opz[i4] / 100) < l8 && afta && madness.power > j2) {
 									float f1 = 35 - Math.abs(checkpoints.clear[i4] - madness.clear) * 10;
 									if (f1 < 1.0F) {
@@ -722,7 +722,7 @@ public class Control {
 									}
 								}
 								if (flag1 && k8 > 100
-										&& py(conto.x / 100, checkpoints.opx[i4] / 100, conto.z / 100,
+										&& Utility.py(conto.x / 100, checkpoints.opx[i4] / 100, conto.z / 100,
 												checkpoints.opz[i4] / 100) < 300
 										&& m.random() > 0.59999999999999998D
 												- checkpoints.pos[madness.im] / 10F) {
@@ -975,7 +975,7 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 9) {
-								if (py(conto.x / 100, 297, conto.z / 100, 347) < 400) {
+								if (Utility.py(conto.x / 100, 297, conto.z / 100, 347) < 400) {
 									oupnt = 1;
 								}
 								if (oupnt == 1 && i < 22) {
@@ -983,7 +983,7 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 67) {
-								if (py(conto.x / 100, 28, conto.z / 100, 494) < 4000) {
+								if (Utility.py(conto.x / 100, 28, conto.z / 100, 494) < 4000) {
 									oupnt = 2;
 								}
 								if (oupnt == 2) {
@@ -991,7 +991,7 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 76) {
-								if (py(conto.x / 100, -50, conto.z / 100, 0) < 2000) {
+								if (Utility.py(conto.x / 100, -50, conto.z / 100, 0) < 2000) {
 									oupnt = 3;
 								}
 								if (oupnt == 3) {
@@ -1003,7 +1003,7 @@ public class Control {
 						}
 						if (checkpoints.stage == 16) {
 							if (madness.pcleared == 128) {
-								if (py(conto.x / 100, 0, conto.z / 100, 229) < 1500 || conto.z > 23000) {
+								if (Utility.py(conto.x / 100, 0, conto.z / 100, 229) < 1500 || conto.z > 23000) {
 									oupnt = 128;
 								}
 								if (oupnt != 128) {
@@ -1011,7 +1011,7 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 8) {
-								if (py(conto.x / 100, -207, conto.z / 100, 549) < 1500 || conto.x < -20700) {
+								if (Utility.py(conto.x / 100, -207, conto.z / 100, 549) < 1500 || conto.x < -20700) {
 									oupnt = 8;
 								}
 								if (oupnt != 8) {
@@ -1019,10 +1019,10 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 33) {
-								if (py(conto.x / 100, -60, conto.z / 100, 168) < 250 || conto.z > 17000) {
+								if (Utility.py(conto.x / 100, -60, conto.z / 100, 168) < 250 || conto.z > 17000) {
 									oupnt = 331;
 								}
-								if (py(conto.x / 100, -112, conto.z / 100, 414) < 10000 || conto.z > 40000) {
+								if (Utility.py(conto.x / 100, -112, conto.z / 100, 414) < 10000 || conto.z > 40000) {
 									oupnt = 332;
 								}
 								if (oupnt != 331 && oupnt != 332) {
@@ -1037,7 +1037,7 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 42) {
-								if (py(conto.x / 100, -269, conto.z / 100, 493) < 100 || conto.x < -27000) {
+								if (Utility.py(conto.x / 100, -269, conto.z / 100, 493) < 100 || conto.x < -27000) {
 									oupnt = 142;
 								}
 								if (oupnt != 142) {
@@ -1045,10 +1045,10 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 51) {
-								if (py(conto.x / 100, -352, conto.z / 100, 260) < 100 || conto.z < 25000) {
+								if (Utility.py(conto.x / 100, -352, conto.z / 100, 260) < 100 || conto.z < 25000) {
 									oupnt = 511;
 								}
-								if (py(conto.x / 100, -325, conto.z / 100, 10) < 2000 || conto.x > -32000) {
+								if (Utility.py(conto.x / 100, -325, conto.z / 100, 10) < 2000 || conto.x > -32000) {
 									oupnt = 512;
 								}
 								if (oupnt != 511 && oupnt != 512) {
@@ -1059,7 +1059,7 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 77) {
-								if (py(conto.x / 100, -371, conto.z / 100, 319) < 100 || conto.z < 31000) {
+								if (Utility.py(conto.x / 100, -371, conto.z / 100, 319) < 100 || conto.z < 31000) {
 									oupnt = 77;
 								}
 								if (oupnt != 77) {
@@ -1068,7 +1068,7 @@ public class Control {
 								}
 							}
 							if (madness.pcleared == 105) {
-								if (py(conto.x / 100, -179, conto.z / 100, 10) < 2300 || conto.z < 1050) {
+								if (Utility.py(conto.x / 100, -179, conto.z / 100, 10) < 2300 || conto.z < 1050) {
 									oupnt = 105;
 								}
 								if (oupnt != 105) {
@@ -1078,7 +1078,7 @@ public class Control {
 								}
 							}
 							if (trfix == 3) {
-								if (py(conto.x / 100, -52, conto.z / 100, 448) < 100 || conto.z > 45000) {
+								if (Utility.py(conto.x / 100, -52, conto.z / 100, 448) < 100 || conto.z > 45000) {
 									oupnt = 176;
 								}
 								if (oupnt != 176) {
@@ -1088,7 +1088,7 @@ public class Control {
 								}
 							}
 							if (checkpoints.clear[madness.im] - checkpoints.clear[0] >= 2
-									&& py(conto.x / 100, checkpoints.opx[0] / 100, conto.z / 100,
+									&& Utility.py(conto.x / 100, checkpoints.opx[0] / 100, conto.z / 100,
 											checkpoints.opz[0] / 100) < 1000 + avoidnlev) {
 								int j4 = conto.xz;
 								if (zyinv) {
@@ -1213,20 +1213,20 @@ public class Control {
 								}
 							}
 							if (gowait) {
-								if (py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 10000
+								if (Utility.py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 10000
 										&& madness.speed > 50F) {
 									up = false;
 								}
-								if (py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 200) {
+								if (Utility.py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 200) {
 									up = false;
 									handb = true;
 								}
-								if (checkpoints.pcleared == oupnt && py(checkpoints.opx[0] / 100, frx / 100,
+								if (checkpoints.pcleared == oupnt && Utility.py(checkpoints.opx[0] / 100, frx / 100,
 										checkpoints.opz[0] / 100, frz / 100) < frad) {
 									afta = true;
 									gowait = false;
 								}
-								if (py(conto.x / 100, checkpoints.opx[0] / 100, conto.z / 100,
+								if (Utility.py(conto.x / 100, checkpoints.opx[0] / 100, conto.z / 100,
 										checkpoints.opz[0] / 100) < 25) {
 									afta = true;
 									gowait = false;
@@ -1240,9 +1240,9 @@ public class Control {
 								int k3 = -10;
 								for (int k4 = 0; k4 < checkpoints.n; k4++) {
 									if ((checkpoints.typ[k4] == -2 || checkpoints.typ[k4] == -4) && (k4 < 50 || k4 > 54)
-											&& (py(conto.x / 100, checkpoints.x[k4] / 100, conto.z / 100,
+											&& (Utility.py(conto.x / 100, checkpoints.x[k4] / 100, conto.z / 100,
 													checkpoints.z[k4] / 100) < k3 || k3 == -10)) {
-										k3 = py(conto.x / 100, checkpoints.x[k4] / 100, conto.z / 100,
+										k3 = Utility.py(conto.x / 100, checkpoints.x[k4] / 100, conto.z / 100,
 												checkpoints.z[k4] / 100);
 										oupnt = k4;
 									}
@@ -1255,7 +1255,7 @@ public class Control {
 							}
 							if (oupnt >= 0 && oupnt < checkpoints.n) {
 								i = oupnt;
-								if (py(conto.x / 100, checkpoints.x[i] / 100, conto.z / 100,
+								if (Utility.py(conto.x / 100, checkpoints.x[i] / 100, conto.z / 100,
 										checkpoints.z[i] / 100) < 800) {
 									oupnt = -(int) (75F + m.random() * 200F);
 									runbul = (int) (50F + m.random() * 100F);
@@ -1333,21 +1333,21 @@ public class Control {
 									}
 								}
 								if (gowait) {
-									if (py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 10000
+									if (Utility.py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 10000
 											&& madness.speed > 50F) {
 										up = false;
 									}
-									if (py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 200) {
+									if (Utility.py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 200) {
 										up = false;
 										handb = true;
 									}
-									if (checkpoints.pcleared == oupnt && py(checkpoints.opx[0] / 100, frx / 100,
+									if (checkpoints.pcleared == oupnt && Utility.py(checkpoints.opx[0] / 100, frx / 100,
 											checkpoints.opz[0] / 100, frz / 100) < frad) {
 										runbul = 0;
 										afta = true;
 										gowait = false;
 									}
-									if (py(conto.x / 100, checkpoints.opx[0] / 100, conto.z / 100,
+									if (Utility.py(conto.x / 100, checkpoints.opx[0] / 100, conto.z / 100,
 											checkpoints.opz[0] / 100) < 25) {
 										afta = true;
 										gowait = false;
@@ -1376,10 +1376,10 @@ public class Control {
 								if (oupnt == -1) {
 									int l4 = -10;
 									for (int k6 = 0; k6 < checkpoints.n; k6++) {
-										if (checkpoints.typ[k6] == -4 && (py(conto.x / 100, checkpoints.x[k6] / 100,
+										if (checkpoints.typ[k6] == -4 && (Utility.py(conto.x / 100, checkpoints.x[k6] / 100,
 												conto.z / 100, checkpoints.z[k6] / 100) < l4
 												&& m.random() > 0.59999999999999998D || l4 == -10)) {
-											l4 = py(conto.x / 100, checkpoints.x[k6] / 100, conto.z / 100,
+											l4 = Utility.py(conto.x / 100, checkpoints.x[k6] / 100, conto.z / 100,
 													checkpoints.z[k6] / 100);
 											oupnt = k6;
 										}
@@ -1392,7 +1392,7 @@ public class Control {
 								}
 								if (oupnt >= 0 && oupnt < checkpoints.n) {
 									i = oupnt;
-									if (py(conto.x / 100, checkpoints.x[i] / 100, conto.z / 100,
+									if (Utility.py(conto.x / 100, checkpoints.x[i] / 100, conto.z / 100,
 											checkpoints.z[i] / 100) < 800) {
 										oupnt = -(int) (75F + m.random() * 200F);
 										runbul = (int) (50F + m.random() * 100F);
@@ -1422,9 +1422,9 @@ public class Control {
 								int i5 = -10;
 								int l6 = 0;
 								for (int l7 = byte1; l7 < checkpoints.fn; l7++) {
-									if (py(conto.x / 100, checkpoints.x[fpnt[l7]] / 100, conto.z / 100,
+									if (Utility.py(conto.x / 100, checkpoints.x[fpnt[l7]] / 100, conto.z / 100,
 											checkpoints.z[fpnt[l7]] / 100) < i5 || i5 == -10) {
-										i5 = py(conto.x / 100, checkpoints.x[fpnt[l7]] / 100, conto.z / 100,
+										i5 = Utility.py(conto.x / 100, checkpoints.x[fpnt[l7]] / 100, conto.z / 100,
 												checkpoints.z[fpnt[l7]] / 100);
 										l6 = l7;
 									}
@@ -1441,7 +1441,7 @@ public class Control {
 								}
 							}
 							for (int j5 = byte1; j5 < checkpoints.fn; j5++) {
-								if (py(conto.x / 100, checkpoints.x[fpnt[j5]] / 100, conto.z / 100,
+								if (Utility.py(conto.x / 100, checkpoints.x[fpnt[j5]] / 100, conto.z / 100,
 										checkpoints.z[fpnt[j5]] / 100) < 2000) {
 									forget = false;
 									actwait = 0;
@@ -1485,7 +1485,7 @@ public class Control {
 				} else {
 					up = true;
 					char c = '\0';
-					int l1 = (int) ((pys(conto.x, checkpoints.opx[acr], conto.z, checkpoints.opz[acr]) / 2.0F)
+					int l1 = (int) ((Utility.pys(conto.x, checkpoints.opx[acr], conto.z, checkpoints.opz[acr]) / 2.0F)
 							* aim);
 					int l3 = (int) (checkpoints.opx[acr] - l1 * RadicalMath.sin(checkpoints.omxz[acr]));
 					int k5 = (int) (checkpoints.opz[acr] + l1 * RadicalMath.cos(checkpoints.omxz[acr]));
@@ -2018,9 +2018,9 @@ public class Control {
 			for (int j = 0; j < checkpoints.fn; j++) {
 				int l = -10;
 				for (int i1 = 0; i1 < checkpoints.n; i1++) {
-					if (py(checkpoints.fx[j] / 100, checkpoints.x[i1] / 100, checkpoints.fz[j] / 100,
+					if (Utility.py(checkpoints.fx[j] / 100, checkpoints.x[i1] / 100, checkpoints.fz[j] / 100,
 							checkpoints.z[i1] / 100) < l || l == -10) {
-						l = py(checkpoints.fx[j] / 100, checkpoints.x[i1] / 100, checkpoints.fz[j] / 100,
+						l = Utility.py(checkpoints.fx[j] / 100, checkpoints.x[i1] / 100, checkpoints.fz[j] / 100,
 								checkpoints.z[i1] / 100);
 						fpnt[j] = i1;
 					}
@@ -2146,13 +2146,5 @@ public class Control {
 		arrace = false;
 		mutem = false;
 		mutes = false;
-	}
-
-	public int pys(int i, int j, int k, int l) {
-		return (int) Math.sqrt((i - j) * (i - j) + (k - l) * (k - l));
-	}
-
-	public int py(int i, int j, int k, int l) {
-		return (i - j) * (i - j) + (k - l) * (k - l);
 	}
 }

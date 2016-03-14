@@ -10,45 +10,45 @@ import java.util.Random;
  */
 public class Medium
 {
-	int nmt = 0;
-	int[] mrd = null;
-	int[] nmv = null;
-	int[][] mtx = null;
-	int[][] mty = null;
-	int[][] mtz = null;
-	int[][][] mtc = null;
+	private int nmt = 0;
+	private int[] mrd = null;
+	private int[] nmv = null;
+	private int[][] mtx = null;
+	private int[][] mty = null;
+	private int[][] mtz = null;
+	private int[][][] mtc = null;
 	int mgen;
 	int focus_point;
 	int ground;
-	int skyline;
+	private int skyline;
 	int fade[] = {
 			3000, 4500, 6000, 7500, 9000, 10500, 12000, 13500, 15000, 16500, 18000, 19500, 21000, 22500, 24000, 25500
 	};
-	int cldd[] = {
+	private int cldd[] = {
 			210, 210, 210, 1, -1000
 	};
-	int clds[] = {
+	private int clds[] = {
 			210, 210, 210
 	};
-	int osky[] = {
+	private int osky[] = {
 			170, 220, 255
 	};
 	int csky[] = {
 			170, 220, 255
 	};
-	int ogrnd[] = {
+	private int ogrnd[] = {
 			205, 200, 200
 	};
 	int cgrnd[] = {
 			205, 200, 200
 	};
-	int texture[] = {
+	private int texture[] = {
 			0, 0, 0, 50
 	};
-	int cpol[] = {
+	private int cpol[] = {
 			215, 210, 210
 	};
-	int crgrnd[] = {
+	private int crgrnd[] = {
 			205, 200, 200
 	};
 	int cfade[] = {
@@ -59,12 +59,12 @@ public class Medium
 	};
 	int origfade;
 	int fogd;
-	boolean loadnew;
+	//boolean loadnew;
 	boolean lightson;
-	int noelec;
+	private int noelec;
 	int lightn;
-	boolean lton;
-	int lilo;
+	private boolean lton;
+	private int lilo;
 	int flex;
 	boolean trk;
 	boolean crs;
@@ -82,67 +82,67 @@ public class Medium
 	int spx[];
 	int spz[];
 	int sprad[];
-	boolean td;
-	int bcxz;
-	boolean bt;
+	private boolean td;
+	private int bcxz;
+	private boolean bt;
 	int vxz;
 	int adv;
 	boolean vert;
-	int trns;
-	int dispolys;
-	int ogpx[][];
-	int ogpz[][];
-	int cgpx[];
-	int cgpz[];
-	int sgpx;
-	int sgpz;
-	int nrw;
-	int ncl;
+	private int trns;
+	private int dispolys;
+	private int ogpx[][];
+	private int ogpz[][];
+	private int cgpx[];
+	private int cgpz[];
+	private int sgpx;
+	private int sgpz;
+	private int nrw;
+	private int ncl;
 	int lastmaf;
 	int checkpoint;
 	boolean lastcheck;
 	float elecr;
 	boolean cpflik;
 	boolean nochekflk;
-	int cntrn;
-	boolean diup[];
-	int rand[];
-	int trn;
+	private int cntrn;
+	private boolean diup[];
+	private int rand[];
+	private int trn;
 	int hit;
 	int ptr;
 	int ptcnt;
 	int nrnd;
 	long trx;
 	long trz;
-	long atrx;
-	long atrz;
+	private long atrx;
+	private long atrz;
 	int fallen;
-	float fo;
-	float gofo;
-	float pvr[][];
-	int pmx[];
-	float pcv[];
-	int resdown;
-	int noc;
-	int clx[];
-	int clz[];
-	int cmx[];
-	int clax[][][];
-	int clay[][][];
-	int claz[][][];
-	int clc[][][][];
-	int iw;
-	int nst;
-	int stx[];
-	int stz[];
-	int stc[][][];
-	boolean bst[];
-	int twn[];
-	int rescnt;
-	boolean resi;
-	int ih;
-	boolean darksky;
-	int fvect;
+	private float fo;
+	private float gofo;
+	private float pvr[][];
+	private int pmx[];
+	private float pcv[];
+	private int resdown;
+	private int noc;
+	private int clx[];
+	private int clz[];
+	private int cmx[];
+	private int clax[][][];
+	private int clay[][][];
+	private int claz[][][];
+	private int clc[][][][];
+	private int iw;
+	private int nst;
+	private int stx[];
+	private int stz[];
+	private int stc[][][];
+	private boolean bst[];
+	private int twn[];
+	private int rescnt;
+	private boolean resi;
+	private int ih;
+	private boolean darksky;
+	private int fvect;
 
 	public float random() {
 		if (cntrn == 0) {
@@ -277,7 +277,7 @@ public class Medium
 
 	}
 
-	public void groundpolys(Graphics2D graphics2d) {
+	private void groundpolys(Graphics2D graphics2d) {
 		int i = (x - sgpx) / 1200 - 12;
 		if (i < 0) {
 			i = 0;
@@ -677,7 +677,7 @@ public class Medium
 
 	}
 
-	public void drawclouds(Graphics2D graphics2d) {
+	private void drawclouds(Graphics2D graphics2d) {
 		for (int i = 0; i < noc; i++) {
 			int j = cx + (int) ((clx[i] - x / 20 - cx) * RadicalMath.cos(xz) - (clz[i] - z / 20 - cz) * RadicalMath.sin(xz));
 			int k = cz + (int) ((clx[i] - x / 20 - cx) * RadicalMath.sin(xz) + (clz[i] - z / 20 - cz) * RadicalMath.cos(xz));
@@ -1047,7 +1047,7 @@ public class Medium
 		}
 	}
 
-	public void drawmountains(Graphics2D rd) {
+	private void drawmountains(Graphics2D rd) {
 		for (int i = 0; i < nmt; i++) {
 			int i_185_ = mrd[i];
 			int i_186_ = cx + (int) ((mtx[i_185_][0] - x / 30 - cx) * RadicalMath.cos(xz)
@@ -1182,7 +1182,7 @@ public class Medium
 		}
 	}
 
-	public void drawstars(Graphics2D graphics2d) {
+	private void drawstars(Graphics2D graphics2d) {
 		for (int i = 0; i < nst; i++) {
 			int j = cx + (int) (stx[i] * RadicalMath.cos(xz) - stz[i] * RadicalMath.sin(xz));
 			int k = cz + (int) (stx[i] * RadicalMath.sin(xz) + stz[i] * RadicalMath.cos(xz));
@@ -1730,7 +1730,7 @@ public class Medium
 		}
 	}
 
-	public void setcloads(int i, int j, int k, int l, int i1) {
+	public void setclouds(int i, int j, int k, int l, int i1) {
 		if (l < 0) {
 			l = 0;
 		}

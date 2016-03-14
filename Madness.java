@@ -229,7 +229,7 @@ public class Madness {
 	 * "The amount of damage based on the hit that should effect the points in clrad around the point of collision..."
 	 * @author Omar Waly
 	 */
-	float dammult[] = {
+	private float dammult[] = {
 			0.8F, 1.17F, 0.55F, 1.0F, 0.6F, 0.7F, 0.72F, 0.8F, 0.6F, 0.46F, 0.67F, 0.5F, 0.61F, 0.176F, 0.36F, 0.46F
 	};
 	/**
@@ -239,68 +239,68 @@ public class Madness {
 	int maxmag[] = {
 			6000, 4200, 7200, 6000, 6000, 9100, 14000, 12000, 12000, 9700, 13000, 10700, 13000, 30000, 5800, 18000
 	};
-	boolean dominate[];
-	boolean caught[];
+	private boolean dominate[];
+	private boolean caught[];
 	int pzy;
 	int pxy;
 	float speed;
-	float forca;
+	private float forca;
 	float scy[];
 	float scz[];
 	float scx[];
 	boolean mtouch;
 	boolean wtouch;
-	int cntouch;
+	private int cntouch;
 	boolean capsized;
-	int txz;
-	int fxz;
-	int pmlt;
-	int nmlt;
-	int dcnt;
+	private int txz;
+	private int fxz;
+	private int pmlt;
+	private int nmlt;
+	private int dcnt;
 	int skid;
-	boolean pushed;
+	private boolean pushed;
 	boolean gtouch;
-	boolean pl;
-	boolean pr;
-	boolean pd;
-	boolean pu;
+	private boolean pl;
+	private boolean pr;
+	private boolean pd;
+	private boolean pu;
 	int loop;
 	float ucomp;
 	float dcomp;
 	float lcomp;
 	float rcomp;
-	int lxz;
+	private int lxz;
 	int travxy;
 	int travzy;
 	int travxz;
 	int trcnt;
 	int capcnt;
-	int srfcnt;
+	private int srfcnt;
 	boolean rtab;
 	boolean ftab;
 	boolean btab;
 	boolean surfer;
 	float powerup;
-	int xtpower;
-	float tilt;
+	private int xtpower;
+	private float tilt;
 	int squash;
-	int nbsq;
+	private int nbsq;
 	int hitmag;
 	int cntdest;
 	boolean dest;
 	boolean newcar;
-	int pan;
+	private int pan;
 	int pcleared;
 	int clear;
 	int nlaps;
-	int focus;
+	private int focus;
 	float power;
 	int missedcp;
 	int lastcolido;
 	int point;
 	boolean nofocus;
-	int rpdcatch;
-	boolean colidim;
+	private int rpdcatch;
+	private boolean colidim;
 	int cn;
 	int im;
 	int mxz;
@@ -312,9 +312,9 @@ public class Madness {
 	 * universal rate that speed decreases when it exceeds swits[0][2], that is, top speed
 	 * @author Kaffeinated
 	 */
-	float speeddec = 2.0F;			
+	private final float speeddec = 2.0F;			
 	
-	public void regy(int i, float f, ContO conto) {
+	private void regy(int i, float f, ContO conto) {
 		f *= dammult[cn];
 		if (f > 100F) {
 			rpd.recy(i, f, mtouch, im);
@@ -498,7 +498,7 @@ public class Madness {
 		shakedam = 0;
 	}	
 
-	public void regz(int i, float f, ContO conto) {
+	private void regz(int i, float f, ContO conto) {
 		f *= dammult[cn];
 		if (Math.abs(f) > 100F) {
 			rpd.recz(i, f, im);
@@ -687,7 +687,7 @@ public class Madness {
 		}
 	}
 
-	public void distruct(ContO conto) {
+	private void distruct(ContO conto) {
 		for (int i = 0; i < conto.npl; i++)
 			if (conto.p[i].wz == 0 || conto.p[i].gr == -17 || conto.p[i].gr == -16)
 				conto.p[i].embos = 1;
@@ -781,7 +781,7 @@ public class Madness {
 		rpdcatch = 0;
 	}
 
-	public void regx(int i, float f, ContO conto) {
+	private void regx(int i, float f, ContO conto) {
 		f *= dammult[cn];
 		if (Math.abs(f) > 100F) {
 			rpd.recx(i, f, im);

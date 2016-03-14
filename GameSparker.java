@@ -21,7 +21,6 @@ public class GameSparker extends Applet implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -34048182014310663L;
-	HashMap<String, Integer> properties;
 	static Utility utility;
 	
 	final String car_models[] = {
@@ -55,7 +54,6 @@ public class GameSparker extends Applet implements Runnable {
 	
 	private String stageError = "";
 
-	CheckPoints cp;
 	Graphics2D rd;
 	Graphics sg;
 	Image offImage;
@@ -499,7 +497,7 @@ public class GameSparker extends Applet implements Runnable {
 							Utility.getint("texture", s1, 3));
 				}
 				if (s1.startsWith("clouds")) {
-					medium.setcloads(Utility.getint("clouds", s1, 0), Utility.getint("clouds", s1, 1), Utility.getint("clouds", s1, 2),
+					medium.setclouds(Utility.getint("clouds", s1, 0), Utility.getint("clouds", s1, 1), Utility.getint("clouds", s1, 2),
 							Utility.getint("clouds", s1, 3), Utility.getint("clouds", s1, 4));
 				}
 				if (s1.startsWith("fadefrom")) {
