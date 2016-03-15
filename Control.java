@@ -1,5 +1,14 @@
 
 public class Control {
+
+	/**
+	 * mute music
+	 */
+	public static boolean mutem = false;
+	/**
+	 * mute sound
+	 */
+	public static boolean mutes = false;
 	public boolean left;
 	public boolean right;
 	public boolean up;
@@ -8,8 +17,6 @@ public class Control {
 	public int lookback;
 	public boolean enter;
 	public boolean arrace;
-	public boolean mutem;
-	public boolean mutes;
 	private Medium m;
 	private int pan;
 	private int attack;
@@ -2051,8 +2058,6 @@ public class Control {
 		handb = false;
 		lookback = 0;
 		arrace = false;
-		mutem = false;
-		mutes = false;
 	}
 
 	public Control(Medium medium) {
@@ -2064,8 +2069,6 @@ public class Control {
 		lookback = 0;
 		enter = false;
 		arrace = false;
-		mutem = false;
-		mutes = false;
 		pan = 0;
 		attack = 0;
 		acr = 0;
@@ -2144,7 +2147,5 @@ public class Control {
 		lookback = 0;
 		enter = false;
 		arrace = false;
-		mutem = false;
-		mutes = false;
 	}
 }

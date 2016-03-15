@@ -97,15 +97,9 @@ public class GameSparker extends Applet implements Runnable {
 			if (i == 10 || i == 80 || i == 112 || i == 27)
 				u[0].enter = true;
 			if (i == 77 || i == 109)
-				if (u[0].mutem)
-					u[0].mutem = false;
-				else
-					u[0].mutem = true;
+				Control.mutem = !Control.mutem;
 			if (i == 78 || i == 110)
-				if (u[0].mutes)
-					u[0].mutes = false;
-				else
-					u[0].mutes = true;
+				Control.mutes = !Control.mutes;
 			if (i == 97 || i == 65)
 				if (u[0].arrace)
 					u[0].arrace = false;

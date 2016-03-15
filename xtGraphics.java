@@ -1399,11 +1399,11 @@ public class xtGraphics extends Panel implements Runnable {
 			cntwis = 0;
 		}
 		if (fase == 0 || fase == 6 || fase == -1 || fase == -2 || fase == -3 || fase == -4 || fase == -5) {
-			if (mutes != control.mutes) {
-				mutes = control.mutes;
+			if (mutes != Control.mutes) {
+				mutes = Control.mutes;
 			}
-			if (control.mutem != mutem) {
-				mutem = control.mutem;
+			if (Control.mutem != mutem) {
+				mutem = Control.mutem;
 				if (mutem) {
 					if (loadedt[i - 1]) {
 						stracks[i - 1].stop();
@@ -3006,7 +3006,7 @@ public class xtGraphics extends Panel implements Runnable {
 					System.out.println("Car " + j + " is out of bounds");
 					sc[j] -= ThreadLocalRandom.current().nextDouble() * 5F;
 				}
-				System.out.println("sc of " + j + " is " + sc[j]);
+				//System.out.println("sc of " + j + " is " + sc[j]);
 			}
 		}
 		// this error will never be thrown in a deployment environment
