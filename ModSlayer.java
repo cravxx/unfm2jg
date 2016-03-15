@@ -54,7 +54,7 @@ public class ModSlayer {
 	};
 	private int def_tempo;
 	private int def_bpm;
-	private byte vol_table[];
+	public byte vol_table[];
 	private int vol_adj[];
 	private int vol_shift;	
 	private int order_pos;

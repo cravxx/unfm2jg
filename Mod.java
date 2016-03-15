@@ -10,7 +10,7 @@ public class Mod {
 	public ModInstrument insts[];
 	public byte positions[];
 	public int song_length_patterns;
-	private int song_repeat_patterns;
+	public int song_repeat_patterns;
 	public boolean s3m;
 	private static final int voice_mk;
 	private static final int voice_mk2;

@@ -5,7 +5,9 @@ import javax.imageio.ImageIO;
 
 /**
  * Contains often used functions, and some new ones
- * @author Rafa, Kaffeinated, Omar Wally
+ * @author Rafa
+ * @author Kaffeinated
+ * @author Omar Waly
  *
  */
 public class Utility {
@@ -27,8 +29,8 @@ public class Utility {
         int var = 0;
         String part = "";
         for (int k = string.length() + 1; k < source.length(); k++) {
-            final String string_266_ = new StringBuilder().append("").append(source.charAt(k)).toString();
-            if (string_266_.equals(",") || string_266_.equals(")")) {
+            final String strChar = new StringBuilder().append("").append(source.charAt(k)).toString();
+            if ((",").equals(strChar) || (")").equals(strChar)) {
                 var++;
                 k++;
             }
@@ -112,8 +114,8 @@ public class Utility {
         int var = 0;
         String part = "";
         for (int k = string.length() + 1; k < source.length(); k++) {
-            final String string_185_ = new StringBuilder().append("").append(source.charAt(k)).toString();
-            if (string_185_.equals(",") || string_185_.equals(")")) {
+            final String strChar = new StringBuilder().append("").append(source.charAt(k)).toString();
+            if ((",").equals(strChar) || (")").equals(strChar)) {
                 var++;
                 k++;
             }
@@ -137,8 +139,8 @@ public class Utility {
         int var = 0;
         String part = "";
         for (int k = string.length() + 1; k < source.length(); k++) {
-            final String string_190_ = new StringBuilder().append("").append(source.charAt(k)).toString();
-            if (string_190_.equals(",") || string_190_.equals(")")) {
+            final String strChar = new StringBuilder().append("").append(source.charAt(k)).toString();
+            if ((",").equals(strChar) || (")").equals(strChar)) {
                 var++;
                 k++;
             }
