@@ -2965,6 +2965,11 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 	}
 
+	/**
+	 * unique car sorter 
+	 * @author rafa
+	 * @param i checkpoints.stage
+	 */
 	private void sortcars(final int i) {
 		if (i != 0) {
 			int lastcar = 7;

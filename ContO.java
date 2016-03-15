@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * models
  * @author Omar Waly, Kaffeinated
- *
  */
 public class ContO {
 	public Medium m;
@@ -22,10 +21,6 @@ public class ContO {
 	public int dist = 0;
 	public int maxR = 0;
 	public int disp = 0;
-	/*
-	 * first set 7
-	 * seconds set 0
-	 */
 	public int disline = 7;
 	public boolean shadow = false;
 	public boolean noline = false;
@@ -50,8 +45,7 @@ public class ContO {
 	public boolean fix = false;
 	public int fcnt = 0;
 	public int checkpoint = 0;
-	public int tnt = 0;
-	
+	public int tnt = 0;	
 	public int txy[];
 	public int tzy[];
 	public int tc[][];
@@ -63,8 +57,7 @@ public class ContO {
 	public int tz[];
 	public int skd[];
 	public int dam[];
-	public boolean notwall[];
-	
+	public boolean notwall[];	
 
 	public void pdust(int i, Graphics2D rd, int j) {
 		if (j * dov[i] > 0) {
@@ -201,12 +194,10 @@ public class ContO {
 		}
 	}
 
-	public ContO(byte abyte0[], Medium medium, Trackers trackers) {		
-		
+	public ContO(byte abyte0[], Medium medium, Trackers trackers) {				
 		m = medium;
 		t = trackers;
 		p = new Plane[270];
-		String s1 = "";
 		boolean flag = false;
 		boolean flag1 = false;
 		int i = 0;
@@ -228,12 +219,13 @@ public class ContO {
 		float nfmm_scale[] = {
 				1.0F, 1.0F, 1.0F
 		};
-		try {
-			DataInputStream datainputstream = new DataInputStream(new ByteArrayInputStream(abyte0));
-			String s;
-			while ((s = datainputstream.readLine()) != null) {
-				s1 = "" + s.trim();
-				if (s1.startsWith("<p>")) {
+		
+		try (BufferedReader bufferedreader = new BufferedReader(
+				new InputStreamReader((new ByteArrayInputStream(abyte0))))) {
+			for (String line; (line = bufferedreader.readLine()) != null;) {
+				line = line.trim();
+
+				if (line.startsWith("<p>")) {
 					flag = true;
 					i = 0;
 					k = 0;
@@ -241,34 +233,34 @@ public class ContO {
 					byte0 = 0;
 				}
 				if (flag) {
-					if (s1.startsWith("gr")) {
-						k = Utility.getint("gr", s1, 0);
+					if (line.startsWith("gr")) {
+						k = Utility.getint("gr", line, 0);
 					}
-					if (s1.startsWith("fs")) {
-						l = Utility.getint("fs", s1, 0);
+					if (line.startsWith("fs")) {
+						l = Utility.getint("fs", line, 0);
 					}
-					if (s1.startsWith("c")) {
+					if (line.startsWith("c")) {
 						flag2 = false;
-						ai3[0] = Utility.getint("c", s1, 0);
-						ai3[1] = Utility.getint("c", s1, 1);
-						ai3[2] = Utility.getint("c", s1, 2);
+						ai3[0] = Utility.getint("c", line, 0);
+						ai3[1] = Utility.getint("c", line, 1);
+						ai3[2] = Utility.getint("c", line, 2);
 					}
-					if (s1.startsWith("glass")) {
+					if (line.startsWith("glass")) {
 						flag2 = true;
 					}
-					if (s1.startsWith("lightF")) {
+					if (line.startsWith("lightF")) {
 						byte0 = 1;
 					}
-					if (s1.startsWith("lightB")) {
+					if (line.startsWith("lightB")) {
 						byte0 = 2;
 					}
-					if (s1.startsWith("light()")) {
+					if (line.startsWith("light()")) {
 						byte0 = 1;
 					}
-					if (s1.startsWith("p")) {
-						ai[i] = (int) ((Utility.getint("p", s1, 0) * f * f1) * nfmm_scale[0]);
-						ai1[i] = (int) ((Utility.getint("p", s1, 1) * f) * nfmm_scale[1]);
-						ai2[i] = (int) ((Utility.getint("p", s1, 2) * f) * nfmm_scale[2]);
+					if (line.startsWith("p")) {
+						ai[i] = (int) ((Utility.getint("p", line, 0) * f * f1) * nfmm_scale[0]);
+						ai1[i] = (int) ((Utility.getint("p", line, 1) * f) * nfmm_scale[1]);
+						ai2[i] = (int) ((Utility.getint("p", line, 2) * f) * nfmm_scale[2]);
 						int j1 = (int) Math.sqrt(ai[i] * ai[i] + ai1[i] * ai1[i] + ai2[i] * ai2[i]);
 						if (j1 > maxR) {
 							maxR = j1;
@@ -276,27 +268,29 @@ public class ContO {
 						i++;
 					}
 				}
-				if (s1.startsWith("</p>")) {
+				if (line.startsWith("</p>")) {
 					p[npl] = new Plane(m, t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0);
 					npl++;
 					flag = false;
 				}
-				if (s1.startsWith("rims")) {
-					wheels.setrims(Utility.getint("rims", s1, 0), Utility.getint("rims", s1, 1), Utility.getint("rims", s1, 2),
-							Utility.getint("rims", s1, 3), Utility.getint("rims", s1, 4));
+				if (line.startsWith("rims")) {
+					wheels.setrims(Utility.getint("rims", line, 0), Utility.getint("rims", line, 1),
+							Utility.getint("rims", line, 2), Utility.getint("rims", line, 3),
+							Utility.getint("rims", line, 4));
 				}
-				if (s1.startsWith("w")) {
-					keyx[j] = (int) (Utility.getint("w", s1, 0) * f * nfmm_scale[0]);
-					keyz[j] = (int) (Utility.getint("w", s1, 2) * f * nfmm_scale[2]);
+				if (line.startsWith("w")) {
+					keyx[j] = (int) (Utility.getint("w", line, 0) * f * nfmm_scale[0]);
+					keyz[j] = (int) (Utility.getint("w", line, 2) * f * nfmm_scale[2]);
 					j++;
-					wheels.make(m, t, p, npl, (int) (Utility.getint("w", s1, 0) * f * f1 * nfmm_scale[0]),
-							(int) (Utility.getint("w", s1, 1) * f * nfmm_scale[1]),
-							(int) (Utility.getint("w", s1, 2) * f * nfmm_scale[2]), Utility.getint("w", s1, 3),
-							(int) (Utility.getint("w", s1, 4) * f * f1), (int) (Utility.getint("w", s1, 5) * f), i1);
+					wheels.make(m, t, p, npl, (int) (Utility.getint("w", line, 0) * f * f1 * nfmm_scale[0]),
+							(int) (Utility.getint("w", line, 1) * f * nfmm_scale[1]),
+							(int) (Utility.getint("w", line, 2) * f * nfmm_scale[2]), Utility.getint("w", line, 3),
+							(int) (Utility.getint("w", line, 4) * f * f1), (int) (Utility.getint("w", line, 5) * f),
+							i1);
 					npl += 15;
 				}
-				if (s1.startsWith("tracks")) {
-					int k1 = Utility.getint("tracks", s1, 0);
+				if (line.startsWith("tracks")) {
+					int k1 = Utility.getint("tracks", line, 0);
 					txy = new int[k1];
 					tzy = new int[k1];
 					tc = new int[k1][3];
@@ -310,7 +304,7 @@ public class ContO {
 					dam = new int[k1];
 					notwall = new boolean[k1];
 				}
-				if (s1.startsWith("<track>")) {
+				if (line.startsWith("<track>")) {
 					flag1 = true;
 					notwall[tnt] = false;
 					dam[tnt] = 1;
@@ -328,98 +322,95 @@ public class ContO {
 					tc[tnt][2] = 0;
 				}
 				if (flag1) {
-					if (s1.startsWith("c")) {
-						tc[tnt][0] = Utility.getint("c", s1, 0);
-						tc[tnt][1] = Utility.getint("c", s1, 1);
-						tc[tnt][2] = Utility.getint("c", s1, 2);
+					if (line.startsWith("c")) {
+						tc[tnt][0] = Utility.getint("c", line, 0);
+						tc[tnt][1] = Utility.getint("c", line, 1);
+						tc[tnt][2] = Utility.getint("c", line, 2);
 					}
-					if (s1.startsWith("xy")) {
-						txy[tnt] = Utility.getint("xy", s1, 0);
+					if (line.startsWith("xy")) {
+						txy[tnt] = Utility.getint("xy", line, 0);
 					}
-					if (s1.startsWith("zy")) {
-						tzy[tnt] = Utility.getint("zy", s1, 0);
+					if (line.startsWith("zy")) {
+						tzy[tnt] = Utility.getint("zy", line, 0);
 					}
-					if (s1.startsWith("radx")) {
-						tradx[tnt] = (int) (Utility.getint("radx", s1, 0) * f);
+					if (line.startsWith("radx")) {
+						tradx[tnt] = (int) (Utility.getint("radx", line, 0) * f);
 					}
-					if (s1.startsWith("rady")) {
-						trady[tnt] = (int) (Utility.getint("rady", s1, 0) * f);
+					if (line.startsWith("rady")) {
+						trady[tnt] = (int) (Utility.getint("rady", line, 0) * f);
 					}
-					if (s1.startsWith("radz")) {
-						tradz[tnt] = (int) (Utility.getint("radz", s1, 0) * f);
+					if (line.startsWith("radz")) {
+						tradz[tnt] = (int) (Utility.getint("radz", line, 0) * f);
 					}
-					if (s1.startsWith("ty")) {
-						ty[tnt] = (int) (Utility.getint("ty", s1, 0) * f);
+					if (line.startsWith("ty")) {
+						ty[tnt] = (int) (Utility.getint("ty", line, 0) * f);
 					}
-					if (s1.startsWith("tx")) {
-						tx[tnt] = (int) (Utility.getint("tx", s1, 0) * f);
+					if (line.startsWith("tx")) {
+						tx[tnt] = (int) (Utility.getint("tx", line, 0) * f);
 					}
-					if (s1.startsWith("tz")) {
-						tz[tnt] = (int) (Utility.getint("tz", s1, 0) * f);
+					if (line.startsWith("tz")) {
+						tz[tnt] = (int) (Utility.getint("tz", line, 0) * f);
 					}
-					if (s1.startsWith("skid")) {
-						skd[tnt] = Utility.getint("skid", s1, 0);
+					if (line.startsWith("skid")) {
+						skd[tnt] = Utility.getint("skid", line, 0);
 					}
-					if (s1.startsWith("dam")) {
+					if (line.startsWith("dam")) {
 						dam[tnt] = 3;
 					}
-					if (s1.startsWith("notwall")) {
+					if (line.startsWith("notwall")) {
 						notwall[tnt] = true;
 					}
 				}
-				if (s1.startsWith("</track>")) {
+				if (line.startsWith("</track>")) {
 					flag1 = false;
 					tnt++;
 				}
-				if (s1.startsWith("disp")) {
-					disp = Utility.getint("disp", s1, 0);
+				if (line.startsWith("disp")) {
+					disp = Utility.getint("disp", line, 0);
 				}
-				if (s1.startsWith("disline")) {
-					disline = Utility.getint("disline", s1, 0);
+				if (line.startsWith("disline")) {
+					disline = Utility.getint("disline", line, 0);
 				}
-				if (s1.startsWith("shadow")) {
+				if (line.startsWith("shadow")) {
 					shadow = true;
 				}
-				if (s1.startsWith("stonecold")) {
+				if (line.startsWith("stonecold")) {
 					noline = true;
 				}
-				if (s1.startsWith("road")) {
+				if (line.startsWith("road")) {
 					flag3 = true;
 				}
-				if (s1.startsWith("notroad")) {
+				if (line.startsWith("notroad")) {
 					flag3 = false;
 				}
-				if (s1.startsWith("grounded")) {
-					grounded = Utility.getint("grounded", s1, 0) / 100F;
+				if (line.startsWith("grounded")) {
+					grounded = Utility.getint("grounded", line, 0) / 100F;
 				}
-				if (s1.startsWith("div")) {
-					f = Utility.getint("div", s1, 0) / 10F;
+				if (line.startsWith("div")) {
+					f = Utility.getint("div", line, 0) / 10F;
 				}
-				if (s1.startsWith("idiv")) {
-					f = Utility.getint("idiv", s1, 0) / 100F;
+				if (line.startsWith("idiv")) {
+					f = Utility.getint("idiv", line, 0) / 100F;
 				}
-				if (s1.startsWith("iwid")) {
-					f1 = Utility.getint("iwid", s1, 0) / 100F;
+				if (line.startsWith("iwid")) {
+					f1 = Utility.getint("iwid", line, 0) / 100F;
 				}
-				if (s1.startsWith("gwgr")) {
-					i1 = Utility.getint("gwgr", s1, 0);
+				if (line.startsWith("gwgr")) {
+					i1 = Utility.getint("gwgr", line, 0);
 				}
-				if (s1.startsWith("ScaleX")) {
-					nfmm_scale[0] = Utility.getint("ScaleX", s1, 0) / 100F;
+				if (line.startsWith("ScaleX")) {
+					nfmm_scale[0] = Utility.getint("ScaleX", line, 0) / 100F;
 				}
-				if (s1.startsWith("ScaleY")) {
-					nfmm_scale[1] = Utility.getint("ScaleY", s1, 0) / 100F;
+				if (line.startsWith("ScaleY")) {
+					nfmm_scale[1] = Utility.getint("ScaleY", line, 0) / 100F;
 				}
-				if (s1.startsWith("ScaleZ")) {
-					nfmm_scale[2] = Utility.getint("ScaleZ", s1, 0) / 100F;
+				if (line.startsWith("ScaleZ")) {
+					nfmm_scale[2] = Utility.getint("ScaleZ", line, 0) / 100F;
 				}
 			}
-			datainputstream.close();
-		} catch (Exception exception) {
-			System.out.println("ContO Loading Error: " + exception);
-			System.out.println("At File: " + abyte0 + ".rad");
-			System.out.println("At Line: " + s1);
-			System.out.println("--------------------");
+		} catch (IOException e) {
+			System.out.println("Error loading " + abyte0 + ".rad");
+			e.printStackTrace();
 		}
 		grat = wheels.ground;
 	}

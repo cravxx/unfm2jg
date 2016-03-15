@@ -42,6 +42,8 @@ public class GameSparker extends Applet implements Runnable {
 	 */
 	public static final boolean splashScreenState = true;
 	
+	public static final String stageDir = "stages/";
+	
 	/**
 	 * Set directory for temporary creation of cookies (directory is deleted after writing is complete) 
 	 */
@@ -463,88 +465,84 @@ public class GameSparker extends Applet implements Runnable {
 		int t_wall = 0;
 		int b_wall = 100;
 		
-		String s1 = "";
-		try {
-			DataInputStream datainputstream;
-			String stage_data = new StringBuilder().append("stages/").append(checkpoints.stage).append("").toString();
-			final File file = new File(new StringBuilder().append("").append(stage_data).append(".txt").toString());
-			datainputstream = new DataInputStream(new FileInputStream(file));
-			String s;
-			while ((s = datainputstream.readLine()) != null) {
-				s1 = "" + s.trim();
-				if (s1.startsWith("mountains"))
-					medium.mgen = Utility.getint("mountains", s1, 0);
-				if (s1.startsWith("snap"))
-					medium.setsnap(Utility.getint("snap", s1, 0), Utility.getint("snap", s1, 1), Utility.getint("snap", s1, 2));
-				if (s1.startsWith("sky")) {
-					medium.setsky(Utility.getint("sky", s1, 0), Utility.getint("sky", s1, 1), Utility.getint("sky", s1, 2));
+		
+		try (BufferedReader bufferedreader = new BufferedReader(new FileReader(new File(stageDir + checkpoints.stage + ".txt")))) {
+			for (String line; (line = bufferedreader.readLine()) != null;) {
+				line = line.trim();
+				
+				if (line.startsWith("mountains"))
+					medium.mgen = Utility.getint("mountains", line, 0);
+				if (line.startsWith("snap"))
+					medium.setsnap(Utility.getint("snap", line, 0), Utility.getint("snap", line, 1), Utility.getint("snap", line, 2));
+				if (line.startsWith("sky")) {
+					medium.setsky(Utility.getint("sky", line, 0), Utility.getint("sky", line, 1), Utility.getint("sky", line, 2));
 					xtgraphics.snap(checkpoints.stage);
 				}
-				if (s1.startsWith("ground"))
-					medium.setgrnd(Utility.getint("ground", s1, 0), Utility.getint("ground", s1, 1), Utility.getint("ground", s1, 2));
-				if (s1.startsWith("polys"))
-					medium.setpolys(Utility.getint("polys", s1, 0), Utility.getint("polys", s1, 1), Utility.getint("polys", s1, 2));
-				if (s1.startsWith("fog"))
-					medium.setfade(Utility.getint("fog", s1, 0), Utility.getint("fog", s1, 1), Utility.getint("fog", s1, 2));
-				if (s1.startsWith("density"))
-					medium.fogd = Utility.getint("density", s1, 0);
-				if (s1.startsWith("texture")) {
-					medium.setexture(Utility.getint("texture", s1, 0), Utility.getint("texture", s1, 1), Utility.getint("texture", s1, 2),
-							Utility.getint("texture", s1, 3));
+				if (line.startsWith("ground"))
+					medium.setgrnd(Utility.getint("ground", line, 0), Utility.getint("ground", line, 1), Utility.getint("ground", line, 2));
+				if (line.startsWith("polys"))
+					medium.setpolys(Utility.getint("polys", line, 0), Utility.getint("polys", line, 1), Utility.getint("polys", line, 2));
+				if (line.startsWith("fog"))
+					medium.setfade(Utility.getint("fog", line, 0), Utility.getint("fog", line, 1), Utility.getint("fog", line, 2));
+				if (line.startsWith("density"))
+					medium.fogd = Utility.getint("density", line, 0);
+				if (line.startsWith("texture")) {
+					medium.setexture(Utility.getint("texture", line, 0), Utility.getint("texture", line, 1), Utility.getint("texture", line, 2),
+							Utility.getint("texture", line, 3));
 				}
-				if (s1.startsWith("clouds")) {
-					medium.setclouds(Utility.getint("clouds", s1, 0), Utility.getint("clouds", s1, 1), Utility.getint("clouds", s1, 2),
-							Utility.getint("clouds", s1, 3), Utility.getint("clouds", s1, 4));
+				if (line.startsWith("clouds")) {
+					medium.setclouds(Utility.getint("clouds", line, 0), Utility.getint("clouds", line, 1), Utility.getint("clouds", line, 2),
+							Utility.getint("clouds", line, 3), Utility.getint("clouds", line, 4));
 				}
-				if (s1.startsWith("fadefrom")) {
-					medium.fadfrom(Utility.getint("fadefrom", s1, 0));
+				if (line.startsWith("fadefrom")) {
+					medium.fadfrom(Utility.getint("fadefrom", line, 0));
 					medium.origfade = medium.fade[0];
 				}
-				if (s1.startsWith("lightson"))
+				if (line.startsWith("lightson"))
 					medium.lightson = true;
-				if (s1.startsWith("set")) {
-					int k1 = Utility.getint("set", s1, 0);
+				if (line.startsWith("set")) {
+					int k1 = Utility.getint("set", line, 0);
 					k1 += 6;
-					aconto[nob] = new ContO(aconto1[k1], Utility.getint("set", s1, 1), medium.ground - aconto1[k1].grat,
-							Utility.getint("set", s1, 2), Utility.getint("set", s1, 3));
-					if (s1.indexOf(")p") != -1) {
-						checkpoints.x[checkpoints.n] = Utility.getint("chk", s1, 1);
-						checkpoints.z[checkpoints.n] = Utility.getint("chk", s1, 2);
+					aconto[nob] = new ContO(aconto1[k1], Utility.getint("set", line, 1), medium.ground - aconto1[k1].grat,
+							Utility.getint("set", line, 2), Utility.getint("set", line, 3));
+					if (line.indexOf(")p") != -1) {
+						checkpoints.x[checkpoints.n] = Utility.getint("chk", line, 1);
+						checkpoints.z[checkpoints.n] = Utility.getint("chk", line, 2);
 						checkpoints.y[checkpoints.n] = 0;
 						checkpoints.typ[checkpoints.n] = 0;
-						if (s1.indexOf(")pt") != -1)
+						if (line.indexOf(")pt") != -1)
 							checkpoints.typ[checkpoints.n] = -1;
-						if (s1.indexOf(")pr") != -1)
+						if (line.indexOf(")pr") != -1)
 							checkpoints.typ[checkpoints.n] = -2;
-						if (s1.indexOf(")po") != -1)
+						if (line.indexOf(")po") != -1)
 							checkpoints.typ[checkpoints.n] = -3;
-						if (s1.indexOf(")ph") != -1)
+						if (line.indexOf(")ph") != -1)
 							checkpoints.typ[checkpoints.n] = -4;
 						checkpoints.n++;
 						notb = nob + 1;
 					}
 					nob++;
 				}
-				if (s1.startsWith("fltset")) {
-					int i2 = Utility.getint("fltset", s1, 0);
+				if (line.startsWith("fltset")) {
+					int i2 = Utility.getint("fltset", line, 0);
 					i2 += 6;
-					aconto[nob] = new ContO(aconto1[i2], Utility.getint("fltset", s1, 1), Utility.getint("fltset", s1, 3),
-							Utility.getint("set", s1, 2), Utility.getint("set", s1, 4));
-					if (s1.indexOf(")p") != -1) {
-						checkpoints.x[checkpoints.n] = Utility.getint("fltset", s1, 1);
-						checkpoints.z[checkpoints.n] = Utility.getint("fltset", s1, 2);
-						checkpoints.y[checkpoints.n] = Utility.getint("fltset", s1, 3);
+					aconto[nob] = new ContO(aconto1[i2], Utility.getint("fltset", line, 1), Utility.getint("fltset", line, 3),
+							Utility.getint("set", line, 2), Utility.getint("set", line, 4));
+					if (line.indexOf(")p") != -1) {
+						checkpoints.x[checkpoints.n] = Utility.getint("fltset", line, 1);
+						checkpoints.z[checkpoints.n] = Utility.getint("fltset", line, 2);
+						checkpoints.y[checkpoints.n] = Utility.getint("fltset", line, 3);
 						checkpoints.typ[checkpoints.n] = 0;
-						if (s1.indexOf(")pt") != -1) {
+						if (line.indexOf(")pt") != -1) {
 							checkpoints.typ[checkpoints.n] = -1;
 						}
-						if (s1.indexOf(")pr") != -1) {
+						if (line.indexOf(")pr") != -1) {
 							checkpoints.typ[checkpoints.n] = -2;
 						}
-						if (s1.indexOf(")po") != -1) {
+						if (line.indexOf(")po") != -1) {
 							checkpoints.typ[checkpoints.n] = -3;
 						}
-						if (s1.indexOf(")ph") != -1) {
+						if (line.indexOf(")ph") != -1) {
 							checkpoints.typ[checkpoints.n] = -4;
 						}
 						checkpoints.n++;
@@ -552,15 +550,15 @@ public class GameSparker extends Applet implements Runnable {
 					}
 					nob++;
 				}
-				if (s1.startsWith("chk")) {
-					int l1 = Utility.getint("chk", s1, 0);
+				if (line.startsWith("chk")) {
+					int l1 = Utility.getint("chk", line, 0);
 					l1 += 6;
-					aconto[nob] = new ContO(aconto1[l1], Utility.getint("chk", s1, 1), medium.ground - aconto1[l1].grat,
-							Utility.getint("chk", s1, 2), Utility.getint("chk", s1, 3));
-					checkpoints.x[checkpoints.n] = Utility.getint("chk", s1, 1);
-					checkpoints.z[checkpoints.n] = Utility.getint("chk", s1, 2);
+					aconto[nob] = new ContO(aconto1[l1], Utility.getint("chk", line, 1), medium.ground - aconto1[l1].grat,
+							Utility.getint("chk", line, 2), Utility.getint("chk", line, 3));
+					checkpoints.x[checkpoints.n] = Utility.getint("chk", line, 1);
+					checkpoints.z[checkpoints.n] = Utility.getint("chk", line, 2);
 					checkpoints.y[checkpoints.n] = medium.ground - aconto1[l1].grat;
-					if (Utility.getint("chk", s1, 3) == 0)
+					if (Utility.getint("chk", line, 3) == 0)
 						checkpoints.typ[checkpoints.n] = 1;
 					else
 						checkpoints.typ[checkpoints.n] = 2;
@@ -571,15 +569,15 @@ public class GameSparker extends Applet implements Runnable {
 					nob++;
 					notb = nob;
 				}
-				if (s1.startsWith("fltchk")) {
-					int l1 = Utility.getint("fltchk", s1, 0);
+				if (line.startsWith("fltchk")) {
+					int l1 = Utility.getint("fltchk", line, 0);
 					l1 += 6;
-					aconto[nob] = new ContO(aconto1[l1], Utility.getint("fltchk", s1, 1), Utility.getint("fltchk", s1, 3),
-							Utility.getint("fltchk", s1, 2), Utility.getint("fltchk", s1, 4));
-					checkpoints.x[checkpoints.n] = Utility.getint("fltchk", s1, 1);
-					checkpoints.z[checkpoints.n] = Utility.getint("fltchk", s1, 2);
-					checkpoints.y[checkpoints.n] = Utility.getint("fltchk", s1, 3);
-					if (Utility.getint("fltchk", s1, 4) == 0)
+					aconto[nob] = new ContO(aconto1[l1], Utility.getint("fltchk", line, 1), Utility.getint("fltchk", line, 3),
+							Utility.getint("fltchk", line, 2), Utility.getint("fltchk", line, 4));
+					checkpoints.x[checkpoints.n] = Utility.getint("fltchk", line, 1);
+					checkpoints.z[checkpoints.n] = Utility.getint("fltchk", line, 2);
+					checkpoints.y[checkpoints.n] = Utility.getint("fltchk", line, 3);
+					if (Utility.getint("fltchk", line, 4) == 0)
 						checkpoints.typ[checkpoints.n] = 1;
 					else
 						checkpoints.typ[checkpoints.n] = 2;
@@ -590,22 +588,22 @@ public class GameSparker extends Applet implements Runnable {
 					nob++;
 					notb = nob;
 				}
-				if (s1.startsWith("fix")) {
-					int i2 = Utility.getint("fix", s1, 0);
+				if (line.startsWith("fix")) {
+					int i2 = Utility.getint("fix", line, 0);
 					i2 += 6;
-					aconto[nob] = new ContO(aconto1[i2], Utility.getint("fix", s1, 1), Utility.getint("fix", s1, 3),
-							Utility.getint("fix", s1, 2), Utility.getint("fix", s1, 4));
-					checkpoints.fx[checkpoints.fn] = Utility.getint("fix", s1, 1);
-					checkpoints.fz[checkpoints.fn] = Utility.getint("fix", s1, 2);
-					checkpoints.fy[checkpoints.fn] = Utility.getint("fix", s1, 3);
+					aconto[nob] = new ContO(aconto1[i2], Utility.getint("fix", line, 1), Utility.getint("fix", line, 3),
+							Utility.getint("fix", line, 2), Utility.getint("fix", line, 4));
+					checkpoints.fx[checkpoints.fn] = Utility.getint("fix", line, 1);
+					checkpoints.fz[checkpoints.fn] = Utility.getint("fix", line, 2);
+					checkpoints.fy[checkpoints.fn] = Utility.getint("fix", line, 3);
 					aconto[nob].elec = true;
-					if (Utility.getint("fix", s1, 4) != 0) {
+					if (Utility.getint("fix", line, 4) != 0) {
 						checkpoints.roted[checkpoints.fn] = true;
 						aconto[nob].roted = true;
 					} else {
 						checkpoints.roted[checkpoints.fn] = false;
 					}
-					if (s1.indexOf(")s") != -1)
+					if (line.indexOf(")s") != -1)
 						checkpoints.special[checkpoints.fn] = true;
 					else
 						checkpoints.special[checkpoints.fn] = false;
@@ -613,15 +611,15 @@ public class GameSparker extends Applet implements Runnable {
 					nob++;
 					notb = nob;
 				}
-				if (s1.startsWith("nlaps"))
-					checkpoints.nlaps = Utility.getint("nlaps", s1, 0);
-				if (s1.startsWith("name"))
-					checkpoints.name = Utility.getstring("name", s1, 0).replace('|', ',');
-				if (s1.startsWith("maxr")) {
-					int j2 = Utility.getint("maxr", s1, 0);
-					int j3 = Utility.getint("maxr", s1, 1);
+				if (line.startsWith("nlaps"))
+					checkpoints.nlaps = Utility.getint("nlaps", line, 0);
+				if (line.startsWith("name"))
+					checkpoints.name = Utility.getstring("name", line, 0).replace('|', ',');
+				if (line.startsWith("maxr")) {
+					int j2 = Utility.getint("maxr", line, 0);
+					int j3 = Utility.getint("maxr", line, 1);
 					r_wall = j3;
-					int j4 = Utility.getint("maxr", s1, 2);
+					int j4 = Utility.getint("maxr", line, 2);
 					for (int j5 = 0; j5 < j2; j5++) {
 						aconto[nob] = new ContO(aconto1[wall_id], j3, medium.ground - aconto1[wall_id].grat,
 								j5 * 4800 + j4, 0);
@@ -639,11 +637,11 @@ public class GameSparker extends Applet implements Runnable {
 					trackers.dam[trackers.nt] = 1;
 					trackers.nt++;
 				}
-				if (s1.startsWith("maxl")) {
-					int k2 = Utility.getint("maxl", s1, 0);
-					int k3 = Utility.getint("maxl", s1, 1);
+				if (line.startsWith("maxl")) {
+					int k2 = Utility.getint("maxl", line, 0);
+					int k3 = Utility.getint("maxl", line, 1);
 					l_wall = k3;
-					int k4 = Utility.getint("maxl", s1, 2);
+					int k4 = Utility.getint("maxl", line, 2);
 					for (int k5 = 0; k5 < k2; k5++) {
 						aconto[nob] = new ContO(aconto1[wall_id], k3, medium.ground - aconto1[wall_id].grat,
 								k5 * 4800 + k4, 0);
@@ -662,11 +660,11 @@ public class GameSparker extends Applet implements Runnable {
 					trackers.nt++;
 				}
 
-				if (s1.startsWith("maxt")) {
-					int l2 = Utility.getint("maxt", s1, 0);
-					int l3 = Utility.getint("maxt", s1, 1);
+				if (line.startsWith("maxt")) {
+					int l2 = Utility.getint("maxt", line, 0);
+					int l3 = Utility.getint("maxt", line, 1);
 					t_wall = l3;
-					int l4 = Utility.getint("maxt", s1, 2);
+					int l4 = Utility.getint("maxt", line, 2);
 					for (int l5 = 0; l5 < l2; l5++) {
 						aconto[nob] = new ContO(aconto1[wall_id], l5 * 4800 + l4, medium.ground - aconto1[wall_id].grat,
 								l3, 90);
@@ -684,11 +682,11 @@ public class GameSparker extends Applet implements Runnable {
 					trackers.dam[trackers.nt] = 1;
 					trackers.nt++;
 				}
-				if (s1.startsWith("maxb")) {
-					int i3 = Utility.getint("maxb", s1, 0);
-					int i4 = Utility.getint("maxb", s1, 1);
+				if (line.startsWith("maxb")) {
+					int i3 = Utility.getint("maxb", line, 0);
+					int i4 = Utility.getint("maxb", line, 1);
 					b_wall = i4;
-					int i5 = Utility.getint("maxb", s1, 2);
+					int i5 = Utility.getint("maxb", line, 2);
 					for (int i6 = 0; i6 < i3; i6++) {
 						aconto[nob] = new ContO(aconto1[wall_id], i6 * 4800 + i5, medium.ground - aconto1[wall_id].grat,
 								i4, 90);
@@ -707,22 +705,20 @@ public class GameSparker extends Applet implements Runnable {
 					trackers.nt++;
 				}
 			}
-			datainputstream.close();
 			medium.newpolys(l_wall, r_wall - l_wall, b_wall, t_wall - b_wall, trackers, notb);
 			medium.newmountains(l_wall, r_wall, b_wall, t_wall);
 			medium.newclouds(l_wall, r_wall, b_wall, t_wall);
-			medium.newstars();
-		} catch (Exception exception) {
-			String exceptStr = exception.toString();
+			medium.newstars();						
+		} catch (IOException e) {
+			String exceptStr = e.toString();
 			final int maxChar = 30;
 			
 			int maxLength = (exceptStr.length() < maxChar)?exceptStr.length():maxChar;
-			stageError = exception.toString().substring(0, maxLength) + "...";
+			stageError = e.toString().substring(0, maxLength) + "...";
 			
 			xtgraphics.fase = 3;
-			System.out.println("Error in stage " + checkpoints.stage);
-			System.out.println("" + exception);
-			System.out.println("At line: " + s1);
+			System.out.println("Error loading stage " + checkpoints.stage);
+			e.printStackTrace();
 		}
 		if (checkpoints.stage == 16)
 			medium.lightn = 0;
