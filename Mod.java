@@ -79,8 +79,7 @@ public class Mod {
 	 * @param n skiptime
 	 * @throws IOException yeah
 	 */
-	public void skipExactly(DataInputStream str, long nIn) throws IOException {
-		long n = nIn;
+	public void skipExactly(DataInputStream str, long n) throws IOException {
         while (n != 0) {
            long skipped = str.skip(n);
            if (skipped == 0)

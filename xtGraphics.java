@@ -11,6 +11,9 @@ import java.awt.Graphics2D;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class xtGraphics extends Panel implements Runnable {
 	/**
@@ -2962,293 +2965,55 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 	}
 
-	public void sortcars(int i) {
+	private void sortcars(final int i) {
 		if (i != 0) {
-			int j = 1;
-			do {
-				sc[j] = -1;
-			} while (++j < 7);
-			boolean aflag[] = new boolean[7];
-			if (unlocked == i && unlocked != 17) {
+			int lastcar = 7;
+
+			// get boss car if player is not in the mad party, since that one has no boss car (you play as dr monstaa)
+			if (sc[0] != 7 + (i + 1) / 2 && i != 17) {
 				sc[6] = 7 + (i + 1) / 2;
-				int k = 1;
-				do {
-					aflag[k] = false;
-				} while (++k < 6);
-				if (i == 14) {
-					if (sc[0] != 12) {
-						sc[5] = 12;
-					} else {
-						sc[5] = 1;
-					}
-					if (sc[0] != 10) {
-						sc[4] = 10;
-					} else {
-						sc[4] = 1;
-					}
-					aflag[4] = true;
-					aflag[5] = true;
-					k = (int) (Math.random() * 3D + 1.0D);
-					if (sc[0] != 9) {
-						sc[k] = 9;
-						aflag[k] = true;
-						if (++k == 4) {
-							k = 1;
-						}
-					}
-					if (sc[0] != 5) {
-						sc[k] = 5;
-						aflag[k] = true;
-						if (++k == 4) {
-							k = 1;
-						}
-					}
-					if (sc[0] != 8) {
-						sc[k] = 8;
-						aflag[k] = true;
-						if (++k == 4) {
-							k = 1;
-						}
-					}
+				if (sc[6] >= 15) {
+					sc[6] = 15 - 1; // you could put -= 5 or something here
 				}
-				if (i == 16) {
-					k = 4;
-					byte byte1 = 5;
-					byte byte2 = 1;
-					byte byte3 = 2;
-					if (Math.random() > Math.random()) {
-						k = 5;
-						byte1 = 4;
-					}
-					if (Math.random() < Math.random()) {
-						byte2 = 2;
-						byte3 = 1;
-					}
-					if (sc[0] != 12) {
-						sc[k] = 12;
-					} else {
-						sc[k] = 14;
-					}
-					if (sc[0] != 10) {
-						sc[byte1] = 10;
-					} else {
-						sc[byte1] = 14;
-					}
-					if (sc[0] != 11) {
-						sc[byte2] = 11;
-					} else {
-						sc[byte2] = 14;
-					}
-					if (sc[0] != 13) {
-						sc[byte3] = 13;
-					} else {
-						sc[byte3] = 14;
-					}
-					if (sc[0] <= 9) {
-						sc[3] = 14;
-					} else {
-						sc[3] = 9;
-					}
-					int j3 = 1;
-					do {
-						aflag[j3] = true;
-					} while (++j3 < 6);
-				}
-				k = 1;
-				do {
-					while (!aflag[k]) {
-						sc[k] = (int) (Math.random() * (7 + (i + 1) / 2));
-						aflag[k] = true;
-						int l = 0;
-						do {
-							if (k != l && sc[k] == sc[l]) {
-								aflag[k] = false;
-							}
-						} while (++l < 7);
-						if (Math.random() < proba[sc[k]]) {
-							aflag[k] = false;
-						}
-						if (i == 10) {
-							if (sc[0] != 11) {
-								if (sc[k] == 2 || sc[k] == 4 || sc[k] == 11) {
-									aflag[k] = false;
-								}
-							} else if (sc[k] == 9) {
-								aflag[k] = false;
-							}
-						}
-						if (i == 11
-								&& (sc[k] == 0 || sc[k] == 1 || sc[k] == 2 || sc[k] == 3 || sc[k] == 4 || sc[k] == 7)) {
-							aflag[k] = false;
-						}
-						if ((i == 12 || i == 15) && sc[k] <= 4) {
-							aflag[k] = false;
-						}
-						if (i != 11 && i != 12 && k != 1 && k != 2 && sc[k] == 13) {
-							aflag[k] = false;
-						}
-					}
-				} while (++k < 6);
-				if (i == 15) {
-					boolean flag = false;
-					int i1 = 0;
-					do {
-						if (sc[i1] == 13) {
-							flag = true;
-						}
-					} while (++i1 < 6);
-					if (!flag && Math.random() > Math.random()) {
-						if (Math.random() > Math.random()) {
-							sc[1] = 13;
-						} else {
-							sc[2] = 13;
-						}
-					}
-				}
-				if (i == 12) {
-					boolean flag1 = false;
-					int j1 = 0;
-					do {
-						if (sc[j1] == 11) {
-							flag1 = true;
-						}
-					} while (++j1 < 6);
-					if (!flag1) {
-						sc[2] = 11;
-					}
-				}
-				if (i == 8) {
-					boolean flag2 = false;
-					int k1 = 0;
-					do {
-						if (sc[k1] == 9) {
-							flag2 = true;
-						}
-					} while (++k1 < 6);
-					if (!flag2) {
-						sc[5] = 9;
-					}
-					flag2 = false;
-					k1 = 0;
-					do {
-						if (sc[k1] == 8) {
-							flag2 = true;
-						}
-					} while (++k1 < 6);
-					if (!flag2) {
-						sc[4] = 8;
-					}
-					flag2 = false;
-					k1 = 0;
-					do {
-						if (sc[k1] == 10) {
-							flag2 = true;
-						}
-					} while (++k1 < 6);
-					if (!flag2) {
-						sc[2] = 10;
-					}
-				}
-				if (i == 9) {
-					boolean flag3 = false;
-					int l1 = 0;
-					do {
-						if (sc[l1] == 10) {
-							flag3 = true;
-						}
-					} while (++l1 < 6);
-					if (flag3) {
-						if (sc[5] != 10) {
-							boolean flag4 = false;
-							int i2 = 0;
-							do {
-								if (sc[i2] == 5) {
-									flag4 = true;
-								}
-							} while (++i2 < 6);
-							if (flag4) {
-								if (sc[5] != 5) {
-									boolean flag5 = false;
-									int j2 = 0;
-									do {
-										if (sc[j2] == 9) {
-											flag5 = true;
-										}
-									} while (++j2 < 6);
-									if (!flag5) {
-										sc[5] = 9;
-									}
-								}
-							} else {
-								sc[5] = 5;
-							}
-						}
-					} else {
-						sc[5] = 10;
-					}
-				}
-			} else {
-				byte byte0 = 7;
-				if (sc[0] != 7 + (i + 1) / 2 && i != 17) {
-					sc[6] = 7 + (i + 1) / 2;
-					byte0 = 6;
-				}
-				for (int k2 = 1; k2 < byte0; k2++) {
-					for (aflag[k2] = false; !aflag[k2];) {
-						int i3 = unlocked;
-						if (i3 == 17) {
-							i3 = 16;
-						}
-						sc[k2] = (int) (Math.random() * (8 + (i3 + 1) / 2));
-						aflag[k2] = true;
-						float f = 0;
-						int g = 0;
-						do {
-							if (k2 != f && sc[k2] == sc[g]) {
-								aflag[k2] = false;
-							}
-						} while (++f < 7);
-						f = proba[sc[k2]];
-						if (i - sc[k2] > 4 && i != 17) {
-							f += (i - sc[k2] - 4) / 10F;
-							if (f > 0.90000000000000002D) {
-								f = 0.9F;
-							}
-						}
-						if (i == 16 && sc[k2] <= 8 && f < 0.90000000000000002D) {
-							f = 0.9F;
-						}
-						if (Math.random() < f) {
-							aflag[k2] = false;
-						}
-						if (i != 11 && i != 12 && k2 != 1 && k2 != 2 && sc[k2] == 13 && aflag[k2]) {
-							aflag[k2] = false;
-							if (Math.random() > Math.random() * 1.6000000000000001D && i != 14
-									|| i == 16 && Math.random() > Math.random()) {
-								if (Math.random() > Math.random()) {
-									sc[1] = 13;
-								} else {
-									sc[2] = 13;
-								}
-							}
-						}
-					}
-
-				}
-
+				lastcar--; // boss car won't be randomized
 			}
-			if (i == 12) {
-				boolean flag6 = false;
-				int l2 = 0;
-				do {
-					if (sc[l2] == 11) {
-						flag6 = true;
-					}
-				} while (++l2 < 6);
-				if (!flag6) {
-					sc[2] = 11;
-				}
+
+			// DEBUG: Prints the range of possible cars to the console
+			// System.out.println("Minimum car: " + cd.names[(i - 1) / 2] + ", maximum car: " + cd.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
+
+			// create a list of car ids, each item completely unique
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			for (int k = (i - 1) / 2; k < 7 + ((i - 1) / 2); k++) {
+				if (k == sc[0])
+					continue;
+				list.add(new Integer(k));
 			}
+			// randomize the order of this list (shuffle it like a deck of cards)
+			Collections.shuffle(list);
+
+			// which item of the list should be picked
+			int k = 0;
+
+			for (int j = 1; j < lastcar; j++) {
+
+				// get an item from the "deck" - this can be any item as long as it's unique
+				sc[j] = list.get(k);
+				k++;
+
+				// if there are more cars than tracks, reduce the car index number until it fits.
+				// unfortunately i have no idea how to make this work properly so we'll just have to ignore the duplicates here
+				while (sc[j] >= 15) {
+					System.out.println("Car " + j + " is out of bounds");
+					sc[j] -= ThreadLocalRandom.current().nextDouble() * 5F;
+				}
+				System.out.println("sc of " + j + " is " + sc[j]);
+			}
+		}
+		// this error will never be thrown in a deployment environment
+		// it is only here for extra safety
+		for (int j = 0; j < 7; j++) {
+			if (sc[j] > 15)
+				throw new Error("there are too many tracks and not enough cars");
 		}
 	}
 
