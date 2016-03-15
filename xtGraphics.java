@@ -1736,10 +1736,10 @@ public class xtGraphics extends Panel implements Runnable {
 		MediaTracker mediatracker = new MediaTracker(app);
 		dnload += 12;
 		int howManyImages = 0;
+		
 		try {
 			URL url = new URL(app.getCodeBase(), "data/images.radq");
-			DataInputStream datainputstream = new DataInputStream(url.openStream());
-			ZipInputStream zipinputstream = new ZipInputStream(datainputstream);
+			ZipInputStream zipinputstream = new ZipInputStream(url.openStream());
 			for (ZipEntry zipentry = zipinputstream.getNextEntry(); zipentry != null; zipentry = zipinputstream
 					.getNextEntry()) {
 				int i = (int) zipentry.getSize();
@@ -1986,11 +1986,11 @@ public class xtGraphics extends Panel implements Runnable {
 				howManyImages++;
 				dnload += 3;
 			}			
-			datainputstream.close();
 			zipinputstream.close();
 			System.out.println("Loaded " + howManyImages + " images!");
-		} catch (Exception exception) {
-			System.out.println("Error Loading Images: " + exception);
+		} catch (IOException e) {
+			System.out.println("Error loading images");
+			e.printStackTrace();
 		}
 		System.gc();
 		Utility.stopTimer();
@@ -3932,12 +3932,16 @@ public class xtGraphics extends Panel implements Runnable {
 			macn = true;
 		}
 		runtyp = 176;
+		
 		runner = new Thread(this);
 		runner.start();
+		
 		loadimages();
 		//loadnetworkimages();
-		cars = new RadicalMod("music/cars.radq", app);
+		
+		cars = new RadicalMod("music/cars.radq", app);		
 		dnload += 27;
+		
 		int j = 0;
 		do {
 			int k = 0;
@@ -4923,14 +4927,13 @@ public class xtGraphics extends Panel implements Runnable {
 		return image1;
 	}
 
+	/**
+	 * returns an audioclip
+	 * @param s name of clip
+	 * @return the new audio clip
+	 */
 	private AudioClip getSound(String s) {
-		AudioClip audioclip = app.getAudioClip(app.getCodeBase(), s);
-		if (s.startsWith("sounds/default")) {
-			audioclip.play();
-			Thread.yield();
-			audioclip.stop();
-		}
-		return audioclip;
+		return Applet.newAudioClip(getClass().getResource(s));
 	}
 
 	public void carsbginflex() {
