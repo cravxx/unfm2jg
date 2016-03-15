@@ -3013,7 +3013,7 @@ public class xtGraphics extends Panel implements Runnable {
 		// it is only here for extra safety
 		for (int j = 0; j < 7; j++) {
 			if (sc[j] > 15)
-				throw new Error("there are too many tracks and not enough cars");
+				throw new RuntimeException("there are too many tracks and not enough cars");
 		}
 	}
 

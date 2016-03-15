@@ -1648,7 +1648,7 @@ public class GameSparker extends Applet implements Runnable {
 			File tmpZip = File.createTempFile(source.getName(), null);
 			tmpZip.delete();
 			if (!source.renameTo(tmpZip)) {
-				throw new Exception("Could not make temp file (" + source.getName() + ")");
+				throw new RuntimeException("Could not make temp file (" + source.getName() + ")");
 			}
 			byte[] buffer = new byte[4096];
 			ZipInputStream zin = new ZipInputStream(new FileInputStream(tmpZip));
