@@ -365,12 +365,12 @@ public class Control {
 					if (checkpoints.stage == 10 || checkpoints.stage == 14) {
 						usebounce = false;
 					}
-					if (m.random() > (float) madness.hitmag / (float) madness.maxmag[madness.cn]) {
+					if (m.random() > (float) madness.hitmag / (float) Madness.maxmag[madness.cn]) {
 						perfection = false;
 					} else {
 						perfection = true;
 					}
-					if ((100F * madness.hitmag) / madness.maxmag[madness.cn] > 60F) {
+					if ((100F * madness.hitmag) / Madness.maxmag[madness.cn] > 60F) {
 						perfection = true;
 					}
 					if (checkpoints.stage == 6 || checkpoints.stage == 8 || checkpoints.stage == 9
@@ -746,7 +746,7 @@ public class Control {
 						if (checkpoints.stage == 16) {
 							j1 = 40;
 						}
-						if ((100F * madness.hitmag) / madness.maxmag[madness.cn] > j1) {
+						if ((100F * madness.hitmag) / Madness.maxmag[madness.cn] > j1) {
 							trfix = 1;
 						}
 						if (!flag2) {
@@ -764,7 +764,7 @@ public class Control {
 									&& madness.cn != 10 && madness.cn != 12) {
 								k2 = 50;
 							}
-							if ((100F * madness.hitmag) / madness.maxmag[madness.cn] > k2) {
+							if ((100F * madness.hitmag) / Madness.maxmag[madness.cn] > k2) {
 								trfix = 2;
 							}
 						}
@@ -1539,7 +1539,7 @@ public class Control {
 								right = true;
 								lastl = false;
 							}
-							if (Math.abs(j - pan) > 50 && madness.speed > madness.swits[madness.cn][0]
+							if (Math.abs(j - pan) > 50 && madness.speed > Madness.swits[madness.cn][0]
 									&& turntyp != 0) {
 								if (turntyp == 1) {
 									down = true;
@@ -1560,7 +1560,7 @@ public class Control {
 							left = true;
 							lastl = true;
 						}
-						if (Math.abs(j - pan) < 310 && madness.speed > madness.swits[madness.cn][0]
+						if (Math.abs(j - pan) < 310 && madness.speed > Madness.swits[madness.cn][0]
 								&& turntyp != 0) {
 							if (turntyp == 1) {
 								down = true;

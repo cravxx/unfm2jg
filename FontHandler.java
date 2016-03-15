@@ -20,7 +20,7 @@ public class FontHandler {
 	/**
 	 * path used to look for fonts
 	 */
-	private final String fontPath = "data/fonts/";
+	private static final String fontPath = "data/fonts/";
 
 	public FontHandler() {
 		loadFonts();

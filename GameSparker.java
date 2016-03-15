@@ -22,12 +22,12 @@ public class GameSparker extends Applet implements Runnable {
 	private static final long serialVersionUID = -34048182014310663L;
 	public static Utility utility;
 	
-	public final String car_models[] = {
+	public static final String car_models[] = {
 			"2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
 			"policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
 	};
 
-	public final String track_models[] = {
+	public static final String track_models[] = {
 			"road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn", "nroad", "nturn",
 			"roblend", "noblend", "rnblend", "roadend", "offroadend", "hpground", "ramp30", "cramp35", "dramp15",
 			"dhilo15", "slide10", "takeoff", "sramp22", "offbump", "offramp", "sofframp", "halfpipe", "spikes", "rail",
@@ -35,12 +35,12 @@ public class GameSparker extends Applet implements Runnable {
 			"soffroad"
 	};
 
-	public final String extra_models[] = {};
+	public static final String extra_models[] = {};
 	
 	/**
 	 * false to disable splash
 	 */
-	public static boolean splashScreenState = true;
+	public static final boolean splashScreenState = true;
 	
 	/**
 	 * Set directory for temporary creation of cookies (directory is deleted after writing is complete) 

@@ -17,7 +17,7 @@ public class Madness {
 	 * Second and third value meaning how much speed it gains while the car is moving
 	 * @author Omar Waly
 	 */
-	public float acelf[][] = {
+	public static float acelf[][] = {
 			{
 					11F, 5F, 3F
 			}, {
@@ -57,7 +57,7 @@ public class Madness {
 	 * Take the values as if each one was a gear from a gearbox. 1st to 2nd, 2nd to 3rd, dependent on power obtained
 	 * @author Omar Waly
 	 */
-	public int swits[][] = {
+	public static int swits[][] = {
 			{
 					50, 180, 280
 			}, {
@@ -97,7 +97,7 @@ public class Madness {
 	 * Basically, the braking power. Any negative value, would make you shoot forward instead of backward
 	 * @author Omar Waly
 	 */
-	public int handb[] = {
+	public static int handb[] = {
 			7, 10, 7, 15, 12, 8, 9, 10, 5, 7, 8, 10, 8, 12, 7, 7
 	};
 	/**
@@ -105,7 +105,7 @@ public class Madness {
 	 * If the value is too much, your car will just rotate rapidly and you can't control it.
 	 * @author Omar Waly
 	 */
-	public float airs[] = {
+	public static float airs[] = {
 			1.0F, 1.2F, 0.95F, 1.0F, 2.2F, 1.0F, 0.9F, 0.8F, 1.0F, 0.9F, 1.15F, 0.8F, 1.0F, 0.3F, 1.3F, 1.0F
 	};
 	/**
@@ -115,84 +115,84 @@ public class Madness {
 	 * value will be used to display how much Aerial Control a car has.
 	 * @author Omar Waly
 	 */
-	public int airc[] = {
+	public static int airc[] = {
 			70, 30, 40, 40, 30, 50, 40, 90, 40, 50, 75, 10, 50, 0, 100, 60
 	};
 	/**
 	 * Turning responsiveness
 	 * @author Omar Waly
 	 */
-	public int turn[] = {
+	public static int turn[] = {
 			6, 9, 5, 7, 8, 7, 5, 5, 9, 7, 7, 4, 6, 5, 7, 6
 	};
 	/**
 	 * Grip of the car to the ground
 	 * @author Omar Waly
 	 */
-	public float grip[] = {
+	public static float grip[] = {
 			20F, 27F, 18F, 22F, 19F, 20F, 25F, 20F, 16F, 24F, 22.5F, 25F, 30F, 27F, 25F, 27F
 	};
 	/**
 	 * How much your car bounces after landing stunts
 	 * @author Omar Waly
 	 */
-	public float bounce[] = {
+	public static float bounce[] = {
 			1.2F, 1.05F, 1.3F, 1.15F, 1.3F, 1.2F, 1.15F, 1.1F, 1.2F, 1.1F, 1.15F, 0.8F, 1.05F, 0.8F, 1.1F, 1.15F
 	};
 	/**
 	 * Tolerance towards track pieces
 	 * @author Omar Waly
 	 */
-	public float simag[] = {
+	public static float simag[] = {
 			0.9F, 0.85F, 1.05F, 0.9F, 0.85F, 0.9F, 1.05F, 0.9F, 1.0F, 1.05F, 0.9F, 1.1F, 0.9F, 1.3F, 0.9F, 1.15F
 	};
 	/**
 	 * Car strength
 	 * @author Omar Waly
 	 */
-	public float moment[] = {
+	public static float moment[] = {
 			1.2F, 0.75F, 1.4F, 1.0F, 0.85F, 1.25F, 1.4F, 1.3F, 1.2F, 1.45F, 1.375F, 2.0F, 1.2F, 3F, 1.5F, 2.0F
 	};
 	/**
 	 * Tolerance towards other cars
 	 * @author Omar Waly
 	 */
-	public float comprad[] = {
+	public static float comprad[] = {
 			0.5F, 0.4F, 0.8F, 0.5F, 0.3F, 0.5F, 0.5F, 0.5F, 0.5F, 0.8F, 0.5F, 1.0F, 0.5F, 0.6F, 0.5F, 0.8F
 	};
 	/**
 	 * How much a car can push another car while wasting
 	 * @author Omar Waly
 	 */
-	public int push[] = {
+	public static int push[] = {
 			2, 2, 3, 3, 2, 2, 2, 4, 2, 2, 2, 4, 2, 2, 2, 2
 	};
 	/**
 	 * The amount of "reverse push" or recoil the car will get from others
 	 * @author Omar Waly
 	 */
-	public int revpush[] = {
+	public static int revpush[] = {
 			2, 3, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 1
 	};
 	/**
 	 * How much a car can lift another car while wasting
 	 * @author Omar Waly
 	 */
-	public int lift[] = {
+	public static int lift[] = {
 			0, 30, 0, 20, 0, 30, 0, 0, 20, 0, 0, 0, 10, 0, 30, 0
 	};
 	/**
 	 * The amount of "reverse lift" or recoil the car will get from others
 	 * @author Omar Waly
 	 */
-	public int revlift[] = {
+	public static int revlift[] = {
 			0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32
 	};
 	/**
 	 * The variable for power loss, higher means longer power duration. Value in Hexadecimal.
 	 * @author Omar Waly
 	 */
-	public int powerloss[] = {
+	public static int powerloss[] = {
 			0x2625a0, 0x2625a0, 0x3567e0, 0x2625a0, 0x3d0900, 0x2625a0, 0x30d400, 0x30d400, 0x29f630, 0x53ec60,
 			0x29f630, 0x44aa20, 0x3567e0, 0xfed260, 0x2dc6c0, 0x53ec60
 	};
@@ -200,14 +200,14 @@ public class Madness {
 	 * Y value of cars when flipped over during a bad landing
 	 * @author Omar Waly
 	 */
-	public int flipy[] = {
+	public static int flipy[] = {
 			-50, -60, -92, -44, -60, -57, -54, -60, -77, -57, -82, -85, -28, -100, -63, -127
 	};
 	/**
 	 * How badly a car can get smashed during wasting
 	 * @author Omar Waly
 	 */
-	public int msquash[] = {
+	public static int msquash[] = {
 			7, 4, 7, 2, 8, 4, 6, 4, 3, 8, 4, 10, 3, 20, 3, 8
 	};
 	/**
@@ -221,7 +221,7 @@ public class Madness {
 	 * will be indestructible..."
 	 * @author Omar Waly
 	 */
-	public int clrad[] = {
+	public static int clrad[] = {
 			3300, 1700, 4700, 3000, 2000, 4500, 3500, 5000, 10000, 15000, 4000, 7000, 10000, 30000, 5500, 5000
 	};
 	/**
@@ -229,14 +229,14 @@ public class Madness {
 	 * "The amount of damage based on the hit that should effect the points in clrad around the point of collision..."
 	 * @author Omar Waly
 	 */
-	public float dammult[] = {
+	public static float dammult[] = {
 			0.8F, 1.17F, 0.55F, 1.0F, 0.6F, 0.7F, 0.72F, 0.8F, 0.6F, 0.46F, 0.67F, 0.5F, 0.61F, 0.176F, 0.36F, 0.46F
 	};
 	/**
 	 * The amount of Damage that a car can take before it is considered as "wasted".
 	 * @author Omar Waly
 	 */
-	public int maxmag[] = {
+	public static int maxmag[] = {
 			6000, 4200, 7200, 6000, 6000, 9100, 14000, 12000, 12000, 9700, 13000, 10700, 13000, 30000, 5800, 18000
 	};
 	private boolean dominate[];
@@ -311,7 +311,7 @@ public class Madness {
 	 * universal rate that speed decreases when it exceeds swits[0][2], that is, top speed
 	 * @author Kaffeinated
 	 */
-	private final float speeddec = 2.0F;			
+	private static final float speeddec = 2.0F;			
 	
 	private void regy(int i, float f, ContO conto) {
 		f *= dammult[cn];
@@ -570,7 +570,7 @@ public class Madness {
 			af2[i] = conto.z + conto.keyz[i];
 			af3[i] = conto1.x + conto1.keyx[i];
 			if (capsized)
-				af4[i] = conto1.y + madness.flipy[madness.cn] + madness.squash;
+				af4[i] = conto1.y + Madness.flipy[madness.cn] + madness.squash;
 			else
 				af4[i] = conto1.y + conto1.grat;
 			af5[i] = conto1.z + conto1.keyz[i];
@@ -585,13 +585,13 @@ public class Madness {
 				conto1.z) < (conto.maxR * conto.maxR + conto1.maxR * conto1.maxR) * 1.5D) {
 			if (!caught[madness.im] && (speed != 0.0F || madness.speed != 0.0F)) {
 				if (Math.abs(power * speed * moment[cn]) != Math
-						.abs(madness.power * madness.speed * madness.moment[madness.cn])) {
+						.abs(madness.power * madness.speed * Madness.moment[madness.cn])) {
 					if (Math.abs(power * speed * moment[cn]) > Math
-							.abs(madness.power * madness.speed * madness.moment[madness.cn]))
+							.abs(madness.power * madness.speed * Madness.moment[madness.cn]))
 						dominate[madness.im] = true;
 					else
 						dominate[madness.im] = false;
-				} else if (moment[cn] > madness.moment[madness.cn])
+				} else if (moment[cn] > Madness.moment[madness.cn])
 					dominate[madness.im] = true;
 				else
 					dominate[madness.im] = false;
@@ -615,7 +615,7 @@ public class Madness {
 				do
 					if (Utility.rpy(af[k], af3[l], af1[k], af4[l], af2[k], af5[l]) < (j + 7000)
 							* (comprad[madness.cn] + comprad[cn])) {
-						if (Math.abs(scx[k] * moment[cn]) > Math.abs(madness.scx[l] * madness.moment[madness.cn])) {
+						if (Math.abs(scx[k] * moment[cn]) > Math.abs(madness.scx[l] * Madness.moment[madness.cn])) {
 							float f = madness.scx[l] * revpush[cn];
 							if (f > 300F)
 								f = 300F;
@@ -636,7 +636,7 @@ public class Madness {
 							if (madness.colidim)
 								madness.colidim = false;
 							scx[k] -= f;
-							regx(k, -f * madness.moment[cn], conto);
+							regx(k, -f * Madness.moment[cn], conto);
 							scy[k] -= revlift[cn];
 							if (im == 0)
 								madness.colidim = true;
@@ -644,7 +644,7 @@ public class Madness {
 							if (madness.colidim)
 								madness.colidim = false;
 						}
-						if (Math.abs(scz[k] * moment[cn]) > Math.abs(madness.scz[l] * madness.moment[madness.cn])) {
+						if (Math.abs(scz[k] * moment[cn]) > Math.abs(madness.scz[l] * Madness.moment[madness.cn])) {
 							float f1 = madness.scz[l] * revpush[cn];
 							if (f1 > 300F)
 								f1 = 300F;
@@ -665,7 +665,7 @@ public class Madness {
 							if (madness.colidim)
 								madness.colidim = false;
 							scz[k] -= f1;
-							regz(k, -f1 * madness.moment[cn], conto);
+							regz(k, -f1 * Madness.moment[cn], conto);
 							scy[k] -= revlift[cn];
 							if (im == 0)
 								madness.colidim = true;

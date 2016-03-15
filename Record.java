@@ -118,7 +118,7 @@ public class Record {
 					float f1 = 0.0F;
 					for (int k1 = 0; k1 < conto.p[l].n; k1++) {
 						if (conto.p[l].wz == 0 && Utility.py(conto.keyx[i], conto.p[l].ox[k1], conto.keyz[i],
-								conto.p[l].oz[k1]) < madness.clrad[madness.cn]) {
+								conto.p[l].oz[k1]) < Madness.clrad[madness.cn]) {
 							f1 = (f / 20F) * m.random();
 							conto.p[l].oz[k1] += f1 * RadicalMath.sin(j);
 							conto.p[l].ox[k1] -= f1 * RadicalMath.sin(k);
@@ -178,10 +178,10 @@ public class Record {
 						if (conto.p[l1].wz == 0) {
 							f2 = (f / 15F) * m.random();
 							if ((Math
-									.abs(conto.p[l1].oy[i2] - madness.flipy[madness.cn]
-											- squash[0][madness.im]) < madness.msquash[madness.cn] * 3
-									|| conto.p[l1].oy[i2] < madness.flipy[madness.cn] + squash[0][madness.im])
-									&& squash[0][madness.im] < madness.msquash[madness.cn]) {
+									.abs(conto.p[l1].oy[i2] - Madness.flipy[madness.cn]
+											- squash[0][madness.im]) < Madness.msquash[madness.cn] * 3
+									|| conto.p[l1].oy[i2] < Madness.flipy[madness.cn] + squash[0][madness.im])
+									&& squash[0][madness.im] < Madness.msquash[madness.cn]) {
 								conto.p[l1].oy[i2] += f2;
 								i1 = (int) (i1 + f2);
 								j1++;
@@ -421,7 +421,7 @@ public class Record {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++) {
 					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
-							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
+							conto.p[j].oz[k]) < Madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
 					}
 				}
@@ -447,7 +447,7 @@ public class Record {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++) {
 					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
-							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
+							conto.p[j].oz[k]) < Madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
 						conto.p[j].oz[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.zy);
 						conto.p[j].ox[k] += f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.xy);
@@ -757,7 +757,7 @@ public class Record {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++) {
 					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
-							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
+							conto.p[j].oz[k]) < Madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
 					}
 				}
@@ -783,7 +783,7 @@ public class Record {
 				float f1 = 0.0F;
 				for (int k = 0; k < conto.p[j].n; k++) {
 					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
-							conto.p[j].oz[k]) < madness.clrad[madness.cn]) {
+							conto.p[j].oz[k]) < Madness.clrad[madness.cn]) {
 						f1 = (f / 20F) * m.random();
 						conto.p[j].oz[k] -= f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.zy);
 						conto.p[j].ox[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.xy);

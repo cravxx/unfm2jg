@@ -1282,8 +1282,8 @@ public class xtGraphics extends Panel implements Runnable {
 					if (!flag1) {
 						if (madness.power != 98F) {
 							if (Math.abs(madness.speed) > 0.0F
-									&& Math.abs(madness.speed) <= madness.swits[madness.cn][0]) {
-								int j = (int) ((3F * Math.abs(madness.speed)) / madness.swits[madness.cn][0]);
+									&& Math.abs(madness.speed) <= Madness.swits[madness.cn][0]) {
+								int j = (int) ((3F * Math.abs(madness.speed)) / Madness.swits[madness.cn][0]);
 								if (j == 2) {
 									if (pwait == 0) {
 										j = 0;
@@ -1295,10 +1295,10 @@ public class xtGraphics extends Panel implements Runnable {
 								}
 								sparkeng(j);
 							}
-							if (Math.abs(madness.speed) > madness.swits[madness.cn][0]
-									&& Math.abs(madness.speed) <= madness.swits[madness.cn][1]) {
-								int k = (int) ((3F * (Math.abs(madness.speed) - madness.swits[madness.cn][0]))
-										/ (madness.swits[madness.cn][1] - madness.swits[madness.cn][0]));
+							if (Math.abs(madness.speed) > Madness.swits[madness.cn][0]
+									&& Math.abs(madness.speed) <= Madness.swits[madness.cn][1]) {
+								int k = (int) ((3F * (Math.abs(madness.speed) - Madness.swits[madness.cn][0]))
+										/ (Madness.swits[madness.cn][1] - Madness.swits[madness.cn][0]));
 								if (k == 2) {
 									if (pwait == 0) {
 										k = 0;
@@ -1310,16 +1310,16 @@ public class xtGraphics extends Panel implements Runnable {
 								}
 								sparkeng(k);
 							}
-							if (Math.abs(madness.speed) > madness.swits[madness.cn][1]
-									&& Math.abs(madness.speed) <= madness.swits[madness.cn][2]) {
-								int l = (int) ((3F * (Math.abs(madness.speed) - madness.swits[madness.cn][1]))
-										/ (madness.swits[madness.cn][2] - madness.swits[madness.cn][1]));
+							if (Math.abs(madness.speed) > Madness.swits[madness.cn][1]
+									&& Math.abs(madness.speed) <= Madness.swits[madness.cn][2]) {
+								int l = (int) ((3F * (Math.abs(madness.speed) - Madness.swits[madness.cn][1]))
+										/ (Madness.swits[madness.cn][2] - Madness.swits[madness.cn][1]));
 								sparkeng(l);
 							}
 						} else {
 							byte byte0 = 2;
 							if (pwait == 0) {
-								if (Math.abs(madness.speed) > madness.swits[madness.cn][1]) {
+								if (Math.abs(madness.speed) > Madness.swits[madness.cn][1]) {
 									byte0 = 3;
 								}
 							} else {
@@ -2415,7 +2415,7 @@ public class xtGraphics extends Panel implements Runnable {
 						laps = madness[0].nlaps;
 					}
 				}
-				drawstat(madness[0].maxmag[madness[0].cn], madness[0].hitmag, madness[0].newcar, madness[0].power);
+				drawstat(Madness.maxmag[madness[0].cn], madness[0].hitmag, madness[0].newcar, madness[0].power);
 			}
 			if (!holdit) {
 				if (starcnt != 0 && starcnt <= 35) {
@@ -2591,7 +2591,7 @@ public class xtGraphics extends Panel implements Runnable {
 					if (j < 0 && madness[0].ftab) {
 						loop = "Hanged " + loop;
 					}
-					if (loop != "") {
+					if (!("").equals(loop)) {
 						asay += " " + loop;
 					}
 					j = 0;
@@ -2601,7 +2601,7 @@ public class xtGraphics extends Panel implements Runnable {
 					}
 
 					if (j == 0 && madness[0].rtab) {
-						if (loop == "") {
+						if (("").equals(loop)) {
 							spin = "Tabletop";
 						} else {
 							spin = "Flipside";
@@ -2630,14 +2630,14 @@ public class xtGraphics extends Panel implements Runnable {
 					}
 
 					if (j != 0) {
-						if (loop == "" && spin == "") {
+						if (("").equals(loop) && ("").equals(spin)) {
 							asay += " " + j;
 							if (flag1) {
 								asay += " and beyond";
 							}
 						} else {
-							if (spin != "") {
-								if (loop == "") {
+							if (!("").equals(loop)) {
+								if (("").equals(loop)) {
 									asay += " " + spin;
 								} else {
 									asay += " with " + spin;
@@ -2648,20 +2648,20 @@ public class xtGraphics extends Panel implements Runnable {
 								asay += " and beyond";
 							}
 						}
-					} else if (spin != "") {
-						if (loop == "") {
+					} else if (!("").equals(spin)) {
+						if (("").equals(loop)) {
 							asay += " " + spin;
 						} else {
 							asay += " by " + spin;
 						}
 					}
-					if (asay != "") {
+					if (!("").equals(asay)) {
 						auscnt -= 15;
 					}
-					if (loop != "") {
+					if (!("").equals(loop)) {
 						auscnt -= 25;
 					}
-					if (spin != "") {
+					if (!("").equals(spin)) {
 						auscnt -= 25;
 					}
 					if (j != 0) {
@@ -4538,20 +4538,20 @@ public class xtGraphics extends Panel implements Runnable {
 					rd.drawString("Endurance:", 408, 348);
 					rd.drawImage(statb, 471, 342, null);
 					rd.setColor(new Color(0, 0, 0));
-					float f = (madness.swits[sc[0]][2] - 220) / 90F;
+					float f = (Madness.swits[sc[0]][2] - 220) / 90F;
 					if (f < 0.20000000000000001D) {
 						f = 0.2F;
 					}
 					rd.fillRect((int) (97F + 156F * f), 312, (int) (156F * (1.0F - f) + 1.0F), 7);
-					f = (madness.acelf[sc[0]][1] * madness.acelf[sc[0]][0] * madness.acelf[sc[0]][2]
-							* madness.grip[sc[0]]) / 7700F;
+					f = (Madness.acelf[sc[0]][1] * Madness.acelf[sc[0]][0] * Madness.acelf[sc[0]][2]
+							* Madness.grip[sc[0]]) / 7700F;
 					if (f > 1.0F) {
 						f = 1.0F;
 					}
 					rd.fillRect((int) (97F + 156F * f), 327, (int) (156F * (1.0F - f) + 1.0F), 7);
 					f = dishandle[sc[0]];
 					rd.fillRect((int) (97F + 156F * f), 342, (int) (156F * (1.0F - f) + 1.0F), 7);
-					f = (madness.airc[sc[0]] * madness.airs[sc[0]] * madness.bounce[sc[0]] + 28F) / 139F;
+					f = (Madness.airc[sc[0]] * Madness.airs[sc[0]] * Madness.bounce[sc[0]] + 28F) / 139F;
 					if (f > 1.0F) {
 						f = 1.0F;
 					}
@@ -4560,7 +4560,7 @@ public class xtGraphics extends Panel implements Runnable {
 					if (sc[0] == 9) {
 						f1 = 0.8F;
 					}
-					f = (madness.moment[sc[0]] + f1) / 2.6F;
+					f = (Madness.moment[sc[0]] + f1) / 2.6F;
 					if (f > 1.0F) {
 						f = 1.0F;
 					}

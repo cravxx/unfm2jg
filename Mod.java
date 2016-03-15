@@ -72,6 +72,22 @@ public class Mod {
 
 		numpatterns++;
 	}
+	
+	/**
+	 * datainputstream.skip doesnt check if it worked correctly
+	 * @param str stream
+	 * @param n skiptime
+	 * @throws IOException yeah
+	 */
+	public void skipExactly(DataInputStream str, long nIn) throws IOException {
+		long n = nIn;
+        while (n != 0) {
+           long skipped = str.skip(n);
+           if (skipped == 0)
+              throw new EOFException();
+           n -= skipped;
+        }
+	} 
 
 	private void loadMod(InputStream inputstream) throws IOException {
 		DataInputStream datainputstream = new DataInputStream(inputstream);
@@ -79,7 +95,10 @@ public class Mod {
 		numtracks = 4;
 		name = readText(datainputstream, 20);
 		datainputstream.mark(1068);
-		datainputstream.skip(1060L);
+		/*
+		 * datainputstream.skip(1060L);
+		 */
+		skipExactly(datainputstream, 1060L);
 		int i = datainputstream.readInt();
 		datainputstream.reset();
 		for (int j = 0; j < voice_31_list.length; j++) {
