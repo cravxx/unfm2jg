@@ -47,7 +47,7 @@ public class Record {
 	public int whenwasted;
 	public int powered;
 	public int closefinish;
-	private int hsquash[];
+	public int hsquash[];
 	public int hfix[] = {
 			-1, -1, -1, -1, -1, -1, -1
 	};
@@ -62,7 +62,7 @@ public class Record {
 	private int hxz[][];
 	private int hwxz[][];
 	private int hwzy[][];
-	private int hns[][];
+	public int hns[][];
 	private int hsspark[][][];
 	private int hsx[][][];
 	private int hsy[][][];
@@ -71,13 +71,13 @@ public class Record {
 	private int hscx[][][];
 	private int hscz[][][];
 	private boolean hfulls[][][];
-	private int hnry[][];
+	public int hnry[][];
 	private int hry[][][];
 	private int hmagy[][][];
-	private int hnrx[][];
+	public int hnrx[][];
 	private int hrx[][][];
 	private int hmagx[][][];
-	private int hnrz[][];
+	public int hnrz[][];
 	private int hrz[][][];
 	private int hmagz[][][];
 	private boolean hmtouch[][];

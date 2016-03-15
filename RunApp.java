@@ -78,24 +78,4 @@ public class RunApp extends Panel {
 		applet = null;
 		System.exit(0);
 	}
-
-	public static String getString(String tag, String str, int id) {
-		int k = 0;
-		String s3 = "";
-		for (int j = tag.length() + 1; j < str.length(); j++) {
-			String s2 = "" + str.charAt(j);
-			if (s2.equals(",") || s2.equals(")")) {
-				k++;
-				j++;
-			}
-			if (k == id) {
-				s3 += str.charAt(j);
-			}
-		}
-		return s3;
-	}
-
-	public static int getInt(String tag, String str, int id) {
-		return Integer.parseInt(getString(tag, str, id));
-	}
 }

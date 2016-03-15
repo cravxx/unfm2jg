@@ -923,7 +923,7 @@ public class GameSparker extends Applet implements Runnable {
 				xtgraphics.finish(checkpoints, aconto, u[0]);
 				if (flag) {
 					if (checkpoints.stage == xtgraphics.unlocked && xtgraphics.winner && xtgraphics.unlocked != 17)
-						savecookie("unlocked", "" + (xtgraphics.unlocked + 1));
+						savecookie("unlocked", "" + xtgraphics.unlocked);
 					savecookie("gameprfact", "" + (int) f);
 					savecookie("usercar", "" + xtgraphics.sc[0]);
 					flag = true;
