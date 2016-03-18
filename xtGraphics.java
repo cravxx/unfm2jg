@@ -171,6 +171,9 @@ public class xtGraphics extends Panel implements Runnable {
 	public int gocnt;
 	public AudioClip engs[][];
 	public boolean pengs[];
+	/**
+	 * type of engine each car has 
+	 */
 	public int enginsignature[] = {
 			0, 1, 2, 1, 0, 3, 2, 2, 1, 0, 3, 4, 1, 4, 0, 3
 	};
@@ -192,13 +195,19 @@ public class xtGraphics extends Panel implements Runnable {
 	public boolean pwastd;
 	public AudioClip skid[];
 	public AudioClip dustskid[];
-	public boolean mutes;
+	/**
+	 * xtgraphics var for muting muusic
+	 */
+	public boolean mutem;
+	/**
+	 * xtgraphics var for muting sound effects
+	 */
+	public boolean mutes;	
 	public RadicalMod stages;
 	public RadicalMod cars;
 	public RadicalMod stracks[];
 	public boolean loadedt[];
 	public int lastload;
-	public boolean mutem;
 	public boolean sunny;
 	public boolean macn;
 	public boolean arrace;
@@ -215,6 +224,9 @@ public class xtGraphics extends Panel implements Runnable {
 	public int wasted;
 	public int laps;
 	public int dested[];
+	/**
+	 * names for the cars
+	 */
 	public String names[] = {
 			"Tornado Shark", "Formula 7", "Wow Caninaro", "La Vite Crab", "Nimi", "MAX Revenge", "Lead Oxide",
 			"Kool Kat", "Drifter X", "Sword of Justice", "High Rider", "EL KING", "Mighty Eight", "M A S H E E N",

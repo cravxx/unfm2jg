@@ -4,6 +4,8 @@ import java.awt.*;
 public class Plane {
 	private Medium m;
 	private Trackers t;
+	public boolean braking;
+	public boolean reversing;
 	public int ox[];
 	public int oy[];
 	public int oz[];
@@ -61,8 +63,30 @@ public class Plane {
 		projf = projf / 3F;
 	}
 
+	/**
+	 * 
+	 * @param medium medium
+	 * @param trackers trackers
+	 * @param ai ai
+	 * @param ai1 ai1
+	 * @param ai2 ai2
+	 * @param i i
+	 * @param ai3 ai3
+	 * @param flag flag
+	 * @param j j
+	 * @param k k
+	 * @param l l
+	 * @param i1 i1
+	 * @param j1 j1
+	 * @param k1 k1
+	 * @param l1 l1
+	 * @param flag1 true if road false if not
+	 * @param i2 light id<br> <b>0</b> none<br> <b>1</b> front<br> <b>2</b> back
+	 * @param i8 flipped to true when the car is braking
+	 * @param i9 flipped to true whe the car is reversing
+	 */
 	public Plane(Medium medium, Trackers trackers, int ai[], int ai1[], int ai2[], int i, int ai3[], boolean flag,
-			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2) {
+			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2, boolean i8, boolean i9) {
 		c = new int[3];
 		oc = new int[3];
 		hsb = new float[3];
@@ -72,6 +96,8 @@ public class Plane {
 		disline = 7;
 		road = false;
 		light = 0;
+		braking = i8;
+		reversing = i9;
 		master = 0;
 		wx = 0;
 		wz = 0;
@@ -929,6 +955,30 @@ public class Plane {
 					k14 = 0;
 				}
 			}
+			
+			/**
+			 * rear light color from p[].oc
+			 *  
+			 */
+			Color rearLights = new Color(200, 50, 50);	
+			Color brakeLights = new Color(255, 0, 0);
+			Color revLights = new Color(255, 255, 255);
+			if(braking && light == 2){
+				l11 = brakeLights.getRed();
+				j13 = brakeLights.getGreen();
+				k14 = brakeLights.getBlue();
+			}
+			if(reversing && light == 2){
+				l11 = revLights.getRed();
+				j13 = revLights.getGreen();
+				k14 = revLights.getBlue();
+			}
+			if(!braking && !reversing && light == 2){
+				l11 = rearLights.getRed();
+				j13 = rearLights.getGreen();
+				k14 = rearLights.getBlue();
+			}			
+			
 			if (!m.trk) {
 				int l15 = 0;
 				do {

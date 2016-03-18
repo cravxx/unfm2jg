@@ -79,7 +79,7 @@ public class Wheels {
 		ai2[14] = (int) (l + 10F * size);
 		ai1[15] = (int) (k - 5F * f1);
 		ai2[15] = (int) (l + 12F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 16, ai3, false, l1, 0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 16, ai3, false, l1, 0, i2, k, l, 7, 0, false, 0, false, false);
 		mast++;
 		aplane[i].master = mast;
 		i++;
@@ -94,37 +94,37 @@ public class Wheels {
 		ai2[0] = (int) (l + 10F * size);
 		ai1[1] = (int) (k + 8.6600000000000001D * size);
 		ai2[1] = (int) (l + 5F * size);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai1[0] = (int) (k + 8.6600000000000001D * size);
 		ai2[0] = (int) (l + 5F * size);
 		ai1[1] = (int) (k + 8.6600000000000001D * size);
 		ai2[1] = (int) (l - 5F * size);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai1[0] = (int) (k + 8.6600000000000001D * size);
 		ai2[0] = (int) (l - 5F * size);
 		ai1[1] = k;
 		ai2[1] = (int) (l - 10F * size);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai1[0] = k;
 		ai2[0] = (int) (l - 10F * size);
 		ai1[1] = (int) (k - 8.6600000000000001D * size);
 		ai2[1] = (int) (l - 5F * size);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai1[0] = (int) (k - 8.6600000000000001D * size);
 		ai2[0] = (int) (l - 5F * size);
 		ai1[1] = (int) (k - 8.6600000000000001D * size);
 		ai2[1] = (int) (l + 5F * size);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai1[0] = (int) (k - 8.6600000000000001D * size);
 		ai2[0] = (int) (l + 5F * size);
 		ai1[1] = k;
 		ai2[1] = (int) (l + 10F * size);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 3, rc, false, j2, 0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai[0] = (int) (j - 4F * f);
 		ai1[0] = (int) (k - 12F * f1);
@@ -138,7 +138,7 @@ public class Wheels {
 		ai[3] = (int) (j + 4F * f);
 		ai1[3] = (int) (k - 12F * f1);
 		ai2[3] = (int) (l + 5F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, -1 * byte0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, -1 * byte0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai[0] = (int) (j - 4F * f);
 		ai1[0] = (int) (k - 5F * f1);
@@ -152,7 +152,7 @@ public class Wheels {
 		ai[3] = (int) (j + 4F * f);
 		ai1[3] = (int) (k - 5F * f1);
 		ai2[3] = (int) (l - 12F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, 1 * byte0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, 1 * byte0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai[0] = (int) (j - 4F * f);
 		ai1[0] = (int) (k - 5F * f1);
@@ -166,7 +166,7 @@ public class Wheels {
 		ai[3] = (int) (j + 4F * f);
 		ai1[3] = (int) (k - 5F * f1);
 		ai2[3] = (int) (l - 12F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, -1 * byte0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, -1 * byte0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai[0] = (int) (j - 4F * f);
 		ai1[0] = (int) (k + 12F * f1);
@@ -180,7 +180,7 @@ public class Wheels {
 		ai[3] = (int) (j + 4F * f);
 		ai1[3] = (int) (k + 12F * f1);
 		ai2[3] = (int) (l - 5F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, 1 * byte0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, 1 * byte0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai[0] = (int) (j - 4F * f);
 		ai1[0] = (int) (k + 12F * f1);
@@ -194,7 +194,7 @@ public class Wheels {
 		ai[3] = (int) (j + 4F * f);
 		ai1[3] = (int) (k + 12F * f1);
 		ai2[3] = (int) (l - 5F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, -1 * byte0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, -1 * byte0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		if (ground < (int) (k + 12F * f1 + 1.0F)) {
 			ground = (int) (k + 12F * f1 + 1.0F);
@@ -211,7 +211,7 @@ public class Wheels {
 		ai[3] = (int) (j + 4F * f);
 		ai1[3] = (int) (k + 5F * f1);
 		ai2[3] = (int) (l + 12F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, 1 * byte0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, 1 * byte0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai[0] = (int) (j - 4F * f);
 		ai1[0] = (int) (k + 5F * f1);
@@ -225,7 +225,7 @@ public class Wheels {
 		ai[3] = (int) (j + 4F * f);
 		ai1[3] = (int) (k + 5F * f1);
 		ai2[3] = (int) (l + 12F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, -1 * byte0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, -1 * byte0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 		ai[0] = (int) (j - 4F * f);
 		ai1[0] = (int) (k - 12F * f1);
@@ -239,7 +239,7 @@ public class Wheels {
 		ai[3] = (int) (j + 4F * f);
 		ai1[3] = (int) (k - 12F * f1);
 		ai2[3] = (int) (l + 5F * f1);
-		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, 1 * byte0, i2, k, l, 7, 0, false, 0);
+		aplane[i] = new Plane(medium, trackers, ai, ai2, ai1, 4, ai3, false, l1, 1 * byte0, i2, k, l, 7, 0, false, 0, false, false);
 		i++;
 	}
 }
