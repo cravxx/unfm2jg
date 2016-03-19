@@ -82,8 +82,10 @@ public class Utility {
     	switch(m){
     	case 0:
     		value = medium.cz;
+    		break;
     	case 1:
     		value = 10;
+    		break;
     	default:
     		break;
     	}    	
