@@ -22,12 +22,12 @@ public class GameSparker extends Applet implements Runnable {
 	private static final long serialVersionUID = -34048182014310663L;
 	public static Utility utility;
 	
-	public static final String car_models[] = {
+	public static final String carModels[] = {
 			"2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
 			"policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
 	};
 
-	public static final String track_models[] = {
+	public static final String trackModels[] = {
 			"road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn", "nroad", "nturn",
 			"roblend", "noblend", "rnblend", "roadend", "offroadend", "hpground", "ramp30", "cramp35", "dramp15",
 			"dhilo15", "slide10", "takeoff", "sramp22", "offbump", "offramp", "sofframp", "halfpipe", "spikes", "rail",
@@ -35,7 +35,7 @@ public class GameSparker extends Applet implements Runnable {
 			"soffroad"
 	};
 
-	public static final String extra_models[] = {};
+	public static final String extraModels[] = {};
 	
 	/**
 	 * false to disable splash
@@ -293,24 +293,24 @@ public class GameSparker extends Applet implements Runnable {
 	private int getModel(String input) {
 
 		String[][] allModels = new String[][] {
-				car_models, track_models, extra_models
+				carModels, trackModels, extraModels
 		}; /// need to have all the model arrays here
 
-		int model_id = 0;
+		int modelId = 0;
 
 		for (int i = 0; i < allModels.length; i++) {
 			for (int j = 0; j < allModels[i].length; j++) {
 				if (input == allModels[i][j]) {
-					int what_do_i_add = 0;
+					int addWhat = 0;
 					if (i == 1) {
-						what_do_i_add = car_models.length;
+						addWhat = carModels.length;
 					}
 					if (i == 2) {
-						what_do_i_add = car_models.length + track_models.length;
+						addWhat = carModels.length + trackModels.length;
 					}
-					model_id = j + what_do_i_add;
-					System.out.println("Found model " + model_id + " matching string \"" + input + "\"");
-					return model_id;
+					modelId = j + addWhat;
+					System.out.println("Found model " + modelId + " matching string \"" + input + "\"");
+					return modelId;
 				}
 			}
 		}
@@ -335,42 +335,44 @@ public class GameSparker extends Applet implements Runnable {
 			zipinputstream = new ZipInputStream(new FileInputStream(file));
 			ZipEntry zipentry = zipinputstream.getNextEntry();
 			for (; zipentry != null; zipentry = zipinputstream.getNextEntry()) {
-				int models_count = 0;
-				final int car_count = car_models.length;
-				final int track_count = track_models.length;
-				// final int extra_count = extra_models.length;
+				int modelId = -1;
+				
+				final int carCount = carModels.length;
+				final int trackCount = trackModels.length;
+				// final int extraCount = extraModels.length;
 
-				for (int car = 0; car < car_models.length; car++)
-					if (zipentry.getName().startsWith(car_models[car]))
-						models_count = car;
+				for (int car = 0; car < carModels.length; car++)
+					if (zipentry.getName().startsWith(carModels[car]))
+						modelId = car;
 
-				for (int track = 0; track < track_models.length; track++)
-					if (zipentry.getName().startsWith(track_models[track]))
-						models_count = track + car_count;
+				for (int track = 0; track < trackModels.length; track++)
+					if (zipentry.getName().startsWith(trackModels[track]))
+						modelId = track + carCount;
 
-				for (int extra = 0; extra < extra_models.length; extra++)
-					if (zipentry.getName().startsWith(extra_models[extra]))
-						models_count = extra + track_count + car_count;
+				for (int extra = 0; extra < extraModels.length; extra++)
+					if (zipentry.getName().startsWith(extraModels[extra]))
+						modelId = extra + trackCount + carCount;
 
-				int entire_size = (int) zipentry.getSize();
-				final byte[] model_data = new byte[entire_size];
+				int entireSize = (int) zipentry.getSize();
+				final byte[] modelData = new byte[entireSize];
 
-				int unknown_1 = 0;
-				int unknown_2;
-				for (; entire_size > 0; entire_size -= unknown_2) {
-					unknown_2 = zipinputstream.read(model_data, unknown_1, entire_size);
-					unknown_1 += unknown_2;
+				int unknown1 = 0;
+				int unknown2;
+				for (; entireSize > 0; entireSize -= unknown2) {
+					unknown2 = zipinputstream.read(modelData, unknown1, entireSize);
+					unknown1 += unknown2;
 				}
-				conto[models_count] = new ContO(model_data, medium, trackers);
+				conto[modelId] = new ContO(modelData, medium, trackers);
 				xtgraphics.dnload++;
 			}
 			/*
 			 * be sure to add your added arrays here			
 			 */
-			System.out.println("Contos loaded: " + (car_models.length + track_models.length + extra_models.length));
+			System.out.println("Contos loaded: " + (carModels.length + trackModels.length + extraModels.length));
 			zipinputstream.close();
-		} catch (Exception exception) {
-			System.out.println("Error Reading Models: " + exception);
+		} catch (IOException e) {
+			System.out.println("Error Reading Models: " + e);
+			e.printStackTrace();
 		}
 		System.gc();
 	}
@@ -781,10 +783,14 @@ public class GameSparker extends Applet implements Runnable {
 	}
 
 	@Override
-	public void run() {
+	public void run() {		
 		rd.setColor(new Color(0, 0, 0));
 		rd.fillRect(0, 0, 670, 400);
 		repaint();
+		/*
+		 * start an example timer
+		 */
+		Utility.startTimer();
 		Trackers trackers = new Trackers();
 		Medium medium = new Medium();
 		int i = 5;
@@ -798,7 +804,7 @@ public class GameSparker extends Applet implements Runnable {
 		xtGraphics xtgraphics = new xtGraphics(medium, rd, this);
 		xtgraphics.loaddata(k);
 		Record record = new Record(medium);
-		ContO aconto[] = new ContO[car_models.length + track_models.length + extra_models.length]; // be sure all your arrays get in here
+		ContO aconto[] = new ContO[carModels.length + trackModels.length + extraModels.length]; // be sure all your arrays get in here
 		loadbase(aconto, medium, trackers, xtgraphics);
 		ContO aconto1[] = new ContO[3000];
 		Madness amadness[] = new Madness[7];
@@ -809,7 +815,11 @@ public class GameSparker extends Applet implements Runnable {
 		} while (++l < 7);
 		l = 0;
 		float f = 35F;
-		int i1 = 80;		
+		int i1 = 80;	
+		/*
+		 * stop an example timer
+		 */
+		Utility.stopTimer();
 		/**
 		 * this bit in here reads cookies and set values
 		 */		

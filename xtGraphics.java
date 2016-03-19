@@ -1731,7 +1731,6 @@ public class xtGraphics extends Panel implements Runnable {
 	 * @author Omar Wally
 	 */
 	public void loadimages() {
-		Utility.startTimer();
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		MediaTracker mediatracker = new MediaTracker(app);
 		dnload += 12;
@@ -1987,13 +1986,12 @@ public class xtGraphics extends Panel implements Runnable {
 				dnload += 3;
 			}			
 			zipinputstream.close();
-			System.out.println("Loaded " + howManyImages + " images!");
+			System.out.println("Images loaded: " + howManyImages);
 		} catch (IOException e) {
-			System.out.println("Error loading images");
+			System.out.println("Error Reading Images: " + e);
 			e.printStackTrace();
 		}
 		System.gc();
-		Utility.stopTimer();
 	}
 	
 	/**Loads images from the web
