@@ -769,14 +769,17 @@ public class GameSparker extends Applet implements Runnable {
 	/**
 	 * motion
 	 * @param amadness madness 
-	 * @param medium medium
+	 * @param shakeAmt shake sensitivity 
+	 * 					1 normal
+	 * 					20 maximum
+	 * @param maxAmt maximum displacement of the screen while shaking
 	 */
-	public void intializeMoto(Madness amadness[], Medium medium) {
+	public void initMoto(Madness amadness[], int shakeAmt, int maxAmt) {
 		if (amadness[0].shakedam > 0) {
-			shaka = amadness[0].shakedam / 20;
+			shaka = amadness[0].shakedam / (20 / shakeAmt);
 			amadness[0].shakedam = 0;
-			if (shaka > 25) {
-				shaka = 25;
+			if (shaka > maxAmt) {
+				shaka = maxAmt;
 			}
 			shaka--;
 		}		
@@ -1175,7 +1178,7 @@ public class GameSparker extends Applet implements Runnable {
 					if (view == 0) {
 						medium.follow(aconto1[0], amadness[0].cxz, u[0].lookback);
 						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
-						intializeMoto(amadness, medium);
+						initMoto(amadness, 1, 25);
 					}
 					if (view == 1) {
 						medium.around(aconto1[0], false);
