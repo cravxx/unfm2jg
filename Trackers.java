@@ -1,4 +1,9 @@
 
+/**
+ * Trackers
+ * @author Omar Waly
+ *
+ */
 public class Trackers {
 	
 	public int x[] = new int[870];

@@ -20,21 +20,22 @@ public class xtGraphics extends Panel implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6463312620664057856L;
+	
+	
+	public Medium m;
+	public Applet app;
+	public Graphics2D rd;
+	public ImageObserver ob;
+
+	public Thread runner;
+	
 	/**
 	 * starting colors for the special screen in the credits
 	 */
 	public int credColors[] = {
 			25, 50, 100
 	};
-	/**
-	 * test image for the network load feature
-	 */
-	public Image aimLogo;
-	
-	public Graphics2D rd;
-	public Medium m;
-	public ImageObserver ob;
-	public Applet app;
+		
 	public int fase;
 	public int oldfase;
 	public int starcnt;
@@ -65,17 +66,8 @@ public class xtGraphics extends Panel implements Runnable {
 	 * int ystart[] = {
 	 * 		250, 350, 450, 550, 650, 750, 850
 	 * };
-	 */
+	 */	
 	
-	public float proba[] = {
-			0.6F, 0.7F, 0.4F, 0.3F, 0.8F, 0, 0.3F, 0.3F, 0.3F, 0.1F, 0.1F, 0.5F, 0, 0, 0, 0
-	};
-	public float dishandle[] = {
-			0.65F, 0.6F, 0.55F, 0.77F, 0.62F, 0.9F, 0.6F, 0.72F, 0.45F, 0.8F, 0.95F, 0.4F, 0.87F, 0.42F, 1.0F, 0.95F
-	};
-	public float outdam[] = {
-			0.67F, 0.35F, 0.8F, 0.5F, 0.42F, 0.76F, 0.82F, 0.76F, 0.72F, 0.62F, 0.79F, 0.95F, 0.77F, 1.0F, 0.85F, 1.0F
-	};
 	public boolean holdit;
 	public int holdcnt;
 	public boolean winner;
@@ -83,8 +75,8 @@ public class xtGraphics extends Panel implements Runnable {
 	public int smokey[];
 	public Image fleximg;
 	public int flatrstart;
-	public Thread runner;
 	public int runtyp;
+	public Image aimLogo;			
 	public Image kaff;
 	public Image odmg;
 	public Image opwr;
@@ -170,10 +162,7 @@ public class xtGraphics extends Panel implements Runnable {
 	public Image cntdn[];
 	public int gocnt;
 	public AudioClip engs[][];
-	public boolean pengs[];
-	public int enginsignature[] = {
-			0, 1, 2, 1, 0, 3, 2, 2, 1, 0, 3, 4, 1, 4, 0, 3
-	};
+	public boolean pengs[];	
 	public AudioClip air[];
 	public boolean aird;
 	public boolean grrd;
@@ -214,12 +203,7 @@ public class xtGraphics extends Panel implements Runnable {
 	public int posit;
 	public int wasted;
 	public int laps;
-	public int dested[];
-	public String names[] = {
-			"Tornado Shark", "Formula 7", "Wow Caninaro", "La Vite Crab", "Nimi", "MAX Revenge", "Lead Oxide",
-			"Kool Kat", "Drifter X", "Sword of Justice", "High Rider", "EL KING", "Mighty Eight", "M A S H E E N",
-			"Radical One", "DR Monstaa"
-	};
+	public int dested[];		
 	public int dmcnt;
 	public boolean dmflk;
 	public int pwcnt;
@@ -1026,7 +1010,7 @@ public class xtGraphics extends Panel implements Runnable {
 			k = (int) (90 + l2 + Math.atan((double) (checkpoints.opz[l] - checkpoints.opz[0])
 					/ (double) (checkpoints.opx[l] - checkpoints.opx[0])) / 0.017453292519943295D);
 			drawcs(13, "[                                ]", 76, 67, 240, 0);
-			drawcs(13, names[sc[l]], 0, 0, 0, 0);
+			drawcs(13, Madness.names[sc[l]], 0, 0, 0, 0);
 			/*
 			 * example use of drawOver
 			 */
@@ -2298,10 +2282,10 @@ public class xtGraphics extends Panel implements Runnable {
 							}
 							rd.drawImage(youlost, 271, 70, null);
 							if (aflk) {
-								drawcs(120, "" + names[sc[i]] + " finished first, race over!", 0, 0, 0, 0);
+								drawcs(120, "" + Madness.names[sc[i]] + " finished first, race over!", 0, 0, 0, 0);
 								aflk = false;
 							} else {
-								drawcs(120, "" + names[sc[i]] + " finished first, race over!", 0, 128, 255, 0);
+								drawcs(120, "" + Madness.names[sc[i]] + " finished first, race over!", 0, 128, 255, 0);
 								aflk = true;
 							}
 							winner = false;
@@ -2739,12 +2723,12 @@ public class xtGraphics extends Panel implements Runnable {
 						dested[k] = checkpoints.dested[k];
 						if (dested[k] == 1) {
 							wasay = true;
-							say = "" + names[sc[k]] + " has been wasted!";
+							say = "" + Madness.names[sc[k]] + " has been wasted!";
 							tcnt = -15;
 						}
 						if (dested[k] == 2) {
 							wasay = true;
-							say = "You wasted " + names[sc[k]] + "!";
+							say = "You wasted " + Madness.names[sc[k]] + "!";
 							tcnt = -15;
 						}
 					}
@@ -2866,9 +2850,9 @@ public class xtGraphics extends Panel implements Runnable {
 							s = " ";
 						}
 						if (aflk) {
-							drawcs(300, "" + names[byte0] + "" + s + " has been unlocked!", 176, 196, 0, 3);
+							drawcs(300, "" + Madness.names[byte0] + "" + s + " has been unlocked!", 176, 196, 0, 3);
 						} else {
-							drawcs(300, "" + names[byte0] + "" + s + " has been unlocked!", 247, 255, 165, 3);
+							drawcs(300, "" + Madness.names[byte0] + "" + s + " has been unlocked!", 247, 255, 165, 3);
 						}
 						pin = 180;
 					}
@@ -3026,11 +3010,11 @@ public class xtGraphics extends Panel implements Runnable {
 		do {
 			if (i == j) {
 				if (!pengs[j]) {
-					engs[enginsignature[sc[0]]][j].loop();
+					engs[Madness.enginsignature[sc[0]]][j].loop();
 					pengs[j] = true;
 				}
 			} else if (pengs[j]) {
-				engs[enginsignature[sc[0]]][j].stop();
+				engs[Madness.enginsignature[sc[0]]][j].stop();
 				pengs[j] = false;
 			}
 		} while (++j < 5);
@@ -4232,10 +4216,10 @@ public class xtGraphics extends Panel implements Runnable {
 				byte0 = 2;
 			}
 			if (aflk) {
-				drawcs(70 + byte0, names[sc[0]], 240, 240, 240, 3);
+				drawcs(70 + byte0, Madness.names[sc[0]], 240, 240, 240, 3);
 				aflk = false;
 			} else {
-				drawcs(70, names[sc[0]], 176, 176, 176, 3);
+				drawcs(70, Madness.names[sc[0]], 176, 176, 176, 3);
 				aflk = true;
 			}
 			aconto[sc[0]].z = 950;
@@ -4321,7 +4305,7 @@ public class xtGraphics extends Panel implements Runnable {
 						f = 1.0F;
 					}
 					rd.fillRect((int) (97F + 156F * f), 327, (int) (156F * (1.0F - f) + 1.0F), 7);
-					f = dishandle[sc[0]];
+					f = Madness.dishandle[sc[0]];
 					rd.fillRect((int) (97F + 156F * f), 342, (int) (156F * (1.0F - f) + 1.0F), 7);
 					f = (Madness.airc[sc[0]] * Madness.airs[sc[0]] * Madness.bounce[sc[0]] + 28F) / 139F;
 					if (f > 1.0F) {
@@ -4337,7 +4321,7 @@ public class xtGraphics extends Panel implements Runnable {
 						f = 1.0F;
 					}
 					rd.fillRect((int) (471F + 156F * f), 327, (int) (156F * (1.0F - f) + 1.0F), 7);
-					f = outdam[sc[0]];
+					f = Madness.outdam[sc[0]];
 					rd.fillRect((int) (471F + 156F * f), 342, (int) (156F * (1.0F - f) + 1.0F), 7);
 					rd.drawImage(statbo, 97, 312, null);
 					rd.drawImage(statbo, 97, 327, null);

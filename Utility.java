@@ -77,7 +77,7 @@ public class Utility {
      * 			  1 is for using 10 (only found in Medium)
      * @return The 2D Y coordinate.
      */
-    public static int ys(final int i, int j, int m) {
+    public static int ys(final int i, int j, final int m) {
     	int value = 0;
     	switch(m){
     	case 0:
@@ -153,24 +153,24 @@ public class Utility {
         return part;
     }
     
-    public static BufferedImage webGet(String string) throws IOException{
+    public static BufferedImage webGet(final String string) throws IOException{
     	System.out.println("Loaded " + string);    	
     	return ImageIO.read(new URL(string));
     }
         
-    public static int spy(int i, int j) {
+    public static int spy(final int i, final int j) {
 		return (int) Math.sqrt((i - medium.cx) * (i - medium.cx) + j * j);
 	}
     
-    public static float pys(int i, int j, int k, int l) {
+    public static float pys(final int i, final int j, final int k, final int l) {
 		return (float) Math.sqrt((i - j) * (i - j) + (k - l) * (k - l));
 	}
     
-    public static int rpy(float f, float f1, float f2, float f3, float f4, float f5) {
+    public static int rpy(final float f, final float f1, final float f2, final float f3, final float f4, final float f5) {
 		return (int) ((f - f1) * (f - f1) + (f2 - f3) * (f2 - f3) + (f4 - f5) * (f4 - f5));
 	}
         
-    public static int py(int i, int j, int k, int l) {
+    public static int py(final int i, final int j, final int k, final int l) {
 		return (i - j) * (i - j) + (k - l) * (k - l);
 	}
 
@@ -178,7 +178,7 @@ public class Utility {
         return (int) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
     
-    public static void rot(float af[], float af1[], int i, int j, int k, int l) {
+    public static void rot(float af[], float af1[], final int i, final int j, final int k, final int l) {
 		if (k != 0) {
 			for (int i1 = 0; i1 < l; i1++) {
 				float f = af[i1];
@@ -190,7 +190,7 @@ public class Utility {
 		}
 	}
     
-    public static void rot(int ai[], int ai1[], int i, int j, int k, int l) {
+    public static void rot(int ai[], int ai1[], final int i, final int j, final int k, final int l) {
 		if (k != 0) {
 			for (int i1 = 0; i1 < l; i1++) {
 				int j1 = ai[i1];
@@ -202,12 +202,12 @@ public class Utility {
 		}
 	}       
     
-    public static int[] rotSingle(int poly1, int poly2, final int center1, final int center2, final int angle, final float sin_ang, final float cos_ang) {
+    public static int[] rotSingle(int poly1, int poly2, final int center1, final int center2, final int angle, final float sinAng, final float cosAng) {
         if (angle != 0) {
             final int j1 = poly1;
             final int k1 = poly2;
-            poly1 = center1 + (int) ((j1 - center1) * cos_ang - (k1 - center2) * sin_ang);
-            poly2 = center2 + (int) ((j1 - center1) * sin_ang + (k1 - center2) * cos_ang);
+            poly1 = center1 + (int) ((j1 - center1) * cosAng - (k1 - center2) * sinAng);
+            poly2 = center2 + (int) ((j1 - center1) * sinAng + (k1 - center2) * cosAng);
         }
         return new int[] {
                 poly1, poly2
@@ -215,15 +215,14 @@ public class Utility {
     }
     
     public static void startTimer(){
+    	startTime = System.nanoTime();
     	System.out.println("Timer started!");    	
-    	startTime = System.nanoTime();	
     }
     
     public static void stopTimer(){
     	long endTime = System.nanoTime();
     	long finalTime = (endTime - startTime) / 1000000;
-    	startTime = 0;
-    	
+    	startTime = 0;    	
     	System.out.println("Timer ended at " + finalTime + " ms");    	
     }
 }

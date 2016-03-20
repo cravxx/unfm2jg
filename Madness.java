@@ -9,7 +9,50 @@ public class Madness {
 	
 	private Medium m;
 	private Record rpd;
-	private xtGraphics xt;
+	private xtGraphics xt;	
+	
+	/**
+	 * car names<br>
+	 * originally in xtgraphics
+	 */
+	public static String names[] = {
+			"Tornado Shark", "Formula 7", "Wow Caninaro", "La Vite Crab", "Nimi", "MAX Revenge", "Lead Oxide",
+			"Kool Kat", "Drifter X", "Sword of Justice", "High Rider", "EL KING", "Mighty Eight", "M A S H E E N",
+			"Radical One", "DR Monstaa"
+	};
+	
+	/**
+	 * "So 0 means if this car is unlocked, and can be used, give it top priority to enter a race.. 0.8 is low... lower chance of finding this car in a race..."<br>
+	 * originally in xtgraphics
+	 * @author Omar Waly
+	 */
+	public static float proba[] = {
+			0.6F, 0.7F, 0.4F, 0.3F, 0.8F, 0, 0.3F, 0.3F, 0.3F, 0.1F, 0.1F, 0.5F, 0, 0, 0, 0
+	};
+	
+	/**
+	 * dishandle<br>
+	 * originally in xtgraphics
+	 */
+	public static float dishandle[] = {
+			0.65F, 0.6F, 0.55F, 0.77F, 0.62F, 0.9F, 0.6F, 0.72F, 0.45F, 0.8F, 0.95F, 0.4F, 0.87F, 0.42F, 1.0F, 0.95F
+	};
+	
+	/**
+	 * outdam<br>
+	 * originally in xtgraphics
+	 */
+	public static float outdam[] = {
+			0.67F, 0.35F, 0.8F, 0.5F, 0.42F, 0.76F, 0.82F, 0.76F, 0.72F, 0.62F, 0.79F, 0.95F, 0.77F, 1.0F, 0.85F, 1.0F
+	};
+	
+	/**
+	 * enginsignature<br>
+	 * originally in xtgraphics
+	 */
+	public static int enginsignature[] = {
+			0, 1, 2, 1, 0, 3, 2, 2, 1, 0, 3, 4, 1, 4, 0, 3
+	};
 	
 	/**
 	 * The Acceleration stat

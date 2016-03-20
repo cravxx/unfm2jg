@@ -20,7 +20,6 @@ public class GameSparker extends Applet implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -34048182014310663L;
-	public static Utility utility;
 	
 	public static final String carModels[] = {
 			"2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
@@ -180,7 +179,6 @@ public class GameSparker extends Applet implements Runnable {
 
 				System.out.println("Successfully saved game (" + filename + ")");
 			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (IOException e) {

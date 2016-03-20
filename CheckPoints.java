@@ -1,4 +1,9 @@
 
+/**
+ * Manages track stuff
+ * @author Omar Waly
+ *
+ */
 public class CheckPoints {
 
 	public int x[] = new int[140];
@@ -24,13 +29,7 @@ public class CheckPoints {
 	public int pos[] = {
 			6, 6, 6, 6, 6, 6, 6
 	};
-	/**
-	 * connected to number of cars
-	 */
 	public int clear[] = new int[7];
-	/**
-	 * connected to number of cars
-	 */
 	public int dested[] = new int[7];
 	public int wasted = 0;
 	public boolean haltall = false;

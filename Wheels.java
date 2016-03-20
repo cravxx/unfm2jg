@@ -1,9 +1,17 @@
 
+/**
+ * Wheels
+ * @author Omar Waly
+ *
+ */
 public class Wheels {
 
 	public int ground;
 
 	private int mast;
+	/**
+	 * wheel color
+	 */
 	private int rc[] = {
 			120, 120, 120
 	};
