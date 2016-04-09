@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Plane {
 	
+	public boolean fullOn;
 	public float pulse;
 	private Medium m;
 	private Trackers t;
@@ -64,7 +65,8 @@ public class Plane {
 	}
 
 	public Plane(Medium medium, Trackers trackers, int ai[], int ai1[], int ai2[], int i, int ai3[], boolean flag,
-			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2, float pulseTo) {
+			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2, float pulseTo, boolean fullOnTo) {
+		fullOn = fullOnTo;
 		pulse = pulseTo;
 		c = new int[3];
 		oc = new int[3];
@@ -908,9 +910,16 @@ public class Plane {
 				Color.RGBtoHSB(oc[0], oc[1], oc[2], af);
 				color = Color.getHSBColor(0.0F, 0.0F, af[2] * f1);
 			}
+			
+			if(fullOn){
+				//System.out.println("damson");
+				color = Utility.evenBrighter(color);
+			}
+			
 			int l11 = color.getRed();
 			int j13 = color.getGreen();
-			int k14 = color.getBlue();
+			int k14 = color.getBlue();						
+			
 			if (m.lightson && light != 0) {
 				l11 = oc[0];
 				if (l11 > 255) {

@@ -1174,7 +1174,7 @@ public class GameSparker extends Applet implements Runnable {
 					l12 = 0;
 					do{
 						if(justFixed[l12])
-							if(!polyfx[l12].setPulse(aconto1[l12]))
+							if(!polyfx[l12].rapidIt(aconto1[l12]))
 								justFixed[l12] = false;
 					}while (++l12 < 7);	
 					

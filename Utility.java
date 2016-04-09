@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -212,6 +213,10 @@ public class Utility {
         return new int[] {
                 poly1, poly2
         };
+    }
+    
+    public static Color evenBrighter(Color color) {
+    	return color.brighter().brighter();
     }
     
     public static void startTimer(){
