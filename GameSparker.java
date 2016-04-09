@@ -21,6 +21,11 @@ public class GameSparker extends Applet implements Runnable {
 	 */
 	private static final long serialVersionUID = -34048182014310663L;
 	
+	float pulseVal = 1.0F;
+	boolean justFixed[] = {
+			false, false, false, false, false, false, false
+	};
+	
 	public static final String carModels[] = {
 			"2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
 			"policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
@@ -1101,6 +1106,7 @@ public class GameSparker extends Applet implements Runnable {
 						aconto1[k3].xy = j6;
 						aconto1[k3].zy = l8;
 						amadness[k3].newcar = false;
+						justFixed[k3] = true;
 					}
 				} while (++k3 < 7);
 				medium.d(rd);
@@ -1160,7 +1166,18 @@ public class GameSparker extends Applet implements Runnable {
 					l12 = 1;
 					do
 						u[l12].preform(amadness[l12], aconto1[l12], checkpoints, trackers);
-					while (++l12 < 7);
+					while (++l12 < 7);	
+					
+					for(int fix = 0; fix < 7; fix++){
+						if(justFixed[fix]){
+							if(PolyFX.setPulse(aconto1[fix])){
+								
+							}else{
+								justFixed[fix] = false;
+							}
+						}
+					}
+					
 				} else {
 					if (xtgraphics.starcnt == 130) {
 						medium.adv = 1900;

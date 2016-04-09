@@ -269,7 +269,7 @@ public class ContO {
 					}
 				}
 				if (line.startsWith("</p>")) {
-					p[npl] = new Plane(m, t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0);
+					p[npl] = new Plane(m, t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0, 1.0F);
 					npl++;
 					flag = false;
 				}
@@ -433,7 +433,7 @@ public class ContO {
 			}
 			p[i1] = new Plane(m, t, conto.p[i1].ox, conto.p[i1].oz, conto.p[i1].oy, conto.p[i1].n, conto.p[i1].oc,
 					conto.p[i1].glass, conto.p[i1].gr, conto.p[i1].fs, conto.p[i1].wx, conto.p[i1].wy, conto.p[i1].wz,
-					conto.disline, conto.p[i1].bfase, conto.p[i1].road, conto.p[i1].light);
+					conto.disline, conto.p[i1].bfase, conto.p[i1].road, conto.p[i1].light, 1.0F);
 		}
 
 		x = i;
@@ -1078,5 +1078,6 @@ public class ContO {
 		} else {
 			zy += 11;
 		}
-	}
+	}	
+	
 }

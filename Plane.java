@@ -2,6 +2,8 @@
 import java.awt.*;
 
 public class Plane {
+	
+	public float pulse;
 	private Medium m;
 	private Trackers t;
 	public int ox[];
@@ -62,7 +64,8 @@ public class Plane {
 	}
 
 	public Plane(Medium medium, Trackers trackers, int ai[], int ai1[], int ai2[], int i, int ai3[], boolean flag,
-			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2) {
+			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2, float pulseTo) {
+		pulse = pulseTo;
 		c = new int[3];
 		oc = new int[3];
 		hsb = new float[3];
@@ -895,10 +898,12 @@ public class Plane {
 					f1 = 0.6F;
 				}
 			}
+			
+			// TODO
 			Color color;
 			if (!m.trk) {
-				color = Color.getHSBColor(hsb[0], hsb[1], hsb[2] * f1);
-			} else {
+				color = Color.getHSBColor(hsb[0] * pulse, hsb[1], hsb[2] * f1);
+			} else{
 				float af[] = new float[3];
 				Color.RGBtoHSB(oc[0], oc[1], oc[2], af);
 				color = Color.getHSBColor(0.0F, 0.0F, af[2] * f1);
