@@ -64,6 +64,7 @@ public class GameSparker extends Applet implements Runnable {
 	public Image offImage;
 	public Thread gamer;
 	public Control u[];
+	public PolyFX polyfx[];
 	public int mouses;
 	public int xm;
 	public int ym;
@@ -277,6 +278,7 @@ public class GameSparker extends Applet implements Runnable {
 	}
 
 	public GameSparker() {
+		polyfx = new PolyFX[7];
 		u = new Control[7];
 		mouses = 0;
 		xm = 0;
@@ -818,6 +820,7 @@ public class GameSparker extends Applet implements Runnable {
 		do {
 			amadness[l] = new Madness(medium, record, xtgraphics, l);			
 			u[l] = new Control(medium);
+			polyfx[l] = new PolyFX();
 		} while (++l < 7);
 		l = 0;
 		float f = 35F;
@@ -1168,15 +1171,12 @@ public class GameSparker extends Applet implements Runnable {
 						u[l12].preform(amadness[l12], aconto1[l12], checkpoints, trackers);
 					while (++l12 < 7);	
 					
-					for(int fix = 0; fix < 7; fix++){
-						if(justFixed[fix]){
-							if(PolyFX.setPulse(aconto1[fix])){
-								
-							}else{
-								justFixed[fix] = false;
-							}
-						}
-					}
+					l12 = 0;
+					do{
+						if(justFixed[l12])
+							if(!polyfx[l12].setPulse(aconto1[l12]))
+								justFixed[l12] = false;
+					}while (++l12 < 7);	
 					
 				} else {
 					if (xtgraphics.starcnt == 130) {

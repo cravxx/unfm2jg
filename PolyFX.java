@@ -1,8 +1,8 @@
 
 public class PolyFX {		
 	
-	public static float pulseVar = 1.0F;
-	public static boolean halfBaked = false;
+	public float pulseVar = 1.0F;
+	public boolean halfBaked = false;
 	
 	/**
 	 * decreases a float to edit color
@@ -13,7 +13,7 @@ public class PolyFX {
 	 *            original pulse
 	 * @return returns false when done
 	 */
-	public static boolean setPulse(ContO conto) {		
+	public boolean setPulse(ContO conto) {		
 		while (pulseVar > 0.0F && halfBaked == false) {
 			System.out.println("greater than 0.0");
 			pulseVar -= 0.01F;
