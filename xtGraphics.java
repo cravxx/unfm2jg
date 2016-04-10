@@ -2743,7 +2743,7 @@ public class xtGraphics extends Panel implements Runnable {
 				} while (++k < 7);
 				/**
 				 * check power
-				 */
+				 *//*
 				k = 0;
 				do {
 					if (madness[k].power == 98F && justPowered[k] == true) {
@@ -2754,7 +2754,7 @@ public class xtGraphics extends Panel implements Runnable {
 					if(madness[k].power < 98F){
 						justPowered[k] = true;
 					}
-				} while (++k < 7);
+				} while (++k < 7);*/
 			}
 		}
 	}

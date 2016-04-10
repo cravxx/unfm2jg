@@ -219,6 +219,21 @@ public class Utility {
     	return color.brighter().brighter();
     }
     
+    /**
+     * get the piece you're on
+     * @param trackers trackers 
+     * @param conto your cars conto
+     * @return int of tracker
+     */
+    public static int nearestRoad(Trackers trackers, ContO conto) {	
+		for(int l3 = 0; l3 < trackers.nt; l3++){
+            if(Math.abs(trackers.zy[l3]) != 90 && Math.abs(trackers.xy[l3]) != 90 && Math.abs(conto.x - trackers.x[l3]) < trackers.radx[l3] && Math.abs(conto.z - trackers.z[l3]) < trackers.radz[l3]){
+                return l3;
+            }
+        }
+		return -1;
+	}
+    
     public static void startTimer(){
     	startTime = System.nanoTime();
     	System.out.println("Timer started!");    	

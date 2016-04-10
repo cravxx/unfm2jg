@@ -100,7 +100,7 @@ public class PolyFX {
 				 * hold off 
 				 */
 				if(flashes > 2){
-					System.out.println(flashes);
+					//System.out.println(flashes);
 					for (int i1 = 0; i1 < conto.npl; i1++) {
 						/**
 						 * don't want wheels to flash
@@ -138,7 +138,7 @@ public class PolyFX {
 				 * hold off 
 				 */
 				if(flashes > 2){
-					System.out.println(flashes);
+					//System.out.println(flashes);
 					for (int i1 = 0; i1 < conto.npl; i1++) {
 						/**
 						 * don't want wheels to flash
@@ -162,6 +162,4 @@ public class PolyFX {
 		return false;
 	}
 	
-	
-
 }

@@ -64,7 +64,6 @@ public class GameSparker extends Applet implements Runnable {
 	public Image offImage;
 	public Thread gamer;
 	public Control u[];
-	public PolyFX polyfx[];
 	public int mouses;
 	public int xm;
 	public int ym;
@@ -278,7 +277,6 @@ public class GameSparker extends Applet implements Runnable {
 	}
 
 	public GameSparker() {
-		polyfx = new PolyFX[7];
 		u = new Control[7];
 		mouses = 0;
 		xm = 0;
@@ -451,7 +449,7 @@ public class GameSparker extends Applet implements Runnable {
 	 * @author Kaffeinated, Omar Waly
 	 * 
 	 */
-	public void loadstage(ContO aconto[], ContO aconto1[], Medium medium, Trackers trackers, CheckPoints checkpoints,
+	public void loadstage(ContO aconto[], ContO aconto1[], PolyFX polyfx1[], Medium medium, Trackers trackers, CheckPoints checkpoints,
 			xtGraphics xtgraphics, Madness amadness[], Record record) {
 		trackers.nt = 0;
 		nob = 7;
@@ -712,6 +710,11 @@ public class GameSparker extends Applet implements Runnable {
 					trackers.nt++;
 				}
 			}
+			System.out.println(nob + " nob " + notb + " notb " + trackers.nt + " nt");
+			for(int nobs = 0; nobs < trackers.nt; nobs++){
+				polyfx1[nobs] = new PolyFX();
+			}
+			System.out.println("just made " + nob + " polysfxs");
 			medium.newpolys(l_wall, r_wall - l_wall, b_wall, t_wall - b_wall, trackers, notb);
 			medium.newmountains(l_wall, r_wall, b_wall, t_wall);
 			medium.newclouds(l_wall, r_wall, b_wall, t_wall);
@@ -815,6 +818,11 @@ public class GameSparker extends Applet implements Runnable {
 		ContO aconto[] = new ContO[carModels.length + trackModels.length + extraModels.length]; // be sure all your arrays get in here
 		loadbase(aconto, medium, trackers, xtgraphics);
 		ContO aconto1[] = new ContO[3000];
+		
+
+		PolyFX polyfx[] = new PolyFX[carModels.length + trackModels.length + extraModels.length];
+		PolyFX polyfx1[] = new PolyFX[3000];
+		
 		Madness amadness[] = new Madness[7];
 		int l = 0;
 		do {
@@ -878,7 +886,7 @@ public class GameSparker extends Applet implements Runnable {
 					i2++;
 				} else {
 					i2 = 0;
-					xtgraphics.fase = 9;
+					xtgraphics.fase = 7;
 					mouses = 0;
 					lostfcs = false;
 				}
@@ -996,7 +1004,7 @@ public class GameSparker extends Applet implements Runnable {
 			}
 			if (xtgraphics.fase == 2) {
 				xtgraphics.loadingstage(checkpoints.stage);
-				loadstage(aconto1, aconto, medium, trackers, checkpoints, xtgraphics, amadness, record);
+				loadstage(aconto1, aconto, polyfx1, medium, trackers, checkpoints, xtgraphics, amadness, record);
 				u[0].falseo();
 			}
 			if (xtgraphics.fase == 1) {
@@ -1173,10 +1181,24 @@ public class GameSparker extends Applet implements Runnable {
 					
 					l12 = 0;
 					do{						
-						if(justFixed[l12])
-							if(!polyfx[l12].rapidWireframe(aconto1[l12]))
-								justFixed[l12] = false;
+						if(justFixed[l12]){
+							/*if(!polyfx[l12].rapidWireframe(aconto1[l12]))
+								justFixed[l12] = false;*/
+						
+							
+						}
 					}while (++l12 < 7);	
+					
+					int nearId = Utility.nearestRoad(trackers,aconto1[0]);
+					if(nearId != -1){
+						System.out.println(nearId);
+						if(!polyfx1[nearId+7].rapidWireframe(aconto1[nearId+7])){
+							
+						}
+					}else{
+						System.out.println(nearId);
+					}
+					
 					
 				} else {
 					if (xtgraphics.starcnt == 130) {

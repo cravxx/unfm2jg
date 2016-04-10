@@ -1037,11 +1037,11 @@ public class Plane {
 						}
 					}
 					rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-					if(wireframeFlash){						
+					if(wireframeFlash){
 						rd.setColor(flashColor());
 					}else{
 						rd.setColor(new Color(l11, j13, k14));
-					}	
+					}
 					
 					rd.drawPolygon(ai14, ai15, n);
 					rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
@@ -1100,8 +1100,12 @@ public class Plane {
 				}
 				if ((k14 -= 10) < 0) {
 					k14 = 0;
-				}				
-				rd.setColor(new Color(l11, j13, k14));
+				}	
+				if(wireframeFlash){
+					rd.setColor(flashColor());
+				}else{
+					rd.setColor(new Color(l11, j13, k14));
+				}
 				rd.drawPolygon(ai14, ai15, n);
 			}
 			if (gr == -10) {
