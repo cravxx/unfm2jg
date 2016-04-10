@@ -22,6 +22,14 @@ public class xtGraphics extends Panel implements Runnable {
 	private static final long serialVersionUID = -6463312620664057856L;
 	
 	
+	/**
+	 * flip this to false when power hits 98F<br>
+	 * back to true when it drops below
+	 */
+	boolean justPowered[] = {
+			true, true, true, true, true, true, true, 
+	};
+	
 	public Medium m;
 	public Applet app;
 	public Graphics2D rd;
@@ -2197,7 +2205,7 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 	}	
 
-	public void stat(Madness madness[], CheckPoints checkpoints, Control control, ContO conto[], boolean flag) {		
+	public void stat(Madness madness[], CheckPoints checkpoints, Control control, ContO conto[], PolyFX polyfx[], boolean flag) {		
 		if (holdit) {
 			holdcnt++;
 			if (m.flex != 0) {
@@ -2682,7 +2690,7 @@ public class xtGraphics extends Panel implements Runnable {
 							if (madness[0].power != 98F) {
 								say = "Power Up " + (int) ((100F * madness[0].powerup) / 98F) + "%";
 							} else {
-								say = "Power To The MAX";
+								say = "Power To The MAX";								
 							}
 							if (skidup) {
 								skidup = false;
@@ -2731,6 +2739,20 @@ public class xtGraphics extends Panel implements Runnable {
 							say = "You wasted " + Madness.names[sc[k]] + "!";
 							tcnt = -15;
 						}
+					}
+				} while (++k < 7);
+				/**
+				 * check power
+				 */
+				k = 0;
+				do {
+					if (madness[k].power == 98F && justPowered[k] == true) {
+						if(!polyfx[k].rapidBody(conto[k])){
+							justPowered[k] = false;
+						}
+					}
+					if(madness[k].power < 98F){
+						justPowered[k] = true;
 					}
 				} while (++k < 7);
 			}

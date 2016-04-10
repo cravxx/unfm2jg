@@ -1,18 +1,18 @@
 
 public class PolyFX {		
 	
-	public float pulseVar = 1.0F;
+	/*public float pulseVar = 1.0F;*/
 	
-	public int rapidItFlashes = 0;
+	public int flashes = 0;
 
 	public int timesToRun = 2;
-	public boolean halfBaked = false;
+	/*public boolean halfBaked = false;*/
 	
 	public void reset() {
-		pulseVar = 1.0F;
-		rapidItFlashes = 0;
+		/*pulseVar = 1.0F;*/
+		flashes = 0;
 		timesToRun = 2;
-		halfBaked = false;
+		/*halfBaked = false;*/
 	}
 	
 	/**
@@ -23,7 +23,7 @@ public class PolyFX {
 	 * @param pulseVar
 	 *            original pulse
 	 * @return returns false when done
-	 */
+	 *//*
 	public boolean setPulse(ContO conto) {		
 		while (pulseVar > 0.0F && halfBaked == false) {
 			System.out.println("greater than 0.0");
@@ -47,11 +47,11 @@ public class PolyFX {
 	}
 	
 
-	/**
+	*//**
 	 * flash it
 	 * @param conto instnace
 	 * @return status
-	 */
+	 *//*
 	public boolean flashIt(ContO conto) {	
 		float rate = 0.50F;
 		do{
@@ -60,7 +60,7 @@ public class PolyFX {
 				System.out.println("bright");
 				pulseVar -= rate;
 				for (int i1 = 0; i1 < conto.npl; i1++) {
-					conto.p[i1].fullOn = true;
+					conto.p[i1].wireframeFlash = true;
 				}						
 				return true;
 			}else{
@@ -71,7 +71,7 @@ public class PolyFX {
 				System.out.println("finishing up");
 				pulseVar += rate;
 				for (int i1 = 0; i1 < conto.npl; i1++) {
-					conto.p[i1].fullOn = false;
+					conto.p[i1].wireframeFlash = false;
 				}
 				return true;
 			}else{
@@ -84,25 +84,29 @@ public class PolyFX {
 		reset();
 		
 		return false;
-	}
+	}*/
 	
 	/**
-	 * rapid it
+	 * rapid wireframe
 	 * @param conto instnace
 	 * @return status
 	 */
-	public boolean rapidIt(ContO conto) {	
+	public boolean rapidWireframe(ContO conto) {	
 		do{						
-			if(rapidItFlashes < 6){
+			if(flashes < 6){
 				
-				rapidItFlashes++;
+				flashes++;
 				/**
 				 * hold off 
 				 */
-				if(rapidItFlashes > 2){
-					System.out.println(rapidItFlashes);
+				if(flashes > 2){
+					System.out.println(flashes);
 					for (int i1 = 0; i1 < conto.npl; i1++) {
-						conto.p[i1].fullOn = !conto.p[i1].fullOn;
+						/**
+						 * don't want wheels to flash
+						 */
+						if(!conto.p[i1].wheel)
+							conto.p[i1].wireframeFlash = !conto.p[i1].wireframeFlash;
 					}
 				}
 				return true;
@@ -111,7 +115,45 @@ public class PolyFX {
 				 * just set it to zero
 				 */
 				timesToRun = 0;
-				rapidItFlashes = 0;				
+				flashes = 0;				
+			}			
+		}while(timesToRun > 0);
+		
+		reset();
+		
+		return false;
+	}
+	
+	/**
+	 * rapid body
+	 * @param conto instnace
+	 * @return status
+	 */
+	public boolean rapidBody(ContO conto) {	
+		do{						
+			if(flashes < 6){
+				
+				flashes++;
+				/**
+				 * hold off 
+				 */
+				if(flashes > 2){
+					System.out.println(flashes);
+					for (int i1 = 0; i1 < conto.npl; i1++) {
+						/**
+						 * don't want wheels to flash
+						 */
+						if(!conto.p[i1].wheel)
+							conto.p[i1].bodyFlash = !conto.p[i1].bodyFlash;
+					}
+				}
+				return true;
+			}else{
+				/**
+				 * just set it to zero
+				 */
+				timesToRun = 0;
+				flashes = 0;				
 			}			
 		}while(timesToRun > 0);
 		

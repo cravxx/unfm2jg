@@ -8,7 +8,7 @@ import java.io.*;
 public class ContO {
 	public Medium m;
 	public Trackers t;
-	public Plane p[];
+	public Plane p[];	
 	public int npl = 0;
 	public int x = 0;
 	public int y = 0;
@@ -269,7 +269,7 @@ public class ContO {
 					}
 				}
 				if (line.startsWith("</p>")) {
-					p[npl] = new Plane(m, t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0, 1.0F, false);
+					p[npl] = new Plane(m, t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0);
 					npl++;
 					flag = false;
 				}
@@ -287,6 +287,11 @@ public class ContO {
 							(int) (Utility.getint("w", line, 2) * f * nfmm_scale[2]), Utility.getint("w", line, 3),
 							(int) (Utility.getint("w", line, 4) * f * f1), (int) (Utility.getint("w", line, 5) * f),
 							i1);
+					/**
+					 * these next 15 planes are wheels
+					 */
+					for(int itsAWheel = 0; itsAWheel < 15; itsAWheel++)
+						p[npl+itsAWheel].wheel = true;
 					npl += 15;
 				}
 				if (line.startsWith("tracks")) {
@@ -433,13 +438,19 @@ public class ContO {
 			}
 			p[i1] = new Plane(m, t, conto.p[i1].ox, conto.p[i1].oz, conto.p[i1].oy, conto.p[i1].n, conto.p[i1].oc,
 					conto.p[i1].glass, conto.p[i1].gr, conto.p[i1].fs, conto.p[i1].wx, conto.p[i1].wy, conto.p[i1].wz,
-					conto.disline, conto.p[i1].bfase, conto.p[i1].road, conto.p[i1].light, 1.0F, false);
+					conto.disline, conto.p[i1].bfase, conto.p[i1].road, conto.p[i1].light);
 		}
 
 		x = i;
 		y = j;
 		z = k;
 		for (int j1 = 0; j1 < npl; j1++) {
+			/**
+			 * get it
+			 * TODO
+			 */
+			p[j1].wheel = conto.p[j1].wheel;
+			
 			p[j1].master = conto.p[j1].master;
 			Utility.rot(p[j1].ox, p[j1].oz, 0, 0, l, p[j1].n);
 			p[j1].loadprojf();

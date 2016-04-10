@@ -2,9 +2,18 @@
 import java.awt.*;
 
 public class Plane {
-	
-	public boolean fullOn;
-	public float pulse;
+	/**
+	 * is the poly part of a wheel
+	 */
+	public boolean wheel;
+	/**
+	 * flash wireframe
+	 */
+	public boolean wireframeFlash;
+	/**
+	 * flash body
+	 */
+	public boolean bodyFlash;
 	private Medium m;
 	private Trackers t;
 	public int ox[];
@@ -65,9 +74,8 @@ public class Plane {
 	}
 
 	public Plane(Medium medium, Trackers trackers, int ai[], int ai1[], int ai2[], int i, int ai3[], boolean flag,
-			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2, float pulseTo, boolean fullOnTo) {
-		fullOn = fullOnTo;
-		pulse = pulseTo;
+			int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2) {
+		wheel = false;		
 		c = new int[3];
 		oc = new int[3];
 		hsb = new float[3];
@@ -217,6 +225,36 @@ public class Plane {
 			} while (++l3 < 3);
 		} while (++j3 < 3);
 		deltaf = deltaf / 3F;
+	}
+	
+	/**
+	 * returns a nice color based off the first polygon's color<br>
+	 * TODO use firstColor
+	 * @return color
+	 */
+	public Color flashColor() {	
+		int red = (int) (c[0] * (c[0] / 100F));
+		if (red > 255) {
+			red = 255;
+		}
+		if (red < 0) {
+			red = 0;
+		}
+		int green = (int) (c[1] * (c[1] / 100F));
+		if (green > 255) {
+			green = 255;
+		}
+		if (green < 0) {
+			green = 0;
+		}
+		int blue = (int) (c[2] * (c[2] / 100F));
+		if (blue > 255) {
+			blue = 255;
+		}
+		if (blue < 0) {
+			blue = 0;
+		}
+		return new Color(red, green, blue);
 	}
 
 	public void d(Graphics2D rd, int i, int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag, int i2) {
@@ -904,17 +942,17 @@ public class Plane {
 			// TODO
 			Color color;
 			if (!m.trk) {
-				color = Color.getHSBColor(hsb[0] * pulse, hsb[1], hsb[2] * f1);
+				color = Color.getHSBColor(hsb[0], hsb[1], hsb[2] * f1);
 			} else{
 				float af[] = new float[3];
 				Color.RGBtoHSB(oc[0], oc[1], oc[2], af);
 				color = Color.getHSBColor(0.0F, 0.0F, af[2] * f1);
 			}
 			
-			if(fullOn){
+			/*if(fullOn){
 				//System.out.println("damson");
 				color = Utility.evenBrighter(color);
-			}
+			}*/
 			
 			int l11 = color.getRed();
 			int j13 = color.getGreen();
@@ -953,11 +991,23 @@ public class Plane {
 					}
 				} while (++l15 < 8);
 			}
-			rd.setColor(new Color(l11, j13, k14));
+			if(bodyFlash){				
+				rd.setColor(flashColor());
+			}else{
+				rd.setColor(new Color(l11, j13, k14));
+			}	
+			/**
+			 * FILLS POYLGONS OF THE PLANE
+			 * TODO
+			 */
 			rd.fillPolygon(ai14, ai15, n);
 			if (m.trk && gr == -10) {
 				flag = false;
 			}
+			
+			/**
+			 * FOR LIGHT LINES
+			 */
 			if (!flag) {
 				if (flx == 0) {
 					l11 = 0;
@@ -987,7 +1037,12 @@ public class Plane {
 						}
 					}
 					rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-					rd.setColor(new Color(l11, j13, k14));
+					if(wireframeFlash){						
+						rd.setColor(flashColor());
+					}else{
+						rd.setColor(new Color(l11, j13, k14));
+					}	
+					
 					rd.drawPolygon(ai14, ai15, n);
 					rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 				} else {
@@ -1045,7 +1100,7 @@ public class Plane {
 				}
 				if ((k14 -= 10) < 0) {
 					k14 = 0;
-				}
+				}				
 				rd.setColor(new Color(l11, j13, k14));
 				rd.drawPolygon(ai14, ai15, n);
 			}

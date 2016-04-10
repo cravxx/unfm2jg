@@ -1172,9 +1172,9 @@ public class GameSparker extends Applet implements Runnable {
 					while (++l12 < 7);	
 					
 					l12 = 0;
-					do{
+					do{						
 						if(justFixed[l12])
-							if(!polyfx[l12].rapidIt(aconto1[l12]))
+							if(!polyfx[l12].rapidWireframe(aconto1[l12]))
 								justFixed[l12] = false;
 					}while (++l12 < 7);	
 					
@@ -1192,16 +1192,16 @@ public class GameSparker extends Applet implements Runnable {
 				if (xtgraphics.starcnt < 38) {
 					if (view == 0) {
 						medium.follow(aconto1[0], amadness[0].cxz, u[0].lookback);
-						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
+						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, polyfx, true);
 						initMoto(amadness, 1, 25);
 					}
 					if (view == 1) {
 						medium.around(aconto1[0], false);
-						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, false);
+						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, polyfx, false);
 					}
 					if (view == 2) {
 						medium.watch(aconto1[0], amadness[0].mxz);
-						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, false);
+						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, polyfx, false);
 					}
 					if (mouses == 1) {
 						u[0].enter = true;
@@ -1225,7 +1225,7 @@ public class GameSparker extends Applet implements Runnable {
 						medium.vxz = 180;
 						checkpoints.checkstat(amadness, aconto1, record);
 						medium.follow(aconto1[0], amadness[0].cxz, 0);
-						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
+						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, polyfx, true);
 						rd.setColor(new Color(255, 255, 255));
 						rd.fillRect(0, 0, 670, 400);
 					}
