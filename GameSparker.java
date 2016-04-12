@@ -817,17 +817,25 @@ public class GameSparker extends Applet implements Runnable {
 		Record record = new Record(medium);
 		ContO aconto[] = new ContO[carModels.length + trackModels.length + extraModels.length]; // be sure all your arrays get in here
 		loadbase(aconto, medium, trackers, xtgraphics);
+		
 		ContO aconto1[] = new ContO[3000];
+		/**
+		 * one for all the track pieces in a stage
+		 */
+		PolyFX polyfx1[] = new PolyFX[3000];		
 		
-
-		PolyFX polyfx[] = new PolyFX[carModels.length + trackModels.length + extraModels.length];
-		PolyFX polyfx1[] = new PolyFX[3000];
-		
+		/**
+		 * ... and one for each car
+		 */
+		PolyFX polyfx[] = new PolyFX[7];
 		Madness amadness[] = new Madness[7];
 		int l = 0;
 		do {
 			amadness[l] = new Madness(medium, record, xtgraphics, l);			
 			u[l] = new Control(medium);
+			/**
+			 * set the car polyfx up
+			 */
 			polyfx[l] = new PolyFX();
 		} while (++l < 7);
 		l = 0;
@@ -1182,23 +1190,30 @@ public class GameSparker extends Applet implements Runnable {
 					l12 = 0;
 					do{						
 						if(justFixed[l12]){
-							/*if(!polyfx[l12].rapidWireframe(aconto1[l12]))
-								justFixed[l12] = false;*/
-						
-							
+							if(!polyfx[l12].rapidWireframe(aconto1[l12]))
+								justFixed[l12] = false;
 						}
 					}while (++l12 < 7);	
 					
-					int nearId = Utility.nearestRoad(trackers,aconto1[0]);
-					if(nearId != -1){
-						System.out.println(nearId);
-						if(!polyfx1[nearId+7].rapidWireframe(aconto1[nearId+7])){
-							
+					try {						
+						int nearId = Utility.nearestRoad(aconto1[0], aconto1);
+						int saveAnId = 0;
+						if(nearId != -1){
+							saveAnId = nearId;
+							System.out.println(nearId);
+							if(!polyfx1[nearId].rapidBody(aconto1[nearId])){
+								
+							}
+						}else{
+							if(!polyfx1[saveAnId].rapidBody(aconto1[saveAnId])){
+								
+							}
+							System.out.println("failed " + nearId);
 						}
-					}else{
-						System.out.println(nearId);
-					}
-					
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
 					
 				} else {
 					if (xtgraphics.starcnt == 130) {

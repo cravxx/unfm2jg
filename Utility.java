@@ -219,21 +219,57 @@ public class Utility {
     	return color.brighter().brighter();
     }
     
+    public static int getAddedTradx(ContO conto){
+    	int tradder = 0;
+    	for(int i = 0; i < conto.tnt; i++){
+    		tradder += conto.tradx[i];
+    	}
+    	return tradder;
+    }
+    
+    public static int getAddedTradz(ContO conto){
+    	int tradder = 0;
+    	for(int i = 0; i < conto.tnt; i++){
+    		tradder += conto.tradz[i];
+    	}
+    	return tradder;
+    }
+    
     /**
-     * get the piece you're on
-     * @param trackers trackers 
-     * @param conto your cars conto
-     * @return int of tracker
-     */
-    public static int nearestRoad(Trackers trackers, ContO conto) {	
-		for(int l3 = 0; l3 < trackers.nt; l3++){
-            if(Math.abs(trackers.zy[l3]) != 90 && Math.abs(trackers.xy[l3]) != 90 && Math.abs(conto.x - trackers.x[l3]) < trackers.radx[l3] && Math.abs(conto.z - trackers.z[l3]) < trackers.radz[l3]){
-                return l3;
-            }
-        }
+	 * asdasd
+	 * 
+	 * @param conto
+	 *            asd
+	 * @param conto1
+	 *            das
+	 * @return dasd
+	 */
+	public static int nearestRoad(ContO conto, ContO conto1[]) {
+		try {
+			for (int k = 7; k < conto1.length; k++) {
+				System.out.println(conto1[k].t.nt);    	
+				for (int j = 0; j < conto1[k].t.nt; j++)
+					if (Math.abs(conto1[k].t.zy[j]) != 90 && Math.abs(conto1[k].t.xy[j]) != 90
+					&&	Math.abs(conto.x - conto1[k].x) < conto1[k].t.radx[j]
+							&& Math.abs(conto.z - conto1[k].z) < conto1[k].t.radz[j])
+						return k;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		return -1;
 	}
-    
+
+	public static int nearestTrack(Trackers trackers, ContO conto) {
+		for (int l3 = 0; l3 < trackers.nt; l3++)
+			if (Math.abs(trackers.zy[l3]) != 90 && Math.abs(trackers.xy[l3]) != 90
+					&& Math.abs(conto.x - trackers.x[l3]) < trackers.radx[l3]
+					&& Math.abs(conto.z - trackers.z[l3]) < trackers.radz[l3])
+				return l3;
+		return -1;
+	}
+	
     public static void startTimer(){
     	startTime = System.nanoTime();
     	System.out.println("Timer started!");    	
