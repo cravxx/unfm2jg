@@ -8,7 +8,8 @@ import java.io.*;
 public class ContO {
 	public Medium m;
 	public Trackers t;
-	public Plane p[];	
+	public Plane p[];
+	public int numberOfTracks = 0;
 	public int npl = 0;
 	public int x = 0;
 	public int y = 0;
@@ -368,6 +369,7 @@ public class ContO {
 				}
 				if (line.startsWith("</track>")) {
 					flag1 = false;
+					numberOfTracks++;
 					tnt++;
 				}
 				if (line.startsWith("disp")) {
@@ -424,6 +426,7 @@ public class ContO {
 		m = conto.m;
 		t = conto.t;
 		npl = conto.npl;
+		numberOfTracks = conto.numberOfTracks;
 		maxR = conto.maxR;
 		disp = conto.disp;
 		disline = conto.disline;

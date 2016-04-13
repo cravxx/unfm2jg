@@ -12,6 +12,11 @@ import javax.imageio.ImageIO;
  *
  */
 public class Utility {
+	/**
+	 * GameSparker.nob
+	 */
+	public static int numberOfModels = 0;
+	
 	private final static Medium medium = new Medium();
 	
 	private static long startTime;
@@ -219,6 +224,15 @@ public class Utility {
     	return color.brighter().brighter();
     }
     
+    public static int distanceX(final int x1, final int x2) {
+        return (int) Math.sqrt(Math.pow(x2 - x1, 2));
+    }
+    
+    public static int distanceZ(final int z1, final int z2) {
+        return (int) Math.sqrt(Math.pow(z2 - z1, 2));
+    }
+    //public static int timesExe = 0;
+    //public static int tempTimesExe = 0;
     /**
      * get the piece your car is on
      * @param conto Your car
@@ -227,15 +241,29 @@ public class Utility {
      */
 	public static int nearestPiece(ContO conto, ContO conto1[]) {
 		try {
+			int numberOfTracksAdded = 0;
 			/**
 			 * skip 7 to pass cars 
 			 */
-			for (int k = 7; k < conto1.length; k++) {
-				for (int j = 0; j < conto1[k].t.nt; j++)
+			for (int k = 7; k < numberOfModels; k++) {
+				//tempTimesExe++;
+				numberOfTracksAdded += conto1[k].numberOfTracks;
+				for (int j = 0; j < numberOfTracksAdded; j++) {
+					//tempTimesExe++;					
+					/*System.out.println(k + "  " + j);
+					System.out.println(conto1.length + "  " + conto1[k].t.nt);*/
 					if (Math.abs(conto1[k].t.zy[j]) != 90 && Math.abs(conto1[k].t.xy[j]) != 90
-							&& Math.abs(conto.x - conto1[k].x) < conto1[k].t.radx[j]
-							&& Math.abs(conto.z - conto1[k].z) < conto1[k].t.radz[j])
+							&& Utility.distanceX(conto.x, conto1[k].x) < conto1[k].t.radx[j]
+							&& Utility.distanceZ(conto.z, conto1[k].z) < conto1[k].t.radz[j]) {	
+						numberOfTracksAdded = 0;
+						//System.out.println("TRACKS   " + numberOfModels);
+						//System.out.println("TIMES EXECUTED    " + Math.abs(timesExe - tempTimesExe));
+						//timesExe = tempTimesExe;
+						/*System.out.println("DISTANCES   " + Utility.distanceZ(conto1[k].z, conto.z) + "   " + Utility.distanceX(conto1[k].x, conto.x));
+						System.out.println("RADS        " + conto1[k].t.radz[j] + "   " + conto1[k].t.radx[j]);*/
 						return k;
+					}
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

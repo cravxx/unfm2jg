@@ -6,6 +6,7 @@
  */
 public class CheckPoints {
 
+	public int numberOfModels = 0;
 	public int x[] = new int[140];
 	public int z[] = new int[140];
 	public int y[] = new int[140];

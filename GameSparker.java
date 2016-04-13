@@ -717,8 +717,9 @@ public class GameSparker extends Applet implements Runnable {
 					trackers.nt++;
 				}
 			}
-			System.out.println(nob + " nob " + notb + " notb " + trackers.nt + " nt");
-			for(int nobs = 0; nobs < trackers.nt; nobs++){
+			//System.out.println(nob + " nob " + notb + " notb " + trackers.nt + " nt");
+			Utility.numberOfModels = nob;
+			for(int nobs = 0; nobs < nob; nobs++){
 				polyfx1[nobs] = new PolyFX();
 			}
 			System.out.println("just made " + nob + " polysfxs");
@@ -1214,7 +1215,7 @@ public class GameSparker extends Applet implements Runnable {
 						 */
 						if(saveAnId != nearId && saveAnId != 0){
 							polyfx1[saveAnId].reset(aconto1[saveAnId]);
-							System.out.println("just reset " + saveAnId);
+							//System.out.println("just reset " + saveAnId);
 						}
 						
 						if(nearId != -1){
