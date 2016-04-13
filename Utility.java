@@ -19,7 +19,7 @@ public class Utility {
 	private Utility() {
 	}
 	*/
-	// so the class can't be instantiated. it makes no sense to instantiate an utility class, since all of its fields are static.
+	// so the class can't be instantiated. it makes no sense to instantiate an utility class, since all of its fields/methods are static.
 	
 	private static long startTime;
 	    
