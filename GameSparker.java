@@ -21,8 +21,15 @@ public class GameSparker extends Applet implements Runnable {
 	 */
 	private static final long serialVersionUID = -34048182014310663L;
 	
-	float pulseVal = 1.0F;
-	boolean justFixed[] = {
+	/**
+	 * save the last Id FX were performed to
+	 * when the id changes, run a reset on this Id
+	 */
+	private int saveAnId = 0;
+	/**
+	 * change this if a car gets fixed, change back after fx return false
+	 */
+	private boolean justFixed[] = {
 			false, false, false, false, false, false, false
 	};
 	
@@ -1193,26 +1200,41 @@ public class GameSparker extends Applet implements Runnable {
 							if(!polyfx[l12].rapidWireframe(aconto1[l12]))
 								justFixed[l12] = false;
 						}
-					}while (++l12 < 7);	
+					}while (++l12 < 7);					
 					
-					try {						
-						int nearId = Utility.nearestRoad(aconto1[0], aconto1);
-						int saveAnId = 0;
+					try {		
+						/**
+						 * get the nearest piece
+						 */
+						int nearId = Utility.nearestPiece(aconto1[0], aconto1);
+						
+						/**
+						 * if nearId has changed and saveId is not zero (hasnt saved anything yet)
+						 * reset the saved conto
+						 */
+						if(saveAnId != nearId && saveAnId != 0){
+							polyfx1[saveAnId].reset(aconto1[saveAnId]);
+							System.out.println("just reset " + saveAnId);
+						}
+						
 						if(nearId != -1){
+							/*
+							 * it returned a good Id, save it
+							 */
 							saveAnId = nearId;
-							System.out.println(nearId);
+							
+							/**
+							 * perform effects
+							 */
 							if(!polyfx1[nearId].rapidBody(aconto1[nearId])){
 								
 							}
 						}else{
-							if(!polyfx1[saveAnId].rapidBody(aconto1[saveAnId])){
-								
-							}
-							System.out.println("failed " + nearId);
+							System.out.println("not on a piece");
 						}
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						//e.printStackTrace();
 					}					
 					
 				} else {
