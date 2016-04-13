@@ -1203,40 +1203,40 @@ public class GameSparker extends Applet implements Runnable {
 						}
 					}while (++l12 < 7);					
 					
-					try {		
-						/**
+					/*try {
+						*//**
 						 * get the nearest piece
-						 */
+						 *//*
 						int nearId = Utility.nearestPiece(aconto1[0], aconto1);
-						
-						/**
-						 * if nearId has changed and saveId is not zero (hasnt saved anything yet)
-						 * reset the saved conto
-						 */
-						if(saveAnId != nearId && saveAnId != 0){
+
+						*//**
+						 * if nearId has changed and saveId is not zero (hasnt
+						 * saved anything yet) reset the saved conto
+						 *//*
+						if (saveAnId != nearId && saveAnId != 0) {
 							polyfx1[saveAnId].reset(aconto1[saveAnId]);
-							//System.out.println("just reset " + saveAnId);
+							// System.out.println("just reset " + saveAnId);
 						}
-						
-						if(nearId != -1){
-							/*
-							 * it returned a good Id, save it
-							 */
-							saveAnId = nearId;
+
+						if (nearId != -1) {
 							
-							/**
+							 * it returned a good Id, save it
+							 
+							saveAnId = nearId;
+
+							*//**
 							 * perform effects
-							 */
-							if(!polyfx1[nearId].rapidBody(aconto1[nearId])){
-								
+							 *//*
+							if (!polyfx1[nearId].rapidBody(aconto1[nearId])) {
+
 							}
-						}else{
+						} else {
 							System.out.println("not on a piece");
 						}
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
-						//e.printStackTrace();
-					}					
+						// e.printStackTrace();
+					}*/
 					
 				} else {
 					if (xtgraphics.starcnt == 130) {
