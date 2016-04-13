@@ -11,7 +11,15 @@ import javax.imageio.ImageIO;
  *
  */
 public class Utility {
+	// XXX this is REALLY bad and dangerous.
 	private final static Medium medium = new Medium();
+	
+	// TODO: add a private constructor like this:
+	/*
+	private Utility() {
+	}
+	*/
+	// so the class can't be instantiated. it makes no sense to instantiate an utility class, since all of its fields are static.
 	
 	private static long startTime;
 	    
@@ -174,6 +182,13 @@ public class Utility {
 		return (i - j) * (i - j) + (k - l) * (k - l);
 	}
 
+    /*
+     * Users of this method should use Eclipse's "Refactor > Inline Method" feature to inline calls to it.
+     * It's a very simple method and the few nanoseconds spent to call it could be crucial especially if used
+     * inside of a large loop.
+     * 
+     * The usage of Math.pow doesn't affect performance since the Hotspot will inline (turn into x * x) calls to it.
+     */
     public static int distance(final int x1, final int y1, final int x2, final int y2) {
         return (int) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
