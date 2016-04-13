@@ -6,7 +6,6 @@ public class Record {
 	public ContO ocar[];
 	public ContO starcar[];
 	public ContO car[][];
-	private Medium m;
 	public int caught;
 	public boolean hcaught;
 	private boolean prepit;	
@@ -119,7 +118,7 @@ public class Record {
 					for (int k1 = 0; k1 < conto.p[l].n; k1++) {
 						if (conto.p[l].wz == 0 && Utility.py(conto.keyx[i], conto.p[l].ox[k1], conto.keyz[i],
 								conto.p[l].oz[k1]) < Madness.clrad[madness.cn]) {
-							f1 = (f / 20F) * m.random();
+							f1 = (f / 20F) * Medium.random();
 							conto.p[l].oz[k1] += f1 * RadicalMath.sin(j);
 							conto.p[l].ox[k1] -= f1 * RadicalMath.sin(k);
 						}
@@ -176,7 +175,7 @@ public class Record {
 					float f2 = 0.0F;
 					for (int i2 = 0; i2 < conto.p[l1].n; i2++) {
 						if (conto.p[l1].wz == 0) {
-							f2 = (f / 15F) * m.random();
+							f2 = (f / 15F) * Medium.random();
 							if ((Math
 									.abs(conto.p[l1].oy[i2] - Madness.flipy[madness.cn]
 											- squash[0][madness.im]) < Madness.msquash[madness.cn] * 3
@@ -328,7 +327,6 @@ public class Record {
 		hlastcheck = new boolean[300];
 		cntdest = new int[7];
 		lastfr = 0;
-		m = medium;
 		caught = 0;
 		cotchinow(0);
 	}
@@ -422,7 +420,7 @@ public class Record {
 				for (int k = 0; k < conto.p[j].n; k++) {
 					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < Madness.clrad[madness.cn]) {
-						f1 = (f / 20F) * m.random();
+						f1 = (f / 20F) * Medium.random();
 					}
 				}
 
@@ -448,7 +446,7 @@ public class Record {
 				for (int k = 0; k < conto.p[j].n; k++) {
 					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < Madness.clrad[madness.cn]) {
-						f1 = (f / 20F) * m.random();
+						f1 = (f / 20F) * Medium.random();
 						conto.p[j].oz[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.zy);
 						conto.p[j].ox[k] += f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.xy);
 					}
@@ -758,7 +756,7 @@ public class Record {
 				for (int k = 0; k < conto.p[j].n; k++) {
 					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < Madness.clrad[madness.cn]) {
-						f1 = (f / 20F) * m.random();
+						f1 = (f / 20F) * Medium.random();
 					}
 				}
 
@@ -784,7 +782,7 @@ public class Record {
 				for (int k = 0; k < conto.p[j].n; k++) {
 					if (conto.p[j].wz == 0 && Utility.py(conto.keyx[i], conto.p[j].ox[k], conto.keyz[i],
 							conto.p[j].oz[k]) < Madness.clrad[madness.cn]) {
-						f1 = (f / 20F) * m.random();
+						f1 = (f / 20F) * Medium.random();
 						conto.p[j].oz[k] -= f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.zy);
 						conto.p[j].ox[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.xy);
 					}

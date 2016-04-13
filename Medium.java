@@ -138,7 +138,7 @@ public class Medium
 	private static int ih;
 	private static int fvect;
 
-	public float random() {
+	public static float random() {
 		if (cntrn == 0) {
 			int i = 0;
 			do {
@@ -1577,7 +1577,7 @@ public class Medium
 		}
 	}
 
-	public void addsp(int i, int j, int k) {
+	public static void addsp(int i, int j, int k) {
 		if (nsp != 7) {
 			spx[nsp] = i;
 			spz[nsp] = j;

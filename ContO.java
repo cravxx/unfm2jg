@@ -6,7 +6,6 @@ import java.io.*;
  * @author Omar Waly, Kaffeinated
  */
 public class ContO {
-	public Medium m;
 	public Trackers t;
 	public Plane p[];
 	public int npl = 0;
@@ -113,41 +112,41 @@ public class ContO {
 			int ai[] = new int[8];
 			int ai1[] = new int[8];
 			int i3 = stg[i] - 3;
-			ai[0] = Utility.cXs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai[0] = Utility.cXs((int) (l1 - (18F + Medium.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[0] = Utility.cYs(
-					(int) (j2 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
+					(int) (j2 - (7.5D + Medium.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
 			if (ai1[0] < 45 && Medium.flex != 0) {
 				Medium.flex = 0;
 			}
-			ai[1] = Utility.cXs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai[1] = Utility.cXs((int) (l1 - (18F + Medium.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[1] = Utility.cYs(
-					(int) (j2 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
+					(int) (j2 + (7.5D + Medium.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
 			ai[2] = Utility.cXs(
-					(int) (l1 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
+					(int) (l1 - (7.5D + Medium.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[2] = Utility.cYs((int) (j2 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[2] = Utility.cYs((int) (j2 + (18F + Medium.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai[3] = Utility.cXs(
-					(int) (l1 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
+					(int) (l1 + (7.5D + Medium.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[3] = Utility.cYs((int) (j2 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
-			ai[4] = Utility.cXs((int) (l1 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[3] = Utility.cYs((int) (j2 + (18F + Medium.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai[4] = Utility.cXs((int) (l1 + (18F + Medium.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[4] = Utility.cYs(
-					(int) (j2 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
+					(int) (j2 + (7.5D + Medium.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai[5] = Utility.cXs((int) (l1 + (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai[5] = Utility.cXs((int) (l1 + (18F + Medium.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[5] = Utility.cYs(
-					(int) (j2 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
+					(int) (j2 - (7.5D + Medium.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
 			ai[6] = Utility.cXs(
-					(int) (l1 + (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
+					(int) (l1 + (7.5D + Medium.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[6] = Utility.cYs((int) (j2 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[6] = Utility.cYs((int) (j2 - (18F + Medium.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai[7] = Utility.cXs(
-					(int) (l1 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
+					(int) (l1 - (7.5D + Medium.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			ai1[7] = Utility.cYs((int) (j2 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
+			ai1[7] = Utility.cYs((int) (j2 - (18F + Medium.random() * 18F + i3 * 6) * smag[i]), i2);
 			boolean flag = true;
 			int j3 = 0;
 			int k3 = 0;
@@ -194,8 +193,7 @@ public class ContO {
 		}
 	}
 
-	public ContO(byte abyte0[], Medium medium, Trackers trackers) {				
-		m = medium;
+	public ContO(byte abyte0[], Medium medium, Trackers trackers) {	
 		t = trackers;
 		p = new Plane[270];
 		boolean flag = false;
@@ -269,7 +267,7 @@ public class ContO {
 					}
 				}
 				if (line.startsWith("</p>")) {
-					p[npl] = new Plane(m, t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0);
+					p[npl] = new Plane(t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0);
 					npl++;
 					flag = false;
 				}
@@ -282,7 +280,7 @@ public class ContO {
 					keyx[j] = (int) (Utility.getint("w", line, 0) * f * nfmm_scale[0]);
 					keyz[j] = (int) (Utility.getint("w", line, 2) * f * nfmm_scale[2]);
 					j++;
-					wheels.make(m, t, p, npl, (int) (Utility.getint("w", line, 0) * f * f1 * nfmm_scale[0]),
+					wheels.make(t, p, npl, (int) (Utility.getint("w", line, 0) * f * f1 * nfmm_scale[0]),
 							(int) (Utility.getint("w", line, 1) * f * nfmm_scale[1]),
 							(int) (Utility.getint("w", line, 2) * f * nfmm_scale[2]), Utility.getint("w", line, 3),
 							(int) (Utility.getint("w", line, 4) * f * f1), (int) (Utility.getint("w", line, 5) * f),
@@ -415,8 +413,7 @@ public class ContO {
 		grat = wheels.ground;
 	}
 
-	public ContO(ContO conto, int i, int j, int k, int l) {					
-		m = conto.m;
+	public ContO(ContO conto, int i, int j, int k, int l) {	
 		t = conto.t;
 		npl = conto.npl;
 		maxR = conto.maxR;
@@ -431,7 +428,7 @@ public class ContO {
 			if (conto.p[i1].master != 0) {
 				conto.p[i1].n = 16;
 			}
-			p[i1] = new Plane(m, t, conto.p[i1].ox, conto.p[i1].oz, conto.p[i1].oy, conto.p[i1].n, conto.p[i1].oc,
+			p[i1] = new Plane(t, conto.p[i1].ox, conto.p[i1].oz, conto.p[i1].oy, conto.p[i1].n, conto.p[i1].oc,
 					conto.p[i1].glass, conto.p[i1].gr, conto.p[i1].fs, conto.p[i1].wx, conto.p[i1].wy, conto.p[i1].wz,
 					conto.disline, conto.p[i1].bfase, conto.p[i1].road, conto.p[i1].light);
 		}
@@ -529,7 +526,7 @@ public class ContO {
 
 							}
 						}
-						m.addsp(x - Medium.x, z - Medium.z, (int) (maxR * 0.80000000000000004D));
+						Medium.addsp(x - Medium.x, z - Medium.z, (int) (maxR * 0.80000000000000004D));
 						rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 					} else {
 						lowshadow(rd, k);
@@ -818,37 +815,37 @@ public class ContO {
 			int i3 = Medium.cy + (int) ((y - Medium.y - Medium.cy) * RadicalMath.cos(Medium.zy) - (l2 - Medium.cz) * RadicalMath.sin(Medium.zy));
 			l2 = Medium.cz + (int) ((y - Medium.y - Medium.cy) * RadicalMath.sin(Medium.zy) + (l2 - Medium.cz) * RadicalMath.cos(Medium.zy));
 			ai[0] = Utility.cXs((int) (j2 - j1 / 0.80000000000000004D
-					- m.random() * (j1 / 2.3999999999999999D)), l2);
+					- Medium.random() * (j1 / 2.3999999999999999D)), l2);
 			ai1[0] = Utility.cYs((int) (i3 - l1 / 1.9199999999999999D
-					- m.random() * (l1 / 5.6699999999999999D)), l2);
+					- Medium.random() * (l1 / 5.6699999999999999D)), l2);
 			ai[1] = Utility.cXs((int) (j2 - j1 / 0.80000000000000004D
-					- m.random() * (j1 / 2.3999999999999999D)), l2);
+					- Medium.random() * (j1 / 2.3999999999999999D)), l2);
 			ai1[1] = Utility.cYs((int) (i3 + l1 / 1.9199999999999999D
-					+ m.random() * (l1 / 5.6699999999999999D)), l2);
+					+ Medium.random() * (l1 / 5.6699999999999999D)), l2);
 			ai[2] = Utility.cXs((int) (j2 - j1 / 1.9199999999999999D
-					- m.random() * (j1 / 5.6699999999999999D)), l2);
+					- Medium.random() * (j1 / 5.6699999999999999D)), l2);
 			ai1[2] = Utility.cYs((int) (i3 + l1 / 0.80000000000000004D
-					+ m.random() * (l1 / 2.3999999999999999D)), l2);
+					+ Medium.random() * (l1 / 2.3999999999999999D)), l2);
 			ai[3] = Utility.cXs((int) (j2 + j1 / 1.9199999999999999D
-					+ m.random() * (j1 / 5.6699999999999999D)), l2);
+					+ Medium.random() * (j1 / 5.6699999999999999D)), l2);
 			ai1[3] = Utility.cYs((int) (i3 + l1 / 0.80000000000000004D
-					+ m.random() * (l1 / 2.3999999999999999D)), l2);
+					+ Medium.random() * (l1 / 2.3999999999999999D)), l2);
 			ai[4] = Utility.cXs((int) (j2 + j1 / 0.80000000000000004D
-					+ m.random() * (j1 / 2.3999999999999999D)), l2);
+					+ Medium.random() * (j1 / 2.3999999999999999D)), l2);
 			ai1[4] = Utility.cYs((int) (i3 + l1 / 1.9199999999999999D
-					+ m.random() * (l1 / 5.6699999999999999D)), l2);
+					+ Medium.random() * (l1 / 5.6699999999999999D)), l2);
 			ai[5] = Utility.cXs((int) (j2 + j1 / 0.80000000000000004D
-					+ m.random() * (j1 / 2.3999999999999999D)), l2);
+					+ Medium.random() * (j1 / 2.3999999999999999D)), l2);
 			ai1[5] = Utility.cYs((int) (i3 - l1 / 1.9199999999999999D
-					- m.random() * (l1 / 5.6699999999999999D)), l2);
+					- Medium.random() * (l1 / 5.6699999999999999D)), l2);
 			ai[6] = Utility.cXs((int) (j2 + j1 / 1.9199999999999999D
-					+ m.random() * (j1 / 5.6699999999999999D)), l2);
+					+ Medium.random() * (j1 / 5.6699999999999999D)), l2);
 			ai1[6] = Utility.cYs((int) (i3 - l1 / 0.80000000000000004D
-					- m.random() * (l1 / 2.3999999999999999D)), l2);
+					- Medium.random() * (l1 / 2.3999999999999999D)), l2);
 			ai[7] = Utility.cXs((int) (j2 - j1 / 1.9199999999999999D
-					- m.random() * (j1 / 5.6699999999999999D)), l2);
+					- Medium.random() * (j1 / 5.6699999999999999D)), l2);
 			ai1[7] = Utility.cYs((int) (i3 - l1 / 0.80000000000000004D
-					- m.random() * (l1 / 2.3999999999999999D)), l2);
+					- Medium.random() * (l1 / 2.3999999999999999D)), l2);
 			if (fcnt == 3) {
 				Utility.rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), 22, 8);
 			}
@@ -887,30 +884,30 @@ public class ContO {
 			}
 			rd.setColor(new Color(j3, k3, l3));
 			rd.fillPolygon(ai, ai1, 8);
-			ai[0] = Utility.cXs((int) (j2 - j1 - m.random() * (j1 / 4)), l2);
+			ai[0] = Utility.cXs((int) (j2 - j1 - Medium.random() * (j1 / 4)), l2);
 			ai1[0] = Utility.cYs((int) (i3 - l1 / 2.3999999999999999D
-					- m.random() * (l1 / 9.5999999999999996D)), l2);
-			ai[1] = Utility.cXs((int) (j2 - j1 - m.random() * (j1 / 4)), l2);
+					- Medium.random() * (l1 / 9.5999999999999996D)), l2);
+			ai[1] = Utility.cXs((int) (j2 - j1 - Medium.random() * (j1 / 4)), l2);
 			ai1[1] = Utility.cYs((int) (i3 + l1 / 2.3999999999999999D
-					+ m.random() * (l1 / 9.5999999999999996D)), l2);
+					+ Medium.random() * (l1 / 9.5999999999999996D)), l2);
 			ai[2] = Utility.cXs((int) (j2 - j1 / 2.3999999999999999D
-					- m.random() * (j1 / 9.5999999999999996D)), l2);
-			ai1[2] = Utility.cYs((int) (i3 + l1 + m.random() * (l1 / 4)), l2);
+					- Medium.random() * (j1 / 9.5999999999999996D)), l2);
+			ai1[2] = Utility.cYs((int) (i3 + l1 + Medium.random() * (l1 / 4)), l2);
 			ai[3] = Utility.cXs((int) (j2 + j1 / 2.3999999999999999D
-					+ m.random() * (j1 / 9.5999999999999996D)), l2);
-			ai1[3] = Utility.cYs((int) (i3 + l1 + m.random() * (l1 / 4)), l2);
-			ai[4] = Utility.cXs((int) (j2 + j1 + m.random() * (j1 / 4)), l2);
+					+ Medium.random() * (j1 / 9.5999999999999996D)), l2);
+			ai1[3] = Utility.cYs((int) (i3 + l1 + Medium.random() * (l1 / 4)), l2);
+			ai[4] = Utility.cXs((int) (j2 + j1 + Medium.random() * (j1 / 4)), l2);
 			ai1[4] = Utility.cYs((int) (i3 + l1 / 2.3999999999999999D
-					+ m.random() * (l1 / 9.5999999999999996D)), l2);
-			ai[5] = Utility.cXs((int) (j2 + j1 + m.random() * (j1 / 4)), l2);
+					+ Medium.random() * (l1 / 9.5999999999999996D)), l2);
+			ai[5] = Utility.cXs((int) (j2 + j1 + Medium.random() * (j1 / 4)), l2);
 			ai1[5] = Utility.cYs((int) (i3 - l1 / 2.3999999999999999D
-					- m.random() * (l1 / 9.5999999999999996D)), l2);
+					- Medium.random() * (l1 / 9.5999999999999996D)), l2);
 			ai[6] = Utility.cXs((int) (j2 + j1 / 2.3999999999999999D
-					+ m.random() * (j1 / 9.5999999999999996D)), l2);
-			ai1[6] = Utility.cYs((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
+					+ Medium.random() * (j1 / 9.5999999999999996D)), l2);
+			ai1[6] = Utility.cYs((int) (i3 - l1 - Medium.random() * (l1 / 4)), l2);
 			ai[7] = Utility.cXs((int) (j2 - j1 / 2.3999999999999999D
-					- m.random() * (j1 / 9.5999999999999996D)), l2);
-			ai1[7] = Utility.cYs((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
+					- Medium.random() * (j1 / 9.5999999999999996D)), l2);
+			ai1[7] = Utility.cYs((int) (i3 - l1 - Medium.random() * (l1 / 4)), l2);
 			j3 = (int) (213F + 213F * (Medium.snap[0] / 350F));
 			if (j3 > 255) {
 				j3 = 255;
@@ -947,14 +944,14 @@ public class ContO {
 		int i = 0;
 		do {
 			if (elc[i] == 0) {
-				edl[i] = (int) (380F - m.random() * 760F);
-				edr[i] = (int) (380F - m.random() * 760F);
+				edl[i] = (int) (380F - Medium.random() * 760F);
+				edr[i] = (int) (380F - Medium.random() * 760F);
 				elc[i] = 1;
 			}
-			int j = (int) (edl[i] + (190F - m.random() * 380F));
-			int k = (int) (edr[i] + (190F - m.random() * 380F));
-			int l = (int) (m.random() * 126F);
-			int i1 = (int) (m.random() * 126F);
+			int j = (int) (edl[i] + (190F - Medium.random() * 380F));
+			int k = (int) (edr[i] + (190F - Medium.random() * 380F));
+			int l = (int) (Medium.random() * 126F);
+			int i1 = (int) (Medium.random() * 126F);
 			int ai[] = new int[8];
 			int ai1[] = new int[8];
 			int ai2[] = new int[8];
@@ -963,21 +960,21 @@ public class ContO {
 				ai2[j1] = z - Medium.z;
 			} while (++j1 < 8);
 			ai[0] = x - Medium.x - 504;
-			ai1[0] = y - Medium.y - edl[i] - 5 - (int) (m.random() * 5F);
+			ai1[0] = y - Medium.y - edl[i] - 5 - (int) (Medium.random() * 5F);
 			ai[1] = (x - Medium.x - 252) + i1;
-			ai1[1] = y - Medium.y - j - 5 - (int) (m.random() * 5F);
+			ai1[1] = y - Medium.y - j - 5 - (int) (Medium.random() * 5F);
 			ai[2] = ((x - Medium.x) + 252) - l;
-			ai1[2] = y - Medium.y - k - 5 - (int) (m.random() * 5F);
+			ai1[2] = y - Medium.y - k - 5 - (int) (Medium.random() * 5F);
 			ai[3] = (x - Medium.x) + 504;
-			ai1[3] = y - Medium.y - edr[i] - 5 - (int) (m.random() * 5F);
+			ai1[3] = y - Medium.y - edr[i] - 5 - (int) (Medium.random() * 5F);
 			ai[4] = (x - Medium.x) + 504;
-			ai1[4] = (y - Medium.y - edr[i]) + 5 + (int) (m.random() * 5F);
+			ai1[4] = (y - Medium.y - edr[i]) + 5 + (int) (Medium.random() * 5F);
 			ai[5] = ((x - Medium.x) + 252) - l;
-			ai1[5] = (y - Medium.y - k) + 5 + (int) (m.random() * 5F);
+			ai1[5] = (y - Medium.y - k) + 5 + (int) (Medium.random() * 5F);
 			ai[6] = (x - Medium.x - 252) + i1;
-			ai1[6] = (y - Medium.y - j) + 5 + (int) (m.random() * 5F);
+			ai1[6] = (y - Medium.y - j) + 5 + (int) (Medium.random() * 5F);
 			ai[7] = x - Medium.x - 504;
-			ai1[7] = (y - Medium.y - edl[i]) + 5 + (int) (m.random() * 5F);
+			ai1[7] = (y - Medium.y - edl[i]) + 5 + (int) (Medium.random() * 5F);
 			if (roted) {
 				Utility.rot(ai, ai2, x - Medium.x, z - Medium.z, 90, 8);
 			}
@@ -1067,7 +1064,7 @@ public class ContO {
 					rd.drawPolygon(ai3, ai4, 8);
 				}
 			}
-			if (elc[i] > m.random() * 60F) {
+			if (elc[i] > Medium.random() * 60F) {
 				elc[i] = 0;
 			} else {
 				elc[i]++;

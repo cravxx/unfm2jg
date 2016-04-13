@@ -1294,12 +1294,12 @@ public class GameSparker extends Applet implements Runnable {
 						&& xtgraphics.looped != 0)
 					record.hcaught = false;
 				if (record.hcaught) {
-					if (medium.random() > 0.45000000000000001D)
+					if (Medium.random() > 0.45000000000000001D)
 						Medium.vert = false;
 					else
 						Medium.vert = true;
-					Medium.adv = (int) (900F * medium.random());
-					Medium.vxz = (int) (360F * medium.random());
+					Medium.adv = (int) (900F * Medium.random());
+					Medium.vxz = (int) (360F * Medium.random());
 					k1 = 0;
 					xtgraphics.fase = -3;
 					i2 = 0;
@@ -1316,7 +1316,7 @@ public class GameSparker extends Applet implements Runnable {
 							k2 = 67;
 							Medium.vxz += 90;
 						} else {
-							k2 = (int) (medium.random() * 4F);
+							k2 = (int) (Medium.random() * 4F);
 							if (k2 == 1 || k2 == 3)
 								k2 = 69;
 							if (k2 == 2 || k2 == 4)
@@ -1479,7 +1479,7 @@ public class GameSparker extends Applet implements Runnable {
 							rd.fillRect(0, 0, 670, 400);
 						}
 						if (k2 == 30 && i2 >= 1 && i2 < 30)
-							if (i2 % (int) (2.0F + medium.random() * 3F) == 0 && !flag2) {
+							if (i2 % (int) (2.0F + Medium.random() * 3F) == 0 && !flag2) {
 								rd.setColor(new Color(255, 255, 255));
 								rd.fillRect(0, 0, 670, 400);
 								flag2 = true;
