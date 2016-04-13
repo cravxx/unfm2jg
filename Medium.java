@@ -10,133 +10,133 @@ import java.util.Random;
  */
 public class Medium
 {
-	private int nmt = 0;
-	private int[] mrd = null;
-	private int[] nmv = null;
-	private int[][] mtx = null;
-	private int[][] mty = null;
-	private int[][] mtz = null;
-	private int[][][] mtc = null;
-	public int mgen;
-	public int focus_point;
-	public int ground;
-	private int skyline;
-	public int fade[] = {
+	private static int nmt = 0;
+	private static int[] mrd = null;
+	private static int[] nmv = null;
+	private static int[][] mtx = null;
+	private static int[][] mty = null;
+	private static int[][] mtz = null;
+	private static int[][][] mtc = null;
+	public static int mgen;
+	public static int focus_point;
+	public static int ground;
+	private static int skyline;
+	public static int fade[] = {
 			3000, 4500, 6000, 7500, 9000, 10500, 12000, 13500, 15000, 16500, 18000, 19500, 21000, 22500, 24000, 25500
 	};
-	private int cldd[] = {
+	private static int cldd[] = {
 			210, 210, 210, 1, -1000
 	};
-	private int clds[] = {
+	private static int clds[] = {
 			210, 210, 210
 	};
-	private int osky[] = {
+	private static int osky[] = {
 			170, 220, 255
 	};
-	public int csky[] = {
+	public static int csky[] = {
 			170, 220, 255
 	};
-	private int ogrnd[] = {
+	private static int ogrnd[] = {
 			205, 200, 200
 	};
-	public int cgrnd[] = {
+	public static int cgrnd[] = {
 			205, 200, 200
 	};
-	private int texture[] = {
+	private static int texture[] = {
 			0, 0, 0, 50
 	};
-	private int cpol[] = {
+	private static int cpol[] = {
 			215, 210, 210
 	};
-	private int crgrnd[] = {
+	private static int crgrnd[] = {
 			205, 200, 200
 	};
-	public int cfade[] = {
+	public static int cfade[] = {
 			255, 220, 220
 	};
-	public int snap[] = {
+	public static int snap[] = {
 			0, 0, 0
 	};
-	public int origfade;
-	public int fogd;
-	public boolean lightson;
-	private int noelec;
-	public int lightn;
-	private boolean lton;
-	private int lilo;
-	public int flex;
-	public boolean trk;
-	public boolean crs;
-	public int cx;
-	public int cy;
-	public int cz;
-	public int xz;
-	public int zy;
-	public int x;
-	public int y;
-	public int z;
-	public int w;
-	public int h;
-	public int nsp;
-	public int spx[];
-	public int spz[];
-	public int sprad[];
-	private boolean td;
-	private int bcxz;
-	public int vxz;
-	public int adv;
-	public boolean vert;
-	private int trns;
-	private int ogpx[][];
-	private int ogpz[][];
-	private int cgpx[];
-	private int cgpz[];
-	private int sgpx;
-	private int sgpz;
-	private int nrw;
-	private int ncl;
-	public int lastmaf;
-	public int checkpoint;
-	public boolean lastcheck;
-	public float elecr;
-	public boolean cpflik;
-	public boolean nochekflk;
-	private int cntrn;
-	private boolean diup[];
-	private int rand[];
-	private int trn;
-	public int hit;
-	public int ptr;
-	public int ptcnt;
-	public int nrnd;
-	public long trx;
-	public long trz;
-	private long atrx;
-	private long atrz;
-	public int fallen;
-	private float fo;
-	private float gofo;
-	private float pvr[][];
-	private int pmx[];
-	private float pcv[];
-	private int resdown;
-	private int noc;
-	private int clx[];
-	private int clz[];
-	private int cmx[];
-	private int clax[][][];
-	private int clay[][][];
-	private int claz[][][];
-	private int clc[][][][];
-	private int iw;
-	private int nst;
-	private int stx[];
-	private int stz[];
-	private int stc[][][];
-	private boolean bst[];
-	private int twn[];
-	private int ih;
-	private int fvect;
+	public static int origfade;
+	public static int fogd;
+	public static boolean lightson;
+	private static int noelec;
+	public static int lightn;
+	private static boolean lton;
+	private static int lilo;
+	public static int flex;
+	public static boolean trk;
+	public static boolean crs;
+	public static int cx;
+	public static int cy;
+	public static int cz;
+	public static int xz;
+	public static int zy;
+	public static int x;
+	public static int y;
+	public static int z;
+	public static int w;
+	public static int h;
+	public static int nsp;
+	public static int spx[];
+	public static int spz[];
+	public static int sprad[];
+	private static boolean td;
+	private static int bcxz;
+	public static int vxz;
+	public static int adv;
+	public static boolean vert;
+	private static int trns;
+	private static int ogpx[][];
+	private static int ogpz[][];
+	private static int cgpx[];
+	private static int cgpz[];
+	private static int sgpx;
+	private static int sgpz;
+	private static int nrw;
+	private static int ncl;
+	public static int lastmaf;
+	public static int checkpoint;
+	public static boolean lastcheck;
+	public static float elecr;
+	public static boolean cpflik;
+	public static boolean nochekflk;
+	private static int cntrn;
+	private static boolean diup[];
+	private static int rand[];
+	private static int trn;
+	public static int hit;
+	public static int ptr;
+	public static int ptcnt;
+	public static int nrnd;
+	public static long trx;
+	public static long trz;
+	private static long atrx;
+	private static long atrz;
+	public static int fallen;
+	private static float fo;
+	private static float gofo;
+	private static float pvr[][];
+	private static int pmx[];
+	private static float pcv[];
+	private static int resdown;
+	private static int noc;
+	private static int clx[];
+	private static int clz[];
+	private static int cmx[];
+	private static int clax[][][];
+	private static int clay[][][];
+	private static int claz[][][];
+	private static int clc[][][][];
+	private static int iw;
+	private static int nst;
+	private static int stx[];
+	private static int stz[];
+	private static int stc[][][];
+	private static boolean bst[];
+	private static int twn[];
+	private static int ih;
+	private static int fvect;
 
 	public float random() {
 		if (cntrn == 0) {

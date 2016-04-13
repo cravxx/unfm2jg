@@ -11,15 +11,6 @@ import javax.imageio.ImageIO;
  *
  */
 public class Utility {
-	// XXX this is REALLY bad and dangerous.
-	private final static Medium medium = new Medium();
-	
-	// TODO: add a private constructor like this:
-	/*
-	private Utility() {
-	}
-	*/
-	// so the class can't be instantiated. it makes no sense to instantiate an utility class, since all of its fields/methods are static.
 	
 	private static long startTime;
 	    
@@ -59,17 +50,17 @@ public class Utility {
      * @return The 2D X coordinate.
      */
     public static int xs(final int i, int j) {
-        if (j < medium.cz) {
-            j = medium.cz;
+        if (j < Medium.cz) {
+            j = Medium.cz;
         }
-        return (j - medium.focus_point) * (medium.cx - i) / j + i;
+        return (j - Medium.focus_point) * (Medium.cx - i) / j + i;
     }
     
     public static int cXs(final int i, int j) {
         if (j < 50) {
             j = 50;
         }
-        return (j - medium.focus_point) * (medium.cx - i) / j + i;
+        return (j - Medium.focus_point) * (Medium.cx - i) / j + i;
     }
 
     /**
@@ -89,7 +80,7 @@ public class Utility {
     	int value = 0;
     	switch(m){
     	case 0:
-    		value = medium.cz;
+    		value = Medium.cz;
     		break;
     	case 1:
     		value = 10;
@@ -100,14 +91,14 @@ public class Utility {
         if (j < value) {
             j = value;
         }
-        return (j - medium.focus_point) * (medium.cy - i) / j + i;
+        return (j - Medium.focus_point) * (Medium.cy - i) / j + i;
     }
     
     public static int cYs(final int i, int j) {
         if (j < 50) {
             j = 50;
         }
-        return (j - medium.focus_point) * (medium.cy - i) / j + i;
+        return (j - Medium.focus_point) * (Medium.cy - i) / j + i;
     }
 
     /**
@@ -167,7 +158,7 @@ public class Utility {
     }
         
     public static int spy(int i, int j) {
-		return (int) Math.sqrt((i - medium.cx) * (i - medium.cx) + j * j);
+		return (int) Math.sqrt((i - Medium.cx) * (i - Medium.cx) + j * j);
 	}
     
     public static float pys(int i, int j, int k, int l) {

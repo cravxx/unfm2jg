@@ -67,40 +67,40 @@ public class ContO {
 			} else {
 				k = stg[i] * stg[i] * stg[i] + 1;
 			}
-			int l = (m.cgrnd[0] * k + m.cfade[0] * 2 + m.csky[0]) / (3 + k);
-			int i1 = (m.cgrnd[1] * k + m.cfade[0] * 2 + m.csky[1]) / (3 + k);
-			int j1 = (m.cgrnd[2] * k + m.cfade[0] * 2 + m.csky[2]) / (3 + k);
+			int l = (Medium.cgrnd[0] * k + Medium.cfade[0] * 2 + Medium.csky[0]) / (3 + k);
+			int i1 = (Medium.cgrnd[1] * k + Medium.cfade[0] * 2 + Medium.csky[1]) / (3 + k);
+			int j1 = (Medium.cgrnd[2] * k + Medium.cfade[0] * 2 + Medium.csky[2]) / (3 + k);
 			for (int k1 = 0; k1 < t.nt; k1++) {
 				if (Math.abs(t.zy[k1]) != 90 && Math.abs(t.xy[k1]) != 90 && Math.abs(sx[i] - t.x[k1]) < t.radx[k1]
 						&& Math.abs(sz[i] - t.z[k1]) < t.radz[k1]) {
 					if (t.skd[k1] == 0) {
 						k = stg[i] * stg[i] * stg[i] + 2;
 					}
-					l = (int) ((t.c[k1][0] * 0.87D * k + m.cfade[0] * 2
-							+ m.csky[0]) / (3 + k));
-					i1 = (int) ((t.c[k1][1] * 0.87D * k + m.cfade[0] * 2
-							+ m.csky[1]) / (3 + k));
-					j1 = (int) ((t.c[k1][2] * 0.87D * k + m.cfade[0] * 2
-							+ m.csky[2]) / (3 + k));
+					l = (int) ((t.c[k1][0] * 0.87D * k + Medium.cfade[0] * 2
+							+ Medium.csky[0]) / (3 + k));
+					i1 = (int) ((t.c[k1][1] * 0.87D * k + Medium.cfade[0] * 2
+							+ Medium.csky[1]) / (3 + k));
+					j1 = (int) ((t.c[k1][2] * 0.87D * k + Medium.cfade[0] * 2
+							+ Medium.csky[2]) / (3 + k));
 				}
 			}
 
 			if (sy[i] > 250) {
 				sy[i] = 250;
 			}
-			int l1 = m.cx
-					+ (int) ((sx[i] - m.x - m.cx) * RadicalMath.cos(m.xz) - (sz[i] - m.z - m.cz) * RadicalMath.sin(m.xz));
-			int i2 = m.cz
-					+ (int) ((sx[i] - m.x - m.cx) * RadicalMath.sin(m.xz) + (sz[i] - m.z - m.cz) * RadicalMath.cos(m.xz));
-			int j2 = m.cy + (int) ((sy[i] - m.y - m.cy) * RadicalMath.cos(m.zy) - (i2 - m.cz) * RadicalMath.sin(m.zy));
-			i2 = m.cz + (int) ((sy[i] - m.y - m.cy) * RadicalMath.sin(m.zy) + (i2 - m.cz) * RadicalMath.cos(m.zy));
-			int k2 = (int) Math.sqrt((m.cy - j2) * (m.cy - j2) + (m.cx - l1) * (m.cx - l1) + i2 * i2);
+			int l1 = Medium.cx
+					+ (int) ((sx[i] - Medium.x - Medium.cx) * RadicalMath.cos(Medium.xz) - (sz[i] - Medium.z - Medium.cz) * RadicalMath.sin(Medium.xz));
+			int i2 = Medium.cz
+					+ (int) ((sx[i] - Medium.x - Medium.cx) * RadicalMath.sin(Medium.xz) + (sz[i] - Medium.z - Medium.cz) * RadicalMath.cos(Medium.xz));
+			int j2 = Medium.cy + (int) ((sy[i] - Medium.y - Medium.cy) * RadicalMath.cos(Medium.zy) - (i2 - Medium.cz) * RadicalMath.sin(Medium.zy));
+			i2 = Medium.cz + (int) ((sy[i] - Medium.y - Medium.cy) * RadicalMath.sin(Medium.zy) + (i2 - Medium.cz) * RadicalMath.cos(Medium.zy));
+			int k2 = (int) Math.sqrt((Medium.cy - j2) * (Medium.cy - j2) + (Medium.cx - l1) * (Medium.cx - l1) + i2 * i2);
 			int l2 = 0;
 			do {
-				if (k2 > m.fade[l2]) {
-					l = (l * m.fogd + m.cfade[0]) / (m.fogd + 1);
-					i1 = (i1 * m.fogd + m.cfade[1]) / (m.fogd + 1);
-					j1 = (j1 * m.fogd + m.cfade[2]) / (m.fogd + 1);
+				if (k2 > Medium.fade[l2]) {
+					l = (l * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
+					i1 = (i1 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
+					j1 = (j1 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
 				}
 			} while (++l2 < 8);
 			if (Math.abs(scx[i]) + Math.abs(scz[i]) > 150) {
@@ -117,8 +117,8 @@ public class ContO {
 			ai1[0] = Utility.cYs(
 					(int) (j2 - (7.5D + m.random() * 7.5D + i3 * 2.5D) * smag[i]),
 					i2);
-			if (ai1[0] < 45 && m.flex != 0) {
-				m.flex = 0;
+			if (ai1[0] < 45 && Medium.flex != 0) {
+				Medium.flex = 0;
 			}
 			ai[1] = Utility.cXs((int) (l1 - (18F + m.random() * 18F + i3 * 6) * smag[i]), i2);
 			ai1[1] = Utility.cYs(
@@ -158,17 +158,17 @@ public class ContO {
 				if (ai1[j4] < 0 || i2 < 10) {
 					j3++;
 				}
-				if (ai1[j4] > m.h || i2 < 10) {
+				if (ai1[j4] > Medium.h || i2 < 10) {
 					k3++;
 				}
 				if (ai[j4] < 0 || i2 < 10) {
 					l3++;
 				}
-				if (ai[j4] > m.w || i2 < 10) {
+				if (ai[j4] > Medium.w || i2 < 10) {
 					i4++;
 				}
-				if (ai1[j4] < 45 && m.flex != 0) {
-					m.flex = 0;
+				if (ai1[j4] < 45 && Medium.flex != 0) {
+					Medium.flex = 0;
 				}
 			} while (++j4 < 8);
 			if (l3 == 4 || j3 == 4 || k3 == 4 || i4 == 4) {
@@ -452,7 +452,7 @@ public class ContO {
 				int i2 = 0;
 				do {
 					t.c[t.nt][i2] = (int) (conto.tc[k1][i2]
-							+ conto.tc[k1][i2] * (m.snap[i2] / 100F));
+							+ conto.tc[k1][i2] * (Medium.snap[i2] / 100F));
 					if (t.c[t.nt][i2] > 255) {
 						t.c[t.nt][i2] = 255;
 					}
@@ -491,14 +491,14 @@ public class ContO {
 		if (dist != 0) {
 			dist = 0;
 		}
-		int i = m.cx + (int) ((x - m.x - m.cx) * RadicalMath.cos(m.xz) - (z - m.z - m.cz) * RadicalMath.sin(m.xz));
-		int j = m.cz + (int) ((x - m.x - m.cx) * RadicalMath.sin(m.xz) + (z - m.z - m.cz) * RadicalMath.cos(m.xz));
-		int k = m.cz + (int) ((y - m.y - m.cy) * RadicalMath.sin(m.zy) + (j - m.cz) * RadicalMath.cos(m.zy));
+		int i = Medium.cx + (int) ((x - Medium.x - Medium.cx) * RadicalMath.cos(Medium.xz) - (z - Medium.z - Medium.cz) * RadicalMath.sin(Medium.xz));
+		int j = Medium.cz + (int) ((x - Medium.x - Medium.cx) * RadicalMath.sin(Medium.xz) + (z - Medium.z - Medium.cz) * RadicalMath.cos(Medium.xz));
+		int k = Medium.cz + (int) ((y - Medium.y - Medium.cy) * RadicalMath.sin(Medium.zy) + (j - Medium.cz) * RadicalMath.cos(Medium.zy));
 		int l = Utility.cXs(i + maxR, k) - Utility.cXs(i - maxR, k);
-		if (Utility.cXs(i + maxR * 2, k) > 0 && Utility.cXs(i - maxR * 2, k) < m.w && k > -maxR && (k < m.fade[disline] + maxR || m.trk)
-				&& (l > disp || m.trk)) {
+		if (Utility.cXs(i + maxR * 2, k) > 0 && Utility.cXs(i - maxR * 2, k) < Medium.w && k > -maxR && (k < Medium.fade[disline] + maxR || Medium.trk)
+				&& (l > disp || Medium.trk)) {
 			if (shadow) {
-				if (!m.crs) {
+				if (!Medium.crs) {
 					if (k < 2000) {
 						boolean flag = false;
 						for (int l1 = t.nt - 1; l1 >= 0; l1--) {
@@ -514,41 +514,41 @@ public class ContO {
 						rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 						if (flag) {
 							for (int i2 = 0; i2 < npl; i2++) {
-								p[i2].s(rd, x - m.x, y - m.y, z - m.z, xz, xy, zy, 0);
+								p[i2].s(rd, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 0);
 							}
 
 						} else {
-							int j2 = m.cy + (int) ((m.ground - m.cy) * RadicalMath.cos(m.zy)
-									- (j - m.cz) * RadicalMath.sin(m.zy));
-							int k2 = m.cz + (int) ((m.ground - m.cy) * RadicalMath.sin(m.zy)
-									+ (j - m.cz) * RadicalMath.cos(m.zy));
-							if (Utility.cYs(j2 + maxR, k2) > 0 && Utility.cYs(j2 - maxR, k2) < m.h) {
+							int j2 = Medium.cy + (int) ((Medium.ground - Medium.cy) * RadicalMath.cos(Medium.zy)
+									- (j - Medium.cz) * RadicalMath.sin(Medium.zy));
+							int k2 = Medium.cz + (int) ((Medium.ground - Medium.cy) * RadicalMath.sin(Medium.zy)
+									+ (j - Medium.cz) * RadicalMath.cos(Medium.zy));
+							if (Utility.cYs(j2 + maxR, k2) > 0 && Utility.cYs(j2 - maxR, k2) < Medium.h) {
 								for (int l2 = 0; l2 < npl; l2++) {
-									p[l2].s(rd, x - m.x, y - m.y, z - m.z, xz, xy, zy, 1);
+									p[l2].s(rd, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 1);
 								}
 
 							}
 						}
-						m.addsp(x - m.x, z - m.z, (int) (maxR * 0.80000000000000004D));
+						m.addsp(x - Medium.x, z - Medium.z, (int) (maxR * 0.80000000000000004D));
 						rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 					} else {
 						lowshadow(rd, k);
 					}
 				} else {
 					for (int i1 = 0; i1 < npl; i1++) {
-						p[i1].s(rd, x - m.x, y - m.y, z - m.z, xz, xy, zy, 2);
+						p[i1].s(rd, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 2);
 					}
 				}
 			}
-			int j1 = m.cy + (int) ((y - m.y - m.cy) * RadicalMath.cos(m.zy) - (j - m.cz) * RadicalMath.sin(m.zy));
-			if (Utility.cYs(j1 + maxR, k) > 0 && Utility.cYs(j1 - maxR, k) < m.h) {
+			int j1 = Medium.cy + (int) ((y - Medium.y - Medium.cy) * RadicalMath.cos(Medium.zy) - (j - Medium.cz) * RadicalMath.sin(Medium.zy));
+			if (Utility.cYs(j1 + maxR, k) > 0 && Utility.cYs(j1 - maxR, k) < Medium.h) {
 				if (elec) {
 					electrify(rd);
 				}
 				if (fix) {
 					fixit(rd);
 				}
-				if (checkpoint != 0 && checkpoint - 1 == m.checkpoint) {
+				if (checkpoint != 0 && checkpoint - 1 == Medium.checkpoint) {
 					l = -1;
 				}
 				int ai[] = new int[npl];
@@ -582,14 +582,14 @@ public class ContO {
 				}
 
 				for (int l3 = 0; l3 < npl; l3++) {
-					p[ai1[l3]].d(rd, x - m.x, y - m.y, z - m.z, xz, xy, zy, wxz, wzy, noline, l);
+					p[ai1[l3]].d(rd, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, wxz, wzy, noline, l);
 					if (p[ai1[l3]].master != 0 && stg[p[ai1[l3]].master - 1] != 0) {
 						pdust(p[ai1[l3]].master - 1, rd, 1);
 					}
 				}
 
-				dist = (int) (Math.sqrt((int) Math.sqrt(((m.x + m.cx) - x) * ((m.x + m.cx) - x) + (m.z - z) * (m.z - z)
-						+ ((m.y + m.cy) - y) * ((m.y + m.cy) - y))) * grounded);
+				dist = (int) (Math.sqrt((int) Math.sqrt(((Medium.x + Medium.cx) - x) * ((Medium.x + Medium.cx) - x) + (Medium.z - z) * (Medium.z - z)
+						+ ((Medium.y + Medium.cy) - y) * ((Medium.y + Medium.cy) - y))) * grounded);
 			}
 		}
 		if (dist == 0) {
@@ -639,29 +639,29 @@ public class ContO {
 		if (j > 90) {
 			byte0 = -1;
 		}
-		ai[0] = (int) ((keyx[0] * 1.2D + x) - m.x);
-		ai2[0] = (int) (((keyz[0] + 30) * byte0 * 1.2D + z) - m.z);
-		ai[1] = (int) ((keyx[1] * 1.2D + x) - m.x);
-		ai2[1] = (int) (((keyz[1] + 30) * byte0 * 1.2D + z) - m.z);
-		ai[2] = (int) ((keyx[3] * 1.2D + x) - m.x);
-		ai2[2] = (int) (((keyz[3] - 30) * byte0 * 1.2D + z) - m.z);
-		ai[3] = (int) ((keyx[2] * 1.2D + x) - m.x);
-		ai2[3] = (int) (((keyz[2] - 30) * byte0 * 1.2D + z) - m.z);
-		Utility.rot(ai, ai2, x - m.x, z - m.z, xz, 4);
-		int k = (int) (m.cgrnd[0] / 1.5D);
-		int l = (int) (m.cgrnd[1] / 1.5D);
-		int i1 = (int) (m.cgrnd[2] / 1.5D);
+		ai[0] = (int) ((keyx[0] * 1.2D + x) - Medium.x);
+		ai2[0] = (int) (((keyz[0] + 30) * byte0 * 1.2D + z) - Medium.z);
+		ai[1] = (int) ((keyx[1] * 1.2D + x) - Medium.x);
+		ai2[1] = (int) (((keyz[1] + 30) * byte0 * 1.2D + z) - Medium.z);
+		ai[2] = (int) ((keyx[3] * 1.2D + x) - Medium.x);
+		ai2[2] = (int) (((keyz[3] - 30) * byte0 * 1.2D + z) - Medium.z);
+		ai[3] = (int) ((keyx[2] * 1.2D + x) - Medium.x);
+		ai2[3] = (int) (((keyz[2] - 30) * byte0 * 1.2D + z) - Medium.z);
+		Utility.rot(ai, ai2, x - Medium.x, z - Medium.z, xz, 4);
+		int k = (int) (Medium.cgrnd[0] / 1.5D);
+		int l = (int) (Medium.cgrnd[1] / 1.5D);
+		int i1 = (int) (Medium.cgrnd[2] / 1.5D);
 		int j1 = 0;
 		do {
-			ai1[j1] = m.ground;
+			ai1[j1] = Medium.ground;
 		} while (++j1 < 4);
 		for (int k1 = t.nt - 1; k1 >= 0; k1--) {
 			int l1 = 0;
 			int j2 = 0;
 			do {
 				if (Math.abs(t.zy[k1]) != 90 && Math.abs(t.xy[k1]) != 90
-						&& Math.abs(ai[j2] - (t.x[k1] - m.x)) < t.radx[k1]
-						&& Math.abs(ai2[j2] - (t.z[k1] - m.z)) < t.radz[k1]) {
+						&& Math.abs(ai[j2] - (t.x[k1] - Medium.x)) < t.radx[k1]
+						&& Math.abs(ai2[j2] - (t.z[k1] - Medium.z)) < t.radz[k1]) {
 					l1++;
 				}
 			} while (++j2 < 4);
@@ -670,13 +670,13 @@ public class ContO {
 			}
 			j2 = 0;
 			do {
-				ai1[j2] = t.y[k1] - m.y;
+				ai1[j2] = t.y[k1] - Medium.y;
 				if (t.zy[k1] != 0) {
-					ai1[j2] += ((ai2[j2] - (t.z[k1] - m.z - t.radz[k1])) * RadicalMath.sin(t.zy[k1]))
+					ai1[j2] += ((ai2[j2] - (t.z[k1] - Medium.z - t.radz[k1])) * RadicalMath.sin(t.zy[k1]))
 							/ RadicalMath.sin(90 - t.zy[k1]) - (t.radz[k1] * RadicalMath.sin(t.zy[k1])) / RadicalMath.sin(90 - t.zy[k1]);
 				}
 				if (t.xy[k1] != 0) {
-					ai1[j2] += ((ai[j2] - (t.x[k1] - m.x - t.radx[k1])) * RadicalMath.sin(t.xy[k1]))
+					ai1[j2] += ((ai[j2] - (t.x[k1] - Medium.x - t.radx[k1])) * RadicalMath.sin(t.xy[k1]))
 							/ RadicalMath.sin(90 - t.xy[k1]) - (t.radx[k1] * RadicalMath.sin(t.xy[k1])) / RadicalMath.sin(90 - t.xy[k1]);
 				}
 			} while (++j2 < 4);
@@ -686,8 +686,8 @@ public class ContO {
 			break;
 		}
 
-		Utility.rot(ai, ai2, m.cx, m.cz, m.xz, 4);
-		Utility.rot(ai1, ai2, m.cy, m.cz, m.zy, 4);
+		Utility.rot(ai, ai2, Medium.cx, Medium.cz, Medium.xz, 4);
+		Utility.rot(ai1, ai2, Medium.cy, Medium.cz, Medium.zy, 4);
 		boolean flag = true;
 		int i2 = 0;
 		int k2 = 0;
@@ -700,13 +700,13 @@ public class ContO {
 			if (ai1[j3] < 0 || ai2[j3] < 10) {
 				i2++;
 			}
-			if (ai1[j3] > m.h || ai2[j3] < 10) {
+			if (ai1[j3] > Medium.h || ai2[j3] < 10) {
 				k2++;
 			}
 			if (ai[j3] < 0 || ai2[j3] < 10) {
 				l2++;
 			}
-			if (ai[j3] > m.w || ai2[j3] < 10) {
+			if (ai[j3] > Medium.w || ai2[j3] < 10) {
 				i3++;
 			}
 		} while (++j3 < 4);
@@ -716,10 +716,10 @@ public class ContO {
 		if (flag) {
 			int k3 = 0;
 			do {
-				if (i > m.fade[k3]) {
-					k = (k * m.fogd + m.cfade[0]) / (m.fogd + 1);
-					l = (l * m.fogd + m.cfade[1]) / (m.fogd + 1);
-					i1 = (i1 * m.fogd + m.cfade[2]) / (m.fogd + 1);
+				if (i > Medium.fade[k3]) {
+					k = (k * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
+					l = (l * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
+					i1 = (i1 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
 				}
 			} while (++k3 < 8);
 			rd.setColor(new Color(k, l, i1));
@@ -735,21 +735,21 @@ public class ContO {
 				p[i].hsb[2] = 0.8F;
 				p[i].hsb[1] = 0.8F;
 				Color color = Color.getHSBColor(p[i].hsb[0], p[i].hsb[1], p[i].hsb[2]);
-				int l = (int) (color.getRed() + color.getRed() * (m.snap[0] / 100F));
+				int l = (int) (color.getRed() + color.getRed() * (Medium.snap[0] / 100F));
 				if (l > 255) {
 					l = 255;
 				}
 				if (l < 0) {
 					l = 0;
 				}
-				int i1 = (int) (color.getGreen() + color.getGreen() * (m.snap[1] / 100F));
+				int i1 = (int) (color.getGreen() + color.getGreen() * (Medium.snap[1] / 100F));
 				if (i1 > 255) {
 					i1 = 255;
 				}
 				if (i1 < 0) {
 					i1 = 0;
 				}
-				int k1 = (int) (color.getBlue() + color.getBlue() * (m.snap[2] / 100F));
+				int k1 = (int) (color.getBlue() + color.getBlue() * (Medium.snap[2] / 100F));
 				if (k1 > 255) {
 					k1 = 255;
 				}
@@ -779,15 +779,15 @@ public class ContO {
 			int ai2[] = new int[4];
 			int j1 = 0;
 			do {
-				ai[j1] = (keyx[j1] + x) - m.x;
-				ai1[j1] = (grat + y) - m.y;
-				ai2[j1] = (keyz[j1] + z) - m.z;
+				ai[j1] = (keyx[j1] + x) - Medium.x;
+				ai1[j1] = (grat + y) - Medium.y;
+				ai2[j1] = (keyz[j1] + z) - Medium.z;
 			} while (++j1 < 4);
-			Utility.rot(ai, ai1, x - m.x, y - m.y, xy, 4);
-			Utility.rot(ai1, ai2, y - m.y, z - m.y, zy, 4);
-			Utility.rot(ai, ai2, x - m.x, z - m.z, xz, 4);
-			Utility.rot(ai, ai2, m.cx, m.cz, m.xz, 4);
-			Utility.rot(ai1, ai2, m.cy, m.cz, m.zy, 4);
+			Utility.rot(ai, ai1, x - Medium.x, y - Medium.y, xy, 4);
+			Utility.rot(ai1, ai2, y - Medium.y, z - Medium.y, zy, 4);
+			Utility.rot(ai, ai2, x - Medium.x, z - Medium.z, xz, 4);
+			Utility.rot(ai, ai2, Medium.cx, Medium.cz, Medium.xz, 4);
+			Utility.rot(ai1, ai2, Medium.cy, Medium.cz, Medium.zy, 4);
 			j1 = 0;
 			int l1 = 0;
 			int i2 = 0;
@@ -813,10 +813,10 @@ public class ContO {
 			if (l1 < i2) {
 				l1 = i2;
 			}
-			j2 = m.cx + (int) ((x - m.x - m.cx) * RadicalMath.cos(m.xz) - (z - m.z - m.cz) * RadicalMath.sin(m.xz));
-			int l2 = m.cz + (int) ((x - m.x - m.cx) * RadicalMath.sin(m.xz) + (z - m.z - m.cz) * RadicalMath.cos(m.xz));
-			int i3 = m.cy + (int) ((y - m.y - m.cy) * RadicalMath.cos(m.zy) - (l2 - m.cz) * RadicalMath.sin(m.zy));
-			l2 = m.cz + (int) ((y - m.y - m.cy) * RadicalMath.sin(m.zy) + (l2 - m.cz) * RadicalMath.cos(m.zy));
+			j2 = Medium.cx + (int) ((x - Medium.x - Medium.cx) * RadicalMath.cos(Medium.xz) - (z - Medium.z - Medium.cz) * RadicalMath.sin(Medium.xz));
+			int l2 = Medium.cz + (int) ((x - Medium.x - Medium.cx) * RadicalMath.sin(Medium.xz) + (z - Medium.z - Medium.cz) * RadicalMath.cos(Medium.xz));
+			int i3 = Medium.cy + (int) ((y - Medium.y - Medium.cy) * RadicalMath.cos(Medium.zy) - (l2 - Medium.cz) * RadicalMath.sin(Medium.zy));
+			l2 = Medium.cz + (int) ((y - Medium.y - Medium.cy) * RadicalMath.sin(Medium.zy) + (l2 - Medium.cz) * RadicalMath.cos(Medium.zy));
 			ai[0] = Utility.cXs((int) (j2 - j1 / 0.80000000000000004D
 					- m.random() * (j1 / 2.3999999999999999D)), l2);
 			ai1[0] = Utility.cYs((int) (i3 - l1 / 1.9199999999999999D
@@ -864,21 +864,21 @@ public class ContO {
 			if (fcnt == 7) {
 				Utility.rot(ai, ai1, Utility.cXs(j2, l2), Utility.cYs(i3, l2), -22, 8);
 			}
-			int j3 = (int) (191F + 191F * (m.snap[0] / 350F));
+			int j3 = (int) (191F + 191F * (Medium.snap[0] / 350F));
 			if (j3 > 255) {
 				j3 = 255;
 			}
 			if (j3 < 0) {
 				j3 = 0;
 			}
-			int k3 = (int) (232F + 232F * (m.snap[1] / 350F));
+			int k3 = (int) (232F + 232F * (Medium.snap[1] / 350F));
 			if (k3 > 255) {
 				k3 = 255;
 			}
 			if (k3 < 0) {
 				k3 = 0;
 			}
-			int l3 = (int) (255F + 255F * (m.snap[2] / 350F));
+			int l3 = (int) (255F + 255F * (Medium.snap[2] / 350F));
 			if (l3 > 255) {
 				l3 = 255;
 			}
@@ -911,21 +911,21 @@ public class ContO {
 			ai[7] = Utility.cXs((int) (j2 - j1 / 2.3999999999999999D
 					- m.random() * (j1 / 9.5999999999999996D)), l2);
 			ai1[7] = Utility.cYs((int) (i3 - l1 - m.random() * (l1 / 4)), l2);
-			j3 = (int) (213F + 213F * (m.snap[0] / 350F));
+			j3 = (int) (213F + 213F * (Medium.snap[0] / 350F));
 			if (j3 > 255) {
 				j3 = 255;
 			}
 			if (j3 < 0) {
 				j3 = 0;
 			}
-			k3 = (int) (239F + 239F * (m.snap[1] / 350F));
+			k3 = (int) (239F + 239F * (Medium.snap[1] / 350F));
 			if (k3 > 255) {
 				k3 = 255;
 			}
 			if (k3 < 0) {
 				k3 = 0;
 			}
-			l3 = (int) (255F + 255F * (m.snap[2] / 350F));
+			l3 = (int) (255F + 255F * (Medium.snap[2] / 350F));
 			if (l3 > 255) {
 				l3 = 255;
 			}
@@ -960,29 +960,29 @@ public class ContO {
 			int ai2[] = new int[8];
 			int j1 = 0;
 			do {
-				ai2[j1] = z - m.z;
+				ai2[j1] = z - Medium.z;
 			} while (++j1 < 8);
-			ai[0] = x - m.x - 504;
-			ai1[0] = y - m.y - edl[i] - 5 - (int) (m.random() * 5F);
-			ai[1] = (x - m.x - 252) + i1;
-			ai1[1] = y - m.y - j - 5 - (int) (m.random() * 5F);
-			ai[2] = ((x - m.x) + 252) - l;
-			ai1[2] = y - m.y - k - 5 - (int) (m.random() * 5F);
-			ai[3] = (x - m.x) + 504;
-			ai1[3] = y - m.y - edr[i] - 5 - (int) (m.random() * 5F);
-			ai[4] = (x - m.x) + 504;
-			ai1[4] = (y - m.y - edr[i]) + 5 + (int) (m.random() * 5F);
-			ai[5] = ((x - m.x) + 252) - l;
-			ai1[5] = (y - m.y - k) + 5 + (int) (m.random() * 5F);
-			ai[6] = (x - m.x - 252) + i1;
-			ai1[6] = (y - m.y - j) + 5 + (int) (m.random() * 5F);
-			ai[7] = x - m.x - 504;
-			ai1[7] = (y - m.y - edl[i]) + 5 + (int) (m.random() * 5F);
+			ai[0] = x - Medium.x - 504;
+			ai1[0] = y - Medium.y - edl[i] - 5 - (int) (m.random() * 5F);
+			ai[1] = (x - Medium.x - 252) + i1;
+			ai1[1] = y - Medium.y - j - 5 - (int) (m.random() * 5F);
+			ai[2] = ((x - Medium.x) + 252) - l;
+			ai1[2] = y - Medium.y - k - 5 - (int) (m.random() * 5F);
+			ai[3] = (x - Medium.x) + 504;
+			ai1[3] = y - Medium.y - edr[i] - 5 - (int) (m.random() * 5F);
+			ai[4] = (x - Medium.x) + 504;
+			ai1[4] = (y - Medium.y - edr[i]) + 5 + (int) (m.random() * 5F);
+			ai[5] = ((x - Medium.x) + 252) - l;
+			ai1[5] = (y - Medium.y - k) + 5 + (int) (m.random() * 5F);
+			ai[6] = (x - Medium.x - 252) + i1;
+			ai1[6] = (y - Medium.y - j) + 5 + (int) (m.random() * 5F);
+			ai[7] = x - Medium.x - 504;
+			ai1[7] = (y - Medium.y - edl[i]) + 5 + (int) (m.random() * 5F);
 			if (roted) {
-				Utility.rot(ai, ai2, x - m.x, z - m.z, 90, 8);
+				Utility.rot(ai, ai2, x - Medium.x, z - Medium.z, 90, 8);
 			}
-			Utility.rot(ai, ai2, m.cx, m.cz, m.xz, 8);
-			Utility.rot(ai1, ai2, m.cy, m.cz, m.zy, 8);
+			Utility.rot(ai, ai2, Medium.cx, Medium.cz, Medium.xz, 8);
+			Utility.rot(ai1, ai2, Medium.cy, Medium.cz, Medium.zy, 8);
 			boolean flag = true;
 			int k1 = 0;
 			int l1 = 0;
@@ -997,13 +997,13 @@ public class ContO {
 				if (ai4[k2] < 0 || ai2[k2] < 10) {
 					k1++;
 				}
-				if (ai4[k2] > m.h || ai2[k2] < 10) {
+				if (ai4[k2] > Medium.h || ai2[k2] < 10) {
 					l1++;
 				}
 				if (ai3[k2] < 0 || ai2[k2] < 10) {
 					i2++;
 				}
-				if (ai3[k2] > m.w || ai2[k2] < 10) {
+				if (ai3[k2] > Medium.w || ai2[k2] < 10) {
 					j2++;
 				}
 			} while (++k2 < 8);
@@ -1011,21 +1011,21 @@ public class ContO {
 				flag = false;
 			}
 			if (flag) {
-				int l2 = (int) (160F + 160F * (m.snap[0] / 500F));
+				int l2 = (int) (160F + 160F * (Medium.snap[0] / 500F));
 				if (l2 > 255) {
 					l2 = 255;
 				}
 				if (l2 < 0) {
 					l2 = 0;
 				}
-				int j3 = (int) (238F + 238F * (m.snap[1] / 500F));
+				int j3 = (int) (238F + 238F * (Medium.snap[1] / 500F));
 				if (j3 > 255) {
 					j3 = 255;
 				}
 				if (j3 < 0) {
 					j3 = 0;
 				}
-				int l3 = (int) (255F + 255F * (m.snap[2] / 500F));
+				int l3 = (int) (255F + 255F * (Medium.snap[2] / 500F));
 				if (l3 > 255) {
 					l3 = 255;
 				}
@@ -1034,7 +1034,7 @@ public class ContO {
 				}
 				l2 = (l2 * 2 + 214 * (elc[i] - 1)) / (elc[i] + 1);
 				j3 = (j3 * 2 + 236 * (elc[i] - 1)) / (elc[i] + 1);
-				if (m.trk) {
+				if (Medium.trk) {
 					l2 = 255;
 					j3 = 128;
 					l3 = 0;
@@ -1042,21 +1042,21 @@ public class ContO {
 				rd.setColor(new Color(l2, j3, l3));
 				rd.fillPolygon(ai3, ai4, 8);
 				if (ai2[0] < 4000) {
-					int i3 = (int) (150F + 150F * (m.snap[0] / 500F));
+					int i3 = (int) (150F + 150F * (Medium.snap[0] / 500F));
 					if (i3 > 255) {
 						i3 = 255;
 					}
 					if (i3 < 0) {
 						i3 = 0;
 					}
-					int k3 = (int) (227F + 227F * (m.snap[1] / 500F));
+					int k3 = (int) (227F + 227F * (Medium.snap[1] / 500F));
 					if (k3 > 255) {
 						k3 = 255;
 					}
 					if (k3 < 0) {
 						k3 = 0;
 					}
-					int i4 = (int) (255F + 255F * (m.snap[2] / 500F));
+					int i4 = (int) (255F + 255F * (Medium.snap[2] / 500F));
 					if (i4 > 255) {
 						i4 = 255;
 					}

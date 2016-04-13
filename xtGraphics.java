@@ -417,9 +417,9 @@ public class xtGraphics extends Panel implements Runnable {
 					int r = color.getRed();
 					int g = color.getGreen();
 					int b = color.getBlue();
-					r = m.csky[0] - r;
-					g = m.csky[1] - g;
-					b = m.csky[2] - b;
+					r = Medium.csky[0] - r;
+					g = Medium.csky[1] - g;
+					b = Medium.csky[2] - b;
 					if (r > 255) {
 						r = 255;
 					}
@@ -580,13 +580,13 @@ public class xtGraphics extends Panel implements Runnable {
 	 * @author Kaffeinated
 	 */
     public void drawOver(String text, ContO contos) {
-		int x = m.cx + (int) ((contos.x - m.x - m.cx));
-		int y = m.cy + (int) ((contos.y - m.y - m.cy));
-		int z = m.cz + (int) ((contos.z - m.z - m.cz));
+		int x = Medium.cx + (int) ((contos.x - Medium.x - Medium.cx));
+		int y = Medium.cy + (int) ((contos.y - Medium.y - Medium.cy));
+		int z = Medium.cz + (int) ((contos.z - Medium.z - Medium.cz));
 
-		x = Utility.rotSingle(x, z, m.cx, m.cz, m.xz, RadicalMath.sin(m.xz), RadicalMath.cos(m.xz))[0];
-		y = Utility.rotSingle(y, z, m.cy, m.cz, m.zy, RadicalMath.sin(m.zy), RadicalMath.cos(m.zy))[0];
-		z = Utility.rotSingle(y, z, m.cy, m.cz, m.zy, RadicalMath.sin(m.zy), RadicalMath.cos(m.zy))[1];
+		x = Utility.rotSingle(x, z, Medium.cx, Medium.cz, Medium.xz, RadicalMath.sin(Medium.xz), RadicalMath.cos(Medium.xz))[0];
+		y = Utility.rotSingle(y, z, Medium.cy, Medium.cz, Medium.zy, RadicalMath.sin(Medium.zy), RadicalMath.cos(Medium.zy))[0];
+		z = Utility.rotSingle(y, z, Medium.cy, Medium.cz, Medium.zy, RadicalMath.sin(Medium.zy), RadicalMath.cos(Medium.zy))[1];
 
 		final int xScreenCoor = Utility.xs(x, z);
 		final int yScreenCoor = Utility.cYs(y, z);
@@ -1032,7 +1032,7 @@ public class xtGraphics extends Panel implements Runnable {
 			 */
 			//drawOver(names[sc[l]], conto[l]);
 		}
-		for (k += m.xz; k < 0; k += 360) {
+		for (k += Medium.xz; k < 0; k += 360) {
 		}
 		for (; k > 180; k -= 360) {
 		}
@@ -1082,14 +1082,14 @@ public class xtGraphics extends Panel implements Runnable {
 					ai[i1] = Utility.cXs(ai[i1], ai2[i1]);
 					ai1[i1] = Utility.cYs(ai1[i1], ai2[i1]);
 				} while (++i1 < 7);
-				i1 = (int) (190F + 190F * (m.snap[0] / 100F));
+				i1 = (int) (190F + 190F * (Medium.snap[0] / 100F));
 				if (i1 > 255) {
 					i1 = 255;
 				}
 				if (i1 < 0) {
 					i1 = 0;
 				}
-				int l1 = (int) (255F + 255F * (m.snap[1] / 100F));
+				int l1 = (int) (255F + 255F * (Medium.snap[1] / 100F));
 				if (l1 > 255) {
 					l1 = 255;
 				}
@@ -1099,12 +1099,12 @@ public class xtGraphics extends Panel implements Runnable {
 				int j2 = 0;
 				if (j <= 0) {
 					if (k <= 45 && j != -2 && cntan == 0) {
-						i1 = (i1 * k + m.csky[0] * (45 - k)) / 45;
-						l1 = (l1 * k + m.csky[1] * (45 - k)) / 45;
-						j2 = (j2 * k + m.csky[2] * (45 - k)) / 45;
+						i1 = (i1 * k + Medium.csky[0] * (45 - k)) / 45;
+						l1 = (l1 * k + Medium.csky[1] * (45 - k)) / 45;
+						j2 = (j2 * k + Medium.csky[2] * (45 - k)) / 45;
 					}
 					if (k >= 90) {
-						int i3 = (int) (255F + 255F * (m.snap[0] / 100F));
+						int i3 = (int) (255F + 255F * (Medium.snap[0] / 100F));
 						if (i3 > 255) {
 							i3 = 255;
 						}
@@ -1117,7 +1117,7 @@ public class xtGraphics extends Panel implements Runnable {
 						}
 					}
 				} else if (flk) {
-					i1 = (int) (255F + 255F * (m.snap[0] / 100F));
+					i1 = (int) (255F + 255F * (Medium.snap[0] / 100F));
 					if (i1 > 255) {
 						i1 = 255;
 					}
@@ -1126,14 +1126,14 @@ public class xtGraphics extends Panel implements Runnable {
 					}
 					flk = false;
 				} else {
-					i1 = (int) (255F + 255F * (m.snap[0] / 100F));
+					i1 = (int) (255F + 255F * (Medium.snap[0] / 100F));
 					if (i1 > 255) {
 						i1 = 255;
 					}
 					if (i1 < 0) {
 						i1 = 0;
 					}
-					l1 = (int) (220F + 220F * (m.snap[1] / 100F));
+					l1 = (int) (220F + 220F * (Medium.snap[1] / 100F));
 					if (l1 > 255) {
 						l1 = 255;
 					}
@@ -1144,14 +1144,14 @@ public class xtGraphics extends Panel implements Runnable {
 				}
 				rd.setColor(new Color(i1, l1, j2));
 				rd.fillPolygon(ai, ai1, 7);
-				i1 = (int) (115F + 115F * (m.snap[0] / 100F));
+				i1 = (int) (115F + 115F * (Medium.snap[0] / 100F));
 				if (i1 > 255) {
 					i1 = 255;
 				}
 				if (i1 < 0) {
 					i1 = 0;
 				}
-				l1 = (int) (170F + 170F * (m.snap[1] / 100F));
+				l1 = (int) (170F + 170F * (Medium.snap[1] / 100F));
 				if (l1 > 255) {
 					l1 = 255;
 				}
@@ -1161,12 +1161,12 @@ public class xtGraphics extends Panel implements Runnable {
 				j2 = 0;
 				if (j <= 0) {
 					if (k <= 45 && j != -2 && cntan == 0) {
-						i1 = (i1 * k + m.csky[0] * (45 - k)) / 45;
-						l1 = (l1 * k + m.csky[1] * (45 - k)) / 45;
-						j2 = (j2 * k + m.csky[2] * (45 - k)) / 45;
+						i1 = (i1 * k + Medium.csky[0] * (45 - k)) / 45;
+						l1 = (l1 * k + Medium.csky[1] * (45 - k)) / 45;
+						j2 = (j2 * k + Medium.csky[2] * (45 - k)) / 45;
 					}
 				} else if (flk) {
-					i1 = (int) (255F + 255F * (m.snap[0] / 100F));
+					i1 = (int) (255F + 255F * (Medium.snap[0] / 100F));
 					if (i1 > 255) {
 						i1 = 255;
 					}
@@ -1184,21 +1184,21 @@ public class xtGraphics extends Panel implements Runnable {
 				ai[j1] = Utility.cXs(ai[j1], ai2[j1]);
 				ai1[j1] = Utility.cYs(ai1[j1], ai2[j1]);
 			} while (++j1 < 7);
-			j1 = (int) (159F + 159F * (m.snap[0] / 100F));
+			j1 = (int) (159F + 159F * (Medium.snap[0] / 100F));
 			if (j1 > 255) {
 				j1 = 255;
 			}
 			if (j1 < 0) {
 				j1 = 0;
 			}
-			int i2 = (int) (207F + 207F * (m.snap[1] / 100F));
+			int i2 = (int) (207F + 207F * (Medium.snap[1] / 100F));
 			if (i2 > 255) {
 				i2 = 255;
 			}
 			if (i2 < 0) {
 				i2 = 0;
 			}
-			int k2 = (int) (255F + 255F * (m.snap[2] / 100F));
+			int k2 = (int) (255F + 255F * (Medium.snap[2] / 100F));
 			if (k2 > 255) {
 				k2 = 255;
 			}
@@ -1207,21 +1207,21 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 			rd.setColor(new Color(j1, i2, k2));
 			rd.fillPolygon(ai, ai1, 7);
-			j1 = (int) (120F + 120F * (m.snap[0] / 100F));
+			j1 = (int) (120F + 120F * (Medium.snap[0] / 100F));
 			if (j1 > 255) {
 				j1 = 255;
 			}
 			if (j1 < 0) {
 				j1 = 0;
 			}
-			i2 = (int) (114F + 114F * (m.snap[1] / 100F));
+			i2 = (int) (114F + 114F * (Medium.snap[1] / 100F));
 			if (i2 > 255) {
 				i2 = 255;
 			}
 			if (i2 < 0) {
 				i2 = 0;
 			}
-			k2 = (int) (255F + 255F * (m.snap[2] / 100F));
+			k2 = (int) (255F + 255F * (Medium.snap[2] / 100F));
 			if (k2 > 255) {
 				k2 = 255;
 			}
@@ -1631,7 +1631,7 @@ public class xtGraphics extends Panel implements Runnable {
 		} while (++i1 < 0x416e0);
 		fleximg = createImage(new MemoryImageSource(670, 400, flexpix, 0, 670));
 		rd.drawImage(fleximg, 0, 0, null);
-		m.flex = 0;
+		Medium.flex = 0;
 	}
 
 	public void loadmusic(int i, int j) {
@@ -2216,8 +2216,8 @@ public class xtGraphics extends Panel implements Runnable {
 	public void stat(Madness madness[], CheckPoints checkpoints, Control control, ContO conto[], boolean flag) {		
 		if (holdit) {
 			holdcnt++;
-			if (m.flex != 0) {
-				m.flex = 0;
+			if (Medium.flex != 0) {
+				Medium.flex = 0;
 			}
 			if (control.enter || holdcnt > 250) {
 				fase = -2;
@@ -2238,10 +2238,10 @@ public class xtGraphics extends Panel implements Runnable {
 		if (fase != -2) {
 			holdit = false;
 			if (checkpoints.wasted == 6) {
-				if (m.flex != 2) {
-					rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+				if (Medium.flex != 2) {
+					rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 					rd.fillRect(226, 70, youwastedem.getWidth(ob), youwastedem.getHeight(ob));
-					rd.setColor(new Color(m.cfade[0], m.cfade[1], m.cfade[2]));
+					rd.setColor(new Color(Medium.cfade[0], Medium.cfade[1], Medium.cfade[2]));
 					rd.drawRect(226, 70, youwastedem.getWidth(ob), youwastedem.getHeight(ob));
 				}
 				rd.drawImage(youwastedem, 226, 70, null);
@@ -2258,10 +2258,10 @@ public class xtGraphics extends Panel implements Runnable {
 				winner = true;
 			}
 			if (!holdit && madness[0].dest && cntwis == 8) {
-				if (m.flex != 2) {
-					rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+				if (Medium.flex != 2) {
+					rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 					rd.fillRect(232, 70, yourwasted.getWidth(ob), yourwasted.getHeight(ob));
-					rd.setColor(new Color(m.cfade[0], m.cfade[1], m.cfade[2]));
+					rd.setColor(new Color(Medium.cfade[0], Medium.cfade[1], Medium.cfade[2]));
 					rd.drawRect(232, 70, yourwasted.getWidth(ob), yourwasted.getHeight(ob));
 				}
 				rd.drawImage(yourwasted, 232, 70, null);
@@ -2274,10 +2274,10 @@ public class xtGraphics extends Panel implements Runnable {
 				do {
 					if (checkpoints.clear[i] == checkpoints.nlaps * checkpoints.nsp && checkpoints.pos[i] == 0) {
 						if (i == 0) {
-							if (m.flex != 2) {
-								rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+							if (Medium.flex != 2) {
+								rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 								rd.fillRect(268, 70, youwon.getWidth(ob), youwon.getHeight(ob));
-								rd.setColor(new Color(m.cfade[0], m.cfade[1], m.cfade[2]));
+								rd.setColor(new Color(Medium.cfade[0], Medium.cfade[1], Medium.cfade[2]));
 								rd.drawRect(268, 70, youwon.getWidth(ob), youwon.getHeight(ob));
 							}
 							rd.drawImage(youwon, 268, 70, null);
@@ -2290,10 +2290,10 @@ public class xtGraphics extends Panel implements Runnable {
 							}
 							winner = true;
 						} else {
-							if (m.flex != 2) {
-								rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+							if (Medium.flex != 2) {
+								rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 								rd.fillRect(271, 70, youlost.getWidth(ob), youlost.getHeight(ob));
-								rd.setColor(new Color(m.cfade[0], m.cfade[1], m.cfade[2]));
+								rd.setColor(new Color(Medium.cfade[0], Medium.cfade[1], Medium.cfade[2]));
 								rd.drawRect(271, 70, youlost.getWidth(ob), youlost.getHeight(ob));
 							}
 							rd.drawImage(youlost, 271, 70, null);
@@ -2364,8 +2364,8 @@ public class xtGraphics extends Panel implements Runnable {
 						}
 					}
 				}
-				if (m.flex != 2 || m.flex == 2) {
-					rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+				if (Medium.flex != 2 || Medium.flex == 2) {
+					rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 					rd.fillRect(472, 9, 54, 14);
 					rd.drawLine(471, 10, 471, 21);
 					rd.drawLine(470, 12, 470, 19);
@@ -2395,21 +2395,21 @@ public class xtGraphics extends Panel implements Runnable {
 					rd.drawImage(pos, 42, 27, null);
 					rd.drawImage(rank[checkpoints.pos[madness[0].im]], 110, 28, null);
 
-					m.flex++;
+					Medium.flex++;
 				} else {
 					if (posit != checkpoints.pos[madness[0].im]) {
 						rd.drawImage(rank[checkpoints.pos[madness[0].im]], 110, 28, null);
 						posit = checkpoints.pos[madness[0].im];
 					}
 					if (wasted != checkpoints.wasted) {
-						rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+						rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 						rd.fillRect(150, 8, 30, 10);
 						rd.setColor(new Color(0, 0, 100));
 						rd.drawString("" + checkpoints.wasted + " / 6", 150, 18);
 						wasted = checkpoints.wasted;
 					}
 					if (laps != madness[0].nlaps) {
-						rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+						rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 						rd.fillRect(51, 8, 40, 10);
 						rd.setColor(new Color(0, 0, 100));
 						rd.drawString("" + (madness[0].nlaps + 1) + " / " + checkpoints.nlaps + "", 51, 18);
@@ -2453,7 +2453,7 @@ public class xtGraphics extends Panel implements Runnable {
 					}
 					if (starcnt <= 4) {
 						duds = 2;
-						m.flex = 0;
+						Medium.flex = 0;
 					}
 					if (dudo != -1) {
 						rd.drawImage(dudeb[duds], dudo, 0, null);
@@ -2841,13 +2841,13 @@ public class xtGraphics extends Panel implements Runnable {
 						rd.fillRect(161, 272, 348, 4);
 						rd.fillRect(505, 151, 4, 125);
 						aconto[byte0].y = i;
-						m.crs = true;
-						m.x = -335;
-						m.y = 0;
-						m.z = -50;
-						m.xz = 0;
-						m.zy = 0;
-						m.ground = 2470;
+						Medium.crs = true;
+						Medium.x = -335;
+						Medium.y = 0;
+						Medium.z = -50;
+						Medium.xz = 0;
+						Medium.zy = 0;
+						Medium.ground = 2470;
 						aconto[byte0].z = 1000;
 						aconto[byte0].x = 0;
 						aconto[byte0].xz += 5;
@@ -3038,21 +3038,21 @@ public class xtGraphics extends Panel implements Runnable {
 
 	public void drawcs(int i, String s, int j, int k, int l, int i1) {
 		if (i1 != 3 && i1 != 4) {
-			j = (int) (j + j * (m.snap[0] / 100F));
+			j = (int) (j + j * (Medium.snap[0] / 100F));
 			if (j > 255) {
 				j = 255;
 			}
 			if (j < 0) {
 				j = 0;
 			}
-			k = (int) (k + k * (m.snap[1] / 100F));
+			k = (int) (k + k * (Medium.snap[1] / 100F));
 			if (k > 255) {
 				k = 255;
 			}
 			if (k < 0) {
 				k = 0;
 			}
-			l = (int) (l + l * (m.snap[2] / 100F));
+			l = (int) (l + l * (Medium.snap[2] / 100F));
 			if (l > 255) {
 				l = 255;
 			}
@@ -3061,21 +3061,21 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 		}
 		if (i1 == 4) {
-			j = (int) (j - j * (m.snap[0] / 100F));
+			j = (int) (j - j * (Medium.snap[0] / 100F));
 			if (j > 255) {
 				j = 255;
 			}
 			if (j < 0) {
 				j = 0;
 			}
-			k = (int) (k - k * (m.snap[1] / 100F));
+			k = (int) (k - k * (Medium.snap[1] / 100F));
 			if (k > 255) {
 				k = 255;
 			}
 			if (k < 0) {
 				k = 0;
 			}
-			l = (int) (l - l * (m.snap[2] / 100F));
+			l = (int) (l - l * (Medium.snap[2] / 100F));
 			if (l > 255) {
 				l = 255;
 			}
@@ -3088,21 +3088,21 @@ public class xtGraphics extends Panel implements Runnable {
 			rd.drawString(s, (335 - FontHandler.fMetrics.stringWidth(s) / 2) + 1, i + 1);
 		}
 		if (i1 == 2) {
-			j = (j * 2 + m.csky[0] * 1) / 3;
+			j = (j * 2 + Medium.csky[0] * 1) / 3;
 			if (j > 255) {
 				j = 255;
 			}
 			if (j < 0) {
 				j = 0;
 			}
-			k = (k * 2 + m.csky[1] * 1) / 3;
+			k = (k * 2 + Medium.csky[1] * 1) / 3;
 			if (k > 255) {
 				k = 255;
 			}
 			if (k < 0) {
 				k = 0;
 			}
-			l = (l * 2 + m.csky[2] * 1) / 3;
+			l = (l * 2 + Medium.csky[2] * 1) / 3;
 			if (l > 255) {
 				l = 255;
 			}
@@ -3160,8 +3160,8 @@ public class xtGraphics extends Panel implements Runnable {
 		if (control.handb || control.enter) {
 			asay = "Stage " + checkpoints.stage + ":  " + checkpoints.name + " ";
 			dudo = 150;
-			m.trk = false;
-			m.focus_point = 400;
+			Medium.trk = false;
+			Medium.focus_point = 400;
 			fase = 5;
 			control.handb = false;
 			control.enter = false;
@@ -3223,21 +3223,21 @@ public class xtGraphics extends Panel implements Runnable {
 		for (int k = 0; k < j * i; k++) {
 			if (ai[k] != 0xffc0c0c0 && ai[k] != ai[j * i - 1]) {
 				Color color = new Color(ai[k]);
-				int l = (int) (color.getRed() + color.getRed() * (m.snap[0] / 100F));
+				int l = (int) (color.getRed() + color.getRed() * (Medium.snap[0] / 100F));
 				if (l > 225) {
 					l = 225;
 				}
 				if (l < 0) {
 					l = 0;
 				}
-				int i1 = (int) (color.getGreen() + color.getGreen() * (m.snap[1] / 100F));
+				int i1 = (int) (color.getGreen() + color.getGreen() * (Medium.snap[1] / 100F));
 				if (i1 > 225) {
 					i1 = 225;
 				}
 				if (i1 < 0) {
 					i1 = 0;
 				}
-				int j1 = (int) (color.getBlue() + color.getBlue() * (m.snap[2] / 100F));
+				int j1 = (int) (color.getBlue() + color.getBlue() * (Medium.snap[2] / 100F));
 				if (j1 > 225) {
 					j1 = 225;
 				}
@@ -3247,7 +3247,7 @@ public class xtGraphics extends Panel implements Runnable {
 				Color color2 = new Color(l, i1, j1);
 				ai[k] = color2.getRGB();
 			} else if (ai[k] == 0xffc0c0c0) {
-				Color color1 = new Color(m.csky[0], m.csky[1], m.csky[2]);
+				Color color1 = new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]);
 				ai[k] = color1.getRGB();
 			}
 		}
@@ -3300,7 +3300,7 @@ public class xtGraphics extends Panel implements Runnable {
 			ai1[2] = 19;
 			ai[3] = 630;
 			ai1[3] = 11;
-			rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+			rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 			rd.fillPolygon(ai, ai1, 4);
 		}
 		if (j > i) {
@@ -3335,21 +3335,21 @@ public class xtGraphics extends Panel implements Runnable {
 				dmcnt = 0;
 			}
 		}
-		l = (int) (l + l * (m.snap[0] / 100F));
+		l = (int) (l + l * (Medium.snap[0] / 100F));
 		if (l > 255) {
 			l = 255;
 		}
 		if (l < 0) {
 			l = 0;
 		}
-		i1 = (int) (i1 + i1 * (m.snap[1] / 100F));
+		i1 = (int) (i1 + i1 * (Medium.snap[1] / 100F));
 		if (i1 > 255) {
 			i1 = 255;
 		}
 		if (i1 < 0) {
 			i1 = 0;
 		}
-		j1 = (int) (j1 + j1 * (m.snap[2] / 100F));
+		j1 = (int) (j1 + j1 * (Medium.snap[2] / 100F));
 		if (j1 > 255) {
 			j1 = 255;
 		}
@@ -3377,21 +3377,21 @@ public class xtGraphics extends Panel implements Runnable {
 			i1 = 244;
 			j1 = 244;
 		}
-		l = (int) (l + l * (m.snap[0] / 100F));
+		l = (int) (l + l * (Medium.snap[0] / 100F));
 		if (l > 255) {
 			l = 255;
 		}
 		if (l < 0) {
 			l = 0;
 		}
-		i1 = (int) (i1 + i1 * (m.snap[1] / 100F));
+		i1 = (int) (i1 + i1 * (Medium.snap[1] / 100F));
 		if (i1 > 255) {
 			i1 = 255;
 		}
 		if (i1 < 0) {
 			i1 = 0;
 		}
-		j1 = (int) (j1 + j1 * (m.snap[2] / 100F));
+		j1 = (int) (j1 + j1 * (Medium.snap[2] / 100F));
 		if (j1 > 255) {
 			j1 = 255;
 		}
@@ -3400,7 +3400,7 @@ public class xtGraphics extends Panel implements Runnable {
 		}
 		rd.setColor(new Color(l, i1, j1));
 		rd.fillPolygon(ai, ai1, 4);
-		if (m.flex == 2 && f != 98F) {
+		if (Medium.flex == 2 && f != 98F) {
 			ai[0] = (int) (532F + f);
 			ai1[0] = 31;
 			ai[1] = (int) (532F + f);
@@ -3409,7 +3409,7 @@ public class xtGraphics extends Panel implements Runnable {
 			ai1[2] = 39;
 			ai[3] = 630;
 			ai1[3] = 31;
-			rd.setColor(new Color(m.csky[0], m.csky[1], m.csky[2]));
+			rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
 			rd.fillPolygon(ai, ai1, 4);
 		}
 	}
@@ -4197,7 +4197,7 @@ public class xtGraphics extends Panel implements Runnable {
 	public void inishcarselect() {
 		carsbginflex();
 		flatrstart = 0;
-		m.lightson = false;
+		Medium.lightson = false;
 		cars.loadMod(200, 7900, 125, sunny, macn);
 		pnext = 0;
 		pback = 0;
@@ -4216,13 +4216,13 @@ public class xtGraphics extends Panel implements Runnable {
 			flatrstart = 6;
 		}
 		rd.drawImage(selectcar, 256, 12, null);
-		m.crs = true;
-		m.x = -335;
-		m.y = -500;
-		m.z = -50;
-		m.xz = 0;
-		m.zy = 10;
-		m.ground = 470;
+		Medium.crs = true;
+		Medium.x = -335;
+		Medium.y = -500;
+		Medium.z = -50;
+		Medium.xz = 0;
+		Medium.zy = 10;
+		Medium.ground = 470;
 		aconto[sc[0]].d(rd);
 		if (flipo == 0) {
 			rd.setFont(new Font("SansSerif", 1, 13));
@@ -4403,7 +4403,7 @@ public class xtGraphics extends Panel implements Runnable {
 				lastload = -11;
 				cars.stop();
 				cars.unloadMod();
-				m.crs = false;
+				Medium.crs = false;
 				fase = 2;
 			}
 			control.handb = false;
@@ -4685,21 +4685,21 @@ public class xtGraphics extends Panel implements Runnable {
 	}
 
 	public void hipnoload(int i, boolean flag) {
-		int j = (int) (230F - 230F * (m.snap[0] / (100F * hipno[i - 1])));
+		int j = (int) (230F - 230F * (Medium.snap[0] / (100F * hipno[i - 1])));
 		if (j > 255) {
 			j = 255;
 		}
 		if (j < 0) {
 			j = 0;
 		}
-		int l = (int) (230F - 230F * (m.snap[1] / (100F * hipno[i - 1])));
+		int l = (int) (230F - 230F * (Medium.snap[1] / (100F * hipno[i - 1])));
 		if (l > 255) {
 			l = 255;
 		}
 		if (l < 0) {
 			l = 0;
 		}
-		int j1 = (int) (230F - 230F * (m.snap[2] / (100F * hipno[i - 1])));
+		int j1 = (int) (230F - 230F * (Medium.snap[2] / (100F * hipno[i - 1])));
 		if (j1 > 255) {
 			j1 = 255;
 		}
@@ -4739,21 +4739,21 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 			rd.drawImage(dude[duds], 30, 10, null);
 			rd.drawImage(flaot, 127, 42, null);
-			int k = (int) (80F - 80F * (m.snap[0] / (50F * hipno[i - 1])));
+			int k = (int) (80F - 80F * (Medium.snap[0] / (50F * hipno[i - 1])));
 			if (k > 255) {
 				k = 255;
 			}
 			if (k < 0) {
 				k = 0;
 			}
-			int i1 = (int) (80F - 80F * (m.snap[1] / (50F * hipno[i - 1])));
+			int i1 = (int) (80F - 80F * (Medium.snap[1] / (50F * hipno[i - 1])));
 			if (i1 > 255) {
 				i1 = 255;
 			}
 			if (i1 < 0) {
 				i1 = 0;
 			}
-			int k1 = (int) (80F - 80F * (m.snap[2] / (50F * hipno[i - 1])));
+			int k1 = (int) (80F - 80F * (Medium.snap[2] / (50F * hipno[i - 1])));
 			if (k1 > 255) {
 				k1 = 255;
 			}
@@ -4859,21 +4859,21 @@ public class xtGraphics extends Panel implements Runnable {
 				int l1 = 0;
 				int i2 = 0;
 				if (j == 1 && ai[j1] == i1) {
-					k1 = (int) (237F - 237F * (m.snap[0] / (150F * hipno[i - 1])));
+					k1 = (int) (237F - 237F * (Medium.snap[0] / (150F * hipno[i - 1])));
 					if (k1 > 255) {
 						k1 = 255;
 					}
 					if (k1 < 0) {
 						k1 = 0;
 					}
-					l1 = (int) (237F - 237F * (m.snap[1] / (150F * hipno[i - 1])));
+					l1 = (int) (237F - 237F * (Medium.snap[1] / (150F * hipno[i - 1])));
 					if (l1 > 255) {
 						l1 = 255;
 					}
 					if (l1 < 0) {
 						l1 = 0;
 					}
-					i2 = (int) (237F - 237F * (m.snap[2] / (150F * hipno[i - 1])));
+					i2 = (int) (237F - 237F * (Medium.snap[2] / (150F * hipno[i - 1])));
 					if (i2 > 255) {
 						i2 = 255;
 					}
@@ -4887,7 +4887,7 @@ public class xtGraphics extends Panel implements Runnable {
 					}
 				} else {
 					k1 = (int) (color.getRed()
-							- color.getRed() * (m.snap[0] / (50F * hipno[i - 1])));
+							- color.getRed() * (Medium.snap[0] / (50F * hipno[i - 1])));
 					if (k1 > 255) {
 						k1 = 255;
 					}
@@ -4895,7 +4895,7 @@ public class xtGraphics extends Panel implements Runnable {
 						k1 = 0;
 					}
 					l1 = (int) (color.getGreen()
-							- color.getGreen() * (m.snap[1] / (50F * hipno[i - 1])));
+							- color.getGreen() * (Medium.snap[1] / (50F * hipno[i - 1])));
 					if (l1 > 255) {
 						l1 = 255;
 					}
@@ -4903,7 +4903,7 @@ public class xtGraphics extends Panel implements Runnable {
 						l1 = 0;
 					}
 					i2 = (int) (color.getBlue()
-							- color.getBlue() * (m.snap[2] / (50F * hipno[i - 1])));
+							- color.getBlue() * (Medium.snap[2] / (50F * hipno[i - 1])));
 					if (i2 > 255) {
 						i2 = 255;
 					}

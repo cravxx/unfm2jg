@@ -772,8 +772,8 @@ public class Madness {
 		dest = false;
 		newcar = false;
 		if (im == 0) {
-			m.checkpoint = -1;
-			m.lastcheck = false;
+			Medium.checkpoint = -1;
+			Medium.lastcheck = false;
 		}
 		rpdcatch = 0;
 	}
@@ -1834,12 +1834,12 @@ public class Madness {
 		if (clear == l9 + nlaps * checkpoints.nsp)
 			nlaps++;
 		if (im == 0) {
-			for (m.checkpoint = clear; m.checkpoint >= checkpoints.nsp; m.checkpoint -= checkpoints.nsp)
+			for (Medium.checkpoint = clear; Medium.checkpoint >= checkpoints.nsp; Medium.checkpoint -= checkpoints.nsp)
 				;
 			if (clear == checkpoints.nlaps * checkpoints.nsp - 1)
-				m.lastcheck = true;
+				Medium.lastcheck = true;
 			if (checkpoints.haltall)
-				m.lastcheck = false;
+				Medium.lastcheck = false;
 		}
 		if (focus == -1) {
 			if (im == 0)

@@ -152,7 +152,7 @@ public class Plane {
 		if (!flag) {
 			j3 = 0;
 			do {
-				c[j3] = (int) (ai3[j3] + ai3[j3] * (m.snap[j3] / 100F));
+				c[j3] = (int) (ai3[j3] + ai3[j3] * (Medium.snap[j3] / 100F));
 				if (c[j3] > 255) {
 					c[j3] = 255;
 				}
@@ -164,7 +164,7 @@ public class Plane {
 		if (flag) {
 			j3 = 0;
 			do {
-				c[j3] = (m.csky[j3] * m.fade[0] * 2 + m.cfade[j3] * 3000) / (m.fade[0] * 2 + 3000);
+				c[j3] = (Medium.csky[j3] * Medium.fade[0] * 2 + Medium.cfade[j3] * 3000) / (Medium.fade[0] * 2 + 3000);
 			} while (++j3 < 3);
 		}
 		disline = k1;
@@ -232,7 +232,7 @@ public class Plane {
 				ai1[j2] = oz[j2] + k;
 			}
 
-			if ((gr == -11 || gr == -13) && m.lastmaf == 1) {
+			if ((gr == -11 || gr == -13) && Medium.lastmaf == 1) {
 				for (int k2 = 0; k2 < n; k2++) {
 					ai[k2] = -ox[k2] + i;
 					ai2[k2] = oy[k2] + j;
@@ -251,8 +251,8 @@ public class Plane {
 				Utility.rot(ai, ai2, i, j, i1, n);
 				Utility.rot(ai2, ai1, j, k, j1, n);
 				Utility.rot(ai, ai1, i, k, l, n);
-				Utility.rot(ai, ai1, m.cx, m.cz, m.xz, n);
-				Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, n);
+				Utility.rot(ai, ai1, Medium.cx, Medium.cz, Medium.xz, n);
+				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, Medium.zy, n);
 				int ai3[] = new int[n];
 				int ai5[] = new int[n];
 				for (int i4 = 0; i4 < n; i4++) {
@@ -360,15 +360,15 @@ public class Plane {
 				Utility.rot(ai, ai2, i, j, i1, 3);
 				Utility.rot(ai2, ai1, j, k, j1, 3);
 				Utility.rot(ai, ai1, i, k, l, 3);
-				Utility.rot(ai, ai1, m.cx, m.cz, m.xz, 3);
-				Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, 3);
+				Utility.rot(ai, ai1, Medium.cx, Medium.cz, Medium.xz, 3);
+				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, Medium.zy, 3);
 				int k8 = 0;
 				do {
 					ai12[k8] = Utility.xs(ai[k8], ai1[k8]);
 					ai13[k8] = Utility.ys(ai2[k8], ai1[k8], 0);
 				} while (++k8 < 3);
 				// Flame color. Outer Flame Red Value
-				k8 = (int) (255F + 255F * (m.snap[0] / 400F));
+				k8 = (int) (255F + 255F * (Medium.snap[0] / 400F));
 				if (k8 > 255) {
 					k8 = 255;
 				}
@@ -376,7 +376,7 @@ public class Plane {
 					k8 = 0;
 				}
 				// Flame color. Outer Flame Green Value
-				int i9 = (int) (169F + 169F * (m.snap[1] / 300F));
+				int i9 = (int) (169F + 169F * (Medium.snap[1] / 300F));
 				if (i9 > 255) {
 					i9 = 255;
 				}
@@ -384,7 +384,7 @@ public class Plane {
 					i9 = 0;
 				}
 				// Flame color. Outer Flame Blue Value
-				int k9 = (int) (89F + 89F * (m.snap[2] / 200F));
+				int k9 = (int) (89F + 89F * (Medium.snap[2] / 200F));
 				if (k9 > 255) {
 					k9 = 255;
 				}
@@ -420,15 +420,15 @@ public class Plane {
 				Utility.rot(ai, ai2, i, j, i1, 3);
 				Utility.rot(ai2, ai1, j, k, j1, 3);
 				Utility.rot(ai, ai1, i, k, l, 3);
-				Utility.rot(ai, ai1, m.cx, m.cz, m.xz, 3);
-				Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, 3);
+				Utility.rot(ai, ai1, Medium.cx, Medium.cz, Medium.xz, 3);
+				Utility.rot(ai2, ai1, Medium.cy, Medium.cz, Medium.zy, 3);
 				int i10 = 0;
 				do {
 					ai12[i10] = Utility.xs(ai[i10], ai1[i10]);
 					ai13[i10] = Utility.ys(ai2[i10], ai1[i10], 0);
 				} while (++i10 < 3);
 				// Flame color. Inner Flame Red Value
-				k8 = (int) (255F + 255F * (m.snap[0] / 400F));
+				k8 = (int) (255F + 255F * (Medium.snap[0] / 400F));
 				if (k8 > 255) {
 					k8 = 255;
 				}
@@ -436,7 +436,7 @@ public class Plane {
 					k8 = 0;
 				}
 				// Flame color. Inner Flame Green Value
-				i9 = (int) (207F + 207F * (m.snap[1] / 300F));
+				i9 = (int) (207F + 207F * (Medium.snap[1] / 300F));
 				if (i9 > 255) {
 					i9 = 255;
 				}
@@ -444,7 +444,7 @@ public class Plane {
 					i9 = 0;
 				}
 				// Flame color. Inner Flame Blue Value
-				k9 = (int) (136F + 136F * (m.snap[2] / 200F));
+				k9 = (int) (136F + 136F * (Medium.snap[2] / 200F));
 				if (k9 > 255) {
 					k9 = 255;
 				}
@@ -547,19 +547,19 @@ public class Plane {
 			dz += vz;
 			dy += vy;
 			vy += 7;
-			if (ai8[0] > m.ground) {
+			if (ai8[0] > Medium.ground) {
 				chip = 19;
 			}
-			Utility.rot(ai4, ai6, m.cx, m.cz, m.xz, 3);
-			Utility.rot(ai8, ai6, m.cy, m.cz, m.zy, 3);
+			Utility.rot(ai4, ai6, Medium.cx, Medium.cz, Medium.xz, 3);
+			Utility.rot(ai8, ai6, Medium.cy, Medium.cz, Medium.zy, 3);
 			int ai10[] = new int[3];
 			int ai11[] = new int[3];
 			int l5 = 0;
 			do {
 				ai10[l5] = Utility.xs(ai4[l5], ai6[l5]);
 				ai11[l5] = Utility.ys(ai8[l5], ai6[l5], 0);
-				if (ai11[l5] < 45 && m.flex != 0) {
-					m.flex = 0;
+				if (ai11[l5] < 45 && Medium.flex != 0) {
+					Medium.flex = 0;
 				}
 			} while (++l5 < 3);
 			l5 = (int) (m.random() * 3F);
@@ -600,7 +600,7 @@ public class Plane {
 			} while (++j3 < 3);
 			projf = projf / 3F;
 		}
-		Utility.rot(ai, ai1, m.cx, m.cz, m.xz, n);
+		Utility.rot(ai, ai1, Medium.cx, Medium.cz, Medium.xz, n);
 		boolean flag1 = false;
 		int ai7[] = new int[n];
 		int ai9[] = new int[n];
@@ -632,18 +632,18 @@ public class Plane {
 			flag1 = true;
 			int l6 = 0;
 			for (int k7 = 0; k7 < n; k7++) {
-				if (ai1[k7] < 50 && ai2[k7] > m.cy) {
+				if (ai1[k7] < 50 && ai2[k7] > Medium.cy) {
 					flag1 = false;
 				} else if (ai2[k7] == ai2[0]) {
 					l6++;
 				}
 			}
 
-			if (l6 == n && ai2[0] > m.cy) {
+			if (l6 == n && ai2[0] > Medium.cy) {
 				flag1 = false;
 			}
 		}
-		Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, n);
+		Utility.rot(ai2, ai1, Medium.cy, Medium.cz, Medium.zy, n);
 		boolean flag2 = true;
 		int ai14[] = new int[n];
 		int ai15[] = new int[n];
@@ -658,17 +658,17 @@ public class Plane {
 			if (ai15[k10] < 0 || ai1[k10] < 10) {
 				j8++;
 			}
-			if (ai15[k10] > m.h || ai1[k10] < 10) {
+			if (ai15[k10] > Medium.h || ai1[k10] < 10) {
 				l8++;
 			}
 			if (ai14[k10] < 0 || ai1[k10] < 10) {
 				j9++;
 			}
-			if (ai14[k10] > m.w || ai1[k10] < 10) {
+			if (ai14[k10] > Medium.w || ai1[k10] < 10) {
 				l9++;
 			}
-			if (ai15[k10] < 45 && m.flex != 0) {
-				m.flex = 0;
+			if (ai15[k10] < 45 && Medium.flex != 0) {
+				Medium.flex = 0;
 			}
 			if (ai1[k10] < 10) {
 				j10++;
@@ -701,7 +701,7 @@ public class Plane {
 		if (j9 == n || j8 == n || l8 == n || l9 == n) {
 			flag2 = false;
 		}
-		if (m.trk && (j9 != 0 || j8 != 0 || l8 != 0 || l9 != 0)) {
+		if (Medium.trk && (j9 != 0 || j8 != 0 || l8 != 0 || l9 != 0)) {
 			flag2 = false;
 		}
 		if (j10 != 0) {
@@ -747,7 +747,7 @@ public class Plane {
 					}
 				}
 			}
-			if (m.lightson && light == 2) {
+			if (Medium.lightson && light == 2) {
 				i13 -= 40;
 			}
 			int j14 = 0;
@@ -808,8 +808,8 @@ public class Plane {
 			int j18 = (k16 + l16) / 2;
 			int l18 = (i17 + j17) / 2;
 			av = (int) Math
-					.sqrt((m.cy - l17) * (m.cy - l17) + (m.cx - j18) * (m.cx - j18) + l18 * l18 + i13 * i13 * i13);
-			if (!m.trk && (av > m.fade[disline] || av == 0)) {
+					.sqrt((Medium.cy - l17) * (Medium.cy - l17) + (Medium.cx - j18) * (Medium.cx - j18) + l18 * l18 + i13 * i13 * i13);
+			if (!Medium.trk && (av > Medium.fade[disline] || av == 0)) {
 				flag2 = false;
 			}
 			if (i11 == -111 && av > 4500) {
@@ -818,13 +818,13 @@ public class Plane {
 			if (i11 == -111 && av > 1500) {
 				flag = true;
 			}
-			if (av > 3000 && m.adv <= 900) {
+			if (av > 3000 && Medium.adv <= 900) {
 				flag = true;
 			}
 			if (gr == -12 && av < 11200) {
-				m.lastmaf = i11;
+				Medium.lastmaf = i11;
 			}
-			if (gr == -13 && (!m.lastcheck || i2 != -1)) {
+			if (gr == -13 && (!Medium.lastcheck || i2 != -1)) {
 				flag2 = false;
 			}
 			if (gr == -16 && av > 1500) {
@@ -867,7 +867,7 @@ public class Plane {
 				if (gr == -11) {
 					f1 = 0.67F;
 					if (i2 == -1) {
-						if (m.cpflik || m.nochekflk && !m.lastcheck) {
+						if (Medium.cpflik || Medium.nochekflk && !Medium.lastcheck) {
 							f1 = 1.0F;
 						} else {
 							f1 = 0.76F;
@@ -875,7 +875,7 @@ public class Plane {
 					}
 				}
 				if (gr == -13 && i2 == -1) {
-					if (m.cpflik) {
+					if (Medium.cpflik) {
 						f1 = 0.0F;
 					} else {
 						f1 = 0.76F;
@@ -896,7 +896,7 @@ public class Plane {
 				}
 			}
 			Color color;
-			if (!m.trk) {
+			if (!Medium.trk) {
 				color = Color.getHSBColor(hsb[0], hsb[1], hsb[2] * f1);
 			} else {
 				float af[] = new float[3];
@@ -906,7 +906,7 @@ public class Plane {
 			int l11 = color.getRed();
 			int j13 = color.getGreen();
 			int k14 = color.getBlue();
-			if (m.lightson && light != 0) {
+			if (Medium.lightson && light != 0) {
 				l11 = oc[0];
 				if (l11 > 255) {
 					l11 = 255;
@@ -929,19 +929,19 @@ public class Plane {
 					k14 = 0;
 				}
 			}
-			if (!m.trk) {
+			if (!Medium.trk) {
 				int l15 = 0;
 				do {
-					if (av > m.fade[l15]) {
-						l11 = (l11 * m.fogd + m.cfade[0]) / (m.fogd + 1);
-						j13 = (j13 * m.fogd + m.cfade[1]) / (m.fogd + 1);
-						k14 = (k14 * m.fogd + m.cfade[2]) / (m.fogd + 1);
+					if (av > Medium.fade[l15]) {
+						l11 = (l11 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
+						j13 = (j13 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
+						k14 = (k14 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
 					}
 				} while (++l15 < 8);
 			}
 			rd.setColor(new Color(l11, j13, k14));
 			rd.fillPolygon(ai14, ai15, n);
-			if (m.trk && gr == -10) {
+			if (Medium.trk && gr == -10) {
 				flag = false;
 			}
 			if (!flag) {
@@ -949,7 +949,7 @@ public class Plane {
 					l11 = 0;
 					j13 = 0;
 					k14 = 0;
-					if (m.lightson && light != 0) {
+					if (Medium.lightson && light != 0) {
 						l11 = oc[0] / 2;
 						if (l11 > 255) {
 							l11 = 255;
@@ -983,14 +983,14 @@ public class Plane {
 					}
 					if (flx == 1) {
 						l11 = 0;
-						j13 = (int) (223F + 223F * (m.snap[1] / 100F));
+						j13 = (int) (223F + 223F * (Medium.snap[1] / 100F));
 						if (j13 > 255) {
 							j13 = 255;
 						}
 						if (j13 < 0) {
 							j13 = 0;
 						}
-						k14 = (int) (255F + 255F * (m.snap[2] / 100F));
+						k14 = (int) (255F + 255F * (Medium.snap[2] / 100F));
 						if (k14 > 255) {
 							k14 = 255;
 						}
@@ -1003,14 +1003,14 @@ public class Plane {
 					}
 					if (flx == 3) {
 						l11 = 0;
-						j13 = (int) (255F + 255F * (m.snap[1] / 100F));
+						j13 = (int) (255F + 255F * (Medium.snap[1] / 100F));
 						if (j13 > 255) {
 							j13 = 255;
 						}
 						if (j13 < 0) {
 							j13 = 0;
 						}
-						k14 = (int) (223F + 223F * (m.snap[2] / 100F));
+						k14 = (int) (223F + 223F * (Medium.snap[2] / 100F));
 						if (k14 > 255) {
 							k14 = 255;
 						}
@@ -1022,7 +1022,7 @@ public class Plane {
 						flx = 2;
 					}
 				}
-			} else if (road && av <= 3000 && !m.trk && m.fade[0] > 4000) {
+			} else if (road && av <= 3000 && !Medium.trk && Medium.fade[0] > 4000) {
 				if ((l11 -= 10) < 0) {
 					l11 = 0;
 				}
@@ -1036,12 +1036,12 @@ public class Plane {
 				rd.drawPolygon(ai14, ai15, n);
 			}
 			if (gr == -10) {
-				if (!m.trk) {
+				if (!Medium.trk) {
 					int i12 = c[0];
 					int k13 = c[1];
 					int l14 = c[2];
 					if (i2 == -1) {
-						if (m.nochekflk && !m.lastcheck) {
+						if (Medium.nochekflk && !Medium.lastcheck) {
 							i12 = (int) (i12 * 1.25D);
 							if (i12 > 255) {
 								i12 = 255;
@@ -1054,7 +1054,7 @@ public class Plane {
 							if (l14 > 255) {
 								l14 = 255;
 							}
-						} else if (m.cpflik) {
+						} else if (Medium.cpflik) {
 							i12 = (int) (i12 * 1.5D);
 							if (i12 > 255) {
 								i12 = 255;
@@ -1071,15 +1071,15 @@ public class Plane {
 					}
 					int i16 = 0;
 					do {
-						if (av > m.fade[i16]) {
-							i12 = (i12 * m.fogd + m.cfade[0]) / (m.fogd + 1);
-							k13 = (k13 * m.fogd + m.cfade[1]) / (m.fogd + 1);
-							l14 = (l14 * m.fogd + m.cfade[2]) / (m.fogd + 1);
+						if (av > Medium.fade[i16]) {
+							i12 = (i12 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
+							k13 = (k13 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
+							l14 = (l14 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
 						}
 					} while (++i16 < 8);
 					rd.setColor(new Color(i12, k13, l14));
 					rd.drawPolygon(ai14, ai15, n);
-				} else if (m.cpflik && m.hit == 5000) {
+				} else if (Medium.cpflik && Medium.hit == 5000) {
 					int l13 = (int) (Math.random() * 115D);
 					int j12 = l13 * 2 - 54;
 					if (j12 < 0) {
@@ -1105,16 +1105,16 @@ public class Plane {
 					rd.drawPolygon(ai14, ai15, n);
 				}
 			}
-			if (gr == -18 && !m.trk) {
+			if (gr == -18 && !Medium.trk) {
 				int k12 = c[0];
 				int i14 = c[1];
 				int j15 = c[2];
-				if (m.cpflik && m.elecr >= 0.0F) {
-					k12 = (int) (25.5F * m.elecr);
+				if (Medium.cpflik && Medium.elecr >= 0.0F) {
+					k12 = (int) (25.5F * Medium.elecr);
 					if (k12 > 255) {
 						k12 = 255;
 					}
-					i14 = (int) (128F + 12.8F * m.elecr);
+					i14 = (int) (128F + 12.8F * Medium.elecr);
 					if (i14 > 255) {
 						i14 = 255;
 					}
@@ -1122,10 +1122,10 @@ public class Plane {
 				}
 				int j16 = 0;
 				do {
-					if (av > m.fade[j16]) {
-						k12 = (k12 * m.fogd + m.cfade[0]) / (m.fogd + 1);
-						i14 = (i14 * m.fogd + m.cfade[1]) / (m.fogd + 1);
-						j15 = (j15 * m.fogd + m.cfade[2]) / (m.fogd + 1);
+					if (av > Medium.fade[j16]) {
+						k12 = (k12 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
+						i14 = (i14 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
+						j15 = (j15 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
 					}
 				} while (++j16 < 8);
 				rd.setColor(new Color(k12, i14, j15));
@@ -1149,11 +1149,11 @@ public class Plane {
 		Utility.rot(ai, ai2, i, j, i1, n);
 		Utility.rot(ai2, ai1, j, k, j1, n);
 		Utility.rot(ai, ai1, i, k, l, n);
-		int i2 = (int) (m.cgrnd[0] / 1.5D);
-		int j2 = (int) (m.cgrnd[1] / 1.5D);
-		int k2 = (int) (m.cgrnd[2] / 1.5D);
+		int i2 = (int) (Medium.cgrnd[0] / 1.5D);
+		int j2 = (int) (Medium.cgrnd[1] / 1.5D);
+		int k2 = (int) (Medium.cgrnd[2] / 1.5D);
 		for (int l2 = 0; l2 < n; l2++) {
-			ai2[l2] = m.ground;
+			ai2[l2] = Medium.ground;
 		}
 
 		if (k1 == 0) {
@@ -1199,21 +1199,21 @@ public class Plane {
 			int i6 = (k3 + l3) / 2;
 			for (int l6 = t.nt - 1; l6 >= 0; l6--) {
 				int k7 = 0;
-				if (Math.abs(t.zy[l6]) != 90 && Math.abs(t.xy[l6]) != 90 && Math.abs(i5 - (t.x[l6] - m.x)) < t.radx[l6]
-						&& Math.abs(i6 - (t.z[l6] - m.z)) < t.radz[l6]) {
+				if (Math.abs(t.zy[l6]) != 90 && Math.abs(t.xy[l6]) != 90 && Math.abs(i5 - (t.x[l6] - Medium.x)) < t.radx[l6]
+						&& Math.abs(i6 - (t.z[l6] - Medium.z)) < t.radz[l6]) {
 					k7++;
 				}
 				if (k7 == 0) {
 					continue;
 				}
 				for (int j8 = 0; j8 < n; j8++) {
-					ai2[j8] = t.y[l6] - m.y;
+					ai2[j8] = t.y[l6] - Medium.y;
 					if (t.zy[l6] != 0) {
-						ai2[j8] += ((ai1[j8] - (t.z[l6] - m.z - t.radz[l6])) * RadicalMath.sin(t.zy[l6]))
+						ai2[j8] += ((ai1[j8] - (t.z[l6] - Medium.z - t.radz[l6])) * RadicalMath.sin(t.zy[l6]))
 								/ RadicalMath.sin(90 - t.zy[l6]) - (t.radz[l6] * RadicalMath.sin(t.zy[l6])) / RadicalMath.sin(90 - t.zy[l6]);
 					}
 					if (t.xy[l6] != 0) {
-						ai2[j8] += ((ai[j8] - (t.x[l6] - m.x - t.radx[l6])) * RadicalMath.sin(t.xy[l6]))
+						ai2[j8] += ((ai[j8] - (t.x[l6] - Medium.x - t.radx[l6])) * RadicalMath.sin(t.xy[l6]))
 								/ RadicalMath.sin(90 - t.xy[l6]) - (t.radx[l6] * RadicalMath.sin(t.xy[l6])) / RadicalMath.sin(90 - t.xy[l6]);
 					}
 				}
@@ -1233,9 +1233,9 @@ public class Plane {
 			j2 = 80;
 			k2 = 80;
 		} else {
-			for (int i4 = 0; i4 < m.nsp; i4++) {
+			for (int i4 = 0; i4 < Medium.nsp; i4++) {
 				for (int j5 = 0; j5 < n; j5++) {
-					if (Math.abs(ai[j5] - m.spx[i4]) < m.sprad[i4] && Math.abs(ai1[j5] - m.spz[i4]) < m.sprad[i4]) {
+					if (Math.abs(ai[j5] - Medium.spx[i4]) < Medium.sprad[i4] && Math.abs(ai1[j5] - Medium.spz[i4]) < Medium.sprad[i4]) {
 						flag = false;
 					}
 				}
@@ -1244,8 +1244,8 @@ public class Plane {
 
 		}
 		if (flag) {
-			Utility.rot(ai, ai1, m.cx, m.cz, m.xz, n);
-			Utility.rot(ai2, ai1, m.cy, m.cz, m.zy, n);
+			Utility.rot(ai, ai1, Medium.cx, Medium.cz, Medium.xz, n);
+			Utility.rot(ai2, ai1, Medium.cy, Medium.cz, Medium.zy, n);
 			int j4 = 0;
 			int k5 = 0;
 			int j6 = 0;
@@ -1256,13 +1256,13 @@ public class Plane {
 				if (ai4[l7] < 0 || ai1[l7] < 10) {
 					j4++;
 				}
-				if (ai4[l7] > m.h || ai1[l7] < 10) {
+				if (ai4[l7] > Medium.h || ai1[l7] < 10) {
 					k5++;
 				}
 				if (ai3[l7] < 0 || ai1[l7] < 10) {
 					j6++;
 				}
-				if (ai3[l7] > m.w || ai1[l7] < 10) {
+				if (ai3[l7] > Medium.w || ai1[l7] < 10) {
 					i7++;
 				}
 			}
@@ -1274,10 +1274,10 @@ public class Plane {
 		if (flag) {
 			int k4 = 0;
 			do {
-				if (av > m.fade[k4]) {
-					i2 = (i2 * m.fogd + m.cfade[0]) / (m.fogd + 1);
-					j2 = (j2 * m.fogd + m.cfade[1]) / (m.fogd + 1);
-					k2 = (k2 * m.fogd + m.cfade[2]) / (m.fogd + 1);
+				if (av > Medium.fade[k4]) {
+					i2 = (i2 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
+					j2 = (j2 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
+					k2 = (k2 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
 				}
 			} while (++k4 < 8);
 			rd.setColor(new Color(i2, j2, k2));

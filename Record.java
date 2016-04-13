@@ -343,8 +343,8 @@ public class Record {
 		conto.wxz = hwxz[j][i];
 		conto.wzy = hwzy[j][i];
 		if (i == 0) {
-			conto.m.checkpoint = hcheckpoint[j];
-			conto.m.lastcheck = hlastcheck[j];
+			Medium.checkpoint = hcheckpoint[j];
+			Medium.lastcheck = hlastcheck[j];
 		}
 		if (j == 0) {
 			cntdest[i] = 0;
@@ -510,8 +510,8 @@ public class Record {
 		conto.wxz = wxz[j][i];
 		conto.wzy = wzy[j][i];
 		if (i == 0) {
-			conto.m.checkpoint = checkpoint[j];
-			conto.m.lastcheck = lastcheck[j];
+			Medium.checkpoint = checkpoint[j];
+			Medium.lastcheck = lastcheck[j];
 		}
 		if (j == 0) {
 			cntdest[i] = 0;
@@ -621,8 +621,8 @@ public class Record {
 				checkpoint[j1] = checkpoint[j1 + 1];
 				lastcheck[j1] = lastcheck[j1 + 1];
 			} while (++j1 < 299);
-			checkpoint[299] = conto.m.checkpoint;
-			lastcheck[299] = conto.m.lastcheck;
+			checkpoint[299] = Medium.checkpoint;
+			lastcheck[299] = Medium.lastcheck;
 		}
 		j1 = 0;
 		do {
