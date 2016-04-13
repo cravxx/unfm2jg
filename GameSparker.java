@@ -1201,7 +1201,7 @@ public class GameSparker extends Applet implements Runnable {
 							if(!polyfx[l12].rapidWireframe(aconto1[l12]))
 								justFixed[l12] = false;
 						}
-					}while (++l12 < 7);					
+					}while (++l12 < 7);
 					
 					/*try {
 						*//**

@@ -2746,12 +2746,12 @@ public class xtGraphics extends Panel implements Runnable {
 				 */
 				k = 0;
 				do {
-					if (madness[k].power == 98F && justPowered[k] == true) {
+					if (madness[k].power == 98F && justPowered[k] == true && madness[k].gtouch) {
 						if(!polyfx[k].rapidBody(conto[k])){
 							justPowered[k] = false;
 						}
 					}
-					if(madness[k].power < 98F){
+					if(madness[k].power < 98F || !madness[k].gtouch){
 						justPowered[k] = true;
 					}
 				} while (++k < 7);
