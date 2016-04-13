@@ -526,7 +526,7 @@ public class ContO {
 
 							}
 						}
-						Medium.addsp(x - Medium.x, z - Medium.z, (int) (maxR * 0.80000000000000004D));
+						Medium.addSp(x - Medium.x, z - Medium.z, (int) (maxR * 0.80000000000000004D));
 						rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 					} else {
 						lowshadow(rd, k);

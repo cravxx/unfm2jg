@@ -475,29 +475,29 @@ public class GameSparker extends Applet implements Runnable {
 				if (line.startsWith("mountains"))
 					Medium.mgen = Utility.getint("mountains", line, 0);
 				if (line.startsWith("snap"))
-					medium.setsnap(Utility.getint("snap", line, 0), Utility.getint("snap", line, 1), Utility.getint("snap", line, 2));
+					Medium.setSnap(Utility.getint("snap", line, 0), Utility.getint("snap", line, 1), Utility.getint("snap", line, 2));
 				if (line.startsWith("sky")) {
-					medium.setsky(Utility.getint("sky", line, 0), Utility.getint("sky", line, 1), Utility.getint("sky", line, 2));
+					Medium.setSky(Utility.getint("sky", line, 0), Utility.getint("sky", line, 1), Utility.getint("sky", line, 2));
 					xtgraphics.snap(checkpoints.stage);
 				}
 				if (line.startsWith("ground"))
-					medium.setgrnd(Utility.getint("ground", line, 0), Utility.getint("ground", line, 1), Utility.getint("ground", line, 2));
+					Medium.setGround(Utility.getint("ground", line, 0), Utility.getint("ground", line, 1), Utility.getint("ground", line, 2));
 				if (line.startsWith("polys"))
-					medium.setpolys(Utility.getint("polys", line, 0), Utility.getint("polys", line, 1), Utility.getint("polys", line, 2));
+					Medium.setPolys(Utility.getint("polys", line, 0), Utility.getint("polys", line, 1), Utility.getint("polys", line, 2));
 				if (line.startsWith("fog"))
-					medium.setfade(Utility.getint("fog", line, 0), Utility.getint("fog", line, 1), Utility.getint("fog", line, 2));
+					Medium.setFade(Utility.getint("fog", line, 0), Utility.getint("fog", line, 1), Utility.getint("fog", line, 2));
 				if (line.startsWith("density"))
 					Medium.fogd = Utility.getint("density", line, 0);
 				if (line.startsWith("texture")) {
-					medium.setexture(Utility.getint("texture", line, 0), Utility.getint("texture", line, 1), Utility.getint("texture", line, 2),
+					Medium.setTexture(Utility.getint("texture", line, 0), Utility.getint("texture", line, 1), Utility.getint("texture", line, 2),
 							Utility.getint("texture", line, 3));
 				}
 				if (line.startsWith("clouds")) {
-					medium.setclouds(Utility.getint("clouds", line, 0), Utility.getint("clouds", line, 1), Utility.getint("clouds", line, 2),
+					Medium.setClouds(Utility.getint("clouds", line, 0), Utility.getint("clouds", line, 1), Utility.getint("clouds", line, 2),
 							Utility.getint("clouds", line, 3), Utility.getint("clouds", line, 4));
 				}
 				if (line.startsWith("fadefrom")) {
-					medium.fadfrom(Utility.getint("fadefrom", line, 0));
+					Medium.fadeFrom(Utility.getint("fadefrom", line, 0));
 					Medium.origfade = Medium.fade[0];
 				}
 				if (line.startsWith("lightson"))
@@ -707,10 +707,10 @@ public class GameSparker extends Applet implements Runnable {
 					trackers.nt++;
 				}
 			}
-			medium.newpolys(l_wall, r_wall - l_wall, b_wall, t_wall - b_wall, trackers, notb);
-			medium.newmountains(l_wall, r_wall, b_wall, t_wall);
-			medium.newclouds(l_wall, r_wall, b_wall, t_wall);
-			medium.newstars();						
+			Medium.newpolys(l_wall, r_wall - l_wall, b_wall, t_wall - b_wall, trackers, notb);
+			Medium.newmountains(l_wall, r_wall, b_wall, t_wall);
+			Medium.newclouds(l_wall, r_wall, b_wall, t_wall);
+			Medium.newstars();						
 		} catch (IOException e) {
 			String exceptStr = e.toString();
 			final int maxChar = 30;
@@ -996,7 +996,7 @@ public class GameSparker extends Applet implements Runnable {
 			if (xtgraphics.fase == 1) {
 				rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 				xtgraphics.trackbg(false);
-				medium.aroundtrack(checkpoints);
+				Medium.aroundTrack(checkpoints);
 				int i3 = 0;
 				int ai[] = new int[200];
 				for (int k5 = 7; k5 < notb; k5++)
@@ -1041,7 +1041,7 @@ public class GameSparker extends Applet implements Runnable {
 				xtgraphics.stageselect(checkpoints, u[0]);
 			}
 			if (xtgraphics.fase == 176) {
-				medium.d(rd);
+				Medium.d(rd);
 				int j3 = 0;
 				int ai1[] = new int[200];
 				for (int i6 = 0; i6 < nob; i6++)
@@ -1077,7 +1077,7 @@ public class GameSparker extends Applet implements Runnable {
 
 				}
 
-				medium.follow(aconto1[0], 0, 0);
+				Medium.follow(aconto1[0], 0, 0);
 				xtgraphics.hipnoload(checkpoints.stage, false);
 				if (i1 != 0) {
 					i1--;
@@ -1105,7 +1105,7 @@ public class GameSparker extends Applet implements Runnable {
 						amadness[k3].newcar = false;
 					}
 				} while (++k3 < 7);
-				medium.d(rd);
+				Medium.d(rd);
 				k3 = 0;
 				int ai2[] = new int[200];
 				for (int k6 = 0; k6 < nob; k6++)
@@ -1176,16 +1176,16 @@ public class GameSparker extends Applet implements Runnable {
 				}
 				if (xtgraphics.starcnt < 38) {
 					if (view == 0) {
-						medium.follow(aconto1[0], amadness[0].cxz, u[0].lookback);
+						Medium.follow(aconto1[0], amadness[0].cxz, u[0].lookback);
 						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
 						initMoto(amadness, 1, 25);
 					}
 					if (view == 1) {
-						medium.around(aconto1[0], false);
+						Medium.around(aconto1[0], false);
 						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, false);
 					}
 					if (view == 2) {
-						medium.watch(aconto1[0], amadness[0].mxz);
+						Medium.watch(aconto1[0], amadness[0].mxz);
 						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, false);
 					}
 					if (mouses == 1) {
@@ -1197,7 +1197,7 @@ public class GameSparker extends Applet implements Runnable {
 						xtgraphics.blendude(offImage);
 					}
 				} else {
-					medium.around(aconto1[3], true);
+					Medium.around(aconto1[3], true);
 					if (u[0].enter || u[0].handb) {
 						xtgraphics.starcnt = 38;
 						u[0].enter = false;
@@ -1209,7 +1209,7 @@ public class GameSparker extends Applet implements Runnable {
 						Medium.adv = 900;
 						Medium.vxz = 180;
 						checkpoints.checkstat(amadness, aconto1, record);
-						medium.follow(aconto1[0], amadness[0].cxz, 0);
+						Medium.follow(aconto1[0], amadness[0].cxz, 0);
 						xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
 						rd.setColor(new Color(255, 255, 255));
 						rd.fillRect(0, 0, 670, 400);
@@ -1224,7 +1224,7 @@ public class GameSparker extends Applet implements Runnable {
 						aconto1[i4] = new ContO(record.car[0][i4], 0, 0, 0, 0);
 					} while (++i4 < 7);
 				}
-				medium.d(rd);
+				Medium.d(rd);
 				int j4 = 0;
 				int ai3[] = new int[100];
 				for (int l6 = 0; l6 < nob; l6++)
@@ -1287,7 +1287,7 @@ public class GameSparker extends Applet implements Runnable {
 				} else {
 					xtgraphics.replyn();
 				}
-				medium.around(aconto1[0], false);
+				Medium.around(aconto1[0], false);
 			}
 			if (xtgraphics.fase == -2) {
 				if (record.hcaught && record.wasted == 0 && record.whenwasted != 229 && checkpoints.stage <= 2
@@ -1329,7 +1329,7 @@ public class GameSparker extends Applet implements Runnable {
 						aconto1[k4] = new ContO(record.starcar[k4], 0, 0, 0, 0);
 					while (++k4 < 7);
 				}
-				medium.d(rd);
+				Medium.d(rd);
 				int i5 = 0;
 				int ai4[] = new int[100];
 				for (int i7 = 0; i7 < nob; i7++)
@@ -1398,11 +1398,11 @@ public class GameSparker extends Applet implements Runnable {
 								rd.fillRect(0, 0, 670, 400);
 							}
 							if (i2 == 0)
-								medium.around(aconto1[0], false);
+								Medium.around(aconto1[0], false);
 							if (i2 > 0 && i2 < 20)
-								medium.transaround(aconto1[0], aconto1[record.wasted], i2);
+								Medium.transaround(aconto1[0], aconto1[record.wasted], i2);
 							if (i2 == 20)
-								medium.around(aconto1[record.wasted], false);
+								Medium.around(aconto1[record.wasted], false);
 							if (k1 > record.whenwasted && i2 != 20)
 								i2++;
 							if ((i2 == 0 || i2 == 20) && ++k1 == 300) {
@@ -1412,19 +1412,19 @@ public class GameSparker extends Applet implements Runnable {
 							}
 						} else if (record.closefinish == 1) {
 							if (i2 == 0)
-								medium.around(aconto1[0], false);
+								Medium.around(aconto1[0], false);
 							if (i2 > 0 && i2 < 20)
-								medium.transaround(aconto1[0], aconto1[record.wasted], i2);
+								Medium.transaround(aconto1[0], aconto1[record.wasted], i2);
 							if (i2 == 20)
-								medium.around(aconto1[record.wasted], false);
+								Medium.around(aconto1[record.wasted], false);
 							if (i2 > 20 && i2 < 40)
-								medium.transaround(aconto1[record.wasted], aconto1[0], i2 - 20);
+								Medium.transaround(aconto1[record.wasted], aconto1[0], i2 - 20);
 							if (i2 == 40)
-								medium.around(aconto1[0], false);
+								Medium.around(aconto1[0], false);
 							if (i2 > 40 && i2 < 60)
-								medium.transaround(aconto1[0], aconto1[record.wasted], i2 - 40);
+								Medium.transaround(aconto1[0], aconto1[record.wasted], i2 - 40);
 							if (i2 == 60)
-								medium.around(aconto1[record.wasted], false);
+								Medium.around(aconto1[record.wasted], false);
 							if (k1 > 160 && i2 < 20)
 								i2++;
 							if (k1 > 230 && i2 < 40)
@@ -1438,23 +1438,23 @@ public class GameSparker extends Applet implements Runnable {
 							}
 						} else {
 							if (i2 == 0)
-								medium.around(aconto1[0], false);
+								Medium.around(aconto1[0], false);
 							if (i2 > 0 && i2 < 20)
-								medium.transaround(aconto1[0], aconto1[record.wasted], i2);
+								Medium.transaround(aconto1[0], aconto1[record.wasted], i2);
 							if (i2 == 20)
-								medium.around(aconto1[record.wasted], false);
+								Medium.around(aconto1[record.wasted], false);
 							if (i2 > 20 && i2 < 40)
-								medium.transaround(aconto1[record.wasted], aconto1[0], i2 - 20);
+								Medium.transaround(aconto1[record.wasted], aconto1[0], i2 - 20);
 							if (i2 == 40)
-								medium.around(aconto1[0], false);
+								Medium.around(aconto1[0], false);
 							if (i2 > 40 && i2 < 60)
-								medium.transaround(aconto1[0], aconto1[record.wasted], i2 - 40);
+								Medium.transaround(aconto1[0], aconto1[record.wasted], i2 - 40);
 							if (i2 == 60)
-								medium.around(aconto1[record.wasted], false);
+								Medium.around(aconto1[record.wasted], false);
 							if (i2 > 60 && i2 < 80)
-								medium.transaround(aconto1[record.wasted], aconto1[0], i2 - 60);
+								Medium.transaround(aconto1[record.wasted], aconto1[0], i2 - 60);
 							if (i2 == 80)
-								medium.around(aconto1[0], false);
+								Medium.around(aconto1[0], false);
 							if (k1 > 90 && i2 < 20)
 								i2++;
 							if (k1 > 160 && i2 < 40)
@@ -1488,7 +1488,7 @@ public class GameSparker extends Applet implements Runnable {
 							}
 						if (k1 > record.whenwasted && i2 != k2)
 							i2++;
-						medium.around(aconto1[0], false);
+						Medium.around(aconto1[0], false);
 						if ((i2 == 0 || i2 == k2) && ++k1 == 300) {
 							k1 = 0;
 							i2 = 0;
@@ -1562,7 +1562,7 @@ public class GameSparker extends Applet implements Runnable {
 							f1 = 5F;
 					}
 					if (xtgraphics.starcnt == 0)
-						medium.adjstfade(f1);
+						Medium.adjustFade(f1);
 					l3 = l5;
 					j1 = 0;
 				} else {

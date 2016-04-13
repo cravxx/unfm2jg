@@ -174,7 +174,7 @@ public class Medium
 		return rand[trn] / 10F;
 	}
 
-	public void newpolys(int i, int j, int k, int l, Trackers trackers, int i1) {
+	public static void newpolys(int i, int j, int k, int l, Trackers trackers, int i1) {
 		Random random1 = new Random((i1 + cgrnd[0] + cgrnd[1] + cgrnd[2]) * 1671);
 		nrw = j / 1200 + 9;
 		ncl = l / 1200 + 9;
@@ -271,7 +271,7 @@ public class Medium
 
 	}
 
-	private void groundpolys(Graphics2D graphics2d) {
+	private static void groundpolys(Graphics2D graphics2d) {
 		int i = (x - sgpx) / 1200 - 12;
 		if (i < 0) {
 			i = 0;
@@ -502,31 +502,7 @@ public class Medium
 		gofo = (float) (0.33000001311302185D + Math.random() * 1.3400000000000001D);		
 	}
 
-	public void setfade(int i, int j, int k) {
-		cfade[0] = (int) (i + i * (snap[0] / 100F));
-		if (cfade[0] > 255) {
-			cfade[0] = 255;
-		}
-		if (cfade[0] < 0) {
-			cfade[0] = 0;
-		}
-		cfade[1] = (int) (j + j * (snap[1] / 100F));
-		if (cfade[1] > 255) {
-			cfade[1] = 255;
-		}
-		if (cfade[1] < 0) {
-			cfade[1] = 0;
-		}
-		cfade[2] = (int) (k + k * (snap[2] / 100F));
-		if (cfade[2] > 255) {
-			cfade[2] = 255;
-		}
-		if (cfade[2] < 0) {
-			cfade[2] = 0;
-		}
-	}
-
-	public void newclouds(int i, int j, int k, int l) {
+	public static void newclouds(int i, int j, int k, int l) {
 		clx = null;
 		clz = null;
 		cmx = null;
@@ -668,7 +644,7 @@ public class Medium
 
 	}
 
-	private void drawclouds(Graphics2D graphics2d) {
+	private static void drawclouds(Graphics2D graphics2d) {
 		for (int i = 0; i < noc; i++) {
 			int j = cx + (int) ((clx[i] - x / 20 - cx) * RadicalMath.cos(xz) - (clz[i] - z / 20 - cz) * RadicalMath.sin(xz));
 			int k = cz + (int) ((clx[i] - x / 20 - cx) * RadicalMath.sin(xz) + (clz[i] - z / 20 - cz) * RadicalMath.cos(xz));
@@ -944,7 +920,7 @@ public class Medium
 
 	}
 
-	public void newmountains(int i, int i_167_, int i_168_, int i_169_) {
+	public static void newmountains(int i, int i_167_, int i_168_, int i_169_) {
 		Random random = new Random(mgen);
 		nmt = (int) (20.0 + 10.0 * random.nextDouble());
 		int i_170_ = (i + i_167_) / 60;
@@ -1038,7 +1014,7 @@ public class Medium
 		}
 	}
 
-	private void drawmountains(Graphics2D rd) {
+	private static void drawmountains(Graphics2D rd) {
 		for (int i = 0; i < nmt; i++) {
 			int i_185_ = mrd[i];
 			int i_186_ = cx + (int) ((mtx[i_185_][0] - x / 30 - cx) * RadicalMath.cos(xz)
@@ -1115,7 +1091,7 @@ public class Medium
 		}
 	}
 
-	public void newstars() {
+	public static void newstars() {
 		stx = null;
 		stz = null;
 		stc = null;
@@ -1173,7 +1149,7 @@ public class Medium
 		}
 	}
 
-	private void drawstars(Graphics2D graphics2d) {
+	private static void drawstars(Graphics2D graphics2d) {
 		for (int i = 0; i < nst; i++) {
 			int j = cx + (int) (stx[i] * RadicalMath.cos(xz) - stz[i] * RadicalMath.sin(xz));
 			int k = cz + (int) (stx[i] * RadicalMath.sin(xz) + stz[i] * RadicalMath.cos(xz));
@@ -1231,7 +1207,7 @@ public class Medium
 
 	}
 
-	public void d(Graphics2D graphics2d) {
+	public static void d(Graphics2D graphics2d) {
 		nsp = 0;
 		if (zy > 90) {
 			zy = 90;
@@ -1451,7 +1427,6 @@ public class Medium
 			drawclouds(graphics2d);
 		}
 		groundpolys(graphics2d);
-		//road(graphics2d);
 		if (noelec != 0) {
 			noelec--;
 		}
@@ -1462,8 +1437,253 @@ public class Medium
 			elecr = random() * 15F - 6F;
 		}
 	}
+
+	public static void addSp(int i, int j, int k) {
+		if (nsp != 7) {
+			spx[nsp] = i;
+			spz[nsp] = j;
+			sprad[nsp] = k;
+			nsp++;
+		}
+	}
 	
-	public void watch(ContO conto, int i) {
+	public static void setSnap(int i, int j, int k) {
+		snap[0] = i;
+		snap[1] = j;
+		snap[2] = k;
+	}
+	
+	public static void adjustFade(float f) {
+		if (f < 15F) {
+			fade[0] = (int) (origfade - 1000F * (15F - f));
+			if (fade[0] < 3000) {
+				fade[0] = 3000;
+			}
+			fadeFrom(fade[0]);
+		} else if (fade[0] != origfade) {
+			fade[0] += 500;
+			if (fade[0] > origfade) {
+				fade[0] = origfade;
+			}
+			fadeFrom(fade[0]);
+		}
+	}
+	
+	public static void setFade(int i, int j, int k) {
+		cfade[0] = (int) (i + i * (snap[0] / 100F));
+		if (cfade[0] > 255) {
+			cfade[0] = 255;
+		}
+		if (cfade[0] < 0) {
+			cfade[0] = 0;
+		}
+		cfade[1] = (int) (j + j * (snap[1] / 100F));
+		if (cfade[1] > 255) {
+			cfade[1] = 255;
+		}
+		if (cfade[1] < 0) {
+			cfade[1] = 0;
+		}
+		cfade[2] = (int) (k + k * (snap[2] / 100F));
+		if (cfade[2] > 255) {
+			cfade[2] = 255;
+		}
+		if (cfade[2] < 0) {
+			cfade[2] = 0;
+		}
+	}
+
+	public static void setSky(int i, int j, int k) {
+		osky[0] = i;
+		osky[1] = j;
+		osky[2] = k;
+		for (int l = 0; l < 3; l++) {
+			clds[l] = (osky[l] * cldd[3] + cldd[l]) / (cldd[3] + 1);
+			clds[l] = (int) (clds[l] + clds[l] * (snap[l] / 100F));
+			if (clds[l] > 255) {
+				clds[l] = 255;
+			}
+			if (clds[l] < 0) {
+				clds[l] = 0;
+			}
+		}
+
+		csky[0] = (int) (i + i * (snap[0] / 100F));
+		if (csky[0] > 255) {
+			csky[0] = 255;
+		}
+		if (csky[0] < 0) {
+			csky[0] = 0;
+		}
+		csky[1] = (int) (j + j * (snap[1] / 100F));
+		if (csky[1] > 255) {
+			csky[1] = 255;
+		}
+		if (csky[1] < 0) {
+			csky[1] = 0;
+		}
+		csky[2] = (int) (k + k * (snap[2] / 100F));
+		if (csky[2] > 255) {
+			csky[2] = 255;
+		}
+		if (csky[2] < 0) {
+			csky[2] = 0;
+		}
+		float af[] = new float[3];
+		Color.RGBtoHSB(csky[0], csky[1], csky[2], af);
+	}
+
+	public static void setClouds(int i, int j, int k, int l, int i1) {
+		if (l < 0) {
+			l = 0;
+		}
+		if (l > 10) {
+			l = 10;
+		}
+		if (i1 < -1500) {
+			i1 = -1500;
+		}
+		if (i1 > -500) {
+			i1 = -500;
+		}
+		cldd[0] = i;
+		cldd[1] = j;
+		cldd[2] = k;
+		cldd[3] = l;
+		cldd[4] = i1;
+		for (int j1 = 0; j1 < 3; j1++) {
+			clds[j1] = (osky[j1] * cldd[3] + cldd[j1]) / (cldd[3] + 1);
+			clds[j1] = (int) (clds[j1] + clds[j1] * (snap[j1] / 100F));
+			if (clds[j1] > 255) {
+				clds[j1] = 255;
+			}
+			if (clds[j1] < 0) {
+				clds[j1] = 0;
+			}
+		}
+	}
+
+	public static void setGround(int i, int j, int k) {
+		ogrnd[0] = i;
+		ogrnd[1] = j;
+		ogrnd[2] = k;
+		for (int l = 0; l < 3; l++) {
+			cpol[l] = (ogrnd[l] * texture[3] + texture[l]) / (1 + texture[3]);
+			cpol[l] = (int) (cpol[l] + cpol[l] * (snap[l] / 100F));
+			if (cpol[l] > 255) {
+				cpol[l] = 255;
+			}
+			if (cpol[l] < 0) {
+				cpol[l] = 0;
+			}
+		}
+
+		cgrnd[0] = (int) (i + i * (snap[0] / 100F));
+		if (cgrnd[0] > 255) {
+			cgrnd[0] = 255;
+		}
+		if (cgrnd[0] < 0) {
+			cgrnd[0] = 0;
+		}
+		cgrnd[1] = (int) (j + j * (snap[1] / 100F));
+		if (cgrnd[1] > 255) {
+			cgrnd[1] = 255;
+		}
+		if (cgrnd[1] < 0) {
+			cgrnd[1] = 0;
+		}
+		cgrnd[2] = (int) (k + k * (snap[2] / 100F));
+		if (cgrnd[2] > 255) {
+			cgrnd[2] = 255;
+		}
+		if (cgrnd[2] < 0) {
+			cgrnd[2] = 0;
+		}
+		for (int i1 = 0; i1 < 3; i1++) {
+			crgrnd[i1] = (int) ((cpol[i1] * 0.98999999999999999D + cgrnd[i1]) / 2D);
+		}
+
+	}
+
+	public static void setTexture(int i, int j, int k, int l) {
+		if (l < 20) {
+			l = 20;
+		}
+		if (l > 60) {
+			l = 60;
+		}
+		texture[0] = i;
+		texture[1] = j;
+		texture[2] = k;
+		texture[3] = l;
+		i = (ogrnd[0] * l + i) / (1 + l);
+		j = (ogrnd[1] * l + j) / (1 + l);
+		k = (ogrnd[2] * l + k) / (1 + l);
+		cpol[0] = (int) (i + i * (snap[0] / 100F));
+		if (cpol[0] > 255) {
+			cpol[0] = 255;
+		}
+		if (cpol[0] < 0) {
+			cpol[0] = 0;
+		}
+		cpol[1] = (int) (j + j * (snap[1] / 100F));
+		if (cpol[1] > 255) {
+			cpol[1] = 255;
+		}
+		if (cpol[1] < 0) {
+			cpol[1] = 0;
+		}
+		cpol[2] = (int) (k + k * (snap[2] / 100F));
+		if (cpol[2] > 255) {
+			cpol[2] = 255;
+		}
+		if (cpol[2] < 0) {
+			cpol[2] = 0;
+		}
+		for (int i1 = 0; i1 < 3; i1++) {
+			crgrnd[i1] = (int) ((cpol[i1] * 0.98999999999999999D + cgrnd[i1]) / 2D);
+		}
+
+	}
+
+	public static void setPolys(int i, int j, int k) {
+		cpol[0] = (int) (i + i * (snap[0] / 100F));
+		if (cpol[0] > 255) {
+			cpol[0] = 255;
+		}
+		if (cpol[0] < 0) {
+			cpol[0] = 0;
+		}
+		cpol[1] = (int) (j + j * (snap[1] / 100F));
+		if (cpol[1] > 255) {
+			cpol[1] = 255;
+		}
+		if (cpol[1] < 0) {
+			cpol[1] = 0;
+		}
+		cpol[2] = (int) (k + k * (snap[2] / 100F));
+		if (cpol[2] > 255) {
+			cpol[2] = 255;
+		}
+		if (cpol[2] < 0) {
+			cpol[2] = 0;
+		}
+		for (int l = 0; l < 3; l++) {
+			crgrnd[l] = (int) ((cpol[l] * 0.98999999999999999D + cgrnd[l]) / 2D);
+		}
+
+	}
+
+	public static void fadeFrom(int i) {
+		if (i > 8000) {
+			i = 8000;
+		}
+		for (int j = 1; j < 17; j++) {
+			fade[j - 1] = (i / 2) * (j + 1);
+		}
+	}
+	
+	public static void watch(ContO conto, int i) {
 		if (flex != 0) {
 			flex = 0;
 		}
@@ -1498,13 +1718,7 @@ public class Medium
 		}
 	}
 	
-	public void setsnap(int i, int j, int k) {
-		snap[0] = i;
-		snap[1] = j;
-		snap[2] = k;
-	}
-
-	public void around(ContO conto, boolean flag) {
+	public static void around(ContO conto, boolean flag) {
 		if (flex != 0) {
 			flex = 0;
 		}
@@ -1561,32 +1775,7 @@ public class Medium
 		}
 	}
 	
-	public void adjstfade(float f) {
-		if (f < 15F) {
-			fade[0] = (int) (origfade - 1000F * (15F - f));
-			if (fade[0] < 3000) {
-				fade[0] = 3000;
-			}
-			fadfrom(fade[0]);
-		} else if (fade[0] != origfade) {
-			fade[0] += 500;
-			if (fade[0] > origfade) {
-				fade[0] = origfade;
-			}
-			fadfrom(fade[0]);
-		}
-	}
-
-	public static void addsp(int i, int j, int k) {
-		if (nsp != 7) {
-			spx[nsp] = i;
-			spz[nsp] = j;
-			sprad[nsp] = k;
-			nsp++;
-		}
-	}
-
-	public void aroundtrack(CheckPoints checkpoints) {
+	public static void aroundTrack(CheckPoints checkpoints) {
 		if (flex != 0) {
 			flex = 0;
 		}
@@ -1654,198 +1843,7 @@ public class Medium
 		}
 	}
 
-	public void setsky(int i, int j, int k) {
-		osky[0] = i;
-		osky[1] = j;
-		osky[2] = k;
-		for (int l = 0; l < 3; l++) {
-			clds[l] = (osky[l] * cldd[3] + cldd[l]) / (cldd[3] + 1);
-			clds[l] = (int) (clds[l] + clds[l] * (snap[l] / 100F));
-			if (clds[l] > 255) {
-				clds[l] = 255;
-			}
-			if (clds[l] < 0) {
-				clds[l] = 0;
-			}
-		}
-
-		csky[0] = (int) (i + i * (snap[0] / 100F));
-		if (csky[0] > 255) {
-			csky[0] = 255;
-		}
-		if (csky[0] < 0) {
-			csky[0] = 0;
-		}
-		csky[1] = (int) (j + j * (snap[1] / 100F));
-		if (csky[1] > 255) {
-			csky[1] = 255;
-		}
-		if (csky[1] < 0) {
-			csky[1] = 0;
-		}
-		csky[2] = (int) (k + k * (snap[2] / 100F));
-		if (csky[2] > 255) {
-			csky[2] = 255;
-		}
-		if (csky[2] < 0) {
-			csky[2] = 0;
-		}
-		float af[] = new float[3];
-		Color.RGBtoHSB(csky[0], csky[1], csky[2], af);
-	}
-
-	public void setclouds(int i, int j, int k, int l, int i1) {
-		if (l < 0) {
-			l = 0;
-		}
-		if (l > 10) {
-			l = 10;
-		}
-		if (i1 < -1500) {
-			i1 = -1500;
-		}
-		if (i1 > -500) {
-			i1 = -500;
-		}
-		cldd[0] = i;
-		cldd[1] = j;
-		cldd[2] = k;
-		cldd[3] = l;
-		cldd[4] = i1;
-		for (int j1 = 0; j1 < 3; j1++) {
-			clds[j1] = (osky[j1] * cldd[3] + cldd[j1]) / (cldd[3] + 1);
-			clds[j1] = (int) (clds[j1] + clds[j1] * (snap[j1] / 100F));
-			if (clds[j1] > 255) {
-				clds[j1] = 255;
-			}
-			if (clds[j1] < 0) {
-				clds[j1] = 0;
-			}
-		}
-	}
-
-	public void setgrnd(int i, int j, int k) {
-		ogrnd[0] = i;
-		ogrnd[1] = j;
-		ogrnd[2] = k;
-		for (int l = 0; l < 3; l++) {
-			cpol[l] = (ogrnd[l] * texture[3] + texture[l]) / (1 + texture[3]);
-			cpol[l] = (int) (cpol[l] + cpol[l] * (snap[l] / 100F));
-			if (cpol[l] > 255) {
-				cpol[l] = 255;
-			}
-			if (cpol[l] < 0) {
-				cpol[l] = 0;
-			}
-		}
-
-		cgrnd[0] = (int) (i + i * (snap[0] / 100F));
-		if (cgrnd[0] > 255) {
-			cgrnd[0] = 255;
-		}
-		if (cgrnd[0] < 0) {
-			cgrnd[0] = 0;
-		}
-		cgrnd[1] = (int) (j + j * (snap[1] / 100F));
-		if (cgrnd[1] > 255) {
-			cgrnd[1] = 255;
-		}
-		if (cgrnd[1] < 0) {
-			cgrnd[1] = 0;
-		}
-		cgrnd[2] = (int) (k + k * (snap[2] / 100F));
-		if (cgrnd[2] > 255) {
-			cgrnd[2] = 255;
-		}
-		if (cgrnd[2] < 0) {
-			cgrnd[2] = 0;
-		}
-		for (int i1 = 0; i1 < 3; i1++) {
-			crgrnd[i1] = (int) ((cpol[i1] * 0.98999999999999999D + cgrnd[i1]) / 2D);
-		}
-
-	}
-
-	public void setexture(int i, int j, int k, int l) {
-		if (l < 20) {
-			l = 20;
-		}
-		if (l > 60) {
-			l = 60;
-		}
-		texture[0] = i;
-		texture[1] = j;
-		texture[2] = k;
-		texture[3] = l;
-		i = (ogrnd[0] * l + i) / (1 + l);
-		j = (ogrnd[1] * l + j) / (1 + l);
-		k = (ogrnd[2] * l + k) / (1 + l);
-		cpol[0] = (int) (i + i * (snap[0] / 100F));
-		if (cpol[0] > 255) {
-			cpol[0] = 255;
-		}
-		if (cpol[0] < 0) {
-			cpol[0] = 0;
-		}
-		cpol[1] = (int) (j + j * (snap[1] / 100F));
-		if (cpol[1] > 255) {
-			cpol[1] = 255;
-		}
-		if (cpol[1] < 0) {
-			cpol[1] = 0;
-		}
-		cpol[2] = (int) (k + k * (snap[2] / 100F));
-		if (cpol[2] > 255) {
-			cpol[2] = 255;
-		}
-		if (cpol[2] < 0) {
-			cpol[2] = 0;
-		}
-		for (int i1 = 0; i1 < 3; i1++) {
-			crgrnd[i1] = (int) ((cpol[i1] * 0.98999999999999999D + cgrnd[i1]) / 2D);
-		}
-
-	}
-
-	public void setpolys(int i, int j, int k) {
-		cpol[0] = (int) (i + i * (snap[0] / 100F));
-		if (cpol[0] > 255) {
-			cpol[0] = 255;
-		}
-		if (cpol[0] < 0) {
-			cpol[0] = 0;
-		}
-		cpol[1] = (int) (j + j * (snap[1] / 100F));
-		if (cpol[1] > 255) {
-			cpol[1] = 255;
-		}
-		if (cpol[1] < 0) {
-			cpol[1] = 0;
-		}
-		cpol[2] = (int) (k + k * (snap[2] / 100F));
-		if (cpol[2] > 255) {
-			cpol[2] = 255;
-		}
-		if (cpol[2] < 0) {
-			cpol[2] = 0;
-		}
-		for (int l = 0; l < 3; l++) {
-			crgrnd[l] = (int) ((cpol[l] * 0.98999999999999999D + cgrnd[l]) / 2D);
-		}
-
-	}
-
-	public void fadfrom(int i) {
-		if (i > 8000) {
-			i = 8000;
-		}
-		for (int j = 1; j < 17; j++) {
-			fade[j - 1] = (i / 2) * (j + 1);
-		}
-
-	}
-
-	public void follow(ContO conto, int i, int j) {
+	public static void follow(ContO conto, int i, int j) {
 		zy = 10;
 		int k = 2 + Math.abs(bcxz) / 4;
 		if (k > 20) {
@@ -1887,7 +1885,7 @@ public class Medium
 		}
 	}
 
-	public void getaround(ContO conto) {
+	public static void getaround(ContO conto) {
 		if (!vert) {
 			adv += 2;
 		} else {
@@ -2010,7 +2008,7 @@ public class Medium
 		zy += (j2 - zy) / 10;
 	}
 
-	public void transaround(ContO conto, ContO conto1, int i) {
+	public static void transaround(ContO conto, ContO conto1, int i) {
 		if (flex != 0) {
 			flex = 0;
 		}
