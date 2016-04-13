@@ -1203,31 +1203,31 @@ public class GameSparker extends Applet implements Runnable {
 						}
 					}while (++l12 < 7);
 					
-					/*try {
-						*//**
+					try {
+						/**
 						 * get the nearest piece
-						 *//*
+						 */
 						int nearId = Utility.nearestPiece(aconto1[0], aconto1);
 
-						*//**
+						/**
 						 * if nearId has changed and saveId is not zero (hasnt
 						 * saved anything yet) reset the saved conto
-						 *//*
+						 */
 						if (saveAnId != nearId && saveAnId != 0) {
 							polyfx1[saveAnId].reset(aconto1[saveAnId]);
 							// System.out.println("just reset " + saveAnId);
 						}
 
 						if (nearId != -1) {
-							
+							/**
 							 * it returned a good Id, save it
-							 
+							 */
 							saveAnId = nearId;
 
-							*//**
+							/**
 							 * perform effects
-							 *//*
-							if (!polyfx1[nearId].rapidBody(aconto1[nearId])) {
+							 */
+							if (!polyfx1[nearId].rapidBlast(rd, aconto1[nearId])) {
 
 							}
 						} else {
@@ -1236,12 +1236,12 @@ public class GameSparker extends Applet implements Runnable {
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						// e.printStackTrace();
-					}*/
+					}
 					
 				} else {
 					if (xtgraphics.starcnt == 130) {
 						medium.adv = 1900;
-						medium.zy = 40;
+						Medium.zy = 40;
 						medium.vxz = 70;
 						rd.setColor(new Color(255, 255, 255));
 						rd.fillRect(0, 0, 670, 400);
@@ -1369,12 +1369,12 @@ public class GameSparker extends Applet implements Runnable {
 						&& xtgraphics.looped != 0)
 					record.hcaught = false;
 				if (record.hcaught) {
-					if (medium.random() > 0.45000000000000001D)
+					if (Medium.random() > 0.45000000000000001D)
 						medium.vert = false;
 					else
 						medium.vert = true;
-					medium.adv = (int) (900F * medium.random());
-					medium.vxz = (int) (360F * medium.random());
+					medium.adv = (int) (900F * Medium.random());
+					medium.vxz = (int) (360F * Medium.random());
 					k1 = 0;
 					xtgraphics.fase = -3;
 					i2 = 0;
@@ -1391,7 +1391,7 @@ public class GameSparker extends Applet implements Runnable {
 							k2 = 67;
 							medium.vxz += 90;
 						} else {
-							k2 = (int) (medium.random() * 4F);
+							k2 = (int) (Medium.random() * 4F);
 							if (k2 == 1 || k2 == 3)
 								k2 = 69;
 							if (k2 == 2 || k2 == 4)
@@ -1554,7 +1554,7 @@ public class GameSparker extends Applet implements Runnable {
 							rd.fillRect(0, 0, 670, 400);
 						}
 						if (k2 == 30 && i2 >= 1 && i2 < 30)
-							if (i2 % (int) (2.0F + medium.random() * 3F) == 0 && !flag2) {
+							if (i2 % (int) (2.0F + Medium.random() * 3F) == 0 && !flag2) {
 								rd.setColor(new Color(255, 255, 255));
 								rd.fillRect(0, 0, 670, 400);
 								flag2 = true;

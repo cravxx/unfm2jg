@@ -67,11 +67,11 @@ public class Medium
 	public int flex;
 	public boolean trk;
 	public boolean crs;
-	public int cx;
-	public int cy;
-	public int cz;
-	public int xz;
-	public int zy;
+	public static int cx;
+	public static int cy;
+	public static int cz;
+	public static int xz;
+	public static int zy;
 	public int x;
 	public int y;
 	public int z;
@@ -101,10 +101,10 @@ public class Medium
 	public float elecr;
 	public boolean cpflik;
 	public boolean nochekflk;
-	private int cntrn;
-	private boolean diup[];
-	private int rand[];
-	private int trn;
+	private static int cntrn;
+	private static boolean diup[];
+	private static int rand[];
+	private static int trn;
 	public int hit;
 	public int ptr;
 	public int ptcnt;
@@ -138,7 +138,7 @@ public class Medium
 	private int ih;
 	private int fvect;
 
-	public float random() {
+	public static float random() {
 		if (cntrn == 0) {
 			int i = 0;
 			do {

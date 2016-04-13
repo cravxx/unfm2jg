@@ -572,13 +572,13 @@ public class xtGraphics extends Panel implements Runnable {
 	 * @author Kaffeinated
 	 */
     public void drawOver(String text, ContO contos) {
-		int x = m.cx + (int) ((contos.x - m.x - m.cx));
-		int y = m.cy + (int) ((contos.y - m.y - m.cy));
-		int z = m.cz + (int) ((contos.z - m.z - m.cz));
+		int x = Medium.cx + (int) ((contos.x - m.x - Medium.cx));
+		int y = Medium.cy + (int) ((contos.y - m.y - Medium.cy));
+		int z = Medium.cz + (int) ((contos.z - m.z - Medium.cz));
 
-		x = Utility.rotSingle(x, z, m.cx, m.cz, m.xz, RadicalMath.sin(m.xz), RadicalMath.cos(m.xz))[0];
-		y = Utility.rotSingle(y, z, m.cy, m.cz, m.zy, RadicalMath.sin(m.zy), RadicalMath.cos(m.zy))[0];
-		z = Utility.rotSingle(y, z, m.cy, m.cz, m.zy, RadicalMath.sin(m.zy), RadicalMath.cos(m.zy))[1];
+		x = Utility.rotSingle(x, z, Medium.cx, Medium.cz, Medium.xz, RadicalMath.sin(Medium.xz), RadicalMath.cos(Medium.xz))[0];
+		y = Utility.rotSingle(y, z, Medium.cy, Medium.cz, Medium.zy, RadicalMath.sin(Medium.zy), RadicalMath.cos(Medium.zy))[0];
+		z = Utility.rotSingle(y, z, Medium.cy, Medium.cz, Medium.zy, RadicalMath.sin(Medium.zy), RadicalMath.cos(Medium.zy))[1];
 
 		final int xScreenCoor = Utility.xs(x, z);
 		final int yScreenCoor = Utility.cYs(y, z);
@@ -1024,7 +1024,7 @@ public class xtGraphics extends Panel implements Runnable {
 			 */
 			//drawOver(names[sc[l]], conto[l]);
 		}
-		for (k += m.xz; k < 0; k += 360) {
+		for (k += Medium.xz; k < 0; k += 360) {
 		}
 		for (; k > 180; k -= 360) {
 		}
@@ -1330,7 +1330,7 @@ public class xtGraphics extends Panel implements Runnable {
 								stopcnt = 10;
 							}
 						} else if (stopcnt <= -2) {
-							air[2 + (int) (m.random() * 3F)].loop();
+							air[2 + (int) (Medium.random() * 3F)].loop();
 							stopcnt = 7;
 						}
 					}
@@ -1341,14 +1341,14 @@ public class xtGraphics extends Panel implements Runnable {
 				aird = false;
 			} else {
 				pwait = 15;
-				if (!madness.mtouch && !grrd && m.random() > 0.40000000000000002D) {
-					air[(int) (m.random() * 4F)].loop();
+				if (!madness.mtouch && !grrd && Medium.random() > 0.40000000000000002D) {
+					air[(int) (Medium.random() * 4F)].loop();
 					stopcnt = 5;
 					grrd = true;
 				}
 				if (!madness.wtouch && !aird) {
 					stopairs();
-					air[(int) (m.random() * 4F)].loop();
+					air[(int) (Medium.random() * 4F)].loop();
 					stopcnt = 10;
 					aird = true;
 				}
@@ -2678,12 +2678,12 @@ public class xtGraphics extends Panel implements Runnable {
 							byte0 = 3;
 						}
 						if (madness[0].surfer) {
-							asay = " " + adj[4][(int) (m.random() * 3F)] + asay;
+							asay = " " + adj[4][(int) (Medium.random() * 3F)] + asay;
 						}
 						if (byte0 != 3) {
-							asay = adj[byte0][(int) (m.random() * 3F)] + asay + exlm[byte0];
+							asay = adj[byte0][(int) (Medium.random() * 3F)] + asay + exlm[byte0];
 						} else {
-							asay = adj[byte0][(int) (m.random() * 3F)];
+							asay = adj[byte0][(int) (Medium.random() * 3F)];
 						}
 						if (!wasay) {
 							tcnt = auscnt;
@@ -2767,7 +2767,7 @@ public class xtGraphics extends Panel implements Runnable {
 					rd.drawImage(congrd, 200, 30, null);
 					drawcs(80, "Stage " + checkpoints.stage + " Completed!", 170, 170, 170, 3);
 				} else {
-					rd.drawImage(congrd, 195 + (int) (m.random() * 10F), 30, null);
+					rd.drawImage(congrd, 195 + (int) (Medium.random() * 10F), 30, null);
 				}
 				byte byte0 = 0;
 				int i = 0;
@@ -2851,8 +2851,8 @@ public class xtGraphics extends Panel implements Runnable {
 						m.x = -335;
 						m.y = 0;
 						m.z = -50;
-						m.xz = 0;
-						m.zy = 0;
+						Medium.xz = 0;
+						Medium.zy = 0;
 						m.ground = 2470;
 						aconto[byte0].z = 1000;
 						aconto[byte0].x = 0;
@@ -3870,7 +3870,7 @@ public class xtGraphics extends Panel implements Runnable {
 			}
 		} else {
 			flyr = flyrdest;
-			flyrdest = (int) ((flyr + m.random() * 160F) - 80F);
+			flyrdest = (int) ((flyr + Medium.random() * 160F) - 80F);
 		}
 		if (flyr > 160) {
 			flyr = 160;
@@ -3878,12 +3878,12 @@ public class xtGraphics extends Panel implements Runnable {
 		if (flatr > 170) {
 			flatrstart++;
 			flatr = flatrstart * 3;
-			flyr = (int) (m.random() * 160F - 80F);
-			flyrdest = (int) ((flyr + m.random() * 160F) - 80F);
+			flyr = (int) (Medium.random() * 160F - 80F);
+			flyrdest = (int) ((flyr + Medium.random() * 160F) - 80F);
 			flang = 1;
-			flangados = (int) (m.random() * 6F + 2.0F);
+			flangados = (int) (Medium.random() * 6F + 2.0F);
 			blackn = 0.0F;
-			blacknados = m.random() * 0.4F;
+			blacknados = Medium.random() * 0.4F;
 		}
 		int i = 0;
 		do {
@@ -4113,7 +4113,7 @@ public class xtGraphics extends Panel implements Runnable {
 		if (radpx == 147) {
 			rd.setFont(new Font("SansSerif", 1, 11));
 			FontHandler.fMetrics = rd.getFontMetrics();
-			drawcs(160 + (int) (5F * m.random()), "Radicalplay.com", 112, 120, 143, 3);
+			drawcs(160 + (int) (5F * Medium.random()), "Radicalplay.com", 112, 120, 143, 3);
 		}
 		rd.setFont(new Font("SansSerif", 1, 11));
 		FontHandler.fMetrics = rd.getFontMetrics();
@@ -4226,8 +4226,8 @@ public class xtGraphics extends Panel implements Runnable {
 		m.x = -335;
 		m.y = -500;
 		m.z = -50;
-		m.xz = 0;
-		m.zy = 10;
+		Medium.xz = 0;
+		Medium.zy = 10;
 		m.ground = 470;
 		aconto[sc[0]].d(rd);
 		if (flipo == 0) {
@@ -4942,12 +4942,12 @@ public class xtGraphics extends Panel implements Runnable {
 
 	public void carsbginflex() {
 		flatr = 0;
-		flyr = (int) (m.random() * 160F - 80F);
-		flyrdest = (int) ((flyr + m.random() * 160F) - 80F);
+		flyr = (int) (Medium.random() * 160F - 80F);
+		flyrdest = (int) ((flyr + Medium.random() * 160F) - 80F);
 		flang = 1;
-		flangados = (int) (m.random() * 6F + 2.0F);
+		flangados = (int) (Medium.random() * 6F + 2.0F);
 		blackn = 0.0F;
-		blacknados = m.random() * 0.4F;
+		blacknados = Medium.random() * 0.4F;
 		PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, flexpix, 0, 670);
 		try {
 			pixelgrabber.grabPixels();

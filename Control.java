@@ -179,7 +179,7 @@ public class Control {
 					if (checkpoints.stage == 16 || checkpoints.stage == 15 || checkpoints.stage == 10) {
 						skiplev = 0.0F;
 					}
-					rampp = (int) (m.random() * 4F - 2.0F);
+					rampp = (int) (Medium.random() * 4F - 2.0F);
 					if (madness.power == 98F) {
 						rampp = -1;
 					}
@@ -200,7 +200,7 @@ public class Control {
 					}
 					if (cntrn == 0) {
 						agressed = false;
-						turntyp = (int) (m.random() * 4F);
+						turntyp = (int) (Medium.random() * 4F);
 						if (checkpoints.stage == 3 && madness.im == 6) {
 							turntyp = 1;
 							if (attack == 0) {
@@ -208,7 +208,7 @@ public class Control {
 							}
 						}
 						if (checkpoints.pos[0] - checkpoints.pos[madness.im] < 0) {
-							turntyp = (int) (m.random() * 2.0F);
+							turntyp = (int) (Medium.random() * 2.0F);
 						}
 						if (checkpoints.stage == 8) {
 							turntyp = 2;
@@ -226,7 +226,7 @@ public class Control {
 							turntyp = 2;
 							if (checkpoints.stage == 9 || checkpoints.stage == 11 || checkpoints.stage == 13
 									|| checkpoints.stage == 17) {
-								turntyp = (int) (m.random() * 3F);
+								turntyp = (int) (Medium.random() * 3F);
 							}
 							if (checkpoints.stage == 16 && checkpoints.clear[madness.im] - checkpoints.clear[0] >= 5) {
 								turntyp = 0;
@@ -241,7 +241,7 @@ public class Control {
 					} else {
 						cntrn--;
 					}
-					saftey = (int) ((98F - madness.power) / 2.0F * (m.random() / 2.0F + 0.5D));
+					saftey = (int) ((98F - madness.power) / 2.0F * (Medium.random() / 2.0F + 0.5D));
 					if (saftey > 20) {
 						saftey = 20;
 					}
@@ -255,7 +255,7 @@ public class Control {
 					if (checkpoints.stage == 4) {
 						f = 0.4F;
 					}
-					mustland = f + (float) (m.random() / 2.0F - 0.25D);
+					mustland = f + (float) (Medium.random() / 2.0F - 0.25D);
 					f = 1.0F;
 					if (checkpoints.stage == 1) {
 						f = 5F;
@@ -313,7 +313,7 @@ public class Control {
 						mustland = 0.0F;
 						saftey = 10;
 						if ((madness.pcleared == 15 || madness.pcleared == 51)
-								&& (m.random() > 0.40000000000000002D || trfix != 0)) {
+								&& (Medium.random() > 0.40000000000000002D || trfix != 0)) {
 							stuntf = 7;
 						}
 						if (madness.pcleared == 42) {
@@ -322,9 +322,9 @@ public class Control {
 						if (madness.pcleared == 77) {
 							stuntf = 7;
 						}
-						avoidnlev = (int) (2700F * m.random());
+						avoidnlev = (int) (2700F * Medium.random());
 					}
-					trickprf = (madness.power - 38F) / 50F - m.random() / 2.0F;
+					trickprf = (madness.power - 38F) / 50F - Medium.random() / 2.0F;
 					if (madness.power < 60F) {
 						trickprf = -1F;
 					}
@@ -361,7 +361,7 @@ public class Control {
 					if (checkpoints.stage == 17) {
 						trickprf = -1F;
 					}
-					if (m.random() > madness.power / 100F) {
+					if (Medium.random() > madness.power / 100F) {
 						usebounce = true;
 					} else {
 						usebounce = false;
@@ -372,7 +372,7 @@ public class Control {
 					if (checkpoints.stage == 10 || checkpoints.stage == 14) {
 						usebounce = false;
 					}
-					if (m.random() > (float) madness.hitmag / (float) Madness.maxmag[madness.cn]) {
+					if (Medium.random() > (float) madness.hitmag / (float) Madness.maxmag[madness.cn]) {
 						perfection = false;
 					} else {
 						perfection = true;
@@ -652,31 +652,31 @@ public class Control {
 											f2 = 0.0F;
 										}
 									}
-									if (m.random() < f2) {
+									if (Medium.random() < f2) {
 										attack = 40 * (Math.abs(checkpoints.clear[i4] - madness.clear) + 1);
 										if (attack > 500) {
 											attack = 500;
 										}
 										aim = 0.0F;
-										if (checkpoints.stage == 3 && madness.im == 6 && m.random() > m.random()) {
+										if (checkpoints.stage == 3 && madness.im == 6 && Medium.random() > Medium.random()) {
 											aim = 1.0F;
 										}
 										if (checkpoints.stage == 4) {
 											if (i4 == 0 && checkpoints.pos[0] < checkpoints.pos[madness.im]) {
 												aim = 1.5F;
 											} else {
-												aim = m.random();
+												aim = Medium.random();
 											}
 										}
 										if (checkpoints.stage == 5) {
-											aim = m.random() * 1.5F;
+											aim = Medium.random() * 1.5F;
 										}
-										if (checkpoints.stage == 7 && madness.im != 6 && (m.random() > m.random()
+										if (checkpoints.stage == 7 && madness.im != 6 && (Medium.random() > Medium.random()
 												|| checkpoints.pos[0] < checkpoints.pos[madness.im])) {
 											aim = 1.0F;
 										}
-										if (checkpoints.stage == 8 && madness.cn == 11 && m.random() > m.random()) {
-											aim = 0.76F + m.random() * 0.76F;
+										if (checkpoints.stage == 8 && madness.cn == 11 && Medium.random() > Medium.random()) {
+											aim = 0.76F + Medium.random() * 0.76F;
 										}
 										if (checkpoints.stage == 9
 												&& (madness.pcleared == 13 || madness.pcleared == 33)) {
@@ -689,11 +689,11 @@ public class Control {
 													attack = 150;
 												}
 											} else {
-												aim = m.random();
+												aim = Medium.random();
 											}
 										}
 										if (checkpoints.stage == 12) {
-											if (m.random() > m.random()) {
+											if (Medium.random() > Medium.random()) {
 												aim = 0.7F;
 											}
 											if (bulistc && attack > 150) {
@@ -704,9 +704,9 @@ public class Control {
 											attack = 60;
 										}
 										if (checkpoints.stage == 15) {
-											aim = m.random() * 1.5F;
+											aim = Medium.random() * 1.5F;
 											attack = attack / 2;
-											if (m.random() > m.random()) {
+											if (Medium.random() > Medium.random()) {
 												exitattack = true;
 											} else {
 												exitattack = false;
@@ -717,7 +717,7 @@ public class Control {
 												aim = 0.76F;
 												attack = 150;
 											} else {
-												aim = m.random() * 1.5F;
+												aim = Medium.random() * 1.5F;
 												if (Math.abs(checkpoints.clear[i4] - madness.clear) <= 2
 														|| madness.cn == 14) {
 													attack = attack / 3;
@@ -725,13 +725,13 @@ public class Control {
 											}
 										}
 										acr = i4;
-										turntyp = (int) (1.0F + m.random() * 2.0F);
+										turntyp = (int) (1.0F + Medium.random() * 2.0F);
 									}
 								}
 								if (flag1 && k8 > 100
 										&& Utility.py(conto.x / 100, checkpoints.opx[i4] / 100, conto.z / 100,
 												checkpoints.opz[i4] / 100) < 300
-										&& m.random() > 0.59999999999999998D
+										&& Medium.random() > 0.59999999999999998D
 												- checkpoints.pos[madness.im] / 10F) {
 									clrnce = 0;
 									acuracy = 0;
@@ -786,7 +786,7 @@ public class Control {
 							madness.pcleared = 73;
 							madness.clear = 0;
 							bulistc = true;
-							runbul = (int) (100F * m.random());
+							runbul = (int) (100F * Medium.random());
 						}
 						if (checkpoints.stage == 11 && madness.cn == 13) {
 							bulistc = true;
@@ -824,7 +824,7 @@ public class Control {
 						}
 					}
 					stcnt = 0;
-					statusque = (int) (20F * m.random());
+					statusque = (int) (20F * Medium.random());
 				} else {
 					stcnt++;
 				}
@@ -881,7 +881,7 @@ public class Control {
 						if (rampp == -1 && checkpoints.typ[i] == -2 && ++i == checkpoints.n) {
 							i = 0;
 						}
-						if (m.random() > skiplev) {
+						if (Medium.random() > skiplev) {
 							int i3 = i;
 							boolean flag5 = false;
 							if (checkpoints.typ[i3] > 0) {
@@ -912,7 +912,7 @@ public class Control {
 									flag5 = madness.clear != j6 + madness.nlaps * checkpoints.nsp;
 								}
 							}
-						} else if (m.random() > skiplev) {
+						} else if (Medium.random() > skiplev) {
 							while (checkpoints.typ[i] == -1) {
 								if (++i == checkpoints.n) {
 									i = 0;
@@ -1264,8 +1264,8 @@ public class Control {
 								i = oupnt;
 								if (Utility.py(conto.x / 100, checkpoints.x[i] / 100, conto.z / 100,
 										checkpoints.z[i] / 100) < 800) {
-									oupnt = -(int) (75F + m.random() * 200F);
-									runbul = (int) (50F + m.random() * 100F);
+									oupnt = -(int) (75F + Medium.random() * 200F);
+									runbul = (int) (50F + Medium.random() * 100F);
 								}
 							}
 							if (oupnt < -1) {
@@ -1280,7 +1280,7 @@ public class Control {
 							if (madness.cn == 13) {
 								if (!gowait) {
 									if (checkpoints.clear[0] == 1) {
-										if (m.random() > 0.5D) {
+										if (Medium.random() > 0.5D) {
 											wtx = -14000;
 											wtz = 48000;
 											frx = -5600;
@@ -1385,7 +1385,7 @@ public class Control {
 									for (int k6 = 0; k6 < checkpoints.n; k6++) {
 										if (checkpoints.typ[k6] == -4 && (Utility.py(conto.x / 100, checkpoints.x[k6] / 100,
 												conto.z / 100, checkpoints.z[k6] / 100) < l4
-												&& m.random() > 0.59999999999999998D || l4 == -10)) {
+												&& Medium.random() > 0.59999999999999998D || l4 == -10)) {
 											l4 = Utility.py(conto.x / 100, checkpoints.x[k6] / 100, conto.z / 100,
 													checkpoints.z[k6] / 100);
 											oupnt = k6;
@@ -1401,8 +1401,8 @@ public class Control {
 									i = oupnt;
 									if (Utility.py(conto.x / 100, checkpoints.x[i] / 100, conto.z / 100,
 											checkpoints.z[i] / 100) < 800) {
-										oupnt = -(int) (75F + m.random() * 200F);
-										runbul = (int) (50F + m.random() * 100F);
+										oupnt = -(int) (75F + Medium.random() * 200F);
+										runbul = (int) (50F + Medium.random() * 100F);
 									}
 								}
 								if (oupnt < -1) {
@@ -1485,7 +1485,7 @@ public class Control {
 											/ 0.017453292519943295D);
 						}
 						turncnt = 0;
-						randtcnt = (int) (acuracy * m.random());
+						randtcnt = (int) (acuracy * Medium.random());
 					} else {
 						turncnt++;
 					}
@@ -1628,7 +1628,7 @@ public class Control {
 					if (checkpoints.stage == 15) {
 						i2 = 10;
 					}
-					if (k > 7 && (m.random() > trickprf / i2 || stuntf == 4 || stuntf == 3 || stuntf == 5
+					if (k > 7 && (Medium.random() > trickprf / i2 || stuntf == 4 || stuntf == 3 || stuntf == 5
 							|| stuntf == 6 || checkpoints.stage == 16)) {
 						oxy = madness.pxy;
 						ozy = madness.pzy;
@@ -1648,14 +1648,14 @@ public class Control {
 								udstart = 0;
 								udswt = false;
 							}
-						} else if (m.random() > m.random() && stuntf != 1 || stuntf == 4 || stuntf == 6
+						} else if (Medium.random() > Medium.random() && stuntf != 1 || stuntf == 4 || stuntf == 6
 								|| stuntf == 7) {
-							if ((m.random() > m.random() || stuntf == 2 || stuntf == 7) && stuntf != 4 && stuntf != 6) {
+							if ((Medium.random() > Medium.random() || stuntf == 2 || stuntf == 7) && stuntf != 4 && stuntf != 6) {
 								uddirect = -1;
 							} else {
 								uddirect = 1;
 							}
-							udstart = (int) (10F * m.random() * trickprf);
+							udstart = (int) (10F * Medium.random() * trickprf);
 							if (stuntf == 6) {
 								udstart = 0;
 							}
@@ -1666,39 +1666,39 @@ public class Control {
 								apunch = 20;
 								oupnt = 70;
 							}
-							if (m.random() > 0.84999999999999998D && stuntf != 4 && stuntf != 3 && stuntf != 6
+							if (Medium.random() > 0.84999999999999998D && stuntf != 4 && stuntf != 3 && stuntf != 6
 									&& checkpoints.stage != 16) {
 								udswt = true;
 							}
-							if (m.random() > trickprf + 0.3F && stuntf != 4 && stuntf != 6) {
-								if (m.random() > m.random()) {
+							if (Medium.random() > trickprf + 0.3F && stuntf != 4 && stuntf != 6) {
+								if (Medium.random() > Medium.random()) {
 									lrdirect = -1;
 								} else {
 									lrdirect = 1;
 								}
-								lrstart = (int) (30F * m.random());
-								if (m.random() > 0.75D) {
+								lrstart = (int) (30F * Medium.random());
+								if (Medium.random() > 0.75D) {
 									lrswt = true;
 								}
 							}
 						} else {
-							if (m.random() > m.random()) {
+							if (Medium.random() > Medium.random()) {
 								lrdirect = -1;
 							} else {
 								lrdirect = 1;
 							}
-							lrstart = (int) (10F * m.random() * trickprf);
-							if (m.random() > 0.75D && checkpoints.stage != 16) {
+							lrstart = (int) (10F * Medium.random() * trickprf);
+							if (Medium.random() > 0.75D && checkpoints.stage != 16) {
 								lrswt = true;
 							}
-							if (m.random() > trickprf + 0.3F) {
-								if (m.random() > m.random()) {
+							if (Medium.random() > trickprf + 0.3F) {
+								if (Medium.random() > Medium.random()) {
 									uddirect = -1;
 								} else {
 									uddirect = 1;
 								}
-								udstart = (int) (30F * m.random());
-								if (m.random() > 0.84999999999999998D) {
+								udstart = (int) (30F * Medium.random());
+								if (Medium.random() > 0.84999999999999998D) {
 									udswt = true;
 								}
 							}
@@ -1826,7 +1826,7 @@ public class Control {
 							swat = 2;
 						}
 					} else if (swat == 2) {
-						if (madness.capsized && m.random() > mustland) {
+						if (madness.capsized && Medium.random() > mustland) {
 							if (udbare) {
 								lrbare = true;
 								udbare = false;
@@ -1867,7 +1867,7 @@ public class Control {
 											down = true;
 										}
 									}
-								} else if (m.random() > mustland) {
+								} else if (Medium.random() > mustland) {
 									up = true;
 								}
 								onced = true;
@@ -1891,7 +1891,7 @@ public class Control {
 										down = true;
 									}
 								}
-							} else if (m.random() > mustland) {
+							} else if (Medium.random() > mustland) {
 								down = true;
 							}
 							onceu = true;
@@ -1930,7 +1930,7 @@ public class Control {
 											right = true;
 										}
 									}
-								} else if (m.random() > mustland) {
+								} else if (Medium.random() > mustland) {
 									right = true;
 								}
 								oncel = true;
@@ -1954,7 +1954,7 @@ public class Control {
 										right = true;
 									}
 								}
-							} else if (m.random() > mustland) {
+							} else if (Medium.random() > mustland) {
 								left = true;
 							}
 							oncer = true;
@@ -2001,8 +2001,8 @@ public class Control {
 		}
 		if (checkpoints.stage == 12) {
 			if (i != 13) {
-				hold = (int) (20F + 10F * m.random());
-				revstart = (int) (10F + 10F * m.random());
+				hold = (int) (20F + 10F * Medium.random());
+				revstart = (int) (10F + 10F * Medium.random());
 			} else {
 				hold = 5;
 			}
