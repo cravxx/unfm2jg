@@ -16,12 +16,12 @@ That is the BARE MINIMUM. Feel free to browse around that site a bit more. You w
 So now that know a bit about what NFM is "made" of, what do you need to hack it? First off, you need Java, specifically something called the _Java Runtime Environment_. This is the Java you download to play games. You probably have this already.  
 Next you need the _Java Development Kit_. This is what BlueJ and Eclipse use to compile Java source code into an actual game.  
 **_BlueJ_** is sort of like a text editor, like Word, and it'll be what we use to hack NFM.  
-**_Eclipse_** is the most advanced Java editing tool available, and it is much more feature-rich, though it may look a bit complicated to a new user.  
-**_7-zip_** is the last program you need. It'll help you navigate through NFM files. _WinRAR_ will also work as long as you know what you're doing.
+**_Eclipse_** is the most advanced Java editing tool available, and it is much more feature-rich then BlueJ, though it may look a bit complicated to a new user.  
+**_7-zip_** is the last program you need. It'll help you navigate through NFM files. **_WinRAR_** will also work as long as you know what you're doing.
 
 Now that you got that, it's time to get into what makes my files special!!! ♥♥♥
 
-These files are FIXED and READY TO HACK!!! They already contain a project file for BlueJ, double-click and you can begin hacking immediately!
+These files are FIXED and READY TO HACK!!! They already contain a project file for both BlueJ and Eclipse, double-click and you can begin hacking immediately!
 
 The following is what has been done:
 
@@ -37,7 +37,7 @@ This is what is to come:
 - More bug fixes
 - Add in as many enhancements as I can to make hacking easier and fun!
 
-### Software Package
+## Software Package
 ALL the programs you need to start hacking; 
 contains 7-zip, JDK, JRE and BlueJ
 
@@ -50,7 +50,7 @@ Separate programs:
 - [BLUEJ](http://mediafire.com/download/o6bm3uvuz4vsvva/BLUEJ.msi)
 - [7ZIP](http://mediafire.com/download/7c8xump1ynpnfos/7-ZIP.exe)
 
-### Links to check out
+## Links to check out
 [NFM2 Freezing? Try this](http://aimgames.forummotion.com/t2608-fix-nfm-freezing#216619)  
 [Dealing with errors the smart way](http://aimgames.forummotion.com/t3700-enabling-the-java-console)  
 [West No. 5's House of Java Hacks](http://aimgames.forummotion.com/t1330-west-no-5-s-house-of-java-hacks)  
@@ -69,10 +69,10 @@ Two guides on AI and Control: [1](http://aimgames.forummotion.com/t3534-complete
 [Taking Need for Madness to desktop; already implemented in files](http://aimgames.forummotion.com/t3767-taking-need-for-madness-2-to-desktop)  
 [Playing MIDI, MP3 and OGG](http://aimgames.forummotion.com/t3965-playing-midi-files-alongside-mod)  
 
-### UNFM2JG Changelog
+## Changelog
 Commit history available [here](https://github.com/HulaSamsquanch/unfm2jg/commits/stable)
 
-### UNFM2JG Credits
+## Credits
 *"It hasn't just been me working on this shit..."*
 
  - Dragshot   / opponent status, various stuff
