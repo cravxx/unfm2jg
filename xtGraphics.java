@@ -15,11 +15,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
+import hula.awards.*;
+
 public class xtGraphics extends Panel implements Runnable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6463312620664057856L;
+	
+	AwardTracker awardtracker;
+	
 	/**
 	 * starting colors for the special screen in the credits
 	 */
@@ -3135,7 +3140,7 @@ public class xtGraphics extends Panel implements Runnable {
 		} while (++j < 2);
 	}
 
-	public void stageselect(CheckPoints checkpoints, Control control) {
+	public void stageselect(CheckPoints checkpoints, Control control) {		
 		stages.play();
 		rd.drawImage(br, 0, 0, null);
 		rd.drawImage(select, 273, 45, null);
@@ -3461,6 +3466,9 @@ public class xtGraphics extends Panel implements Runnable {
 	}
 
 	public xtGraphics(Medium medium, Graphics2D graphics2d, Applet applet) {
+		
+		awardtracker = new AwardTracker();
+		
 		fase = 111;
 		oldfase = 0;
 		starcnt = 0;

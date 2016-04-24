@@ -10,6 +10,8 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import hula.awards.*;
+
 /**
  * GameSparker brings everything together. 
  * @author Kaffeinated, Omar Waly
@@ -845,7 +847,14 @@ public class GameSparker extends Applet implements Runnable {
 		if (l != -1) {
 			f = l;
 			i1 = 1;
-		}				
+		}	
+		
+		/**
+		 * set up award shit
+		 */
+		
+		boolean[] fakeBool = new boolean[Award.values().length]; 
+		xtgraphics.awardtracker.setAwardState(fakeBool);
 		
 		boolean flag = false;
 		xtgraphics.stoploading();
@@ -1091,6 +1100,10 @@ public class GameSparker extends Applet implements Runnable {
 				}
 			}
 			if (xtgraphics.fase == 0) {
+				
+				AwardEvent awardEventEnterArena = new AwardEvent(xtgraphics.awardtracker);
+				awardEventEnterArena.giveAward(Award.EnterTheArena);
+				
 				int k3 = 0;
 				do {
 					if (amadness[k3].newcar) {
