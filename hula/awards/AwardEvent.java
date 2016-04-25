@@ -3,6 +3,12 @@ package hula.awards;
 import hula.awards.Award;
 import hula.awards.AwardIO;
 
+/**
+ * Award Event<br>
+ *  - Give awards
+ * @author eli
+ *
+ */
 public class AwardEvent {
 
 	/**
@@ -24,7 +30,7 @@ public class AwardEvent {
 			 * save it
 			 */
 			AwardIO.saveAward(award.toString());
-			
+
 			System.out.println(award + " given!");
 		}
 	}
@@ -32,11 +38,10 @@ public class AwardEvent {
 	/**
 	 * check if the award is already given
 	 * 
-	 * @param award
-	 *            award to check
-	 * @return boolean
+	 * @param award to check
+	 * @return boolean <b>true</b> if the award is not given
 	 */
-	public boolean IfNotAwarded(Award award) {
+	private boolean IfNotAwarded(Award award) {
 		return award.getState() == false;
 	}
 
