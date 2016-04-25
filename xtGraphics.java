@@ -23,7 +23,7 @@ public class xtGraphics extends Panel implements Runnable {
 	 */
 	private static final long serialVersionUID = -6463312620664057856L;
 	
-	AwardTracker awardtracker;
+	AwardEvent awardEvent;
 	
 	/**
 	 * starting colors for the special screen in the credits
@@ -3466,8 +3466,8 @@ public class xtGraphics extends Panel implements Runnable {
 	}
 
 	public xtGraphics(Medium medium, Graphics2D graphics2d, Applet applet) {
-		
-		awardtracker = new AwardTracker();
+
+		awardEvent = new AwardEvent();
 		
 		fase = 111;
 		oldfase = 0;

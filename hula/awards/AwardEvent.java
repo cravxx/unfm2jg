@@ -1,15 +1,9 @@
 package hula.awards;
 
 import hula.awards.Award;
-import hula.awards.AwardTracker;
+import hula.awards.AwardIO;
 
 public class AwardEvent {
-
-	private final AwardTracker awardtracker;
-
-	public AwardEvent(AwardTracker awardtracker) {
-		this.awardtracker = awardtracker;
-	}
 
 	/**
 	 * give out an award
@@ -19,7 +13,8 @@ public class AwardEvent {
 	 */
 	public void giveAward(Award award) {
 		if (IfNotAwarded(award)) {
-			awardtracker.booleanAward[award.ordinal()] = true;
+			award.setStateTrue();
+			AwardIO.saveAward(award.toString());
 			System.out.println(award + " given!");
 		}
 	}
@@ -32,7 +27,7 @@ public class AwardEvent {
 	 * @return boolean
 	 */
 	public boolean IfNotAwarded(Award award) {
-		return awardtracker.booleanAward[award.ordinal()] == false;
+		return award.getState() == false;
 	}
 
 }

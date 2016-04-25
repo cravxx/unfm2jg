@@ -847,14 +847,13 @@ public class GameSparker extends Applet implements Runnable {
 		if (l != -1) {
 			f = l;
 			i1 = 1;
-		}	
+		}
+		
+		AwardIO.readAwards();
 		
 		/**
 		 * set up award shit
-		 */
-		
-		boolean[] fakeBool = new boolean[Award.values().length]; 
-		xtgraphics.awardtracker.setAwardState(fakeBool);
+		 */	
 		
 		boolean flag = false;
 		xtgraphics.stoploading();
@@ -1100,10 +1099,9 @@ public class GameSparker extends Applet implements Runnable {
 				}
 			}
 			if (xtgraphics.fase == 0) {
-				
-				AwardEvent awardEventEnterArena = new AwardEvent(xtgraphics.awardtracker);
-				awardEventEnterArena.giveAward(Award.EnterTheArena);
-				
+				xtgraphics.awardEvent.giveAward(Award.EnterTheArena);
+				xtgraphics.awardEvent.giveAward(Award.PlaceholderOne);
+				xtgraphics.awardEvent.giveAward(Award.PlaceholderTwo);
 				int k3 = 0;
 				do {
 					if (amadness[k3].newcar) {
