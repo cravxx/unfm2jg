@@ -12,9 +12,19 @@ public class AwardEvent {
 	 *            award to give
 	 */
 	public void giveAward(Award award) {
+		/**
+		 * make sure it hasn't been awarded already
+		 */
 		if (IfNotAwarded(award)) {
+			/**
+			 * make it true
+			 */
 			award.setStateTrue();
+			/**
+			 * save it
+			 */
 			AwardIO.saveAward(award.toString());
+			
 			System.out.println(award + " given!");
 		}
 	}

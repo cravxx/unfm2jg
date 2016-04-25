@@ -35,11 +35,14 @@ public class AwardIO {
 
 				try (BufferedReader br = new BufferedReader(new FileReader(awardsFile.getPath()))) {
 					for (String line; (line = br.readLine()) != null;) {
-						if (line.trim() == award) {
+						if (line.trim().equals(award.toString())) {
 							/**
-							 * don't write
+							 * don't write if the Enum has already been written / saved
+							 * 
+							 * This probably will never ever happen, because an enum that is TRUE is not given again,
+							 * and this method is called from AwardEvent.giveAward()
 							 */
-							System.out.println("line already exists!");
+							System.out.println("Enum has already been saved!");
 							canWeWrite = false;
 						}
 					}
@@ -51,9 +54,8 @@ public class AwardIO {
 
 				bw.close();
 
-				System.out.println("Successfully saved game award data");
+				System.out.println("Successfully saved game (" + award.toString() + ")");
 			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (IOException e) {
@@ -68,20 +70,21 @@ public class AwardIO {
 
 				if (!awardsFile.exists()) {
 					awardsFile.createNewFile();
-					System.out.println("it doesnt exist");
 				}
-
-				List<String> lines = new ArrayList<String>();
 
 				try (BufferedReader br = new BufferedReader(new FileReader(awardsFile.getPath()))) {
 					for (String line; (line = br.readLine()) != null;) {
-						Award.valueOf(line);
-						System.out.println("line exists!");
+						try {
+							Award.valueOf(line).setStateTrue();
+							System.out.println("Enum named " + line + " exists!");
+						} catch (IllegalArgumentException e) {
+							System.out.println("Enum named " + line + " does not exist!");
+							e.printStackTrace();
+						}						
 					}					
 				}
 
 			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (IOException e) {
