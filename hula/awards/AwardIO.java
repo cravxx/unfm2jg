@@ -75,22 +75,9 @@ public class AwardIO {
 
 				try (BufferedReader br = new BufferedReader(new FileReader(awardsFile.getPath()))) {
 					for (String line; (line = br.readLine()) != null;) {
-						lines.add(line);
-					}
-
-					for (Award award : Award.values()) {
-						for (String singleArrayLine : lines) {
-							// System.out.println(singleArrayLine.trim() + " " +
-							// award.toString());
-							if (singleArrayLine.trim().equals(award.toString())) {
-								/**
-								 * don't write
-								 */
-								System.out.println(award + " line exists!");
-								award.setStateTrue();
-							}
-						}
-					}
+						Award.valueOf(line);
+						System.out.println("line exists!");
+					}					
 				}
 
 			} catch (SecurityException e) {
