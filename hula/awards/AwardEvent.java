@@ -17,7 +17,7 @@ public class AwardEvent {
 	 * @param award
 	 *            award to give
 	 */
-	public void giveAward(Award award) {
+	public static void giveAward(Award award) {
 		/**
 		 * make sure it hasn't been awarded already
 		 */
@@ -41,7 +41,7 @@ public class AwardEvent {
 	 * @param award to check
 	 * @return boolean <b>true</b> if the award is not given
 	 */
-	private boolean IfNotAwarded(Award award) {
+	private static boolean IfNotAwarded(Award award) {
 		return award.getState() == false;
 	}
 

@@ -85,21 +85,23 @@ public class AwardIO {
 				File awardsFile = new File(awardsDirFile);
 
 				if (!awardsFile.exists()) {
-					awardsFile.createNewFile();
+					/**
+					 * does not exist
+					 */
+				}else{
+					try (BufferedReader br = new BufferedReader(new FileReader(awardsFile.getPath()))) {
+						for (String line; (line = br.readLine()) != null;) {
+							try {
+								Award.valueOf(line).setStateTrue();
+								//System.out.println("Enum named " + line + " exists!");
+							} catch (IllegalArgumentException e) {
+								System.out.println("Enum named " + line + " does not exist!");
+								e.printStackTrace();
+							}						
+						}					
+					}
 				}
-
-				try (BufferedReader br = new BufferedReader(new FileReader(awardsFile.getPath()))) {
-					for (String line; (line = br.readLine()) != null;) {
-						try {
-							Award.valueOf(line).setStateTrue();
-							//System.out.println("Enum named " + line + " exists!");
-						} catch (IllegalArgumentException e) {
-							System.out.println("Enum named " + line + " does not exist!");
-							e.printStackTrace();
-						}						
-					}					
-				}
-
+				
 			} catch (SecurityException e) {
 				e.printStackTrace();
 			}

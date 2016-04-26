@@ -6,11 +6,11 @@ package hula.awards;
  *
  */
 public enum Award {
-	FinishFirstThreeTimes(false), 
-	CompleteFiveRacesWithoutPlacingLast(false), 
 	EnterTheArena(false),
-	PlaceholderOne(false),
-	PlaceholderTwo(false);
+	FinishFirstThreeTimes(false), 
+	CompleteFiveRacesWithoutPlacingLast(false),
+	TakeOneThousandUnitsOfDamage(false),
+	GiveOneThousandUnitsOfDamage(false);
 	
 	private boolean state;
 	
@@ -32,4 +32,5 @@ public enum Award {
 	public boolean getState() {
 		return state;
 	}
+	
 }

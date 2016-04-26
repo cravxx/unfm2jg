@@ -3293,6 +3293,13 @@ public class xtGraphics extends Panel implements Runnable {
 		sortcars(i);
 	}
 
+	/**
+	 * 
+	 * @param i Madness.maxmag[madness[0].cn]
+	 * @param j madness[0].hitmag
+	 * @param flag madness[0].newcar
+	 * @param f madness[0].power
+	 */
 	public void drawstat(int i, int j, boolean flag, float f) {
 		int ai[] = new int[4];
 		int ai1[] = new int[4];

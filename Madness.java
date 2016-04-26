@@ -1,6 +1,8 @@
 
 import java.awt.Color;
 
+import hula.awards.AwardStatus;
+
 /**
  * Madness is where the stats, collisions, locations of the cars, and more, are handled. 
  * @author Kaffeinated, Omar Waly
@@ -351,6 +353,12 @@ public class Madness {
 							conto.p[l].oz[k1] += f1 * RadicalMath.sin(j);
 							conto.p[l].ox[k1] -= f1 * RadicalMath.sin(k);
 							hitmag += Math.abs(f1);
+							if (im == 0) { 
+								AwardStatus.setTakeOneThousandUnitsOfDamage_Stat_1(100F * ((float) Math.abs(f1) / (float) Madness.maxmag[cn]));
+							}
+							if (colidim) { 
+								AwardStatus.setGiveOneThousandUnitsOfDamage_Stat_1(100F * ((float) Math.abs(f1) / (float) Madness.maxmag[cn]));
+							}	
 						}
 
 					if (f1 != 0.0F) {
@@ -401,6 +409,12 @@ public class Madness {
 									i1 = (int) (i1 + f2);
 									j1++;
 									hitmag += Math.abs(f2);
+									if (im == 0) { 
+										AwardStatus.setTakeOneThousandUnitsOfDamage_Stat_1(100F * ((float) Math.abs(f2) / (float) Madness.maxmag[cn]));
+									}
+									if (colidim) { 
+										AwardStatus.setGiveOneThousandUnitsOfDamage_Stat_1(100F * ((float) Math.abs(f2) / (float) Madness.maxmag[cn]));
+									}	
 								}
 							}
 
@@ -496,7 +510,7 @@ public class Madness {
 
 	private void regz(int i, float f, ContO conto) {
 		f *= dammult[cn];
-		if (Math.abs(f) > 100F) {
+		if (Math.abs(f) > 100F) {			
 			rpd.recz(i, f, im);
 			if (f > 100F)
 				f -= 100F;
@@ -514,6 +528,12 @@ public class Madness {
 						conto.p[j].oz[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.zy);
 						conto.p[j].ox[k] += f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.xy);
 						hitmag += Math.abs(f1);
+						if (im == 0) {
+							AwardStatus.setTakeOneThousandUnitsOfDamage_Stat_1(100F * ((float) Math.abs(f1) / (float) Madness.maxmag[cn]));
+						}	
+						if (colidim) { 
+							AwardStatus.setGiveOneThousandUnitsOfDamage_Stat_1(100F * ((float) Math.abs(f1) / (float) Madness.maxmag[cn]));
+						}							
 					}
 
 				if (f1 != 0.0F) {
@@ -796,6 +816,12 @@ public class Madness {
 						conto.p[j].oz[k] -= f1 * RadicalMath.sin(conto.xz) * RadicalMath.cos(conto.zy);
 						conto.p[j].ox[k] += f1 * RadicalMath.cos(conto.xz) * RadicalMath.cos(conto.xy);
 						hitmag += Math.abs(f1);
+						if (im == 0) { 							
+							AwardStatus.setTakeOneThousandUnitsOfDamage_Stat_1(100F * ((float) Math.abs(f1) / (float) Madness.maxmag[cn]));
+						}
+						if (colidim) { 							
+							AwardStatus.setGiveOneThousandUnitsOfDamage_Stat_1(100F * ((float) Math.abs(f1) / (float) Madness.maxmag[cn]));
+						}	
 					}
 
 				if (f1 != 0.0F) {

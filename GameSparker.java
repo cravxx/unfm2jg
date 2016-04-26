@@ -851,9 +851,7 @@ public class GameSparker extends Applet implements Runnable {
 		
 		AwardIO.readAwards();
 		
-		/**
-		 * set up award shit
-		 */	
+		AwardStatus.readStatistics();
 		
 		boolean flag = false;
 		xtgraphics.stoploading();
@@ -947,6 +945,7 @@ public class GameSparker extends Applet implements Runnable {
 						savecookie("unlocked", "" + xtgraphics.unlocked);
 					savecookie("gameprfact", "" + (int) f);
 					savecookie("usercar", "" + xtgraphics.sc[0]);
+					AwardStatus.saveStatistics();
 					flag = true;
 				}
 				xtgraphics.ctachm(xm, ym, mouses, u[0]);
@@ -1100,8 +1099,6 @@ public class GameSparker extends Applet implements Runnable {
 			}
 			if (xtgraphics.fase == 0) {
 				xtgraphics.awardEvent.giveAward(Award.EnterTheArena);
-				xtgraphics.awardEvent.giveAward(Award.PlaceholderOne);
-				xtgraphics.awardEvent.giveAward(Award.PlaceholderTwo);
 				int k3 = 0;
 				do {
 					if (amadness[k3].newcar) {
