@@ -1,12 +1,17 @@
 
 import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+import javax.swing.JOptionPane;
+
 import java.awt.Graphics2D;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
@@ -15,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class xtGraphics extends Panel implements Runnable {
+public class xtGraphics extends Panel {
 	/**
 	 * 
 	 */
@@ -34,7 +39,7 @@ public class xtGraphics extends Panel implements Runnable {
 	public Graphics2D rd;
 	public Medium m;
 	public ImageObserver ob;
-	public Applet app;
+	public GameSparker app;
 	public int fase;
 	public int oldfase;
 	public int starcnt;
@@ -83,7 +88,6 @@ public class xtGraphics extends Panel implements Runnable {
 	public int smokey[];
 	public Image fleximg;
 	public int flatrstart;
-	public Thread runner;
 	public int runtyp;
 	public Image kaff;
 	public Image odmg;
@@ -169,34 +173,34 @@ public class xtGraphics extends Panel implements Runnable {
 	public Image ocntdn[];
 	public Image cntdn[];
 	public int gocnt;
-	public AudioClip engs[][];
+	public SoundClip engs[][];
 	public boolean pengs[];
 	public int enginsignature[] = {
 			0, 1, 2, 1, 0, 3, 2, 2, 1, 0, 3, 4, 1, 4, 0, 3
 	};
-	public AudioClip air[];
+	public SoundClip air[];
 	public boolean aird;
 	public boolean grrd;
-	public AudioClip crash[];
-	public AudioClip lowcrash[];
-	public AudioClip tires;
-	public AudioClip checkpoint;
-	public AudioClip carfixed;
-	public AudioClip powerup;
-	public AudioClip three;
-	public AudioClip two;
-	public AudioClip one;
-	public AudioClip go;
-	public AudioClip wastd;
-	public AudioClip firewasted;
+	public SoundClip crash[];
+	public SoundClip lowcrash[];
+	public SoundClip tires;
+	public SoundClip checkpoint;
+	public SoundClip carfixed;
+	public SoundClip powerup;
+	public SoundClip three;
+	public SoundClip two;
+	public SoundClip one;
+	public SoundClip go;
+	public SoundClip wastd;
+	public SoundClip firewasted;
 	public boolean pwastd;
-	public AudioClip skid[];
-	public AudioClip dustskid[];
+	public SoundClip skid[];
+	public SoundClip dustskid[];
 	public boolean mutes;
 	public RadicalMod stages;
 	public RadicalMod cars;
-	public RadicalMod stracks[];
-	public boolean loadedt[];
+	public RadicalMod strack;
+	public boolean loadedt;
 	public int lastload;
 	public boolean mutem;
 	public boolean sunny;
@@ -648,9 +652,9 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.setFont(new Font("SansSerif", 1, 11));
 		FontHandler.fMetrics = rd.getFontMetrics();
 		drawcs(396, "You can also use Keyboard Arrows and Enter to navigate.", 82, 90, 0, 3);
-		app.repaint();
+		//app.repaint();
 		if (lastload != -22) {
-			stages.loadMod(135, 7800, 125, sunny, macn);
+			stages = new RadicalMod("music/stages.radq", 135, 7800, 125, sunny, macn);
 			lastload = -22;
 		} else {
 			stages.stop();
@@ -1405,11 +1409,11 @@ public class xtGraphics extends Panel implements Runnable {
 			if (Control.mutem != mutem) {
 				mutem = Control.mutem;
 				if (mutem) {
-					if (loadedt[i - 1]) {
-						stracks[i - 1].stop();
+					if (loadedt) {
+						strack.stop();
 					}
-				} else if (loadedt[i - 1]) {
-					stracks[i - 1].resume();
+				} else if (loadedt) {
+					strack.resume();
 				}
 			}
 		}
@@ -1425,9 +1429,39 @@ public class xtGraphics extends Panel implements Runnable {
 				cntwis = 8;
 			}
 		}
+        if (GameSparker.applejava) {
+            closesounds();
+        }
 	}
 
-	public void crash(float f, int i) {
+	private void closesounds() {
+        for (int i = 0; i < 5; i++) {
+            for (int i271 = 0; i271 < 5; i271++) {
+                engs[i][i271].checkopen();
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            air[i].checkopen();
+        }
+        tires.checkopen();
+        checkpoint.checkopen();
+        carfixed.checkopen();
+        powerup.checkopen();
+        three.checkopen();
+        two.checkopen();
+        one.checkopen();
+        go.checkopen();
+        wastd.checkopen();
+        firewasted.checkopen();
+        for (int i = 0; i < 3; i++) {
+            skid[i].checkopen();
+            dustskid[i].checkopen();
+            crash[i].checkopen();
+            lowcrash[i].checkopen();
+        }
+    }
+
+    public void crash(float f, int i) {
 		if (bfcrash == 0) {
 			if (i == 0) {
 				if (Math.abs(f) > 25F && Math.abs(f) < 170F) {
@@ -1564,9 +1598,7 @@ public class xtGraphics extends Panel implements Runnable {
 
 	public void stoploading() {
 		loading();
-		app.repaint();
-		runner.stop();
-		runner = null;
+		//app.repaint();
 		runtyp = 0;
 	}
 
@@ -1637,93 +1669,74 @@ public class xtGraphics extends Panel implements Runnable {
 	public void loadmusic(int i, int j) {
 		hipnoload(i, false);
 		app.setCursor(new Cursor(3));
-		app.repaint();
+		//app.repaint();
 		boolean flag = false;
 		if (i == unlocked && (i == 1 || i == 2 || i == 3 || i == 4 || i == 7 || i == 8 || i == 9 || i == 10 || i == 12
 				|| i == 13 || i == 16)) {
 			flag = true;
 		}
-		if (flag) {
-			runtyp = i;
-			runner = new Thread(this);
-			runner.start();
-		}
-		if (!loadedt[i - 1]) {
-			stracks[i - 1] = new RadicalMod("music/stage" + i + ".radq", app);
-			if (stracks[i - 1].loaded == 1) {
-				loadedt[i - 1] = true;
-			}
-		}
-		if (i == 1) {
-			stracks[0].loadMod(130, 8000, 125, sunny, macn);
-		}
-		if (i == 2) {
-			stracks[1].loadMod(260, 7200, 125, sunny, macn);
-		}
-		if (i == 3) {
-			stracks[2].loadMod(270, 8000, 125, sunny, macn);
-		}
-		if (i == 4) {
-			stracks[3].loadMod(190, 8000, 125, sunny, macn);
-		}
-		if (i == 5) {
-			stracks[4].loadMod(162, 7800, 125, sunny, macn);
-		}
-		if (i == 6) {
-			stracks[5].loadMod(220, 7600, 125, sunny, macn);
-		}
-		if (i == 7) {
-			stracks[6].loadMod(300, 7500, 125, sunny, macn);
-		}
-		if (i == 8) {
-			stracks[7].loadMod(200, 7900, 125, sunny, macn);
-		}
-		if (i == 9) {
-			stracks[8].loadMod(200, 7900, 125, sunny, macn);
-		}
-		if (i == 10) {
-			stracks[9].loadMod(232, 7300, 125, sunny, macn);
-		}
-		if (i == 11) {
-			stracks[10].loadMod(370, 7900, 125, sunny, macn);
-		}
-		if (i == 12) {
-			stracks[11].loadMod(290, 7900, 125, sunny, macn);
-		}
-		if (i == 13) {
-			stracks[12].loadMod(222, 7600, 125, sunny, macn);
-		}
-		if (i == 14) {
-			stracks[13].loadMod(230, 8000, 125, sunny, macn);
-		}
-		if (i == 15) {
-			stracks[14].loadMod(220, 8000, 125, sunny, macn);
-		}
-		if (i == 16) {
-			stracks[15].loadMod(261, 8000, 125, sunny, macn);
-		}
-		if (i == 17) {
-			stracks[16].loadMod(400, 7600, 125, sunny, macn);
-		}
-		if (flag) {
-			runner.stop();
-			runner = null;
-			runtyp = 0;
-		}
-		System.gc();
-		lastload = i - 1;
-		if (j == 0) {
-			if (loadedt[i - 1]) {
-				stracks[i - 1].play();
-			}
-			app.setCursor(new Cursor(0));
-			fase = 6;
-		} else {
-			fase = 176;
-		}
-		pcontin = 0;
-		mutem = false;
-		mutes = false;
+		new Thread() {
+		    @Override
+		    public void run() {
+
+		        if (i == 1) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 130, 8000, 125, sunny, macn);
+		        } else if (i == 2) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 260, 7200, 125, sunny, macn);
+		        } else if (i == 3) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 270, 8000, 125, sunny, macn);
+		        } else if (i == 4) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 190, 8000, 125, sunny, macn);
+		        } else if (i == 5) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 162, 7800, 125, sunny, macn);
+		        } else if (i == 6) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 220, 7600, 125, sunny, macn);
+		        } else if (i == 7) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 300, 7500, 125, sunny, macn);
+		        } else if (i == 8) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 200, 7900, 125, sunny, macn);
+		        } else if (i == 9) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 200, 7900, 125, sunny, macn);
+		        } else if (i == 10) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 232, 7300, 125, sunny, macn);
+		        } else if (i == 11) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 370, 7900, 125, sunny, macn);
+		        } else if (i == 12) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 290, 7900, 125, sunny, macn);
+		        } else if (i == 13) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 222, 7600, 125, sunny, macn);
+		        } else if (i == 14) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 230, 8000, 125, sunny, macn);
+		        } else if (i == 15) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 220, 8000, 125, sunny, macn);
+		        } else if (i == 16) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 261, 8000, 125, sunny, macn);
+		        } else if (i == 17) {
+		            strack = new RadicalMod("music/stage" + i + ".radq", 400, 7600, 125, sunny, macn);
+		        }
+		        //stracks[i-1].loadimod(true);
+		        if (!loadedt) {
+		            if (strack.loaded == 2) {
+		                loadedt = true;
+		            }
+		        }
+
+		        System.gc();
+		        lastload = i - 1;
+		        if (j == 0) {
+		            if (loadedt) {
+		                strack.play();
+		            }
+		            app.setCursor(new Cursor(0));
+		            fase = 6;
+		        } else {
+		            fase = 176;
+		        }
+		        pcontin = 0;
+		        mutem = false;
+		        mutes = false;
+		    }
+		}.start();
 	}
 
 	/**Loads images from images.radq
@@ -1737,8 +1750,7 @@ public class xtGraphics extends Panel implements Runnable {
 		int howManyImages = 0;
 		
 		try {
-			URL url = new URL(app.getCodeBase(), "data/images.radq");
-			ZipInputStream zipinputstream = new ZipInputStream(url.openStream());
+			ZipInputStream zipinputstream = new ZipInputStream(new FileInputStream("data/images.radq"));
 			for (ZipEntry zipentry = zipinputstream.getNextEntry(); zipentry != null; zipentry = zipinputstream
 					.getNextEntry()) {
 				int i = (int) zipentry.getSize();
@@ -2073,15 +2085,15 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.drawImage(paused, 216, 8, null);
 		if (control.enter || control.handb) {
 			if (opselect == 0) {
-				if (loadedt[i - 1] && !mutem) {
-					stracks[i - 1].resume();
+				if (loadedt && !mutem) {
+					strack.resume();
 				}
 				fase = 0;
 			}
 			if (opselect == 1) {
 				if (record.caught >= 300) {
-					if (loadedt[i - 1] && !mutem) {
-						stracks[i - 1].resume();
+					if (loadedt && !mutem) {
+						strack.resume();
 					}
 					fase = -1;
 				} else {
@@ -2089,15 +2101,15 @@ public class xtGraphics extends Panel implements Runnable {
 				}
 			}
 			if (opselect == 2) {
-				if (loadedt[i - 1]) {
-					stracks[i - 1].stop();
+				if (loadedt) {
+					strack.stop();
 				}
 				oldfase = -7;
 				fase = 11;
 			}
 			if (opselect == 3) {
-				if (loadedt[i - 1]) {
-					stracks[i - 1].stop();
+				if (loadedt) {
+					strack.stop();
 				}
 				fase = 10;
 				opselect = 0;
@@ -2228,8 +2240,8 @@ public class xtGraphics extends Panel implements Runnable {
 				holdcnt = 0;
 			}
 			if (control.enter) {
-				if (loadedt[checkpoints.stage - 1]) {
-					stracks[checkpoints.stage - 1].stop();
+				if (loadedt) {
+					strack.stop();
 				}
 				fase = -6;
 				control.enter = false;
@@ -2950,8 +2962,8 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.drawImage(contin[pcontin], 290, 350 - pin, null);
 		if (control.enter || control.handb) {
 			fase = 10;
-			if (loadedt[checkpoints.stage - 1]) {
-				stracks[checkpoints.stage - 1].stop();
+			if (loadedt) {
+				strack.stop();
 			}
 			if (checkpoints.stage == unlocked && winner && unlocked != 17) {
 				checkpoints.stage++;
@@ -3166,7 +3178,7 @@ public class xtGraphics extends Panel implements Runnable {
 			control.handb = false;
 			control.enter = false;
 			stages.stop();
-			stages.unloadMod();
+			stages.unload();
 		}
 		if (control.right && checkpoints.stage < 17) {
 			if (checkpoints.stage != unlocked) {
@@ -3460,7 +3472,7 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.fillRect(222, 346, 26 + (int) ((shload / kbload) * 200F), 10);
 	}
 
-	public xtGraphics(Medium medium, Graphics2D graphics2d, Applet applet) {
+	public xtGraphics(Medium medium, Graphics2D graphics2d, GameSparker applet) {
 		fase = 111;
 		oldfase = 0;
 		starcnt = 0;
@@ -3499,19 +3511,17 @@ public class xtGraphics extends Panel implements Runnable {
 		ocntdn = new Image[4];
 		cntdn = new Image[4];
 		gocnt = 0;
-		engs = new AudioClip[5][5];
+		engs = new SoundClip[5][5];
 		pengs = new boolean[5];
-		air = new AudioClip[6];
+		air = new SoundClip[6];
 		aird = false;
 		grrd = false;
-		crash = new AudioClip[3];
-		lowcrash = new AudioClip[3];
+		crash = new SoundClip[3];
+		lowcrash = new SoundClip[3];
 		pwastd = false;
-		skid = new AudioClip[3];
-		dustskid = new AudioClip[3];
+		skid = new SoundClip[3];
+		dustskid = new SoundClip[3];
 		mutes = false;
-		stracks = new RadicalMod[17];
-		loadedt = new boolean[17];
 		lastload = -1;
 		mutem = false;
 		sunny = false;
@@ -3595,15 +3605,11 @@ public class xtGraphics extends Panel implements Runnable {
 			mediatracker.waitForID(0);
 		} catch (Exception _ex) {
 		}
-		int i = 0;
-		do {
-			loadedt[i] = false;
-		} while (++i < 17);
 	}
 
 	public void maini(Control control) {
-		if (lastload >= 0 && loadedt[lastload]) {
-			stracks[lastload].unloadMod();
+		if (lastload >= 0 && loadedt) {
+			strack.unload();
 		}
 		if (flipo == 0) {
 			bgmy[0] = 0;
@@ -3767,7 +3773,7 @@ public class xtGraphics extends Panel implements Runnable {
 			control.handb = false;
 		}
 		if (shaded) {
-			app.repaint();
+			//app.repaint();
 			try {
 				Thread.sleep(100L);
 			} catch (InterruptedException _ex) {
@@ -3914,144 +3920,144 @@ public class xtGraphics extends Panel implements Runnable {
 		rd.drawImage(image, 0, 0, null);
 	}
 
-	public void loaddata(int i) {
+	public void loaddata(int i) throws IOException, URISyntaxException {
 		kbload = 625;
 		sunny = false;
-		String s = "default/";
-		String s1 = "au";
 		if (i == 2) {
 			kbload = 950;
 			sunny = true;
-			s = "JavaNew/";
-			s1 = "wav";
 		}
-		String s2 = System.getProperty("os.name");
-		if (!s2.startsWith("Win")) {
+		if (!System.getProperty("os.name").startsWith("Win")) {
 			macn = true;
 		}
-		runtyp = 176;
 		
-		runner = new Thread(this);
-		runner.start();
-		
-		loadimages();
-		//loadnetworkimages();
-		
-		cars = new RadicalMod("music/cars.radq", app);		
-		dnload += 27;
-		
-		int j = 0;
-		do {
-			int k = 0;
-			do {
-				engs[k][j] = getSound("sounds/" + s + "" + k + "" + j + ".au");
-				dnload += 3;
-			} while (++k < 5);
-			pengs[j] = false;
-		} while (++j < 5);
-		stages = new RadicalMod("music/stages.radq", app);
-		dnload += 91;
-		j = 0;
-		do {
-			air[j] = getSound("sounds/" + s + "air" + j + ".au");
-			dnload += 2;
-		} while (++j < 6);
-		j = 0;
-		do {
-			crash[j] = getSound("sounds/" + s + "crash" + (j + 1) + "." + s1);
-			if (i == 2) {
-				dnload += 10;
-			} else {
-				dnload += 7;
-			}
-		} while (++j < 3);
-		j = 0;
-		do {
-			lowcrash[j] = getSound("sounds/" + s + "lowcrash" + (j + 1) + "." + s1);
-			if (i == 2) {
-				dnload += 10;
-			} else {
-				dnload += 3;
-			}
-		} while (++j < 3);
-		tires = getSound("sounds/" + s + "tires." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 4;
-		}
-		checkpoint = getSound("sounds/" + s + "checkpoint." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 6;
-		}
-		carfixed = getSound("sounds/" + s + "carfixed." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 10;
-		}
-		powerup = getSound("sounds/" + s + "powerup." + s1);
-		if (i == 2) {
-			dnload += 42;
-		} else {
-			dnload += 8;
-		}
-		three = getSound("sounds/" + s + "three." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 4;
-		}
-		two = getSound("sounds/" + s + "two." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 2;
-		}
-		one = getSound("sounds/" + s + "one." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 4;
-		}
-		go = getSound("sounds/" + s + "go." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 4;
-		}
-		wastd = getSound("sounds/" + s + "wasted." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 4;
-		}
-		firewasted = getSound("sounds/" + s + "firewasted." + s1);
-		if (i == 2) {
-			dnload += 24;
-		} else {
-			dnload += 10;
-		}
-		j = 0;
-		do {
-			skid[j] = getSound("sounds/" + s + "skid" + (j + 1) + "." + s1);
-			if (i == 2) {
-				dnload += 22;
-			} else {
-				dnload += 6;
-			}
-		} while (++j < 3);
-		j = 0;
-		do {
-			dustskid[j] = getSound("sounds/" + s + "dustskid" + (j + 1) + "." + s1);
-			if (i == 2) {
-				dnload += 22;
-			} else {
-				dnload += 7;
-			}
-		} while (++j < 3);
+		new Thread() {
+		    @Override
+		    public void run() {
+		        try {
+    
+    		        loadimages();
+    		        //loadnetworkimages();
+    		                
+    		        dnload += 27;
+    		        
+    		        int j = 0;
+    		        do {
+    		            int k = 0;
+    		            do {
+    		                engs[k][j] = getSound("sounds/" + k + j + ".wav");
+    		                dnload += 3;
+    		            } while (++k < 5);
+    		            pengs[j] = false;
+    		        } while (++j < 5);
+    		        dnload += 91;
+    		        j = 0;
+    		        do {
+    		            air[j] = getSound("sounds/air" + j + ".wav");
+    		            dnload += 2;
+    		        } while (++j < 6);
+    		        j = 0;
+    		        do {
+    		            crash[j] = getSound("sounds/crash" + (j + 1) + ".wav");
+    		            if (i == 2) {
+    		                dnload += 10;
+    		            } else {
+    		                dnload += 7;
+    		            }
+    		        } while (++j < 3);
+    		        j = 0;
+    		        do {
+    		            lowcrash[j] = getSound("sounds/lowcrash" + (j + 1) + ".wav");
+    		            if (i == 2) {
+    		                dnload += 10;
+    		            } else {
+    		                dnload += 3;
+    		            }
+    		        } while (++j < 3);
+    		        tires = getSound("sounds/tires.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 4;
+    		        }
+    		        checkpoint = getSound("sounds/checkpoint.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 6;
+    		        }
+    		        carfixed = getSound("sounds/carfixed.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 10;
+    		        }
+    		        powerup = getSound("sounds/powerup.wav");
+    		        if (i == 2) {
+    		            dnload += 42;
+    		        } else {
+    		            dnload += 8;
+    		        }
+    		        three = getSound("sounds/three.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 4;
+    		        }
+    		        two = getSound("sounds/two.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 2;
+    		        }
+    		        one = getSound("sounds/one.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 4;
+    		        }
+    		        go = getSound("sounds/go.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 4;
+    		        }
+    		        wastd = getSound("sounds/wasted.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 4;
+    		        }
+    		        firewasted = getSound("sounds/firewasted.wav");
+    		        if (i == 2) {
+    		            dnload += 24;
+    		        } else {
+    		            dnload += 10;
+    		        }
+    		        j = 0;
+    		        do {
+    		            skid[j] = getSound("sounds/skid" + (j + 1) + ".wav");
+    		            if (i == 2) {
+    		                dnload += 22;
+    		            } else {
+    		                dnload += 6;
+    		            }
+    		        } while (++j < 3);
+    		        j = 0;
+    		        do {
+    		            dustskid[j] = getSound("sounds/dustskid" + (j + 1) + ".wav");
+    		            if (i == 2) {
+    		                dnload += 22;
+    		            } else {
+    		                dnload += 7;
+    		            }
+    		        } while (++j < 3);		    
+		        } catch (Exception e) {
+		            JOptionPane.showMessageDialog(RunGame.frame, "error loading garbage! " + e);
+		            e.printStackTrace();
+		        }
+		    }
+		}.start();
 	}
 
 	public void clicknow() {
@@ -4175,9 +4181,9 @@ public class xtGraphics extends Panel implements Runnable {
 	public void stopallnow() {
 		int i = 0;
 		do {
-			if (loadedt[i]) {
-				stracks[i].unloadAll();
-				stracks[i] = null;
+			if (loadedt) {
+				strack.unload();
+				strack = null;
 			}
 		} while (++i < 17);
 		i = 0;
@@ -4190,15 +4196,15 @@ public class xtGraphics extends Panel implements Runnable {
 			air[i].stop();
 		} while (++i < 6);
 		wastd.stop();
-		cars.unloadAll();
-		stages.unloadAll();
+		cars.unload();
+		stages.unload();
 	}
 
 	public void inishcarselect() {
 		carsbginflex();
 		flatrstart = 0;
 		Medium.lightson = false;
-		cars.loadMod(200, 7900, 125, sunny, macn);
+		cars = new RadicalMod("music/cars.radq", 200, 7900, 125, sunny, macn);
 		pnext = 0;
 		pback = 0;
 	}
@@ -4402,7 +4408,7 @@ public class xtGraphics extends Panel implements Runnable {
 			if (flipo == 0 && (sc[0] - 7) * 2 < unlocked) {
 				lastload = -11;
 				cars.stop();
-				cars.unloadMod();
+				cars.unload();
 				Medium.crs = false;
 				fase = 2;
 			}
@@ -4625,22 +4631,22 @@ public class xtGraphics extends Panel implements Runnable {
 		} while (++i < 6);
 	}
 
-	@Override
-	public void run() {
-		while (runtyp != 0) {
-			if (runtyp >= 1 && runtyp <= 17) {
-				hipnoload(runtyp, false);
-			}
-			if (runtyp == 176) {
-				loading();
-			}
-			app.repaint();
-			try {
-				Thread.sleep(20L);
-			} catch (InterruptedException _ex) {
-			}
-		}
-	}
+//	@Override
+//	public void run() {
+//		while (runtyp != 0) {
+//			if (runtyp >= 1 && runtyp <= 17) {
+//				hipnoload(runtyp, false);
+//			}
+//			if (runtyp == 176) {
+//				loading();
+//			}
+//			//app.repaint();
+//			try {
+//				Thread.sleep(20L);
+//			} catch (InterruptedException _ex) {
+//			}
+//		}
+//	}
 
 	public void loadingfailed(CheckPoints checkpoints, Control control, String error) {
 		trackbg(false);
@@ -4926,12 +4932,14 @@ public class xtGraphics extends Panel implements Runnable {
 	}
 
 	/**
-	 * returns an audioclip
+	 * returns an SoundClip
 	 * @param s name of clip
 	 * @return the new audio clip
+	 * @throws URISyntaxException 
+	 * @throws IOException 
 	 */
-	private AudioClip getSound(String s) {
-		return Applet.newAudioClip(getClass().getResource(s));
+	private SoundClip getSound(String s) throws IOException, URISyntaxException {
+		return new SoundClip(Files.readAllBytes(new File(s).toPath()));
 	}
 
 	public void carsbginflex() {

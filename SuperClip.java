@@ -1,98 +1,126 @@
 
+
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3)
+// Source File Name:   music.SuperClip.java
+
 import java.io.ByteArrayInputStream;
-import javax.sound.sampled.*;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.SourceDataLine;
 
 public class SuperClip implements Runnable {
 
-	private int skiprate;
-	private Thread cliper;
-	public int stoped;
-	private SourceDataLine source;
-	private ByteArrayInputStream stream;
+    SuperClip(final byte[] abyte0, final int i, final int j) {
+        skiprate = 0;
+        stoped = 1;
+        source = null;
+        rollBackPos = 0;
+        rollBackTrig = 0;
+        stoped = 2;
+        skiprate = j;
+        stream = new ByteArrayInputStream(abyte0, 0, i);
+    }
 
-	public SuperClip(byte abyte0[], int i, int j) {
-		skiprate = 0;
-		stoped = 1;
-		source = null;
-		stoped = 2;
-		skiprate = j;
-		stream = new ByteArrayInputStream(abyte0, 0, i);
-	}
+    @Override
+    public void run() {
+        try {
+            final AudioFormat audioformat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, skiprate, 16, 1, 2, skiprate, false);
+            final javax.sound.sampled.DataLine.Info info = new javax.sound.sampled.DataLine.Info(SourceDataLine.class, audioformat);
+            source = (SourceDataLine) AudioSystem.getLine(info);
+            source.open(audioformat);
+            source.start();
+        } catch (final Exception exception) {
+            stoped = 1;
+        }
+        boolean flag = false;
+        while (stoped == 0) {
+            try {
+                final int i = skiprate;
+                int j = stream.available();
+                if (j % 2 != 0) {
+                    j++;
+                }
+                byte[] abyte0 = new byte[j <= i ? j : i];
+                final int l = stream.read(abyte0, 0, abyte0.length);
+                if (l == -1 || rollBackPos != 0 && j < rollBackTrig) {
+                    flag = true;
+                }
+                if (flag) {
+                    if (l != -1) {
+                        source.write(abyte0, 0, abyte0.length);
+                    }
+                    stream.reset();
+                    if (rollBackPos != 0) {
+                        stream.skip(rollBackPos);
+                    }
+                    int k = stream.available();
+                    if (k % 2 != 0) {
+                        k++;
+                    }
+                    abyte0 = new byte[k <= i ? k : i];
+                    stream.read(abyte0, 0, abyte0.length);
+                    flag = false;
+                }
+                source.write(abyte0, 0, abyte0.length);
+            } catch (final Exception exception1) {
+                System.out.println("Play error: " + exception1);
+                stoped = 1;
+            }
+            try {
+                Thread.sleep(200L);
+            } catch (final InterruptedException ignored) {
+            }
+        }
+        source.stop();
+        source.close();
+        source = null;
+        stoped = 2;
+    }
 
-	@Override
-	public void run() {
-		boolean flag = false;
-		try {
-			DataLine.Info info = new DataLine.Info(
-					SourceDataLine.class,
-					new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, -1F, 16, 2, 4, -1F, true));
-			source = (SourceDataLine) AudioSystem.getLine(info);
-			source.open(new AudioFormat(skiprate, 16, 1, false, false));
-			source.start();
-		} catch (Exception exception) {
-			stoped = 1;
-		}
-		while (stoped == 0) {
-			try {
-				if (source.available() < skiprate || !flag) {
-					byte abyte0[] = new byte[skiprate];
-					int i = stream.read(abyte0, 0, abyte0.length);
-					if (i == -1) {
-						stream.reset();
-						stream.read(abyte0, 0, abyte0.length);
-					}
-					source.write(abyte0, 0, abyte0.length);
-					flag = true;
-				}
-			} catch (Exception exception1) {
-				System.out.println("play error: " + exception1);
-				stoped = 1;
-			}
-			try {
-				Thread.sleep(200L);
-			} catch (InterruptedException interruptedexception) {
-			}
-		}
-		source.stop();
-		source.close();
-		source = null;
-		stoped = 2;
-	}
+    void play() {
+        if (stoped == 2) {
+            stoped = 0;
+            try {
+                stream.reset();
+            } catch (final Exception ignored) {
+            }
+            cliper = new Thread(this);
+            cliper.start();
+        }
+    }
 
-	public void play() {
-		if (stoped == 2) {
-			stoped = 0;
-			try {
-				stream.reset();
-			} catch (Exception exception) {
-			}
-			cliper = new Thread(this);
-			cliper.start();
-		}
-	}
+    void resume() {
+        if (stoped == 2) {
+            stoped = 0;
+            cliper = new Thread(this);
+            cliper.start();
+        }
+    }
 
-	public void resume() {
-		if (stoped == 2) {
-			stoped = 0;
-			cliper = new Thread(this);
-			cliper.start();
-		}
-	}
+    void stop() {
+        if (stoped == 0) {
+            stoped = 1;
+            if (source != null) {
+                source.stop();
+            }
+        }
+    }
 
-	public void stop() {
-		if (stoped == 0) {
-			stoped = 1;
-			if (source != null) {
-				source.stop();
-			}
-		}
-	}
+    void close() {
+        try {
+            stream.close();
+            stream = null;
+        } catch (final Exception ignored) {
+        }
+    }
 
-	public void close() {
-		try {
-			stream.close();
-			stream = null;
-		} catch (Exception exception) {
-		}
-	}
+    private int skiprate;
+    private Thread cliper;
+    public int stoped;
+    private SourceDataLine source;
+    public ByteArrayInputStream stream;
+    public int rollBackPos;
+    public int rollBackTrig;
 }
