@@ -1665,6 +1665,8 @@ public class xtGraphics extends Panel {
 		rd.drawImage(fleximg, 0, 0, null);
 		Medium.flex = 0;
 	}
+	
+	public boolean tstarted = false;
 
 	public void loadmusic(int i, int j) {
 		hipnoload(i, false);
@@ -1675,68 +1677,77 @@ public class xtGraphics extends Panel {
 				|| i == 13 || i == 16)) {
 			flag = true;
 		}
-		new Thread() {
-		    @Override
-		    public void run() {
+		if (!tstarted) {
+		    tstarted = true;
+            new Thread() {
+                @Override
+                public void run() {
+                    
+                    if (strack != null) {
+                        strack.stop();
+                        strack.unload();
+                        strack = null;
+                        loadedt = false;
+                    }
 
-		        if (i == 1) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 130, 8000, 125, sunny, macn);
-		        } else if (i == 2) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 260, 7200, 125, sunny, macn);
-		        } else if (i == 3) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 270, 8000, 125, sunny, macn);
-		        } else if (i == 4) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 190, 8000, 125, sunny, macn);
-		        } else if (i == 5) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 162, 7800, 125, sunny, macn);
-		        } else if (i == 6) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 220, 7600, 125, sunny, macn);
-		        } else if (i == 7) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 300, 7500, 125, sunny, macn);
-		        } else if (i == 8) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 200, 7900, 125, sunny, macn);
-		        } else if (i == 9) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 200, 7900, 125, sunny, macn);
-		        } else if (i == 10) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 232, 7300, 125, sunny, macn);
-		        } else if (i == 11) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 370, 7900, 125, sunny, macn);
-		        } else if (i == 12) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 290, 7900, 125, sunny, macn);
-		        } else if (i == 13) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 222, 7600, 125, sunny, macn);
-		        } else if (i == 14) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 230, 8000, 125, sunny, macn);
-		        } else if (i == 15) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 220, 8000, 125, sunny, macn);
-		        } else if (i == 16) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 261, 8000, 125, sunny, macn);
-		        } else if (i == 17) {
-		            strack = new RadicalMod("music/stage" + i + ".radq", 400, 7600, 125, sunny, macn);
-		        }
-		        //stracks[i-1].loadimod(true);
-		        if (!loadedt) {
-		            if (strack.loaded == 2) {
-		                loadedt = true;
-		            }
-		        }
+                    if (i == 1) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 130, 8000, 125, sunny, macn);
+                    } else if (i == 2) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 260, 7200, 125, sunny, macn);
+                    } else if (i == 3) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 270, 8000, 125, sunny, macn);
+                    } else if (i == 4) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 190, 8000, 125, sunny, macn);
+                    } else if (i == 5) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 162, 7800, 125, sunny, macn);
+                    } else if (i == 6) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 220, 7600, 125, sunny, macn);
+                    } else if (i == 7) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 300, 7500, 125, sunny, macn);
+                    } else if (i == 8) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 200, 7900, 125, sunny, macn);
+                    } else if (i == 9) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 200, 7900, 125, sunny, macn);
+                    } else if (i == 10) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 232, 7300, 125, sunny, macn);
+                    } else if (i == 11) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 370, 7900, 125, sunny, macn);
+                    } else if (i == 12) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 290, 7900, 125, sunny, macn);
+                    } else if (i == 13) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 222, 7600, 125, sunny, macn);
+                    } else if (i == 14) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 230, 8000, 125, sunny, macn);
+                    } else if (i == 15) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 220, 8000, 125, sunny, macn);
+                    } else if (i == 16) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 261, 8000, 125, sunny, macn);
+                    } else if (i == 17) {
+                        strack = new RadicalMod("music/stage" + i + ".radq", 400, 7600, 125, sunny, macn);
+                    }
+                    //stracks[i-1].loadimod(true);
+                    if (strack.loaded == 2) {
+                        loadedt = true;
+                    }
 
-		        System.gc();
-		        lastload = i - 1;
-		        if (j == 0) {
-		            if (loadedt) {
-		                strack.play();
-		            }
-		            app.setCursor(new Cursor(0));
-		            fase = 6;
-		        } else {
-		            fase = 176;
-		        }
-		        pcontin = 0;
-		        mutem = false;
-		        mutes = false;
-		    }
-		}.start();
+                    System.gc();
+                    lastload = i - 1;
+
+                    strack.play();
+                    
+                    if (j == 0) {
+                        app.setCursor(new Cursor(0));
+                        fase = 6;
+                    } else {
+                        fase = 176;
+                    }
+                    pcontin = 0;
+                    mutem = false;
+                    mutes = false;
+                    tstarted = false;
+                }
+            }.start();
+        }
 	}
 
 	/**Loads images from images.radq
@@ -4182,8 +4193,10 @@ public class xtGraphics extends Panel {
 		int i = 0;
 		do {
 			if (loadedt) {
+			    strack.stop();
 				strack.unload();
 				strack = null;
+	            loadedt = false;
 			}
 		} while (++i < 17);
 		i = 0;
@@ -4207,6 +4220,13 @@ public class xtGraphics extends Panel {
 		cars = new RadicalMod("music/cars.radq", 200, 7900, 125, sunny, macn);
 		pnext = 0;
 		pback = 0;
+		try {
+    		strack.stop();
+            strack.unload();
+            strack = null;
+            loadedt = false;
+		} catch (Exception ignored) {
+		}
 	}
 
 	public void carselect(Control control, ContO aconto[], Madness madness) {

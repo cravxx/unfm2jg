@@ -1057,8 +1057,9 @@ public class GameSparker extends JPanel implements FocusListener, KeyListener, M
         	} else {
         		u[0].enter = false;
         		u[0].handb = false;
-        		if (xtgraphics.loadedt)
-        			xtgraphics.strack.play();
+//        		if (xtgraphics.loadedt && !xtgraphics.strack.isPaused()) {
+//                    xtgraphics.strack.play();
+//                }
         		setCursor(new Cursor(0));
         		xtgraphics.fase = 6;
         	}
