@@ -2,7 +2,7 @@
 
 branchname=$(git describe --contains --all HEAD)
 
-if [ $branchname = "master" ] ;then
+if [ $branchname = "stable" ] ;then
     echo "Publishing javadoc...\n"
 
     cp -R doc $HOME/javadoc-latest
@@ -21,7 +21,7 @@ if [ $branchname = "master" ] ;then
 
     echo "Published Javadoc to gh-pages.\n"
 else
-    echo "Not on master, not updating.\n"
+    echo "Not on stable, not updating.\n"
 fi
 
 
