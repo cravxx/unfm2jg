@@ -17,17 +17,11 @@ public class Stat {
 
     public float bounce = 0F;
 
-    private int cclass = 0;
-
     public int clrad = 0;
 
     public float comprad = 0F;
 
     public float dammult = 0F;
-
-    private float dishandle = 0F;
-
-    private int enginsignature = 0;
 
     public int flipy = 0;
 
@@ -42,8 +36,6 @@ public class Stat {
     public float moment = 0;
 
     public int msquash = 0;
-
-    private final String names;
 
     private float outdam = 0;
 
@@ -75,12 +67,9 @@ public class Stat {
         airc = StatList.airc[im];
         airs = StatList.airs[im];
         bounce = StatList.bounce[im];
-        cclass = StatList.cclass[im];
         clrad = StatList.clrad[im];
         comprad = StatList.comprad[im];
         dammult = StatList.dammult[im];
-        dishandle = StatList.dishandle[im];
-        enginsignature = StatList.enginsignature[im];
         flipy = StatList.flipy[im];
         grip = StatList.grip[im];
         handb = StatList.handb[im];
@@ -88,8 +77,6 @@ public class Stat {
         maxmag = StatList.maxmag[im];
         moment = StatList.moment[im];
         msquash = StatList.msquash[im];
-        names = StatList.names[im];
-        outdam = StatList.outdam[im];
         powerloss = StatList.powerloss[im];
         push = StatList.push[im];
         revlift = StatList.revlift[im];
