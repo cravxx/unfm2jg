@@ -20,7 +20,7 @@ public class Control {
     private int attack;
     private int acr;
     private boolean afta;
-    private int fpnt[];
+    private final int[] fpnt;
     private int trfix;
     private boolean forget;
     private boolean bulistc;
@@ -815,7 +815,7 @@ public class Control {
                     stcnt++;
                 }
             }
-            boolean flag = false;
+            boolean flag;
             if (usebounce) {
                 flag = madness.wtouch;
             } else {

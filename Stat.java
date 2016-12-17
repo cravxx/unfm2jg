@@ -17,7 +17,7 @@ public class Stat {
 
     public float bounce = 0F;
 
-    public int cclass = 0;
+    private int cclass = 0;
 
     public int clrad = 0;
 
@@ -25,9 +25,9 @@ public class Stat {
 
     public float dammult = 0F;
 
-    public float dishandle = 0F;
+    private float dishandle = 0F;
 
-    public int enginsignature = 0;
+    private int enginsignature = 0;
 
     public int flipy = 0;
 
@@ -43,9 +43,9 @@ public class Stat {
 
     public int msquash = 0;
 
-    public String names;
+    private final String names;
 
-    public float outdam = 0;
+    private float outdam = 0;
 
     public int powerloss = 0;
 
@@ -61,7 +61,7 @@ public class Stat {
 
     public int turn = 0;
 
-    public int im = 0;
+    private int im = 0;
 
     /**
      * set up a new stat

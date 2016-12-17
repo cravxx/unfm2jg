@@ -1,9 +1,9 @@
-public class Wheels {
+class Wheels {
 
     public int ground;
 
     private int mast;
-    private int rc[] = {
+    private final int[] rc = {
             120, 120, 120
     };
     private float size;

@@ -3,7 +3,7 @@
  *
  * @author Rafa, Kaffeinated, Omar Wally
  */
-public class RadicalMath {
+class RadicalMath {
 
     public static float sin_m_zy;
     public static float cos_m_zy;
@@ -12,8 +12,8 @@ public class RadicalMath {
     public static float sin_m_xy;
     public static float cos_m_xy;
 
-    static private float[] tcos = new float[360];
-    static private float[] tsin = new float[360];
+    static private final float[] tcos = new float[360];
+    static private final float[] tsin = new float[360];
 
     static {
         for (int i = 0; i < 360; i++) {

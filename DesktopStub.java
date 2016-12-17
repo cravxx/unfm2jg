@@ -8,9 +8,9 @@ import java.net.URL;
  *
  * @author DragShot
  */
-public class DesktopStub implements AppletStub {
+class DesktopStub implements AppletStub {
 
-    private AppletContext context = new DesktopContext();
+    private final AppletContext context = new DesktopContext();
 
     @Override
     /**

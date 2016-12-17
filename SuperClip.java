@@ -4,7 +4,7 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 import java.io.ByteArrayInputStream;
 
-public class SuperClip implements Runnable {
+class SuperClip implements Runnable {
 
     private int skiprate;
     private Thread cliper;

@@ -17,7 +17,7 @@ class ModTrackInfo {
     public int vibpos;
     public int trempos;
     public int oldsampofs;
-    public int arp[];
+    public final int[] arp;
     public int arpindex;
     public int vol_slide;
     public int port_inc;

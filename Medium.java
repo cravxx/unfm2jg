@@ -19,37 +19,37 @@ public class Medium {
     public static int focus_point;
     public static int ground;
     private static int skyline;
-    public static int fade[] = {
+    public static final int[] fade = {
             3000, 4500, 6000, 7500, 9000, 10500, 12000, 13500, 15000, 16500, 18000, 19500, 21000, 22500, 24000, 25500
     };
-    private static int cldd[] = {
+    private static final int[] cldd = {
             210, 210, 210, 1, -1000
     };
-    private static int clds[] = {
+    private static final int[] clds = {
             210, 210, 210
     };
-    private static int osky[] = {
+    private static final int[] osky = {
             170, 220, 255
     };
-    public static int csky[] = {
+    public static final int[] csky = {
             170, 220, 255
     };
-    private static int ogrnd[] = {
+    private static final int[] ogrnd = {
             205, 200, 200
     };
-    public static int cgrnd[] = {
+    public static final int[] cgrnd = {
             205, 200, 200
     };
-    private static int texture[] = {
+    private static final int[] texture = {
             0, 0, 0, 50
     };
-    private static int cpol[] = {
+    private static final int[] cpol = {
             215, 210, 210
     };
-    private static int crgrnd[] = {
+    private static final int[] crgrnd = {
             205, 200, 200
     };
-    public static int cfade[] = {
+    public static final int[] cfade = {
             255, 220, 220
     };
     public static int snap[] = {
@@ -653,14 +653,14 @@ public class Medium {
             int ai2[][] = new int[3][12];
             int ai3[] = new int[12];
             int ai4[] = new int[12];
-            int k1 = 0;
-            int l1 = 0;
-            int i2 = 0;
-            int j2 = 0;
-            boolean flag = true;
-            int k2 = 0;
-            int l2 = 0;
-            int i3 = 0;
+            int k1;
+            int l1;
+            int i2;
+            int j2;
+            boolean flag;
+            int k2;
+            int l2;
+            int i3;
             for (int j3 = 0; j3 < 3; j3++) {
                 for (int k4 = 0; k4 < 12; k4++) {
                     ai[j3][k4] = (clax[i][j3][k4] + clx[i]) - x / 20;
@@ -935,9 +935,9 @@ public class Medium {
         int[] is = new int[nmt];
         int[] is_173_ = new int[nmt];
         for (int i_174_ = 0; i_174_ < nmt; i_174_++) {
-            int i_175_ = 85;
-            float f = 0.5F;
-            float f_176_ = 0.5F;
+            int i_175_;
+            float f;
+            float f_176_;
             is[i_174_] = (int) (10000.0 + random.nextDouble() * 10000.0);
             int i_177_ = (int) (random.nextDouble() * 360.0);
             if (random.nextDouble() > random.nextDouble()) {
@@ -1038,7 +1038,7 @@ public class Medium {
                 Utility.rot(is_192_, is_193_, cy, cz, zy, nmv[i_185_] * 2);
                 int[] is_196_ = new int[4];
                 int[] is_197_ = new int[4];
-                boolean bool_201_ = true;
+                boolean bool_201_;
                 for (int i_202_ = 0; i_202_ < nmv[i_185_] - 1; i_202_++) {
                     int i_203_ = 0;
                     int i_204_ = 0;

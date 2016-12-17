@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class xtGraphics extends Panel implements Runnable {
+class xtGraphics extends Panel implements Runnable {
     /**
      *
      */
@@ -19,40 +19,40 @@ public class xtGraphics extends Panel implements Runnable {
     /**
      * starting colors for the special screen in the credits
      */
-    public int credColors[] = {
+    private final int[] credColors = {
             25, 50, 100
     };
     /**
      * test image for the network load feature
      */
-    public Image aimLogo;
+    private Image aimLogo;
 
-    public Graphics2D rd;
-    public Medium m;
-    public ImageObserver ob;
-    public Applet app;
+    private final Graphics2D rd;
+    private final Medium m;
+    private ImageObserver ob;
+    private final Applet app;
     public int fase;
-    public int oldfase;
+    private int oldfase;
     public int starcnt;
     public int unlocked;
-    public int lockcnt;
+    private int lockcnt;
     public int opselect;
-    public boolean shaded;
+    private boolean shaded;
     public int flipo;
-    public boolean nextc;
-    public int gatey;
+    private boolean nextc;
+    private int gatey;
     public int looped;
-    public int sc[];
+    public final int[] sc;
     /**
      * x position of the cars at theh start of a race
      */
-    public int xstart[] = {
+    public final int[] xstart = {
             0, -350, 350, 0, -350, 350, 0
     };
     /**
      * z position of the cars at theh start of a race
      */
-    public int zstart[] = {
+    public final int[] zstart = {
             -760, -380, -380, 0, 380, 380, 760
     };
 
@@ -66,161 +66,161 @@ public class xtGraphics extends Panel implements Runnable {
     public float proba[] = {
             0.6F, 0.7F, 0.4F, 0.3F, 0.8F, 0, 0.3F, 0.3F, 0.3F, 0.1F, 0.1F, 0.5F, 0, 0, 0, 0
     };
-    public float dishandle[] = {
+    private final float[] dishandle = {
             0.65F, 0.6F, 0.55F, 0.77F, 0.62F, 0.9F, 0.6F, 0.72F, 0.45F, 0.8F, 0.95F, 0.4F, 0.87F, 0.42F, 1.0F, 0.95F
     };
-    public float outdam[] = {
+    private final float[] outdam = {
             0.67F, 0.35F, 0.8F, 0.5F, 0.42F, 0.76F, 0.82F, 0.76F, 0.72F, 0.62F, 0.79F, 0.95F, 0.77F, 1.0F, 0.85F, 1.0F
     };
-    public boolean holdit;
-    public int holdcnt;
+    private boolean holdit;
+    private int holdcnt;
     public boolean winner;
-    public int flexpix[];
-    public int smokey[];
-    public Image fleximg;
-    public int flatrstart;
-    public Thread runner;
-    public int runtyp;
-    public Image kaff;
-    public Image odmg;
-    public Image opwr;
-    public Image opos;
-    public Image owas;
-    public Image olap;
-    public Image oyourwasted;
-    public Image oyoulost;
-    public Image oyouwon;
-    public Image oyouwastedem;
-    public Image ogameh;
-    public Image oloadingmusic;
-    public Image oflaot;
-    public Image dmg;
-    public Image pwr;
-    public Image pos;
-    public Image was;
-    public Image lap;
-    public Image br;
-    public Image select;
-    public Image loadingmusic;
-    public Image yourwasted;
-    public Image youlost;
-    public Image youwon;
-    public Image youwastedem;
-    public Image gameh;
-    public Image congrd;
-    public Image gameov;
-    public Image carsbg;
-    public Image pgate;
-    public Image selectcar;
-    public Image statb;
-    public Image statbo;
+    private final int[] flexpix;
+    private final int[] smokey;
+    private Image fleximg;
+    private int flatrstart;
+    private Thread runner;
+    private int runtyp;
+    private Image kaff;
+    private Image odmg;
+    private Image opwr;
+    private Image opos;
+    private Image owas;
+    private Image olap;
+    private Image oyourwasted;
+    private Image oyoulost;
+    private Image oyouwon;
+    private Image oyouwastedem;
+    private Image ogameh;
+    private Image oloadingmusic;
+    private Image oflaot;
+    private Image dmg;
+    private Image pwr;
+    private Image pos;
+    private Image was;
+    private Image lap;
+    private Image br;
+    private Image select;
+    private Image loadingmusic;
+    private Image yourwasted;
+    private Image youlost;
+    private Image youwon;
+    private Image youwastedem;
+    private Image gameh;
+    private Image congrd;
+    private Image gameov;
+    private Image carsbg;
+    private Image pgate;
+    private Image selectcar;
+    private Image statb;
+    private Image statbo;
     public Image mdness;
-    public Image paused;
-    public Image radicalplay;
-    public Image logocars;
-    public Image logomadnes;
-    public Image logomadbg;
-    public Image byrd;
-    public Image opback;
-    public Image nfmcoms;
-    public Image opti;
-    public Image bgmain;
-    public Image rpro;
-    public Image nfmcom;
-    public Image flaot;
-    public Image fixhoop;
-    public Image sarrow;
-    public Image stunts;
-    public Image racing;
-    public Image wasting;
-    public Image plus;
-    public Image space;
-    public Image arrows;
-    public Image chil;
-    public Image ory;
-    public Image kz;
-    public Image kx;
-    public Image kv;
-    public Image kp;
-    public Image km;
-    public Image kn;
-    public Image kenter;
-    public Image nfm;
-    public Image trackbg[][];
-    public Image dude[];
-    public Image dudeb[];
-    public int duds;
-    public int dudo;
-    public Image next[];
-    public Image back[];
-    public Image contin[];
-    public Image ostar[];
-    public Image star[];
-    public int pcontin;
-    public int pnext;
-    public int pback;
-    public int pstar;
-    public Image orank[];
-    public Image rank[];
-    public Image ocntdn[];
-    public Image cntdn[];
-    public int gocnt;
-    public AudioClip engs[][];
-    public boolean pengs[];
-    public int enginsignature[] = {
+    private Image paused;
+    private Image radicalplay;
+    private Image logocars;
+    private Image logomadnes;
+    private Image logomadbg;
+    private Image byrd;
+    private Image opback;
+    private Image nfmcoms;
+    private Image opti;
+    private Image bgmain;
+    private Image rpro;
+    private Image nfmcom;
+    private Image flaot;
+    private Image fixhoop;
+    private Image sarrow;
+    private Image stunts;
+    private Image racing;
+    private Image wasting;
+    private Image plus;
+    private Image space;
+    private Image arrows;
+    private Image chil;
+    private Image ory;
+    private Image kz;
+    private Image kx;
+    private Image kv;
+    private Image kp;
+    private Image km;
+    private Image kn;
+    private Image kenter;
+    private Image nfm;
+    private final Image[][] trackbg;
+    public final Image[] dude;
+    private final Image[] dudeb;
+    private int duds;
+    private int dudo;
+    private final Image[] next;
+    private final Image[] back;
+    private final Image[] contin;
+    private final Image[] ostar;
+    private final Image[] star;
+    private int pcontin;
+    private int pnext;
+    private int pback;
+    private int pstar;
+    private final Image[] orank;
+    private final Image[] rank;
+    private final Image[] ocntdn;
+    private final Image[] cntdn;
+    private int gocnt;
+    private final AudioClip[][] engs;
+    private final boolean[] pengs;
+    private final int[] enginsignature = {
             0, 1, 2, 1, 0, 3, 2, 2, 1, 0, 3, 4, 1, 4, 0, 3
     };
-    public AudioClip air[];
-    public boolean aird;
-    public boolean grrd;
-    public AudioClip crash[];
-    public AudioClip lowcrash[];
-    public AudioClip tires;
-    public AudioClip checkpoint;
+    private final AudioClip[] air;
+    private boolean aird;
+    private boolean grrd;
+    private final AudioClip[] crash;
+    private final AudioClip[] lowcrash;
+    private AudioClip tires;
+    private AudioClip checkpoint;
     public AudioClip carfixed;
-    public AudioClip powerup;
-    public AudioClip three;
-    public AudioClip two;
-    public AudioClip one;
-    public AudioClip go;
-    public AudioClip wastd;
-    public AudioClip firewasted;
-    public boolean pwastd;
-    public AudioClip skid[];
-    public AudioClip dustskid[];
+    private AudioClip powerup;
+    private AudioClip three;
+    private AudioClip two;
+    private AudioClip one;
+    private AudioClip go;
+    private AudioClip wastd;
+    private AudioClip firewasted;
+    private boolean pwastd;
+    private final AudioClip[] skid;
+    private final AudioClip[] dustskid;
     public boolean mutes;
-    public RadicalMod stages;
-    public RadicalMod cars;
-    public RadicalMod stracks[];
-    public boolean loadedt[];
-    public int lastload;
-    public boolean mutem;
-    public boolean sunny;
-    public boolean macn;
-    public boolean arrace;
-    public int ana;
-    public int cntan;
-    public int cntovn;
-    public boolean flk;
-    public int tcnt;
-    public boolean tflk;
-    public String say;
-    public boolean wasay;
-    public int clear;
-    public int posit;
-    public int wasted;
-    public int laps;
-    public int dested[];
-    public String names[] = {
+    private RadicalMod stages;
+    private RadicalMod cars;
+    public final RadicalMod[] stracks;
+    public final boolean[] loadedt;
+    private int lastload;
+    private boolean mutem;
+    private boolean sunny;
+    private boolean macn;
+    private boolean arrace;
+    private int ana;
+    private int cntan;
+    private int cntovn;
+    private boolean flk;
+    private int tcnt;
+    private boolean tflk;
+    private String say;
+    private boolean wasay;
+    private int clear;
+    private int posit;
+    private int wasted;
+    private int laps;
+    private final int[] dested;
+    private final String[] names = {
             "Tornado Shark", "Formula 7", "Wow Caninaro", "La Vite Crab", "Nimi", "MAX Revenge", "Lead Oxide",
             "Kool Kat", "Drifter X", "Sword of Justice", "High Rider", "EL KING", "Mighty Eight", "M A S H E E N",
             "Radical One", "DR Monstaa"
     };
-    public int dmcnt;
-    public boolean dmflk;
-    public int pwcnt;
-    public boolean pwflk;
-    public String adj[][] = {
+    private int dmcnt;
+    private boolean dmflk;
+    private int pwcnt;
+    private boolean pwflk;
+    private final String[][] adj = {
             {
                     "Cool", "Alright", "Nice"
             }, {
@@ -233,69 +233,69 @@ public class xtGraphics extends Panel implements Runnable {
             "surf style", "off the lip", "bounce back"
     }
     };
-    public String exlm[] = {
+    private final String[] exlm = {
             "!", "!!", "!!!"
     };
-    public String loop;
-    public String spin;
-    public String asay;
-    public int auscnt;
-    public boolean aflk;
-    public int sndsize[] = {
+    private String loop;
+    private String spin;
+    private String asay;
+    private int auscnt;
+    private boolean aflk;
+    private final int[] sndsize = {
             106, 76, 56, 116, 92, 208, 70, 80, 152, 102, 27, 65, 52, 30, 151, 129, 70
     };
-    public Image hello;
-    public Image sign;
-    public Image loadbar;
-    public int kbload;
+    private final Image hello;
+    private final Image sign;
+    private final Image loadbar;
+    private int kbload;
     public int dnload;
-    public float shload;
-    public int radpx;
-    public int pin;
-    public int bgmy[] = {
+    private float shload;
+    private int radpx;
+    private int pin;
+    private final int[] bgmy = {
             0, 400
     };
-    public int trkx[] = {
+    private final int[] trkx = {
             0, 670
     };
-    public int trkl;
-    public int trklim;
-    public float hipno[] = {
+    private int trkl;
+    private int trklim;
+    private final float[] hipno = {
             1.0F, 1.0F, 3F, 1.0F, 1.2F, 1.0F, 1.7F, 1.0F, 1.0F, 8F, 1.5F, 2.0F, 1.2F, 10F, 1.8F, 1.4F, 2.0F
     };
-    public int flkat;
-    public int movly;
-    public int xdu;
-    public int ydu;
-    public int gxdu;
-    public int gydu;
-    public int pgatx[] = {
+    private int flkat;
+    private int movly;
+    private int xdu;
+    private int ydu;
+    private int gxdu;
+    private int gydu;
+    private final int[] pgatx = {
             146, 175, 215, 267, 334, 401, 452, 493, 521
     };
-    public int pgaty[] = {
+    private final int[] pgaty = {
             168, 188, 201, 212, 219, 214, 203, 189, 171
     };
-    public int pgady[];
-    public boolean pgas[];
-    public int lxm;
-    public int lym;
-    public int pwait;
-    public int stopcnt;
-    public int cntwis;
-    public int crshturn;
-    public int bfcrash;
-    public int bfskid;
-    public boolean crashup;
-    public boolean skidup;
-    public int skflg;
-    public int dskflg;
-    public int flatr;
-    public int flyr;
-    public int flyrdest;
-    public int flang;
-    public int flangados;
-    public float blackn;
-    public float blacknados;
+    private final int[] pgady;
+    private final boolean[] pgas;
+    private int lxm;
+    private int lym;
+    private int pwait;
+    private int stopcnt;
+    private int cntwis;
+    private int crshturn;
+    private int bfcrash;
+    private int bfskid;
+    private boolean crashup;
+    private boolean skidup;
+    private int skflg;
+    private int dskflg;
+    private int flatr;
+    private int flyr;
+    private int flyrdest;
+    private int flang;
+    private int flangados;
+    private float blackn;
+    private float blacknados;
 
     /**
      * Filter images
@@ -550,14 +550,12 @@ public class xtGraphics extends Panel implements Runnable {
             Color color2 = new Color(l, i1, j1, 50); /// last is alpha
             ai[k] = color2.getRGB();
         }
-        Image image1 = createImage(new MemoryImageSource(j, i, ai, 0, j));
-        return image1;
+        return createImage(new MemoryImageSource(j, i, ai, 0, j));
     }
 
     public int colorinvert(int r, int g, int b) {
         int hex = (0xff << 24) | ((r & 0xff) << 16) | ((g & 0xff) << 8) | (b & 0xff);
-        int neg = 0xFFFFFF - hex;
-        return neg;
+        return 0xFFFFFF - hex;
     }
 
     /**
@@ -594,7 +592,7 @@ public class xtGraphics extends Panel implements Runnable {
         rd.drawString("" + text, xScreenCoor, yScreenCoor);
     }
 
-    public boolean over(Image image, int i, int j, int k, int l) {
+    private boolean over(Image image, int i, int j, int k, int l) {
         int i1 = image.getHeight(ob);
         int j1 = image.getWidth(ob);
         return i > k - 5 && i < k + j1 + 5 && j > l - 5 && j < l + i1 + 5;
@@ -957,7 +955,7 @@ public class xtGraphics extends Panel implements Runnable {
         rd.drawImage(fleximg, 0, 0, null);
     }
 
-    public void arrow(int i, int j, CheckPoints checkpoints, ContO conto[], boolean flag) {
+    private void arrow(int i, int j, CheckPoints checkpoints, ContO conto[], boolean flag) {
         int ai[] = new int[7];
         int ai1[] = new int[7];
         int ai2[] = new int[7];
@@ -1501,8 +1499,7 @@ public class xtGraphics extends Panel implements Runnable {
             }
         }
 
-        Image image1 = createImage(new MemoryImageSource(j, i, ai, 0, j));
-        return image1;
+        return createImage(new MemoryImageSource(j, i, ai, 0, j));
     }
 
     private Image dodgen(Image image) {
@@ -1541,8 +1538,7 @@ public class xtGraphics extends Panel implements Runnable {
             ai[k] = color1.getRGB();
         }
 
-        Image image1 = createImage(new MemoryImageSource(j, i, ai, 0, j));
-        return image1;
+        return createImage(new MemoryImageSource(j, i, ai, 0, j));
     }
 
     private void smokeypix(byte abyte0[], MediaTracker mediatracker, Toolkit toolkit) {
@@ -1583,7 +1579,7 @@ public class xtGraphics extends Panel implements Runnable {
         drawcs(395, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
     }
 
-    public boolean overon(int i, int j, int k, int l, int i1, int j1) {
+    private boolean overon(int i, int j, int k, int l, int i1, int j1) {
         return i1 > i && i1 < i + k && j1 > j && j1 < j + l;
     }
 
@@ -1728,7 +1724,7 @@ public class xtGraphics extends Panel implements Runnable {
      *
      * @author Omar Wally
      */
-    public void loadimages() {
+    private void loadimages() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         MediaTracker mediatracker = new MediaTracker(app);
         dnload += 12;
@@ -2973,11 +2969,11 @@ public class xtGraphics extends Panel implements Runnable {
             // System.out.println("Minimum car: " + cd.names[(i - 1) / 2] + ", maximum car: " + cd.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
 
             // create a list of car ids, each item completely unique
-            ArrayList<Integer> list = new ArrayList<Integer>();
+            ArrayList<Integer> list = new ArrayList<>();
             for (int k = (i - 1) / 2; k < 7 + ((i - 1) / 2); k++) {
                 if (k == sc[0])
                     continue;
-                list.add(new Integer(k));
+                list.add(k);
             }
             // randomize the order of this list (shuffle it like a deck of cards)
             Collections.shuffle(list);
@@ -3008,7 +3004,7 @@ public class xtGraphics extends Panel implements Runnable {
         }
     }
 
-    public void sparkeng(int i) {
+    private void sparkeng(int i) {
         i++;
         int j = 0;
         do {
@@ -3024,7 +3020,7 @@ public class xtGraphics extends Panel implements Runnable {
         } while (++j < 5);
     }
 
-    public void drawcs(int i, String s, int j, int k, int l, int i1) {
+    private void drawcs(int i, String s, int j, int k, int l, int i1) {
         if (i1 != 3 && i1 != 4) {
             j = (int) (j + j * (Medium.snap[0] / 100F));
             if (j > 255) {
@@ -3240,8 +3236,7 @@ public class xtGraphics extends Panel implements Runnable {
             }
         }
 
-        Image image1 = createImage(new MemoryImageSource(j, i, ai, 0, j));
-        return image1;
+        return createImage(new MemoryImageSource(j, i, ai, 0, j));
     }
 
     public void resetstat(int i) {
@@ -3276,7 +3271,7 @@ public class xtGraphics extends Panel implements Runnable {
         sortcars(i);
     }
 
-    public void drawstat(int i, int j, boolean flag, float f) {
+    private void drawstat(int i, int j, boolean flag, float f) {
         int ai[] = new int[4];
         int ai1[] = new int[4];
         if (flag) {
@@ -3418,11 +3413,10 @@ public class xtGraphics extends Panel implements Runnable {
             }
         }
 
-        Image image1 = createImage(new MemoryImageSource(j, i, ai, 0, j));
-        return image1;
+        return createImage(new MemoryImageSource(j, i, ai, 0, j));
     }
 
-    public void loading() {
+    private void loading() {
         rd.setColor(new Color(0, 0, 0));
         rd.fillRect(0, 0, 670, 400);
         rd.drawImage(sign, 297, 10, this);
@@ -3843,7 +3837,7 @@ public class xtGraphics extends Panel implements Runnable {
         }
     }
 
-    public void drawSmokeCarsbg() {
+    private void drawSmokeCarsbg() {
         if (Math.abs(flyr - flyrdest) > 20) {
             if (flyr > flyrdest) {
                 flyr -= 20;
@@ -4606,7 +4600,7 @@ public class xtGraphics extends Panel implements Runnable {
         }
     }
 
-    public void stopairs() {
+    private void stopairs() {
         int i = 0;
         do {
             air[i].stop();
@@ -4909,8 +4903,7 @@ public class xtGraphics extends Panel implements Runnable {
             }
         }
 
-        Image image1 = createImage(new MemoryImageSource(l, k, ai, 0, l));
-        return image1;
+        return createImage(new MemoryImageSource(l, k, ai, 0, l));
     }
 
     /**
@@ -4923,7 +4916,7 @@ public class xtGraphics extends Panel implements Runnable {
         return Applet.newAudioClip(getClass().getResource(s));
     }
 
-    public void carsbginflex() {
+    private void carsbginflex() {
         flatr = 0;
         flyr = (int) (Medium.random() * 160F - 80F);
         flyrdest = (int) ((flyr + Medium.random() * 160F) - 80F);

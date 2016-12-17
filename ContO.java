@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 /**
  * models
@@ -10,8 +11,8 @@ import java.io.InputStreamReader;
  * @author Omar Waly, Kaffeinated
  */
 public class ContO {
-    public Trackers t;
-    public Plane p[];
+    private final Trackers t;
+    public final Plane[] p;
     public int npl = 0;
     public int x = 0;
     public int y = 0;
@@ -23,46 +24,46 @@ public class ContO {
     public int wzy = 0;
     public int dist = 0;
     public int maxR = 0;
-    public int disp = 0;
-    public int disline = 7;
-    public boolean shadow = false;
-    public boolean noline = false;
-    public float grounded = 1.0F;
+    private int disp = 0;
+    private int disline = 7;
+    private boolean shadow = false;
+    private boolean noline = false;
+    private float grounded = 1.0F;
     public int grat = 0;
-    public int keyx[] = new int[4];
-    public int keyz[] = new int[4];
-    public int sx[] = new int[4];
-    public int sy[] = new int[4];
-    public int sz[] = new int[4];
-    public int stg[] = new int[4];
-    public int dov[] = new int[4];
-    public float smag[] = new float[4];
-    public int scx[] = new int[4];
-    public int scz[] = new int[4];
-    public boolean fulls[] = new boolean[4];
+    public final int[] keyx = new int[4];
+    public final int[] keyz = new int[4];
+    public final int[] sx = new int[4];
+    public final int[] sy = new int[4];
+    public final int[] sz = new int[4];
+    public final int[] stg = new int[4];
+    public final int[] dov = new int[4];
+    public final float[] smag = new float[4];
+    public final int[] scx = new int[4];
+    public final int[] scz = new int[4];
+    public final boolean[] fulls = new boolean[4];
     public boolean elec = false;
     public boolean roted = false;
-    public int edl[] = new int[4];
-    public int edr[] = new int[4];
-    public int elc[] = new int[4];
+    private final int[] edl = new int[4];
+    private final int[] edr = new int[4];
+    private final int[] elc = new int[4];
     public boolean fix = false;
     public int fcnt = 0;
     public int checkpoint = 0;
-    public int tnt = 0;
-    public int txy[];
-    public int tzy[];
-    public int tc[][];
-    public int tradx[];
-    public int tradz[];
-    public int trady[];
-    public int tx[];
-    public int ty[];
-    public int tz[];
-    public int skd[];
-    public int dam[];
-    public boolean notwall[];
+    private int tnt = 0;
+    private int[] txy;
+    private int[] tzy;
+    private int[][] tc;
+    private int[] tradx;
+    private int[] tradz;
+    private int[] trady;
+    private int[] tx;
+    private int[] ty;
+    private int[] tz;
+    private int[] skd;
+    private int[] dam;
+    private boolean[] notwall;
 
-    public void pdust(int i, Graphics2D rd, int j) {
+    private void pdust(int i, Graphics2D rd, int j) {
         if (j * dov[i] > 0) {
             int k;
             if (fulls[i]) {
@@ -411,7 +412,7 @@ public class ContO {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error loading " + abyte0 + ".rad");
+            System.out.println("Error loading " + Arrays.toString(abyte0) + ".rad");
             e.printStackTrace();
         }
         grat = wheels.ground;
@@ -628,7 +629,7 @@ public class ContO {
         }
     }
 
-    public void lowshadow(Graphics2D rd, int i) {
+    private void lowshadow(Graphics2D rd, int i) {
         int ai[] = new int[4];
         int ai1[] = new int[4];
         int ai2[] = new int[4];
@@ -728,7 +729,7 @@ public class ContO {
         }
     }
 
-    public void fixit(Graphics2D rd) {
+    private void fixit(Graphics2D rd) {
         if (fcnt == 1) {
             for (int i = 0; i < npl; i++) {
                 // COLOR OF CAR GOING THROUGH FIX HOOP
@@ -944,7 +945,7 @@ public class ContO {
         }
     }
 
-    public void electrify(Graphics2D rd) {
+    private void electrify(Graphics2D rd) {
         int i = 0;
         do {
             if (elc[i] == 0) {

@@ -5,20 +5,20 @@ import java.awt.*;
  *
  * @author Kaffeinated, Omar Waly
  */
-public class Madness {
+class Madness {
 
-    public Stat stat;
-    private Record rpd;
-    private xtGraphics xt;
-    private boolean dominate[];
-    private boolean caught[];
+    public final Stat stat;
+    private final Record rpd;
+    private final xtGraphics xt;
+    private final boolean[] dominate;
+    private final boolean[] caught;
     public int pzy;
     public int pxy;
     public float speed;
     private float forca;
-    public float scy[];
-    public float scz[];
-    public float scx[];
+    public final float[] scy;
+    public final float[] scz;
+    public final float[] scx;
     public boolean mtouch;
     public boolean wtouch;
     private int cntouch;

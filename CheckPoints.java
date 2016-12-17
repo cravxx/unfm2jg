@@ -1,17 +1,17 @@
-public class CheckPoints {
+class CheckPoints {
 
-    public int x[] = new int[140];
-    public int z[] = new int[140];
-    public int y[] = new int[140];
-    public int typ[] = new int[140];
+    public final int[] x = new int[140];
+    public final int[] z = new int[140];
+    public final int[] y = new int[140];
+    public final int[] typ = new int[140];
     public int pcs = 0;
     public int nsp = 0;
     public int n = 0;
-    public int fx[] = new int[5];
-    public int fz[] = new int[5];
-    public int fy[] = new int[5];
-    public boolean roted[] = new boolean[5];
-    public boolean special[] = new boolean[5];
+    public final int[] fx = new int[5];
+    public final int[] fz = new int[5];
+    public final int[] fy = new int[5];
+    public final boolean[] roted = new boolean[5];
+    public final boolean[] special = new boolean[5];
     public int fn = 0;
     public int stage = 1;
     public int nlaps = 0;
@@ -20,24 +20,24 @@ public class CheckPoints {
      * <b>hogan rewish</b> if none is found
      */
     public String name = "hogan rewish";
-    public int pos[] = {
+    public final int[] pos = {
             6, 6, 6, 6, 6, 6, 6
     };
     /**
      * connected to number of cars
      */
-    public int clear[] = new int[7];
+    public final int[] clear = new int[7];
     /**
      * connected to number of cars
      */
-    public int dested[] = new int[7];
+    public final int[] dested = new int[7];
     public int wasted = 0;
     public boolean haltall = false;
     public int pcleared = 0;
-    public int opx[] = new int[7];
-    public int opz[] = new int[7];
-    public int onscreen[] = new int[7];
-    public int omxz[] = new int[7];
+    public final int[] opx = new int[7];
+    public final int[] opz = new int[7];
+    public final int[] onscreen = new int[7];
+    public final int[] omxz = new int[7];
     public int catchfin = 0;
     private int postwo = 0;
 

@@ -7,7 +7,7 @@ import java.io.ByteArrayInputStream;
  *
  * @author DragShot
  */
-public class DesktopSoundClip implements AudioClip {
+class DesktopSoundClip implements AudioClip {
 
     private Clip clip = null;
     private AudioInputStream sound;

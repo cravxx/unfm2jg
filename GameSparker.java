@@ -2,9 +2,9 @@ import java.applet.Applet;
 import java.awt.*;
 import java.io.*;
 import java.net.URI;
-import java.net.URL;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
@@ -20,14 +20,13 @@ public class GameSparker extends Applet implements Runnable {
      *
      */
     private static final long serialVersionUID = -34048182014310663L;
-    public static Utility utility;
 
-    public static final String carModels[] = {
+    private static final String[] carModels = {
             "2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
             "policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
     };
 
-    public static final String trackModels[] = {
+    private static final String[] trackModels = {
             "road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn", "nroad", "nturn",
             "roblend", "noblend", "rnblend", "roadend", "offroadend", "hpground", "ramp30", "cramp35", "dramp15",
             "dhilo15", "slide10", "takeoff", "sramp22", "offbump", "offramp", "sofframp", "halfpipe", "spikes", "rail",
@@ -35,39 +34,39 @@ public class GameSparker extends Applet implements Runnable {
             "soffroad"
     };
 
-    public static final String extraModels[] = {};
+    private static final String[] extraModels = {};
 
     /**
      * false to disable splash
      */
-    public static final boolean splashScreenState = true;
+    private static final boolean splashScreenState = true;
 
-    public static final String stageDir = "stages/";
+    private static final String stageDir = "stages/";
 
     /**
      * Set directory for temporary creation of cookies (directory is deleted after writing is complete)
      */
-    public static final String cookieDirTemp = "data/cookies/";
+    private static final String cookieDirTemp = "data/cookies/";
     /**
      * Set location for the cookie.radq
      */
-    public static final String cookieDirZip = "data/cookies.radq";
+    private static final String cookieDirZip = "data/cookies.radq";
 
     private String stageError = "";
 
-    public Graphics2D rd;
-    public Graphics sg;
-    public Image offImage;
-    public Thread gamer;
-    public Control u[];
-    public int mouses;
-    public int xm;
-    public int ym;
-    public boolean lostfcs;
-    public boolean exwist;
-    public int nob;
-    public int notb;
-    public int view;
+    private Graphics2D rd;
+    private Graphics sg;
+    private Image offImage;
+    private Thread gamer;
+    private final Control[] u;
+    private int mouses;
+    private int xm;
+    private int ym;
+    private boolean lostfcs;
+    private boolean exwist;
+    private int nob;
+    private int notb;
+    private int view;
 
 	/* variables for screen shake */
 
@@ -140,7 +139,7 @@ public class GameSparker extends Applet implements Runnable {
         return false;
     }
 
-    public void savecookie(String filename, String num) {
+    private void savecookie(String filename, String num) {
         try {
             /**
              * since I want full control over the filenames, we'll create a normal file in the temporary file directory
@@ -184,7 +183,7 @@ public class GameSparker extends Applet implements Runnable {
         }
     }
 
-    public static String fromStream(InputStream in) throws IOException {
+    private static String fromStream(InputStream in) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         StringBuilder out = new StringBuilder();
         String line;
@@ -200,7 +199,7 @@ public class GameSparker extends Applet implements Runnable {
      * @param string name to match
      * @return value
      */
-    public int readcookie(String string) {
+    private int readcookie(String string) {
         try {
             ZipFile zipFile = new ZipFile(cookieDirZip);
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
@@ -296,7 +295,7 @@ public class GameSparker extends Applet implements Runnable {
 
         for (int i = 0; i < allModels.length; i++) {
             for (int j = 0; j < allModels[i].length; j++) {
-                if (input == allModels[i][j]) {
+                if (Objects.equals(input, allModels[i][j])) {
                     int addWhat = 0;
                     if (i == 1) {
                         addWhat = carModels.length;
@@ -378,7 +377,7 @@ public class GameSparker extends Applet implements Runnable {
         paint(g);
     }
 
-    public int sunytyp() {
+    private int sunytyp() {
         String s = System.getProperty("java.version");
         String s1 = "" + getAppletContext();
         if (!s1.startsWith("com.ms."))
@@ -440,8 +439,8 @@ public class GameSparker extends Applet implements Runnable {
      * @param record      record instance
      * @author Kaffeinated, Omar Waly
      */
-    public void loadstage(ContO aconto[], ContO aconto1[], Medium medium, Trackers trackers, CheckPoints checkpoints,
-                          xtGraphics xtgraphics, Madness amadness[], Record record) {
+    private void loadstage(ContO aconto[], ContO aconto1[], Medium medium, Trackers trackers, CheckPoints checkpoints,
+                           xtGraphics xtgraphics, Madness amadness[], Record record) {
         trackers.nt = 0;
         nob = 7;
         notb = 0;
@@ -501,18 +500,18 @@ public class GameSparker extends Applet implements Runnable {
                     k1 += 6;
                     aconto[nob] = new ContO(aconto1[k1], Utility.getint("set", line, 1), Medium.ground - aconto1[k1].grat,
                             Utility.getint("set", line, 2), Utility.getint("set", line, 3));
-                    if (line.indexOf(")p") != -1) {
+                    if (line.contains(")p")) {
                         checkpoints.x[checkpoints.n] = Utility.getint("chk", line, 1);
                         checkpoints.z[checkpoints.n] = Utility.getint("chk", line, 2);
                         checkpoints.y[checkpoints.n] = 0;
                         checkpoints.typ[checkpoints.n] = 0;
-                        if (line.indexOf(")pt") != -1)
+                        if (line.contains(")pt"))
                             checkpoints.typ[checkpoints.n] = -1;
-                        if (line.indexOf(")pr") != -1)
+                        if (line.contains(")pr"))
                             checkpoints.typ[checkpoints.n] = -2;
-                        if (line.indexOf(")po") != -1)
+                        if (line.contains(")po"))
                             checkpoints.typ[checkpoints.n] = -3;
-                        if (line.indexOf(")ph") != -1)
+                        if (line.contains(")ph"))
                             checkpoints.typ[checkpoints.n] = -4;
                         checkpoints.n++;
                         notb = nob + 1;
@@ -524,21 +523,21 @@ public class GameSparker extends Applet implements Runnable {
                     i2 += 6;
                     aconto[nob] = new ContO(aconto1[i2], Utility.getint("fltset", line, 1), Utility.getint("fltset", line, 3),
                             Utility.getint("set", line, 2), Utility.getint("set", line, 4));
-                    if (line.indexOf(")p") != -1) {
+                    if (line.contains(")p")) {
                         checkpoints.x[checkpoints.n] = Utility.getint("fltset", line, 1);
                         checkpoints.z[checkpoints.n] = Utility.getint("fltset", line, 2);
                         checkpoints.y[checkpoints.n] = Utility.getint("fltset", line, 3);
                         checkpoints.typ[checkpoints.n] = 0;
-                        if (line.indexOf(")pt") != -1) {
+                        if (line.contains(")pt")) {
                             checkpoints.typ[checkpoints.n] = -1;
                         }
-                        if (line.indexOf(")pr") != -1) {
+                        if (line.contains(")pr")) {
                             checkpoints.typ[checkpoints.n] = -2;
                         }
-                        if (line.indexOf(")po") != -1) {
+                        if (line.contains(")po")) {
                             checkpoints.typ[checkpoints.n] = -3;
                         }
-                        if (line.indexOf(")ph") != -1) {
+                        if (line.contains(")ph")) {
                             checkpoints.typ[checkpoints.n] = -4;
                         }
                         checkpoints.n++;
@@ -599,7 +598,7 @@ public class GameSparker extends Applet implements Runnable {
                     } else {
                         checkpoints.roted[checkpoints.fn] = false;
                     }
-                    checkpoints.special[checkpoints.fn] = line.indexOf(")s") != -1;
+                    checkpoints.special[checkpoints.fn] = line.contains(")s");
                     checkpoints.fn++;
                     nob++;
                     notb = nob;
@@ -763,7 +762,7 @@ public class GameSparker extends Applet implements Runnable {
      *                 20 maximum
      * @param maxAmt   maximum displacement of the screen while shaking
      */
-    public void initMoto(Madness amadness[], int shakeAmt, int maxAmt) {
+    private void initMoto(Madness amadness[], int shakeAmt, int maxAmt) {
         if (amadness[0].shakedam > 0) {
             shaka = amadness[0].shakedam / (20 / shakeAmt);
             amadness[0].shakedam = 0;
@@ -1642,9 +1641,9 @@ public class GameSparker extends Applet implements Runnable {
             byte[] buffer = new byte[4096];
             ZipInputStream zin = new ZipInputStream(new FileInputStream(tmpZip));
             ZipOutputStream out = new ZipOutputStream(new FileOutputStream(source));
-            for (int i = 0; i < files.length; i++) {
-                InputStream in = new FileInputStream(files[i]);
-                out.putNextEntry(new ZipEntry(path + files[i].getName()));
+            for (File file : files) {
+                InputStream in = new FileInputStream(file);
+                out.putNextEntry(new ZipEntry(path + file.getName()));
                 for (int read = in.read(buffer); read > -1; read = in.read(buffer)) {
                     out.write(buffer, 0, read);
                 }
@@ -1669,8 +1668,8 @@ public class GameSparker extends Applet implements Runnable {
     }
 
     private boolean zipEntryMatch(String zeName, File[] files, String path) {
-        for (int i = 0; i < files.length; i++) {
-            if ((path + files[i].getName()).equals(zeName)) {
+        for (File file : files) {
+            if ((path + file.getName()).equals(zeName)) {
                 return true;
             }
         }
@@ -1693,19 +1692,19 @@ public class GameSparker extends Applet implements Runnable {
         }
     }
 
-    static String urlopen() {
+    private static String urlopen() {
         String string = "explorer";
         final String string27 = System.getProperty("os.name").toLowerCase();
-        if (string27.indexOf("linux") != -1 || string27.indexOf("unix") != -1 || string27.equals("aix")) {
+        if (string27.contains("linux") || string27.contains("unix") || string27.equals("aix")) {
             string = "xdg-open";
         }
-        if (string27.indexOf("mac") != -1) {
+        if (string27.contains("mac")) {
             string = "open";
         }
         return string;
     }
 
-    public void catchlink(int i) {
+    private void catchlink(int i) {
         if (!lostfcs) {
             if (i == 0)
                 if (xm > 0 && xm < 670 && ym > 110 && ym < 169 || xm > 210 && xm < 460 && ym > 240 && ym < 259) {

@@ -70,7 +70,7 @@ public class RadicalMod {
         }
     }
 
-    protected void unloadAll() {
+    void unloadAll() {
         if (playing && loaded == 2) {
             if (suny) {
                 sClip.stop();
@@ -118,7 +118,7 @@ public class RadicalMod {
         }
     }
 
-    protected void unloadMod() {
+    void unloadMod() {
         if (loaded == 2) {
             if (playing) {
                 if (suny) {
@@ -174,7 +174,6 @@ public class RadicalMod {
                     byte abyte1[] = modslayer.turnbytesUlaw();
                     stream = new SuperStream(abyte1);
                 }
-                modslayer = null;
             } catch (Exception exception) {
                 System.out.println("Error making a Mod: " + exception);
                 loaded = 0;

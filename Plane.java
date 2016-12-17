@@ -1,14 +1,14 @@
 import java.awt.*;
 
 public class Plane {
-    private Trackers t;
-    public int ox[];
-    public int oy[];
-    public int oz[];
+    private final Trackers t;
+    public final int[] ox;
+    public final int[] oy;
+    public final int[] oz;
     public int n;
-    public int c[];
-    public int oc[];
-    public float hsb[];
+    public final int[] c;
+    public final int[] oc;
+    public final float[] hsb;
     public boolean glass;
     public int gr;
     public int fs;
@@ -29,9 +29,9 @@ public class Plane {
     private int cxz;
     private int cxy;
     private int czy;
-    private int cox[];
-    private int coz[];
-    private int coy[];
+    private final int[] cox;
+    private final int[] coz;
+    private final int[] coy;
     private int dx;
     private int dy;
     private int dz;
@@ -706,8 +706,8 @@ public class Plane {
         }
         if (flag2) {
             int i11 = 1;
-            byte byte2 = 1;
-            byte byte3 = 1;
+            byte byte2;
+            byte byte3;
             if (Math.abs(ai15[0] - ai15[1]) > Math.abs(ai15[2] - ai15[1])) {
                 byte2 = 0;
                 byte3 = 2;

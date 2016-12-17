@@ -117,7 +117,7 @@ public class Utility {
                 part = new StringBuilder().append(part).append(source.charAt(k)).toString();
             }
         }
-        return Integer.valueOf(part).intValue();
+        return Integer.valueOf(part);
     }
 
     /**

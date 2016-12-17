@@ -3,7 +3,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class RunApp extends Panel {
+class RunApp extends Panel {
     /**
      *
      */
@@ -11,16 +11,16 @@ public class RunApp extends Panel {
 
     private static Frame frame;
     private static GameSparker applet;
-    public static ArrayList<Image> icons;
+    private static ArrayList<Image> icons;
 
     /**
      * Fetches icons of 16, 32 and 48 pixels from the 'data' folder.
      *
      * @return icons - ArrayList of icon locations
      */
-    public static ArrayList<Image> getIcons() {
+    private static ArrayList<Image> getIcons() {
         if (icons == null) {
-            icons = new ArrayList<Image>();
+            icons = new ArrayList<>();
             int[] resols = {
                     16, 32, 48
             };
@@ -42,7 +42,7 @@ public class RunApp extends Panel {
         startup();
     }
 
-    public static void startup() {
+    private static void startup() {
         frame = new Frame("UNFM2");// Change this to the name of your preference
         frame.setBackground(new Color(0, 0, 0));
         frame.setIgnoreRepaint(true);
@@ -68,7 +68,7 @@ public class RunApp extends Panel {
         applet.start();
     }
 
-    public static void exitSequence() {
+    private static void exitSequence() {
         applet.stop();
         frame.removeAll();
         try {

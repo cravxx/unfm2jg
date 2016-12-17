@@ -1,8 +1,8 @@
 import java.io.IOException;
 
-public class ModSlayer {
+class ModSlayer {
 
-    private Mod mod;
+    private final Mod mod;
     private ModTrackInfo tracks[];
     public static final String VERSION = "1.0";
     public static final String COPYRIGHT = "";
@@ -51,9 +51,9 @@ public class ModSlayer {
             155, 147, 139, 131, 123, 116, 110, 104, 98, 92, 87, 82, 78, 73, 69, 65, 62, 58, 55, 51, 49, 46, 43, 41, 39,
             37, 35, 33, 31, 29, 27, 26, 24, 23, 21, 20, 19, 18, 17, 16, 15, 14, 14
     };
-    private int def_tempo;
-    private int def_bpm;
-    public byte vol_table[];
+    private final int def_tempo;
+    private final int def_bpm;
+    private byte[] vol_table;
     private int vol_adj[];
     private int vol_shift;
     private int order_pos;
@@ -69,17 +69,17 @@ public class ModSlayer {
     private int mixspeed;
     private boolean mod_done;
     private boolean bit16;
-    private int samplingrate;
-    private int oversample;
-    private int gain;
+    private final int samplingrate;
+    private final int oversample;
+    private final int gain;
     private int nloops;
-    private boolean loud;
+    private final boolean loud;
     public static final byte sunfmt[] = {
             46, 115, 110, 100, 0, 0, 0, 24, 127, 127, 127, 127, 0, 0, 0, 1, 0, 0, 31, 76, 0, 0, 0, 1, 0, 0, 0, 0
     };
     public int oln;
 
-    private final void beattrack(ModTrackInfo modtrackinfo) {
+    private void beattrack(ModTrackInfo modtrackinfo) {
         if (modtrackinfo.period_low_limit == 0) {
             modtrackinfo.period_low_limit = 1;
         }
@@ -143,7 +143,7 @@ public class ModSlayer {
         }
     }
 
-    private final void mixtrack16Mono(ModTrackInfo modtrackinfo, int ai[], int i, int j) {
+    private void mixtrack16Mono(ModTrackInfo modtrackinfo, int ai[], int i, int j) {
         byte abyte0[] = modtrackinfo.samples;
         int k = modtrackinfo.position;
         int j1 = vol_adj[modtrackinfo.volume] * gain >> vol_shift + 8;
@@ -212,7 +212,7 @@ public class ModSlayer {
         def_bpm = k;
     }
 
-    private final void makeVolTable8() {
+    private void makeVolTable8() {
         vol_table = new byte[16640];
         int i = 0;
         do {
@@ -220,7 +220,7 @@ public class ModSlayer {
         } while (++i < 16640);
     }
 
-    public byte[] turnbytesNorm() throws IOException {
+    public byte[] turnbytesNorm() {
         bit16 = true;
         startplaying(loud);
         int ai[] = new int[mixspeed];
@@ -272,7 +272,7 @@ public class ModSlayer {
         return abyte0;
     }
 
-    private final void updatetracks() {
+    private void updatetracks() {
         tempo_wait = tempo;
         if (row >= 64) {
             if (order_pos >= mod.song_length_patterns) {
@@ -299,7 +299,7 @@ public class ModSlayer {
 
     }
 
-    private final int getTrack(ModTrackInfo modtrackinfo, byte abyte0[], int i) {
+    private int getTrack(ModTrackInfo modtrackinfo, byte abyte0[], int i) {
         int j = abyte0[i] & 0xf0;
         int k = (abyte0[i++] & 0xf) << 8;
         k |= abyte0[i++] & 0xff;
@@ -460,7 +460,7 @@ public class ModSlayer {
         return i;
     }
 
-    private final void startplaying(boolean flag) {
+    private void startplaying(boolean flag) {
         vol_adj = flag ? loud_vol_adj : normal_vol_adj;
         mixspeed = samplingrate * oversample;
         order_pos = 0;
@@ -520,7 +520,7 @@ public class ModSlayer {
 
     }
 
-    public byte[] turnbytesUlaw() throws IOException {
+    public byte[] turnbytesUlaw() {
         bit16 = true;
         startplaying(loud);
         int ai[] = new int[mixspeed];

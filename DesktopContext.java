@@ -14,8 +14,8 @@ import java.util.List;
  *
  * @author DragShot
  */
-public class DesktopContext implements AppletContext, Runnable {
-    private List<DesktopSoundClip> clips = Collections.synchronizedList(new LinkedList<DesktopSoundClip>());
+class DesktopContext implements AppletContext, Runnable {
+    private final List<DesktopSoundClip> clips = Collections.synchronizedList(new LinkedList<DesktopSoundClip>());
     private Thread clipper;
 
     /**
@@ -24,8 +24,7 @@ public class DesktopContext implements AppletContext, Runnable {
     @Override
     public void run() {
         while (true) {
-            for (DesktopSoundClip clip : clips)
-                clip.checkopen();
+            clips.forEach(DesktopSoundClip::checkopen);
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
@@ -41,7 +40,7 @@ public class DesktopContext implements AppletContext, Runnable {
         try {
             InputStream in = url.openStream();
             int size = in.available();
-            int read = 0;
+            int read;
             byte[] buffer = new byte[size];
             while (size > 0) {
                 read = in.read(buffer, 0, size);

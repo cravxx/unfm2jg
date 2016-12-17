@@ -1,4 +1,4 @@
-public final class UlawUtils {
+final class UlawUtils {
 
     private static final byte s2u_lut[] = {
             -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15, -16, -17, -17, -18, -18, -19, -19, -20,
@@ -362,7 +362,7 @@ public final class UlawUtils {
             125, 126
     };
 
-    public static final byte linear2ulawclip(int i) {
+    public static byte linear2ulawclip(int i) {
         if (i < -32767) {
             i = -32767;
         }
@@ -372,11 +372,11 @@ public final class UlawUtils {
         return s2u_lut[i >> 3 & 0x1fff];
     }
 
-    public static final byte linear2ulaw(byte byte0) {
+    public static byte linear2ulaw(byte byte0) {
         return s2u_lut[((byte0 & 0xff) << 5) + 15];
     }
 
-    public static final byte linear2ulaw(int i) {
+    public static byte linear2ulaw(int i) {
         return s2u_lut[i >> 3];
     }
 

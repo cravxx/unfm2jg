@@ -3,7 +3,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Mod {
+class Mod {
 
     private String name;
     public int numtracks;
@@ -12,7 +12,7 @@ public class Mod {
     public ModInstrument insts[];
     public byte positions[];
     public int song_length_patterns;
-    public int song_repeat_patterns;
+    private int song_repeat_patterns;
     public boolean s3m;
     private static final int voice_mk;
     private static final int voice_mk2;
@@ -41,11 +41,11 @@ public class Mod {
         }
     }
 
-    private static final int readu16(DataInputStream datainputstream) throws IOException {
+    private static int readu16(DataInputStream datainputstream) throws IOException {
         return datainputstream.readShort() & 0xffff;
     }
 
-    private static final String readText(DataInputStream datainputstream, int i) throws IOException {
+    private static String readText(DataInputStream datainputstream, int i) throws IOException {
         byte abyte0[] = new byte[i];
         datainputstream.readFully(abyte0, 0, i);
         for (int j = i - 1; j >= 0; j--) {
@@ -66,9 +66,9 @@ public class Mod {
             song_repeat_patterns = song_length_patterns;
         }
         numpatterns = 0;
-        for (int i = 0; i < positions.length; i++) {
-            if (positions[i] > numpatterns) {
-                numpatterns = positions[i];
+        for (byte position : positions) {
+            if (position > numpatterns) {
+                numpatterns = position;
             }
         }
 
@@ -82,7 +82,7 @@ public class Mod {
      * @param n   skiptime
      * @throws IOException yeah
      */
-    public void skipExactly(DataInputStream str, long n) throws IOException {
+    private void skipExactly(DataInputStream str, long n) throws IOException {
         while (n != 0) {
             long skipped = str.skip(n);
             if (skipped == 0)
@@ -103,8 +103,8 @@ public class Mod {
         skipExactly(datainputstream, 1060L);
         int i = datainputstream.readInt();
         datainputstream.reset();
-        for (int j = 0; j < voice_31_list.length; j++) {
-            if (i != voice_31_list[j]) {
+        for (int aVoice_31_list : voice_31_list) {
+            if (i != aVoice_31_list) {
                 continue;
             }
             byte0 = 31;
@@ -166,7 +166,7 @@ public class Mod {
         return modinstrument;
     }
 
-    public static final int fourCC(String s) {
+    public static int fourCC(String s) {
         return s.charAt(3) & 0xff | (s.charAt(2) & 0xff) << 8 | (s.charAt(1) & 0xff) << 16 | (s.charAt(0) & 0xff) << 24;
     }
 
@@ -188,7 +188,7 @@ public class Mod {
 
     }
 
-    private static final int readu8(DataInputStream datainputstream) throws IOException {
+    private static int readu8(DataInputStream datainputstream) throws IOException {
         return datainputstream.readByte() & 0xff;
     }
 

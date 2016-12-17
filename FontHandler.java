@@ -7,7 +7,7 @@ import java.io.IOException;
  *
  * @author Kaffeinated
  */
-public class FontHandler {
+class FontHandler {
 
     /**
      * global replacement for ftm
@@ -48,10 +48,7 @@ public class FontHandler {
 				System.out.println();
 			}*/
 
-        } catch (FontFormatException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (FontFormatException | IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

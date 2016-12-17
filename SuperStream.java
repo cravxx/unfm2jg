@@ -1,6 +1,6 @@
 import java.io.ByteArrayInputStream;
 
-public class SuperStream extends ByteArrayInputStream {
+class SuperStream extends ByteArrayInputStream {
 
     public SuperStream(byte abyte0[]) {
         super(abyte0);
