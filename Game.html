@@ -1,7 +1,7 @@
 <html>
 <head>
-<title>NEED FOR MADNESS - NeedForMadness.com</title>
-<script>
+    <title>NEED FOR MADNESS - NeedForMadness.com</title>
+    <script>
 window.focus();
 var expDays = 30;
 var exp = new Date(); 
@@ -11,22 +11,30 @@ function SetCookie(name,value) {  var argv = SetCookie.arguments;  var argc = Se
 function GetCookie(name) { var arg = name + "=";  	var alen = arg.length;  	var clen = document.cookie.length;  	var i = 0;  	while (i < clen) {    	var j = i + alen;    	if (document.cookie.substring(i, j) == arg)      		return getCookieVal (j);    		i = document.cookie.indexOf(" ", i) + 1;    		if (i == 0) break;   	}  return "-1";}
 function checkJava(){if (document.all){if (document.all.msg){alert("Java Missing.\r\rNeed for Madness needs Java to work.\rPlease go to www.java.com, where you can install Java.");window.close();window.open('http://www.java.com/','_blank','menubar=1,toolbar=1,location=1,resizable=1,status=1,scrollbars=1');}}}
 function radicalplay(){window.open('http://www.radicalplay.com/','_blank','menubar=1,toolbar=1,location=1,resizable=1,status=1,scrollbars=1');}
-</script>
-<style type='text/css'>
+
+    </script>
+    <style type='text/css'>
 body { overflow: hidden; border:1px solid #000000; }
-</style>
+
+    </style>
 </head>
-<body onload="setTimeout('checkJava()',1000)" bgcolor=#000000 leftmargin=0 topmargin=0 margin=0 marginheight=0 marginwidth=0 ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
-<div style='position:absolute; left:3; top:-3;width:100%; height:23'><table width=100% heigh=23><td align=right width=100% height=23><a href=data/exit.html><img src=data/cls.gif border=0></a></td></table></div>
+<body onload="setTimeout('checkJava()',1000)" bgcolor=#000000 leftmargin=0 topmargin=0 margin=0 marginheight=0
+      marginwidth=0 ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
+<div style='position:absolute; left:3; top:-3;width:100%; height:23'>
+    <table width=100% heigh=23>
+        <td align=right width=100% height=23><a href=data/exit.html><img src=data/cls.gif border=0></a></td>
+    </table>
+</div>
 <center>
-<table width=100% height=100%>
-<td valign=center align=center>
-<applet code="GameSparker.class" archive="madness.jar" name="app" width="670" height="400" MAYSCRIPT>
-<div id=msg><font size=2 face="Verdana, Arial" color=#c0c0cf>Java did not start.<br><br>Go to www.java.com to get Java.<br><br></font></div>
-</applet>
-<font size=2 face=Arial><br><br><br><br><br></font>
-</td>
-</table>
+    <table width=100% height=100%>
+        <td valign=center align=center>
+            <applet code="GameSparker.class" archive="madness.jar" name="app" width="670" height="400" MAYSCRIPT>
+                <div id=msg><font size=2 face="Verdana, Arial" color=#c0c0cf>Java did not start.<br><br>Go to
+                    www.java.com to get Java.<br><br></font></div>
+            </applet>
+            <font size=2 face=Arial><br><br><br><br><br></font>
+        </td>
+    </table>
 </center>
 </body>
 </html>

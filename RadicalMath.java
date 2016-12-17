@@ -1,20 +1,20 @@
 /**
  * Contains many of the math functions for various purposes.
- * @author Rafa, Kaffeinated, Omar Wally
  *
+ * @author Rafa, Kaffeinated, Omar Wally
  */
 public class RadicalMath {
 
-	public static float sin_m_zy;
-	public static float cos_m_zy;
-	public static float sin_m_xz;
-	public static float cos_m_xz;
-	public static float sin_m_xy;
-	public static float cos_m_xy;
+    public static float sin_m_zy;
+    public static float cos_m_zy;
+    public static float sin_m_xz;
+    public static float cos_m_xz;
+    public static float sin_m_xy;
+    public static float cos_m_xy;
 
     static private float[] tcos = new float[360];
     static private float[] tsin = new float[360];
-    
+
     static {
         for (int i = 0; i < 360; i++) {
             tcos[i] = (float) Math.cos(i * 0.01745329251994329576922);
@@ -34,6 +34,7 @@ public class RadicalMath {
         }
         return tcos[i];
     }
+
     static public float sin(int i) {
         for (/**/; i >= 360; i -= 360) {
 
