@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.*;
@@ -1980,9 +1982,9 @@ class xtGraphics extends Panel implements Runnable {
                 dnload += 3;
             }
             zipinputstream.close();
-            System.out.println("Images loaded: " + howManyImages);
+            HLogger.info("Images loaded: " + howManyImages);
         } catch (IOException e) {
-            System.out.println("Error Reading Images: " + e);
+            HLogger.error("Error Reading Images: " + e);
             e.printStackTrace();
         }
         System.gc();
@@ -2003,7 +2005,7 @@ class xtGraphics extends Panel implements Runnable {
             //
             dnload += 3;
         } catch (Exception exception) {
-            System.out.println("Error Loading Network Images: " + exception);
+            HLogger.error("Error Loading Network Images: " + exception);
         }
         System.gc();
         Utility.stopTimer();
@@ -2966,7 +2968,7 @@ class xtGraphics extends Panel implements Runnable {
             }
 
             // DEBUG: Prints the range of possible cars to the console
-            // System.out.println("Minimum car: " + cd.names[(i - 1) / 2] + ", maximum car: " + cd.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
+            // HLogger.info("Minimum car: " + cd.names[(i - 1) / 2] + ", maximum car: " + cd.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
 
             // create a list of car ids, each item completely unique
             ArrayList<Integer> list = new ArrayList<>();
@@ -2990,10 +2992,10 @@ class xtGraphics extends Panel implements Runnable {
                 // if there are more cars than tracks, reduce the car index number until it fits.
                 // unfortunately i have no idea how to make this work properly so we'll just have to ignore the duplicates here
                 while (sc[j] >= 15) {
-                    System.out.println("Car " + j + " is out of bounds");
+                    HLogger.error("Car " + j + " is out of bounds");
                     sc[j] -= ThreadLocalRandom.current().nextDouble() * 5F;
                 }
-                //System.out.println("sc of " + j + " is " + sc[j]);
+                //HLogger.info("sc of " + j + " is " + sc[j]);
             }
         }
         // this error will never be thrown in a deployment environment

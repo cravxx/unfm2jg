@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
@@ -47,7 +49,7 @@ class SuperClip implements Runnable {
                     flag = true;
                 }
             } catch (Exception exception1) {
-                System.out.println("play error: " + exception1);
+                HLogger.error("play error: " + exception1);
                 stoped = 1;
             }
             try {

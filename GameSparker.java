@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import java.applet.Applet;
 import java.awt.*;
 import java.io.*;
@@ -173,7 +175,7 @@ public class GameSparker extends Applet implements Runnable {
                 cookieFile[0].delete();
                 cookieTempLocation.delete();
 
-                System.out.println("Successfully saved game (" + filename + ")");
+                HLogger.info("Successfully saved game (" + filename + ")");
             } catch (SecurityException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -215,11 +217,11 @@ public class GameSparker extends Applet implements Runnable {
             }
             zipFile.close();
 
-            System.out.println("Successfully read cookie " + string + " with value " + Integer.parseInt(fromEntry));
+            HLogger.info("Successfully read cookie " + string + " with value " + Integer.parseInt(fromEntry));
             return Integer.parseInt(fromEntry);
         } catch (IOException ioexception) {
-            // System.out.println(ioexception.toString());
-            System.out.println(string + ".dat probably doesn't exist");
+            // HLogger.error(ioexception.toString());
+            HLogger.error(string + ".dat probably doesn't exist");
             return -1;
         } catch (NumberFormatException nfe) {
             return -1;
@@ -257,7 +259,7 @@ public class GameSparker extends Applet implements Runnable {
         if (shaka > 10) {
             i = (int) ((shaka * 2 * Math.random() - shaka));
             i_97_ = (int) ((shaka * 2 * Math.random() - shaka));
-            shaka -= 5;
+            shaka--;
         }
         apx = (int) (getWidth() / 2 - 335.0F);
         apy = (int) (getHeight() / 2 - 200.0F);
@@ -304,12 +306,12 @@ public class GameSparker extends Applet implements Runnable {
                         addWhat = carModels.length + trackModels.length;
                     }
                     modelId = j + addWhat;
-                    System.out.println("Found model " + modelId + " matching string \"" + input + "\"");
+                    HLogger.info("Found model " + modelId + " matching string \"" + input + "\"");
                     return modelId;
                 }
             }
         }
-        System.out.println("No results for getModel | check you're speling and grammer");
+        HLogger.warn("No results for getModel | check you're speling and grammer");
         return -1;
     }
 
@@ -363,10 +365,10 @@ public class GameSparker extends Applet implements Runnable {
             /*
 			 * be sure to add your added arrays here			
 			 */
-            System.out.println("Contos loaded: " + (carModels.length + trackModels.length + extraModels.length));
+            HLogger.info("Contos loaded: " + (carModels.length + trackModels.length + extraModels.length));
             zipinputstream.close();
         } catch (IOException e) {
-            System.out.println("Error Reading Models: " + e);
+            HLogger.error("Error Reading Models: " + e);
             e.printStackTrace();
         }
         System.gc();
@@ -709,7 +711,7 @@ public class GameSparker extends Applet implements Runnable {
             stageError = e.toString().substring(0, maxLength) + "...";
 
             xtgraphics.fase = 3;
-            System.out.println("Error loading stage " + checkpoints.stage);
+            HLogger.error("Error loading stage " + checkpoints.stage);
             e.printStackTrace();
         }
         if (checkpoints.stage == 16)
@@ -1166,7 +1168,7 @@ public class GameSparker extends Applet implements Runnable {
                     if (view == 0) {
                         Medium.follow(aconto1[0], amadness[0].cxz, u[0].lookback);
                         xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
-                        initMoto(amadness, 1, 25);
+                        initMoto(amadness, 2, 25);
                     }
                     if (view == 1) {
                         Medium.around(aconto1[0], false);

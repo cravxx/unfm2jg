@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -33,11 +35,11 @@ class RunApp extends Panel {
 
     public static void main(String[] strings) {
         System.runFinalizersOnExit(true);
-        System.out.println("UNFM2 Console");// Change this to the message of your preference
+        HLogger.info("UNFM2 Console"); // Change this to the message of your preference
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ex) {
-            System.out.println("Could not setup System Look&Feel: " + ex.toString());
+            HLogger.warn("Could not setup System Look&Feel: " + ex.toString());
         }
         startup();
     }

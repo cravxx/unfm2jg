@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import javax.sound.sampled.*;
 import java.applet.AudioClip;
 import java.io.ByteArrayInputStream;
@@ -44,7 +46,7 @@ class DesktopSoundClip implements AudioClip {
             clip = (Clip) AudioSystem.getLine(info);
             loaded = true;
         } catch (Exception exception) {
-            System.out.println(new StringBuilder().append("Loading Clip error: ").append(exception).toString());
+            HLogger.error(new StringBuilder().append("Loading Clip error: ").append(exception).toString());
             loaded = false;
         }
     }

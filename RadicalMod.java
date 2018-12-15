@@ -1,3 +1,4 @@
+import fallk.logmaster.HLogger;
 import sun.audio.AudioPlayer;
 
 import java.applet.Applet;
@@ -48,7 +49,7 @@ public class RadicalMod {
             }
 
         } catch (Exception exception) {
-            System.out.println("Error loading Mod from zip file: " + exception);
+            HLogger.error("Error loading Mod from zip file: " + exception);
             loaded = 0;
         }
     }
@@ -175,7 +176,7 @@ public class RadicalMod {
                     stream = new SuperStream(abyte1);
                 }
             } catch (Exception exception) {
-                System.out.println("Error making a Mod: " + exception);
+                HLogger.error("Error making a Mod: " + exception);
                 loaded = 0;
             }
             System.runFinalization();

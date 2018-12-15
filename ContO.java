@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -412,7 +414,7 @@ public class ContO {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error loading " + Arrays.toString(abyte0) + ".rad");
+            HLogger.error("Error loading " + Arrays.toString(abyte0) + ".rad");
             e.printStackTrace();
         }
         grat = wheels.ground;

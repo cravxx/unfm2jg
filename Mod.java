@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import java.io.DataInputStream;
 import java.io.EOFException;
 import java.io.IOException;
@@ -37,7 +39,7 @@ class Mod {
         try {
             loadMod(inputstream);
         } catch (Exception exception) {
-            System.out.println("Error loading up a Mod: " + exception);
+            HLogger.error("Error loading up a Mod: " + exception);
         }
     }
 
@@ -134,7 +136,7 @@ class Mod {
             }
 
         } catch (EOFException _ex) {
-            System.out.println("Warning: EOF on MOD file");
+            HLogger.warn("Warning: EOF on MOD file");
         }
         datainputstream.close();
         inputstream.close();

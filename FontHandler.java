@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +22,7 @@ class FontHandler {
 
     public FontHandler() {
         loadFonts();
-        System.out.println("Done loading fonts!");
+        HLogger.info("Done loading fonts!");
     }
 
     private void loadFonts() {
@@ -42,10 +44,9 @@ class FontHandler {
 			 */
 			/*Font[] fonts = ge.getAllFonts();
 			for (int i = 0; i < fonts.length; i++) {
-				System.out.print(fonts[i].getFontName() + " : ");
-				System.out.print(fonts[i].getFamily() + " : ");
-				System.out.print(fonts[i].getName());
-				System.out.println();
+				HLogger.info(fonts[i].getFontName() + " : ");
+				HLogger.info(fonts[i].getFamily() + " : ");
+				HLogger.info(fonts[i].getName());
 			}*/
 
         } catch (FontFormatException | IOException e) {

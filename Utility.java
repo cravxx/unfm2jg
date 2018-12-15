@@ -1,3 +1,5 @@
+import fallk.logmaster.HLogger;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -145,7 +147,7 @@ public class Utility {
     }
 
     public static BufferedImage webGet(String string) throws IOException {
-        System.out.println("Loaded " + string);
+        HLogger.info("Loaded " + string);
         return ImageIO.read(new URL(string));
     }
 
@@ -213,7 +215,7 @@ public class Utility {
     }
 
     public static void startTimer() {
-        System.out.println("Timer started!");
+        HLogger.info("Timer started!");
         startTime = System.nanoTime();
     }
 
@@ -222,6 +224,6 @@ public class Utility {
         long finalTime = (endTime - startTime) / 1000000;
         startTime = 0;
 
-        System.out.println("Timer ended at " + finalTime + " ms");
+        HLogger.info("Timer ended at " + finalTime + " ms");
     }
 }
