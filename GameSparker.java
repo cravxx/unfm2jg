@@ -306,7 +306,7 @@ public class GameSparker extends Applet implements Runnable {
                         addWhat = carModels.length + trackModels.length;
                     }
                     modelId = j + addWhat;
-                    HLogger.info("Found model " + modelId + " matching string \"" + input + "\"");
+                    //HLogger.info("Found model " + modelId + " matching string \"" + input + "\"");
                     return modelId;
                 }
             }
