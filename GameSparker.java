@@ -837,7 +837,7 @@ public class GameSparker extends Applet implements Runnable {
             i1 = 1;
         }
 
-        boolean flag = false;
+        boolean saveFlag = false;
         xtgraphics.stoploading();
         System.gc();
         Date date = new Date();
@@ -851,6 +851,7 @@ public class GameSparker extends Applet implements Runnable {
         int k2 = 0;
         boolean flag2 = false;
         exwist = false;
+
         do {
             Date date1 = new Date();
             long l4 = date1.getTime();
@@ -924,12 +925,12 @@ public class GameSparker extends Applet implements Runnable {
             }
             if (xtgraphics.fase == -5) {
                 xtgraphics.finish(checkpoints, aconto, u[0]);
-                if (flag) {
+                if (!saveFlag) {
                     if (checkpoints.stage == xtgraphics.unlocked && xtgraphics.winner && xtgraphics.unlocked != 17)
                         savecookie("unlocked", "" + xtgraphics.unlocked);
                     savecookie("gameprfact", "" + (int) f);
                     savecookie("usercar", "" + xtgraphics.sc[0]);
-                    flag = true;
+                    saveFlag = true;
                 }
                 xtgraphics.ctachm(xm, ym, mouses, u[0]);
                 if (checkpoints.stage == 17 && xtgraphics.winner)
@@ -940,6 +941,7 @@ public class GameSparker extends Applet implements Runnable {
                     mouses = 2;
             }
             if (xtgraphics.fase == 7) {
+                saveFlag = false;
                 xtgraphics.carselect(u[0], aconto, amadness[0]);
                 xtgraphics.ctachm(xm, ym, mouses, u[0]);
                 if (mouses == 2)
@@ -957,9 +959,9 @@ public class GameSparker extends Applet implements Runnable {
             }
             if (xtgraphics.fase == 5) {
                 xtgraphics.loadmusic(checkpoints.stage, i1);
-                if (!flag) {
+                if (!saveFlag) {
                     savecookie("usercar", "" + xtgraphics.sc[0]);
-                    flag = true;
+                    saveFlag = true;
                 }
             }
             if (xtgraphics.fase == 4) {
@@ -1081,6 +1083,7 @@ public class GameSparker extends Applet implements Runnable {
                 }
             }
             if (xtgraphics.fase == 0) {
+                saveFlag = false;
                 int k3 = 0;
                 do {
                     if (amadness[k3].newcar) {
