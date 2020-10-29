@@ -1635,7 +1635,7 @@ public class GameSparker extends Applet implements Runnable {
          */
         new FontHandler();
         
-		offImage = createImage(670, 400);
+		offImage = createImage(1920, 1080);
 		if (offImage != null) {
 			sg = offImage.getGraphics();
 			rd = ((Graphics2D) sg);
