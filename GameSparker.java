@@ -1031,6 +1031,9 @@ public class GameSparker extends Applet implements Runnable {
                 if (mouses == 1)
                     mouses = 2;
                 xtgraphics.stageselect(checkpoints, u[0]);
+                for(int x = 0; x<7; x++) {
+                    amadness[x].stat = new Stat(xtgraphics.sc[x]);
+                }
             }
             if (xtgraphics.fase == 176) {
                 Medium.d(rd);

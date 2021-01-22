@@ -7,7 +7,7 @@ import java.awt.*;
  */
 class Madness {
 
-    public final Stat stat;
+    public Stat stat;
     private final Record rpd;
     private final xtGraphics xt;
     private final boolean[] dominate;
@@ -265,7 +265,7 @@ class Madness {
         xt = xtgraphics;
         im = i;
         shakedam = 0;
-        stat = new Stat(xtgraphics.sc[i]);
+        stat = new Stat();
     }
 
     private void regz(int i, float f, ContO conto) {

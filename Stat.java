@@ -85,4 +85,7 @@ public class Stat {
         simag = StatList.simag[im];
     }
 
+    public Stat(){
+    }
+
 }
