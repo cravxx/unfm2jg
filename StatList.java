@@ -169,7 +169,7 @@ class StatList {
      * @author Omar Waly
      */
     static final int[] lift = {
-            0, 30, 0, 20, 0, 30, 0, 0, 20, 0, 0, 0, 10, 0, 30
+            0, 30, 0, 20, 0, 30, 0, 0, 20, 0, 0, 0, 10, 0, 30, 0
     };
     /**
      * The amount of "reverse lift" or recoil the car will get from others

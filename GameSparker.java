@@ -837,7 +837,6 @@ public class GameSparker extends Applet implements Runnable {
             i1 = 1;
         }
 
-        boolean saveFlag = false;
         xtgraphics.stoploading();
         System.gc();
         Date date = new Date();
@@ -923,15 +922,16 @@ public class GameSparker extends Applet implements Runnable {
                 if (mouses == 1)
                     mouses = 2;
             }
+            if(xtgraphics.fase == -205) {
+                if (checkpoints.stage == xtgraphics.unlocked && xtgraphics.winner && xtgraphics.unlocked != 17)
+                    savecookie("unlocked", "" + xtgraphics.unlocked);
+                savecookie("gameprfact", "" + (int) f);
+                savecookie("usercar", "" + xtgraphics.sc[0]);
+
+                xtgraphics.fase = -5;
+            }
             if (xtgraphics.fase == -5) {
                 xtgraphics.finish(checkpoints, aconto, u[0]);
-                if (!saveFlag) {
-                    if (checkpoints.stage == xtgraphics.unlocked && xtgraphics.winner && xtgraphics.unlocked != 17)
-                        savecookie("unlocked", "" + xtgraphics.unlocked);
-                    savecookie("gameprfact", "" + (int) f);
-                    savecookie("usercar", "" + xtgraphics.sc[0]);
-                    saveFlag = true;
-                }
                 xtgraphics.ctachm(xm, ym, mouses, u[0]);
                 if (checkpoints.stage == 17 && xtgraphics.winner)
                     catchlink(1);
@@ -941,7 +941,6 @@ public class GameSparker extends Applet implements Runnable {
                     mouses = 2;
             }
             if (xtgraphics.fase == 7) {
-                saveFlag = false;
                 xtgraphics.carselect(u[0], aconto, amadness[0]);
                 xtgraphics.ctachm(xm, ym, mouses, u[0]);
                 if (mouses == 2)
@@ -957,12 +956,16 @@ public class GameSparker extends Applet implements Runnable {
                 if (mouses == 1)
                     mouses = 2;
             }
+            if (xtgraphics.fase == 205) {
+                savecookie("usercar", "" + xtgraphics.sc[0]);
+
+                for (int x = 0; x < 7; x++) {
+                    amadness[x].stat = new Stat(xtgraphics.sc[x]);
+                }
+                xtgraphics.fase = 5;
+            }
             if (xtgraphics.fase == 5) {
                 xtgraphics.loadmusic(checkpoints.stage, i1);
-                if (!saveFlag) {
-                    savecookie("usercar", "" + xtgraphics.sc[0]);
-                    saveFlag = true;
-                }
             }
             if (xtgraphics.fase == 4) {
                 xtgraphics.cantgo(u[0]);
@@ -1031,9 +1034,6 @@ public class GameSparker extends Applet implements Runnable {
                 if (mouses == 1)
                     mouses = 2;
                 xtgraphics.stageselect(checkpoints, u[0]);
-                for(int x = 0; x<7; x++) {
-                    amadness[x].stat = new Stat(xtgraphics.sc[x]);
-                }
             }
             if (xtgraphics.fase == 176) {
                 Medium.d(rd);
@@ -1086,7 +1086,6 @@ public class GameSparker extends Applet implements Runnable {
                 }
             }
             if (xtgraphics.fase == 0) {
-                saveFlag = false;
                 int k3 = 0;
                 do {
                     if (amadness[k3].newcar) {
@@ -1499,9 +1498,9 @@ public class GameSparker extends Applet implements Runnable {
                     xtgraphics.fleximage(offImage, k1, checkpoints.stage);
                 k1++;
                 if (checkpoints.stage == 17 && k1 == 10)
-                    xtgraphics.fase = -5;
+                    xtgraphics.fase = -205;
                 if (k1 == 12)
-                    xtgraphics.fase = -5;
+                    xtgraphics.fase = -205;
             }
             if (xtgraphics.fase == -6) {
                 repaint();

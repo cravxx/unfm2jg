@@ -3148,7 +3148,7 @@ class xtGraphics extends Panel implements Runnable {
             dudo = 150;
             Medium.trk = false;
             Medium.focus_point = 400;
-            fase = 5;
+            fase = 205;
             control.handb = false;
             control.enter = false;
             stages.stop();
