@@ -2958,12 +2958,13 @@ class xtGraphics extends Panel implements Runnable {
         if (i != 0) {
             int lastcar = 7;
 
-            // get boss car if player is not in the mad party, since that one has no boss car (you play as dr monstaa)
-            if (sc[0] != 7 + (i + 1) / 2 && i != 17) {
-                sc[6] = 7 + (i + 1) / 2;
-                if (sc[6] >= 15) {
-                    sc[6] = 15 - 1; // you could put -= 5 or something here
-                }
+            int maxId = 7 + (i + 1) / 2;
+            if(maxId > 15) {
+                maxId = 15;
+            }
+
+            if (sc[0] != maxId) {
+                sc[6] = maxId;
                 lastcar--; // boss car won't be randomized
             }
 
@@ -2972,7 +2973,7 @@ class xtGraphics extends Panel implements Runnable {
 
             // create a list of car ids, each item completely unique
             ArrayList<Integer> list = new ArrayList<>();
-            for (int k = (i - 1) / 2; k < 7 + ((i - 1) / 2); k++) {
+            for (int k = i / 2; k < 7 + (i / 2); k++) {
                 if (k == sc[0])
                     continue;
                 list.add(k);
@@ -2991,7 +2992,7 @@ class xtGraphics extends Panel implements Runnable {
 
                 // if there are more cars than tracks, reduce the car index number until it fits.
                 // unfortunately i have no idea how to make this work properly so we'll just have to ignore the duplicates here
-                while (sc[j] >= 15) {
+                while (sc[j] > 15) {
                     HLogger.error("Car " + j + " is out of bounds");
                     sc[j] -= ThreadLocalRandom.current().nextDouble() * 5F;
                 }
