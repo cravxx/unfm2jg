@@ -5,3 +5,5 @@
 /data/cookies.radq
 .*.sw*
 .idea
+/logs/
+/data/models/
