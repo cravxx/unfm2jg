@@ -43,6 +43,7 @@ public class Plane {
     private int pa;
     private int pb;
     public int flx;
+    public boolean solo;
 
     public void loadprojf() {
         projf = 1.0F;
@@ -60,7 +61,7 @@ public class Plane {
     }
 
     public Plane(Trackers trackers, int ai[], int ai1[], int ai2[], int i, int ai3[], boolean flag,
-                 int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2) {
+                 int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag1, int i2, boolean flag2) {
         c = new int[3];
         oc = new int[3];
         hsb = new float[3];
@@ -193,6 +194,7 @@ public class Plane {
         }
         road = flag1;
         light = i2;
+        solo = flag2;
         gr = j;
         fs = k;
         wx = l;
@@ -833,7 +835,7 @@ public class Plane {
         }
         if (flag2) {
             float f1 = (float) (projf / deltaf + 0.29999999999999999D);
-            if (flag) {
+            if (flag && !solo) {
                 boolean flag3 = false;
                 if (f1 > 1.0F) {
                     if (f1 >= 1.27D) {
@@ -943,36 +945,38 @@ public class Plane {
             }
             if (!flag) {
                 if (flx == 0) {
-                    l11 = 0;
-                    j13 = 0;
-                    k14 = 0;
-                    if (Medium.lightson && light != 0) {
-                        l11 = oc[0] / 2;
-                        if (l11 > 255) {
-                            l11 = 255;
+                    if (!solo) {
+                        l11 = 0;
+                        j13 = 0;
+                        k14 = 0;
+                        if (Medium.lightson && light != 0) {
+                            l11 = oc[0] / 2;
+                            if (l11 > 255) {
+                                l11 = 255;
+                            }
+                            if (l11 < 0) {
+                                l11 = 0;
+                            }
+                            j13 = oc[1] / 2;
+                            if (j13 > 255) {
+                                j13 = 255;
+                            }
+                            if (j13 < 0) {
+                                j13 = 0;
+                            }
+                            k14 = oc[2] / 2;
+                            if (k14 > 255) {
+                                k14 = 255;
+                            }
+                            if (k14 < 0) {
+                                k14 = 0;
+                            }
                         }
-                        if (l11 < 0) {
-                            l11 = 0;
-                        }
-                        j13 = oc[1] / 2;
-                        if (j13 > 255) {
-                            j13 = 255;
-                        }
-                        if (j13 < 0) {
-                            j13 = 0;
-                        }
-                        k14 = oc[2] / 2;
-                        if (k14 > 255) {
-                            k14 = 255;
-                        }
-                        if (k14 < 0) {
-                            k14 = 0;
-                        }
+                        rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                        rd.setColor(new Color(l11, j13, k14));
+                        rd.drawPolygon(ai14, ai15, n);
+                        rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
                     }
-                    rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                    rd.setColor(new Color(l11, j13, k14));
-                    rd.drawPolygon(ai14, ai15, n);
-                    rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
                 } else {
                     if (flx == 2) {
                         rd.setColor(new Color(0, 0, 0));

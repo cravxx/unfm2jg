@@ -214,6 +214,7 @@ public class ContO {
         int ai3[] = new int[3];
         boolean flag2 = false;
         boolean flag3 = false;
+        boolean flag4 = false;
         Wheels wheels = new Wheels();
         int j = 0;
         int k = 1;
@@ -259,8 +260,11 @@ public class ContO {
                     if (line.startsWith("lightB")) {
                         byte0 = 2;
                     }
-                    if (line.startsWith("light()")) {
+                    if (line.startsWith("light")) {
                         byte0 = 1;
+                    }
+                    if (line.startsWith("noOutline")) {
+                        flag4 = true;
                     }
                     if (line.startsWith("p")) {
                         ai[i] = (int) ((Utility.getint("p", line, 0) * f * f1) * nfmm_scale[0]);
@@ -274,7 +278,7 @@ public class ContO {
                     }
                 }
                 if (line.startsWith("</p>")) {
-                    p[npl] = new Plane(t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0);
+                    p[npl] = new Plane(t, ai, ai2, ai1, i, ai3, flag2, k, l, 0, 0, 0, disline, 0, flag3, byte0, flag4);
                     npl++;
                     flag = false;
                 }
@@ -437,7 +441,7 @@ public class ContO {
             }
             p[i1] = new Plane(t, conto.p[i1].ox, conto.p[i1].oz, conto.p[i1].oy, conto.p[i1].n, conto.p[i1].oc,
                     conto.p[i1].glass, conto.p[i1].gr, conto.p[i1].fs, conto.p[i1].wx, conto.p[i1].wy, conto.p[i1].wz,
-                    conto.disline, conto.p[i1].bfase, conto.p[i1].road, conto.p[i1].light);
+                    conto.disline, conto.p[i1].bfase, conto.p[i1].road, conto.p[i1].light, conto.p[i1].solo);
         }
 
         x = i;
