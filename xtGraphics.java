@@ -1685,7 +1685,7 @@ class xtGraphics extends Panel implements Runnable {
         System.gc();
         lastload = i - 1;
         if (j == 0) {
-            if (loadedt[i - 1]) {
+            if (loadedt[i - 1] && !mutem) {
                 stracks[i - 1].play();
             }
             app.setCursor(new Cursor(0));
