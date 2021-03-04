@@ -53,6 +53,12 @@ public class Stat {
 
     public int turn = 0;
 
+    public int enginsignature = 0;
+
+    public float proba = 0F;
+
+    public float dishandle = 0F;
+
     private int im = 0;
 
     /**
@@ -83,6 +89,10 @@ public class Stat {
         revpush = StatList.revpush[im];
         turn = StatList.turn[im];
         simag = StatList.simag[im];
+        enginsignature = StatList.enginsignature[im];
+        outdam = StatList.outdam[im];
+        proba = StatList.proba[im];
+        dishandle = StatList.dishandle[im];
     }
 
     public Stat(){

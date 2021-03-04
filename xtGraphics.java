@@ -70,15 +70,6 @@ class xtGraphics extends Panel implements Runnable {
 	 * };
 	 */
 
-    public float proba[] = {
-            0.6F, 0.7F, 0.4F, 0.3F, 0.8F, 0, 0.3F, 0.3F, 0.3F, 0.1F, 0.1F, 0.5F, 0, 0, 0, 0
-    };
-    private final float[] dishandle = {
-            0.65F, 0.6F, 0.55F, 0.77F, 0.62F, 0.9F, 0.6F, 0.72F, 0.45F, 0.8F, 0.95F, 0.4F, 0.87F, 0.42F, 1.0F, 0.95F
-    };
-    private final float[] outdam = {
-            0.67F, 0.35F, 0.8F, 0.5F, 0.42F, 0.76F, 0.82F, 0.76F, 0.72F, 0.62F, 0.79F, 0.95F, 0.77F, 1.0F, 0.85F, 1.0F
-    };
     private boolean holdit;
     private int holdcnt;
     public boolean winner;
@@ -173,9 +164,6 @@ class xtGraphics extends Panel implements Runnable {
     private final Image[] cntdn;
     private int gocnt;
     private final boolean[] pengs;
-    private final int[] enginsignature = {
-            0, 1, 2, 1, 0, 3, 2, 2, 1, 0, 3, 4, 1, 4, 0, 3
-    };
     private boolean aird;
     private boolean grrd;
     private boolean pwastd;
@@ -1282,7 +1270,7 @@ class xtGraphics extends Panel implements Runnable {
                                 } else {
                                     pwait = 7;
                                 }
-                                sparkeng(j);
+                                sparkeng(madness.stat, j);
                             }
                             if (Math.abs(madness.speed) > madness.stat.swits[0]
                                     && Math.abs(madness.speed) <= madness.stat.swits[1]) {
@@ -1297,13 +1285,13 @@ class xtGraphics extends Panel implements Runnable {
                                 } else {
                                     pwait = 7;
                                 }
-                                sparkeng(k);
+                                sparkeng(madness.stat, k);
                             }
                             if (Math.abs(madness.speed) > madness.stat.swits[1]
                                     && Math.abs(madness.speed) <= madness.stat.swits[2]) {
                                 int l = (int) ((3F * (Math.abs(madness.speed) - madness.stat.swits[1]))
                                         / (madness.stat.swits[2] - madness.stat.swits[1]));
-                                sparkeng(l);
+                                sparkeng(madness.stat, l);
                             }
                         } else {
                             byte byte0 = 2;
@@ -1314,10 +1302,10 @@ class xtGraphics extends Panel implements Runnable {
                             } else {
                                 pwait--;
                             }
-                            sparkeng(byte0);
+                            sparkeng(madness.stat, byte0);
                         }
                     } else {
-                        sparkeng(-1);
+                        sparkeng(madness.stat, -1);
                         if (flag2) {
                             if (stopcnt <= 0) {
                                 sm.loop("air" + 5);
@@ -1329,7 +1317,7 @@ class xtGraphics extends Panel implements Runnable {
                         }
                     }
                 } else {
-                    sparkeng(3);
+                    sparkeng(madness.stat, 3);
                 }
                 grrd = false;
                 aird = false;
@@ -1346,7 +1334,7 @@ class xtGraphics extends Panel implements Runnable {
                     stopcnt = 10;
                     aird = true;
                 }
-                sparkeng(-1);
+                sparkeng(madness.stat, -1);
             }
             if (madness.cntdest != 0 && cntwis < 7) {
                 if (!pwastd) {
@@ -1363,7 +1351,7 @@ class xtGraphics extends Panel implements Runnable {
                 }
             }
         } else {
-            sparkeng(-2);
+            sparkeng(madness.stat, -2);
             if (pwastd) {
                 sm.play("wasted");
                 pwastd = false;
@@ -2996,17 +2984,17 @@ class xtGraphics extends Panel implements Runnable {
         }
     }
 
-    private void sparkeng(int i) {
+    private void sparkeng(Stat stat, int i) {
         i++;
         int j = 0;
         do {
             if (i == j) {
                 if (!pengs[j]) {
-                    sm.loop("engs"+enginsignature[sc[0]]+j);
+                    sm.loop("engs"+stat.enginsignature+j);
                     pengs[j] = true;
                 }
             } else if (pengs[j]) {
-                sm.stop("engs"+enginsignature[sc[0]]+j);
+                sm.stop("engs"+stat.enginsignature+j);
                 pengs[j] = false;
             }
         } while (++j < 5);
@@ -4291,7 +4279,7 @@ class xtGraphics extends Panel implements Runnable {
                         f = 1.0F;
                     }
                     rd.fillRect((int) (97F + 156F * f), 327, (int) (156F * (1.0F - f) + 1.0F), 7);
-                    f = dishandle[sc[0]];
+                    f = StatList.dishandle[sc[0]];
                     rd.fillRect((int) (97F + 156F * f), 342, (int) (156F * (1.0F - f) + 1.0F), 7);
                     f = (StatList.airc[sc[0]] * StatList.airs[sc[0]] * StatList.bounce[sc[0]] + 28F) / 139F;
                     if (f > 1.0F) {
@@ -4307,7 +4295,7 @@ class xtGraphics extends Panel implements Runnable {
                         f = 1.0F;
                     }
                     rd.fillRect((int) (471F + 156F * f), 327, (int) (156F * (1.0F - f) + 1.0F), 7);
-                    f = outdam[sc[0]];
+                    f = StatList.outdam[sc[0]];
                     rd.fillRect((int) (471F + 156F * f), 342, (int) (156F * (1.0F - f) + 1.0F), 7);
                     rd.drawImage(statbo, 97, 312, null);
                     rd.drawImage(statbo, 97, 327, null);
