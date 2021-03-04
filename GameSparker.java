@@ -319,12 +319,11 @@ public class GameSparker extends Applet implements Runnable {
      * Loads all models
      *
      * @param conto      conto instance
-     * @param medium     medium instance
      * @param trackers   trackers instance
      * @param xtgraphics xtgraphics instance
      * @author Kaffeinated, Omar Waly
      */
-    private void loadbase(final ContO conto[], Medium medium, Trackers trackers, xtGraphics xtgraphics) {
+    private void loadbase(final ContO conto[], Trackers trackers, xtGraphics xtgraphics) {
         xtgraphics.dnload += 6;
         try {
             ZipInputStream zipinputstream;
@@ -359,7 +358,7 @@ public class GameSparker extends Applet implements Runnable {
                     unknown2 = zipinputstream.read(modelData, unknown1, entireSize);
                     unknown1 += unknown2;
                 }
-                conto[modelId] = new ContO(modelData, medium, trackers);
+                conto[modelId] = new ContO(modelData, trackers);
                 xtgraphics.dnload++;
             }
             /*
@@ -424,7 +423,6 @@ public class GameSparker extends Applet implements Runnable {
      *
      * @param aconto      conto instance
      * @param aconto1     conto instance specifically for cars
-     * @param medium      medium instance
      * @param trackers    trackers instance
      * @param checkpoints checkpoints instance
      * @param xtgraphics  xtgraphics instance
@@ -432,7 +430,7 @@ public class GameSparker extends Applet implements Runnable {
      * @param record      record instance
      * @author Kaffeinated, Omar Waly
      */
-    private void loadstage(ContO aconto[], ContO aconto1[], Medium medium, Trackers trackers, CheckPoints checkpoints,
+    private void loadstage(ContO aconto[], ContO aconto1[], Trackers trackers, CheckPoints checkpoints,
                            xtGraphics xtgraphics, Madness amadness[], Record record) {
         trackers.nt = 0;
         nob = 7;
@@ -776,19 +774,18 @@ public class GameSparker extends Applet implements Runnable {
 		 */
         Utility.startTimer();
         Trackers trackers = new Trackers();
-        Medium medium = new Medium();
         CheckPoints checkpoints = new CheckPoints();
-        xtGraphics xtgraphics = new xtGraphics(medium, rd, this);
+        xtGraphics xtgraphics = new xtGraphics(rd, this);
         xtgraphics.loaddata();
-        Record record = new Record(medium);
+        Record record = new Record();
         ContO aconto[] = new ContO[carModels.length + trackModels.length + extraModels.length]; // be sure all your arrays get in here
-        loadbase(aconto, medium, trackers, xtgraphics);
+        loadbase(aconto, trackers, xtgraphics);
         ContO aconto1[] = new ContO[3000];
         Madness amadness[] = new Madness[7];
         int l = 0;
         do {
-            amadness[l] = new Madness(medium, record, xtgraphics, l);
-            u[l] = new Control(medium);
+            amadness[l] = new Madness(record, xtgraphics, l);
+            u[l] = new Control();
         } while (++l < 7);
         float f = 35F;
         int i1 = 80;
@@ -970,7 +967,7 @@ public class GameSparker extends Applet implements Runnable {
             }
             if (xtgraphics.fase == 2) {
                 xtgraphics.loadingstage(checkpoints.stage);
-                loadstage(aconto1, aconto, medium, trackers, checkpoints, xtgraphics, amadness, record);
+                loadstage(aconto1, aconto, trackers, checkpoints, xtgraphics, amadness, record);
                 u[0].falseo();
             }
             if (xtgraphics.fase == 1) {

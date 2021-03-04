@@ -35,7 +35,6 @@ class xtGraphics extends Panel implements Runnable {
     private Image aimLogo;
 
     private final Graphics2D rd;
-    private final Medium m;
     private ImageObserver ob;
     private final Applet app;
     public int fase;
@@ -3422,7 +3421,7 @@ class xtGraphics extends Panel implements Runnable {
         rd.fillRect(222, 346, 26 + (int) ((shload / kbload) * 200F), 10);
     }
 
-    public xtGraphics(Medium medium, Graphics2D graphics2d, Applet applet) {
+    public xtGraphics(Graphics2D graphics2d, Applet applet) {
         fase = 111;
         oldfase = 0;
         starcnt = 0;
@@ -3529,7 +3528,6 @@ class xtGraphics extends Panel implements Runnable {
         flangados = 0;
         blackn = 0.0F;
         blacknados = 0.0F;
-        m = medium;
         app = applet;
         rd = graphics2d;
         MediaTracker mediatracker = new MediaTracker(app);
