@@ -379,15 +379,6 @@ public class GameSparker extends Applet implements Runnable {
         paint(g);
     }
 
-    private int sunytyp() {
-        String s = System.getProperty("java.version");
-        String s1 = "" + getAppletContext();
-        if (!s1.startsWith("com.ms."))
-            return !s.startsWith("1.3") && !s.startsWith("1.4") ? 2 : 1;
-        else
-            return 0;
-    }
-
     /**
      * <a href="http://www.expandinghead.net/keycode.html">http://www.expandinghead.net/keycode.html</a>
      */
@@ -786,16 +777,9 @@ public class GameSparker extends Applet implements Runnable {
         Utility.startTimer();
         Trackers trackers = new Trackers();
         Medium medium = new Medium();
-        int i = 5;
-        int j = 530;
-        int k = sunytyp();
-        if (k != 0)
-            i = 15;
-        if (k != 2)
-            j = 500;
         CheckPoints checkpoints = new CheckPoints();
         xtGraphics xtgraphics = new xtGraphics(medium, rd, this);
-        xtgraphics.loaddata(k);
+        xtgraphics.loaddata();
         Record record = new Record(medium);
         ContO aconto[] = new ContO[carModels.length + trackModels.length + extraModels.length]; // be sure all your arrays get in here
         loadbase(aconto, medium, trackers, xtgraphics);
@@ -806,7 +790,6 @@ public class GameSparker extends Applet implements Runnable {
             amadness[l] = new Madness(medium, record, xtgraphics, l);
             u[l] = new Control(medium);
         } while (++l < 7);
-        l = 0;
         float f = 35F;
         int i1 = 80;
 		/*
@@ -840,6 +823,8 @@ public class GameSparker extends Applet implements Runnable {
         xtgraphics.stoploading();
         System.gc();
         Date date = new Date();
+        int i = 15;
+        int j = 530;
         long l3 = date.getTime();
         float f1 = 30F;
         boolean flag1 = false;

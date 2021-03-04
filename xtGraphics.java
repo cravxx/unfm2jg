@@ -3470,7 +3470,7 @@ class xtGraphics extends Panel implements Runnable {
         loadedt = new boolean[17];
         lastload = -1;
         mutem = false;
-        sunny = false;
+        sunny = true;
         macn = false;
         arrace = false;
         ana = 0;
@@ -3870,21 +3870,15 @@ class xtGraphics extends Panel implements Runnable {
         rd.drawImage(image, 0, 0, null);
     }
 
-    public void loaddata(int i) {
-        kbload = 625;
+    public void loaddata() {
+        kbload = 950;
         sunny = false;
-        String s = "default/";
-        String s1 = "au";
-        if (i == 2) {
-            kbload = 950;
-            sunny = true;
-            s = "JavaNew/";
-            s1 = "wav";
-        }
+
         String s2 = System.getProperty("os.name");
         if (!s2.startsWith("Win")) {
             macn = true;
         }
+
         runtyp = 176;
 
         runner = new Thread(this);
@@ -4880,16 +4874,6 @@ class xtGraphics extends Panel implements Runnable {
         }
 
         return createImage(new MemoryImageSource(l, k, ai, 0, l));
-    }
-
-    /**
-     * returns an audioclip
-     *
-     * @param s name of clip
-     * @return the new audio clip
-     */
-    private AudioClip getSound(String s) {
-        return Applet.newAudioClip(getClass().getResource(s));
     }
 
     private void carsbginflex() {
