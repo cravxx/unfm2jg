@@ -2715,6 +2715,11 @@ class xtGraphics extends Panel implements Runnable {
                 } while (++k < 7);
             }
         }
+
+        if (Medium.lightn != -1 && checkpoints.stage == 16) {
+            Medium.lton = true;
+        }
+
     }
 
     public void finish(CheckPoints checkpoints, ContO aconto[], Control control) {

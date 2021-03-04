@@ -442,6 +442,7 @@ public class GameSparker extends Applet implements Runnable {
         checkpoints.wasted = 0;
         checkpoints.catchfin = 0;
         Medium.lightson = false;
+        Medium.lton = false;
         Medium.ground = 250;
         view = 0;
 
