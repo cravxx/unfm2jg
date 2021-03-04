@@ -1662,8 +1662,9 @@ class Madness {
                     if (conto.dist == 0) {
                         conto.fcnt = 8;
                     } else {
-                        if (im == 0 && !conto.fix && !xt.mutes)
-                            xt.carfixed.play();
+                        if (im == 0 && !conto.fix && !xt.mutes) {
+                            xt.sm.play("carfixed");
+                        }
                         conto.fix = true;
                     }
                     rpd.fix[im] = 300;
@@ -1673,8 +1674,9 @@ class Madness {
                 if (conto.dist == 0) {
                     conto.fcnt = 8;
                 } else {
-                    if (im == 0 && !conto.fix && !xt.mutes)
-                        xt.carfixed.play();
+                    if (im == 0 && !conto.fix && !xt.mutes) {
+                        xt.sm.play("carfixed");
+                    }
                     conto.fix = true;
                 }
                 rpd.fix[im] = 300;

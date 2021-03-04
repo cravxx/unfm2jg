@@ -5,6 +5,8 @@ import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.color.ColorSpace;
 import java.awt.image.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,6 +20,9 @@ class xtGraphics extends Panel implements Runnable {
      *
      */
     private static final long serialVersionUID = -6463312620664057856L;
+
+    SoundManager sm = new SoundManager();
+
     /**
      * starting colors for the special screen in the credits
      */
@@ -167,29 +172,13 @@ class xtGraphics extends Panel implements Runnable {
     private final Image[] ocntdn;
     private final Image[] cntdn;
     private int gocnt;
-    private final AudioClip[][] engs;
     private final boolean[] pengs;
     private final int[] enginsignature = {
             0, 1, 2, 1, 0, 3, 2, 2, 1, 0, 3, 4, 1, 4, 0, 3
     };
-    private final AudioClip[] air;
     private boolean aird;
     private boolean grrd;
-    private final AudioClip[] crash;
-    private final AudioClip[] lowcrash;
-    private AudioClip tires;
-    private AudioClip checkpoint;
-    public AudioClip carfixed;
-    private AudioClip powerup;
-    private AudioClip three;
-    private AudioClip two;
-    private AudioClip one;
-    private AudioClip go;
-    private AudioClip wastd;
-    private AudioClip firewasted;
     private boolean pwastd;
-    private final AudioClip[] skid;
-    private final AudioClip[] dustskid;
     public boolean mutes;
     private RadicalMod stages;
     private RadicalMod cars;
@@ -1331,11 +1320,11 @@ class xtGraphics extends Panel implements Runnable {
                         sparkeng(-1);
                         if (flag2) {
                             if (stopcnt <= 0) {
-                                air[5].loop();
+                                sm.loop("air" + 5);
                                 stopcnt = 10;
                             }
                         } else if (stopcnt <= -2) {
-                            air[2 + (int) (Medium.random() * 3F)].loop();
+                            sm.loop("air" + (2 + (int) (Medium.random() * 3F)));
                             stopcnt = 7;
                         }
                     }
@@ -1347,13 +1336,13 @@ class xtGraphics extends Panel implements Runnable {
             } else {
                 pwait = 15;
                 if (!madness.mtouch && !grrd && Medium.random() > 0.40000000000000002D) {
-                    air[(int) (Medium.random() * 4F)].loop();
+                    sm.loop("air" + (int) (Medium.random() * 4F));
                     stopcnt = 5;
                     grrd = true;
                 }
                 if (!madness.wtouch && !aird) {
                     stopairs();
-                    air[(int) (Medium.random() * 4F)].loop();
+                    sm.loop("air" + (int) (Medium.random() * 4F));
                     stopcnt = 10;
                     aird = true;
                 }
@@ -1361,22 +1350,22 @@ class xtGraphics extends Panel implements Runnable {
             }
             if (madness.cntdest != 0 && cntwis < 7) {
                 if (!pwastd) {
-                    wastd.loop();
+                    sm.loop("wasted");
                     pwastd = true;
                 }
             } else {
                 if (pwastd) {
-                    wastd.stop();
+                    sm.stop("wasted");
                     pwastd = false;
                 }
                 if (cntwis == 7 && !mutes) {
-                    firewasted.play();
+                    sm.play("firewasted");
                 }
             }
         } else {
             sparkeng(-2);
             if (pwastd) {
-                wastd.stop();
+                sm.play("wasted");
                 pwastd = false;
             }
         }
@@ -1429,13 +1418,13 @@ class xtGraphics extends Panel implements Runnable {
             if (i == 0) {
                 if (Math.abs(f) > 25F && Math.abs(f) < 170F) {
                     if (!mutes) {
-                        lowcrash[crshturn].play();
+                        sm.play("lowcrash" + crshturn);
                     }
                     bfcrash = 2;
                 }
                 if (Math.abs(f) >= 170F) {
                     if (!mutes) {
-                        crash[crshturn].play();
+                        sm.play("crash" + crshturn);
                     }
                     bfcrash = 2;
                 }
@@ -1456,20 +1445,20 @@ class xtGraphics extends Panel implements Runnable {
             if (i == -1) {
                 if (Math.abs(f) > 25F && Math.abs(f) < 170F) {
                     if (!mutes) {
-                        lowcrash[2].play();
+                        sm.play("lowcrash" + 2);
                     }
                     bfcrash = 2;
                 }
                 if (Math.abs(f) > 170F) {
                     if (!mutes) {
-                        crash[2].play();
+                        sm.play("crash" + 2);
                     }
                     bfcrash = 2;
                 }
             }
             if (i == 1) {
                 if (!mutes) {
-                    tires.play();
+                    sm.play("tires");
                 }
                 bfcrash = 3;
             }
@@ -2106,7 +2095,7 @@ class xtGraphics extends Panel implements Runnable {
 
     public void credits(Control control) {
         if (flipo == 0) {
-            powerup.play();
+            sm.play("powerup");
             flipo = 1;
             bgmy[0] = 0;
             bgmy[1] = 400;
@@ -2418,24 +2407,24 @@ class xtGraphics extends Panel implements Runnable {
             if (!holdit) {
                 if (starcnt != 0 && starcnt <= 35) {
                     if (starcnt == 35 && !mutes) {
-                        three.play();
+                        sm.play("three");
                     }
                     if (starcnt == 24) {
                         gocnt = 2;
                         if (!mutes) {
-                            two.play();
+                            sm.play("two");
                         }
                     }
                     if (starcnt == 13) {
                         gocnt = 1;
                         if (!mutes) {
-                            one.play();
+                            sm.play("one");
                         }
                     }
                     if (starcnt == 2) {
                         gocnt = 0;
                         if (!mutes) {
-                            go.play();
+                            sm.play("go");
                         }
                     }
                     duds = 0;
@@ -2667,7 +2656,7 @@ class xtGraphics extends Panel implements Runnable {
                     }
                     if (auscnt < 45) {
                         if (!mutes) {
-                            powerup.play();
+                            sm.play("powerup");
                         }
                         if (auscnt < -20) {
                             auscnt = -20;
@@ -2715,7 +2704,7 @@ class xtGraphics extends Panel implements Runnable {
                     }
                     clear = madness[0].clear;
                     if (!mutes) {
-                        checkpoint.play();
+                        sm.play("checkpoint");
                     }
                     cntovn = 0;
                     if (cntan != 0) {
@@ -3013,11 +3002,11 @@ class xtGraphics extends Panel implements Runnable {
         do {
             if (i == j) {
                 if (!pengs[j]) {
-                    engs[enginsignature[sc[0]]][j].loop();
+                    sm.loop("engs"+enginsignature[sc[0]]+j);
                     pengs[j] = true;
                 }
             } else if (pengs[j]) {
-                engs[enginsignature[sc[0]]][j].stop();
+                sm.stop("engs"+enginsignature[sc[0]]+j);
                 pengs[j] = false;
             }
         } while (++j < 5);
@@ -3484,16 +3473,10 @@ class xtGraphics extends Panel implements Runnable {
         ocntdn = new Image[4];
         cntdn = new Image[4];
         gocnt = 0;
-        engs = new AudioClip[5][5];
         pengs = new boolean[5];
-        air = new AudioClip[6];
         aird = false;
         grrd = false;
-        crash = new AudioClip[3];
-        lowcrash = new AudioClip[3];
         pwastd = false;
-        skid = new AudioClip[3];
-        dustskid = new AudioClip[3];
         mutes = false;
         stracks = new RadicalMod[17];
         loadedt = new boolean[17];
@@ -3925,119 +3908,120 @@ class xtGraphics extends Panel implements Runnable {
         cars = new RadicalMod("music/cars.radq", app);
         dnload += 27;
 
-        int j = 0;
-        do {
-            int k = 0;
-            do {
-                engs[k][j] = getSound("sounds/" + s + "" + k + "" + j + ".au");
-                dnload += 3;
-            } while (++k < 5);
-            pengs[j] = false;
-        } while (++j < 5);
         stages = new RadicalMod("music/stages.radq", app);
         dnload += 91;
-        j = 0;
-        do {
-            air[j] = getSound("sounds/" + s + "air" + j + ".au");
-            dnload += 2;
-        } while (++j < 6);
-        j = 0;
-        do {
-            crash[j] = getSound("sounds/" + s + "crash" + (j + 1) + "." + s1);
-            if (i == 2) {
-                dnload += 10;
-            } else {
-                dnload += 7;
-            }
-        } while (++j < 3);
-        j = 0;
-        do {
-            lowcrash[j] = getSound("sounds/" + s + "lowcrash" + (j + 1) + "." + s1);
-            if (i == 2) {
-                dnload += 10;
-            } else {
-                dnload += 3;
-            }
-        } while (++j < 3);
-        tires = getSound("sounds/" + s + "tires." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 4;
-        }
-        checkpoint = getSound("sounds/" + s + "checkpoint." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 6;
-        }
-        carfixed = getSound("sounds/" + s + "carfixed." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 10;
-        }
-        powerup = getSound("sounds/" + s + "powerup." + s1);
-        if (i == 2) {
-            dnload += 42;
-        } else {
-            dnload += 8;
-        }
-        three = getSound("sounds/" + s + "three." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 4;
-        }
-        two = getSound("sounds/" + s + "two." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 2;
-        }
-        one = getSound("sounds/" + s + "one." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 4;
-        }
-        go = getSound("sounds/" + s + "go." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 4;
-        }
-        wastd = getSound("sounds/" + s + "wasted." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 4;
-        }
-        firewasted = getSound("sounds/" + s + "firewasted." + s1);
-        if (i == 2) {
-            dnload += 24;
-        } else {
-            dnload += 10;
-        }
-        j = 0;
-        do {
-            skid[j] = getSound("sounds/" + s + "skid" + (j + 1) + "." + s1);
-            if (i == 2) {
-                dnload += 22;
-            } else {
-                dnload += 6;
-            }
-        } while (++j < 3);
-        j = 0;
-        do {
-            dustskid[j] = getSound("sounds/" + s + "dustskid" + (j + 1) + "." + s1);
-            if (i == 2) {
-                dnload += 22;
-            } else {
-                dnload += 7;
-            }
-        } while (++j < 3);
+
+        loadsounds();
     }
+
+    public void loadsounds() {
+        this.dnload += 3;
+
+        try {
+            File soundsZip = new File("data/sounds.zip");
+            ZipInputStream soundsInputStream = new ZipInputStream(new FileInputStream(soundsZip));
+
+            for (ZipEntry soundEntry = soundsInputStream.getNextEntry(); soundEntry != null; soundEntry = soundsInputStream.getNextEntry()) {
+                int size = (int) soundEntry.getSize();
+                String name = soundEntry.getName();
+                byte[] sound = new byte[size];
+
+                int z;
+                for (int x = 0; size > 0; size -= z) {
+                    z = soundsInputStream.read(sound, x, size);
+                    x += z;
+                }
+
+                int i;
+                for (i = 0; i < 5; ++i) {
+                    for (int v = 0; v < 5; ++v) {
+                        if (name.equals(v + "" + i + ".wav")) {
+                            sm.add("engs" + v + i, new SoundClipUnthreaded(sound));
+                        }
+                    }
+                }
+
+                for (i = 0; i < 6; ++i) {
+                    if (name.equals("air" + i + ".wav")) {
+                        sm.add("air" + i, new SoundClipUnthreaded(sound));
+                    }
+                }
+
+                for (i = 0; i < 3; ++i) {
+                    if (name.equals("crash" + (i + 1) + ".wav")) {
+                        sm.add("crash" + i, new SoundClipUnthreaded(sound));
+                    }
+                }
+
+                for (i = 0; i < 3; ++i) {
+                    if (name.equals("lowcrash" + (i + 1) + ".wav")) {
+                        sm.add("lowcrash" + i, new SoundClipUnthreaded(sound));
+                    }
+                }
+
+                for (i = 0; i < 3; ++i) {
+                    if (name.equals("skid" + (i + 1) + ".wav")) {
+                        sm.add("skid" + i, new SoundClipUnthreaded(sound));
+                    }
+                }
+
+                for (i = 0; i < 3; ++i) {
+                    if (name.equals("dustskid" + (i + 1) + ".wav")) {
+                        sm.add("dustskid" + i, new SoundClipUnthreaded(sound));
+                    }
+                }
+
+                if (name.equals("powerup.wav")) {
+                    sm.add("powerup", new SoundClipThreaded(sound));
+                }
+
+                if (name.equals("tires.wav")) {
+                    sm.add("tires", new SoundClipUnthreaded(sound));
+                }
+
+                if (name.equals("checkpoint.wav")) {
+                    sm.add("checkpoint", new SoundClipThreaded(sound));
+                }
+
+                if (name.equals("carfixed.wav")) {
+                    sm.add("carfixed", new SoundClipThreaded(sound));
+                }
+
+                if (name.equals("three.wav")) {
+                    sm.add("three", new SoundClipUnthreaded(sound));
+                }
+
+                if (name.equals("two.wav")) {
+                    sm.add("two", new SoundClipUnthreaded(sound));
+                }
+
+                if (name.equals("one.wav")) {
+                    sm.add("one", new SoundClipUnthreaded(sound));
+                }
+
+                if (name.equals("go.wav")) {
+                    sm.add("go", new SoundClipUnthreaded(sound));
+                }
+
+                if (name.equals("wasted.wav")) {
+                    sm.add("wasted", new SoundClipUnthreaded(sound));
+                }
+
+                if (name.equals("firewasted.wav")) {
+                    sm.add("firewasted", new SoundClipUnthreaded(sound));
+                }
+
+                this.dnload += 5;
+            }
+
+            soundsInputStream.close();
+        } catch (Exception var12) {
+            HLogger.error("Error Loading Sounds: " + var12);
+        }
+
+        System.gc();
+    }
+
 
     public void clicknow() {
         rd.setColor(new Color(198, 214, 255));
@@ -4065,7 +4049,7 @@ class xtGraphics extends Panel implements Runnable {
 
     public void rad(int i, int x) {
         if (i == 0) {
-            powerup.play();
+            sm.play("powerup");
             radpx = 147;
             pin = 0;
         }
@@ -4116,7 +4100,7 @@ class xtGraphics extends Panel implements Runnable {
         if (bfcrash == 0 && bfskid == 0 && f > 150F) {
             if (i == 0) {
                 if (!mutes) {
-                    skid[skflg].play();
+                    sm.play("skid"+skflg);
                 }
                 if (skidup) {
                     skflg++;
@@ -4131,7 +4115,7 @@ class xtGraphics extends Panel implements Runnable {
                 }
             } else {
                 if (!mutes) {
-                    dustskid[dskflg].play();
+                    sm.play("dustskid"+dskflg);
                 }
                 if (skidup) {
                     dskflg++;
@@ -4167,14 +4151,15 @@ class xtGraphics extends Panel implements Runnable {
         } while (++i < 17);
         i = 0;
         do {
-            engs[0][i].stop();
-            engs[1][i].stop();
+            for(int x = 0; x < 5; x++) {
+                sm.stop("engs"+x+i);
+            }
         } while (++i < 5);
         i = 0;
         do {
-            air[i].stop();
+            sm.stop("air"+i);
         } while (++i < 6);
-        wastd.stop();
+        sm.stop("wasted");
         cars.unloadAll();
         stages.unloadAll();
     }
@@ -4606,7 +4591,7 @@ class xtGraphics extends Panel implements Runnable {
     private void stopairs() {
         int i = 0;
         do {
-            air[i].stop();
+            sm.stop("air"+i);
         } while (++i < 6);
     }
 
