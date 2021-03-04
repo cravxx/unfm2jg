@@ -1,7 +1,6 @@
 import fallk.logmaster.HLogger;
 
 import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.color.ColorSpace;
 import java.awt.image.*;
@@ -2989,11 +2988,11 @@ class xtGraphics extends Panel implements Runnable {
         do {
             if (i == j) {
                 if (!pengs[j]) {
-                    sm.loop("engs"+stat.enginsignature+j);
+                    sm.loop("engs"+stat.engine +j);
                     pengs[j] = true;
                 }
             } else if (pengs[j]) {
-                sm.stop("engs"+stat.enginsignature+j);
+                sm.stop("engs"+stat.engine +j);
                 pengs[j] = false;
             }
         } while (++j < 5);
