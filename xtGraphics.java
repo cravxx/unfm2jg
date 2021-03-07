@@ -3965,7 +3965,7 @@ class xtGraphics extends Panel implements Runnable {
                 }
 
                 if (name.equals("checkpoint.wav")) {
-                    sm.add("checkpoint", new SoundClipThreaded(sound));
+                    sm.add("checkpoint", new SoundClipUnthreaded(sound));
                 }
 
                 if (name.equals("carfixed.wav")) {
