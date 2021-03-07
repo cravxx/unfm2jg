@@ -2717,6 +2717,7 @@ class xtGraphics extends Panel implements Runnable {
         }
 
         if (Medium.lightn != -1 && checkpoints.stage == 16) {
+            //supposed to pulse during sections of the music, w/e
             Medium.lton = true;
         }
 

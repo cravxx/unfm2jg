@@ -1,9 +1,9 @@
-public abstract class SoundClip {
+public interface SoundClip {
 
-    public abstract void play();
+    void play();
 
-    public abstract void loop();
+    void loop();
 
-    public abstract void stop();
+    void stop();
 
 }

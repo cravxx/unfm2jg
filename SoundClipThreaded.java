@@ -4,7 +4,7 @@ import javax.sound.sampled.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-public class SoundClipThreaded extends SoundClip implements Runnable {
+public class SoundClipThreaded implements Runnable, SoundClip {
 
     private byte[] clipBytes;
     boolean isPlaying = false;
