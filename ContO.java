@@ -200,7 +200,7 @@ public class ContO {
         }
     }
 
-    public ContO(byte abyte0[], Medium medium, Trackers trackers) {
+    public ContO(byte abyte0[], Trackers trackers) {
         t = trackers;
         p = new Plane[270];
         boolean flag = false;

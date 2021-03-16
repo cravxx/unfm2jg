@@ -254,7 +254,7 @@ class Record {
         prepit = false;
     }
 
-    public Record(Medium medium) {
+    public Record() {
         caught = 0;
         hcaught = false;
         prepit = true;

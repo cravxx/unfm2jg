@@ -195,7 +195,7 @@ class Madness {
         }
     }
 
-    public Madness(Medium medium, Record record, xtGraphics xtgraphics, int i) {
+    public Madness(Record record, xtGraphics xtgraphics, int i) {
         cn = 0;
         im = 0;
         mxz = 0;

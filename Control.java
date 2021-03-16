@@ -2042,7 +2042,7 @@ public class Control {
         arrace = false;
     }
 
-    public Control(Medium medium) {
+    public Control() {
         left = false;
         right = false;
         up = false;

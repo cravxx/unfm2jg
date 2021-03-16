@@ -1,4 +1,5 @@
 import fallk.logmaster.HLogger;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.applet.Applet;
@@ -19,7 +20,7 @@ class xtGraphics extends Panel implements Runnable {
      *
      */
     private static final long serialVersionUID = -6463312620664057856L;
-    
+
     SoundManager sm = new SoundManager();
     /**
      * starting colors for the special screen in the credits
@@ -33,7 +34,6 @@ class xtGraphics extends Panel implements Runnable {
     private Image aimLogo;
 
     private final Graphics2D rd;
-    private final Medium m;
     private ImageObserver ob;
     private final Applet app;
     public int fase;
@@ -548,14 +548,12 @@ class xtGraphics extends Panel implements Runnable {
 
         rd.drawString("" + text, xScreenCoor, yScreenCoor);
     }
-    public void carspergame()
-    {
-        if(!setnumber)
-        {
+
+    public void carspergame() {
+        if (!setnumber) {
             GameFacts.numberOfPlayers = 7;
             setnumber = true;
-        } else
-        {
+        } else {
             fase = 2;
         }
     }
@@ -617,8 +615,8 @@ class xtGraphics extends Panel implements Runnable {
         FontHandler.fMetrics = rd.getFontMetrics();
         drawcs(511, "You can also use Keyboard Arrows and Enter to navigate.", 82, 90, 0, 3);
         app.repaint();*/
-        
-        
+
+
         if (lastload != -22) {
             stages.loadMod(135, 7800, 125, sunny, macn);
             lastload = -22;
@@ -691,7 +689,7 @@ class xtGraphics extends Panel implements Runnable {
         if (flipo == 3 || flipo == 5) {//2-3 page
             if (flipo == 3) {
                 rd.drawString("Hello!  This will be changed eventually.", 312, 42);
-                
+
                 //
                 //rd.drawImage(nfm, 519, 30, null);
                 rd.drawString("In this game there are two ways to complete a stage.", 312, 82);
@@ -721,7 +719,7 @@ class xtGraphics extends Panel implements Runnable {
             rd.drawString("Brake/Reverse", 555, 372);
             rd.drawString("Turn left", 504, 350);
             rd.drawString("Turn right", 640, 350);
-           
+
         }
         if (flipo == 7 || flipo == 9) { // 4-5 page
             if (flipo == 7) {
@@ -730,7 +728,7 @@ class xtGraphics extends Panel implements Runnable {
                 rd.drawString("=> More 'Power' makes your car become faster and stronger!", 312, 82);
                 rd.drawString("To power up your car (and keep it powered up) you will need to", 312, 102);
                 rd.drawString("perform stunts!", 312, 122);
-                
+
             } else {
                 rd.drawString("The better the stunt the more power you get!", 312, 42);
                 rd.setColor(new Color(100, 100, 100));
@@ -738,10 +736,10 @@ class xtGraphics extends Panel implements Runnable {
                 rd.drawString("when racing. Backward looping pushes your car upwards giving it", 312, 82);
                 rd.drawString("more hang time in the air making it easier to control its landing.", 312, 102);
                 rd.drawString("Left and right rolls shift your car in the air left and right slightly.", 312, 122);
-                
+
             }
             rd.drawImage(stunts, 155, 150, null);
-            
+
             rd.setFont(new Font("SansSerif", 1, 13));
             rd.drawString("To perform stunts. When your car is in the AIR;", 175, 285);
             rd.drawString("Press combo Spacebar + Arrow Keys :", 175, 305);
@@ -752,9 +750,9 @@ class xtGraphics extends Panel implements Runnable {
             rd.drawString("Forward Loop", 565, 294);
             rd.drawString("Backward Loop", 555, 372);
             rd.drawString("Left Roll", 504, 350);
-            rd.drawString("Right Roll", 640, 350); 
-           
-            
+            rd.drawString("Right Roll", 640, 350);
+
+
         }
         if (flipo == 11 || flipo == 13) { //6-7 page
             if (flipo == 11) {
@@ -803,7 +801,7 @@ class xtGraphics extends Panel implements Runnable {
         }
         if (flipo == 1) {//first papge
             rd.setFont(new Font("SansSerif", 1, 13));
-            
+
             FontHandler.fMetrics = rd.getFontMetrics();
             drawcs(20, "Main Game Controls", 0, 0, 0, 3);
             rd.drawString("Drive your car using the Arrow Keys:", 175, 55);
@@ -816,7 +814,7 @@ class xtGraphics extends Panel implements Runnable {
             rd.drawString("Brake/Reverse", 555, 132);
             rd.drawString("Turn left", 504, 110);
             rd.drawString("Turn right", 640, 110);
-            
+
             drawcs(150, "--------------------------------------------------------------------------------"
                     + "--------------------------------------------------------------------", 0, 0, 0, 3);
             rd.setFont(new Font("SansSerif", 1, 13));
@@ -824,7 +822,7 @@ class xtGraphics extends Panel implements Runnable {
             rd.drawString("To perform stunts:", 175, 175);
             rd.drawString("In the AIR press combo Spacebar + Arrow Keys :", 175, 195);
             rd.drawImage(space, 235, 220, null);
-            
+
             rd.drawImage(arrows, 541, 188, null);
             rd.setFont(new Font("SansSerif", 1, 11));
             FontHandler.fMetrics = rd.getFontMetrics();
@@ -833,7 +831,7 @@ class xtGraphics extends Panel implements Runnable {
             rd.drawString("Backward Loop", 540, 262);
             rd.drawString("Left Roll", 493, 240);
             rd.drawString("Right Roll", 626, 240);
-            
+
             rd.drawImage(stunts, 175, 290, null);
         }
         if (flipo >= 1 && flipo <= 13) {
@@ -928,9 +926,9 @@ class xtGraphics extends Panel implements Runnable {
         int ai1[] = new int[7];
         int ai2[] = new int[7];
         /**
-        * x resolution divided by two converted to hex
-        * http://www.binaryhexconverter.com/decimal-to-hex-converter
-        */
+         * x resolution divided by two converted to hex
+         * http://www.binaryhexconverter.com/decimal-to-hex-converter
+         */
         char c = '\u01C2';
         byte byte0 = -90;
         /**
@@ -1369,15 +1367,16 @@ class xtGraphics extends Panel implements Runnable {
                 mutem = Control.mutem;
                 if (mutem) {
                     if (loadedt[i - 1]) {
-                        if(isMidi[i - 1]) {
+                        if (isMidi[i - 1]) {
                             mtracks[i - 1].setPaused(true);
                         } else {
                             stracks[i - 1].stop();
                         }
                     }
                 } else if (loadedt[i - 1]) {
-                    stracks[i - 1].resume();System.out.println("We've reached an unmute check...");
-                    if(isMidi[i - 1]) {
+                    stracks[i - 1].resume();
+                    System.out.println("We've reached an unmute check...");
+                    if (isMidi[i - 1]) {
                         System.out.println("Unmute check > play midi...");
                         mtracks[i - 1].resume();
                     } else {
@@ -1620,125 +1619,99 @@ class xtGraphics extends Panel implements Runnable {
             runner = new Thread(this);
             runner.start();
         }
-        
-        if(!loadedt[i - 1])
-        {
+
+        if (!loadedt[i - 1]) {
             System.out.println("Loading music...");
             File f = new File("music/stage" + i + ".mid");
             File f2 = new File("music/stage" + i + ".mp3");
             File f3 = new File("music/stage" + i + ".ogg");
-             //this also serves as a check so radicalmidi doesn't throw an error
-            
-           if (f.exists())
-            {
+            //this also serves as a check so radicalmidi doesn't throw an error
+
+            if (f.exists()) {
                 System.out.println("Initializing midi...");
                 isMidi[i - 1] = true;
                 mtracks[i - 1] = new RadicalMidi("music/stage" + i + ".mid");
                 System.out.println("Loading midi...");
                 mtracks[i - 1].load();
                 loadedt[i - 1] = true;
-            }
-            else if (f2.exists())
-            {
+            } else if (f2.exists()) {
                 System.out.println("Initializing mp3...");
                 isMidi[i - 1] = true;
                 mtracks[i - 1] = new RadicalMidi("music/stage" + i + ".mp3");
                 System.out.println("Loading mp3...");
                 mtracks[i - 1].load();
                 loadedt[i - 1] = true;
-            }
-            else if (f3.exists())
-            {
+            } else if (f3.exists()) {
                 System.out.println("Initializing/loading ogg...");
                 isMidi[i - 1] = true;
                 mtracks[i - 1] = new RadicalMidi("music/stage" + i + ".ogg");
                 loadedt[i - 1] = true;
-            }
-            else
-            {
+            } else {
                 System.out.println("Initializing mod...");
                 isMidi[i - 1] = false;
                 stracks[i - 1] = new RadicalMod("music/stage" + i + ".radq", app);
-                if(stracks[i - 1].loaded == 1)
-                {
+                if (stracks[i - 1].loaded == 1) {
                     loadedt[i - 1] = true;
                 }
             }
- 
-             if (!isMidi[i - 1]) {
-             System.out.println("Loading mod...");
-        
-               if(i == 1)
-               {
-               stracks[0].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 2)
-               {
-               stracks[1].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 3)
-               {
-               stracks[2].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 4)
-               {
-               stracks[3].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 5)
-               {
-               stracks[4].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 6)
-               {
-               stracks[5].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 7)
-               {
-               stracks[6].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 8)
-               {
-               stracks[7].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 9)
-               {
-               stracks[8].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 10)
-               {
-               stracks[9].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 11)
-               {
-               stracks[10].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 12)
-               {
-               stracks[11].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 13)
-               {
-               stracks[12].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 14)
-               {
-               stracks[13].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 15)
-               {
-               stracks[14].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 16)
-               {
-               stracks[15].loadMod(130, 8000, 125, sunny, macn);
-             }
-               if(i == 17)
-               {
-               stracks[16].loadMod(130, 8000, 125, sunny, macn);
-             }
-             
-             //If you're making more stages, much sure to increase the i == new stage as well as increase the stracks array. - Addict
-           }
+
+            if (!isMidi[i - 1]) {
+                System.out.println("Loading mod...");
+
+                if (i == 1) {
+                    stracks[0].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 2) {
+                    stracks[1].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 3) {
+                    stracks[2].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 4) {
+                    stracks[3].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 5) {
+                    stracks[4].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 6) {
+                    stracks[5].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 7) {
+                    stracks[6].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 8) {
+                    stracks[7].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 9) {
+                    stracks[8].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 10) {
+                    stracks[9].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 11) {
+                    stracks[10].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 12) {
+                    stracks[11].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 13) {
+                    stracks[12].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 14) {
+                    stracks[13].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 15) {
+                    stracks[14].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 16) {
+                    stracks[15].loadMod(130, 8000, 125, sunny, macn);
+                }
+                if (i == 17) {
+                    stracks[16].loadMod(130, 8000, 125, sunny, macn);
+                }
+
+                //If you're making more stages, much sure to increase the i == new stage as well as increase the stracks array. - Addict
+            }
         }
         if (flag) {
             runner.stop();
@@ -1766,6 +1739,7 @@ class xtGraphics extends Panel implements Runnable {
         mutem = false;
         mutes = false;
     }
+
     /**
      * Loads images from images.radq
      *
@@ -2089,7 +2063,7 @@ class xtGraphics extends Panel implements Runnable {
             if (opselect == 0) {
                 if (loadedt[i - 1] && !mutem) {
                     System.out.println("We've reached an unmute check...");
-                    if(isMidi[i - 1]) {
+                    if (isMidi[i - 1]) {
                         System.out.println("Unmute check > play midi...");
                         mtracks[i - 1].resume();
                     } else {
@@ -2103,13 +2077,13 @@ class xtGraphics extends Panel implements Runnable {
                 if (record.caught >= 300) {
                     if (loadedt[i - 1] && !mutem) {
                         System.out.println("We've reached an unmute check...");
-                        if(isMidi[i - 1]) {
+                        if (isMidi[i - 1]) {
                             System.out.println("Unmute check > play midi...");
                             mtracks[i - 1].resume();
                         } else {
-System.out.println("Unmute check > play mod...");
-stracks[i - 1].resume();
-}
+                            System.out.println("Unmute check > play mod...");
+                            stracks[i - 1].resume();
+                        }
                     }
                     fase = -1;
                 } else {
@@ -2118,10 +2092,10 @@ stracks[i - 1].resume();
             }
             if (opselect == 2) {
                 if (loadedt[i - 1]) {
-                    if(isMidi[i - 1]) {
+                    if (isMidi[i - 1]) {
                         mtracks[i - 1].setPaused(true);
                     } else {
-                        if(isMidi[i - 1]) {
+                        if (isMidi[i - 1]) {
                             mtracks[i - 1].setPaused(true);
                         } else {
                             stracks[i - 1].stop();
@@ -2133,12 +2107,12 @@ stracks[i - 1].resume();
             }
             if (opselect == 3) {
                 if (loadedt[i - 1]) {
-                   if(isMidi[i - 1]) {
-                       mtracks[i - 1].setPaused(true);
-    
+                    if (isMidi[i - 1]) {
+                        mtracks[i - 1].setPaused(true);
+
                     } else {
                         stracks[i - 1].stop();
-                  }
+                    }
                 }
                 fase = 10;
                 opselect = 0;
@@ -2269,7 +2243,7 @@ stracks[i - 1].resume();
             }
             if (control.enter) {
                 if (loadedt[checkpoints.stage - 1]) {
-                    if(isMidi[checkpoints.stage - 1]) {
+                    if (isMidi[checkpoints.stage - 1]) {
                         mtracks[checkpoints.stage - 1].setPaused(true);
                     } else {
                         stracks[checkpoints.stage - 1].stop();
@@ -2372,37 +2346,37 @@ stracks[i - 1].resume();
                     }
                 }
                 if (!holdit && fase != -6 && starcnt == 0) {
-                        rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                        arrow(madness[0].point, madness[0].missedcp, checkpoints, conto, arrace);
-                    
-                        int num_cars = 7;
-                  for (int array_one = 0; array_one < num_cars; array_one++) {
-                         boolean flag_status = false;
-                       for (int array_two = 0; array_two < num_cars; array_two++) {
-                          if (checkpoints.pos[array_two] == array_one && checkpoints.dested[array_two] == 0 && !flag_status) {
-                         int y_value = 30; // use to move status up or down
-                         int x_value = 0;  // use to move status left or right
+                    rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                    arrow(madness[0].point, madness[0].missedcp, checkpoints, conto, arrace);
 
-                         rd.setColor(new Color(0, 0, 100));
-                         if (array_one == 0)
-                                rd.drawString("1st", 543 + x_value, 76 + 30 + y_value * array_one);
-                         if (array_one == 1)
-                                rd.drawString("2nd", 541 + x_value, 76 + 30 + y_value * array_one);
-                         if (array_one == 2)
-                                rd.drawString("3rd", 541 + x_value, 76 + 30 + y_value * array_one);
-                         if (array_one >= 3)
-                                 rd.drawString((array_one + 1)+"th", 541 + x_value, 76 + y_value + 30 * array_one);
-                         rd.setColor(new Color(0, 0, 0));
-                         rd.drawString(names[sc[array_two]], 600 - ((FontHandler.fMetrics.stringWidth(names[sc[array_two]]))/2) + x_value, 70 + y_value + 30 * array_one);
-                              if (madness[0].im == array_two){
+                    int num_cars = 7;
+                    for (int array_one = 0; array_one < num_cars; array_one++) {
+                        boolean flag_status = false;
+                        for (int array_two = 0; array_two < num_cars; array_two++) {
+                            if (checkpoints.pos[array_two] == array_one && checkpoints.dested[array_two] == 0 && !flag_status) {
+                                int y_value = 30; // use to move status up or down
+                                int x_value = 0;  // use to move status left or right
+
+                                rd.setColor(new Color(0, 0, 100));
+                                if (array_one == 0)
+                                    rd.drawString("1st", 543 + x_value, 76 + 30 + y_value * array_one);
+                                if (array_one == 1)
+                                    rd.drawString("2nd", 541 + x_value, 76 + 30 + y_value * array_one);
+                                if (array_one == 2)
+                                    rd.drawString("3rd", 541 + x_value, 76 + 30 + y_value * array_one);
+                                if (array_one >= 3)
+                                    rd.drawString((array_one + 1) + "th", 541 + x_value, 76 + y_value + 30 * array_one);
+                                rd.setColor(new Color(0, 0, 0));
+                                rd.drawString(names[sc[array_two]], 600 - ((FontHandler.fMetrics.stringWidth(names[sc[array_two]])) / 2) + x_value, 70 + y_value + 30 * array_one);
+                                if (madness[0].im == array_two) {
                                     int red = (int) (159.0F + (159.0F * ((float) Medium.snap[0] / 100.0F)));
                                     if (red > 255)
-                                       red = 255;
+                                        red = 255;
                                     if (red < 0)
-                                       red = 0;
+                                        red = 0;
                                     int green = (int) (207.0F + (207.0F * ((float) Medium.snap[1] / 100.0F)));
                                     if (green > 255)
-                                       green = 255;
+                                        green = 255;
                                     if (green < 0)
                                         green = 0;
                                     int blue = (int) (255.0F + (255.0F * ((float) Medium.snap[2] / 100.0F)));
@@ -2413,56 +2387,56 @@ stracks[i - 1].resume();
                                     rd.setColor(new Color(red, green, blue));
                                     rd.drawRect(531 + x_value, 58 + y_value + 30 * array_one, 114, 25);
                                     rd.drawRect(532 + x_value, 59 + y_value + 30 * array_one, 112, 23);
-                         }
-                               if (arrace) {
-                             int dmg = (int)(60F * ((float)madness[array_two].hitmag / (float)madness[array_two].stat.maxmag));
+                                }
+                                if (arrace) {
+                                    int dmg = (int) (60F * ((float) madness[array_two].hitmag / (float) madness[array_two].stat.maxmag));
 
-                             int red = 244;
-                             int green = 244;
-                             int blue = 11;
+                                    int red = 244;
+                                    int green = 244;
+                                    int blue = 11;
 
-                             if(dmg > 20)
-                                green = (int)(244F - 233F * ((float)(dmg - 20) / 40F));
+                                    if (dmg > 20)
+                                        green = (int) (244F - 233F * ((float) (dmg - 20) / 40F));
 
-                             red = (int)((float)red + (float)red * ((float)m.snap[0] / 100F));
-                             if(dmg > 60)
-                                dmg = 60;
-                             if(red > 255)
-                                red = 255;
-                             if(red < 0)
-                                red = 0;
+                                    red = (int) ((float) red + (float) red * ((float) Medium.snap[0] / 100F));
+                                    if (dmg > 60)
+                                        dmg = 60;
+                                    if (red > 255)
+                                        red = 255;
+                                    if (red < 0)
+                                        red = 0;
 
-                             green = (int)((float)green + (float)green * ((float)m.snap[1] / 100F));
-                             if(green > 255)
-                                green = 255;
-                             if(green < 0)
-                                green = 0;
+                                    green = (int) ((float) green + (float) green * ((float) Medium.snap[1] / 100F));
+                                    if (green > 255)
+                                        green = 255;
+                                    if (green < 0)
+                                        green = 0;
 
-                             blue = (int)((float)blue + (float)blue * ((float)m.snap[2] / 100F));
-                             if(blue > 255)
-                                blue = 255;
-                             if(blue < 0)
-                                blue = 0;
+                                    blue = (int) ((float) blue + (float) blue * ((float) Medium.snap[2] / 100F));
+                                    if (blue > 255)
+                                        blue = 255;
+                                    if (blue < 0)
+                                        blue = 0;
 
-                             rd.setColor(new Color(red, green, blue));
-                             rd.fillRect(565 + x_value, 75 + y_value + 30 * array_one, dmg, 5);
-                            } else {
-                             int pwr = (int) (60F * (madness[array_two].power / 98F));
-                               if (pwr > 98) {
-                              pwr = 98;
-                             }
-                             rd.setColor(new Color(45, 150, 255));
-                             rd.fillRect(565 + x_value, 75 + y_value + 30 * array_one, pwr, 5);
-                         }
-                         rd.setColor(new Color(0, 0, 0));
-                         rd.drawRect(565 + x_value, 75 + y_value + 30 * array_one, 60, 5);
+                                    rd.setColor(new Color(red, green, blue));
+                                    rd.fillRect(565 + x_value, 75 + y_value + 30 * array_one, dmg, 5);
+                                } else {
+                                    int pwr = (int) (60F * (madness[array_two].power / 98F));
+                                    if (pwr > 98) {
+                                        pwr = 98;
+                                    }
+                                    rd.setColor(new Color(45, 150, 255));
+                                    rd.fillRect(565 + x_value, 75 + y_value + 30 * array_one, pwr, 5);
+                                }
+                                rd.setColor(new Color(0, 0, 0));
+                                rd.drawRect(565 + x_value, 75 + y_value + 30 * array_one, 60, 5);
 
-                         flag_status = true;
-                       }
-                     }
-                   }
+                                flag_status = true;
+                            }
+                        }
+                    }
                     rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-                  if (!arrace && auscnt == 45 && madness[0].capcnt == 0) {
+                    if (!arrace && auscnt == 45 && madness[0].capcnt == 0) {
                         if (madness[0].missedcp > 0) {
                             if (madness[0].missedcp > 15 && madness[0].missedcp < 50) {
                                 if (flk) {
@@ -2495,43 +2469,39 @@ stracks[i - 1].resume();
                         }
                     }
                 }
-    
+
                 if (Medium.flex != 2 || Medium.flex == 2) {
-                   rd.drawImage(dmg, 470, 7, null);
-                   rd.drawImage(pwr, 470, 27, null);
-                   rd.drawImage(lap, 19, 7, null);
-                   rd.setColor(new Color(0, 0, 100));
-                   rd.drawString("" + (madness[0].nlaps + 1) + " / " + checkpoints.nlaps + "", 51, 18);
-                   rd.drawImage(was, 92, 7, null);
-                   rd.setColor(new Color(0, 0, 100));
-                   rd.drawString("" + checkpoints.wasted + " / " + (GameFacts.numberOfPlayers - 1), 150, 18);
-                   rd.drawImage(pos, 42, 27, null);
-                   rd.setFont(new Font("SansSerif", 1, 15));
-                   FontHandler.fMetrics = rd.getFontMetrics();
-                   String suffix = "";
-                   int position = checkpoints.pos[0] + 1;
-                   if((position - 1) % 10 == 0 && position != 11)
-                   {
-                       suffix = "st";
-                   }
-                   if((position - 2) % 10 == 0 && position != 12)
-                   {
-                       suffix = "nd";
-                   }
-                   if((position - 3) % 10 == 0 && position != 13)
-                   {
-                       suffix = "rd";
-                   }
-                   if(position % 10 == 0 || position % 10 >= 4 || position == 11 || position == 12 || position == 13)
-                   {
-                       suffix = "th";
-                   }
-                   rd.drawString("" + position + suffix + "", 110, 43);
-                   rd.setFont(new Font("SansSerif", 1, 11));
+                    rd.drawImage(dmg, 470, 7, null);
+                    rd.drawImage(pwr, 470, 27, null);
+                    rd.drawImage(lap, 19, 7, null);
+                    rd.setColor(new Color(0, 0, 100));
+                    rd.drawString("" + (madness[0].nlaps + 1) + " / " + checkpoints.nlaps + "", 51, 18);
+                    rd.drawImage(was, 92, 7, null);
+                    rd.setColor(new Color(0, 0, 100));
+                    rd.drawString("" + checkpoints.wasted + " / " + (GameFacts.numberOfPlayers - 1), 150, 18);
+                    rd.drawImage(pos, 42, 27, null);
+                    rd.setFont(new Font("SansSerif", 1, 15));
                     FontHandler.fMetrics = rd.getFontMetrics();
-                   drawstat(madness[0].stat.maxmag, madness[0].hitmag, madness[0].newcar, madness[0].power);
+                    String suffix = "";
+                    int position = checkpoints.pos[0] + 1;
+                    if ((position - 1) % 10 == 0 && position != 11) {
+                        suffix = "st";
+                    }
+                    if ((position - 2) % 10 == 0 && position != 12) {
+                        suffix = "nd";
+                    }
+                    if ((position - 3) % 10 == 0 && position != 13) {
+                        suffix = "rd";
+                    }
+                    if (position % 10 == 0 || position % 10 >= 4 || position == 11 || position == 12 || position == 13) {
+                        suffix = "th";
+                    }
+                    rd.drawString("" + position + suffix + "", 110, 43);
+                    rd.setFont(new Font("SansSerif", 1, 11));
+                    FontHandler.fMetrics = rd.getFontMetrics();
+                    drawstat(madness[0].stat.maxmag, madness[0].hitmag, madness[0].newcar, madness[0].power);
                 }
-             }
+            }
             if (!holdit) {
                 if (starcnt != 0 && starcnt <= 35) {
                     if (starcnt == 35 && !mutes) {
@@ -2784,7 +2754,7 @@ stracks[i - 1].resume();
                     }
                     if (auscnt < 45) {
                         if (!mutes) {
-                             sm.play("powerup");
+                            sm.play("powerup");
                         }
                         if (auscnt < -20) {
                             auscnt = -20;
@@ -2856,6 +2826,10 @@ stracks[i - 1].resume();
                     }
                 } while (++k < GameFacts.numberOfPlayers);
             }
+        }
+        if (Medium.lightn != -1 && checkpoints.stage == 16) {
+            //supposed to pulse during sections of the music, w/e
+            Medium.lton = true;
         }
     }
 
@@ -3053,7 +3027,7 @@ stracks[i - 1].resume();
         if (control.enter || control.handb) {
             fase = 10;
             if (loadedt[checkpoints.stage - 1]) {
-                if(isMidi[checkpoints.stage - 1]) {
+                if (isMidi[checkpoints.stage - 1]) {
                     mtracks[checkpoints.stage - 1].setPaused(true);
                 } else {
                     stracks[checkpoints.stage - 1].stop();
@@ -3080,7 +3054,7 @@ stracks[i - 1].resume();
             int lastcar = 7;
 
             int maxId = ((GameFacts.numberOfPlayers - 1) + (i + 1) / 2);
-            if(maxId > 15) {
+            if (maxId > 15) {
                 maxId = 15;
             }
 
@@ -3134,33 +3108,34 @@ stracks[i - 1].resume();
         do {
             if (i == j) {
                 if (!pengs[j]) {
-                    sm.loop("engs"+stat.engine+j);
+                    sm.loop("engs" + stat.engine + j);
                     pengs[j] = true;
                 }
             } else if (pengs[j]) {
-                sm.stop("engs"+stat.engine+j);;
+                sm.stop("engs" + stat.engine + j);
+                ;
                 pengs[j] = false;
             }
         } while (++j < 5);
     }
 
-     public void drawcs(int i, String s, int j, int k, int l, int i1) {
+    public void drawcs(int i, String s, int j, int k, int l, int i1) {
         if (i1 != 3 && i1 != 4) {
-            j = (int) (j + j * (m.snap[0] / 100F));
+            j = (int) (j + j * (Medium.snap[0] / 100F));
             if (j > 255) {
                 j = 255;
             }
             if (j < 0) {
                 j = 0;
             }
-            k = (int) (k + k * (m.snap[1] / 100F));
+            k = (int) (k + k * (Medium.snap[1] / 100F));
             if (k > 255) {
                 k = 255;
             }
             if (k < 0) {
                 k = 0;
             }
-            l = (int) (l + l * (m.snap[2] / 100F));
+            l = (int) (l + l * (Medium.snap[2] / 100F));
             if (l > 255) {
                 l = 255;
             }
@@ -3169,21 +3144,21 @@ stracks[i - 1].resume();
             }
         }
         if (i1 == 4) {
-            j = (int) (j - j * (m.snap[0] / 100F));
+            j = (int) (j - j * (Medium.snap[0] / 100F));
             if (j > 255) {
                 j = 255;
             }
             if (j < 0) {
                 j = 0;
             }
-            k = (int) (k - k * (m.snap[1] / 100F));
+            k = (int) (k - k * (Medium.snap[1] / 100F));
             if (k > 255) {
                 k = 255;
             }
             if (k < 0) {
                 k = 0;
             }
-            l = (int) (l - l * (m.snap[2] / 100F));
+            l = (int) (l - l * (Medium.snap[2] / 100F));
             if (l > 255) {
                 l = 255;
             }
@@ -3196,21 +3171,21 @@ stracks[i - 1].resume();
             rd.drawString(s, (640 - FontHandler.fMetrics.stringWidth(s) / 2) + 1, i + 1);
         }
         if (i1 == 2) {
-            j = (j * 2 + m.csky[0] * 1) / 3;
+            j = (j * 2 + Medium.csky[0] * 1) / 3;
             if (j > 255) {
                 j = 255;
             }
             if (j < 0) {
                 j = 0;
             }
-            k = (k * 2 + m.csky[1] * 1) / 3;
+            k = (k * 2 + Medium.csky[1] * 1) / 3;
             if (k > 255) {
                 k = 255;
             }
             if (k < 0) {
                 k = 0;
             }
-            l = (l * 2 + m.csky[2] * 1) / 3;
+            l = (l * 2 + Medium.csky[2] * 1) / 3;
             if (l > 255) {
                 l = 255;
             }
@@ -3568,7 +3543,7 @@ stracks[i - 1].resume();
         rd.fillRect(337, 346, 26 + (int) ((shload / kbload) * 200F), 10);
     }
 
-    public xtGraphics(Medium medium, Graphics2D graphics2d, Applet applet) {
+    public xtGraphics(Graphics2D graphics2d, Applet applet) {
         fase = 111;
         oldfase = 0;
         starcnt = 0;
@@ -3605,17 +3580,11 @@ stracks[i - 1].resume();
         ocntdn = new Image[4];
         cntdn = new Image[4];
         gocnt = 0;
-        //engs = new AudioClip[5][5];
         pengs = new boolean[5];
-        //air = new AudioClip[6];
         aird = false;
         grrd = false;
         setnumber = false;
-        /*crash = new AudioClip[3];
-        lowcrash = new AudioClip[3];*/
         pwastd = false;
-        /*skid = new AudioClip[3];
-        dustskid = new AudioClip[3];*/
         mutes = false;
         stracks = new RadicalMod[GameFacts.numberOfStages]; //change if more stages
         mtracks = new RadicalMidi[GameFacts.numberOfStages];
@@ -3682,7 +3651,6 @@ stracks[i - 1].resume();
         flangados = 0;
         blackn = 0.0F;
         blacknados = 0.0F;
-        m = medium;
         app = applet;
         rd = graphics2d;
         MediaTracker mediatracker = new MediaTracker(app);
@@ -4092,7 +4060,7 @@ stracks[i - 1].resume();
                 dnload += 10;
             } else {
                 dnload += 3;*/
-           loadsounds();
+        loadsounds();
     }
 
     public void loadsounds() {
@@ -4161,7 +4129,7 @@ stracks[i - 1].resume();
                 }
 
                 if (name.equals("checkpoint.wav")) {
-                    sm.add("checkpoint", new SoundClipThreaded(sound));
+                    sm.add("checkpoint", new SoundClipUnthreaded(sound));
                 }
 
                 if (name.equals("carfixed.wav")) {
@@ -4256,13 +4224,12 @@ stracks[i - 1].resume();
             dnload += 24;
         } else {
             dnload += 10; */
-            
-          soundsInputStream.close();
+
+            soundsInputStream.close();
         } catch (Exception var12) {
             HLogger.error("Error Loading Sounds: " + var12);
-            
-            
-            
+
+
         }
         
         /*
@@ -4287,7 +4254,7 @@ stracks[i - 1].resume();
                 dnload += 7;
             }
         } while (++j < 3);*/
-        
+
         System.gc();
     }
 
@@ -4367,7 +4334,7 @@ stracks[i - 1].resume();
         if (bfcrash == 0 && bfskid == 0 && f > 150F) {
             if (i == 0) {
                 if (!mutes) {
-                    sm.play("skid"+skflg);
+                    sm.play("skid" + skflg);
                 }
                 if (skidup) {
                     skflg++;
@@ -4382,7 +4349,7 @@ stracks[i - 1].resume();
                 }
             } else {
                 if (!mutes) {
-                    sm.play("dustskid"+dskflg);
+                    sm.play("dustskid" + dskflg);
                 }
                 if (skidup) {
                     dskflg++;
@@ -4422,13 +4389,13 @@ stracks[i - 1].resume();
         } while (++i < GameFacts.numberOfStages);
         i = 0;
         do {
-            for(int x = 0; x < 5; x++) {
-                sm.stop("engs"+x+i);
+            for (int x = 0; x < 5; x++) {
+                sm.stop("engs" + x + i);
             }
         } while (++i < 5);
         i = 0;
         do {
-            sm.stop("air"+i);
+            sm.stop("air" + i);
         } while (++i < 6);
         sm.stop("wasted");
         cars.unloadAll();
@@ -4862,7 +4829,7 @@ stracks[i - 1].resume();
     private void stopairs() {
         int i = 0;
         do {
-            sm.stop("air"+i);
+            sm.stop("air" + i);
         } while (++i < 6);
     }
 
@@ -5079,7 +5046,7 @@ stracks[i - 1].resume();
         }
     }
 
-       private Image loadopsnap(Image image, int i, int j) {
+    private Image loadopsnap(Image image, int i, int j) {
         int k = image.getHeight(ob);
         int l = image.getWidth(ob);
         int ai[] = new int[l * k];
