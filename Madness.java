@@ -195,13 +195,13 @@ class Madness {
         }
     }
 
-    public Madness(Record record, xtGraphics xtgraphics, int i) {
+    public Madness(Medium medium, Record record, xtGraphics xtgraphics, int i) {
         cn = 0;
         im = 0;
         mxz = 0;
         cxz = 0;
-        dominate = new boolean[7];
-        caught = new boolean[7];
+        dominate = new boolean[51];
+        caught = new boolean[51];
         pzy = 0;
         pxy = 0;
         speed = 0.0F;
@@ -464,7 +464,7 @@ class Madness {
         do {
             dominate[j] = false;
             caught[j] = false;
-        } while (++j < 7);
+        } while (++j < 51);
         if (cn == 11 && im == 0)
             if (checkpoints.stage == 10)
                 stat.moment = 2.5F;

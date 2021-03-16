@@ -59,7 +59,7 @@ class RunApp extends Panel {
                 exitSequence();
             }
         });
-        applet.setPreferredSize(new Dimension(670, 400));// The resolution of your game goes here
+        applet.setPreferredSize(new Dimension(GameFacts.screenWidth, GameFacts.screenHeight));// The resolution of your game goes here
         frame.add("Center", applet);
         frame.setResizable(false);// If you plan to make you game support changes in resolution, you can comment out this line.
         frame.pack();

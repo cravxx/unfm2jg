@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=DesktopSoundClip()
+comment0.text=\r\n\ Creates\ an\ unloaded,\ empty\ SoundClip.\r\n
+comment1.params=is
+comment1.target=DesktopSoundClip(byte[])
+comment1.text=\r\n\ Creates\ a\ SoundClip\ from\ an\ array\ of\ bytes.\r\n\ \r\n\ @param\ is\r\n\ \ \ \ \ \ \ \ \ \ \ \ An\ array\ of\ bytes\ with\ the\ audio\ file\ data.\r\n
+comment2.params=
+comment2.target=void\ play()
+comment3.params=
+comment3.target=void\ loop()
+comment4.params=
+comment4.target=void\ stop()
+comment5.params=
+comment5.target=void\ checkopen()
+comment5.text=\r\n\ Checks\ the\ line\ state\ and\ closes\ it\ if\ it's\ not\ in\ use\ anymore.\ This\ helps\ to\ save\ memory\ and\ CPU\ resources\ in\ general,\ overall\ in\ cases\ where\ a\ lot\ of\ sounds\ are\ played.\r\n
+numComments=6

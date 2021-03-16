@@ -672,6 +672,9 @@ public class Plane {
             if (ai1[k10] < 10) {
                 j10++;
             }
+            if(ai15[k10] <= -30000 || ai14[k10] <= -30000 || ai14[k10] >= 30000) {
+                flag2 = false;
+            }
         }
 
         if (i2 != -1) {
@@ -700,9 +703,9 @@ public class Plane {
         if (j9 == n || j8 == n || l8 == n || l9 == n) {
             flag2 = false;
         }
-        if (Medium.trk && (j9 != 0 || j8 != 0 || l8 != 0 || l9 != 0)) {
+        /*if (Medium.trk && (j9 != 0 || j8 != 0 || l8 != 0 || l9 != 0)) {
             flag2 = false;
-        }
+        }*/
         if (j10 != 0) {
             flag = true;
         }
@@ -900,7 +903,7 @@ public class Plane {
             } else {
                 float af[] = new float[3];
                 Color.RGBtoHSB(oc[0], oc[1], oc[2], af);
-                color = Color.getHSBColor(0.0F, 0.0F, af[2] * f1);
+                color = Color.getHSBColor(hsb[0], hsb[1], hsb[2] * f1);
             }
             int l11 = color.getRed();
             int j13 = color.getGreen();

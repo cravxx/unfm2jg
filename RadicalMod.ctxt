@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ stop()
+comment1.params=s\ applet
+comment1.target=RadicalMod(java.lang.String,\ java.applet.Applet)
+comment2.params=
+comment2.target=void\ resume()
+comment3.params=
+comment3.target=void\ unloadAll()
+comment4.params=
+comment4.target=void\ play()
+comment5.params=
+comment5.target=void\ unloadMod()
+comment6.params=i\ j\ k\ flag\ flag1
+comment6.target=void\ loadMod(int,\ int,\ int,\ boolean,\ boolean)
+numComments=7

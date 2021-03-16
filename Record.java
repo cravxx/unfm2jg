@@ -47,10 +47,14 @@ class Record {
     public int closefinish;
     private final int[] hsquash;
     public final int[] hfix = {
-            -1, -1, -1, -1, -1, -1, -1
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     };
     private final int[] hdest = {
-            -1, -1, -1, -1, -1, -1, -1
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     };
     private final int[][] hx;
     private final int[][] hy;
@@ -218,14 +222,14 @@ class Record {
             fix[i] = -1;
             dest[i] = -1;
             cntdest[i] = 0;
-        } while (++i < 7);
+        } while (++i < 51);
         i = 0;
         do {
             int j = 0;
             do {
                 car[i][j] = new ContO(aconto[j], 0, 0, 0, 0);
                 squash[i][j] = 0;
-            } while (++j < 7);
+            } while (++j < 51);
         } while (++i < 6);
         i = 0;
         do {
@@ -246,85 +250,85 @@ class Record {
                     nrz[i][k] = 0;
                 } while (++l < 7);
             } while (++k < 4);
-        } while (++i < 7);
+        } while (++i < 51);
         prepit = false;
     }
 
-    public Record() {
+    public Record(Medium medium) {
         caught = 0;
         hcaught = false;
         prepit = true;
-        ocar = new ContO[7];
+        ocar = new ContO[51];
         cntf = 50;
-        car = new ContO[6][7];
-        squash = new int[6][7];
-        fix = new int[7];
-        dest = new int[7];
-        x = new int[300][7];
-        y = new int[300][7];
-        z = new int[300][7];
-        xy = new int[300][7];
-        zy = new int[300][7];
-        xz = new int[300][7];
-        wxz = new int[300][7];
-        wzy = new int[300][7];
-        ns = new int[7][4];
-        sspark = new int[7][4][30];
-        sx = new int[7][4][30];
-        sy = new int[7][4][30];
-        sz = new int[7][4][30];
-        smag = new float[7][4][30];
-        scx = new int[7][4][30];
-        scz = new int[7][4][30];
-        fulls = new boolean[7][4][30];
-        nry = new int[7][4];
-        ry = new int[7][4][7];
-        magy = new int[7][4][7];
-        mtouch = new boolean[7][7];
-        nrx = new int[7][4];
-        rx = new int[7][4][7];
-        magx = new int[7][4][7];
-        nrz = new int[7][4];
-        rz = new int[7][4][7];
-        magz = new int[7][4][7];
+        car = new ContO[6][51];
+        squash = new int[6][51];
+        fix = new int[51];
+        dest = new int[51];
+        x = new int[300][51];
+        y = new int[300][51];
+        z = new int[300][51];
+        xy = new int[300][51];
+        zy = new int[300][51];
+        xz = new int[300][51];
+        wxz = new int[300][51];
+        wzy = new int[300][51];
+        ns = new int[51][4];
+        sspark = new int[51][4][30];
+        sx = new int[51][4][30];
+        sy = new int[51][4][30];
+        sz = new int[51][4][30];
+        smag = new float[51][4][30];
+        scx = new int[51][4][30];
+        scz = new int[51][4][30];
+        fulls = new boolean[51][4][30];
+        nry = new int[51][4];
+        ry = new int[51][4][7]; //no
+        magy = new int[51][4][7]; //no
+        mtouch = new boolean[51][7]; //no
+        nrx = new int[51][4];
+        rx = new int[51][4][7]; //no
+        magx = new int[51][4][7]; //no
+        nrz = new int[51][4];
+        rz = new int[51][4][7]; //no
+        magz = new int[51][4][7]; //no
         checkpoint = new int[300];
         lastcheck = new boolean[300];
         wasted = 0;
         whenwasted = 0;
         powered = 0;
         closefinish = 0;
-        starcar = new ContO[7];
-        hsquash = new int[7];
-        hx = new int[300][7];
-        hy = new int[300][7];
-        hz = new int[300][7];
-        hxy = new int[300][7];
-        hzy = new int[300][7];
-        hxz = new int[300][7];
-        hwxz = new int[300][7];
-        hwzy = new int[300][7];
-        hns = new int[7][4];
-        hsspark = new int[7][4][30];
-        hsx = new int[7][4][30];
-        hsy = new int[7][4][30];
-        hsz = new int[7][4][30];
-        hsmag = new float[7][4][30];
-        hscx = new int[7][4][30];
-        hscz = new int[7][4][30];
-        hfulls = new boolean[7][4][30];
-        hnry = new int[7][4];
-        hry = new int[7][4][7];
-        hmagy = new int[7][4][7];
-        hnrx = new int[7][4];
-        hrx = new int[7][4][7];
-        hmagx = new int[7][4][7];
-        hnrz = new int[7][4];
-        hrz = new int[7][4][7];
-        hmagz = new int[7][4][7];
-        hmtouch = new boolean[7][7];
+        starcar = new ContO[51];
+        hsquash = new int[51];
+        hx = new int[300][51];
+        hy = new int[300][51];
+        hz = new int[300][51];
+        hxy = new int[300][51];
+        hzy = new int[300][51];
+        hxz = new int[300][51];
+        hwxz = new int[300][51];
+        hwzy = new int[300][51];
+        hns = new int[51][4];
+        hsspark = new int[51][4][30];
+        hsx = new int[51][4][30];
+        hsy = new int[51][4][30];
+        hsz = new int[51][4][30];
+        hsmag = new float[51][4][30];
+        hscx = new int[51][4][30];
+        hscz = new int[51][4][30];
+        hfulls = new boolean[51][4][30];
+        hnry = new int[51][4];
+        hry = new int[51][4][7]; //no
+        hmagy = new int[51][4][7]; //no
+        hnrx = new int[51][4];
+        hrx = new int[51][4][7]; //no
+        hmagx = new int[51][4][7]; //no
+        hnrz = new int[51][4];
+        hrz = new int[51][4][7]; //no
+        hmagz = new int[51][4][7]; //no
+        hmtouch = new boolean[51][7]; //no
         hcheckpoint = new int[300];
         hlastcheck = new boolean[300];
-        cntdest = new int[7];
+        cntdest = new int[51];
         lastfr = 0;
         caught = 0;
         cotchinow(0);
@@ -678,7 +682,7 @@ class Record {
                 hsquash[j] = squash[0][j];
                 hfix[j] = fix[j];
                 hdest[j] = dest[j];
-            } while (++j < 7);
+            } while(++j < 51);
             j = 0;
             do {
                 int k = 0;
@@ -691,7 +695,7 @@ class Record {
                     hxz[j][k] = xz[j][k];
                     hwxz[j][k] = wxz[j][k];
                     hwzy[j][k] = wzy[j][k];
-                } while (++k < 7);
+                } while(++k < 51);
                 hcheckpoint[j] = checkpoint[j];
                 hlastcheck[j] = lastcheck[j];
             } while (++j < 300);
@@ -712,7 +716,7 @@ class Record {
                         hfulls[j][l][k1] = fulls[j][l][k1];
                     } while (++k1 < 30);
                 } while (++l < 4);
-            } while (++j < 7);
+            } while(++j < 51);
             j = 0;
             do {
                 int i1 = 0;
@@ -730,14 +734,14 @@ class Record {
                         hmagz[j][i1][l1] = magz[j][i1][l1];
                     } while (++l1 < 7);
                 } while (++i1 < 4);
-            } while (++j < 7);
+            } while(++j < 51);
             j = 0;
             do {
                 int j1 = 0;
                 do {
                     hmtouch[j][j1] = mtouch[j][j1];
                 } while (++j1 < 7);
-            } while (++j < 7);
+            } while(++j < 51);
             hcaught = true;
         }
     }

@@ -34,8 +34,8 @@ public class GameSparker extends Applet implements Runnable {
             "dhilo15", "slide10", "takeoff", "sramp22", "offbump", "offramp", "sofframp", "halfpipe", "spikes", "rail",
             "thewall", "checkpoint", "fixpoint", "offcheckpoint", "sideoff", "bsideoff", "uprise", "riseroad", "sroad",
             "soffroad"
-    };
 
+    };
     private static final String[] extraModels = {};
 
     /**
@@ -70,7 +70,7 @@ public class GameSparker extends Applet implements Runnable {
     private int notb;
     private int view;
 
-	/* variables for screen shake */
+    /* variables for screen shake */
 
     private int shaka = 0;
     private int apx = 0;
@@ -99,9 +99,9 @@ public class GameSparker extends Applet implements Runnable {
             if (i == 10 || i == 80 || i == 112 || i == 27)
                 u[0].enter = true;
             if (i == 77 || i == 109)
-                Control.mutem = !Control.mutem;
+                 u[0].mutem = ! u[0].mutem;
             if (i == 78 || i == 110)
-                Control.mutes = !Control.mutes;
+                u[0].mutes = ! u[0].mutes;
             if (i == 97 || i == 65)
                 u[0].arrace = !u[0].arrace;
             if (i == 118 || i == 86) {
@@ -228,50 +228,46 @@ public class GameSparker extends Applet implements Runnable {
         }
     }
 
-    private void cropit(final Graphics2D graphics2d, final int i, final int i_98_) {
-        if (i != 0 || i_98_ != 0) {
-            graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
-            graphics2d.setColor(new Color(0, 0, 0));
-        }
-        if (i != 0) {
-            if (i < 0) {
-                graphics2d.fillRect(apx + i, apy - (int) (25.0F), Math.abs(i), (int) (400.0F));
-            } else {
-                graphics2d.fillRect(apx + (int) (670.0F), apy - (int) (25.0F), i, (int) (400.0F));
-            }
-        }
-        if (i_98_ != 0) {
-            if (i_98_ < 0) {
-                graphics2d.fillRect(apx - (int) (25.0F), apy + i_98_, (int) (720.0F), Math.abs(i_98_));
-            } else {
-                graphics2d.fillRect(apx - (int) (25.0F), apy + (int) (450.0F), (int) (720.0F), i_98_);
-            }
-        }
-
-    }
-
+     private void cropit(final Graphics2D graphics2d, final int i, final int i_98_) {
+		if (i != 0 || i_98_ != 0) {
+			graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
+			graphics2d.setColor(new Color(0, 0, 0));
+		}
+		if (i != 0) {
+			if (i < 0) {
+				graphics2d.fillRect(apx + i, apy - (int) (25.0F), Math.abs(i), (int) (720.0F));
+			} else {
+				graphics2d.fillRect(apx + (int) (1280.0F), apy - (int) (25.0F), i, (int) (720.0F));
+			}
+		}
+		if (i_98_ != 0) {
+			if (i_98_ < 0) {
+				graphics2d.fillRect(apx - (int) (25.0F), apy + i_98_, (int) (1280.0F + 50.F), Math.abs(i_98_));
+			} else {
+				graphics2d.fillRect(apx - (int) (25.0F), apy + (int) (720.0F + 50.0F), (int) (1280.0F + 50.0F), i_98_);
+			}
+		}
+	}
     @Override
     public void paint(Graphics g) {
-        final Graphics2D graphics2d = (Graphics2D) g;
-
+        Graphics2D graphics2d = (Graphics2D)g;
         int i = 0;
         int i_97_ = 0;
-        if (shaka > 10) {
-            i = (int) ((shaka * 2 * Math.random() - shaka));
-            i_97_ = (int) ((shaka * 2 * Math.random() - shaka));
-            shaka--;
+        if (this.shaka > 10) {
+            i = (int)((double)(this.shaka * 2) * Math.random() - (double)this.shaka);
+            i_97_ = (int)((double)(this.shaka * 2) * Math.random() - (double)this.shaka);
+            this.shaka -= 5;
         }
-        apx = (int) (getWidth() / 2 - 335.0F);
-        apy = (int) (getHeight() / 2 - 200.0F);
 
+        this.apx = (int)((float)(this.getWidth() / 2) - 640.0F);
+        this.apy = (int)((float)(this.getHeight() / 2) - 360.0F);
         graphics2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        graphics2d.drawImage(offImage, apx + i, apy + i_97_, this);
-
-        cropit(graphics2d, i, i_97_);
+        graphics2d.drawImage(this.offImage, this.apx + i, this.apy + i_97_, this);
+        this.cropit(graphics2d, i, i_97_);
     }
 
     public GameSparker() {
-        u = new Control[7];
+        u = new Control[51];
         mouses = 0;
         xm = 0;
         ym = 0;
@@ -319,11 +315,12 @@ public class GameSparker extends Applet implements Runnable {
      * Loads all models
      *
      * @param conto      conto instance
+     * @param medium     medium instance
      * @param trackers   trackers instance
      * @param xtgraphics xtgraphics instance
      * @author Kaffeinated, Omar Waly
      */
-    private void loadbase(final ContO conto[], Trackers trackers, xtGraphics xtgraphics) {
+    private void loadbase(final ContO conto[], Medium medium, Trackers trackers, xtGraphics xtgraphics) {
         xtgraphics.dnload += 6;
         try {
             ZipInputStream zipinputstream;
@@ -358,12 +355,12 @@ public class GameSparker extends Applet implements Runnable {
                     unknown2 = zipinputstream.read(modelData, unknown1, entireSize);
                     unknown1 += unknown2;
                 }
-                conto[modelId] = new ContO(modelData, trackers);
+                conto[modelId] = new ContO(modelData, medium, trackers);
                 xtgraphics.dnload++;
             }
             /*
-			 * be sure to add your added arrays here			
-			 */
+             * be sure to add your added arrays here            
+             */
             HLogger.info("Contos loaded: " + (carModels.length + trackModels.length + extraModels.length));
             zipinputstream.close();
         } catch (IOException e) {
@@ -376,6 +373,15 @@ public class GameSparker extends Applet implements Runnable {
     @Override
     public void update(Graphics g) {
         paint(g);
+    }
+
+    private int sunytyp() {
+        String s = System.getProperty("java.version");
+        String s1 = "" + getAppletContext();
+        if (!s1.startsWith("com.ms."))
+            return !s.startsWith("1.3") && !s.startsWith("1.4") ? 2 : 1;
+        else
+            return 0;
     }
 
     /**
@@ -423,6 +429,7 @@ public class GameSparker extends Applet implements Runnable {
      *
      * @param aconto      conto instance
      * @param aconto1     conto instance specifically for cars
+     * @param medium      medium instance
      * @param trackers    trackers instance
      * @param checkpoints checkpoints instance
      * @param xtgraphics  xtgraphics instance
@@ -430,10 +437,10 @@ public class GameSparker extends Applet implements Runnable {
      * @param record      record instance
      * @author Kaffeinated, Omar Waly
      */
-    private void loadstage(ContO aconto[], ContO aconto1[], Trackers trackers, CheckPoints checkpoints,
+    private void loadstage(ContO aconto[], ContO aconto1[], Medium medium, Trackers trackers, CheckPoints checkpoints,
                            xtGraphics xtgraphics, Madness amadness[], Record record) {
         trackers.nt = 0;
-        nob = 7;
+        nob = GameFacts.numberOfPlayers;
         notb = 0;
         checkpoints.n = 0;
         checkpoints.nsp = 0;
@@ -442,7 +449,6 @@ public class GameSparker extends Applet implements Runnable {
         checkpoints.wasted = 0;
         checkpoints.catchfin = 0;
         Medium.lightson = false;
-        Medium.lton = false;
         Medium.ground = 250;
         view = 0;
 
@@ -733,14 +739,24 @@ public class GameSparker extends Applet implements Runnable {
         int j1 = 0;
         do
             u[j1].reset(checkpoints, xtgraphics.sc[j1]);
-        while (++j1 < 7);
+        while (++j1 < GameFacts.numberOfPlayers);
         xtgraphics.resetstat(checkpoints.stage);
         j1 = 0;
         do {
-            aconto[j1] = new ContO(aconto1[xtgraphics.sc[j1]], xtgraphics.xstart[j1],
-                    250 - aconto1[xtgraphics.sc[j1]].grat, xtgraphics.zstart[j1], 0);
+              if(j1 % 3 == 0)
+           {
+                 aconto[j1] = new ContO(aconto1[xtgraphics.sc[j1]], 0, 250 - aconto1[xtgraphics.sc[j1]].grat, -760 + ((j1 / 3) * 760), 0);
+            }
+              if(j1 % 3 == 1)
+           {
+                 aconto[j1] = new ContO(aconto1[xtgraphics.sc[j1]], -350, 250 - aconto1[xtgraphics.sc[j1]].grat, -380 + ((int)(j1 / 3) * 760), 0);
+            }
+              if(j1 % 3 == 2)
+           {
+                 aconto[j1] = new ContO(aconto1[xtgraphics.sc[j1]], 350, 250 - aconto1[xtgraphics.sc[j1]].grat, -380 + ((int)(j1 / 3) * 760), 0);
+           }
             amadness[j1].reseto(xtgraphics.sc[j1], aconto[j1], checkpoints);
-        } while (++j1 < 7);
+        } while (++j1 < GameFacts.numberOfPlayers);
         record.reset(aconto);
         System.gc();
     }
@@ -768,42 +784,51 @@ public class GameSparker extends Applet implements Runnable {
     @Override
     public void run() {
         rd.setColor(new Color(0, 0, 0));
-        rd.fillRect(0, 0, 670, 400);
+        rd.fillRect(0, 0,GameFacts.screenWidth, GameFacts.screenHeight);
         repaint();
-		/*
-		 * start an example timer
-		 */
+        /*
+         * start an example timer
+         */
         Utility.startTimer();
         Trackers trackers = new Trackers();
+        Medium medium = new Medium();
+        int i = 5;
+        int j = 530;
+        int k = sunytyp();
+        if (k != 0)
+            i = 15;
+        if (k != 2)
+            j = 500;
         CheckPoints checkpoints = new CheckPoints();
-        xtGraphics xtgraphics = new xtGraphics(rd, this);
-        xtgraphics.loaddata();
-        Record record = new Record();
+        xtGraphics xtgraphics = new xtGraphics(medium, rd, this);
+        xtgraphics.loaddata(k);
+        Record record = new Record(medium);
         ContO aconto[] = new ContO[carModels.length + trackModels.length + extraModels.length]; // be sure all your arrays get in here
-        loadbase(aconto, trackers, xtgraphics);
+        loadbase(aconto, medium, trackers, xtgraphics);
         ContO aconto1[] = new ContO[3000];
-        Madness amadness[] = new Madness[7];
+        Madness amadness[] = new Madness[51];
         int l = 0;
         do {
-            amadness[l] = new Madness(record, xtgraphics, l);
-            u[l] = new Control();
-        } while (++l < 7);
+            amadness[l] = new Madness(medium, record, xtgraphics, l);
+            u[l] = new Control(medium);
+        } while (++l < 51); //dont touch this
+        l = 0;
         float f = 35F;
         int i1 = 80;
-		/*
-		 * stop an example timer
-		 */
+        /*
+         * stop an example timer
+         */
         Utility.stopTimer();
         /**
          * this bit in here reads cookies and set values
          */
         l = readcookie("unlocked");
-        if (l >= 1 && l <= 17) {
-			/*
-			 * Note: that is an L
-			 */
+        if (l >= 1 && l <= GameFacts.numberOfStages) {
+            /*
+             * Note: that is an L
+             */
             xtgraphics.unlocked = l;
-            if (xtgraphics.unlocked != 17)
+            if (xtgraphics.unlocked != GameFacts.numberOfStages)
                 checkpoints.stage = xtgraphics.unlocked;
             else
                 checkpoints.stage = (int) (Math.random() * 17D) + 1;
@@ -821,8 +846,6 @@ public class GameSparker extends Applet implements Runnable {
         xtgraphics.stoploading();
         System.gc();
         Date date = new Date();
-        int i = 15;
-        int j = 530;
         long l3 = date.getTime();
         float f1 = 30F;
         boolean flag1 = false;
@@ -868,7 +891,7 @@ public class GameSparker extends Applet implements Runnable {
             if (xtgraphics.fase == -9)
                 if (i2 < 2) {
                     rd.setColor(new Color(0, 0, 0));
-                    rd.fillRect(0, 0, 670, 400);
+                    rd.fillRect(0, 0, GameFacts.screenWidth, GameFacts.screenHeight);
                     i2++;
                 } else {
                     xtgraphics.inishcarselect();
@@ -906,7 +929,7 @@ public class GameSparker extends Applet implements Runnable {
                     mouses = 2;
             }
             if(xtgraphics.fase == -205) {
-                if (checkpoints.stage == xtgraphics.unlocked && xtgraphics.winner && xtgraphics.unlocked != 17)
+                if (checkpoints.stage == xtgraphics.unlocked && xtgraphics.winner && xtgraphics.unlocked != GameFacts.numberOfStages)
                     savecookie("unlocked", "" + xtgraphics.unlocked);
                 savecookie("gameprfact", "" + (int) f);
                 savecookie("usercar", "" + xtgraphics.sc[0]);
@@ -916,7 +939,7 @@ public class GameSparker extends Applet implements Runnable {
             if (xtgraphics.fase == -5) {
                 xtgraphics.finish(checkpoints, aconto, u[0]);
                 xtgraphics.ctachm(xm, ym, mouses, u[0]);
-                if (checkpoints.stage == 17 && xtgraphics.winner)
+                if (checkpoints.stage == GameFacts.numberOfStages && xtgraphics.winner)
                     catchlink(1);
                 if (mouses == 2)
                     mouses = 0;
@@ -942,7 +965,7 @@ public class GameSparker extends Applet implements Runnable {
             if (xtgraphics.fase == 205) {
                 savecookie("usercar", "" + xtgraphics.sc[0]);
 
-                for (int x = 0; x < 7; x++) {
+                for (int x = 0; x < GameFacts.numberOfPlayers; x++) {
                     amadness[x].stat = new Stat(xtgraphics.sc[x]);
                 }
                 xtgraphics.fase = 5;
@@ -966,18 +989,22 @@ public class GameSparker extends Applet implements Runnable {
                 if (mouses == 1)
                     mouses = 2;
             }
+            if(xtgraphics.fase == 58) {
+                xtgraphics.carspergame();
+            }
             if (xtgraphics.fase == 2) {
                 xtgraphics.loadingstage(checkpoints.stage);
-                loadstage(aconto1, aconto, trackers, checkpoints, xtgraphics, amadness, record);
+                loadstage(aconto1, aconto, medium, trackers, checkpoints, xtgraphics, amadness, record);
                 u[0].falseo();
             }
             if (xtgraphics.fase == 1) {
                 rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
                 xtgraphics.trackbg(false);
+                 medium.d(rd);
                 Medium.aroundTrack(checkpoints);
                 int i3 = 0;
                 int ai[] = new int[200];
-                for (int k5 = 7; k5 < notb; k5++)
+                for (int k5 = GameFacts.numberOfPlayers; k5 < notb; k5++)
                     if (aconto1[k5].dist != 0) {
                         ai[i3] = k5;
                         i3++;
@@ -1062,8 +1089,13 @@ public class GameSparker extends Applet implements Runnable {
                 } else {
                     u[0].enter = false;
                     u[0].handb = false;
-                    if (xtgraphics.loadedt[checkpoints.stage - 1])
-                        xtgraphics.stracks[checkpoints.stage - 1].play();
+                    if(xtgraphics.loadedt[checkpoints.stage - 1]) {
+                        if (xtgraphics.isMidi[checkpoints.stage - 1]) {
+                            xtgraphics.mtracks[checkpoints.stage - 1].play();
+                        } else {
+                            xtgraphics.stracks[checkpoints.stage - 1].play();
+                        }
+                    }
                     setCursor(new Cursor(0));
                     xtgraphics.fase = 6;
                 }
@@ -1082,7 +1114,7 @@ public class GameSparker extends Applet implements Runnable {
                         aconto1[k3].zy = l8;
                         amadness[k3].newcar = false;
                     }
-                } while (++k3 < 7);
+                } while (++k3 < GameFacts.numberOfPlayers);
                 Medium.d(rd);
                 k3 = 0;
                 int ai2[] = new int[200];
@@ -1125,29 +1157,29 @@ public class GameSparker extends Applet implements Runnable {
                             if (j14 != l12) {
                                 amadness[l12].colide(aconto1[l12], amadness[j14], aconto1[j14]);
                             }
-                        } while (++j14 < 7);
-                    } while (++l12 < 7);
+                        } while (++j14 < GameFacts.numberOfPlayers);
+                    } while (++l12 < GameFacts.numberOfPlayers);
                     l12 = 0;
                     do
                         amadness[l12].drive(u[l12], aconto1[l12], trackers, checkpoints);
-                    while (++l12 < 7);
+                    while (++l12 < GameFacts.numberOfPlayers);
                     l12 = 0;
                     do
                         record.rec(aconto1[l12], l12, amadness[l12].squash, amadness[l12].lastcolido,
                                 amadness[l12].cntdest);
-                    while (++l12 < 7);
-                    checkpoints.checkstat(amadness, aconto1, record);
+                    while (++l12 < GameFacts.numberOfPlayers);
+                    checkpoints.checkstat(amadness, aconto1, record, GameFacts.numberOfPlayers);
                     l12 = 1;
                     do
-                        u[l12].preform(amadness[l12], aconto1[l12], checkpoints, trackers);
-                    while (++l12 < 7);
+                        u[l12].preform(amadness[l12], aconto1[l12], checkpoints, trackers, GameFacts.numberOfPlayers);
+                    while (++l12 < GameFacts.numberOfPlayers);
                 } else {
                     if (xtgraphics.starcnt == 130) {
                         Medium.adv = 1900;
                         Medium.zy = 40;
                         Medium.vxz = 70;
                         rd.setColor(new Color(255, 255, 255));
-                        rd.fillRect(0, 0, 670, 400);
+                        rd.fillRect(0, 0, GameFacts.screenWidth, GameFacts.screenHeight);
                     }
                     if (xtgraphics.starcnt != 0)
                         xtgraphics.starcnt--;
@@ -1184,13 +1216,13 @@ public class GameSparker extends Applet implements Runnable {
                     if (xtgraphics.starcnt == 38) {
                         mouses = 0;
                         Medium.vert = false;
-                        Medium.adv = 900;
+                        Medium.adv = GameFacts.screenWidth;
                         Medium.vxz = 180;
-                        checkpoints.checkstat(amadness, aconto1, record);
+                        checkpoints.checkstat(amadness, aconto1, record, GameFacts.numberOfPlayers);
                         Medium.follow(aconto1[0], amadness[0].cxz, 0);
                         xtgraphics.stat(amadness, checkpoints, u[0], aconto1, true);
                         rd.setColor(new Color(255, 255, 255));
-                        rd.fillRect(0, 0, 670, 400);
+                        rd.fillRect(0, 0,GameFacts.screenWidth, GameFacts.screenHeight);
                     }
                 }
             }
@@ -1200,7 +1232,7 @@ public class GameSparker extends Applet implements Runnable {
                     do {
                         record.ocar[i4] = new ContO(aconto1[i4], 0, 0, 0, 0);
                         aconto1[i4] = new ContO(record.car[0][i4], 0, 0, 0, 0);
-                    } while (++i4 < 7);
+                    } while (++i4 < GameFacts.numberOfPlayers);
                 }
                 Medium.d(rd);
                 int j4 = 0;
@@ -1258,7 +1290,7 @@ public class GameSparker extends Applet implements Runnable {
                     if (k1 == 299)
                         aconto1[l9] = new ContO(record.ocar[l9], 0, 0, 0, 0);
                     record.play(aconto1[l9], amadness[l9], l9, k1);
-                } while (++l9 < 7);
+                } while (++l9 < GameFacts.numberOfPlayers);
                 if (++k1 == 300) {
                     k1 = 0;
                     xtgraphics.fase = -6;
@@ -1302,7 +1334,7 @@ public class GameSparker extends Applet implements Runnable {
                     int k4 = 0;
                     do
                         aconto1[k4] = new ContO(record.starcar[k4], 0, 0, 0, 0);
-                    while (++k4 < 7);
+                    while (++k4 < GameFacts.numberOfPlayers);
                 }
                 Medium.d(rd);
                 int i5 = 0;
@@ -1352,7 +1384,7 @@ public class GameSparker extends Applet implements Runnable {
                         record.cntdest[l10] = 0;
                     }
                     record.playh(aconto1[l10], amadness[l10], l10, k1);
-                } while (++l10 < 7);
+                } while (++l10 < GameFacts.numberOfPlayers);
                 if (j2 == 2 && k1 == 299)
                     u[0].enter = true;
                 if (u[0].enter || u[0].handb) {
@@ -1364,13 +1396,13 @@ public class GameSparker extends Applet implements Runnable {
                     xtgraphics.levelhigh(record.wasted, record.whenwasted, record.closefinish, k1, checkpoints.stage);
                     if (k1 == 0 || k1 == 1 || k1 == 2) {
                         rd.setColor(new Color(0, 0, 0));
-                        rd.fillRect(0, 0, 670, 400);
+                        rd.fillRect(0, 0, GameFacts.screenWidth, GameFacts.screenHeight);
                     }
                     if (record.wasted != 0) {
                         if (record.closefinish == 0) {
                             if (i2 == 9 || i2 == 11) {
                                 rd.setColor(new Color(255, 255, 255));
-                                rd.fillRect(0, 0, 670, 400);
+                                rd.fillRect(0, 0,GameFacts.screenWidth, GameFacts.screenHeight);
                             }
                             if (i2 == 0)
                                 Medium.around(aconto1[0], false);
@@ -1447,16 +1479,16 @@ public class GameSparker extends Applet implements Runnable {
                     } else {
                         if (k2 == 67 && (i2 == 3 || i2 == 31 || i2 == 66)) {
                             rd.setColor(new Color(255, 255, 255));
-                            rd.fillRect(0, 0, 670, 400);
+                            rd.fillRect(0, 0, GameFacts.screenWidth, GameFacts.screenHeight);
                         }
                         if (k2 == 69 && (i2 == 3 || i2 == 5 || i2 == 31 || i2 == 33 || i2 == 66 || i2 == 68)) {
                             rd.setColor(new Color(255, 255, 255));
-                            rd.fillRect(0, 0, 670, 400);
+                            rd.fillRect(0, 0, GameFacts.screenWidth, GameFacts.screenHeight);
                         }
                         if (k2 == 30 && i2 >= 1 && i2 < 30)
                             if (i2 % (int) (2.0F + Medium.random() * 3F) == 0 && !flag2) {
                                 rd.setColor(new Color(255, 255, 255));
-                                rd.fillRect(0, 0, 670, 400);
+                                rd.fillRect(0, 0, GameFacts.screenWidth, GameFacts.screenHeight);
                                 flag2 = true;
                             } else {
                                 flag2 = false;
@@ -1480,7 +1512,7 @@ public class GameSparker extends Applet implements Runnable {
                 if (k1 >= 0)
                     xtgraphics.fleximage(offImage, k1, checkpoints.stage);
                 k1++;
-                if (checkpoints.stage == 17 && k1 == 10)
+                if (checkpoints.stage == GameFacts.numberOfStages && k1 == 10)
                     xtgraphics.fase = -205;
                 if (k1 == 12)
                     xtgraphics.fase = -205;
@@ -1605,12 +1637,12 @@ public class GameSparker extends Applet implements Runnable {
 
     @Override
     public void init() {
-		/*
+        /*
          * load some fonts
          */
         new FontHandler();
 
-        offImage = createImage(670, 400);
+        offImage = createImage(GameFacts.screenWidth, GameFacts.screenHeight);
         if (offImage != null) {
             sg = offImage.getGraphics();
             rd = ((Graphics2D) sg);
@@ -1697,7 +1729,7 @@ public class GameSparker extends Applet implements Runnable {
     private void catchlink(int i) {
         if (!lostfcs) {
             if (i == 0)
-                if (xm > 0 && xm < 670 && ym > 110 && ym < 169 || xm > 210 && xm < 460 && ym > 240 && ym < 259) {
+                if (xm > 0 && xm < GameFacts.screenWidth && ym > 110 && ym < 169 || xm > 210 && xm < 460 && ym > 240 && ym < 259) {
                     setCursor(new Cursor(12));
                     if (mouses == 2)
                         openurl("http://www.radicalplay.com/");
@@ -1705,7 +1737,7 @@ public class GameSparker extends Applet implements Runnable {
                     setCursor(new Cursor(0));
                 }
             if (i == 1)
-                if (xm > 0 && xm < 670 && ym > 205 && ym < 267) {
+                if (xm > 0 && xm < GameFacts.screenWidth && ym > 205 && ym < 267) {
                     setCursor(new Cursor(12));
                     if (mouses == 2)
                         openurl("http://www.radicalplay.com/");

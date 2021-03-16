@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=abyte0
+comment0.target=SuperStream(byte[])
+comment1.params=
+comment1.target=int\ read()
+comment2.params=abyte0\ i\ j
+comment2.target=int\ read(byte[],\ int,\ int)
+numComments=3

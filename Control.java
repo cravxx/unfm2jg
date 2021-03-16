@@ -83,7 +83,7 @@ public class Control {
     private boolean exitattack;
     private int avoidnlev;
 
-    public void preform(Madness madness, ContO conto, CheckPoints checkpoints, Trackers trackers) {
+    public void preform(Madness madness, ContO conto, CheckPoints checkpoints, Trackers trackers, int ncars) {
         left = false;
         right = false;
         up = false;
@@ -723,7 +723,7 @@ public class Control {
                                     acuracy = 0;
                                 }
                             }
-                        } while (++i4 < 7);
+                        } while (++i4 < ncars);
                     }
                     boolean flag2 = false;
                     if (checkpoints.stage == 6 || checkpoints.stage == 10 || checkpoints.stage == 11
@@ -2042,7 +2042,7 @@ public class Control {
         arrace = false;
     }
 
-    public Control() {
+    public Control(Medium medium) {
         left = false;
         right = false;
         up = false;

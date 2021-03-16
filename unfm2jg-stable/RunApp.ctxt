@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.util.ArrayList\ getIcons()
+comment0.text=\r\n\ Fetches\ icons\ of\ 16,\ 32\ and\ 48\ pixels\ from\ the\ 'data'\ folder.\r\n\r\n\ @return\ icons\ -\ ArrayList\ of\ icon\ locations\r\n
+comment1.params=strings
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ startup()
+comment3.params=windowevent
+comment3.target=void\ windowClosing(java.awt.event.WindowEvent)
+comment4.params=
+comment4.target=void\ exitSequence()
+numComments=5

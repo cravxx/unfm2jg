@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=abyte0\ i\ j
+comment0.target=SuperClip(byte[],\ int,\ int)
+comment1.params=
+comment1.target=void\ run()
+comment2.params=
+comment2.target=void\ play()
+comment3.params=
+comment3.target=void\ resume()
+comment4.params=
+comment4.target=void\ stop()
+comment5.params=
+comment5.target=void\ close()
+numComments=6

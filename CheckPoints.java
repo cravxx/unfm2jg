@@ -21,27 +21,29 @@ class CheckPoints {
      */
     public String name = "hogan rewish";
     public final int[] pos = {
-            6, 6, 6, 6, 6, 6, 6
+           50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+           50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+           50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50
     };
+    /**cum
+     * connected to number of cars
+     */
+    public final int[] clear = new int[51];
     /**
      * connected to number of cars
      */
-    public final int[] clear = new int[7];
-    /**
-     * connected to number of cars
-     */
-    public final int[] dested = new int[7];
+    public final int[] dested = new int[51];
     public int wasted = 0;
     public boolean haltall = false;
     public int pcleared = 0;
-    public final int[] opx = new int[7];
-    public final int[] opz = new int[7];
-    public final int[] onscreen = new int[7];
-    public final int[] omxz = new int[7];
+    public final int[] opx = new int[51];
+    public final int[] opz = new int[51];
+    public final int[] onscreen = new int[51];
+    public final int[] omxz = new int[51];
     public int catchfin = 0;
     private int postwo = 0;
 
-    public void checkstat(Madness amadness[], ContO aconto[], Record record) {
+    public void checkstat(Madness amadness[], ContO aconto[], Record record, int ncars) {
         if (!haltall) {
             pcleared = amadness[0].pcleared;
             int i = 0;
@@ -56,10 +58,10 @@ class CheckPoints {
                 } else {
                     clear[i] = -1;
                 }
-            } while (++i < 7);
+            } while (++i < ncars);
             i = 0;
             do {
-                for (int l = i + 1; l < 7; l++) {
+                for (int l = i + 1; l < ncars; l++) {
                     if (clear[i] != clear[l]) {
                         if (clear[i] < clear[l]) {
                             pos[i]++;
@@ -83,7 +85,7 @@ class CheckPoints {
                     }
                 }
 
-            } while (++i < 7);
+            } while (++i < ncars);
             if (stage > 2) {
                 int j = 0;
                 do {
@@ -94,7 +96,7 @@ class CheckPoints {
                                 if (pos[i1] == 1) {
                                     postwo = i1;
                                 }
-                            } while (++i1 < 7);
+                            } while (++i1 < ncars);
                             if (Utility.py(opx[0] / 100, opx[postwo] / 100, opz[0] / 100, opz[postwo] / 100) < 14000
                                     && clear[0] - clear[postwo] == 1) {
                                 catchfin = 30;
@@ -105,7 +107,7 @@ class CheckPoints {
                             postwo = j;
                         }
                     }
-                } while (++j < 7);
+                } while (++j < ncars);
             }
         }
         wasted = 0;
@@ -114,7 +116,7 @@ class CheckPoints {
             if (amadness[k].dest) {
                 wasted++;
             }
-        } while (++k < 7);
+        } while (++k < ncars);
         if (catchfin != 0) {
             catchfin--;
             if (catchfin == 0) {

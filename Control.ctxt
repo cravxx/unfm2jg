@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=madness\ conto\ checkpoints\ trackers\ ncars
+comment0.target=void\ preform(Madness,\ ContO,\ CheckPoints,\ Trackers,\ int)
+comment1.params=checkpoints\ i
+comment1.target=void\ reset(CheckPoints,\ int)
+comment2.params=medium
+comment2.target=Control(Medium)
+comment3.params=
+comment3.target=void\ falseo()
+numComments=4
