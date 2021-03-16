@@ -12,8 +12,9 @@ import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequencer;
 import javax.sound.midi.Synthesizer;
+
 import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.PausablePlayer;
+import jl.player.PausablePlayer;
 import org.newdawn.easyogg.OggClip;
 
 public class RadicalMidi {
