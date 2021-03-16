@@ -6,7 +6,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import java.io.ByteArrayInputStream;
 
-public class SoundClipUnthreaded extends SoundClip {
+public class SoundClipUnthreaded implements SoundClip {
 
     Clip clip = null;
     AudioInputStream sound;

@@ -4140,7 +4140,7 @@ stracks[i - 1].resume();
         this.dnload += 3;
 
         try {
-            File soundsZip = new File("data/sounds.zip");
+            File soundsZip = new File("data/sounds.radq");
             ZipInputStream soundsInputStream = new ZipInputStream(new FileInputStream(soundsZip));
 
             for (ZipEntry soundEntry = soundsInputStream.getNextEntry(); soundEntry != null; soundEntry = soundsInputStream.getNextEntry()) {
