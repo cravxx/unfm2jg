@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.params=car
-comment0.target=Stat(int)
-comment0.text=\r\n\ set\ up\ a\ new\ stat\r\n\r\n\ @param\ car\ the\ car\r\n
-comment1.params=
-comment1.target=Stat()
-numComments=2

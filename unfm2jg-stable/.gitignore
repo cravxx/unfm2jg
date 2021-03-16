@@ -1,9 +1,0 @@
-/bin/
-
-!madness.exe
-!madness64.exe
-/data/cookies.radq
-.*.sw*
-.idea
-/logs/
-/data/models/
