@@ -1,7 +1,16 @@
 # UNFM2JG ![Travis Build Status](http://travis-ci.org/HulaSamsquanch/unfm2jg.svg) [![Codacy Badge](https://api.codacy.com/project/badge/grade/83b0c0adad874ba68fd81fd7c735e9da)](https://www.codacy.com/app/samsquanchhunter14/unfm2jg)
 ## _ultimate nfm2 java guide_
 
-### <span style="color:red">DON'T DOWNLOAD FROM RELEASES PAGE! CLONE REPO OR USE THIS LINK:</span> https://github.com/cravxx/unfm2jg/archive/stable.zip
+### <span style="color:red">DON'T DOWNLOAD FROM RELEASES PAGE! CLONE REPO OR USE LINKS BELOW
+
+| branch      | link      |
+| ----------- | ----------- |
+| stable      | https://github.com/cravxx/unfm2jg/archive/stable.zip   |
+| revised     | https://github.com/cravxx/unfm2jg/archive/revised.zip  |
+
+### *Check out REVISED if you want an upgraded music system and higher screen size, thanks to addict and g6*
+
+---
 
 *"Hello there mate. So you want to hack, and have found my files. Well, there's no place to start but at the beginning."*
 
