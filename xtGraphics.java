@@ -1364,23 +1364,9 @@ class xtGraphics extends Panel implements Runnable {
                 if (mutem) {
                     if (loadedt[i - 1]) {
                         tracks[i - 1].stop();
-                        /*if (isMidi[i - 1]) {
-                            mtracks[i - 1].setPaused(true);
-                        } else {
-                            stracks[i - 1].stop();
-                        }*/
                     }
                 } else if (loadedt[i - 1]) {
                     tracks[i - 1].resume();
-                    /*stracks[i - 1].resume();
-                    System.out.println("We've reached an unmute check...");
-                    if (isMidi[i - 1]) {
-                        System.out.println("Unmute check > play midi...");
-                        mtracks[i - 1].resume();
-                    } else {
-                        System.out.println("Unmute check > play mod...");
-                        stracks[i - 1].resume();
-                    }*/
                 }
             }
         }
@@ -1700,7 +1686,7 @@ class xtGraphics extends Panel implements Runnable {
                     tracks[16] = new RadicalMusic("music/stage" + i + ".radq", 130, 8000, 125, macn);
                 }
 
-                //If you're making more stages, much sure to increase the i == new stage as well as increase the stracks array. - Addict
+                //If you're making more stages, much sure to increase the i == new stage as well as increase the tracks array. - Addict
 
                 if (tracks[i - 1].isLoaded()) {
                     loadedt[i - 1] = true;
@@ -2050,14 +2036,6 @@ class xtGraphics extends Panel implements Runnable {
         if (control.enter || control.handb) {
             if (opselect == 0) {
                 if (loadedt[i - 1] && !mutem) {
-                    /*System.out.println("We've reached an unmute check...");
-                    if (isMidi[i - 1]) {
-                        System.out.println("Unmute check > play midi...");
-                        mtracks[i - 1].resume();
-                    } else {
-                        System.out.println("Unmute check > play mod...");
-                        stracks[i - 1].resume();
-                    }*/
                     tracks[i - 1].resume();
                 }
                 fase = 0;
@@ -2065,14 +2043,6 @@ class xtGraphics extends Panel implements Runnable {
             if (opselect == 1) {
                 if (record.caught >= 300) {
                     if (loadedt[i - 1] && !mutem) {
-                        /*System.out.println("We've reached an unmute check...");
-                        if (isMidi[i - 1]) {
-                            System.out.println("Unmute check > play midi...");
-                            mtracks[i - 1].resume();
-                        } else {
-                            System.out.println("Unmute check > play mod...");
-                            stracks[i - 1].resume();
-                        }*/
                         tracks[i - 1].resume();
                     }
                     fase = -1;
@@ -2082,15 +2052,6 @@ class xtGraphics extends Panel implements Runnable {
             }
             if (opselect == 2) {
                 if (loadedt[i - 1]) {
-                    /*if (isMidi[i - 1]) {
-                        mtracks[i - 1].setPaused(true);
-                    } else {
-                        if (isMidi[i - 1]) {
-                            mtracks[i - 1].setPaused(true);
-                        } else {
-                            stracks[i - 1].stop();
-                        }
-                    }*/
                     tracks[i - 1].stop();
                 }
                 oldfase = -7;
@@ -2098,12 +2059,6 @@ class xtGraphics extends Panel implements Runnable {
             }
             if (opselect == 3) {
                 if (loadedt[i - 1]) {
-                    /*if (isMidi[i - 1]) {
-                        mtracks[i - 1].setPaused(true);
-
-                    } else {
-                        stracks[i - 1].stop();
-                    }*/
                     tracks[i - 1].stop();
                 }
                 fase = 10;
@@ -2235,11 +2190,6 @@ class xtGraphics extends Panel implements Runnable {
             }
             if (control.enter) {
                 if (loadedt[checkpoints.stage - 1]) {
-                    /*if (isMidi[checkpoints.stage - 1]) {
-                        mtracks[checkpoints.stage - 1].setPaused(true);
-                    } else {
-                        stracks[checkpoints.stage - 1].stop();
-                    }*/
                     tracks[checkpoints.stage - 1].stop();
                 }
                 fase = -6;
@@ -3020,11 +2970,6 @@ class xtGraphics extends Panel implements Runnable {
         if (control.enter || control.handb) {
             fase = 10;
             if (loadedt[checkpoints.stage - 1]) {
-                /*if (isMidi[checkpoints.stage - 1]) {
-                    mtracks[checkpoints.stage - 1].setPaused(true);
-                } else {
-                    stracks[checkpoints.stage - 1].stop();
-                }*/
                 tracks[checkpoints.stage - 1].stop();
             }
             if (checkpoints.stage == unlocked && winner && unlocked != GameFacts.numberOfStages) {
@@ -4355,12 +4300,6 @@ class xtGraphics extends Panel implements Runnable {
             if (loadedt[i]) {
                 tracks[i].unload();
                 tracks[i] = null;
-                /*if (isMidi[i]) {
-                    mtracks[i].unloadMidi();
-                } else {
-                    stracks[i].unloadAll();
-                    stracks[i] = null;
-                }*/
             }
         } while (++i < GameFacts.numberOfStages);
         i = 0;
