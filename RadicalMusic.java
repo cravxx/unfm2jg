@@ -22,32 +22,24 @@ enum MusicType {
 }
 
 public class RadicalMusic {
-    BufferedInputStream is;
-    Sequencer sequencer;
-    boolean paused;
-    boolean loaded = false;
-    boolean playing = false;
-    String filename;
-    FileInputStream musicInputStream;
-    File musicFile;
-    OggClip ogg;
-    PausablePlayer player;
-
+    private BufferedInputStream is;
+    private Sequencer sequencer;
+    private boolean paused = false;
+    private boolean loaded = false;
+    private boolean playing = false;
+    private String filename;
+    private FileInputStream musicInputStream;
+    private File musicFile;
+    private OggClip ogg;
+    private PausablePlayer player;
     private SuperStream stream;
     private byte modf[];
-
-
-    public MusicType getMusicType() {
-        return musicType;
-    }
-
     MusicType musicType;
 
     public RadicalMusic(String filename) {
         if (filename.endsWith(".mp3")) {
             this.filename = filename;
             musicType = MusicType.MP3;
-
             musicFile = new File(this.filename);
 
             try {
@@ -139,57 +131,72 @@ public class RadicalMusic {
 
     }
 
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    public MusicType getMusicType() {
+        return musicType;
+    }
+
     public void load() {
-        if(musicType.equals(MusicType.MIDI)) {
+        if (musicType.equals(MusicType.MIDI)) {
             this.loadMidi();
         }
-
     }
 
     public void play() {
-        if(musicType.equals(MusicType.MP3)) {
+        if (musicType.equals(MusicType.MP3)) {
             playMp3();
-        } else if(musicType.equals(MusicType.OGG)) {
+        } else if (musicType.equals(MusicType.OGG)) {
             ogg.loop();
-        } else if(musicType.equals(MusicType.MIDI)) {
+        } else if (musicType.equals(MusicType.MIDI)) {
             playMidi();
-        } else if(musicType.equals(MusicType.MOD)) {
+        } else if (musicType.equals(MusicType.MOD)) {
             playMod();
         }
     }
 
     public void resume() {
-        if(musicType.equals(MusicType.MP3)) {
+        if (musicType.equals(MusicType.MP3)) {
             player.resume();
-        } else if(musicType.equals(MusicType.OGG)) {
+        } else if (musicType.equals(MusicType.OGG)) {
             ogg.resume();
-        } else if(musicType.equals(MusicType.MIDI)) {
+        } else if (musicType.equals(MusicType.MIDI)) {
             resumeMidi();
-        } else if(musicType.equals(MusicType.MOD)) {
+        } else if (musicType.equals(MusicType.MOD)) {
             resumeMod();
         }
     }
 
     public void stop() {
-        if(musicType.equals(MusicType.MP3)) {
+        if (musicType.equals(MusicType.MP3)) {
             player.pause();
-        } else if(musicType.equals(MusicType.OGG)) {
+        } else if (musicType.equals(MusicType.OGG)) {
             ogg.pause();
-        } else if(musicType.equals(MusicType.MIDI)) {
+        } else if (musicType.equals(MusicType.MIDI)) {
             stopMidi();
-        } else if(musicType.equals(MusicType.MOD)) {
+        } else if (musicType.equals(MusicType.MOD)) {
             stopMod();
         }
     }
 
     public void unload() {
-        if(musicType.equals(MusicType.MP3)) {
+        if (musicType.equals(MusicType.MP3)) {
             player.close();
-        } else if(musicType.equals(MusicType.OGG)) {
+        } else if (musicType.equals(MusicType.OGG)) {
             unloadOgg();
-        } else if(musicType.equals(MusicType.MIDI)) {
+        } else if (musicType.equals(MusicType.MIDI)) {
             unloadMidi();
-        } else if(musicType.equals(MusicType.MOD)) {
+        } else if (musicType.equals(MusicType.MOD)) {
             unloadMod();
         }
     }
@@ -202,7 +209,6 @@ public class RadicalMusic {
             HLogger.error("Error loading Midi file!");
             HLogger.error(e);
         }
-
     }
 
     private void resumeMod() {
@@ -241,23 +247,22 @@ public class RadicalMusic {
             HLogger.error("Error playing Midi file!");
             HLogger.error(e);
         }
-
     }
 
     public void setPaused(boolean paused) {
-        if(musicType.equals(MusicType.MP3)) {
-            if(paused) {
+        if (musicType.equals(MusicType.MP3)) {
+            if (paused) {
                 player.pause();
             } else {
                 player.resume();
             }
-        } else if(musicType.equals(MusicType.OGG)) {
-            if(paused) {
+        } else if (musicType.equals(MusicType.OGG)) {
+            if (paused) {
                 ogg.pause();
             } else {
                 ogg.resume();
             }
-        } else if(musicType.equals(MusicType.MIDI)) {
+        } else if (musicType.equals(MusicType.MIDI)) {
             if (this.paused != paused && sequencer != null && sequencer.isOpen()) {
                 this.paused = paused;
                 if (paused) {
@@ -269,10 +274,6 @@ public class RadicalMusic {
         }
     }
 
-    public boolean isPaused() {
-        return paused;
-    }
-
     private void stopMidi() {
         try {
             this.sequencer.stop();
@@ -281,7 +282,6 @@ public class RadicalMusic {
             HLogger.error("Error stopping Midi file!");
             HLogger.error(e);
         }
-
     }
 
     private void stopMod() {
@@ -369,7 +369,6 @@ public class RadicalMusic {
             HLogger.error("Error unloading Midi file!");
             HLogger.error(e);
         }
-
     }
 
     private void playMp3() {
@@ -379,7 +378,6 @@ public class RadicalMusic {
             HLogger.error("Error playing mp3 file!");
             HLogger.error(e);
         }
-
     }
 
     private void unloadOgg() {

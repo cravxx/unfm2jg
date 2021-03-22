@@ -1702,7 +1702,7 @@ class xtGraphics extends Panel implements Runnable {
 
                 //If you're making more stages, much sure to increase the i == new stage as well as increase the stracks array. - Addict
 
-                if (tracks[i - 1].loaded) {
+                if (tracks[i - 1].isLoaded()) {
                     loadedt[i - 1] = true;
                 }
             }
