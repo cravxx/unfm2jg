@@ -1,0 +1,323 @@
+bluej.runtime.ExecServer --- 2021-03-03T20:38:39.033
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.7s] [Info] [Utility] Timer started![0m
+[36;1m[+0.9s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+1.3s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+1.3s] [Info] [Utility] Timer ended at 664 ms[0m
+[36;1m[+1.3s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+17.2s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-03T20:42:33.831
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.8s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.9s] [Info] [Utility] Timer ended at 518 ms[0m
+[36;1m[+0.9s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+7.5s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-03T20:46:45.993
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.4s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.8s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.9s] [Info] [Utility] Timer ended at 505 ms[0m
+[36;1m[+0.9s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+8.3s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-03T21:35:35.741
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.4s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[31m[+0.5s] [Info] [xtGraphics] Error Loading Sounds: java.io.FileNotFoundException: data\sounds.zip (The system cannot find the file specified)[39m
+[36;1m[+0.6s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 303 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[33;1m[+1.0s] [Info] [SoundManager] clip not found: powerup[0m
+[36;1m[+6.9s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+[33;1m[+13.2s] [Info] [SoundManager] clip not found: three[0m
+[33;1m[+13.3s] [Info] [SoundManager] clip not found: engs00[0m
+[33;1m[+13.7s] [Info] [SoundManager] clip not found: engs00[0m
+[33;1m[+14.0s] [Info] [SoundManager] clip not found: engs00[0m
+[33;1m[+14.4s] [Info] [SoundManager] clip not found: one[0m
+[33;1m[+14.9s] [Info] [SoundManager] clip not found: go[0m
+[33;1m[+15.1s] [Info] [SoundManager] clip not found: engs00[0m
+[33;1m[+15.1s] [Info] [SoundManager] clip not found: engs01[0m
+[33;1m[+15.1s] [Info] [SoundManager] clip not found: engs01[0m
+[33;1m[+15.1s] [Info] [SoundManager] clip not found: engs02[0m
+[33;1m[+15.2s] [Info] [SoundManager] clip not found: engs02[0m
+[33;1m[+15.2s] [Info] [SoundManager] clip not found: engs03[0m
+[33;1m[+15.3s] [Info] [SoundManager] clip not found: engs01[0m
+[33;1m[+15.3s] [Info] [SoundManager] clip not found: engs03[0m
+[33;1m[+15.9s] [Info] [SoundManager] clip not found: engs01[0m
+[33;1m[+15.9s] [Info] [SoundManager] clip not found: engs02[0m
+[33;1m[+16.6s] [Info] [SoundManager] clip not found: engs02[0m
+[33;1m[+16.6s] [Info] [SoundManager] clip not found: engs03[0m
+[33;1m[+16.7s] [Info] [SoundManager] clip not found: engs00[0m
+[33;1m[+16.7s] [Info] [SoundManager] clip not found: engs03[0m
+[33;1m[+17.0s] [Info] [SoundManager] clip not found: engs00[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs00[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs10[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs20[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs30[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs40[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs01[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs11[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs21[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs31[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs41[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs02[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs12[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs22[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs32[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs42[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs03[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs13[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs23[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs33[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs43[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs04[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs14[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs24[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs34[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: engs44[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: air0[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: air1[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: air2[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: air3[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: air4[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: air5[0m
+[33;1m[+1.8min] [Info] [SoundManager] clip not found: wasted[0m
+bluej.runtime.ExecServer --- 2021-03-03T21:40:34.708
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.4s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.9s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.9s] [Info] [Utility] Timer ended at 526 ms[0m
+[36;1m[+0.9s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+7.7s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+[36;1m[+1.6min] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+1.6min] [Info] [Utility] Timer started![0m
+[36;1m[+1.6min] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+1.6min] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+1.6min] [Info] [Utility] Timer ended at 305 ms[0m
+[36;1m[+1.6min] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+1.8min] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-03T21:42:52.234
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.4s] [Info] [Utility] Timer started![0m
+[36;1m[+0.6s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+1.0s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+1.0s] [Info] [Utility] Timer ended at 587 ms[0m
+[36;1m[+1.0s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+13.5s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+[36;1m[+2.4min] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+2.4min] [Info] [Utility] Timer started![0m
+[36;1m[+2.4min] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+2.4min] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+2.4min] [Info] [Utility] Timer ended at 339 ms[0m
+[36;1m[+2.4min] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+2.6min] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:15:35.751
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 413 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+20.9s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+[36;1m[+27.9s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:27:13.821
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 401 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:31:11.867
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 410 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:33:03.614
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.8s] [Info] [Utility] Timer ended at 431 ms[0m
+[36;1m[+0.8s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:37:48.728
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 401 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:38:17.968
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.8s] [Info] [Utility] Timer ended at 416 ms[0m
+[36;1m[+0.8s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:41:48.971
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 401 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:42:25.896
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 404 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:43:15.267
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 393 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:44:36.579
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 400 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:46:04.762
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 403 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:46:17.685
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 396 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:46:44.026
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 391 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:47:34.967
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 408 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:48:26.844
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 384 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:49:39.605
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 410 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:51:20.134
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 399 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:51:25.755
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 398 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:52:53.108
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 405 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:52:58.581
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 387 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:54:10.533
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 404 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:54:22.383
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 408 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:54:37.965
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 393 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:56:36.353
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 386 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:58:20.067
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 396 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:58:29.013
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 369 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:58:35.308
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 394 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-03T22:59:24.932
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.8s] [Info] [Utility] Timer ended at 451 ms[0m
+[36;1m[+0.8s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+1.3min] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-03T23:05:32.524
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 400 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m

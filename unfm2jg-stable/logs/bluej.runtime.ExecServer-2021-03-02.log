@@ -1,0 +1,39 @@
+bluej.runtime.ExecServer --- 2021-03-02T00:03:24.632
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.8s] [Info] [Utility] Timer started![0m
+[36;1m[+0.9s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+1.3s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+1.3s] [Info] [Utility] Timer ended at 569 ms[0m
+[36;1m[+1.3s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+bluej.runtime.ExecServer --- 2021-03-02T00:09:49.904
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 425 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+9.0s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-02T00:20:55.354
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.8s] [Info] [Utility] Timer ended at 445 ms[0m
+[36;1m[+0.8s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+6.7s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-02T00:26:01.527
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.4s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.7s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.7s] [Info] [Utility] Timer ended at 440 ms[0m
+[36;1m[+0.7s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+9.3s] [Info] [GameSparker] Successfully saved game (usercar)[0m
+bluej.runtime.ExecServer --- 2021-03-02T00:27:14.328
+[36;1m[+0.0s] [Info] [RunApp] UNFM2 Console[0m
+[36;1m[+0.3s] [Info] [Utility] Timer started![0m
+[36;1m[+0.5s] [Info] [xtGraphics] Images loaded: 75[0m
+[36;1m[+0.8s] [Info] [GameSparker] Contos loaded: 55[0m
+[36;1m[+0.8s] [Info] [Utility] Timer ended at 463 ms[0m
+[36;1m[+0.8s] [Info] [GameSparker] Successfully read cookie usercar with value 0[0m
+[36;1m[+11.1s] [Info] [GameSparker] Successfully saved game (usercar)[0m

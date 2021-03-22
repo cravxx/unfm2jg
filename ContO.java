@@ -237,6 +237,7 @@ public class ContO {
                     k = 0;
                     l = 0;
                     byte0 = 0;
+                    flag4 = false;
                 }
                 if (flag) {
                     if (line.startsWith("gr")) {
