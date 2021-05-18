@@ -7,6 +7,8 @@
 | ----------- | ----------- |
 | stable      | https://github.com/cravxx/unfm2jg/archive/stable.zip   |
 | revised     | https://github.com/cravxx/unfm2jg/archive/revised.zip  |
+ 
+### REQUIRES JDK 8
 
 ### *Check out REVISED if you want an upgraded music system and higher screen size, thanks to addict and g6*
 
