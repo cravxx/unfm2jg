@@ -45,6 +45,7 @@ public class RadicalMusic {
             try {
                 musicInputStream = new FileInputStream(musicFile);
                 player = new PausablePlayer(musicInputStream);
+                loaded = true;
             } catch (FileNotFoundException | JavaLayerException e) {
                 HLogger.error("Error loading mp3 file: " + filename);
                 HLogger.error(e);
@@ -55,6 +56,7 @@ public class RadicalMusic {
 
             try {
                 ogg = new OggClip(filename);
+                loaded = true;
             } catch (IOException e) {
                 HLogger.error("Error loading ogg file: " + filename);
                 HLogger.error(e);
@@ -73,6 +75,7 @@ public class RadicalMusic {
             try {
                 sequencer = MidiSystem.getSequencer();
                 sequencer.open();
+                loaded = true;
             } catch (Exception e) {
                 HLogger.error("Error loading Midi file: " + filename);
                 HLogger.error(e);
@@ -192,12 +195,16 @@ public class RadicalMusic {
     public void unload() {
         if (musicType.equals(MusicType.MP3)) {
             player.close();
+            loaded = false;
         } else if (musicType.equals(MusicType.OGG)) {
             unloadOgg();
+            loaded = false;
         } else if (musicType.equals(MusicType.MIDI)) {
             unloadMidi();
+            loaded = false;
         } else if (musicType.equals(MusicType.MOD)) {
             unloadMod();
+            loaded = false;
         }
     }
 
