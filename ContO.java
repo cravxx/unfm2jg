@@ -257,11 +257,9 @@ public class ContO {
                     }
                     if (line.startsWith("lightF")) {
                         byte0 = 1;
-                    }
-                    if (line.startsWith("lightB")) {
+                    } else if (line.startsWith("lightB")) {
                         byte0 = 2;
-                    }
-                    if (line.startsWith("light")) {
+                    } else if (line.startsWith("light")) {
                         byte0 = 1;
                     }
                     if (line.startsWith("noOutline")) {
