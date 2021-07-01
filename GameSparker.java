@@ -493,8 +493,8 @@ public class GameSparker extends Applet implements Runnable {
                     aconto[nob] = new ContO(aconto1[k1], Utility.getint("set", line, 1), Medium.ground - aconto1[k1].grat,
                             Utility.getint("set", line, 2), Utility.getint("set", line, 3));
                     if (line.contains(")p")) {
-                        checkpoints.x[checkpoints.n] = Utility.getint("chk", line, 1);
-                        checkpoints.z[checkpoints.n] = Utility.getint("chk", line, 2);
+                        checkpoints.x[checkpoints.n] = Utility.getint("set", line, 1);
+                        checkpoints.z[checkpoints.n] = Utility.getint("set", line, 2);
                         checkpoints.y[checkpoints.n] = 0;
                         checkpoints.typ[checkpoints.n] = 0;
                         if (line.contains(")pt"))
@@ -514,7 +514,7 @@ public class GameSparker extends Applet implements Runnable {
                     int i2 = Utility.getint("fltset", line, 0);
                     i2 += 6;
                     aconto[nob] = new ContO(aconto1[i2], Utility.getint("fltset", line, 1), Utility.getint("fltset", line, 3),
-                            Utility.getint("set", line, 2), Utility.getint("set", line, 4));
+                            Utility.getint("fltset", line, 2), Utility.getint("fltset", line, 4));
                     if (line.contains(")p")) {
                         checkpoints.x[checkpoints.n] = Utility.getint("fltset", line, 1);
                         checkpoints.z[checkpoints.n] = Utility.getint("fltset", line, 2);
