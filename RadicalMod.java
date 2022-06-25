@@ -9,29 +9,19 @@ import java.util.zip.ZipInputStream;
 
 public class RadicalMod {
 
-    private SuperStream stream;
     private SuperClip sClip;
     private byte modf[];
-    private boolean suny;
     private boolean playing;
     public int loaded;
 
     public void stop() {
         if (playing && loaded == 2) {
-            if (suny) {
-                sClip.stop();
-            } else {
-                try {
-                    AudioPlayer.player.stop(stream);
-                } catch (Exception _ex) {
-                }
-            }
+            sClip.stop();
             playing = false;
         }
     }
 
     public RadicalMod(String s, Applet applet) {
-        suny = false;
         playing = false;
         loaded = 0;
         loaded = 1;
@@ -56,16 +46,8 @@ public class RadicalMod {
 
     public void resume() {
         if (!playing && loaded == 2) {
-            if (suny) {
-                sClip.resume();
-                if (sClip.stoped == 0) {
-                    playing = true;
-                }
-            } else {
-                try {
-                    AudioPlayer.player.start(stream);
-                } catch (Exception _ex) {
-                }
+            sClip.resume();
+            if (sClip.stoped == 0) {
                 playing = true;
             }
         }
@@ -73,23 +55,11 @@ public class RadicalMod {
 
     void unloadAll() {
         if (playing && loaded == 2) {
-            if (suny) {
-                sClip.stop();
-            } else {
-                try {
-                    AudioPlayer.player.stop(stream);
-                } catch (Exception _ex) {
-                }
-            }
+            sClip.stop();
         }
         try {
-            if (suny) {
-                sClip.close();
-                sClip = null;
-            } else {
-                stream.close();
-                stream = null;
-            }
+            sClip.close();
+            sClip = null;
         } catch (Exception _ex) {
         }
         try {
@@ -101,19 +71,8 @@ public class RadicalMod {
 
     public void play() {
         if (!playing && loaded == 2) {
-            if (suny) {
-                sClip.play();
-                if (sClip.stoped == 0) {
-                    playing = true;
-                }
-            } else {
-                if (stream != null) {
-                    stream.reset();
-                }
-                try {
-                    AudioPlayer.player.start(stream);
-                } catch (Exception _ex) {
-                }
+            sClip.play();
+            if (sClip.stoped == 0) {
                 playing = true;
             }
         }
@@ -122,24 +81,12 @@ public class RadicalMod {
     void unloadMod() {
         if (loaded == 2) {
             if (playing) {
-                if (suny) {
-                    sClip.stop();
-                } else {
-                    try {
-                        AudioPlayer.player.stop(stream);
-                    } catch (Exception _ex) {
-                    }
-                }
+                sClip.stop();
                 playing = false;
             }
             try {
-                if (suny) {
-                    sClip.close();
-                    sClip = null;
-                } else {
-                    stream.close();
-                    stream = null;
-                }
+                sClip.close();
+                sClip = null;
             } catch (Exception _ex) {
             }
             System.gc();
@@ -147,34 +94,16 @@ public class RadicalMod {
         }
     }
 
-    public void loadMod(int i, int j, int k, boolean flag, boolean flag1) {
+    public void loadMod(int i, int j, int k) {
         if (loaded == 1) {
             loaded = 2;
-            suny = flag;
             int l = 22000;
-            if (flag1) {
-                suny = false;
-            }
-            if (suny) {
-                j = (int) ((j / 8000F) * 2.0F * l);
-            }
-            if (!suny) {
-                if (!flag1) {
-                    i = (int) (i * 1.5D);
-                } else {
-                    i = (int) (i * 2.2000000000000002D);
-                }
-            }
+            j = (int) ((j / 8000F) * 2.0F * l);
             Mod mod = new Mod(new ByteArrayInputStream(modf));
             ModSlayer modslayer = new ModSlayer(mod, j, i, k);
             try {
-                if (suny) {
-                    byte abyte0[] = modslayer.turnbytesNorm();
-                    sClip = new SuperClip(abyte0, modslayer.oln, l);
-                } else {
-                    byte abyte1[] = modslayer.turnbytesUlaw();
-                    stream = new SuperStream(abyte1);
-                }
+                byte abyte0[] = modslayer.turnbytesNorm();
+                sClip = new SuperClip(abyte0, modslayer.oln, l);
             } catch (Exception exception) {
                 HLogger.error("Error making a Mod: " + exception);
                 loaded = 0;

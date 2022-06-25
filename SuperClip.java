@@ -27,13 +27,13 @@ class SuperClip implements Runnable {
     public void run() {
         boolean flag = false;
         try {
-            DataLine.Info info = new DataLine.Info(
-                    SourceDataLine.class,
-                    new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, -1F, 16, 2, 4, -1F, true));
+            final AudioFormat audioFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, skiprate, 16, 1, 2, skiprate, false);
+            final DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat);
             source = (SourceDataLine) AudioSystem.getLine(info);
-            source.open(new AudioFormat(skiprate, 16, 1, false, false));
+            source.open(audioFormat);
             source.start();
         } catch (Exception exception) {
+            exception.printStackTrace();
             stoped = 1;
         }
         while (stoped == 0) {

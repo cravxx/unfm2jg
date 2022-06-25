@@ -172,8 +172,6 @@ class xtGraphics extends Panel implements Runnable {
     public final boolean[] loadedt;
     private int lastload;
     private boolean mutem;
-    private boolean sunny;
-    private boolean macn;
     private boolean arrace;
     private int ana;
     private int cntan;
@@ -625,7 +623,7 @@ class xtGraphics extends Panel implements Runnable {
         drawcs(396, "You can also use Keyboard Arrows and Enter to navigate.", 82, 90, 0, 3);
         app.repaint();
         if (lastload != -22) {
-            stages.loadMod(135, 7800, 125, sunny, macn);
+            stages.loadMod(135, 7800, 125);
             lastload = -22;
         } else {
             stages.stop();
@@ -1625,55 +1623,55 @@ class xtGraphics extends Panel implements Runnable {
             }
         }
         if (i == 1) {
-            stracks[0].loadMod(130, 8000, 125, sunny, macn);
+            stracks[0].loadMod(130, 8000, 125);
         }
         if (i == 2) {
-            stracks[1].loadMod(260, 7200, 125, sunny, macn);
+            stracks[1].loadMod(260, 7200, 125);
         }
         if (i == 3) {
-            stracks[2].loadMod(270, 8000, 125, sunny, macn);
+            stracks[2].loadMod(270, 8000, 125);
         }
         if (i == 4) {
-            stracks[3].loadMod(190, 8000, 125, sunny, macn);
+            stracks[3].loadMod(190, 8000, 125);
         }
         if (i == 5) {
-            stracks[4].loadMod(162, 7800, 125, sunny, macn);
+            stracks[4].loadMod(162, 7800, 125);
         }
         if (i == 6) {
-            stracks[5].loadMod(220, 7600, 125, sunny, macn);
+            stracks[5].loadMod(220, 7600, 125);
         }
         if (i == 7) {
-            stracks[6].loadMod(300, 7500, 125, sunny, macn);
+            stracks[6].loadMod(300, 7500, 125);
         }
         if (i == 8) {
-            stracks[7].loadMod(200, 7900, 125, sunny, macn);
+            stracks[7].loadMod(200, 7900, 125);
         }
         if (i == 9) {
-            stracks[8].loadMod(200, 7900, 125, sunny, macn);
+            stracks[8].loadMod(200, 7900, 125);
         }
         if (i == 10) {
-            stracks[9].loadMod(232, 7300, 125, sunny, macn);
+            stracks[9].loadMod(232, 7300, 125);
         }
         if (i == 11) {
-            stracks[10].loadMod(370, 7900, 125, sunny, macn);
+            stracks[10].loadMod(370, 7900, 125);
         }
         if (i == 12) {
-            stracks[11].loadMod(290, 7900, 125, sunny, macn);
+            stracks[11].loadMod(290, 7900, 125);
         }
         if (i == 13) {
-            stracks[12].loadMod(222, 7600, 125, sunny, macn);
+            stracks[12].loadMod(222, 7600, 125);
         }
         if (i == 14) {
-            stracks[13].loadMod(230, 8000, 125, sunny, macn);
+            stracks[13].loadMod(230, 8000, 125);
         }
         if (i == 15) {
-            stracks[14].loadMod(220, 8000, 125, sunny, macn);
+            stracks[14].loadMod(220, 8000, 125);
         }
         if (i == 16) {
-            stracks[15].loadMod(261, 8000, 125, sunny, macn);
+            stracks[15].loadMod(261, 8000, 125);
         }
         if (i == 17) {
-            stracks[16].loadMod(400, 7600, 125, sunny, macn);
+            stracks[16].loadMod(400, 7600, 125);
         }
         if (flag) {
             runner.stop();
@@ -3474,8 +3472,6 @@ class xtGraphics extends Panel implements Runnable {
         loadedt = new boolean[17];
         lastload = -1;
         mutem = false;
-        sunny = true;
-        macn = false;
         arrace = false;
         ana = 0;
         cntan = 0;
@@ -3735,73 +3731,61 @@ class xtGraphics extends Panel implements Runnable {
     }
 
     public void blendude(Image image) {
-        if (!macn) {
-            if (Math.random() > Math.random()) {
-                dudo = 217;
-            } else {
-                dudo = 331;
-            }
-            int ai[] = new int[19520];
-            PixelGrabber pixelgrabber = new PixelGrabber(image, dudo, 0, 122, 160, ai, 0, 122);
+        if (Math.random() > Math.random()) {
+            dudo = 217;
+        } else {
+            dudo = 331;
+        }
+        int ai[] = new int[19520];
+        PixelGrabber pixelgrabber = new PixelGrabber(image, dudo, 0, 122, 160, ai, 0, 122);
+        try {
+            pixelgrabber.grabPixels();
+        } catch (InterruptedException _ex) {
+            dudo = -1;
+        }
+        int j = 0;
+        do {
+            int ai1[] = new int[19520];
+            PixelGrabber pixelgrabber1 = new PixelGrabber(dude[j], 0, 10, 122, 160, ai1, 0, 122);
             try {
-                pixelgrabber.grabPixels();
+                pixelgrabber1.grabPixels();
             } catch (InterruptedException _ex) {
                 dudo = -1;
             }
-            int j = 0;
-            do {
-                int ai1[] = new int[19520];
-                PixelGrabber pixelgrabber1 = new PixelGrabber(dude[j], 0, 10, 122, 160, ai1, 0, 122);
-                try {
-                    pixelgrabber1.grabPixels();
-                } catch (InterruptedException _ex) {
-                    dudo = -1;
-                }
-                if (dudo != -1) {
-                    int k = 0;
-                    do {
-                        if (ai1[k] != ai1[0]) {
-                            Color color = new Color(ai1[k]);
-                            Color color1 = new Color(ai[k]);
-                            int l = (color.getRed() + color1.getRed() * 3) / 4;
-                            if (l > 255) {
-                                l = 255;
-                            }
-                            if (l < 0) {
-                                l = 0;
-                            }
-                            int i1 = (color.getGreen() + color1.getGreen() * 3) / 4;
-                            if (i1 > 255) {
-                                i1 = 255;
-                            }
-                            if (i1 < 0) {
-                                i1 = 0;
-                            }
-                            int j1 = (color.getBlue() + color1.getBlue() * 3) / 4;
-                            if (j1 > 255) {
-                                j1 = 255;
-                            }
-                            if (j1 < 0) {
-                                j1 = 0;
-                            }
-                            Color color2 = new Color(l, i1, j1);
-                            ai1[k] = color2.getRGB();
+            if (dudo != -1) {
+                int k = 0;
+                do {
+                    if (ai1[k] != ai1[0]) {
+                        Color color = new Color(ai1[k]);
+                        Color color1 = new Color(ai[k]);
+                        int l = (color.getRed() + color1.getRed() * 3) / 4;
+                        if (l > 255) {
+                            l = 255;
                         }
-                    } while (++k < 19520);
-                    dudeb[j] = createImage(new MemoryImageSource(122, 160, ai1, 0, 122));
-                }
-            } while (++j < 3);
-        } else {
-            if (Math.random() > Math.random()) {
-                dudo = 176;
-            } else {
-                dudo = 372;
+                        if (l < 0) {
+                            l = 0;
+                        }
+                        int i1 = (color.getGreen() + color1.getGreen() * 3) / 4;
+                        if (i1 > 255) {
+                            i1 = 255;
+                        }
+                        if (i1 < 0) {
+                            i1 = 0;
+                        }
+                        int j1 = (color.getBlue() + color1.getBlue() * 3) / 4;
+                        if (j1 > 255) {
+                            j1 = 255;
+                        }
+                        if (j1 < 0) {
+                            j1 = 0;
+                        }
+                        Color color2 = new Color(l, i1, j1);
+                        ai1[k] = color2.getRGB();
+                    }
+                } while (++k < 19520);
+                dudeb[j] = createImage(new MemoryImageSource(122, 160, ai1, 0, 122));
             }
-            int i = 0;
-            do {
-                dudeb[i] = dude[i];
-            } while (++i < 3);
-        }
+        } while (++j < 3);
     }
 
     public void musicomp(int i, Control control) {
@@ -3875,12 +3859,6 @@ class xtGraphics extends Panel implements Runnable {
 
     public void loaddata() {
         kbload = 950;
-        sunny = false;
-
-        String s2 = System.getProperty("os.name");
-        if (!s2.startsWith("Win")) {
-            macn = true;
-        }
 
         runtyp = 176;
 
@@ -4153,7 +4131,7 @@ class xtGraphics extends Panel implements Runnable {
         carsbginflex();
         flatrstart = 0;
         Medium.lightson = false;
-        cars.loadMod(200, 7900, 125, sunny, macn);
+        cars.loadMod(200, 7900, 125);
         pnext = 0;
         pback = 0;
     }
