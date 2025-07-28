@@ -18,4 +18,6 @@ public class GameFacts
      public static int screenHeight = 720; //dont touch this if you don't know what you're doing
 
      public static final int polyLimit = 300;
+
+     public static int maxTrackPieces = 5000;
 }

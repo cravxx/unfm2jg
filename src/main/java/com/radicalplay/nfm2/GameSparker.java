@@ -967,7 +967,7 @@ public class GameSparker extends AppletPolyfill implements Runnable {
         Record record = new Record();
         ContO[] aconto = new ContO[carModels.length + trackModels.length + extraModels.length]; // be sure all your arrays get in here
         loadbase(aconto, trackers, xtgraphics);
-        ContO[] aconto1 = new ContO[5000];
+        ContO[] aconto1 = new ContO[GameFacts.maxTrackPieces];
         Madness[] amadness = new Madness[51];
         int l = 0;
         do {
@@ -1289,7 +1289,7 @@ public class GameSparker extends AppletPolyfill implements Runnable {
                         int j5 = aconto1[k3].xz;
                         int j6 = aconto1[k3].xy;
                         int l8 = aconto1[k3].zy;
-                        aconto1[k3] = new ContO(aconto[amadness[k3].cn], aconto1[k3].x, aconto1[k3].y, aconto1[k3].z,
+                        aconto1[k3] = new ContO(aconto1[k3].original, aconto1[k3].x, aconto1[k3].y, aconto1[k3].z,
                                 0);
                         aconto1[k3].xz = j5;
                         aconto1[k3].xy = j6;
@@ -1470,11 +1470,11 @@ public class GameSparker extends AppletPolyfill implements Runnable {
                         else
                             aconto1[l9].fix = true;
                     if (aconto1[l9].fcnt == 7 || aconto1[l9].fcnt == 8) {
-                        aconto1[l9] = new ContO(aconto[amadness[l9].cn], 0, 0, 0, 0);
+                        aconto1[l9] = new ContO(aconto1[l9].original, 0, 0, 0, 0);
                         record.cntdest[l9] = 0;
                     }
                     if (k1 == 299)
-                        aconto1[l9] = new ContO(record.ocar[l9], 0, 0, 0, 0);
+                        aconto1[l9] = new ContO(aconto1[l9].original, 0, 0, 0, 0);
                     record.play(aconto1[l9], amadness[l9], l9, k1);
                 } while (++l9 < GameFacts.numberOfPlayers);
                 if (++k1 == 300) {
@@ -1566,7 +1566,7 @@ public class GameSparker extends AppletPolyfill implements Runnable {
                         else
                             aconto1[l10].fix = true;
                     if (aconto1[l10].fcnt == 7 || aconto1[l10].fcnt == 8) {
-                        aconto1[l10] = new ContO(aconto[amadness[l10].cn], 0, 0, 0, 0);
+                        aconto1[l10] = new ContO(aconto1[l10].original, 0, 0, 0, 0);
                         record.cntdest[l10] = 0;
                     }
                     record.playh(aconto1[l10], amadness[l10], l10, k1);

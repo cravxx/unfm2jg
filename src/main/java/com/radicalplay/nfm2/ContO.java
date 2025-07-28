@@ -442,7 +442,10 @@ public class ContO {
         grat = wheels.ground;
     }
 
+    ContO original;
+
     public ContO(ContO conto, int i, int j, int k, int l) {
+        original = conto;
         t = conto.t;
         npl = conto.npl;
         maxR = conto.maxR;
